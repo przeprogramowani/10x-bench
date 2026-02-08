@@ -22,7 +22,7 @@ Breakdown by criterion (all max 1 point each):
 
 ## eval-results.csv Template
 
-Agents should create an `eval-results.csv` file in the attempt directory with the following format:
+Generates `eval-results.csv` in `./eval-results/{model-name}-attempt-{number}/eval-results.csv` directory:
 
 ```csv
 Criterion,Score,Max,Notes

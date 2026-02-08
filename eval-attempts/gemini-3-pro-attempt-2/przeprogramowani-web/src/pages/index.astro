@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import { CourseCard } from '../components/CourseCard';
+import { ArrowRight } from 'lucide-react';
+
+const courses = [
+  {
+    title: 'Opanuj Frontend',
+    description: 'Kompleksowy program dla Frontend Developerów. Naucz się tworzyć skalowalne aplikacje webowe.',
+    link: '/kursy/opanuj-frontend',
+    color: 'border-blue-500',
+    features: ['React', 'Next.js', 'Testing', 'Architecture']
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Praktyczne zastosowanie TypeScript w projektach React. Opanuj typowanie statyczne.',
+    link: '/kursy/opanuj-typescript',
+    color: 'border-indigo-600',
+    features: ['Advanced Types', 'Generics', 'Utility Types', 'Integration']
+  },
+  {
+    title: '10xDevs',
+    description: 'Wykorzystaj AI w codziennej pracy programisty. Zwiększ swoją produktywność 10-krotnie.',
+    link: '/kursy/10xdevs',
+    color: 'border-brand-orange',
+    features: ['GenAI', 'Copilot', 'Workflow Optimization', 'Prompt Engineering']
+  }
+];
+
+const latestEpisodes = [
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10.10.2024',
+    url: '#'
+  },
+  {
+    title: 'Co nowego w TypeScript? Zmiany w języku',
+    guest: '-',
+    date: '21.08.2024',
+    url: '#'
+  },
+  {
+    title: 'No-code i Low-code - przyszłość tworzenia aplikacji?',
+    guest: 'Kamil Tarczyński',
+    date: '13.06.2024',
+    url: '#'
+  }
+];
+
+const latestVideos = [
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://img.youtube.com/vi/placeholder/maxresdefault.jpg', // Placeholder
+    url: '#'
+  },
+  {
+    title: 'Demo Day 10xDevs - Najlepsze projekty',
+    thumbnail: 'https://img.youtube.com/vi/placeholder/maxresdefault.jpg',
+    url: '#'
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP)',
+    thumbnail: 'https://img.youtube.com/vi/placeholder/maxresdefault.jpg',
+    url: '#'
+  }
+];
+
+---
+
+<Layout title="Strona Główna">
+  <Hero />
+
+  <section id="courses" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nasze Kursy</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Wybierz ścieżkę rozwoju dopasowaną do Twoich potrzeb. Od fundamentów po zaawansowane techniki i AI.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {courses.map(course => (
+          <CourseCard client:load {...course} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Ostatnie Odcinki Podcastu</h2>
+        <a href="/podcast" class="text-brand-orange font-semibold hover:underline mt-4 md:mt-0 flex items-center gap-2">
+          Zobacz wszystkie <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {latestEpisodes.map(episode => (
+          <a href={episode.url} class="block bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors border border-gray-100">
+            <span class="text-sm text-gray-500 mb-2 block">{episode.date}</span>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{episode.title}</h3>
+            {episode.guest !== '-' && <p class="text-gray-600 text-sm">Gość: {episode.guest}</p>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Najnowsze na YouTube</h2>
+        <a href="/youtube" class="text-brand-orange font-semibold hover:underline mt-4 md:mt-0 flex items-center gap-2">
+          Zobacz kanał <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {latestVideos.map(video => (
+          <a href={video.url} class="group block bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors">
+            <div class="aspect-video bg-gray-700 w-full relative">
+               <div class="absolute inset-0 flex items-center justify-center text-gray-500 group-hover:text-brand-orange transition-colors">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+               </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-lg font-bold group-hover:text-brand-orange transition-colors line-clamp-2">{video.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

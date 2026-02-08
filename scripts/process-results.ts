@@ -48,6 +48,7 @@ function extractModelInfo(dirname: string): { modelName: string; attemptNumber: 
     'gpt-codex': 'GPT-5.3-Codex',
     'kimi-k2.5': 'Kimi K2.5',
     'glm-4.7': 'GLM-4.7',
+    'gemini-3-pro': 'Gemini 3 Pro',
   };
 
   const modelName = modelNames[modelId] || modelId;

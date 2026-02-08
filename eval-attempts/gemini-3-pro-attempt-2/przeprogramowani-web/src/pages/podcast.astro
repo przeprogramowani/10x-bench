@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ExternalLink } from 'lucide-react';
+
+const podcasts = [
+  {
+    title: 'Przeprogramowani',
+    description: 'Rozmowy dla głodnych wiedzy. Goście ze świata IT, biznesu i nie tylko.',
+    link: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    episodes: [
+      {
+        title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+        guest: 'Tomasz Ducin',
+        date: '10.10.2024',
+        duration: '1h 15m'
+      },
+      {
+        title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany',
+        guest: '-',
+        date: '21.08.2024',
+        duration: '45m'
+      },
+      {
+        title: 'No-code i Low-code - przyszłość tworzenia aplikacji?',
+        guest: 'Kamil Tarczyński',
+        date: '13.06.2024',
+        duration: '58m'
+      }
+    ]
+  },
+  {
+    title: 'Opanuj AI',
+    description: 'Cykliczne podsumowanie nowinek technicznych ze świata AI.',
+    link: 'https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy',
+    episodes: [
+      {
+        title: 'Czy AI zastąpi programistów? Analiza raportów rynkowych',
+        guest: '-',
+        date: '15.11.2024',
+        duration: '35m'
+      },
+      {
+        title: 'Nowe modele językowe: Co potrafią Claude 3.5 i GPT-4o?',
+        guest: '-',
+        date: '02.10.2024',
+        duration: '40m'
+      },
+      {
+        title: 'Agenci AI w praktyce - jak budować autonomiczne systemy',
+        guest: 'Gość Specjalny',
+        date: '12.09.2024',
+        duration: '50m'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Podcasty">
+  <section class="bg-gray-900 text-white py-20 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Podcasty Przeprogramowanych</h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        Posłuchaj o najnowszych trendach, wywiadów z ekspertami i dyskusji o przyszłości technologii.
+      </p>
+    </div>
+  </section>
+
+  <div class="container mx-auto px-4 py-20 space-y-20">
+    {podcasts.map(podcast => (
+      <section>
+        <div class="flex flex-col md:flex-row justify-between items-start mb-8 border-b border-gray-200 pb-4">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-2">{podcast.title}</h2>
+            <p class="text-gray-600 max-w-xl">{podcast.description}</p>
+          </div>
+          <a href={podcast.link} target="_blank" rel="noopener noreferrer" class="mt-4 md:mt-0 inline-flex items-center text-brand-orange font-semibold hover:underline">
+            Posłuchaj na Spotify <ExternalLink className="ml-2 w-4 h-4" />
+          </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {podcast.episodes.map(episode => (
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div class="flex justify-between items-center text-sm text-gray-400 mb-3">
+                <span>{episode.date}</span>
+                <span>{episode.duration}</span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2 hover:text-brand-orange transition-colors cursor-pointer">
+                {episode.title}
+              </h3>
+              {episode.guest !== '-' && (
+                <p class="text-sm text-gray-500 mt-2">Gość: <span class="font-medium text-gray-700">{episode.guest}</span></p>
+              )}
+              <div class="mt-4 pt-4 border-t border-gray-50">
+                 <button class="text-brand-orange text-sm font-semibold flex items-center hover:bg-orange-50 px-3 py-1 rounded-full transition-colors w-fit">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                   </svg>
+                   Odtwórz
+                 </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>

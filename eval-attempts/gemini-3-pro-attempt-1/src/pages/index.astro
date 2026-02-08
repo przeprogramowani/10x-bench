@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CourseCard from '../components/CourseCard';
+import PodcastList from '../components/PodcastList';
+import VideoList from '../components/VideoList';
+
+const courses = [
+  {
+    title: "10xDevs - Programuj z AI",
+    description: "Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.",
+    link: "https://10xdevs.pl",
+    image: "https://przeprogramowani.pl/public/img/featured/kurs-ai.jpg", 
+    features: ["Generative AI", "Cursor & GitHub Copilot", "Prompt Engineering", "AI-Assisted Workflow"],
+    isNew: true
+  },
+  {
+    title: "Opanuj Frontend",
+    description: "Zostań nowoczesnym frontend developerem - 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze.",
+    link: "https://opanujfrontend.pl",
+    image: "https://przeprogramowani.pl/public/img/featured/kurs-ofe.jpg",
+    features: ["Architektura", "Testowanie", "CI/CD", "Open Source"]
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Szkolenie, które podniesie jakość twoich projektów działających na produkcji. Pracujemy z TypeScript 5 i React 19!",
+    link: "https://opanujtypescript.pl",
+    image: "https://przeprogramowani.pl/public/img/featured/kurs-ots.jpg",
+    features: ["TypeScript 5", "React 19", "Zaawansowane typy", "Wzorce projektowe"]
+  }
+];
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+	<Hero />
+    
+    {/* Courses Section */}
+    <section class="py-24 bg-slate-900 relative" id="kursy">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                    Rozwijaj się z nami
+                </h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    Praktyczne szkolenia stworzone przez praktyków dla praktyków. Dołącz do tysięcy zadowolonych kursantów.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {courses.map(course => (
+                    <CourseCard client:visible {...course} />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    {/* Podcast Section */}
+    <section class="py-24 bg-slate-950/50 border-y border-slate-900">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                        Najnowsze odcinki podcastu
+                    </h2>
+                    <p class="text-slate-400">
+                        Rozmowy o technologii, biznesie i życiu w IT.
+                    </p>
+                </div>
+                <a href="/podcast" class="text-cyan-400 hover:text-cyan-300 font-semibold mt-4 md:mt-0 flex items-center group">
+                    Zobacz wszystkie
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            
+            <PodcastList client:visible limit={3} />
+        </div>
+    </section>
+
+    {/* YouTube Section */}
+    <section class="py-24 bg-slate-900">
+        <div class="container mx-auto px-4">
+             <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                        Ostatnio na YouTube
+                    </h2>
+                    <p class="text-slate-400">
+                        Tutoriale, live coding i dyskusje technologiczne.
+                    </p>
+                </div>
+                <a href="/youtube" class="text-red-500 hover:text-red-400 font-semibold mt-4 md:mt-0 flex items-center group">
+                    Zobacz kanał
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            
+            <VideoList client:visible limit={3} />
+        </div>
+    </section>
+
+    {/* Newsletter */}
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
+                Bądź na bieżąco
+            </h2>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Dołącz do 10,000+ subskrybentów newslettera. Co piątek otrzymasz porcję wiedzy: 3 linki techniczne, 2 rozwojowe i 1 niespodziankę.
+            </p>
+            
+            <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-slate-900 hover:bg-cyan-50 font-bold text-lg px-10 py-4 rounded-full transition-all hover:scale-105 shadow-xl hover:shadow-white/20">
+                Zapisz się do newslettera
+            </a>
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,91 @@
+---
+---
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    {/* Background Elements */}
+    <div class="absolute inset-0 bg-slate-900 z-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 opacity-80"></div>
+        <img src="/background.svg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-5 mix-blend-overlay" />
+    </div>
+    
+    {/* Floating Shapes */}
+    <div class="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px] animate-blob"></div>
+    <div class="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/20 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
+
+    <div class="container mx-auto px-4 z-10 text-center relative">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-semibold tracking-wide uppercase animate-fade-in-up backdrop-blur-sm">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            Nowość: 10xDevs - Programuj z AI
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-blue-200 animate-fade-in-up animation-delay-100 leading-[1.1]">
+            Szersze spojrzenie <br class="hidden md:block"/> na programowanie
+        </h1>
+        
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 animate-fade-in-up animation-delay-200 leading-relaxed">
+            Łączymy świat programowania, biznesu i rozwoju. Tworzymy treści, które pomogą Ci stać się nie tylko świetnym programistą, ale również świadomym i wszechstronnym specjalistą.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
+            <a href="https://10xdevs.pl" class="group relative px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full text-white font-bold text-lg shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all hover:-translate-y-1 w-full sm:w-auto">
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-20 rounded-full transition-opacity"></span>
+                Dołącz do 10xDevs
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </a>
+            <a href="/podcast" class="px-8 py-4 rounded-full border border-slate-700 bg-slate-800/50 hover:bg-slate-700 text-white font-medium text-lg transition-all hover:-translate-y-1 backdrop-blur-sm w-full sm:w-auto">
+                Słuchaj Podcastu
+            </a>
+        </div>
+
+        {/* Stats */}
+        <div class="mt-24 pt-10 border-t border-slate-800/50 flex flex-wrap justify-center gap-12 md:gap-24 animate-fade-in-up animation-delay-500">
+             <div class="text-center group cursor-default">
+                <span class="block text-4xl font-bold text-white group-hover:text-cyan-400 transition-colors">7+</span>
+                <span class="text-sm text-slate-500 uppercase tracking-wider font-medium">Lat na rynku</span>
+             </div>
+             <div class="text-center group cursor-default">
+                <span class="block text-4xl font-bold text-white group-hover:text-cyan-400 transition-colors">40k+</span>
+                <span class="text-sm text-slate-500 uppercase tracking-wider font-medium">Programistów</span>
+             </div>
+             <div class="text-center group cursor-default">
+                <span class="block text-4xl font-bold text-white group-hover:text-cyan-400 transition-colors">850+</span>
+                <span class="text-sm text-slate-500 uppercase tracking-wider font-medium">Absolwentów</span>
+             </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+        animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .animation-delay-100 { animation-delay: 0.1s; }
+    .animation-delay-200 { animation-delay: 0.2s; }
+    .animation-delay-300 { animation-delay: 0.3s; }
+    .animation-delay-500 { animation-delay: 0.5s; }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

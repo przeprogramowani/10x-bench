@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.tsx';
+import Footer from '../components/Footer.tsx';
+import Hero from '../components/Hero.tsx';
+import Section from '../components/Section.tsx';
+import CourseList from '../components/CourseList.tsx';
+import PodcastList from '../components/PodcastList.tsx';
+import VideoList from '../components/VideoList.tsx';
+import { COURSES, PODCAST_EPISODES, YOUTUBE_VIDEOS } from '../data';
+
+// Slice arrays to show only recent items on homepage
+const recentEpisodes = PODCAST_EPISODES.slice(0, 3);
+const recentVideos = YOUTUBE_VIDEOS.slice(0, 3);
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+	<Header client:load />
+	
+	<main>
+		<Hero />
+		
+		<Section title="Nasze Kursy" description="Rozwijaj swoje umiejętności z naszymi sprawdzonymi materiałami edukacyjnymi." bg="gray">
+			<CourseList courses={COURSES} />
+		</Section>
+
+		<Section title="Ostatnie z Podcastu" description="Rozmowy dla głodnych wiedzy. Posłuchaj naszych dyskusji o IT, biznesie i rozwoju." bg="white">
+			<PodcastList episodes={recentEpisodes} />
+		</Section>
+
+		<Section title="YouTube" description="Wideo poradniki, recenzje i przemyślenia na temat świata technologii." bg="gray">
+			<VideoList videos={recentVideos} />
+		</Section>
+
+		<Section title="Dlaczego Przeprogramowani?" bg="dark">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
+				<div class="p-6 bg-slate-800 rounded-lg">
+					<div class="text-4xl mb-4">🎓</div>
+					<h3 class="text-xl font-bold mb-2">Ekspercka Wiedza</h3>
+					<p class="text-slate-400">Uczymy się od najlepszych. Nasi autorzy to praktycy z wieloletnim doświadczeniem.</p>
+				</div>
+				<div class="p-6 bg-slate-800 rounded-lg">
+					<div class="text-4xl mb-4">🤝</div>
+					<h3 class="text-xl font-bold mb-2">Społeczność</h3>
+					<p class="text-slate-400">Dołącz do tysięcy programistów, którzy wspierają się w rozwoju.</p>
+				</div>
+				<div class="p-6 bg-slate-800 rounded-lg">
+					<div class="text-4xl mb-4">🚀</div>
+					<h3 class="text-xl font-bold mb-2">Rozwój Kariery</h3>
+					<p class="text-slate-400">Nie tylko kod. Uczymy jak budować pozycję na rynku i rozwijać karierę.</p>
+				</div>
+			</div>
+		</Section>
+	</main>
+
+	<Footer />
+</Layout>

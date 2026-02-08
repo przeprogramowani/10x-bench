@@ -1,0 +1,42 @@
+---
+---
+
+<header class="bg-brand-dark text-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold flex items-center gap-2">
+      <span class="text-brand-orange">&lt;</span>Przeprogramowani<span class="text-brand-orange">/&gt;</span>
+    </a>
+    <nav class="hidden md:flex gap-6 items-center">
+      <a href="/" class="hover:text-brand-orange transition-colors">Start</a>
+      <a href="/o-nas" class="hover:text-brand-orange transition-colors">O nas</a>
+      <a href="/podcast" class="hover:text-brand-orange transition-colors">Podcast</a>
+      <a href="/youtube" class="hover:text-brand-orange transition-colors">YouTube</a>
+      <a href="#courses" class="bg-brand-orange text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors font-semibold">Kursy</a>
+    </nav>
+    <button class="md:hidden text-white hover:text-brand-orange" id="menu-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-gray-900 border-t border-gray-800" id="mobile-menu">
+    <nav class="flex flex-col p-4 gap-4">
+      <a href="/" class="hover:text-brand-orange transition-colors">Start</a>
+      <a href="/o-nas" class="hover:text-brand-orange transition-colors">O nas</a>
+      <a href="/podcast" class="hover:text-brand-orange transition-colors">Podcast</a>
+      <a href="/youtube" class="hover:text-brand-orange transition-colors">YouTube</a>
+      <a href="#courses" class="text-brand-orange font-semibold">Kursy</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,12 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,Not measured
+Local build,1,1,Build successful - all 5 pages generated correctly in 793ms
+Manual testing,1,1,Dev server running on localhost:4321 - all pages accessible with 200 status codes - navigation working - styles and content displayed correctly
+Tech stack,0.5,1,"Astro 5.17.1 ✓, React 19.2.4 ✓, Tailwind CSS 4.1.18 ✓, but @astrojs/cloudflare adapter NOT installed or configured in astro.config.mjs"
+O nas page,0.5,1,"Page exists and loads (200 status) - contains both team members (Przemek Smyrdek and Marcin Czarkowski) with LinkedIn links - but team descriptions are simplified and omit key professional details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin, course assignments missing)"
+Podcast page,0.5,1,"Page structure correct and loads (200 status) - has podcast content sections - but uses placeholder links (anchor.fm) instead of real Spotify URLs: Przeprogramowani should link to https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo and OpanujAI to https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy"
+YouTube page,0,1,"Page exists and loads (200 status) - but uses placeholder YouTube ID 'dQw4w9WgXcQ' (Rick Roll) for all 3 videos instead of real Przeprogramowani channel videos - not displaying actual channel content as required"
+Kursy section,1,1,"10xDevs course prominently featured in Hero section with 'Nowość: 10xDevs' badge and CTA button - all courses displayed correctly on /kursy page and homepage sections - content matches brief descriptions from context"
+Consistent UI,1,1,"UI is fully consistent across all pages - same header/footer patterns - consistent dark mode support - unified color scheme (indigo/slate) - typography and spacing consistent"
+Responsive design,1,1,"Layout fully responsive on all screen sizes - hero section adapts from mobile to desktop - grid layouts adjust (1 col mobile to 2-3 cols desktop) - navigation works on mobile - no layout breaking issues observed"
+SEO Tags,0.5,1,"Has basic meta tags (title, description, viewport, charset) in Layout component - meta description present - but lacks: open graph tags, structured data, social media cards - meta descriptions not optimized per-page - limited SEO optimization"

@@ -1,0 +1,52 @@
+---
+const links = [
+  { href: 'https://www.facebook.com/przeprogramowani', label: 'Facebook' },
+  { href: 'https://www.instagram.com/przeprogramowani', label: 'Instagram' },
+  { href: 'https://www.youtube.com/c/przeprogramowani', label: 'YouTube' },
+  { href: 'https://anchor.fm/przeprogramowani', label: 'Podcast' },
+  { href: 'https://www.linkedin.com/company/przeprogramowani', label: 'LinkedIn' },
+];
+
+const contact = 'kontakt@przeprogramowani.pl';
+---
+
+<footer class="bg-gray-900 text-gray-300 py-12">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <h3 class="text-xl font-bold text-white mb-4">Przeprogramowani</h3>
+      <p class="text-gray-400 max-w-sm">
+        Szersze spojrzenie na programowanie. Lączymy świat programowania, biznesu i rozwoju.
+      </p>
+      <a href={`mailto:${contact}`} class="block mt-4 text-brand-orange hover:underline">{contact}</a>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-bold text-white mb-4">Linki</h3>
+      <ul class="space-y-2">
+        <li><a href="/" class="hover:text-brand-orange transition-colors">Start</a></li>
+        <li><a href="/o-nas" class="hover:text-brand-orange transition-colors">O nas</a></li>
+        <li><a href="/podcast" class="hover:text-brand-orange transition-colors">Podcast</a></li>
+        <li><a href="/youtube" class="hover:text-brand-orange transition-colors">YouTube</a></li>
+        <li><a href="#courses" class="hover:text-brand-orange transition-colors">Kursy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-bold text-white mb-4">Social Media</h3>
+      <ul class="space-y-2">
+        {links.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer" class="hover:text-brand-orange transition-colors flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-orange inline-block"></span>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  
+  <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+    &copy; {new Date().getFullYear()} Przeprogramowani. Wszelkie prawa zastrzeżone.
+  </div>
+</footer>

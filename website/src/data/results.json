@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-02-08T19:38:32.558Z",
-  "totalAttempts": 12,
+  "generatedAt": "2026-02-08T20:22:07.579Z",
+  "totalAttempts": 15,
   "results": [
     {
       "id": "gpt-codex-attempt-2",
@@ -383,6 +383,82 @@
       ]
     },
     {
+      "id": "gemini-3-pro-attempt-1",
+      "modelName": "Gemini 3 Pro",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Time not tracked by evaluator"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - astro build completed without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server started successfully on port 4322; all pages (/, /o-nas/, /podcast/, /youtube/) returned 200 status codes"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Exact match: Astro 5.17.1, React 19.2.4, Tailwind CSS 3.4.19, @astrojs/cloudflare 12.6.12 installed and configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page present; content matches reference material (founders info, values); founders' bios and LinkedIn links present; page returns 200 status"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated page present; returns 200 status; Displays \"Przeprogramowani\" podcast episodes but uses hardcoded mock data instead of fetching from Spotify API; both podcasts not displayed from real API (Przeprogramowani and OpanujAI mixed in mock array)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated page present; returns 200 status; Video thumbnails displayed but hardcoded mock data used instead of real YouTube API; not fetching from actual Przeprogramowani channel"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated component CourseCard.tsx present; featured on main page index.astro; \"10xDevs\" course prominently displayed with \"NOWOŚĆ\" badge; content matches reference material"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Mostly consistent design across pages (dark theme, cyan/blue gradients); minor styling inconsistencies observed - founder cards use different layout alignment compared to other sections"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive - design works well on mobile (grid layouts adapt), tablet, and desktop; uses Tailwind's responsive utilities (grid-cols-1, md:grid-cols-2, lg:grid-cols-3)"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro contains SEO meta tags (title, description); title tag properly set per page; og tags not implemented but basic meta tags present and functional for all pages"
+        }
+      ]
+    },
+    {
       "id": "kimi-k2.5-attempt-2",
       "modelName": "Kimi K2.5",
       "attemptNumber": 2,
@@ -535,6 +611,82 @@
       ]
     },
     {
+      "id": "gemini-3-pro-attempt-3",
+      "modelName": "Gemini 3 Pro",
+      "attemptNumber": 3,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not measured"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - all 5 pages generated correctly in 793ms"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on localhost:4321 - all pages accessible with 200 status codes - navigation working - styles and content displayed correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Astro 5.17.1 ✓, React 19.2.4 ✓, Tailwind CSS 4.1.18 ✓, but @astrojs/cloudflare adapter NOT installed or configured in astro.config.mjs\""
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page exists and loads (200 status) - contains both team members (Przemek Smyrdek and Marcin Czarkowski) with LinkedIn links - but team descriptions are simplified and omit key professional details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin, course assignments missing)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page structure correct and loads (200 status) - has podcast content sections - but uses placeholder links (anchor.fm) instead of real Spotify URLs: Przeprogramowani should link to https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo and OpanujAI to https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Page exists and loads (200 status) - but uses placeholder YouTube ID 'dQw4w9WgXcQ' (Rick Roll) for all 3 videos instead of real Przeprogramowani channel videos - not displaying actual channel content as required\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"10xDevs course prominently featured in Hero section with 'Nowość: 10xDevs' badge and CTA button - all courses displayed correctly on /kursy page and homepage sections - content matches brief descriptions from context\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"UI is fully consistent across all pages - same header/footer patterns - consistent dark mode support - unified color scheme (indigo/slate) - typography and spacing consistent\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout fully responsive on all screen sizes - hero section adapts from mobile to desktop - grid layouts adjust (1 col mobile to 2-3 cols desktop) - navigation works on mobile - no layout breaking issues observed\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Has basic meta tags (title, description, viewport, charset) in Layout component - meta description present - but lacks: open graph tags, structured data, social media cards - meta descriptions not optimized per-page - limited SEO optimization\""
+        }
+      ]
+    },
+    {
       "id": "kimi-k2.5-attempt-1",
       "modelName": "Kimi K2.5",
       "attemptNumber": 1,
@@ -607,6 +759,82 @@
           "score": 1,
           "max": 1,
           "notes": "Layout component includes complete meta tags (description, og:title, og:description, og:type, og:site_name, twitter:card, twitter:title, twitter:description) applied to all pages. Descriptions match context file content."
+        }
+      ]
+    },
+    {
+      "id": "gemini-3-pro-attempt-2",
+      "modelName": "Gemini 3 Pro",
+      "attemptNumber": 2,
+      "totalScore": 3,
+      "maxScore": 10,
+      "percentage": 30,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Time not tracked by evaluator"
+        },
+        {
+          "name": "Local build",
+          "score": 0,
+          "max": 1,
+          "notes": "Build fails with Astro 4/Cloudflare adapter incompatibility error - requires Astro 5"
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot test - build failure prevents local dev server from starting"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Missing requirements: Astro 4.0.0 (requires 5.x), React 18.2.0 (requires 19), Tailwind 3.4.1 (requires 4.x). Cloudflare adapter present but incompatible with Astro version."
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page exists with founders info, values section. Content matches reference material closely. Proper structure with images placeholder and LinkedIn links."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists with both Przeprogramowani and Opanuj AI podcasts listed. However, uses hardcoded mock episodes instead of fetching real data from Spotify API. Links to correct Spotify URLs but episode content is placeholder data."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists with correct channel link. Videos use placeholder data with mock thumbnails and hardcoded episode data instead of fetching from YouTube API. Does not display real channel episodes."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "3 courses featured on homepage hero: Opanuj Frontend, Opanuj TypeScript, 10xDevs. Content matches reference material. Each course links to dedicated page with details."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot fully assess due to build failure. However, code structure suggests consistent Tailwind styling approach across components."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot test due to build failure. CSS Grid and Tailwind classes appear responsive but cannot verify."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "No dedicated SEO component found. No meta tags configuration visible in Layout or pages to verify SEO implementation."
         }
       ]
     },
@@ -928,6 +1156,13 @@
       "averageScore": 8.5,
       "averageMaxScore": 10,
       "averagePercentage": 85,
+      "attemptCount": 3
+    },
+    {
+      "modelName": "Gemini 3 Pro",
+      "averageScore": 6.166666666666667,
+      "averageMaxScore": 10,
+      "averagePercentage": 61.666666666666664,
       "attemptCount": 3
     },
     {
