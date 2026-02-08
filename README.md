@@ -1,4 +1,4 @@
-# Przeprogramowani Vibe Coded Benchmark
+# 10x Benchmark
 
 A comprehensive benchmark comparing how different large language models tackle "vibe coding" — creating a fully functional website for [Przeprogramowani.pl](https://przeprogramowani.pl) in a single attempt, without iterative refinement.
 
@@ -39,6 +39,7 @@ Each model's implementation is stored in a dedicated directory under `./eval-att
 - **`./eval-attempts/gpt-codex-attempt-{1,2,3}`** — GPT-5.3-Codex implementations (via Codex Desktop)
 - **`./eval-attempts/kimi-k2.5-attempt-{1,2,3}`** — Kimi K2.5 implementations (via OpenCode)
 - **`./eval-attempts/glm-4.7-attempt-{1,2,3}`** — GLM-4.7 implementations (via OpenCode)
+- **`./eval-attempts/gemini-3-pro-attempt-{1,2,3}`** — Gemini 3 Pro implementations (via Cursor)
 
 Each attempt directory contains `eval-result.csv` with criterion-by-criterion evaluation scores. Multiple attempt directories per model indicate iterative benchmark runs.
 
@@ -50,6 +51,7 @@ Each attempt directory contains `eval-result.csv` with criterion-by-criterion ev
 | GPT-5.3-Codex | Codex Desktop | OpenAI |
 | Kimi K2.5 | OpenCode | Moonshot AI |
 | GLM-4.7 | OpenCode | Alibaba (Aliyun) |
+| Gemini 3 Pro | Cursor | Google |
 
 ## How It Works
 
