@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AccordionSection from '../components/AccordionSection';
+import ResultsTable from '../components/ResultsTable';
+import ModelAveragesCard from '../components/ModelAveragesCard';
+import resultsData from '../data/results.json';
+
+const title = 'Benchmark Results - Przeprogramowani Vibe Coded';
+const description = 'Compare LLM attempts at vibe coding the Przeprogramowani.pl website';
+
+// Sort results: 1) by model family average (best models first), 2) by attempt number (ascending)
+const modelAverageMap = new Map(
+  resultsData.modelAverages.map((avg) => [avg.modelName, avg.averagePercentage])
+);
+
+const sortedResults = [...resultsData.results].sort((a, b) => {
+  // First, sort by model family average (descending - best models first)
+  const avgA = modelAverageMap.get(a.modelName) ?? 0;
+  const avgB = modelAverageMap.get(b.modelName) ?? 0;
+
+  if (avgA !== avgB) {
+    return avgB - avgA;
+  }
+  // If same model family, sort by attempt number (ascending)
+  return a.attemptNumber - b.attemptNumber;
+});
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Benchmark Results</h1>
+      <p class="text-lg text-gray-600 mb-2">
+        Comparing different LLMs vibe coding the Przeprogramowani.pl website
+      </p>
+      <p class="text-sm text-gray-500">
+        Generated: {new Date(resultsData.generatedAt).toLocaleString()} • Total attempts: {resultsData.totalAttempts}
+      </p>
+    </div>
+
+    <!-- Model Family Averages Section -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Model Family Rankings</h2>
+      <div class="flex flex-col gap-4">
+        {resultsData.modelAverages.map((average, index) => (
+          <ModelAveragesCard client:load average={average} rank={index + 1} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Individual Attempts Accordion Section -->
+    <AccordionSection client:load title="Individual Attempts" attempts={sortedResults} />
+
+    <!-- Detailed Table Section -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Detailed Comparison</h2>
+      <p class="text-gray-600 text-sm mb-4">
+        Click on any score to reveal the detailed scoring explanation for that criterion.
+      </p>
+      <ResultsTable client:load attempts={sortedResults} />
+    </div>
+
+    <!-- Legend -->
+    <div class="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <h3 class="font-semibold text-gray-900 mb-3">Score Legend</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <span class="inline-block px-2 py-1 rounded bg-green-100 text-green-800 text-xs font-semibold">1.0</span>
+          <span class="text-gray-700">Full points - criterion met perfectly</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-block px-2 py-1 rounded bg-yellow-100 text-yellow-800 text-xs font-semibold">0.5</span>
+          <span class="text-gray-700">Partial points - criterion mostly met</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-block px-2 py-1 rounded bg-red-100 text-red-800 text-xs font-semibold">0.0</span>
+          <span class="text-gray-700">No points - criterion not met</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

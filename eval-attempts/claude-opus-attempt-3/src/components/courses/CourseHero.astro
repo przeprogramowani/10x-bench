@@ -1,0 +1,51 @@
+---
+import type { Course } from '../../types';
+import Button from '../common/Button.astro';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 right-10 w-64 h-64 rounded-full blur-3xl" style={`background-color: ${course.color}`}></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      {course.badge && (
+        <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold mb-6" style={`background-color: ${course.color}20; color: ${course.color}; border: 1px solid ${course.color}40`}>
+          {course.badge}
+        </span>
+      )}
+
+      <h1 class="text-4xl font-extrabold md:text-5xl lg:text-6xl">
+        {course.title}
+      </h1>
+
+      <p class="mt-6 text-lg text-gray-300 max-w-2xl">
+        {course.description}
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <Button href={course.url} variant="accent" size="lg" external>
+          Zapisz się na kurs
+        </Button>
+      </div>
+
+      {course.stats && (
+        <div class="mt-16 flex gap-12">
+          {course.stats.map((stat) => (
+            <div>
+              <p class="text-3xl font-bold" style={`color: ${course.color}`}>{stat.value}</p>
+              <p class="text-sm text-gray-400 mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

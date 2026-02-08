@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Podcast from '../components/Podcast.astro';
+import YouTube from '../components/YouTube.astro';
+import Courses from '../components/Courses.astro';
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <Hero
+    title="Przeprogramowani.pl"
+    subtitle="Szersze spojrzenie na programowanie w epoce AI"
+    description="Edukacja technologiczna w epoce Generatywnego AI. Topowe programy edukacyjne dla ambitnych programistów i zespołów developerskich."
+    ctaText="Dołącz do 3700+ absolwentów"
+    ctaUrl="https://10xdevs.pl"
+    isHighlighted
+  />
+
+  <About />
+
+  <Podcast />
+
+  <YouTube />
+
+  <Courses />
+</Layout>

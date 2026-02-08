@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #041a1f;
+  --bg-soft: #0a2c33;
+  --surface: #0f3a44;
+  --surface-soft: #124652;
+  --line: rgba(157, 225, 234, 0.2);
+  --text: #ebf8fa;
+  --text-soft: #b9d7de;
+  --accent: #5fe0bf;
+  --accent-2: #ffce62;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 0% -20%, rgba(95, 224, 191, 0.28), transparent 35%),
+    radial-gradient(circle at 100% 0%, rgba(255, 206, 98, 0.2), transparent 40%),
+    linear-gradient(160deg, var(--bg) 0%, #07262d 45%, var(--bg-soft) 100%);
+  font-family: "Plus Jakarta Sans", "Manrope", system-ui, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+main {
+  display: block;
+}
+
+.card {
+  background: linear-gradient(160deg, rgba(15, 58, 68, 0.82), rgba(15, 58, 68, 0.55));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.text-soft {
+  color: var(--text-soft);
+}
+
+.accent-chip {
+  border: 1px solid rgba(95, 224, 191, 0.35);
+  background: rgba(95, 224, 191, 0.08);
+  color: #d0fff1;
+}

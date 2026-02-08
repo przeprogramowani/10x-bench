@@ -1,0 +1,63 @@
+---
+import Container from '@/components/shared/Container.astro';
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import Button from '@/components/shared/Button.astro';
+
+const latestVideos = [
+  {
+    id: 'video1',
+    title: 'Jak zacząć programować z AI w 2026?',
+    duration: '18:32',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+  },
+  {
+    id: 'video2',
+    title: 'Claude Code vs GitHub Copilot — porównanie',
+    duration: '24:15',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+  },
+  {
+    id: 'video3',
+    title: 'React Server Components — kompletny poradnik',
+    duration: '32:10',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+  },
+];
+---
+
+<section class="py-20 sm:py-28 bg-surface-raised">
+  <Container>
+    <SectionHeading
+      title="Najnowsze na YouTube"
+      subtitle="Tutoriale, przeglądy narzędzi i rozmowy o technologii — subskrybuj nasz kanał."
+    />
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {latestVideos.map((video) => (
+        <div class="group overflow-hidden rounded-xl border border-surface-border bg-surface-base transition-colors hover:border-brand-primary/30">
+          <div class="relative aspect-video bg-surface-overlay">
+            <div class="absolute inset-0 flex items-center justify-center bg-surface-overlay">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/90 text-white transition-transform group-hover:scale-110">
+                <svg class="h-6 w-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <span class="absolute bottom-2 right-2 rounded bg-black/80 px-2 py-0.5 text-xs text-white font-medium">
+              {video.duration}
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-sm font-semibold text-text-primary leading-snug">{video.title}</h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <Button href="/youtube" variant="secondary">
+        Więcej filmów
+      </Button>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,110 @@
+---
+interface YouTubeVideo {
+  title: string;
+  description: string;
+  duration: string;
+  videoId: string;
+  link: string;
+}
+
+const youtubeVideos: YouTubeVideo[] = [
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    description: 'Czy budowanie aplikacji bez płatnych licencji jest teraz możliwe?',
+    duration: '12:34',
+    videoId: 'KAJTsQbqBow',
+    link: 'https://www.youtube.com/watch?v=KAJTsQbqBow'
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    description: 'Techniki, które znacznie przyspieszyły moją pracę z narzędziami AI',
+    duration: '08:15',
+    videoId: 'uwi39C2O8NI',
+    link: 'https://www.youtube.com/watch?v=uwi39C2O8NI'
+  },
+  {
+    title: 'Demo Day 10xDevs – najlepsze projekty uczestników 2 edycji!',
+    description: 'Przegląd projektów stworzonych przez uczestników programu 10xDevs',
+    duration: '15:22',
+    videoId: 'b-gOI128G2s',
+    link: 'https://www.youtube.com/watch?v=b-gOI128G2s'
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP)',
+    description: 'Praktyczne scenariusze dla programistów',
+    duration: '10:45',
+    videoId: 'WJLGzf7qq-c',
+    link: 'https://www.youtube.com/watch?v=WJLGzf7qq-c'
+  }
+];
+---
+
+<div class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center justify-between mb-12">
+      <div>
+        <h2 class="text-4xl font-bold text-gray-900 mb-2">YouTube</h2>
+        <p class="text-lg text-gray-600">Rozwój nowoczesnego programisty</p>
+      </div>
+      <a
+        href="https://youtube.com/c/przeprogramowani/videos"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:flex items-center gap-2 px-6 py-3 bg-white text-gray-700 border-2 border-gray-200 rounded-full font-semibold hover:border-brand-600 hover:text-brand-600 transition-colors"
+      >
+        Wszystkie filmy
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {youtubeVideos.map((video, index) => (
+        <a
+          key={index}
+          href={video.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-white rounded-2xl overflow-hidden border-2 border-gray-100 hover:border-brand-300 transition-all duration-300 hover:shadow-xl hover:shadow-brand-500/10"
+        >
+          <div class="relative aspect-video">
+            <img
+              src={`https://i3.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`}
+              alt={video.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <svg class="w-8 h-8 text-brand-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-2 right-2 bg-black/80 text-white text-sm font-medium px-3 py-1 rounded-full">
+              {video.duration}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2">
+              {video.title}
+            </h3>
+            <p class="text-gray-600 line-clamp-2">{video.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center md:hidden">
+      <a
+        href="https://youtube.com/c/przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-700 border-2 border-gray-200 rounded-full font-semibold hover:border-brand-600 hover:text-brand-600 transition-colors"
+      >
+        Wszystkie filmy
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/common/SectionHeading.astro';
+import CourseCard from '../../components/home/CourseCard.astro';
+import Button from '../../components/common/Button.astro';
+import { courses } from '../../data/courses';
+---
+
+<BaseLayout title="Kursy" description="Kursy programowania Przeprogramowani — 10xDevs, Opanuj Frontend, Opanuj TypeScript.">
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Nasze kursy"
+        subtitle="Praktyczna wiedza, która zmienia kariery programistów. Wybierz kurs dopasowany do Twoich potrzeb."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <div class="max-w-2xl mx-auto p-8 rounded-2xl bg-brand-surface border border-gray-200">
+          <h3 class="text-xl font-bold text-brand-dark">Nie wiesz, który kurs wybrać?</h3>
+          <p class="mt-3 text-brand-muted">
+            Napisz do nas — pomożemy dopasować ścieżkę nauki do Twoich celów i poziomu doświadczenia.
+          </p>
+          <div class="mt-6">
+            <Button href="mailto:kontakt@przeprogramowani.pl" variant="primary">
+              Skontaktuj się z nami
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

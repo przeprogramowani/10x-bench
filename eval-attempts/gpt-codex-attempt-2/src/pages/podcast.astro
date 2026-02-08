@@ -1,0 +1,40 @@
+---
+import MediaGrid from "../components/MediaGrid";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { getLatestPodcastEpisodes } from "../lib/przeprogramowani";
+
+const episodes = await getLatestPodcastEpisodes(9);
+---
+
+<SiteLayout
+  title="Podcast | Przeprogramowani"
+  description="Najnowsze odcinki podcastu Przeprogramowani i Opanuj.AI z oficjalnych źródeł."
+>
+  <section class="space-y-4">
+    <p class="text-xs font-semibold uppercase tracking-widest text-cyan-200">Podcast</p>
+    <h1 class="font-heading text-4xl font-extrabold sm:text-5xl">Ostatnie odcinki</h1>
+    <p class="max-w-3xl text-lg text-slate-300">
+      Lista aktualizowana automatycznie na podstawie oficjalnej strony Przeprogramowanych.
+    </p>
+  </section>
+
+  <section class="mt-8">
+    <MediaGrid
+      items={episodes.map((episode) => ({
+        title: episode.title,
+        href: episode.url,
+        image: episode.image,
+        meta: episode.duration,
+        excerpt: episode.description,
+      }))}
+    />
+    <a
+      href="https://przeprogramowani.pl/podcast"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-8 inline-flex rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-slate-100 hover:bg-white/5"
+    >
+      Przejdź do pełnej listy podcastów
+    </a>
+  </section>
+</SiteLayout>

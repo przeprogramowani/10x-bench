@@ -1,0 +1,12 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,Not recorded in this evaluation
+Local build,1,1,Build successful - Astro build completed without errors
+Manual testing,1,1,Dev server started successfully on port 4322. All 4 pages (/, /o-nas, /podcast, /youtube) return HTTP 200 with proper navigation, consistent styles, and content accessible.
+Tech stack,1,1,Perfect match: Astro 5.17.1, React 19.2.4, Tailwind CSS 4.1.18, @astrojs/cloudflare 12.6.12 configured as adapter in astro.config.mjs
+O nas page,1,1,Dedicated /o-nas page found. Content matches context file (2017 founding year, 7+ years experience, 3 pillars). HTTP 200 returned. Layout matches with founders info, mission, and call-to-action.
+Podcast page,1,1,Dedicated /podcast page with real data fetching from przeprogramowani.pl. Uses scraping to extract episodes from both Przeprogramowany Podcast and OpanujAI Podcast. Fallback data includes both podcast sources. HTTP 200 returned.
+YouTube page,1,1,Dedicated /youtube page with real data fetching from przeprogramowani.pl homepage. Scrapes YouTube links and metadata from official website. HTTP 200 returned. Properly displays Przeprogramowani channel videos.
+Kursy section,1,1,Hero section features all three courses: Opanuj Frontend, Opanuj TypeScript, and 10xDevs with proper links. 10xDevs prominently displayed as "Nowość" (New) in hero with orange badge and direct link to 10xdevs.pl. Sidebar courses section provides additional course links.
+Consistent UI,1,1,Consistent design across all pages: same header with navigation, footer with course links, color scheme (slate-950/cyan-200 theme), typography, spacing, and component styles maintained throughout.
+Responsive design,1,1,Responsive layout using Tailwind CSS with proper breakpoints (sm:, lg: prefixes). Grid layouts adapt from mobile to desktop. Navigation is accessible. All components resize appropriately.
+SEO Tags,1,1,SiteLayout.astro implements complete SEO tags: meta description, og:title, og:description, og:type, og:locale (pl_PL), title tag. Applied to all pages via layout component. Descriptions are present and relevant.

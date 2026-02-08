@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/shared/Container.astro';
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import Button from '@/components/shared/Button.astro';
+import VideoCard from '@/components/youtube/VideoCard.astro';
+import { youtubeVideos } from '@/data/youtube-videos';
+import { siteConfig } from '@/data/site-config';
+---
+
+<BaseLayout
+  seo={{
+    title: 'YouTube',
+    description:
+      'Kanał YouTube Przeprogramowani — tutoriale, przeglądy narzędzi i rozmowy o technologii dla developerów.',
+  }}
+>
+  <section class="py-20 sm:py-28">
+    <Container>
+      <SectionHeading
+        title="Nasz kanał YouTube"
+        subtitle="Tutoriale, przeglądy narzędzi i rozmowy o technologii. Subskrybuj, żeby nie przegapić nowych filmów."
+      />
+
+      <div class="mb-12 text-center">
+        <Button href={siteConfig.social.youtube} variant="primary" external>
+          Subskrybuj kanał
+        </Button>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <VideoCard video={video} />
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { courses, site } from "../data/site";
+---
+
+<MainLayout title="Przeprogramowani | Kursy, Podcast i YouTube" description={site.description}>
+  <section class="relative overflow-hidden rounded-[2rem] border border-[var(--line)] px-6 py-10 md:px-10 md:py-14 card">
+    <div class="absolute -right-10 top-5 h-40 w-40 rounded-full bg-[var(--accent)]/20 blur-3xl"></div>
+    <div class="absolute -bottom-10 left-6 h-36 w-36 rounded-full bg-[var(--accent-2)]/15 blur-3xl"></div>
+    <div class="relative">
+      <span class="accent-chip mb-5 inline-flex rounded-full px-3 py-1 text-xs font-semibold tracking-wide">
+        10xDevs + kursy dla developerów
+      </span>
+      <h1 class="max-w-3xl text-4xl font-extrabold leading-tight text-white md:text-6xl">
+        10xDevs, Opanuj Frontend i Opanuj TypeScript w ekosystemie Przeprogramowanych.
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-soft md:text-lg">{site.description}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/o-nas" class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#052028] transition hover:bg-[var(--accent)]">
+          Poznaj nas
+        </a>
+        <a href="/podcast" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/50">
+          Ostatnie odcinki podcastu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="mb-6 flex items-end justify-between gap-4">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Programy i kursy</p>
+        <h2 class="mt-2 text-3xl font-bold text-white">Rozwijaj się z Przeprogramowanymi</h2>
+      </div>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {courses.map((course) => (
+        <article class:list={["card rounded-3xl p-6", course.highlight && "border-[var(--accent)]/60 bg-[var(--surface-soft)]"]}>
+          <p class="text-sm font-semibold text-[var(--accent-2)]">{course.subtitle}</p>
+          <h3 class="mt-2 text-2xl font-bold text-white">{course.title}</h3>
+          <p class="mt-4 text-sm leading-relaxed text-soft">{course.description}</p>
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)] hover:text-white"
+          >
+            Sprawdź szczegóły
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+</MainLayout>

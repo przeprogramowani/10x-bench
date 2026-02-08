@@ -1,0 +1,27 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CourseHero from '@/components/courses/CourseHero.astro';
+import CourseModules from '@/components/courses/CourseModules.astro';
+import CourseTestimonials from '@/components/courses/CourseTestimonials.astro';
+import CoursePricing from '@/components/courses/CoursePricing.astro';
+import type { Course } from '@/types';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<BaseLayout
+  seo={{
+    title: `${course.title} — ${course.subtitle}`,
+    description: course.description,
+  }}
+>
+  <CourseHero course={course} />
+  <CourseModules modules={course.modules} />
+  <CourseTestimonials testimonials={course.testimonials} />
+  <CoursePricing course={course} />
+  <slot />
+</BaseLayout>

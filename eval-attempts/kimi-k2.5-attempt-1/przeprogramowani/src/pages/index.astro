@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import CoursesSection from '../components/CoursesSection';
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <Hero client:load />
+  <CoursesSection client:load />
+  
+  <!-- About Teaser Section -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+            Tworzymy przyszłość <span class="gradient-text">edukacji technologicznej</span>
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Jako Przeprogramowani działamy na rynku od 2019 roku, tworząc wartościowe treści dla społeczności 
+            15 000+ programistów. Nasze kursy przeszkoliły już ponad 4000 developerów.
+          </p>
+          <p class="text-lg text-gray-600 mb-8">
+            Wierzymy, że sztuczna inteligencja zmienia sposób, w jaki tworzymy oprogramowanie. 
+            Dlatego uczymy nie tylko technologii, ale przede wszystkim świadomego podejścia do 
+            wykorzystania AI w codziennej pracy developera.
+          </p>
+          <a 
+            href="/o-nas" 
+            class="inline-flex items-center gap-2 text-[#FF6B35] font-semibold hover:gap-3 transition-all"
+          >
+            Poznaj naszą historię
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#FF6B35] to-[#4ECDC4] rounded-3xl transform rotate-3 opacity-20" />
+          <div class="relative bg-gray-50 rounded-3xl p-8 border border-gray-100">
+            <div className="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-[#FF6B35]/10 rounded-2xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-[#FF6B35]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Innowacyjne podejście</h4>
+              <p class="text-gray-600 text-sm">AI-first workflow w nauce programowania</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-[#4ECDC4]/10 rounded-2xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-[#4ECDC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Społeczność</h4>
+                  <p class="text-gray-600 text-sm">15 000+ aktywnych programistów</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-[#3178C6]/10 rounded-2xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-[#3178C6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Jakość</h4>
+                  <p class="text-gray-600 text-sm">Certyfikowane programy szkoleniowe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-24 gradient-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Gotowy na kolejny poziom?
+      </h2>
+      <p class="text-xl text-gray-300 mb-8">
+        Dołącz do tysięcy programistów, którzy już zaczęli programować z AI.
+        Pierwszy krok zaczyna się od jednego kliknięcia.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-[#FF6B35] text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#E55A2B] transition-all hover:scale-105"
+        >
+          Rozpocznij przygodę z 10xDevs
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/common/SectionHeading.astro';
+import Button from '../components/common/Button.astro';
+import YouTubeEmbed from '../components/youtube/YouTubeEmbed.tsx';
+import { videos } from '../data/videos.ts';
+---
+
+<BaseLayout title="YouTube" description="Filmy Przeprogramowani na YouTube — programowanie, AI i technologia.">
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="YouTube"
+        subtitle="Filmy o programowaniu, AI i technologii"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <div class="rounded-2xl overflow-hidden border border-gray-200 bg-white">
+            <YouTubeEmbed client:visible videoId={video.id} title={video.title} />
+            <div class="p-5">
+              <h3 class="font-semibold text-brand-dark">{video.title}</h3>
+              <p class="text-sm text-brand-muted mt-2 line-clamp-2">{video.description}</p>
+              <p class="text-xs text-brand-muted mt-3">{video.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <Button href="https://youtube.com/@przeprogramowani" variant="primary" size="lg" external>
+          Odwiedź nasz kanał YouTube
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

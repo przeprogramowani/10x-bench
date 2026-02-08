@@ -1,0 +1,23 @@
+{
+  "name": "10x-bench",
+  "version": "1.0.0",
+  "description": "Benchmark for various LLMs vibe coding Przeprogramowani.pl website",
+  "type": "module",
+  "scripts": {
+    "process-results": "tsx scripts/process-results.ts",
+    "dev": "npm run process-results && cd website && npm run dev",
+    "build": "npm run process-results && cd website && npm run build"
+  },
+  "keywords": [
+    "benchmark",
+    "llm",
+    "przeprogramowani"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "25.2.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}

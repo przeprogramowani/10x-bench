@@ -1,0 +1,149 @@
+---
+import { Calendar } from 'lucide-react';
+
+// Course data
+const courses = [
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendze, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+    details: '10 tygodni nauki • 25 lekcji • 5 spotkań LIVE • Kompresja 26% commitów',
+    link: 'https://www.opanujfrontend.pl',
+    image: 'https://www.opanujfrontend.pl/_astro/featured/kurs-ofe.DxBtbgSJ_Z1y9Snc.webp',
+    duration: '45 dni',
+    price: 'do 2490 zł',
+    bestseller: true
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój.',
+    details: '6 tygodni nauki • React 19 • TS 5.7 • 40 ćwiczeń',
+    link: 'https://www.opanujtypescript.pl',
+    image: 'https://www.opanujtypescript.pl/_astro/featured/kurs-ots.3mcOC9g9.png',
+    duration: '45 dni',
+    price: 'do 2490 zł',
+    bestseller: true
+  },
+  {
+    title: '10xDevs 3.0',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    link: 'https://10xdevs.pl',
+    image: 'https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7/67bdaa8ceb517cc55238e5a1_10xDevs-logo-nav.svg',
+    duration: '45 dni',
+    price: '1743 zł',
+    isNew: true
+  }
+];
+---
+
+<div class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Nasze programy</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Praktyczne szkolenia dla ambitnych programistów i zespołów developerskich. Wybierz ten, który dopasuje się do Twoich celów.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {courses.map((course, index) => (
+        <a
+          key={index}
+          href={course.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-white rounded-3xl overflow-hidden border-2 border-gray-100 hover:border-brand-300 transition-all duration-300 hover:shadow-2xl hover:shadow-brand-500/10"
+        >
+          {course.bestseller && (
+            <div class="absolute top-0 right-0 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-sm font-bold px-4 py-2 rounded-bl-xl">
+              Bestseller
+            </div>
+          )}
+          {course.isNew && (
+            <div class="absolute top-0 right-0 bg-gradient-to-r from-brand-600 to-purple-600 text-white text-sm font-bold px-4 py-2 rounded-bl-xl">
+              Nowość!
+            </div>
+          )}
+
+          <div class="aspect-video overflow-hidden bg-gray-100">
+            <img
+              src={course.image}
+              alt={course.title}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+              {course.title}
+            </h3>
+            <p class="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
+
+            <div class="border-t border-gray-100 pt-4">
+              <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                <span class="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  {course.duration}
+                </span>
+                {course.details && (
+                  <span>{course.details}</span>
+                )}
+              </div>
+
+              {course.price && (
+                <div class="text-lg font-bold text-gray-900 mb-2">
+                  {course.price}
+                </div>
+              )}
+
+              <div class="flex items-center justify-between mt-4">
+                <span class="text-sm text-gray-500">
+                  {course.bestseller ? '400+ opinii' : 'do 121 programistów'}
+                </span>
+                <span class="text-brand-600 font-medium group-hover:translate-x-1 transition-transform">
+                  Dołącz
+                  <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 mb-6">
+        Poniżej kursy dla każdego poziomu - od początkujących po ekspertów TypeScript
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="https://opanujfrontend.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-600 to-purple-600 text-white rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-brand-500/30 transition-all"
+        >
+          Opanuj Frontend
+        </a>
+        <a
+          href="https://www.opanujtypescript.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-700 border-2 border-gray-200 rounded-full font-semibold text-lg hover:border-brand-600 hover:text-brand-600 transition-all"
+        >
+          Opanuj TypeScript
+        </a>
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-700 border-2 border-gray-200 rounded-full font-semibold text-lg hover:border-brand-600 hover:text-brand-600 transition-all"
+        >
+          10xDevs 3.0
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

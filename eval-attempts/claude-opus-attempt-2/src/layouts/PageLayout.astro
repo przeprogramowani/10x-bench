@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Container from '@/components/shared/Container.astro';
+import type { SEOProps } from '@/types';
+
+interface Props {
+  seo: SEOProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<BaseLayout seo={seo}>
+  <Container class="py-16 sm:py-24">
+    <slot />
+  </Container>
+</BaseLayout>

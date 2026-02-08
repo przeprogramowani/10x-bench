@@ -1,0 +1,53 @@
+---
+import Button from '../common/Button.astro';
+---
+
+<section class="relative overflow-hidden bg-brand-dark text-white">
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-primary/20"></div>
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-brand-primary rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-accent rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-accent/20 text-brand-accent border border-brand-accent/30 mb-6">
+        Edycja 3.0
+      </span>
+
+      <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+        Naucz się tworzyć
+        <span class="text-brand-accent"> oprogramowanie z AI</span>
+      </h1>
+
+      <p class="mt-6 text-lg text-gray-300 max-w-2xl">
+        Dołącz do 10xDevs — intensywnego, 5-tygodniowego programu, który zmieni Twoje
+        podejście do programowania. Pracuj z najnowszymi modelami AI i twórz prawdziwe projekty.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <Button href="https://10xdevs.pl" variant="accent" size="lg" external>
+          Dołącz do 10xDevs
+        </Button>
+        <Button href="/kursy" variant="outline" size="lg">
+          Zobacz wszystkie kursy
+        </Button>
+      </div>
+
+      <div class="mt-16 grid grid-cols-3 gap-8 max-w-md">
+        <div>
+          <p class="text-3xl font-bold text-brand-accent">3700+</p>
+          <p class="text-sm text-gray-400 mt-1">Absolwentów</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-brand-accent">5</p>
+          <p class="text-sm text-gray-400 mt-1">Tygodni</p>
+        </div>
+        <div>
+          <p class="text-3xl font-bold text-brand-accent">40h</p>
+          <p class="text-sm text-gray-400 mt-1">Materiałów</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

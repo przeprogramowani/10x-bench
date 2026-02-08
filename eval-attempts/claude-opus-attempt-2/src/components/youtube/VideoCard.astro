@@ -1,0 +1,40 @@
+---
+import type { YouTubeVideo } from '@/types';
+
+interface Props {
+  video: YouTubeVideo;
+}
+
+const { video } = Astro.props;
+---
+
+<a
+  href={video.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group overflow-hidden rounded-xl border border-surface-border bg-surface-raised transition-colors hover:border-brand-primary/30"
+>
+  <!-- Thumbnail placeholder -->
+  <div class="relative aspect-video bg-surface-overlay">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/90 text-white transition-transform group-hover:scale-110">
+        <svg class="h-6 w-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
+    <span class="absolute bottom-2 right-2 rounded bg-black/80 px-2 py-0.5 text-xs text-white font-medium">
+      {video.duration}
+    </span>
+  </div>
+
+  <div class="p-4">
+    <h3 class="text-sm font-semibold text-text-primary leading-snug group-hover:text-brand-primary transition-colors">
+      {video.title}
+    </h3>
+    <p class="mt-2 text-xs text-text-muted line-clamp-2">{video.description}</p>
+    <p class="mt-2 text-xs text-text-muted">
+      {new Date(video.date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </p>
+  </div>
+</a>

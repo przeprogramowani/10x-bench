@@ -1,0 +1,56 @@
+---
+import Container from '@/components/shared/Container.astro';
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import Button from '@/components/shared/Button.astro';
+
+const latestEpisodes = [
+  {
+    number: 98,
+    title: 'AI w codziennej pracy developera — co się sprawdza?',
+    description: 'Rozmawiamy o narzędziach AI, które realnie przyspieszają pracę programisty w 2026 roku.',
+    duration: '45 min',
+  },
+  {
+    number: 97,
+    title: 'Przegląd rynku pracy IT w 2026',
+    description: 'Analizujemy trendy na rynku pracy, wynagrodzenia i najczęściej poszukiwane umiejętności.',
+    duration: '52 min',
+  },
+  {
+    number: 96,
+    title: 'TypeScript 6.0 — co nowego?',
+    description: 'Omawiamy najważniejsze zmiany w najnowszej wersji TypeScript i ich wpływ na codzienną pracę.',
+    duration: '38 min',
+  },
+];
+---
+
+<section class="py-20 sm:py-28">
+  <Container>
+    <SectionHeading
+      title="Podcast Przeprogramowani"
+      subtitle="98 odcinków o programowaniu, technologii i karierze w IT. Co dwa tygodnie nowy odcinek."
+    />
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {latestEpisodes.map((episode) => (
+        <div class="rounded-xl border border-surface-border bg-surface-raised p-6 transition-colors hover:border-brand-primary/30">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand-primary/10 text-sm font-bold text-brand-primary">
+              #{episode.number}
+            </span>
+            <span class="text-xs text-text-muted">{episode.duration}</span>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-text-primary leading-snug">{episode.title}</h3>
+          <p class="mt-2 text-sm text-text-secondary">{episode.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <Button href="/podcast" variant="secondary">
+        Wszystkie odcinki
+      </Button>
+    </div>
+  </Container>
+</section>

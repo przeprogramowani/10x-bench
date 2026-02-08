@@ -1,0 +1,948 @@
+{
+  "generatedAt": "2026-02-08T19:38:32.558Z",
+  "totalAttempts": 12,
+  "results": [
+    {
+      "id": "gpt-codex-attempt-2",
+      "modelName": "GPT-5.3-Codex",
+      "attemptNumber": 2,
+      "totalScore": 10,
+      "maxScore": 10,
+      "percentage": 100,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not recorded in this evaluation"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - Astro build completed without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server started successfully on port 4322. All 4 pages (/, /o-nas, /podcast, /youtube) return HTTP 200 with proper navigation, consistent styles, and content accessible."
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Perfect match: Astro 5.17.1, React 19.2.4, Tailwind CSS 4.1.18, @astrojs/cloudflare 12.6.12 configured as adapter in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated /o-nas page found. Content matches context file (2017 founding year, 7+ years experience, 3 pillars). HTTP 200 returned. Layout matches with founders info, mission, and call-to-action."
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated /podcast page with real data fetching from przeprogramowani.pl. Uses scraping to extract episodes from both Przeprogramowany Podcast and OpanujAI Podcast. Fallback data includes both podcast sources. HTTP 200 returned."
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated /youtube page with real data fetching from przeprogramowani.pl homepage. Scrapes YouTube links and metadata from official website. HTTP 200 returned. Properly displays Przeprogramowani channel videos."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Hero section features all three courses: Opanuj Frontend, Opanuj TypeScript, and 10xDevs with proper links. 10xDevs prominently displayed as \"Nowość\" (New) in hero with orange badge and direct link to 10xdevs.pl. Sidebar courses section provides additional course links."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Consistent design across all pages: same header with navigation, footer with course links, color scheme (slate-950/cyan-200 theme), typography, spacing, and component styles maintained throughout."
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Responsive layout using Tailwind CSS with proper breakpoints (sm:, lg: prefixes). Grid layouts adapt from mobile to desktop. Navigation is accessible. All components resize appropriately."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "SiteLayout.astro implements complete SEO tags: meta description, og:title, og:description, og:type, og:locale (pl_PL), title tag. Applied to all pages via layout component. Descriptions are present and relevant."
+        }
+      ]
+    },
+    {
+      "id": "claude-opus-attempt-3",
+      "modelName": "Claude Opus 4.6",
+      "attemptNumber": 3,
+      "totalScore": 9.5,
+      "maxScore": 10,
+      "percentage": 95,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not provided by user"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - npm install and npm run build completed without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server started on port 4322 and all pages returned 200 status codes (/, /o-nas, /podcast, /youtube, /kursy)"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "All required dependencies verified: Astro 5.17.1, React 19.1.0, Tailwind CSS 4.1.0, @astrojs/cloudflare 12.3.0"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page exists at src/pages/o-nas.astro. Content matches reference - includes founders info, timeline, and stats section with Polish content"
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page at src/pages/podcast.astro. Both podcasts (Przeprogramowani & Opanuj AI) displayed with real episodes from data/podcasts.ts. Episodes sorted by date, not mocked"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page at src/pages/youtube.astro. Real videos displayed from data/videos.ts (6 videos with real titles and descriptions). Link to YouTube channel included"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated kursy pages at src/pages/kursy/index.astro and CoursesSection component. 10xDevs course featured on homepage with detailed module breakdown. All three courses (10xDevs, Opanuj Frontend, Opanuj TypeScript) displayed"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI is consistent and cohesive across all pages with uniform styling and design patterns"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Website is responsive with some minor issues on certain screen sizes - majority of layout adapts well but not fully optimized for all sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "BaseLayout component implements SEO meta tags (title, description) applied to all pages. Each page passes custom title and description props for SEO"
+        }
+      ]
+    },
+    {
+      "id": "gpt-codex-attempt-1",
+      "modelName": "GPT-5.3-Codex",
+      "attemptNumber": 1,
+      "totalScore": 9.5,
+      "maxScore": 10,
+      "percentage": 95,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not measured by evaluator"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful. Project built without errors using Astro 5.17.1 with Cloudflare adapter."
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on http://localhost:4323. All pages return 200 status code (/, /o-nas, /podcast, /youtube). Styles load correctly and content displays properly across all pages."
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Perfect match: Astro 5.17.1 ✓, React 19.2.4 ✓, Tailwind CSS 4.1.18 ✓, @astrojs/cloudflare 12.6.12 ✓ (configured in astro.config.mjs with adapter and output: 'server'). All required dependencies present."
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page renders with 200 status. Content matches context file: brand tagline 'Szersze spojrzenie na programowanie', founded year 2017, founders names Przemek Smyrdek and Marcin Czarkowski. Information sourced from lib/content.ts with proper data structure."
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page renders with 200 status. Fetches real RSS feed from anchor.fm Przeprogramowani podcast. Uses fast-xml-parser to parse real feed data. Fallback episodes are legitimate Przeprogramowani podcast episodes with real titles/dates. Both podcasts can be displayed (has infrastructure for multiple feeds). Real episode data verified."
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page renders with 200 status. Fetches real YouTube feed from official Przeprogramowani channel (UCb2Y3vMeD6N4WDt5Acw7Arw). Video IDs are unique (KAJTsQbqBow, uwi39C2O8NI, b-gOI128G2s). Fallback videos have legitimate titles matching actual Przeprogramowani content. Real channel feed integration verified."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated courses section found in index.astro (lines 62-88). Displays three courses from lib/content.ts: 10xDevs (with href to https://10xdevs.pl), Opanuj Frontend, Opanuj TypeScript. 10xDevs featured prominently as main CTA (hero.ctaHref). Content matches context file descriptions and URLs."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Confirmed by user testing. UI is consistent across all pages with matching header (sticky navigation), footer, color scheme (cyan/slate/rose accents), typography, and spacing. Uses consistent design system with Tailwind CSS 4."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "User confirmed mostly responsive design with minor issues on some screen sizes. Site works on mobile/tablet/desktop but has some layout quirks. Uses responsive grid and flexbox but may have minor breakpoint issues."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated SEO implementation via MainLayout component. All pages have custom title and meta description passed as props. MainLayout properly renders title and meta description tags. SEO content matches context file information across all pages (checked on index, o-nas, podcast, youtube pages)."
+        }
+      ]
+    },
+    {
+      "id": "claude-opus-attempt-1",
+      "modelName": "Claude Opus 4.6",
+      "attemptNumber": 1,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Opus attempt generated by Claude in single pass"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - no errors or warnings"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All 4 pages accessible and responsive - index, o-nas, podcast, youtube pages return 200"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Exact match - Astro 5.17.1, React 19.2.4, Tailwind 4.1.18, @astrojs/cloudflare 12.6.12 configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page with accurate team information, mission statement, history timeline, and corporate partners list - content matches context"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated page with correct structure and links - uses mocked episode data instead of real Spotify API calls for both Przeprogramowani and Opanuj.AI Podcast"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated page with channel link and video grid - uses mocked data with placeholder video IDs (dQw4w9WgXcQ repeated) instead of real YouTube API data"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs course featured prominently in Hero section with CTA button - all 3 courses displayed with correct descriptions in CoursesSection component"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Consistent design system across all pages - Tailwind color scheme, typography, spacing and layout patterns maintain visual consistency"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Full responsive design with breakpoints - mobile, tablet, and desktop views work properly with md: and lg: Tailwind utilities"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Comprehensive SEO component in Layout.astro - includes title, description, canonical URL, Open Graph tags, Twitter Card meta tags with pl_PL locale"
+        }
+      ]
+    },
+    {
+      "id": "gpt-codex-attempt-3",
+      "modelName": "GPT-5.3-Codex",
+      "attemptNumber": 3,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "User evaluation (provided separately)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - \"astro build\" completed without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on port 4322. All pages (Home, O nas, Podcast, YouTube) accessible with 200 status codes. Navigation works correctly. Styles render properly. Content displays as expected."
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Exact match: Astro 5.17.1, React 19.2.4, Tailwind CSS 4.1.18, @astrojs/cloudflare 12.6.12 configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page found and returns 200 status. Contains founder names (Przemek Smyrdek, Marcin Czarkowski) and founded year (2017). However, content is simplified - missing professional background details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin) and their course assignments per context file.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Page found and returns 200 status. Uses real RSS feed from Anchor.fm (not mocked). Displays actual podcast episodes with real data. Spotify URL correctly configured: https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Page found and returns 200 status. Uses real YouTube RSS feed (not mocked). Displays actual channel videos with proper metadata. YouTube channel correctly configured: https://www.youtube.com/c/przeprogramowani\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"10xDevs prominently featured on homepage with highlight styling. Multiple courses displayed (10xDevs, Opanuj Frontend, Opanuj TypeScript) with descriptions and links. Content matches course offerings from context file.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"UI is consistent across all pages - matching color scheme, typography, spacing, and component design. Header, footer, and layout consistent throughout.\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Layout mostly responsive with some minor responsiveness issues. Grid layouts adapt for tablet/mobile, but some elements could have better breakpoint handling.\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Meta description and title tags present on all pages. HTML lang='pl' set for Polish. Description meta tags dynamic per page. Good basic SEO implementation matching content.\""
+        }
+      ]
+    },
+    {
+      "id": "kimi-k2.5-attempt-2",
+      "modelName": "Kimi K2.5",
+      "attemptNumber": 2,
+      "totalScore": 8,
+      "maxScore": 10,
+      "percentage": 80,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "User completed evaluation via AskUserQuestion"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful with no errors - Astro 5.17.1 compiled cleanly"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on localhost:4321 - all pages accessible with 200 status codes - navigation works - styles and content fully functional"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5 ✓ | React 19 ✓ | Tailwind CSS 4 ✓ | Cloudflare Adapter ✗ - Missing @astrojs/cloudflare dependency and configuration in astro.config.mjs (adapter set to undefined)"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated About.astro component with complete founder information matching context file - Przemek Smyrdek and Marcin Czarkowski bios with professional details (DAZN/Cabify and SmartRecruiters) - LinkedIn links present - Brand partners section included"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "CRITICAL: Page shows embedded YouTube videos instead of real podcast data - No Spotify links found for either podcast (missing 3yVvOAXSYq6sQB02w4A4wo for Przeprogramowani and 3D6LmchBdoqL2sWkQjvWOy for OpanujAI) - Only Opanuj AI Podcast header visible - Missing Przeprogramowani Podcast section entirely - Episode data appears to be YouTube content mocks not actual podcast episodes"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "YouTube.astro component exists with video grid and correct channel link - Videos display with realistic titles and metadata - Video IDs appear valid (KAJTsQbqBow etc) - However cannot verify without fetching actual channel data that these are real Przeprogramowani videos vs hallucinated/mocked content - Content looks polished but needs real-time verification"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Courses.astro component with all three courses present - 10xDevs featured prominently in Hero section with correct branding and CTA - Course descriptions match context file - Correct URLs (10xdevs.pl opanujfrontend.pl opanujtypescript.pl) - Feature lists and badges properly implemented"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User confirmed consistent UI across all pages - Gradient backgrounds cohesive (dark theme for hero/courses light for about/podcast/youtube) - Color scheme consistent (pink/rose accent colors) - Typography and spacing uniform - No broken styles observed"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "User confirmed fully responsive design across mobile tablet desktop - Flexbox and grid layouts adapt properly - Navigation and components responsive - Containers scale appropriately"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Meta description present in Layout.astro: \"Przeprogramowani.pl - Szersze spojrzenie na programowanie. Podcast, kursy, YouTube i edukacja dla programistów.\" - Page title: \"Przeprogramowani.pl - Szersze spojrzenie na programowanie\" - Meta charset and viewport tags present - SEO tags in layout apply to all pages"
+        }
+      ]
+    },
+    {
+      "id": "claude-opus-attempt-2",
+      "modelName": "Claude Opus 4.6",
+      "attemptNumber": 2,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Time not provided by user"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - npm run build completed without errors in 912ms"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running at localhost:4321 with all pages accessible and working properly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Exact match: Astro 5.17.1, React 19.2.4, Tailwind CSS 4.1.18, @astrojs/cloudflare configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200. Content present but simplified/paraphrased compared to context. Missing specific details about professional background (DAZN, Cabify, SmartRecruiters, technical specifics)."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200. Only displays Przeprogramowani Podcast (not OpanujAI Podcast as required). Spotify URL incorrect (0jIneOnaCBbfwtGlEMnzPR instead of 3yVvOAXSYq6sQB02w4A4wo). Episode data appears mocked/generated."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Page exists but uses non-standard video IDs (yt-01, yt-02, etc.) instead of real YouTube IDs. Data is entirely mocked. Should contain real Przeprogramowani channel videos with proper YouTube IDs."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated courses page with all 3 courses. 10xDevs featured on main page via CourseCards component. All content matches context file accurately."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0.5,
+          "max": 1,
+          "notes": "User reported: Mostly responsive with minor issues. UI generally consistent across pages."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "User reported: Majority of page responsive with some minor issues on certain screen sizes."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated SEO component exists and connected to all pages through BaseLayout. Includes title, description, canonical, Open Graph tags, Twitter Card, and Polish locale (pl_PL)."
+        }
+      ]
+    },
+    {
+      "id": "kimi-k2.5-attempt-1",
+      "modelName": "Kimi K2.5",
+      "attemptNumber": 1,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Provided by user"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - completed in 1.23s with all 4 pages generated"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on localhost:4321 - all pages accessible with proper navigation, styles, and content"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.17.1 and React 19.2.4 and Tailwind 4.1.18 installed - BUT missing @astrojs/cloudflare adapter in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page found and returns 200 status. Team member names correct (Przemek Smyrdek, Marcin Czarkowski) with key professional details. BUT LinkedIn URLs incomplete (linkedin.com/in/... instead of https://www.linkedin.com/in/...)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "Page returns 200 status but critical issues: Generic Spotify URL (https://open.spotify.com) instead of podcast-specific show IDs (3yVvOAXSYq6sQB02w4A4wo for Przeprogramowany, 3D6LmchBdoqL2sWkQjvWOy for OpanujAI). Episode data appears to be mock/generated without verification against actual podcast content."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Page returns 200 status but uses mock data: emoji thumbnails (🎬, 🚀, etc.) instead of real YouTube video IDs. No actual channel data or video URLs - no data source file linking to real Przeprogramowani channel videos."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "All three courses present (10xDevs, Opanuj Frontend, Opanuj TypeScript) with accurate descriptions and links. 10xDevs featured prominently on main page with correct content and call-to-action."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI is consistent across all pages - header, footer, color scheme, typography, and component styling match throughout"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Website fully responsive - containers, navigation, and components adapt properly to mobile, tablet, and desktop screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout component includes complete meta tags (description, og:title, og:description, og:type, og:site_name, twitter:card, twitter:title, twitter:description) applied to all pages. Descriptions match context file content."
+        }
+      ]
+    },
+    {
+      "id": "kimi-k2.5-attempt-3",
+      "modelName": "Kimi K2.5",
+      "attemptNumber": 3,
+      "totalScore": 2,
+      "maxScore": 10,
+      "percentage": 20,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Time not provided"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - npm run build executed without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Dev server running but user reported broken/inconsistent UI and major responsiveness issues on multiple pages"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Missing Cloudflare Adapter - astro.config.mjs has 'adapter: undefined'. Required: Astro 5 ✓, React 19 ✓, Tailwind CSS 4 ✓, Cloudflare Adapter ✗"
+        },
+        {
+          "name": "O nas page",
+          "score": 0,
+          "max": 1,
+          "notes": "No dedicated /o-nas page found. Content exists only as component on main page. Requires dedicated route that returns 200 status."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "No dedicated /podcast page found. Podcast component on main page uses hardcoded mock episode data rather than real Spotify podcast content. Missing both Przeprogramowani and OpanujAI Podcast real data."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "No dedicated /youtube page found. Uses placeholder thumbnails and hardcoded video data, not real Przeprogramowani channel videos."
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Courses component present on main page with 10xDevs featured (correct). However some course URLs unverified against context file."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "User reported broken and inconsistent styles across pages during manual testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "User reported major responsiveness issues - layout breaks on different screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Basic SEO tags present (description, title) but incomplete - missing Open Graph tags, Twitter cards, and canonical URLs"
+        }
+      ]
+    },
+    {
+      "id": "glm-4.7-attempt-3",
+      "modelName": "GLM-4.7",
+      "attemptNumber": 3,
+      "totalScore": 0.5,
+      "maxScore": 10,
+      "percentage": 5,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not measured by evaluator"
+        },
+        {
+          "name": "Local build",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - Syntax error in Layout.astro at line 6. Malformed frontmatter: function export in frontmatter section not properly closed before closing delimiter ---."
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Build process failed. Site cannot be built or run."
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Partial tech stack: Astro 5.17.1 ✓, React 19.2.4 ✓, Cloudflare Adapter @astrojs/cloudflare ✓ (configured in astro.config.mjs). MISSING: Tailwind CSS 4 not in dependencies. Only has 'add' and 'lucide-react' packages. Missing required tailwind and @tailwindcss packages."
+        },
+        {
+          "name": "O nas page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build due to Layout.astro syntax error."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build due to Layout.astro syntax error."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build due to Layout.astro syntax error."
+        },
+        {
+          "name": "Kursy section",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build due to Layout.astro syntax error."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build. No dev server available for testing."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build. No dev server available for testing."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - Site fails to build due to Layout.astro syntax error."
+        }
+      ]
+    },
+    {
+      "id": "glm-4.7-attempt-1",
+      "modelName": "GLM-4.7",
+      "attemptNumber": 1,
+      "totalScore": 0,
+      "maxScore": 10,
+      "percentage": 0,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - unable to measure task completion time"
+        },
+        {
+          "name": "Local build",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed with syntax error in src/pages/index.astro:25 - Unexpected \"!\". Astro frontmatter structure missing. Dev server could not start."
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - dev server not started. Unable to test pages, navigation, or accessibility."
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - cannot verify dependencies. Cloudflare Adapter not configured in astro.config.mjs. Missing @astrojs/cloudflare."
+        },
+        {
+          "name": "O nas page",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - page could not be evaluated."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - page could not be evaluated."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - page could not be evaluated."
+        },
+        {
+          "name": "Kursy section",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - page could not be evaluated."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - dev server not started. Unable to assess UI consistency."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - dev server not started. Unable to test responsiveness."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - page source not accessible for SEO verification."
+        }
+      ]
+    },
+    {
+      "id": "glm-4.7-attempt-2",
+      "modelName": "GLM-4.7",
+      "attemptNumber": 2,
+      "totalScore": 0,
+      "maxScore": 10,
+      "percentage": 0,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "Not measured by evaluator"
+        },
+        {
+          "name": "Local build",
+          "score": 0,
+          "max": 1,
+          "notes": "Build failed - ReferenceError: Layout is not defined. Page rendering failed during build process."
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - dev server returns 500 status code. Page rendering fails with 'Layout is not defined' error."
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Missing critical dependencies: Cloudflare Adapter (@astrojs/cloudflare) not installed. astro.config.mjs does not contain Cloudflare adapter configuration. Installed versions: Astro 5.17.1 ✓, React 19.2.4 ✓, Tailwind CSS 4.1.18 ✓, but missing Cloudflare Adapter ✗"
+        },
+        {
+          "name": "O nas page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render due to build error. Layout component reference error prevents page generation."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render due to build error. Layout component reference error prevents page generation."
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render due to build error. Layout component reference error prevents page generation."
+        },
+        {
+          "name": "Kursy section",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render due to build error. Layout component reference error prevents page generation."
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render. Dev server returns 500 error on all pages."
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render. Dev server returns 500 error on all pages."
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - site fails to render due to build error. Layout component reference error prevents page generation."
+        }
+      ]
+    }
+  ],
+  "modelAverages": [
+    {
+      "modelName": "GPT-5.3-Codex",
+      "averageScore": 9.5,
+      "averageMaxScore": 10,
+      "averagePercentage": 95,
+      "attemptCount": 3
+    },
+    {
+      "modelName": "Claude Opus 4.6",
+      "averageScore": 8.5,
+      "averageMaxScore": 10,
+      "averagePercentage": 85,
+      "attemptCount": 3
+    },
+    {
+      "modelName": "Kimi K2.5",
+      "averageScore": 5.666666666666667,
+      "averageMaxScore": 10,
+      "averagePercentage": 56.666666666666664,
+      "attemptCount": 3
+    },
+    {
+      "modelName": "GLM-4.7",
+      "averageScore": 0.16666666666666666,
+      "averageMaxScore": 10,
+      "averagePercentage": 1.6666666666666667,
+      "attemptCount": 3
+    }
+  ]
+}

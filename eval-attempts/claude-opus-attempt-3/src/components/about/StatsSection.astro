@@ -1,0 +1,19 @@
+---
+import type { Stat } from '../../types';
+
+const stats: Stat[] = [
+  { value: '3700+', label: 'Absolwentów kursów' },
+  { value: '15000+', label: 'Członków społeczności' },
+  { value: '98', label: 'Odcinków podcastu' },
+  { value: '8', label: 'Lat na rynku' },
+];
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+  {stats.map((stat) => (
+    <div class="text-center p-6 rounded-2xl bg-white border border-gray-200">
+      <p class="text-3xl md:text-4xl font-extrabold text-brand-primary">{stat.value}</p>
+      <p class="text-sm text-brand-muted mt-2">{stat.label}</p>
+    </div>
+  ))}
+</div>

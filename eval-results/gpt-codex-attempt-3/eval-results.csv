@@ -1,0 +1,12 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,User evaluation (provided separately)
+Local build,1,1,Build successful - "astro build" completed without errors
+Manual testing,1,1,Dev server running on port 4322. All pages (Home, O nas, Podcast, YouTube) accessible with 200 status codes. Navigation works correctly. Styles render properly. Content displays as expected.
+Tech stack,1,1,Exact match: Astro 5.17.1, React 19.2.4, Tailwind CSS 4.1.18, @astrojs/cloudflare 12.6.12 configured in astro.config.mjs
+O nas page,0.5,1,"Page found and returns 200 status. Contains founder names (Przemek Smyrdek, Marcin Czarkowski) and founded year (2017). However, content is simplified - missing professional background details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin) and their course assignments per context file."
+Podcast page,1,1,"Page found and returns 200 status. Uses real RSS feed from Anchor.fm (not mocked). Displays actual podcast episodes with real data. Spotify URL correctly configured: https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+YouTube page,1,1,"Page found and returns 200 status. Uses real YouTube RSS feed (not mocked). Displays actual channel videos with proper metadata. YouTube channel correctly configured: https://www.youtube.com/c/przeprogramowani"
+Kursy section,1,1,"10xDevs prominently featured on homepage with highlight styling. Multiple courses displayed (10xDevs, Opanuj Frontend, Opanuj TypeScript) with descriptions and links. Content matches course offerings from context file."
+Consistent UI,1,1,"UI is consistent across all pages - matching color scheme, typography, spacing, and component design. Header, footer, and layout consistent throughout."
+Responsive design,0.5,1,"Layout mostly responsive with some minor responsiveness issues. Grid layouts adapt for tablet/mobile, but some elements could have better breakpoint handling."
+SEO Tags,1,1,"Meta description and title tags present on all pages. HTML lang='pl' set for Polish. Description meta tags dynamic per page. Good basic SEO implementation matching content."

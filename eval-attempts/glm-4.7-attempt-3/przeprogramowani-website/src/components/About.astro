@@ -1,0 +1,140 @@
+---
+interface Partner {
+  name: string;
+  logo: string;
+  link: string;
+}
+
+const partners: Partner[] = [
+  { name: 'Huuuge Games', logo: 'https://www.hugegames.com/wp-content/uploads/2019/08/huge-games-logo.png', link: 'https://www.hugegames.com' },
+  { name: 'Nutridome', logo: 'https://nutridome.com/wp-content/uploads/2023/11/logo.png', link: 'https://nutridome.com' },
+  { name: 'SmartRecruiters', logo: 'https://www.smartrecruiters.com/wp-content/uploads/2022/01/smart-recruiters-logo.png', link: 'https://www.smartrecruiters.com' },
+  { name: 'Future Processing', logo: 'https://future-processing.com/wp-content/themes/future-processing/assets/img/logo-future-processing.svg', link: 'https://future-processing.com' },
+  { name: 'Callstack', logo: 'https://callstack.com/logo.svg', link: 'https://callstack.com' },
+  { name: 'Xfive', logo: 'https://xfive.com/logo.svg', link: 'https://xfive.com' }
+];
+---
+
+<div class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">O nas</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Łączymy świat programowania, biznesu i rozwoju. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+      </p>
+    </div>
+
+    <!-- Founders -->
+    <div class="grid md:grid-cols-2 gap-12 mb-16">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-brand-200 to-purple-200 flex items-center justify-center overflow-hidden">
+          <svg class="w-16 h-16 text-brand-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Przemek Smyrdek</h3>
+        <p class="text-gray-600 font-medium mb-3">Co-founder, Przeprogramowani</p>
+        <p class="text-gray-500 text-sm mb-4">
+          Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript).
+        </p>
+        <a
+          href="https://www.linkedin.com/in/psmyrdek/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 transition-colors"
+        >
+          LinkedIn
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center overflow-hidden">
+          <svg class="w-16 h-16 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Marcin Czarkowski</h3>
+        <p class="text-gray-600 font-medium mb-3">Co-founder, Przeprogramowani</p>
+        <p class="text-gray-500 text-sm mb-4">
+          Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce.
+        </p>
+        <a
+          href="https://www.linkedin.com/in/mkczarkowski/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 transition-colors"
+        >
+          LinkedIn
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Partners -->
+    <div class="mb-16">
+      <h3 class="text-center text-2xl font-bold text-gray-900 mb-8">Współpracujemy z najlepszymi</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {partners.map((partner) => (
+          <a
+            key={partner.name}
+            href={partner.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-white border-2 border-gray-100 rounded-xl p-6 flex items-center justify-center hover:border-brand-300 hover:shadow-lg transition-all"
+          >
+            <div class="text-center">
+              <img src={partner.logo} alt={partner.name} class="h-12 mx-auto mb-2 object-contain" loading="lazy" />
+              <p class="text-sm text-gray-600 font-medium">{partner.name}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="bg-white rounded-3xl p-8 md:p-12 border-2 border-gray-100">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">Chcesz nawiązać współpracę?</h3>
+          <p class="text-lg text-gray-600 mb-6">
+            Jako Przeprogramowani od ponad 4 lat tworzymy darmowe treści dla społeczności 15 tysięcy programistów.
+          </p>
+          <div class="space-y-4">
+            <a
+              href="mailto:kontakt@przeprogramowani.pl"
+              class="inline-flex items-center gap-3 text-lg text-brand-600 hover:text-brand-700 transition-colors font-medium"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              kontakt@przeprogramowani.pl
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-brand-50 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-brand-600 mb-2">7</div>
+            <div class="text-gray-600">lat na rynku</div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-purple-600 mb-2">15k+</div>
+            <div class="text-gray-600">programistów</div>
+          </div>
+          <div class="bg-pink-50 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-pink-600 mb-2">4000+</div>
+            <div class="text-gray-600">słuchaczy podcastu</div>
+          </div>
+          <div class="bg-blue-50 rounded-xl p-6 text-center">
+            <div class="text-4xl font-bold text-blue-600 mb-2">3700+</div>
+            <div class="text-gray-600">absolwentów</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

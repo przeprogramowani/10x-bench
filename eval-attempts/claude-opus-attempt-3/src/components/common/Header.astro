@@ -1,0 +1,42 @@
+---
+import { navigation } from '../../data/navigation.ts';
+import MobileMenu from './MobileMenu.tsx';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-2 font-bold text-xl text-brand-dark">
+        <span class="text-brand-primary">&lt;/&gt;</span>
+        Przeprogramowani
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors hover:text-brand-primary ${
+              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+                ? 'text-brand-primary'
+                : 'text-gray-600'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 text-sm font-semibold text-brand-dark bg-brand-accent rounded-lg hover:bg-brand-accent/90 transition-all hover:scale-105"
+        >
+          10xDevs 3.0
+        </a>
+      </div>
+
+      <MobileMenu client:load navigation={navigation} currentPath={currentPath} />
+    </div>
+  </nav>
+</header>

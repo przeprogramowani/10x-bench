@@ -1,0 +1,24 @@
+---
+import Container from '@/components/shared/Container.astro';
+
+const stats = [
+  { value: '3 700+', label: 'Absolwentów kursów', description: 'developerów ukończyło nasze programy' },
+  { value: '15 000+', label: 'Społeczność', description: 'osób w naszej społeczności online' },
+  { value: '98', label: 'Odcinków podcastu', description: 'godzin wiedzy technologicznej' },
+  { value: '8+', label: 'Lat doświadczenia', description: 'na rynku edukacji tech od 2017' },
+];
+---
+
+<section class="py-20 sm:py-28 bg-surface-raised">
+  <Container>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="text-4xl font-extrabold text-brand-primary">{stat.value}</div>
+          <div class="mt-2 text-lg font-semibold text-text-primary">{stat.label}</div>
+          <div class="mt-1 text-sm text-text-muted">{stat.description}</div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

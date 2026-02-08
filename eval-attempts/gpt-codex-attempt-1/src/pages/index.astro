@@ -1,0 +1,125 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import MediaTabs from '../components/MediaTabs';
+import { aboutBullets, courses, hero } from '../lib/content';
+import { formatPolishDate, getPodcastEpisodes, getYouTubeVideos } from '../lib/feeds';
+
+const [podcastEpisodes, youtubeVideos] = await Promise.all([
+  getPodcastEpisodes(6),
+  getYouTubeVideos(6),
+]);
+
+const mediaTabsPodcast = podcastEpisodes.map((episode) => ({
+  title: episode.title,
+  href: episode.link,
+  date: formatPolishDate(episode.publishedAt),
+}));
+
+const mediaTabsYouTube = youtubeVideos.map((video) => ({
+  title: video.title,
+  href: video.link,
+  date: formatPolishDate(video.publishedAt),
+}));
+---
+
+<MainLayout
+  title="Przeprogramowani | Nowoczesna strona projektu"
+  description="Nowoczesna strona Przeprogramowani z podstronami O nas, Podcast, YouTube oraz sekcją kursów."
+  currentPath="/"
+>
+  <section class="mx-auto grid max-w-6xl gap-8 px-5 pb-14 pt-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12 lg:pt-18">
+    <div class="float-in">
+      <p class="mb-4 inline-flex rounded-full border border-orange-300/30 bg-orange-300/15 px-4 py-1 text-sm font-semibold text-orange-100">{hero.badge}</p>
+      <h1 class="font-display text-4xl font-bold leading-tight text-white sm:text-5xl">{hero.title}</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300">{hero.description}</p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={hero.ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-100"
+        >
+          {hero.ctaLabel}
+        </a>
+        <a href="/o-nas" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-white/40 hover:bg-white/10">Poznaj nas</a>
+      </div>
+
+      <ul class="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
+        {
+          aboutBullets.map((item) => (
+            <li class="rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">{item}</li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="float-in [animation-delay:0.12s]">
+      <MediaTabs client:load podcast={mediaTabsPodcast} youtube={mediaTabsYouTube} />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 py-8">
+    <div class="mb-6">
+      <h2 class="font-display text-2xl font-bold text-white sm:text-3xl">Kursy i programy</h2>
+      <p class="mt-2 text-slate-300">Ścieżki rozwoju dla developerów na różnych etapach kariery.</p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        courses.map((course, index) => (
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative overflow-hidden rounded-3xl border border-white/15 bg-slate-900/70 p-5 transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-slate-900"
+          >
+            <div class={`absolute inset-0 bg-gradient-to-br ${course.color} opacity-60`} />
+            <div class="relative">
+              <p class="font-display text-2xl font-bold text-white">{course.title}</p>
+              <p class="mt-2 text-sm font-medium text-cyan-100/90">{course.subtitle}</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-100/90">{course.description}</p>
+              <p class="mt-5 text-xs font-semibold uppercase tracking-wider text-white/80">Dowiedz się więcej -></p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto grid max-w-6xl gap-6 px-5 py-12 lg:grid-cols-2">
+    <article class="rounded-3xl border border-white/10 bg-slate-900/65 p-6">
+      <div class="mb-5 flex items-center justify-between gap-3">
+        <h3 class="font-display text-xl font-bold text-white">Ostatnie podcasty</h3>
+        <a href="/podcast" class="text-sm font-semibold text-teal-200 hover:text-teal-100">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-3">
+        {
+          podcastEpisodes.slice(0, 3).map((episode) => (
+            <a href={episode.link} target="_blank" rel="noopener noreferrer" class="block rounded-2xl border border-white/10 bg-slate-950/80 p-4 transition hover:border-white/25 hover:bg-slate-900">
+              <p class="line-clamp-2 text-sm font-semibold text-slate-100">{episode.title}</p>
+              <p class="mt-2 text-xs text-slate-400">{formatPolishDate(episode.publishedAt)}</p>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article class="rounded-3xl border border-white/10 bg-slate-900/65 p-6">
+      <div class="mb-5 flex items-center justify-between gap-3">
+        <h3 class="font-display text-xl font-bold text-white">Ostatnie filmy YouTube</h3>
+        <a href="/youtube" class="text-sm font-semibold text-red-200 hover:text-red-100">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-3">
+        {
+          youtubeVideos.slice(0, 3).map((video) => (
+            <a href={video.link} target="_blank" rel="noopener noreferrer" class="block rounded-2xl border border-white/10 bg-slate-950/80 p-4 transition hover:border-white/25 hover:bg-slate-900">
+              <p class="line-clamp-2 text-sm font-semibold text-slate-100">{video.title}</p>
+              <p class="mt-2 text-xs text-slate-400">{formatPolishDate(video.publishedAt)}</p>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</MainLayout>

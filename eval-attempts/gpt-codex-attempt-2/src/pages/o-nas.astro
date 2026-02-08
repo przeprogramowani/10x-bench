@@ -1,0 +1,58 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+
+<SiteLayout
+  title="O nas | Przeprogramowani"
+  description="Kim są Przeprogramowani, jak działamy i co tworzymy dla społeczności developerów."
+>
+  <section class="space-y-7 rounded-3xl border border-white/10 bg-slate-900/40 p-8">
+    <p class="text-xs font-semibold uppercase tracking-widest text-cyan-200">O nas</p>
+    <h1 class="font-heading text-4xl font-extrabold sm:text-5xl">Edukacja technologiczna dla ambitnych programistów</h1>
+    <p class="max-w-3xl text-lg text-slate-300">
+      Przeprogramowani to polska platforma edukacyjna działająca od 2017 roku. Tworzymy kursy,
+      podcasty i materiały YouTube, które pomagają developerom rosnąć szybciej i mądrzej.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-4 sm:grid-cols-3">
+    <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+      <h2 class="font-heading text-3xl font-black text-cyan-200">2017</h2>
+      <p class="mt-2 text-slate-300">Rok założenia i start misji edukacyjnej.</p>
+    </article>
+    <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+      <h2 class="font-heading text-3xl font-black text-cyan-200">7+ lat</h2>
+      <p class="mt-2 text-slate-300">Doświadczenia na rynku edukacji technologicznej.</p>
+    </article>
+    <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+      <h2 class="font-heading text-3xl font-black text-cyan-200">3 filary</h2>
+      <p class="mt-2 text-slate-300">Kursy, Podcast i YouTube dla nowoczesnych devów.</p>
+    </article>
+  </section>
+
+  <section class="mt-10 grid gap-6 lg:grid-cols-2">
+    <article class="rounded-2xl border border-white/10 bg-slate-950/70 p-6">
+      <h2 class="font-heading text-2xl font-bold">Co robimy</h2>
+      <ul class="mt-4 space-y-3 text-slate-300">
+        <li>Tworzymy programy edukacyjne: Opanuj Frontend, Opanuj TypeScript, 10xDevs.</li>
+        <li>Publikujemy regularne odcinki podcastu o programowaniu i AI.</li>
+        <li>Publikujemy materiały na YouTube z praktyką inżynierską i case studies.</li>
+        <li>Wspieramy społeczność newsletterem i wydarzeniami branżowymi.</li>
+      </ul>
+    </article>
+
+    <article class="rounded-2xl border border-white/10 bg-slate-950/70 p-6">
+      <h2 class="font-heading text-2xl font-bold">Założyciele</h2>
+      <p class="mt-4 text-slate-300">
+        Projekt współtworzą <strong>Przemek Smyrdek</strong> i <strong>Marcin Czarkowski</strong>.
+        Koncentrujemy się na nauce przez praktykę i na realnych problemach, które programiści rozwiązują na co dzień.
+      </p>
+      <a
+        class="mt-5 inline-flex rounded-lg border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-100 hover:bg-cyan-300/10"
+        href="mailto:kontakt@przeprogramowani.pl"
+      >
+        kontakt@przeprogramowani.pl
+      </a>
+    </article>
+  </section>
+</SiteLayout>

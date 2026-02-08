@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Play, Eye, Clock, ThumbsUp, Youtube } from 'lucide-react';
+
+const videos = [
+  {
+    id: 1,
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    thumbnail: "🎬",
+    duration: "45:23",
+    views: "12.5K",
+    likes: "850",
+    date: "2026-01-15",
+    category: "AI & Programowanie",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    thumbnail: "🚀",
+    duration: "38:15",
+    views: "8.2K",
+    likes: "620",
+    date: "2026-01-08",
+    category: "Produktywność",
+    featured: false,
+  },
+  {
+    id: 3,
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!",
+    thumbnail: "🎉",
+    duration: "67:42",
+    views: "15.1K",
+    likes: "1.2K",
+    date: "2025-12-28",
+    category: "Projekty",
+    featured: false,
+  },
+  {
+    id: 4,
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze",
+    thumbnail: "🤖",
+    duration: "52:18",
+    views: "9.8K",
+    likes: "740",
+    date: "2025-12-21",
+    category: "AI Tools",
+    featured: false,
+  },
+  {
+    id: 5,
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na wasze pytania",
+    thumbnail: "❓",
+    duration: "41:33",
+    views: "6.5K",
+    likes: "510",
+    date: "2025-12-14",
+    category: "Q&A",
+    featured: false,
+  },
+  {
+    id: 6,
+    title: "Jak AI zmienia pracę programisty w 2026 roku?",
+    thumbnail: "🔮",
+    duration: "35:55",
+    views: "11.3K",
+    likes: "890",
+    date: "2025-12-07",
+    category: "Trendy",
+    featured: false,
+  },
+];
+
+const stats = [
+  { label: 'Subskrybentów', value: '50K+' },
+  { label: 'Wyświetleń', value: '2M+' },
+  { label: 'Filmów', value: '200+' },
+];
+---
+
+<Layout 
+  title="YouTube - Przeprogramowani.pl"
+  description="Oglądaj filmy Przeprogramowanych na YouTube. Tutoriale, vlogi i materiały edukacyjne o AI i programowaniu."
+>
+  {/* Hero Section */}
+  <section class="pt-32 pb-20 gradient-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+            <Youtube class="w-5 h-5 text-red-500" />
+            <span class="text-white/90 font-medium">Przeprogramowani na YouTube</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            Oglądaj i <span class="gradient-text">ucz się</span>
+          </h1>
+          <p class="text-xl text-gray-300 mb-8">
+            Subskrybuj nasz kanał, aby nie przegapić najnowszych filmów o AI,
+            programowaniu i rozwoju kariery w IT.
+          </p>
+          <a
+            href="https://youtube.com/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-all hover:scale-105"
+          >
+            <Youtube class="w-6 h-6" />
+            Subskrybuj kanał
+          </a>
+        </div>
+        <div class="grid grid-cols-3 gap-6">
+          {stats.map((stat) => (
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+              <div class="text-3xl sm:text-4xl font-bold text-white mb-2">{stat.value}</div>
+              <div class="text-gray-400">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured Video Section */}
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
+        Najnowszy film
+      </h2>
+      
+      <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative group cursor-pointer">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all" />
+          <div class="relative z-10 text-center">
+            <div class="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-lg">
+              <Play class="w-12 h-12 text-white ml-2" />
+            </div>
+            <p class="text-white text-lg font-medium">Kliknij, aby odtworzyć</p>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-black/80 text-white px-3 py-1 rounded-lg text-sm font-medium">
+            {videos[0].duration}
+          </div>
+        </div>
+        <div class="p-8">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">
+              {videos[0].category}
+            </span>
+            <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">
+              🔥 Najnowszy
+            </span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">{videos[0].title}</h3>
+          <div class="flex flex-wrap items-center gap-6 text-gray-400">
+            <div class="flex items-center gap-2">
+              <Eye class="w-5 h-5" />
+              <span>{videos[0].views} wyświetleń</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <ThumbsUp class="w-5 h-5" />
+              <span>{videos[0].likes} polubień</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Clock class="w-5 h-5" />
+              <span>{new Date(videos[0].date).toLocaleDateString('pl-PL')}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Videos Grid Section */}
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 md:mb-0">
+          Ostatnie filmy
+        </h2>
+        <a
+          href="https://youtube.com/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-red-600 font-semibold hover:gap-3 transition-all"
+        >
+          Wszystkie filmy
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.slice(1).map((video) => (
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+            {/* Thumbnail */}
+            <div class="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative group cursor-pointer">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all" />
+              <span class="relative z-10 text-6xl">{video.thumbnail}</span>
+              <div class="absolute bottom-3 right-3 bg-black/80 text-white px-2 py-1 rounded-lg text-sm font-medium">
+                {video.duration}
+              </div>
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                  <Play class="w-8 h-8 text-white ml-1" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Content */}
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs font-medium">
+                  {video.category}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2">{video.title}</h3>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <div class="flex items-center gap-4">
+                  <span class="flex items-center gap-1">
+                    <Eye class="w-4 h-4" />
+                    {video.views}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <Clock class="w-4 h-4" />
+                    {video.duration}
+                  </span>
+                </div>
+                <span>{new Date(video.date).toLocaleDateString('pl-PL')}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Load More */}
+      <div class="text-center mt-12">
+        <a
+          href="https://youtube.com/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-red-700 transition-all"
+        >
+          <Youtube class="w-5 h-5" />
+          Zobacz więcej na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Section */}
+  <section class="py-24 gradient-bg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Bądź na bieżąco
+      </h2>
+      <p class="text-xl text-gray-300 mb-8">
+        Subskrybuj nasz kanał i włącz powiadomienia, aby nie przegapić
+        nowych filmów o AI i programowaniu.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://youtube.com/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-red-700 transition-all hover:scale-105"
+        >
+          <Youtube class="w-6 h-6" />
+          Subskrybuj teraz
+        </a>
+        <a
+          href="/podcast"
+          class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all"
+        >
+          Posłuchaj podcastu
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

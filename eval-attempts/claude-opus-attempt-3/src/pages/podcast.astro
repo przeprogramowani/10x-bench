@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastHero from '../components/podcast/PodcastHero.astro';
+import EpisodeCard from '../components/podcast/EpisodeCard.astro';
+import SectionHeading from '../components/common/SectionHeading.astro';
+import { podcasts } from '../data/podcasts';
+
+const allEpisodes = podcasts
+  .flatMap((podcast) =>
+    podcast.episodes.map((ep) => ({
+      ...ep,
+      podcastTitle: podcast.title,
+      podcastColor: podcast.coverColor,
+    }))
+  )
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<BaseLayout title="Podcast" description="Podcasty Przeprogramowani i Opanuj AI — posłuchaj najnowszych odcinków o programowaniu i sztucznej inteligencji.">
+  <PodcastHero />
+
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        title="Ostatnie odcinki"
+        subtitle="Najnowsze odcinki z obu podcastów"
+      />
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {allEpisodes.map((episode) => (
+          <EpisodeCard
+            episode={episode}
+            podcastTitle={episode.podcastTitle}
+            podcastColor={episode.podcastColor}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Przeprogramowani Vibe Coded - LLM Benchmark Results' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" style="background-color: white; color: #111827;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body style="background-color: white; color: #111827;">
+    <nav class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">10x Bench</h1>
+          </div>
+          <div class="flex gap-8">
+            <a href="/" class="text-gray-700 hover:text-gray-900 font-medium">Results</a>
+            <a href="/benchmark" class="text-gray-700 hover:text-gray-900 font-medium">Benchmark</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="min-h-screen py-12" style="background-color: white;">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-50 mt-12 border-t">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <p class="text-gray-600 text-center">
+          Przeprogramowani Vibe Coded - LLM Benchmark Results
+        </p>
+        <p class="text-gray-500 text-center text-sm mt-2">
+          Generated at {new Date().toLocaleDateString()}
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

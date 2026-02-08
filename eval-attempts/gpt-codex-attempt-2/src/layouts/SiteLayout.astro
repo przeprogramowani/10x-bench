@@ -1,0 +1,78 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navItems = [
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(34,211,238,0.20),transparent_32%),radial-gradient(circle_at_80%_15%,rgba(249,115,22,0.18),transparent_30%),radial-gradient(circle_at_50%_100%,rgba(14,116,144,0.22),transparent_35%)]"></div>
+
+    <header class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="font-heading text-lg font-bold tracking-tight">Przeprogramowani</a>
+        <nav class="flex items-center gap-1" aria-label="Nawigacja główna">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "rounded-xl px-3 py-2 text-sm font-semibold transition",
+                Astro.url.pathname === item.href
+                  ? "bg-cyan-400/15 text-cyan-200"
+                  : "text-slate-300 hover:bg-white/5 hover:text-white",
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 py-10">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 text-sm text-slate-400">
+        <p>Przeprogramowani.pl - szersze spojrzenie na programowanie</p>
+        <div class="flex flex-wrap gap-4">
+          <a class="hover:text-white" href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer">10xDevs</a>
+          <a class="hover:text-white" href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer">Opanuj Frontend</a>
+          <a class="hover:text-white" href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer">Opanuj TypeScript</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+import MobileMenu from "./MobileMenu.tsx";
+
+const navLinks = [
+  { href: "/", label: "Strona główna" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-surface-700/50 bg-surface-900/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+    <a href="/" class="text-xl font-bold tracking-tight text-white">
+      Przeprogramowani<span class="text-primary-400">.pl</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-1 md:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              currentPath === link.href
+                ? "bg-surface-700/50 text-white"
+                : "text-slate-300 hover:bg-surface-800 hover:text-white",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 rounded-lg bg-accent-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+      >
+        10xDevs 3.0
+      </a>
+    </nav>
+
+    <!-- Mobile menu (React) -->
+    <div class="md:hidden">
+      <MobileMenu client:load currentPath={currentPath} />
+    </div>
+  </div>
+</header>

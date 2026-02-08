@@ -1,0 +1,36 @@
+<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center gap-8">
+        <a href="/" class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+          Przeprogramowani
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#o-nas" class="text-gray-600 hover:text-primary-600 transition-colors">O nas</a>
+          <a href="#podcast" class="text-gray-600 hover:text-primary-600 transition-colors">Podcast</a>
+          <a href="#youtube" class="text-gray-600 hover:text-primary-600 transition-colors">YouTube</a>
+          <a href="#kursy" class="text-gray-600 hover:text-primary-600 transition-colors">Kursy</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-primary-600 to-secondary-600 rounded-lg hover:opacity-90 transition-opacity">
+          10xDevs
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+    <div class="px-4 py-4 space-y-2">
+      <a href="#o-nas" class="block py-2 text-gray-600 hover:text-primary-600">O nas</a>
+      <a href="#podcast" class="block py-2 text-gray-600 hover:text-primary-600">Podcast</a>
+      <a href="#youtube" class="block py-2 text-gray-600 hover:text-primary-600">YouTube</a>
+      <a href="#kursy" class="block py-2 text-gray-600 hover:text-primary-600">Kursy</a>
+      <a href="https://10xdevs.pl" class="block py-2 text-sm font-semibold text-white bg-gradient-to-r from-primary-600 to-secondary-600 rounded-lg text-center">10xDevs</a>
+    </div>
+  </div>
+</header>

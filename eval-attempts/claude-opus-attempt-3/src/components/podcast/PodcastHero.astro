@@ -1,0 +1,33 @@
+---
+import Button from '../common/Button.astro';
+import { podcasts } from '../../data/podcasts';
+---
+
+<section class="py-20 bg-brand-dark text-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl font-extrabold md:text-5xl">Nasze podcasty</h1>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        Dwa podcasty o programowaniu, technologii i AI. Posłuchaj na swojej ulubionej platformie.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {podcasts.map((podcast) => (
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+          <div class="w-12 h-12 rounded-xl mb-4" style={`background-color: ${podcast.coverColor}`}></div>
+          <h2 class="text-2xl font-bold">{podcast.title}</h2>
+          <p class="mt-3 text-gray-400">{podcast.description}</p>
+          <div class="mt-6 flex gap-3">
+            <Button href={podcast.spotifyUrl} variant="primary" size="sm" external>
+              Spotify
+            </Button>
+            <Button href={podcast.appleUrl} variant="outline" size="sm" external>
+              Apple Podcasts
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
