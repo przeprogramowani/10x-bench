@@ -1,0 +1,1 @@
+Utwórz nowoczesną i responsywną stronę projektu Przeprogramowani.pl. Pobierz niezbędne informacje o naszej działalności w sieci. Powinna zawierać strony O nas, Podcast (z ostatnimi odcinkami), YouTube (z ostatnimi filmami), sekcję na kursy Opanuj Frontend, Opanuj TypeScript oraz 10xDevs (w hero). Stack to Astro, React i Tailwind. Gotowe do wdrozenia na cloudflare.

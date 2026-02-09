@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard';
+---
+
+<Layout title="YouTube">
+  <section class="py-20 bg-gradient-to-br from-red-600 to-pink-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-4">YouTube</h1>
+      <p class="text-xl text-red-100 max-w-2xl mx-auto">Filmy i podcasty dla rozwijania nowoczesnego programisty</p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg"
+          title="Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?"
+          videoId="KAJTsQbqBow"
+        />
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg"
+          title="5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI"
+          videoId="uwi39C2O8NI"
+        />
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg"
+          title="Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉"
+          videoId="b-gOI128G2s"
+        />
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg"
+          title="Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów"
+          videoId="WJLGzf7qq-c"
+        />
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg"
+          title="Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer"
+          videoId="jjOYxKAk_j8"
+        />
+        <VideoCard
+          thumbnail="https://i3.ytimg.com/vi/iSG7PUxjfww/maxresdefault.jpg"
+          title="Special webinar for Builders: Tu zaczyna się Twój AI-ready project"
+          videoId="iSG7PUxjfww"
+        />
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://youtube.com/c/przeprogramowani/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition text-lg"
+        >
+          Zobacz więcej filmów na YouTube →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

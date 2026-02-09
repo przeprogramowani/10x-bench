@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import YouTubeSection from '../components/YouTubeSection';
+import Newsletter from '../components/Newsletter';
+---
+
+<Layout title="YouTube">
+  <Header client:load slot="header" />
+  
+  <div class="bg-gradient-hero py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">YouTube</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Najnowsze filmy o programowaniu, AI i nowoczesnych technologiach
+      </p>
+    </div>
+  </div>
+  
+  <YouTubeSection client:load />
+  
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold mb-8">Zasubskrybuj nasz kanał</h2>
+      <a
+        href="https://www.youtube.com/@Przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary"
+      >
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+        </svg>
+        @Przeprogramowani
+      </a>
+    </div>
+  </section>
+  
+  <Newsletter client:visible />
+  
+  <Footer slot="footer" />
+</Layout>

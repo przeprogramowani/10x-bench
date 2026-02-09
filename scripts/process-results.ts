@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import { AGENT_ENV, AGENT_NAMES } from '../eval-attempts/metadata';
+import fs from "fs";
+import path from "path";
+import {AGENT_ENV, AGENT_NAMES, getModelBaseId} from "../eval-attempts/metadata";
 
 interface CriterionResult {
   name: string;
@@ -37,20 +37,24 @@ interface ProcessedResults {
 }
 
 // Extract model name from directory name
-function extractModelInfo(dirname: string): { modelName: string; attemptNumber: number } {
+function extractModelInfo(dirname: string): {
+  modelName: string;
+  attemptNumber: number;
+} {
   const match = dirname.match(/^([a-z0-9.-]+)-attempt-(\d+)$/);
   if (!match) {
     throw new Error(`Invalid directory name: ${dirname}`);
   }
 
   const attemptNumber = parseInt(match[2], 10);
-  const modelName = AGENT_NAMES[dirname] || match[1];
-  return { modelName, attemptNumber };
+  const baseId = getModelBaseId(dirname);
+  const modelName = AGENT_NAMES[baseId] || match[1];
+  return {modelName, attemptNumber};
 }
 
 // Parse CSV file - handle both 3-column and 2-column formats
 function parseCSV(csvContent: string): CriterionResult[] {
-  const lines = csvContent.trim().split('\n');
+  const lines = csvContent.trim().split("\n");
   const results: CriterionResult[] = [];
 
   // Skip header
@@ -68,7 +72,7 @@ function parseCSV(csvContent: string): CriterionResult[] {
         const [, criterion, scoreStr, notes] = match;
         results.push({
           name: criterion.trim(),
-          score: scoreStr.trim() === 'N/A' ? 0 : parseFloat(scoreStr.trim()),
+          score: scoreStr.trim() === "N/A" ? 0 : parseFloat(scoreStr.trim()),
           max: 1,
           notes: notes.trim(),
         });
@@ -80,8 +84,8 @@ function parseCSV(csvContent: string): CriterionResult[] {
       const [, criterion, scoreStr, maxStr, notes] = match;
       results.push({
         name: criterion.trim(),
-        score: scoreStr.trim() === 'N/A' ? 0 : parseFloat(scoreStr.trim()),
-        max: maxStr.trim() === 'N/A' ? 1 : parseFloat(maxStr.trim()),
+        score: scoreStr.trim() === "N/A" ? 0 : parseFloat(scoreStr.trim()),
+        max: maxStr.trim() === "N/A" ? 1 : parseFloat(maxStr.trim()),
         notes: notes.trim(),
       });
     }
@@ -92,13 +96,16 @@ function parseCSV(csvContent: string): CriterionResult[] {
 
 // Main processing function
 async function processResults(): Promise<void> {
-  const projectRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-  const evalResultsDir = path.join(projectRoot, 'eval-results');
-  const outputDir = path.join(projectRoot, 'website', 'src', 'data');
+  const projectRoot = path.resolve(
+    path.dirname(new URL(import.meta.url).pathname),
+    "..",
+  );
+  const evalResultsDir = path.resolve(projectRoot, "eval-results");
+  const outputDir = path.join(projectRoot, "website", "src", "data");
 
   // Ensure output directory exists
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
 
   // Read all attempt directories
@@ -112,9 +119,9 @@ async function processResults(): Promise<void> {
   // Process each attempt
   for (const dir of attemptDirs) {
     // Try both singular and plural filename variants
-    let csvPath = path.join(evalResultsDir, dir, 'eval-result.csv');
+    let csvPath = path.join(evalResultsDir, dir, "eval-result.csv");
     if (!fs.existsSync(csvPath)) {
-      csvPath = path.join(evalResultsDir, dir, 'eval-results.csv');
+      csvPath = path.join(evalResultsDir, dir, "eval-results.csv");
     }
 
     if (!fs.existsSync(csvPath)) {
@@ -122,16 +129,18 @@ async function processResults(): Promise<void> {
       continue;
     }
 
-    const csvContent = fs.readFileSync(csvPath, 'utf-8');
+    const csvContent = fs.readFileSync(csvPath, "utf-8");
     const criteria = parseCSV(csvContent);
 
-    const { modelName, attemptNumber } = extractModelInfo(dir);
+    const {modelName, attemptNumber} = extractModelInfo(dir);
 
     // Calculate total score and max score (excluding Task completion time)
     let totalScore = 0;
     let maxScore = 0;
 
-    const scoredCriteria = criteria.filter((c) => c.name !== 'Task completion time');
+    const scoredCriteria = criteria.filter(
+      (c) => c.name !== "Task completion time" && c.name !== "Test run",
+    );
 
     for (const criterion of scoredCriteria) {
       totalScore += criterion.score;
@@ -147,7 +156,7 @@ async function processResults(): Promise<void> {
       totalScore,
       maxScore,
       percentage,
-      agentEnvironment: AGENT_ENV[dir] ?? 'Unknown',
+      agentEnvironment: AGENT_ENV[getModelBaseId(dir)] ?? "Unknown",
       criteria,
     });
   }
@@ -156,11 +165,24 @@ async function processResults(): Promise<void> {
   results.sort((a, b) => b.percentage - a.percentage);
 
   // Calculate model family averages
-  const modelAveragesMap = new Map<string, { totalScore: number; totalMaxScore: number; totalPercentage: number; count: number }>();
+  const modelAveragesMap = new Map<
+    string,
+    {
+      totalScore: number;
+      totalMaxScore: number;
+      totalPercentage: number;
+      count: number;
+    }
+  >();
 
   results.forEach((result) => {
     if (!modelAveragesMap.has(result.modelName)) {
-      modelAveragesMap.set(result.modelName, { totalScore: 0, totalMaxScore: 0, totalPercentage: 0, count: 0 });
+      modelAveragesMap.set(result.modelName, {
+        totalScore: 0,
+        totalMaxScore: 0,
+        totalPercentage: 0,
+        count: 0,
+      });
     }
     const stats = modelAveragesMap.get(result.modelName)!;
     stats.totalScore += result.totalScore;
@@ -169,13 +191,17 @@ async function processResults(): Promise<void> {
     stats.count += 1;
   });
 
-  const modelAverages: ModelFamilyAverage[] = Array.from(modelAveragesMap.entries()).map(([modelName, stats]) => ({
+  const modelAverages: ModelFamilyAverage[] = Array.from(
+    modelAveragesMap.entries(),
+  ).map(([modelName, stats]) => ({
     modelName,
     averageScore: stats.totalScore / stats.count,
     averageMaxScore: stats.totalMaxScore / stats.count,
     averagePercentage: stats.totalPercentage / stats.count,
     attemptCount: stats.count,
-    agentEnvironment: results.find((r) => r.modelName === modelName)?.agentEnvironment ?? 'Unknown',
+    agentEnvironment:
+      results.find((r) => r.modelName === modelName)?.agentEnvironment ??
+      "Unknown",
   }));
 
   // Sort model averages by percentage (highest first)
@@ -189,27 +215,31 @@ async function processResults(): Promise<void> {
   };
 
   // Write output
-  const outputPath = path.join(outputDir, 'results.json');
+  const outputPath = path.join(outputDir, "results.json");
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 
   console.log(`✓ Processed ${results.length} attempt(s)`);
   console.log(`✓ Generated ${outputPath}`);
 
   // Print individual results
-  console.log('\nIndividual Results:');
+  console.log("\nIndividual Results:");
   results.forEach((r) => {
-    console.log(`  ${r.modelName} (Attempt ${r.attemptNumber}): ${r.totalScore}/${r.maxScore} (${r.percentage.toFixed(1)}%)`);
+    console.log(
+      `  ${r.modelName} (Attempt ${r.attemptNumber}): ${r.totalScore}/${r.maxScore} (${r.percentage.toFixed(1)}%)`,
+    );
   });
 
   // Print model family averages
-  console.log('\nModel Family Averages:');
+  console.log("\nModel Family Averages:");
   modelAverages.forEach((avg) => {
-    console.log(`  ${avg.modelName}: ${avg.averageScore.toFixed(1)}/${avg.averageMaxScore.toFixed(1)} (${avg.averagePercentage.toFixed(1)}%) [${avg.attemptCount} attempt(s)]`);
+    console.log(
+      `  ${avg.modelName}: ${avg.averageScore.toFixed(1)}/${avg.averageMaxScore.toFixed(1)} (${avg.averagePercentage.toFixed(1)}%) [${avg.attemptCount} attempt(s)]`,
+    );
   });
 }
 
 // Run if executed as main module
 processResults().catch((error) => {
-  console.error('Error processing results:', error);
+  console.error("Error processing results:", error);
   process.exit(1);
 });

@@ -1,0 +1,33 @@
+---
+// src/pages/podcast.astro
+import Layout from '../layouts/Layout.astro';
+
+const meta = {
+  title: 'Podcast - Przeprogramowani.pl',
+  description: 'Regularne odcinki podcastu Przeprogramowani.pl z ciekawymi gośćmi z branży IT. Dyskusje o technologiach, karierze i życiu developerów.',
+};
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <div class="container mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Podcast</h1>
+      <p class="text-gray-600 mb-6">
+        Nasz podcast to miejsce, gdzie rozmawiamy z ciekawymi osobami z branży IT o technologiach, 
+        karierze, życiu developerów i wszystkim, co związane z programowaniem.
+      </p>
+      <p class="text-gray-600 mb-6">
+        Regularnie publikujemy nowe odcinki z gośćmi takimi jak:
+      </p>
+      <ul class="list-disc list-inside text-gray-600 mb-6">
+        <li>Doświadczeni senior developerzy</li>
+        <li>CTO i tech leadowie</li>
+        <li>Ekspertzy z różnych technologii</li>
+        <li>Osoby z nietypowych ścieżek kariery</li>
+      </ul>
+      <p class="text-gray-600">
+        Odcinki są dostępne na wszystkich popularnych platformach podcastowych oraz na naszym kanale YouTube.
+      </p>
+    </section>
+  </div>
+</Layout>

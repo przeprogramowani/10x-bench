@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <!-- Hero Section - 10xDevs -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/40 via-surface-950 to-surface-950"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-400/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-6">
+          <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+          Zapisy otwarte - Start: 18 maja 2026
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+          10xDevs <span class="text-brand-400">3.0</span>
+        </h1>
+        <p class="mt-2 text-xl sm:text-2xl font-semibold text-brand-300">
+          Dolacz do programistow nowej generacji
+        </p>
+        <p class="mt-6 text-lg text-surface-200 max-w-2xl leading-relaxed">
+          Praktyczny, 5-tygodniowy program, ktory nauczy Cie swiadomie integrowac AI w codziennej pracy programisty. Od planowania, przez implementacje, po testowanie i CI/CD.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-brand-600/25">
+            Zapisz sie na 10xDevs
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a href="#kursy" class="inline-flex items-center gap-2 px-6 py-3 border border-white/10 hover:border-white/20 text-white font-medium rounded-xl transition-all hover:bg-white/5">
+            Zobacz wszystkie kursy
+          </a>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-surface-700">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            3 700+ absolwentow
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            ~40h materialu
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Sesje live Q&A
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            14-dniowa gwarancja zwrotu
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="border-y border-white/5 bg-surface-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl font-black text-white">7+</div>
+          <div class="mt-1 text-sm text-surface-700">Lat na rynku</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-black text-white">3 700+</div>
+          <div class="mt-1 text-sm text-surface-700">Absolwentow kursow</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-black text-white">100+</div>
+          <div class="mt-1 text-sm text-surface-700">Odcinkow podcastu</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-black text-white">15 000+</div>
+          <div class="mt-1 text-sm text-surface-700">Spolecznosc programistow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="kursy" class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white">Nasze kursy</h2>
+        <p class="mt-4 text-surface-200">
+          Praktyczne szkolenia, ktore pomoga Ci wejsc na wyzszy poziom jako programista.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 10xDevs -->
+        <div class="group relative bg-gradient-to-b from-brand-600/10 to-transparent border border-brand-500/20 rounded-2xl p-8 hover:border-brand-500/40 transition-all">
+          <div class="absolute top-4 right-4 px-2 py-1 bg-brand-600/20 text-brand-300 text-xs font-semibold rounded-full">
+            Bestseller
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-brand-600/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white">10xDevs 3.0</h3>
+          <p class="mt-3 text-sm text-surface-200 leading-relaxed">
+            Naucz sie swiadomie wykorzystywac AI w calym cyklu tworzenia oprogramowania. Od planowania po CI/CD.
+          </p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              5 tygodni intensywnej nauki
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Cursor, Claude, Copilot
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Sesje live co tydzien
+            </li>
+          </ul>
+          <a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-1 text-brand-400 text-sm font-semibold hover:text-brand-300 transition-colors">
+            Dowiedz sie wiecej
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Opanuj Frontend -->
+        <div class="group bg-white/[0.02] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-brand-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white">Opanuj Frontend</h3>
+          <p class="mt-1 text-xs text-brand-300 font-medium">AI Edition</p>
+          <p class="mt-3 text-sm text-surface-200 leading-relaxed">
+            10-tygodniowy program, ktory zrobi z Ciebie kompletnego frontend developera. 5 modulow, od patternu po architekture.
+          </p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              25 lekcji z cwiczeniami
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              React, Vue, Angular, Svelte
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              383+ absolwentow
+            </li>
+          </ul>
+          <a href="https://opanujfrontend.pl/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-1 text-brand-400 text-sm font-semibold hover:text-brand-300 transition-colors">
+            Dowiedz sie wiecej
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Opanuj TypeScript -->
+        <div class="group bg-white/[0.02] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white">Opanuj TypeScript</h3>
+          <p class="mt-1 text-xs text-blue-300 font-medium">Frontend Pro</p>
+          <p class="mt-3 text-sm text-surface-200 leading-relaxed">
+            Zaawansowany kurs TypeScript 5 i React 19. Generyki, zaawansowane typowanie i produkcyjne wzorce.
+          </p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              TypeScript 5 + React 19
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Zod, tRPC, React Query
+            </li>
+            <li class="flex items-center gap-2 text-sm text-surface-200">
+              <svg class="w-4 h-4 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Dozywotni dostep
+            </li>
+          </ul>
+          <a href="https://opanujtypescript.pl/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-1 text-brand-400 text-sm font-semibold hover:text-brand-300 transition-colors">
+            Dowiedz sie wiecej
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 sm:py-28 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-700 to-brand-900 p-8 sm:p-12">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+        <div class="relative max-w-xl">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Przeprogramowany Newsletter</h2>
+          <p class="mt-4 text-brand-100">
+            Co piatek - najlepsze materialy, narzedzia i rekomendacje ze swiata programowania i AI. Dolacz do 15 000+ programistow.
+          </p>
+          <a href="https://przeprogramowani.pl/newsletter" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-800 font-semibold rounded-xl hover:bg-brand-50 transition-colors">
+            Zapisz sie do newslettera
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

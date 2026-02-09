@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: "Marcin Czarkowski",
+    role: "Co-founder",
+    image: "https://via.placeholder.com/150",
+    bio: "Pasjonat technologii i edukacji. Współtwórca Przeprogramowanych."
+  },
+  {
+    name: "Przemek Smyrdek",
+    role: "Co-founder",
+    image: "https://via.placeholder.com/150",
+    bio: "Programista z wieloletnim doświadczeniem. Mentor i edukator."
+  },
+  {
+    name: "Adam Gospodarczyk",
+    role: "Co-founder",
+    image: "https://via.placeholder.com/150",
+    bio: "Ekspert od JavaScript i ekosystemu webowego. Twórca kursów."
+  }
+];
+---
+
+<Layout title="O nas">
+  <div class="bg-white py-24 sm:py-32">
+    <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Poznaj nasz zespół</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Przeprogramowani to platforma edukacyjna założona w 2019 roku. Naszym celem jest zmiana sposobu myślenia o programowaniu - łączymy twarde umiejętności techniczne z kompetencjami miękkimi i zrozumieniem biznesu.
+        </p>
+        <p class="mt-4 text-lg leading-8 text-gray-600">
+            Wierzymy, że dobry programista to nie tylko kod, ale także komunikacja, empatia i strategiczne podejście do rozwiązywania problemów.
+        </p>
+      </div>
+      <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+        {team.map((person) => (
+          <li>
+            <div class="flex items-center gap-x-6">
+              <img class="h-16 w-16 rounded-full bg-gray-50" src={person.image} alt={person.name} />
+              <div>
+                <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{person.name}</h3>
+                <p class="text-sm font-semibold leading-6 text-indigo-600">{person.role}</p>
+                 <p class="mt-2 text-sm text-gray-500">{person.bio}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</Layout>

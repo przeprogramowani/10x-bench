@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { Play, Clock, Headphones, ExternalLink } from 'lucide-react';
+import '../styles/global.css';
+
+const podcasts = [
+  {
+    title: 'Opanuj.AI Podcast',
+    description: 'Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI',
+    listeners: '4000+',
+    color: 'from-purple-600 to-pink-600',
+    episodes: [
+      {
+        title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma',
+        duration: '01:23:04',
+        date: 'Styczeń 2026',
+        description: 'ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny.',
+        href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4',
+      },
+      {
+        title: 'Wielkie Podsumowanie AI w 2025',
+        duration: '01:47:28',
+        date: 'Grudzień 2025',
+        description: 'OpenAI czy Google? GPT-5.2 czy Gemini 3? Podsumowanie roku w świecie AI.',
+        href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5',
+      },
+      {
+        title: 'GPT-5.2 to GEMINI KILLER?',
+        duration: '00:58:41',
+        date: 'Grudzień 2025',
+        description: 'Gorące premiery grudnia – czy GPT-5.2 wystarczy OpenAI, by odzyskać koronę?',
+        href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf',
+      },
+      {
+        title: 'Cursor 2.0 vs Windsurf SWE-1.5',
+        duration: '01:14:37',
+        date: 'Listopad 2025',
+        description: 'Nowa era programowania z AI już tu jest. Porównanie najpopularniejszych edytorów.',
+        href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Cursor-2-0-vs-Windsurf-SWE-1-5---dobrze--szybko-i-tanio--Nowa-era-programowania-z-AI-ju-tu-jest--DGX-Spark--ChatGPT-Atlas-i-nanochat-e3af168',
+      },
+    ],
+  },
+  {
+    title: 'Przeprogramowani ft. Gość',
+    description: 'Rozmowy dla głodnych wiedzy z ciekawymi osobami z branży IT',
+    listeners: '3800+',
+    color: 'from-primary-600 to-primary-800',
+    episodes: [
+      {
+        title: 'Programista vs. Angielski: Od strachu do sukcesu',
+        duration: '00:33:45',
+        date: 'Luty 2026',
+        description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów.',
+        href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo',
+      },
+      {
+        title: 'O dojrzewaniu zawodowym programisty',
+        duration: '00:45:56',
+        date: 'Styczeń 2026',
+        description: 'Wojciech Trawiński opowiada o drodze od młodego entuzjasty do doświadczonego profesjonalisty.',
+        href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn',
+      },
+      {
+        title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+        duration: '01:16:44',
+        date: 'Październik 2025',
+        description: 'W rozmowie z Tomaszem Ducinem badamy jak architektura wykracza poza konkretne narzędzia.',
+        href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3',
+      },
+      {
+        title: 'Co nowego w TypeScript?',
+        duration: '01:36:34',
+        date: 'Wrzesień 2025',
+        description: 'Zmiany w języku i nasze plany konferencyjne.',
+        href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm',
+      },
+    ],
+  },
+];
+
+const platforms = [
+  { name: 'Spotify', href: 'https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o' },
+  { name: 'Apple Podcasts', href: 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250' },
+  { name: 'Google Podcasts', href: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw' },
+  { name: 'RSS', href: 'https://anchor.fm/s/22544b7c/podcast/rss' },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani.pl">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero -->
+    <section class="relative bg-gradient-to-br from-purple-900 via-slate-900 to-slate-900 text-white py-20">
+      <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" />
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-8">
+          <Headphones className="h-10 w-10" />
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Podcasty Przeprogramowanych
+        </h1>
+        <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu.
+          Ponad 7800 słuchaczy regularnie towarzyszy nam w drodze do pracy.
+        </p>
+        
+        <!-- Platforms -->
+        <div class="flex flex-wrap justify-center gap-4">
+          {platforms.map((platform) => (
+            <a
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full text-white font-medium transition-colors backdrop-blur-sm"
+            >
+              {platform.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Podcasts -->
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {podcasts.map((podcast, index) => (
+          <div class={`${index > 0 ? 'mt-20' : ''}`}>
+            <div class="flex items-center space-x-4 mb-8">
+              <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${podcast.color} flex items-center justify-center text-white text-2xl font-bold`}>
+                {podcast.title.charAt(0)}
+              </div>
+              <div>
+                <h2 class="text-3xl font-bold text-slate-900">{podcast.title}</h2>
+                <p class="text-slate-600">{podcast.description}</p>
+                <div class="flex items-center text-sm text-slate-500 mt-1">
+                  <Headphones className="h-4 w-4 mr-1" />
+                  Ponad {podcast.listeners} słuchaczy
+                </div>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              {podcast.episodes.map((episode) => (
+                <a
+                  href={episode.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg hover:border-primary-300 transition-all"
+                >
+                  <div class="flex items-start justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                        <Play className="h-5 w-5 ml-0.5" />
+                      </div>
+                      <div>
+                        <div class="flex items-center text-sm text-slate-500">
+                          <Clock className="h-3 w-3 mr-1" />
+                          {episode.duration}
+                        </div>
+                        <div class="text-sm text-slate-400">{episode.date}</div>
+                      </div>
+                    </div>
+                    <ExternalLink className="h-5 w-5 text-slate-400 group-hover:text-primary-600 transition-colors" />
+                  </div>
+                  <h3 class="text-lg font-semibold text-slate-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    {episode.title}
+                  </h3>
+                  <p class="text-slate-600 text-sm line-clamp-2">
+                    {episode.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Nie przegap nowego odcinka
+        </h2>
+        <p class="text-lg text-slate-600 mb-8">
+          Zapisz się do naszego newslettera, aby być na bieżąco z nowymi odcinkami i materiałami.
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors"
+        >
+          Zapisz się na newsletter
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <Footer client:visible />
+</Layout>

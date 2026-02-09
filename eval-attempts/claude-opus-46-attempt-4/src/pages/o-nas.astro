@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TeamMember from "../components/TeamMember";
+---
+
+<Layout
+  title="O nas — Przeprogramowani"
+  description="Poznaj zespół Przeprogramowani. Szersze spojrzenie na programowanie od 2017 roku."
+>
+  <!-- Mission -->
+  <section class="py-20">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <span
+        class="mb-4 inline-block rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-sm font-medium text-brand-300"
+      >
+        Od 2017 roku
+      </span>
+      <h1 class="mt-4 text-4xl font-extrabold text-white md:text-5xl">
+        Szersze spojrzenie na programowanie
+      </h1>
+      <p
+        class="mt-6 text-lg leading-relaxed text-surface-300 md:text-xl"
+      >
+        Przeprogramowani to inicjatywa edukacyjna założona przez Przemka Smyrdka
+        i Marcina Czarkowskiego. Od ponad 7 lat pomagamy programistom rozwijać
+        umiejętności poprzez kursy online, podcast i treści na YouTube.
+      </p>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="border-y border-surface-800 bg-surface-900/30 py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="text-center">
+          <div
+            class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 text-2xl"
+          >
+            🎯
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-white">Praktyczne podejście</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Uczymy przez praktykę. Każdy kurs opiera się na realnych projektach
+            i aktualnych technologiach stosowanych w branży.
+          </p>
+        </div>
+        <div class="text-center">
+          <div
+            class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 text-2xl"
+          >
+            🤝
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-white">Społeczność</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Budujemy aktywną społeczność ponad 15 000 developerów, którzy
+            wspierają się nawzajem w rozwoju kariery.
+          </p>
+        </div>
+        <div class="text-center">
+          <div
+            class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 text-2xl"
+          >
+            🚀
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-white">Nowoczesność</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Śledzimy najnowsze trendy — od AI po edge computing. Nasi
+            absolwenci są przygotowani na wyzwania jutra.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20">
+    <div class="mx-auto max-w-4xl px-4">
+      <h2 class="mb-10 text-center text-3xl font-bold text-white">
+        Nasz zespół
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <TeamMember
+          client:load
+          name="Przemek Smyrdek"
+          role="Co-founder, Frontend Architect"
+          bio="Inżynier oprogramowania z wieloletnim doświadczeniem w architekturze frontendowej. Pracował m.in. w Huuuge Games i SmartRecruiters. Pasjonat nowoczesnych technologii webowych, edukacji i dzielenia się wiedzą."
+          expertise={["React", "TypeScript", "Architektura", "AI", "Cloudflare"]}
+          linkedIn="https://www.linkedin.com/in/psmyrdek/"
+          github="https://github.com/psmyrdek"
+        />
+        <TeamMember
+          client:load
+          name="Marcin Czarkowski"
+          role="Co-founder, Full-stack Developer"
+          bio="Full-stack developer z doświadczeniem w budowaniu skalowalnych aplikacji webowych. Współtwórca kursów programowania i prowadzący podcast Przeprogramowani. Specjalizuje się w backendie i DevOps."
+          expertise={["Node.js", "DevOps", "Backend", "Architektura", "Cloud"]}
+          linkedIn="https://www.linkedin.com/in/marcinczarkowski/"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="border-t border-surface-800 bg-surface-900/30 py-16">
+    <div class="mx-auto max-w-4xl px-4 text-center">
+      <h2 class="mb-3 text-2xl font-bold text-white">
+        Zaufali nam
+      </h2>
+      <p class="mb-10 text-surface-400">
+        Nasi twórcy pracowali z wiodącymi firmami technologicznymi
+      </p>
+      <div
+        class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-lg font-semibold text-surface-500"
+      >
+        <span>Huuuge Games</span>
+        <span>SmartRecruiters</span>
+        <span>Autodesk</span>
+        <span>Sabre</span>
+        <span>Aptitude Software</span>
+      </div>
+    </div>
+  </section>
+</Layout>

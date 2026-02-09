@@ -1,0 +1,170 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { courses, founders, hero10x, stats } from "../data/site";
+import { formatPolishDate } from "../lib/date";
+import { getLatestPodcastEpisodes, getLatestYoutubeVideos } from "../lib/feeds";
+
+const [podcastEpisodes, youtubeVideos] = await Promise.all([
+  getLatestPodcastEpisodes(3),
+  getLatestYoutubeVideos(3),
+]);
+---
+
+<MainLayout
+  title="Przeprogramowani | Edukacja technologiczna dla developerów"
+  description="Nowoczesna edukacja technologiczna: kursy, podcast i YouTube dla developerów, którzy chcą budować przewagę na rynku pracy."
+  currentPath={Astro.url.pathname}
+>
+  <section class="hero-panel overflow-hidden rounded-3xl p-6 shadow-2xl sm:p-10">
+    <p class="fade-up text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200/80">{hero10x.kicker}</p>
+    <h1 class="fade-up-delayed mt-4 max-w-3xl font-heading text-3xl leading-tight text-white sm:text-5xl">
+      {hero10x.name}: {hero10x.headline}
+    </h1>
+    <p class="fade-up-late mt-5 max-w-2xl text-base text-slate-200 sm:text-lg">{hero10x.description}</p>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-3">
+      {
+        hero10x.highlights.map((highlight) => (
+          <div class="card-float rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100">{highlight}</div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href={hero10x.url}
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-xl bg-cyan-300 px-5 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-cyan-200"
+      >
+        Sprawdź 10xDevs
+      </a>
+      <a
+        href="/podcast"
+        class="rounded-xl border border-white/20 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+      >
+        Ostatnie odcinki podcastu
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      stats.map((stat) => (
+        <article class="glow-card rounded-2xl p-5">
+          <p class="font-heading text-3xl font-bold text-cyan-200">{stat.value}</p>
+          <p class="mt-1 text-sm text-slate-300">{stat.label}</p>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="mt-14">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Kursy</p>
+        <h2 class="mt-2 font-heading text-2xl text-white sm:text-3xl">Programy, które rozwijają nowoczesnych developerów</h2>
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-5 lg:grid-cols-2">
+      {
+        courses.map((course) => (
+          <article class="glow-card rounded-2xl p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">{course.label}</p>
+            <h3 class="mt-2 font-heading text-2xl text-white">{course.name}</h3>
+            <p class="mt-3 text-slate-300">{course.description}</p>
+            <ul class="mt-4 space-y-1 text-sm text-slate-200">
+              {course.details.map((detail) => <li>• {detail}</li>)}
+            </ul>
+            <a
+              href={course.url}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-5 inline-flex rounded-lg border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-300/10"
+            >
+              Przejdź do strony kursu
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-14 grid gap-8 lg:grid-cols-2">
+    <div>
+      <div class="mb-4 flex items-end justify-between">
+        <h2 class="font-heading text-2xl text-white">Podcast - ostatnie odcinki</h2>
+        <a href="/podcast" class="text-sm text-cyan-200 hover:text-cyan-100">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-4">
+        {
+          podcastEpisodes.map((episode) => (
+            <article class="glow-card rounded-2xl p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-400">{formatPolishDate(episode.publishedAt)}</p>
+              <h3 class="mt-2 text-base font-semibold text-white">{episode.title}</h3>
+              <a
+                href={episode.url}
+                target="_blank"
+                rel="noreferrer"
+                class="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100"
+              >
+                Słuchaj odcinka
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <div class="mb-4 flex items-end justify-between">
+        <h2 class="font-heading text-2xl text-white">YouTube - ostatnie filmy</h2>
+        <a href="/youtube" class="text-sm text-cyan-200 hover:text-cyan-100">Zobacz wszystkie</a>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          youtubeVideos.map((video) => (
+            <article class="glow-card overflow-hidden rounded-2xl">
+              <a href={video.url} target="_blank" rel="noreferrer">
+                <img
+                  src={video.thumbnail ?? "/favicon.svg"}
+                  alt={video.title}
+                  loading="lazy"
+                  class="aspect-video w-full object-cover"
+                />
+              </a>
+              <div class="p-4">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">{formatPolishDate(video.publishedAt)}</p>
+                <h3 class="mt-2 text-sm font-semibold text-white">{video.title}</h3>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14 rounded-3xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
+    <p class="text-xs uppercase tracking-[0.2em] text-slate-400">O nas</p>
+    <h2 class="mt-2 font-heading text-2xl text-white sm:text-3xl">Łączymy programowanie, biznes i rozwój</h2>
+    <p class="mt-4 max-w-3xl text-slate-300">
+      Przeprogramowani to społeczność budowana przez praktyków. Tworzymy kursy, podcast i materiały, które pomagają
+      podejmować lepsze decyzje technologiczne i świadomie rozwijać karierę.
+    </p>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {
+        founders.map((founder) => (
+          <article class="rounded-2xl border border-white/10 bg-slate-950/40 p-5">
+            <h3 class="font-heading text-xl text-white">{founder.name}</h3>
+            <p class="mt-1 text-sm font-semibold text-cyan-200">{founder.role}</p>
+            <p class="mt-3 text-sm text-slate-300">{founder.bio}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <a href="/o-nas" class="mt-6 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">Poznaj nas lepiej</a>
+  </section>
+</MainLayout>

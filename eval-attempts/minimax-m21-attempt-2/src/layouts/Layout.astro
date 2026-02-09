@@ -1,0 +1,28 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Przeprogramowani.pl - Szersze spojrzenie na programowanie. Programy edukacyjne, podcasty i kursy dla ambitnych programistów." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{title} | Przeprogramowani.pl</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot name="header" />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

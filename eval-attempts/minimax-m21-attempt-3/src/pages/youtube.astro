@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import YouTubeCard from '../components/YouTubeCard';
+
+const videos = [
+  {
+    videoId: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+  },
+  {
+    videoId: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+  },
+  {
+    videoId: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=b-gOI128G2s',
+  },
+  {
+    videoId: 'WJLGzf7qq-c',
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów',
+    thumbnail: 'https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=WJLGzf7qq-c',
+  },
+  {
+    videoId: 'jjOYxKAk_j8',
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+    thumbnail: 'https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=jjOYxKAk_j8',
+  },
+  {
+    videoId: 'iSG7PUxjfww',
+    title: 'Special webinar for Builders: Tu zaczyna się Twój AI-ready project',
+    thumbnail: 'https://i3.ytimg.com/vi/iSG7PUxjfww/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=iSG7PUxjfww',
+  },
+  {
+    videoId: '2YzRk7u2bFw',
+    title: '10xDevs 3.0 - Programuj z AI jak profesjonalista',
+    thumbnail: 'https://i3.ytimg.com/vi/2YzRk7u2bFw/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=2YzRk7u2bFw',
+  },
+  {
+    videoId: 'N6qP8V3fQ8Q',
+    title: 'Opanuj TypeScript 5 - Od podstaw do zaawansowanych technik',
+    thumbnail: 'https://i3.ytimg.com/vi/N6qP8V3fQ8Q/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=N6qP8V3fQ8Q',
+  },
+  {
+    videoId: 'mS3m7T1MQ9k',
+    title: 'AI Coding Best Practices - Jak efektywnie wykorzystywać AI w programowaniu',
+    thumbnail: 'https://i3.ytimg.com/vi/mS3m7T1MQ9k/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=mS3m7T1MQ9k',
+  },
+];
+---
+
+<Layout title="YouTube" description="Najnowsze filmy z kanału Przeprogramowani - programowanie, AI, JavaScript, TypeScript i wiele więcej.">
+  <Header client:load currentPath="/youtube" />
+  <main className="flex-grow pt-16">
+    <section className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+          <div className="flex-1">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              Nasz <span className="text-red-500">YouTube</span>
+            </h1>
+            <p className="text-xl text-gray-400">
+              Najnowsze materiały o programowaniu, AI i nowoczesnych technologiach.
+              Subskrybuj i bądź na bieżąco!
+            </p>
+          </div>
+          <div className="flex gap-4">
+            <a
+              href="https://www.youtube.com/@przeprogramowani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              Subskrybuj
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-dark/50 rounded-2xl border border-gray-800 p-8 mb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-white">@przeprogramowani</h2>
+              <p className="text-gray-400">Programowanie, AI, JavaScript, TypeScript</p>
+            </div>
+          </div>
+          <div className="flex gap-8 text-center">
+            <div>
+              <p className="text-2xl font-bold text-white">50K+</p>
+              <p className="text-sm text-gray-500">subskrybentów</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white">300+</p>
+              <p className="text-sm text-gray-500">filmów</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white">5M+</p>
+              <p className="text-sm text-gray-500">wyświetleń</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-6">Najnowsze filmy</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {videos.map((video) => (
+            <YouTubeCard
+              client:visible
+              videoId={video.videoId}
+              title={video.title}
+              thumbnail={video.thumbnail}
+              href={video.href}
+            />
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="https://www.youtube.com/@przeprogramowani/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          >
+            Zobacz wszystkie filmy na YouTube
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

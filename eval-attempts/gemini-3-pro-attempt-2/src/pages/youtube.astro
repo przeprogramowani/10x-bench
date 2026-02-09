@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard';
+import { youtubeVideos } from '../data/content';
+---
+
+<Layout title="YouTube">
+    <div class="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Kanał YouTube
+                </h1>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Zobacz nasze tutoriale, vlogi i relacje z konferencji.
+                </p>
+            </div>
+            
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {youtubeVideos.map(video => (
+                    <VideoCard client:visible {...video} />
+                ))}
+            </div>
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,64 @@
+---
+// Footer component
+const socialLinks = [
+  { name: 'Facebook', href: 'https://facebook.com/przeprogramowani', icon: 'f' },
+  { name: 'Instagram', href: 'https://instagram.com/przeprogramowani', icon: 'i' },
+  { name: 'YouTube', href: 'https://youtube.com/c/przeprogramowani', icon: 'y' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/company/przeprogramowani', icon: 'l' },
+];
+---
+
+<footer class="bg-gray-50 border-t border-gray-200 mt-16">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Logo and description -->
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold text-lg">P</span>
+          </div>
+          <span class="font-bold text-xl text-gray-900">Przeprogramowani</span>
+        </div>
+        <p class="text-gray-600 mb-6">
+          Edukacja technologiczna w epoce AI. Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach.
+        </p>
+        <p class="text-gray-600">
+          kontakt@przeprogramowani.pl
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h3 class="font-bold text-lg text-gray-900 mb-4">Szybkie linki</h3>
+        <ul class="space-y-2">
+          <li><a href="/o-nas" class="text-gray-600 hover:text-blue-600 transition-colors">O Nas</a></li>
+          <li><a href="/podcast" class="text-gray-600 hover:text-blue-600 transition-colors">Podcast</a></li>
+          <li><a href="/youtube" class="text-gray-600 hover:text-blue-600 transition-colors">YouTube</a></li>
+          <li><a href="/kursy" class="text-gray-600 hover:text-blue-600 transition-colors">Kursy</a></li>
+        </ul>
+      </div>
+
+      <!-- Social media -->
+      <div>
+        <h3 class="font-bold text-lg text-gray-900 mb-4">Social media</h3>
+        <div class="flex space-x-4">
+          {socialLinks.map((link) => (
+            <a 
+              href={link.href} 
+              class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.name}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+      <p>© {new Date().getFullYear()} Przeprogramowani.pl — Szersze spojrzenie na programowanie</p>
+    </div>
+  </div>
+</footer>

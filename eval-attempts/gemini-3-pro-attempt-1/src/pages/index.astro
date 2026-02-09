@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Courses from '../components/Courses';
+import PodcastList from '../components/PodcastList';
+import VideoList from '../components/VideoList';
+---
+
+<Layout title="Przeprogramowani.pl - Nowoczesna edukacja dla programistów">
+	<Hero client:load />
+	<Courses client:visible />
+	<PodcastList limit={3} client:visible />
+	<VideoList limit={4} client:visible />
+</Layout>

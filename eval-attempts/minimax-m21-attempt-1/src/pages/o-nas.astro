@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
+
+const title = 'O nas - Przeprogramowani';
+const description = 'Poznaj historię Przeprogramowani. Dowiedz się więcej o naszej misji, zespole i wartościach, które nas definiują.';
+---
+
+<Layout title={title} description={description}>
+  <Header client:load currentPath="/o-nas" />
+  
+  <main id="main-content">
+    {/* Hero Section */}
+    <section className="relative py-20 sm:py-24 bg-gray-950">
+      <div className="max-w-screen-xl mx-auto px-4 text-center">
+        <span className="inline-block text-xs font-semibold uppercase tracking-wider text-turquoise bg-turquoise/10 border border-turquoise/20 rounded-full px-3 py-1 mb-6">
+          O nas
+        </span>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white font-heading mb-6">
+          Kim jesteśmy?
+        </h1>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Jesteśmy zespołem pasjonatów programowania, którzy wierzą, że edukacja może 
+          zmienić życie i karierę. Tworzymy treści, które pomagają programistom 
+          rozwijać się szybciej i efektywniej.
+        </p>
+      </div>
+    </section>
+
+    {/* Our Story */}
+    <section className="py-20 bg-gray-900">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+          <div>
+            <h2 className="text-3xl font-bold text-white font-heading mb-6">
+              Nasza historia
+            </h2>
+            <div className="space-y-6 text-gray-300">
+              <p>
+                <strong className="text-white">Przeprogramowani</strong> powstali w 2017 roku 
+                z prostą misją: pomóc programistom rozwijać kompetencje w sposób 
+                efektywny i praktyczny.
+              </p>
+              <p>
+                Zaczęliśmy od bloga technicznego, szybko rozszerzając działalność 
+                o kursy online, podcast i kanał na YouTube. Dziś jesteśmy jedną 
+                z najpopularniejszych polskich platform edukacyjnych dla programistów.
+              </p>
+              <p>
+                Naszą specjalnością jest łączenie praktycznej wiedzy technicznej 
+                z nowoczesnymi trendami w branży IT. Byliśmy jednymi z pierwszych, 
+                którzy zaczęli intensywnie promować naukę programowania z wykorzystaniem AI.
+              </p>
+            </div>
+          </div>
+          <div className="mt-12 lg:mt-0">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-6 bg-gray-800/50 rounded-xl text-center border border-gray-700">
+                <p className="text-4xl font-bold text-main font-heading">2017</p>
+                <p className="text-sm text-gray-400 mt-2">Rok założenia</p>
+              </div>
+              <div className="p-6 bg-gray-800/50 rounded-xl text-center border border-gray-700">
+                <p className="text-4xl font-bold text-main font-heading">400+</p>
+                <p className="text-sm text-gray-400 mt-2">Absolwentów</p>
+              </div>
+              <div className="p-6 bg-gray-800/50 rounded-xl text-center border border-gray-700">
+                <p className="text-4xl font-bold text-main font-heading">50K+</p>
+                <p className="text-sm text-gray-400 mt-2">Społeczność</p>
+              </div>
+              <div className="p-6 bg-gray-800/50 rounded-xl text-center border border-gray-700">
+                <p className="text-4xl font-bold text-main font-heading">500+</p>
+                <p className="text-sm text-gray-400 mt-2">Treści</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Values */}
+    <section className="py-20 bg-gray-950">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-white font-heading mb-4">
+            Nasze wartości
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Wartości, które definiują naszą pracę i podejście do edukacji
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="p-8 bg-gray-900 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
+            <span className="text-4xl">🎯</span>
+            <h3 className="text-xl font-bold text-white mt-4 mb-3">Praktyczność</h3>
+            <p className="text-gray-400">
+              Wierzymy, że najlepsza nauka to nauka przez praktykę. Nasze kursy 
+              i treści są pełne realnych przykładów i projektów.
+            </p>
+          </div>
+          <div className="p-8 bg-gray-900 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
+            <span className="text-4xl">🚀</span>
+            <h3 className="text-xl font-bold text-white mt-4 mb-3">Innowacyjność</h3>
+            <p className="text-gray-400">
+              Jesteśmy na bieżąco z najnowszymi trendami technologicznymi. 
+              Pomagamy programistom być o krok przed resztą rynku.
+            </p>
+          </div>
+          <div className="p-8 bg-gray-900 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
+            <span className="text-4xl">💡</span>
+            <h3 className="text-xl font-bold text-white mt-4 mb-3">Pasja</h3>
+            <p className="text-gray-400">
+              Programujemy, bo to kochamy. Nasza pasja do kodu przekłada się 
+              na jakość treści, które tworzymy dla Ciebie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* What We Do */}
+    <section className="py-20 bg-gray-900">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-white font-heading mb-4">
+            Co robimy?
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Oferujemy kompleksowe wsparcie dla programistów na każdym etapie kariery
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" className="group p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-orange-600 transition-colors">
+            <span className="text-3xl">🤖</span>
+            <h3 className="text-lg font-semibold text-white mt-3 group-hover:text-orange-500 transition-colors">Kursy AI</h3>
+            <p className="text-sm text-gray-400 mt-2">
+              10xDevs - programowanie z AI
+            </p>
+          </a>
+          <a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" className="group p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-pink-600 transition-colors">
+            <span className="text-3xl">🎨</span>
+            <h3 className="text-lg font-semibold text-white mt-3 group-hover:text-pink-500 transition-colors">Frontend</h3>
+            <p className="text-sm text-gray-400 mt-2">
+              Opanuj Frontend - React i TypeScript
+            </p>
+          </a>
+          <a href="/podcast" className="group p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-600 transition-colors">
+            <span className="text-3xl">🎙️</span>
+            <h3 className="text-lg font-semibold text-white mt-3 group-hover:text-purple-500 transition-colors">Podcast</h3>
+            <p className="text-sm text-gray-400 mt-2">
+              Przeprogramowany Podcast
+            </p>
+          </a>
+          <a href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" className="group p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-red-600 transition-colors">
+            <span className="text-3xl">📺</span>
+            <h3 className="text-lg font-semibold text-white mt-3 group-hover:text-red-500 transition-colors">YouTube</h3>
+            <p className="text-sm text-gray-400 mt-2">
+              Tutoriale i webinary
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* Contact CTA */}
+    <section className="py-20 bg-gray-950">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-white font-heading mb-4">
+            Chcesz się z nami skontaktować?
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Masz pytania o kursy, współpracę lub cokolwiek innego? 
+            Napisz do nas, a odpowiemy najszybciej jak to możliwe.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="mailto:kontakt@przeprogramowani.pl" className="btn-primary">
+              Napisz do nas
+            </a>
+            <a href="https://www.linkedin.com/company/przeprogramowani" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer client:load />
+</Layout>

@@ -1,0 +1,48 @@
+---
+// src/layouts/Layout.astro
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description || "Przeprogramowani.pl - Nauka programowania w języku polskim"} />
+    <title>{title || "Przeprogramowani.pl"}</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="bg-gray-800 text-white">
+      <div class="container mx-auto px-4 py-4">
+        <nav class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-bold">Przeprogramowani.pl</a>
+          <div class="hidden md:flex space-x-6">
+            <a href="/courses/opanuj-frontend" class="hover:text-gray-300">Opanuj Frontend</a>
+            <a href="/courses/opanuj-typescript" class="hover:text-gray-300">Opanuj TypeScript</a>
+            <a href="/courses/10xdevs" class="hover:text-gray-300">10xDevs</a>
+            <a href="/podcast" class="hover:text-gray-300">Podcast</a>
+            <a href="/youtube" class="hover:text-gray-300">YouTube</a>
+            <a href="/about" class="hover:text-gray-300">O nas</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2026 Przeprogramowani.pl. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </footer>
+  </body>
+</html>

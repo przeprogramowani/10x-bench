@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Courses
+const courses = [
+  {
+    title: "10xDevs 3.0",
+    description: "Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.",
+    image: "/img/10xdevs-hero.jpg",
+    link: "https://10xdevs.pl",
+    tag: "Nowość"
+  },
+  {
+    title: "Opanuj Frontend: AI Edition",
+    description: "Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!",
+    image: "/img/featured/kurs-ofe.jpg",
+    link: "https://www.opanujfrontend.pl",
+    tag: "Kurs"
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!",
+    image: "/img/featured/kurs-ots.jpg",
+    link: "https://www.opanujtypescript.pl",
+    tag: "Kurs"
+  },
+  {
+    title: "Opanuj AI",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy.",
+    image: "/img/featured/kurs-ai.jpg",
+    link: "https://opanuj.ai",
+    tag: "AI"
+  }
+];
+---
+
+<Layout title="Kursy">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nasze kursy</h1>
+        <p class="text-xl text-gray-600 mb-8">Edukacja technologiczna w epoce AI</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courses.map((course) => (
+          <a 
+            href={course.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="block group"
+          >
+            <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {course.tag}
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{course.title}</h3>
+                <p class="text-gray-600">{course.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

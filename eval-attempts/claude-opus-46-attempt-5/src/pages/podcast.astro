@@ -1,0 +1,208 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const opanujAiEpisodes = [
+  {
+    title: "AI w praktyce programisty — jak zacząć?",
+    description: "Omawiamy praktyczne sposoby wykorzystania AI w codziennej pracy programisty. Od GitHub Copilot po Claude — które narzędzia naprawdę przyspieszają pracę.",
+    category: "AI",
+    duration: "45 min",
+  },
+  {
+    title: "Prompt engineering dla developerów",
+    description: "Jak pisać efektywne prompty, by uzyskać lepszy kod od AI. Techniki few-shot, chain-of-thought i ich zastosowanie w programowaniu.",
+    category: "AI",
+    duration: "38 min",
+  },
+  {
+    title: "Cursor, Copilot, Claude Code — porównanie narzędzi AI",
+    description: "Szczegółowe porównanie najpopularniejszych AI-assisted coding tools. Który sprawdzi się najlepiej w Twoim workflow?",
+    category: "Narzędzia",
+    duration: "52 min",
+  },
+  {
+    title: "AI agents w programowaniu — przyszłość jest teraz",
+    description: "Czym są agenty AI i jak mogą zrewolucjonizować sposób, w jaki tworzymy oprogramowanie. Praktyczne demo i case studies.",
+    category: "AI",
+    duration: "41 min",
+  },
+  {
+    title: "RAG i embeddingi — budujemy AI z własną bazą wiedzy",
+    description: "Krok po kroku budujemy system RAG. Od embeddingów przez vector store po integrację z LLM. Pełny tutorial z kodem.",
+    category: "Tutorial",
+    duration: "56 min",
+  },
+  {
+    title: "Vibe coding — czy AI zastąpi programistów?",
+    description: "Szczera rozmowa o przyszłości zawodu programisty w erze AI. Jakie umiejętności będą kluczowe i jak się przygotować na zmiany.",
+    category: "Kariera",
+    duration: "48 min",
+  },
+];
+
+const przeprogramowaniEpisodes = [
+  {
+    title: "Od juniora do seniora — ścieżka kariery w 2025",
+    description: "Jak wygląda realistyczna ścieżka rozwoju programisty. Gość: doświadczony tech lead z 15+ latami w branży.",
+    category: "Kariera",
+    duration: "62 min",
+  },
+  {
+    title: "System design interview — jak się przygotować",
+    description: "Praktyczne wskazówki na rozmowy z system design. Omawiamy popularne pytania i strategie ich rozwiązywania.",
+    category: "Kariera",
+    duration: "55 min",
+  },
+  {
+    title: "TypeScript w 2025 — co nowego i co warto wiedzieć",
+    description: "Przegląd najnowszych features TypeScript, trendy w ekosystemie i praktyczne porady dla frontend developerów.",
+    category: "Technologia",
+    duration: "43 min",
+  },
+  {
+    title: "Architektura mikroserwisów — lekcje z produkcji",
+    description: "Gość dzieli się doświadczeniami z migracji monolitu do mikroserwisów. Co poszło dobrze, a co by zrobił inaczej.",
+    category: "Architektura",
+    duration: "58 min",
+  },
+  {
+    title: "Remote work w IT — jak budować karierę zdalnie",
+    description: "Praktyczne wskazówki dla programistów pracujących zdalnie. Komunikacja, produktywność i budowanie relacji w zespole.",
+    category: "Kariera",
+    duration: "47 min",
+  },
+  {
+    title: "Open source — jak zacząć kontrybuować",
+    description: "Krok po kroku — od pierwszego PR-a po zostanie maintainerem. Jak open source może przyspieszyć Twoją karierę.",
+    category: "Społeczność",
+    duration: "51 min",
+  },
+];
+---
+
+<Layout title="Podcast — Przeprogramowani">
+  <!-- Header -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/20 via-surface-950 to-brand-800/10"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">Podcast</h1>
+        <p class="text-lg text-surface-400 leading-relaxed mb-8">
+          Dwa podcasty, jedna misja — pomagamy programistom rozwijać się szybciej. Rozmowy o technologii, karierze i przyszłości IT z najciekawszymi gośćmi z branży.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://open.spotify.com/show/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1DB954] hover:bg-[#1ed760] text-white font-semibold rounded-xl transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"></path>
+            </svg>
+            Spotify
+          </a>
+          <a
+            href="https://podcasts.apple.com/pl/podcast/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-surface-800 hover:bg-surface-700 text-white font-semibold rounded-xl border border-surface-700/50 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.12 1.2-.6 1.464-.48.24-1.08.12-1.44-.36-.24-.36-.36-.72-.24-1.2-.264-1.368-.84-2.472-1.8-3.456-1.32-1.368-2.904-2.04-4.8-2.04-1.896 0-3.48.672-4.8 2.04-.96.984-1.536 2.088-1.8 3.456-.12.48-.12.84.24 1.2-.36.48-.96.6-1.44.36-.48-.264-.72-.864-.6-1.464.352-1.773 1.04-3.12 2.264-4.392 1.608-1.685 3.72-2.587 6.056-2.587h.84z"></path>
+            </svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opanuj.AI -->
+  <section class="py-20 sm:py-28 border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600/10 border border-brand-500/20 text-brand-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Seria
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Opanuj.AI</h2>
+        <p class="text-surface-400 text-lg max-w-2xl">
+          Seria poświęcona sztucznej inteligencji w kontekście programowania. Praktyczne narzędzia, techniki i strategie.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {opanujAiEpisodes.map((episode, i) => (
+          <div class="group bg-surface-900/80 border border-surface-800/50 rounded-2xl p-6 hover:border-brand-500/30 transition-all">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 bg-brand-600/10 text-brand-400 text-xs font-medium rounded-full">
+                {episode.category}
+              </span>
+              <span class="text-surface-600 text-xs">{episode.duration}</span>
+            </div>
+
+            <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-brand-300 transition-colors">
+              {episode.title}
+            </h3>
+            <p class="text-surface-500 text-sm leading-relaxed mb-4">
+              {episode.description}
+            </p>
+
+            <div class="flex items-center gap-3 text-brand-400">
+              <div class="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center group-hover:bg-brand-600/30 transition-colors">
+                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Odcinek {i + 1}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Przeprogramowani ft. Gość -->
+  <section class="py-20 sm:py-28 border-t border-surface-800/50 bg-surface-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/20 text-accent-400 text-xs font-bold uppercase tracking-wider mb-4">
+          Seria
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Przeprogramowani ft. Gość</h2>
+        <p class="text-surface-400 text-lg max-w-2xl">
+          Rozmowy z najciekawszymi ludźmi z branży IT. Goście dzielą się doświadczeniami, wiedzą i perspektywą na rozwój kariery w technologii.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {przeprogramowaniEpisodes.map((episode, i) => (
+          <div class="group bg-surface-900/80 border border-surface-800/50 rounded-2xl p-6 hover:border-accent-500/30 transition-all">
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 bg-accent-500/10 text-accent-400 text-xs font-medium rounded-full">
+                {episode.category}
+              </span>
+              <span class="text-surface-600 text-xs">{episode.duration}</span>
+            </div>
+
+            <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-accent-300 transition-colors">
+              {episode.title}
+            </h3>
+            <p class="text-surface-500 text-sm leading-relaxed mb-4">
+              {episode.description}
+            </p>
+
+            <div class="flex items-center gap-3 text-accent-400">
+              <div class="w-10 h-10 rounded-full bg-accent-500/20 flex items-center justify-center group-hover:bg-accent-500/30 transition-colors">
+                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Odcinek {i + 1}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

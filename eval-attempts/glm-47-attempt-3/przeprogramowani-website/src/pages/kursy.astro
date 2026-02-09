@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard';
+import { courses } from '../data/courses';
+---
+
+<Layout title="Kursy — Przeprogramowani">
+  <div class="pt-4 sm:pt-6">
+    <nav aria-label="Breadcrumb" class="max-w-screen-xl mx-auto px-4 py-4">
+      <ol class="flex flex-wrap items-center gap-1 text-sm text-gray-400" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" class="hover:text-white transition-colors" itemprop="item">
+            <span itemprop="name">Strona główna</span>
+          </a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="text-gray-600" aria-hidden="true">/</span>
+          <span class="text-gray-200" itemprop="name" aria-current="page">Kursy</span>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+    
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Kursy i szkolenia</h1>
+      <p class="mt-2 text-lg text-gray-400">Rozwijaj się z naszymi programami edukacyjnymi</p>
+    </div>
+  </div>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="mb-12 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">
+          Zostań kompletnym frontend developerem
+        </h2>
+        <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+          Wybierz program dopasowany do Twoich potrzeb i zyskaj szersze spojrzenie na programowanie
+        </p>
+      </div>
+      
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+        {courses.map(course => (
+          <CourseCard client:load key={course.id} {...course} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-gray-950">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-4">Dlaczego warto nam zaufać?</h2>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Satysfakcja studentów</h3>
+                <p class="mt-1 text-sm text-gray-400">Siedem edycji programu Opanuj JavaScript i pozytywne oceny z grona ponad 900 uczestników</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">10 lat doświadczenia</h3>
+                <p class="mt-1 text-sm text-gray-400">Od ponad 10 lat realizujemy projekty komercyjne dla startupów, scale-upów i dużych firm</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Praktyczne podejście</h3>
+                <p class="mt-1 text-sm text-gray-400">Stawiamy na pragmatyzm i łączenie teorii z praktyką w najbardziej użyteczny sposób</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-4">Jak uczymy programowania?</h2>
+          <div class="space-y-6">
+            <div class="rounded-xl bg-gray-900 p-6 border border-gray-800">
+              <h3 class="font-semibold text-white mb-2">Lekcje wideo + artykuły</h3>
+              <p class="text-sm text-gray-400">Każda lekcja to ok. 60-90 minut nauki w urozmaiconej formie, a do tego ćwiczenia praktyczne</p>
+            </div>
+            <div class="rounded-xl bg-gray-900 p-6 border border-gray-800">
+              <h3 class="font-semibold text-white mb-2">Ćwiczenia praktyczne</h3>
+              <p class="text-sm text-gray-400">Zadania, które pozwalają zastosować zdobytą wiedzę w praktyce i zbudować własny portfolio</p>
+            </div>
+            <div class="rounded-xl bg-gray-900 p-6 border border-gray-800">
+              <h3 class="font-semibold text-white mb-2">Konsultacje z mentorami</h3>
+              <p class="text-sm text-gray-400">Dostęp do mentorów i społeczności, gdzie możesz zadać pytania i otrzymać feedback</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Masz pytania?</h2>
+      <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+        Skontaktuj się z nami, a chętnie pomożemy Ci wybrać odpowiedni kurs dla Ciebie
+      </p>
+      <a 
+        href="mailto:kontakt@przeprogramowani.pl"
+        class="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white rounded-lg transition-colors duration-200 bg-orange-500 hover:bg-orange-400 shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        </svg>
+        Napisz do nas
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { formatPolishDate } from "../lib/date";
+import { getLatestPodcastEpisodes } from "../lib/feeds";
+
+const episodes = await getLatestPodcastEpisodes(12);
+---
+
+<MainLayout
+  title="Podcast | Przeprogramowani"
+  description="Ostatnie odcinki podcastu Przeprogramowani pobierane z oficjalnego feedu RSS."
+  currentPath={Astro.url.pathname}
+>
+  <section class="hero-panel rounded-3xl p-6 sm:p-10">
+    <p class="text-xs uppercase tracking-[0.22em] text-cyan-200/85">Podcast</p>
+    <h1 class="mt-3 max-w-3xl font-heading text-3xl text-white sm:text-5xl">Najnowsze odcinki Przeprogramowanych</h1>
+    <p class="mt-5 max-w-2xl text-slate-200">
+      Lista aktualizowana z oficjalnego RSS podcastu. Rozmowy o frontendzie, TypeScript, AI i rozwoju kariery w IT.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5">
+    {
+      episodes.map((episode, index) => (
+        <article class="glow-card rounded-2xl p-5 sm:p-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">{formatPolishDate(episode.publishedAt)}</p>
+            {index === 0 ? (
+              <span class="rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+                Najnowszy odcinek
+              </span>
+            ) : null}
+          </div>
+          <h2 class="mt-3 font-heading text-xl text-white sm:text-2xl">{episode.title}</h2>
+          <a
+            href={episode.url}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-4 inline-flex rounded-lg border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-300/10"
+          >
+            Otwórz w Spotify for Podcasters
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</MainLayout>

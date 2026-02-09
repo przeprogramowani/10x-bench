@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.jsx';
+import Hero from '../components/Hero.jsx';
+import Courses from '../components/Courses.jsx';
+import Podcast from '../components/Podcast.jsx';
+import YouTube from '../components/YouTube.jsx';
+import About from '../components/About.jsx';
+import Footer from '../components/Footer.jsx';
+
+const title = 'Przeprogramowani - Szersze spojrzenie na programowanie';
+const description = 'Kursy i szkolenia dla programistów - JavaScript, TypeScript, AI, GitHub Actions. Blog techniczny, podcast i newsletter dla ambitnych developerów.';
+---
+
+<Layout title={title} description={description}>
+  <Header client:load currentPath="/" />
+  
+  <main id="main-content">
+    <Hero client:load />
+    <Courses client:visible />
+    <Podcast client:visible />
+    <YouTube client:visible />
+    <About client:visible />
+  </main>
+  
+  <Footer client:load />
+</Layout>

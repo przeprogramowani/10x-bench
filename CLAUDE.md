@@ -41,14 +41,6 @@ cd website && npm run build
 
 ### Core Directories
 
-- **`./benchmark/`** — Benchmark materials
-  - `prompt.md` — Input prompt given to all models
-  - `criteria.md` — Evaluation criteria for assessing implementations
-  - `eval.md` — Detailed evaluation results
-
-- **`./context/`** — Reference materials
-  - `przeprogramowani.md` — Verified copy and page content for the website
-
 - **`./scripts/`** — Data processing utilities
   - `process-results.ts` — TypeScript script that parses CSV evaluation files from each attempt and generates `results.json`
 
@@ -69,6 +61,8 @@ cd website && npm run build
 
 - **`./eval-results/`** — Processed evaluation results
   - Contains `eval-result.csv` files from each attempt (symlinks to source)
+
+> **Note:** Evaluation criteria and scoring methodology live in the companion repo [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval).
 
 ## Data Processing Pipeline
 
@@ -100,6 +94,16 @@ Task completion time,N/A,N/A,N/A
 ```
 
 The `ResultsTable.tsx` component relies on this exact format to parse and display times.
+
+### Test Run Format
+
+The "Test run" row records when the evaluation was performed. It uses the format `D.MM.YYYY HH:MM` in both the Score and Notes columns, with `N/A` for Max:
+
+```csv
+Test run,9.02.2026 19:20,N/A,9.02.2026 19:20
+```
+
+Use `N/A` in Score and Notes when the test run date/time was not recorded. Every eval-results CSV should include this row immediately after "Task completion time".
 
 ## Results Dashboard (Astro Site)
 
@@ -177,9 +181,6 @@ The script handles variable max scores per criterion and computes accurate perce
 
 | Task | File |
 |------|------|
-| Edit benchmark prompt | `./benchmark/prompt.md` |
-| Update evaluation criteria | `./benchmark/criteria.md` |
-| View reference content | `./context/przeprogramowani.md` |
 | Add/modify result cards | `./website/src/components/ResultCard.tsx` |
 | Change table layout | `./website/src/components/ResultsTable.tsx` |
 | Update home page | `./website/src/pages/index.astro` |

@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard.astro';
+
+const courses = [
+  {
+    title: "Opanuj Frontend",
+    description: "Kompleksowy kurs dla frontendowców. Zdobądź solidne podstawy i zaawansowaną wiedzę z HTML, CSS i JavaScript. Naucz się tworzyć nowoczesne aplikacje webowe.",
+    href: "https://opanujfrontend.pl",
+    tags: ["Frontend", "HTML/CSS", "JavaScript"],
+    image: "https://via.placeholder.com/400x200?text=Opanuj+Frontend" // Placeholder
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Masterclass TypeScripta. Poznaj zaawansowane typy, generyki i najlepsze praktyki w ekosystemie React. Zwiększ bezpieczeństwo i jakość swojego kodu.",
+    href: "https://opanujtypescript.pl",
+    tags: ["TypeScript", "React", "Advanced"],
+    image: "https://via.placeholder.com/400x200?text=Opanuj+TypeScript" // Placeholder
+  }
+];
+---
+
+<Layout title="Strona główna">
+  <section class="bg-gradient-to-b from-blue-50 to-white pt-24 pb-32 overflow-hidden relative">
+    <div class="absolute inset-0 z-0 opacity-30">
+        <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="url(#grad1)" />
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(59,130,246);stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:rgb(147,51,234);stop-opacity:0.2" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    
+    <div class="container relative z-10 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 text-center md:text-left">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold mb-6">
+          Nowa edycja już wkrótce!
+        </span>
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight">
+          Stań się programistą <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">10xDevs</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          Dołącz do elitarnego programu mentoringowego dla doświadczonych developerów. Opanuj sztukę AI, automatyzacji i biznesowego myślenia.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="https://10xdevs.pl" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Dołącz do 10xDevs
+          </a>
+          <a href="#kursy" class="px-8 py-4 bg-white text-gray-700 border border-gray-200 rounded-xl font-bold hover:bg-gray-50 transition-all">
+            Zobacz inne kursy
+          </a>
+        </div>
+      </div>
+      <div class="flex-1 relative">
+         <div class="relative w-full aspect-square max-w-md mx-auto">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+            <img 
+                src="https://przeprogramowani.pl/assets/images/10x-hero.png" 
+                alt="10xDevs Hero" 
+                class="relative z-10 w-full h-full object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://via.placeholder.com/500x500?text=10xDevs'" 
+            />
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kursy" class="py-24 bg-white">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Nasze Ścieżki Rozwoju</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Niezależnie od tego, czy dopiero zaczynasz, czy jesteś seniorem - mamy dla Ciebie odpowiednią ścieżkę.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courses.map(course => (
+            <CourseCard 
+                title={course.title}
+                description={course.description}
+                href={course.href}
+                tags={course.tags}
+                image={course.image}
+            />
+        ))}
+        {/* Placeholder for 10xDevs as a card too, or just emphasize the hero */}
+         <CourseCard 
+            title="10xDevs: AI Edition"
+            description="Flagowy program mentoringowy. Wykorzystaj potencjał Sztucznej Inteligencji w codziennej pracy programisty."
+            href="https://10xdevs.pl"
+            tags={["AI", "Mentoring", "Senior"]}
+            image="/images/10xdevs.png"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-gray-50">
+    <div class="container text-center">
+        <h2 class="text-3xl font-bold mb-12">Zaufali nam pracownicy</h2>
+        <div class="flex flex-wrap justify-center gap-12 opacity-60 grayscale">
+            {/* Logos placeholders */}
+            <div class="h-12 w-32 bg-gray-300 rounded"></div>
+            <div class="h-12 w-32 bg-gray-300 rounded"></div>
+            <div class="h-12 w-32 bg-gray-300 rounded"></div>
+            <div class="h-12 w-32 bg-gray-300 rounded"></div>
+        </div>
+    </div>
+  </section>
+</Layout>

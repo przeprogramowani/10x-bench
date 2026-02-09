@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,9min 36s,N/A,9min 36s
+Test run,9.02.2026 16:40,N/A,9.02.2026 16:40
+Local build,1,1,Build successful with Astro 5 static output
+Manual testing,1,1,All pages accessible and return 200; navigation styles and content work properly
+Tech stack,0.5,1,Astro 5 + React 19 + Tailwind CSS 4 installed; @astrojs/cloudflare in package.json but NOT configured in astro.config.mjs (output: static with no adapter import)
+O nas page,0.5,1,Page exists and returns 200; team member names correct; bios significantly simplified - missing key details (Przemek: conference speaker roles 4Developers/ReactiveConf/InfoShare publications course assignment; Marcin: neuroscience passion PHP experience most popular LLM podcast claim course assignment); no contributors section; no LinkedIn URLs
+Podcast page,0.5,1,Both Przeprogramowani ft. Gosc and Opanuj.AI podcasts displayed; episode data appears fabricated/hallucinated (no real episode IDs dates or Spotify episode URLs); Opanuj.AI Spotify URL (3D6LmchBdoqL2sWkQjvWOy) missing - only Przeprogramowani Spotify link present
+YouTube page,0.5,1,Page exists and returns 200; channel URL correct; all video data is mocked with no real YouTube video IDs; titles and descriptions appear hallucinated/fabricated
+Kursy section,0.5,1,Courses section on index page with 10xDevs prominently featured in hero and courses grid; only 3 of 6 courses shown (10xDevs Opanuj Frontend Opanuj TypeScript) - missing Opanuj JavaScript Opanuj AI and Cursor: Programuj z AI
+Consistent UI,1,1,UI consistent across all pages per user evaluation
+Responsive design,1,1,Fully responsive layout per user evaluation
+SEO Tags,0.5,1,Layout has title and meta description on all pages via shared layout; default description matches brand tagline; missing page-specific descriptions OG tags Twitter cards and canonical URLs

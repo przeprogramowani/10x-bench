@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { siteData } from '../data/siteData';
+
+const title = 'O nas — Przeprogramowani.pl';
+const description = 'Poznaj założycieli Przeprogramowanych i dowiedz się więcej o naszej misji edukacyjnej.';
+---
+
+<Layout title={title} description={description}>
+  <Header client:load />
+  
+  <main class="pt-16">
+    {/* Hero Section */}
+    <section class="py-20 bg-dark-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+            O nas
+          </h1>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            Łączymy świat programowania, biznesu i rozwoju
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Welcome Section */}
+    <section class="py-16 bg-dark-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-6">
+          Witaj na Przeprogramowanych!
+        </h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-6">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. 
+          Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+        </p>
+        <p class="text-gray-400 text-lg leading-relaxed">
+          Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. 
+          Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+        </p>
+      </div>
+    </section>
+
+    {/* Founders Section */}
+    <section class="py-20 bg-dark-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white text-center mb-12">
+          Zespół
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {siteData.founders.map((founder) => (
+            <div class="bg-dark-800 border border-white/10 rounded-2xl p-8 hover:border-primary-500/30 transition-all">
+              <div class="flex flex-col items-center text-center">
+                <div class="w-32 h-32 bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-full flex items-center justify-center mb-6 border-2 border-primary-500/30">
+                  <span class="text-5xl">
+                    {founder.name.includes('Przemek') ? '👨‍💻' : '👨‍🚀'}
+                  </span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">{founder.name}</h3>
+                <p class="text-primary-400 font-medium mb-4">{founder.role}</p>
+                <p class="text-gray-400 leading-relaxed mb-6">
+                  {founder.bio}
+                </p>
+                <a
+                  href={founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-gray-300 hover:text-white transition-colors"
+                >
+                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Mission Section */}
+    <section class="py-20 bg-dark-800">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="bg-gradient-to-br from-primary-600/10 to-blue-600/10 border border-primary-500/20 rounded-2xl p-8 sm:p-12">
+          <h2 class="text-3xl font-bold text-white mb-6">
+            Zyskaj szersze spojrzenie na programowanie
+          </h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-8">
+            Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. 
+            Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="/podcast"
+              class="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold transition-all"
+            >
+              Słuchaj podcastów
+            </a>
+            <a
+              href="/youtube"
+              class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-semibold transition-all border border-white/20"
+            >
+              Oglądaj na YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Partners Section */}
+    <section class="py-16 bg-dark-900 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-white mb-2">
+          Współpracujemy z najlepszymi
+        </h2>
+        <p class="text-gray-400 mb-8">7 lat na rynku edukacji technologicznej</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center opacity-60 mb-8">
+          {siteData.partners.slice(0, 10).map((partner) => (
+            <div
+              class="w-full max-w-[140px] h-14 bg-dark-800 rounded-lg flex items-center justify-center border border-white/5 px-3"
+              title={partner.name}
+            >
+              <span class="text-gray-400 text-xs font-medium text-center">
+                {partner.name}
+              </span>
+            </div>
+          ))}
+        </div>
+        
+        <p class="text-gray-400">
+          Chcesz nawiązać współpracę?{' '}
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-primary-400 hover:text-primary-300">
+            kontakt@przeprogramowani.pl
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

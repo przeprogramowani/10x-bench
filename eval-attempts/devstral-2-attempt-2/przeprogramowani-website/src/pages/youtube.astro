@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// YouTube videos
+const videos = [
+  {
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    image: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=KAJTsQbqBow"
+  },
+  {
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    image: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=uwi39C2O8NI"
+  },
+  {
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉",
+    image: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=b-gOI128G2s"
+  },
+  {
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    image: "https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=WJLGzf7qq-c"
+  },
+  {
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer",
+    image: "https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=jjOYxKAk_j8"
+  },
+  {
+    title: "Special webinar for Builders: Tu zaczyna się Twój AI-ready project",
+    image: "https://i3.ytimg.com/vi/iSG7PUxjfww/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=iSG7PUxjfww"
+  }
+];
+---
+
+<Layout title="YouTube">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">YouTube</h1>
+        <p class="text-xl text-gray-600 mb-8">Rozwój nowoczesnego programisty</p>
+        <a 
+          href="https://youtube.com/c/przeprogramowani" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+        >
+          Subskrybuj nasz kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <a 
+            href={video.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="block group"
+          >
+            <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={video.image} 
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-bold text-gray-900 line-clamp-2">{video.title}</h3>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Podcast - Przeprogramowani.pl';
+const description = 'Słuchaj naszych podcastów o technologii, AI i programowaniu';
+---
+
+<Layout title={title} description={description}>
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Podcasty</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+      </div>
+
+      <!-- Opanuj.AI Podcast -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Opanuj.AI Podcast</h2>
+            <p class="text-gray-600 dark:text-gray-400">Ponad 4000 słuchaczy</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Episode 1 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">01:23:04</span>
+              <a href="https://podcasters.spotify.com/pod/show/opanujai" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+          
+          <!-- Episode 2 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Wielkie Podsumowanie AI w 2025</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman?</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">01:47:28</span>
+              <a href="https://podcasters.spotify.com/pod/show/opanujai" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+          
+          <!-- Episode 3 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">GPT-5.2 to GEMINI KILLER?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI?</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">00:58:41</span>
+              <a href="https://podcasters.spotify.com/pod/show/opanujai" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Przeprogramowani ft. Gość -->
+      <div>
+        <div class="flex items-center mb-8">
+          <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Przeprogramowani ft. Gość</h2>
+            <p class="text-gray-600 dark:text-gray-400">Ponad 3800 słuchaczy</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Episode 1 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Programista vs. Angielski: Od strachu do sukcesu</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">00:33:45</span>
+              <a href="https://podcasters.spotify.com/pod/show/przeprogramowani" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+          
+          <!-- Episode 2 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">O dojrzewaniu zawodowym programisty</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Wojciech Trawiński, Senior Software Engineer w XTB opowiada o drodze od młodego entuzjasty.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">00:45:56</span>
+              <a href="https://podcasters.spotify.com/pod/show/przeprogramowani" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+          
+          <!-- Episode 3 -->
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
+              <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Architektura frontendu: Co naprawdę ma znaczenie?</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500 dark:text-gray-400">01:16:44</span>
+              <a href="https://podcasters.spotify.com/pod/show/przeprogramowani" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                Słuchaj →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Podcast Platforms -->
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Jesteśmy na twojej ulubionej platformie</h3>
+        <div class="flex justify-center space-x-8">
+          <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C8.134 0 5.134 3.134 5.134 7c0 2.134 1.134 4 2.866 5.134 1.732 1.134 2.866 3 2.866 5.134 0 .866-.134 1.732-.268 2.6.134 0 .268-.866.268-2.6 0-2.134 1.134-4 2.866-5.134C15.866 11 17 9.134 17 7 17 3.134 13.866 0 12 0z"/>
+            </svg>
+          </a>
+          <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.3 17.3c-.2.3-.6.4-1 .2-2.4-1.4-5.3-1.7-8.3-.7-.4.1-.8 0-1.1-.3-.3-.3-.4-.7-.2-1.1 3.5-2.5 7.8-2.2 10.7.1.3.2.4.6.3 1 .1.2 0 .2zm1.4-2.7c-.3.4-.9.5-1.3.2-2.8-1.7-6.6-2-10-.8-.5.2-1-.1-1.2-.6-.2-.5-.1-1 .4-1.2 3.7-2.8 8.3-2.5 11.5 1.1.3.4.4.9.2 1.3.2.3 0 .3zm.3-2.8c-.4.5-1.2.6-1.7.2-3.2-2-7.8-2.3-11.3-.9-.6.2-1.1-.2-1.3-.8-.2-.6-.2-1.2.4-1.6 4-2.9 9-2.7 12.6 1.7.4.5.5 1.1.3 1.6.3.4 0 .4z"/>
+            </svg>
+          </a>
+          <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw" class="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.3 17.3c-.2.3-.6.4-1 .2-2.4-1.4-5.3-1.7-8.3-.7-.4.1-.8 0-1.1-.3-.3-.3-.4-.7-.2-1.1 3.5-2.5 7.8-2.2 10.7.1.3.2.4.6.3 1 .1.2 0 .2zm1.4-2.7c-.3.4-.9.5-1.3.2-2.8-1.7-6.6-2-10-.8-.5.2-1-.1-1.2-.6-.2-.5-.1-1 .4-1.2 3.7-2.8 8.3-2.5 11.5 1.1.3.4.4.9.2 1.3.2.3 0 .3zm.3-2.8c-.4.5-1.2.6-1.7.2-3.2-2-7.8-2.3-11.3-.9-.6.2-1.1-.2-1.3-.8-.2-.6-.2-1.2.4-1.6 4-2.9 9-2.7 12.6 1.7.4.5.5 1.1.3 1.6.3.4 0 .4z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

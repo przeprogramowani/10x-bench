@@ -1,0 +1,295 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Przeprogramowani — Edukacja programistyczna nowej generacji">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/20 via-surface-950 to-brand-800/10"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-400/5 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-8">
+          <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span>
+          Zapisy otwarte — 10xDevs 3.0
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          Zostań programistą<br />
+          <span class="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">nowej generacji</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-surface-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Dołącz do ponad 3700 absolwentów naszych kursów. Ucz się programowania z wykorzystaniem AI, buduj realne projekty i rozwijaj karierę w IT.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-2xl text-lg transition-all hover:shadow-lg hover:shadow-brand-600/25"
+          >
+            Dołącz do 10xDevs 3.0
+          </a>
+          <a
+            href="/o-nas"
+            class="w-full sm:w-auto px-8 py-4 bg-surface-800/50 hover:bg-surface-800 text-surface-200 font-semibold rounded-2xl text-lg border border-surface-700/50 transition-colors"
+          >
+            Dowiedz się więcej
+          </a>
+        </div>
+
+        <!-- Hero Stats -->
+        <div class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-3xl mx-auto">
+          <div class="text-center">
+            <div class="text-2xl sm:text-3xl font-bold text-white">3700+</div>
+            <div class="text-sm text-surface-500 mt-1">absolwentów</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl sm:text-3xl font-bold text-white">~40h</div>
+            <div class="text-sm text-surface-500 mt-1">materiałów</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl sm:text-3xl font-bold text-white">Live</div>
+            <div class="text-sm text-surface-500 mt-1">sesje Q&A</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl sm:text-3xl font-bold text-white">14 dni</div>
+            <div class="text-sm text-surface-500 mt-1">gwarancja zwrotu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="border-y border-surface-800/50 bg-surface-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-brand-400">7+</div>
+          <div class="text-surface-400 text-sm mt-2">lat doświadczenia</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-brand-400">3700+</div>
+          <div class="text-surface-400 text-sm mt-2">absolwentów kursów</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-brand-400">100+</div>
+          <div class="text-surface-400 text-sm mt-2">odcinków podcastu</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-bold text-brand-400">15000+</div>
+          <div class="text-surface-400 text-sm mt-2">członków społeczności</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Cards -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Nasze kursy</h2>
+        <p class="text-surface-400 text-lg max-w-2xl mx-auto">
+          Praktyczne kursy programistyczne tworzone przez doświadczonych developerów.
+          Każdy kurs to inwestycja w Twoją karierę.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 10xDevs 3.0 -->
+        <div class="relative group bg-surface-900/80 border border-surface-800/50 rounded-2xl p-8 hover:border-brand-500/30 transition-all hover:shadow-xl hover:shadow-brand-900/10">
+          <div class="absolute top-6 right-6">
+            <span class="px-3 py-1 bg-accent-500/20 text-accent-400 text-xs font-bold rounded-full uppercase tracking-wider">
+              Bestseller
+            </span>
+          </div>
+
+          <div class="w-12 h-12 bg-brand-600/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-3">10xDevs 3.0</h3>
+          <p class="text-surface-400 text-sm leading-relaxed mb-6">
+            Flagowy kurs programowania z AI. Naucz się wykorzystywać sztuczną inteligencję w codziennej pracy developera — od generowania kodu po automatyzację procesów.
+          </p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Ponad 40 godzin materiałów video
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Cotygodniowe sesje live Q&A
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              14-dniowa gwarancja zwrotu
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Dostęp do społeczności 10xDevs
+            </li>
+          </ul>
+
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full text-center px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition-colors"
+          >
+            Sprawdź kurs
+          </a>
+        </div>
+
+        <!-- Opanuj Frontend AI Edition -->
+        <div class="relative group bg-surface-900/80 border border-surface-800/50 rounded-2xl p-8 hover:border-brand-500/30 transition-all hover:shadow-xl hover:shadow-brand-900/10">
+          <div class="w-12 h-12 bg-brand-600/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-3">Opanuj Frontend AI Edition</h3>
+          <p class="text-surface-400 text-sm leading-relaxed mb-6">
+            Kompleksowy kurs frontendowy wzbogacony o narzędzia AI. React, TypeScript i nowoczesne podejście do budowania interfejsów z asystentem AI.
+          </p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              React, TypeScript, Next.js
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Praktyczne projekty z AI
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Code review od mentorów
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Certyfikat ukończenia
+            </li>
+          </ul>
+
+          <a
+            href="https://opanujfrontend.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full text-center px-6 py-3 bg-surface-800 hover:bg-surface-700 text-white font-semibold rounded-xl border border-surface-700/50 transition-colors"
+          >
+            Sprawdź kurs
+          </a>
+        </div>
+
+        <!-- Opanuj TypeScript Frontend Pro -->
+        <div class="relative group bg-surface-900/80 border border-surface-800/50 rounded-2xl p-8 hover:border-brand-500/30 transition-all hover:shadow-xl hover:shadow-brand-900/10">
+          <div class="w-12 h-12 bg-brand-600/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-3">Opanuj TypeScript Frontend Pro</h3>
+          <p class="text-surface-400 text-sm leading-relaxed mb-6">
+            Zaawansowany kurs TypeScript w kontekście frontendowym. Typy generyczne, utility types, wzorce projektowe i najlepsze praktyki w dużych projektach.
+          </p>
+
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Zaawansowany TypeScript
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Typy generyczne i utility types
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Wzorce projektowe
+            </li>
+            <li class="flex items-center gap-3 text-sm text-surface-300">
+              <svg class="w-5 h-5 text-brand-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Projekty oparte na realnych scenariuszach
+            </li>
+          </ul>
+
+          <a
+            href="https://opanujtypescript.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full text-center px-6 py-3 bg-surface-800 hover:bg-surface-700 text-white font-semibold rounded-xl border border-surface-700/50 transition-colors"
+          >
+            Sprawdź kurs
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden bg-gradient-to-br from-brand-900/40 to-brand-800/20 border border-brand-500/20 rounded-3xl p-8 sm:p-12 lg:p-16">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
+        <div class="relative text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Bądź na bieżąco
+          </h2>
+          <p class="text-surface-400 text-lg mb-8">
+            Dołącz do naszego newslettera i otrzymuj najnowsze treści o programowaniu, AI i rozwoju kariery w IT.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://przeprogramowani.substack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-2xl text-lg transition-all hover:shadow-lg hover:shadow-brand-600/25"
+            >
+              Zapisz się na Substack
+            </a>
+            <a
+              href="/podcast"
+              class="px-8 py-4 bg-surface-800/50 hover:bg-surface-800 text-surface-200 font-semibold rounded-2xl text-lg border border-surface-700/50 transition-colors"
+            >
+              Posłuchaj podcastu
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

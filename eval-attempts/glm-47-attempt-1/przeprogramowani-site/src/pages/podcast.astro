@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+---
+
+<Layout title="Podcasty">
+  <section class="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-4">Podcasty</h1>
+      <p class="text-xl text-indigo-100 max-w-2xl mx-auto">Słuchaj naszych podcastów o technologii, AI i programowaniu</p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-2">Opanuj.AI Podcast</h2>
+        <p class="text-gray-600">Ponad 4000 słuchaczy • Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+      </div>
+
+      <div class="space-y-6 mb-20">
+        <PodcastCard
+          title="Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin"
+          duration="01:23:04"
+          link="https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4"
+          description="ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia?"
+        />
+        <PodcastCard
+          title="Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów"
+          duration="01:47:28"
+          link="https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5"
+          description="OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Bielik czy PLLuM? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach."
+        />
+        <PodcastCard
+          title="GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR"
+          duration="00:58:41"
+          link="https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf"
+          description="Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI, by odzyskać koronę w starciu z rodziną Google Gemini 3?"
+        />
+        <PodcastCard
+          title="Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5, a także emocje w LLMach i nowy Projekt Manhattan w USA"
+          duration="01:03:20"
+          link="https://podcasters.spotify.com/pod/show/opanujai/episodes/Gemini-3-to-hit--ale-konkurencja-nie-pi--GPT-5-1--Grok-4-1-i-Opus-4-5--a-take-emocje-w-LLMach-i-nowy-Projekt-Manhattan-w-USA-e3bn687"
+          description="Listopad 2025 przejdzie do historii jako jeden z najintensywniejszych miesięcy w rozwoju sztucznej inteligencji."
+        />
+        <PodcastCard
+          title="Cursor 2.0 vs Windsurf SWE-1.5 - dobrze, szybko i tanio? Nowa era programowania z AI już tu jest"
+          duration="01:14:37"
+          link="https://podcasters.spotify.com/pod/show/opanujai/episodes/Cursor-2-0-vs-Windsurf-SWE-1-5---dobrze--szybko-i-tanio--Nowa-era-programowania-z-AI-ju-tu-jest--DGX-Spark--ChatGPT-Atlas-i-nanochat-e3af168"
+          description="Cursor 2.0 rozszerza tradycyjne środowisko programistyczne na rzecz rewolucyjnej platformy wieloagentowej."
+        />
+      </div>
+
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-2">Przeprogramowani ft. Gość</h2>
+        <p class="text-gray-600">Ponad 3800 słuchaczy • Rozmowy dla głodnych wiedzy</p>
+      </div>
+
+      <div class="space-y-6">
+        <PodcastCard
+          title="Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko"
+          duration="00:33:45"
+          link="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo"
+          description="W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów i jak skutecznie uczyć się angielskiego w IT."
+        />
+        <PodcastCard
+          title="O dojrzewaniu zawodowym programisty, Wojciech Trawiński"
+          duration="00:45:56"
+          link="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn"
+          description="Wojciech Trawiński, Senior Software Engineer w XTB opowiada o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty."
+        />
+        <PodcastCard
+          title="Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin"
+          duration="01:16:44"
+          link="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3"
+          description="W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia."
+        />
+        <PodcastCard
+          title="No-code i Low-code - przyszłość tworzenia aplikacji? Kamil Tarczyński"
+          duration="00:36:31"
+          link="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/No-code-i-Low-code---przyszo-tworzenia-aplikacji---Kamil-Tarczyski---Przeprogramowani-ft--Go-e2kqhp6"
+          description="Kamil Tarczyński, Co-founder oraz CTO agencji havenocode, która specjalizuje się w tworzeniu aplikacji za pomocą platform no-code i low-code."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-center mb-8">Jesteśmy na twojej ulubionej platformie</h2>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white px-6 py-4 rounded-lg shadow hover:shadow-lg transition flex items-center gap-3"
+        >
+          <span class="font-semibold">Apple Podcasts</span>
+        </a>
+        <a
+          href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-green-600 text-white px-6 py-4 rounded-lg shadow hover:shadow-lg transition flex items-center gap-3"
+        >
+          <span class="font-semibold">Spotify</span>
+        </a>
+        <a
+          href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-blue-600 text-white px-6 py-4 rounded-lg shadow hover:shadow-lg transition flex items-center gap-3"
+        >
+          <span class="font-semibold">Google Podcasts</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

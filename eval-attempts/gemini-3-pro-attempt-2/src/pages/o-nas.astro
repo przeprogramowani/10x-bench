@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { team } from '../data/content';
+---
+
+<Layout title="O nas">
+    <div class="bg-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    O nas
+                </h1>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Poznaj twórców Przeprogramowani.pl i naszą misję.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="prose prose-purple prose-lg mx-auto text-gray-500">
+            <p>
+                Przeprogramowani to inicjatywa, która powstała z pasji do dzielenia się wiedzą. 
+                Jesteśmy zespołem doświadczonych inżynierów, którzy wierzą, że programowanie to coś więcej niż tylko pisanie kodu. 
+                To sposób myślenia, rozwiązywania problemów i ciągłego rozwoju.
+            </p>
+            <p>
+                Naszą misją jest dostarczanie wysokiej jakości materiałów edukacyjnych, które pomagają programistom na każdym etapie ich kariery. 
+                Od podstawowych pojęć, przez zaawansowane wzorce architektoniczne, aż po najnowsze trendy w świecie AI.
+            </p>
+        </div>
+
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Nasz Zespół</h2>
+            <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+                {team.map(member => (
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center p-6 text-center">
+                        <div class="h-32 w-32 rounded-full bg-gray-200 mb-4 overflow-hidden border-4 border-purple-100">
+                             <img src={`https://ui-avatars.com/api/?name=${member.name.replace(' ', '+')}&background=random`} alt={member.name} class="h-full w-full object-cover" />
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">{member.name}</h3>
+                        <p class="text-sm text-purple-600 mb-4">{member.role}</p>
+                        <p class="text-gray-500 text-sm">{member.bio}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+</Layout>

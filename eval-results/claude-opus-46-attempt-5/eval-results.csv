@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.02.2026 23:05,N/A,9.02.2026 23:05
+Local build,1,1,Build successful (Astro 5.7.10 static build completed in 655ms)
+Manual testing,0,1,Styles missing - CSS/Tailwind not loading causing broken page rendering
+Tech stack,0.5,1,All deps present (Astro 5.7.10 React 19.1.0 Tailwind 4.1.4 @astrojs/cloudflare 12.3.0) but Cloudflare adapter not configured in astro.config.mjs
+O nas page,0.5,1,Page exists at /o-nas returns 200. Team names correct (Przemek Smyrdek Marcin Czarkowski) with DAZN/Cabify and SmartRecruiters mentioned. However bios simplified - missing course assignments and detailed professional background
+Podcast page,0.5,1,Page exists at /podcast returns 200. Both podcasts listed (Przeprogramowani and Opanuj.AI). However Spotify URLs are fabricated slug-based (not real show IDs 3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy) and all 12 episode titles are hallucinated
+YouTube page,0.5,1,Page exists at /youtube returns 200. 9 video cards displayed but all titles/descriptions/durations are fabricated. No YouTube video IDs used at all - purely decorative cards with no links to actual videos
+Kursy section,1,1,10xDevs prominently featured in hero badge and CTA plus first course card. Three courses listed (10xDevs Opanuj Frontend Opanuj TypeScript) with correct URLs (10xdevs.pl opanujfrontend.pl opanujtypescript.pl)
+Consistent UI,0,1,Styles broken/missing across all pages - CSS/Tailwind not rendering
+Responsive design,0,1,Layout not responsive due to missing styles
+SEO Tags,1,1,SEO via shared Layout.astro with meta title description author canonical URL and OG tags (og:title og:description og:type og:url og:locale pl_PL) applied to all 4 pages. Content matches Przeprogramowani brand context

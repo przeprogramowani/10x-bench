@@ -1,0 +1,18 @@
+---
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Przeprogramowani - Szersze spojrzenie na programowanie" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <title>{title ? `${title} - Przeprogramowani` : 'Przeprogramowani - Szersze spojrzenie na programowanie'}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

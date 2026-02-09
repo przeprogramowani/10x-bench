@@ -1,0 +1,174 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const videos = [
+  {
+    title: "10 rzeczy, które zmieniły moją karierę programisty",
+    description: "Najważniejsze lekcje z ponad 10 lat pracy w branży IT. Od technicznych umiejętności po soft skills.",
+    category: "Kariera",
+    duration: "18:42",
+    color: "brand",
+  },
+  {
+    title: "Claude Code — najlepszy AI asystent kodowania?",
+    description: "Pełny przegląd Claude Code. Testujemy możliwości, porównujemy z Cursor i Copilot, i budujemy projekt od zera.",
+    category: "AI",
+    duration: "24:15",
+    color: "brand",
+  },
+  {
+    title: "React Server Components — praktyczny przewodnik",
+    description: "Wszystko co musisz wiedzieć o RSC. Od teorii przez praktykę po produkcyjne zastosowania w Next.js.",
+    category: "React",
+    duration: "32:08",
+    color: "brand",
+  },
+  {
+    title: "TypeScript 5.x — nowe features, które musisz znać",
+    description: "Przegląd najnowszych funkcji TypeScript. Dekoratory, satisfies operator, const type parameters i więcej.",
+    category: "TypeScript",
+    duration: "21:33",
+    color: "accent",
+  },
+  {
+    title: "System Design — jak zaprojektować URL Shortener",
+    description: "Krok po kroku projektujemy skalowalny URL shortener. Bazy danych, cache, load balancing i more.",
+    category: "System Design",
+    duration: "28:47",
+    color: "accent",
+  },
+  {
+    title: "Jak przygotować się do rozmowy technicznej",
+    description: "Praktyczne wskazówki od rekrutera i programisty. Czego szukają firmy i jak się wyróżnić.",
+    category: "Kariera",
+    duration: "15:56",
+    color: "accent",
+  },
+  {
+    title: "Astro 5 — budujemy stronę od zera",
+    description: "Pełny tutorial Astro 5. Content collections, view transitions, server islands i deployment na Cloudflare.",
+    category: "Tutorial",
+    duration: "45:22",
+    color: "brand",
+  },
+  {
+    title: "AI Agents — budujemy autonomicznego agenta krok po kroku",
+    description: "Praktyczny tutorial budowy AI agenta z LangChain i OpenAI. Od planowania po deployment.",
+    category: "AI",
+    duration: "38:15",
+    color: "brand",
+  },
+  {
+    title: "Git workflow dla zespołów — od chaosu do porządku",
+    description: "Branching strategies, code review, CI/CD i konwencje commitów. Jak zorganizować pracę zespołu z Git.",
+    category: "DevOps",
+    duration: "22:41",
+    color: "accent",
+  },
+];
+---
+
+<Layout title="YouTube — Przeprogramowani">
+  <!-- Header -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/20 via-surface-950 to-brand-800/10"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">YouTube</h1>
+        <p class="text-lg text-surface-400 leading-relaxed mb-8">
+          Tutoriale, przeglądy technologii i rozmowy o karierze w IT. Nowe filmy co tydzień — subskrybuj, by nie przegapić.
+        </p>
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-[#FF0000] hover:bg-[#cc0000] text-white font-semibold rounded-xl transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Grid -->
+  <section class="py-20 sm:py-28 border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <div class="group bg-surface-900/80 border border-surface-800/50 rounded-2xl overflow-hidden hover:border-brand-500/30 transition-all hover:shadow-xl hover:shadow-brand-900/10">
+            <!-- Thumbnail -->
+            <div class="relative aspect-video bg-gradient-to-br from-surface-800 to-surface-900 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-brand-900/30 to-brand-800/10"></div>
+
+              <!-- Pattern overlay for visual interest -->
+              <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-4 w-16 h-16 border-2 border-white/30 rounded-lg"></div>
+                <div class="absolute bottom-4 right-4 w-12 h-12 border-2 border-white/20 rounded-full"></div>
+              </div>
+
+              <!-- Title on thumbnail -->
+              <div class="absolute inset-0 flex items-center justify-center p-6">
+                <span class="text-white/80 text-sm font-semibold text-center leading-snug line-clamp-2">
+                  {video.title}
+                </span>
+              </div>
+
+              <!-- Play button overlay -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
+                <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Duration badge -->
+              <div class="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs font-medium rounded">
+                {video.duration}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class:list={[
+                  "px-2.5 py-0.5 text-xs font-medium rounded-full",
+                  video.color === "brand"
+                    ? "bg-brand-600/10 text-brand-400"
+                    : "bg-accent-500/10 text-accent-400"
+                ]}>
+                  {video.category}
+                </span>
+              </div>
+
+              <h3 class="text-base font-semibold text-white mb-2 group-hover:text-brand-300 transition-colors line-clamp-2">
+                {video.title}
+              </h3>
+              <p class="text-surface-500 text-sm leading-relaxed line-clamp-2">
+                {video.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-16">
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-surface-800/50 hover:bg-surface-800 text-surface-200 font-semibold rounded-2xl text-lg border border-surface-700/50 transition-colors"
+        >
+          Zobacz wszystkie filmy
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

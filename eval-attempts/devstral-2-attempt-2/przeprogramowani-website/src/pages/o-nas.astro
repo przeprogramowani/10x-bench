@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Team members
+const teamMembers = [
+  {
+    name: "Przemek Smyrdek",
+    role: "Co-founder, Przeprogramowani",
+    image: "/img/profiles/przemek.webp",
+    description: "Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).",
+    linkedin: "https://www.linkedin.com/in/psmyrdek/"
+  },
+  {
+    name: "Marcin Czarkowski",
+    role: "Co-founder, Przeprogramowani",
+    image: "/img/profiles/marcin.webp",
+    description: "Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca \"Opanuj AI Podcast\" — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista TypeScript, React, Node.js.",
+    linkedin: "https://www.linkedin.com/in/mkczarkowski/"
+  }
+];
+---
+
+<Layout title="O Nas">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">O nas</h1>
+        <p class="text-xl text-gray-600 mb-8">Łączymy świat programowania, biznesu i rozwoju</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {teamMembers.map((member) => (
+          <div class="flex flex-col items-center text-center">
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-6">
+              <img 
+                src={member.image} 
+                alt={member.name}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">{member.name}</h2>
+            <p class="text-blue-600 font-medium mb-4">{member.role}</p>
+            <p class="text-gray-600 mb-6">{member.description}</p>
+            <a 
+              href={member.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:text-blue-700 font-medium"
+            >
+              LinkedIn
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Witaj na Przeprogramowanych!</h2>
+        <p class="text-gray-600 mb-6">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+        </p>
+        <p class="text-gray-600 mb-6">
+          Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+        </p>
+        <p class="text-gray-600">
+          Zyskaj szersze spojrzenie na programowanie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

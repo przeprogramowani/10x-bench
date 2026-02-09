@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import CourseCard from '../components/CourseCard';
+import YouTubeCard from '../components/YouTubeCard';
+import PodcastCard from '../components/PodcastCard';
+
+const videos = [
+  {
+    videoId: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+  },
+  {
+    videoId: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+  },
+  {
+    videoId: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=b-gOI128G2s',
+  },
+];
+
+const podcastEpisodes = [
+  {
+    episodeNumber: 45,
+    title: 'AI w codziennej pracy programisty - praktyczne zastosowania',
+    description: 'Rozmowa o tym, jak wykorzystać AI w codziennej pracy programisty, od analizy kodu po testowanie.',
+    duration: '45 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 44,
+    title: 'TypeScript 5 - co nowego?',
+    description: 'Przegląd najnowszych funkcji TypeScript 5 i jak je wykorzystać w swoich projektach.',
+    duration: '38 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 43,
+    title: 'AI w testowaniu oprogramowania',
+    description: 'Jak AI zmienia podejście do testowania i jak wykorzystać je do tworzenia lepszych testów.',
+    duration: '42 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+];
+---
+
+<Layout title="Strona główna">
+  <Header client:load currentPath="/" />
+  <main className="flex-grow">
+    <Hero client:load />
+
+    <section className="py-20 bg-dark/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Nasze <span className="gradient-text">kursy</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Profesjonalne programy szkoleniowe dla programistów, którzy chcą rozwijać swoje umiejętności
+            i być na bieżąco z najnowszymi technologiami.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <CourseCard
+            client:visible
+            title="10xDevs"
+            description="Nowe oblicze programowania z wykorzystaniem Generatywnego AI. 5+1 tygodni intensywnej nauki produkcyjnego workflow z AI."
+            image="https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7/6851d365461b0279aa1d702a_2.0%20Meta%20Image.webp"
+            href="https://10xdevs.pl"
+            badge="Nowość"
+            color="primary"
+          />
+          <CourseCard
+            client:visible
+            title="Opanuj Frontend: AI Edition"
+            description="Zostań kompletnym frontend developerem. 10-tygodniowe szkolenie z testowania, CI/CD i architektury aplikacji webowych."
+            image="https://www.opanujfrontend.pl/img/featured/kurs-ofe.jpg"
+            href="https://www.opanujfrontend.pl"
+            badge="Bestseller"
+            color="secondary"
+          />
+          <CourseCard
+            client:visible
+            title="Opanuj TypeScript"
+            description="Pracuj z najnowszą wersją TypeScript 5 w połączeniu z Reactem 19. Szkolenie podnoszące jakość projektów na produkcji."
+            image="https://www.opanujtypescript.pl/img/featured/kurs-ots.jpg"
+            href="https://www.opanujtypescript.pl"
+            badge="Popularne"
+            color="accent"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Ostatnie <span className="text-red-500">filmy</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Najnowsze materiały z naszego kanału YouTube o programowaniu, AI i nowoczesnych technologiach.
+          </p>
+          <a
+            href="/youtube"
+            className="inline-flex items-center gap-2 mt-4 text-primary hover:text-primary/80 transition-colors"
+          >
+            Zobacz wszystkie
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {videos.map((video) => (
+            <YouTubeCard
+              client:visible
+              videoId={video.videoId}
+              title={video.title}
+              thumbnail={video.thumbnail}
+              href={video.href}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-20 bg-dark/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Ostatnie <span className="text-green-500">odcinki podcastu</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Posłuchaj najnowszych odcinków Opanuj AI Podcast - rozmowy o programowaniu, AI i rozwoju kariery.
+          </p>
+          <a
+            href="/podcast"
+            className="inline-flex items-center gap-2 mt-4 text-green-500 hover:text-green-400 transition-colors"
+          >
+            Zobacz wszystkie
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {podcastEpisodes.map((episode) => (
+            <PodcastCard
+              client:visible
+              episodeNumber={episode.episodeNumber}
+              title={episode.title}
+              description={episode.description}
+              duration={episode.duration}
+              href={episode.href}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+          Dołącz do naszego <span className="gradient-text">newslettera</span>
+        </h2>
+        <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+          Co tydzień w piątek otrzymasz porcję wartościowych treści: 3 rekomendacje techniczne,
+          2 rekomendacje rozwojowe i 1 bonus niespodzianka.
+        </p>
+        <form
+          action="https://przeprogramowani.substack.com"
+          method="get"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="Twój adres e-mail"
+            className="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-primary"
+            required
+          />
+          <button
+            type="submit"
+            className="px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Zapisz się
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

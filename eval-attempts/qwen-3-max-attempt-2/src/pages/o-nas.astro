@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'O Nas - Przeprogramowani.pl';
+const description = 'Dowiedz się więcej o Przeprogramowanych - liderach edukacji technologicznej w Polsce.';
+---
+
+<Layout title={title} description={description}>
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">O Nas</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          7 lat na rynku edukacji technologicznej
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none dark:prose-invert mb-12">
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Przeprogramowani to liderzy edukacji technologicznej w Polsce, specjalizujący się w nowoczesnym programowaniu, 
+          architekturze systemów oraz świadomej integracji sztucznej inteligencji w procesie wytwarzania oprogramowania.
+        </p>
+        
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Od 2019 roku przeszkoliliśmy setki programistów, pomagając im awansować w karierze i nabyć umiejętności, 
+          które są najbardziej poszukiwane na rynku pracy. Nasze programy edukacyjne są tworzone przez praktyków 
+          z wieloletnim doświadczeniem w międzynarodowych firmach produktowych.
+        </p>
+        
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Nasi prowadzący</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Przemek Smyrdek</h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              Co-founder Przeprogramowanych. Autor programów szkoleniowych, kursów i podcastów promujących szersze spojrzenie na programowanie.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              Lead Engineer i Manager w międzynarodowych firmach produktowych takich jak DAZN i Cabify. 
+              Rozwijał full-stackowe aplikacje webowe m.in. w stacku .NET/C#, Java, Node.js, Angular i TypeScript.
+            </p>
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Marcin Czarkowski</h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              Lead techniczny Platformy Frontendowej w SmartRecruiters. Pasjonat neuronauki, tworzy materiały edukacyjne z uwzględnieniem badań dot. efektywnego przyswajania wiedzy.
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              Przez ponad 10 lat kariery programistycznej realizował projekty komercyjne oparte o TypeScript, React, Node.js oraz PHP. 
+              Autor najpopularniejszego podcastu technicznego o LLMach w Polsce: Opanuj AI Podcast.
+            </p>
+          </div>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Współpracujemy z najlepszymi</h2>
+        
+        <div class="flex flex-wrap justify-center gap-8 mb-8">
+          <div class="text-gray-600 dark:text-gray-400">Huuuge Games</div>
+          <div class="text-gray-600 dark:text-gray-400">Nutridome</div>
+          <div class="text-gray-600 dark:text-gray-400">SmartRecruiters</div>
+          <div class="text-gray-600 dark:text-gray-400">Future Processing</div>
+          <div class="text-gray-600 dark:text-gray-400">Callstack</div>
+          <div class="text-gray-600 dark:text-gray-400">Autodesk</div>
+        </div>
+        
+        <p class="text-lg text-gray-700 dark:text-gray-300">
+          Nasze programy edukacyjne zostały docenione przez setki uczestników oraz firmy technologiczne, 
+          które polecają nasze szkolenia swoim zespołom developerskim. Regularnie aktualizujemy nasze treści, 
+          aby odzwierciedlać najnowsze trendy i najlepsze praktyki w branży IT.
+        </p>
+      </div>
+      
+      <div class="text-center">
+        <a href="mailto:kontakt@przeprogramowani.pl" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+          Skontaktuj się z nami
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

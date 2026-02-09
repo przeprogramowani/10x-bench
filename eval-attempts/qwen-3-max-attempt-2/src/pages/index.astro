@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Przeprogramowani.pl — Szersze spojrzenie na programowanie';
+const description = 'Edukacja technologiczna w epoce AI. Kursy Opanuj Frontend, Opanuj TypeScript i 10xDevs.';
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Edukacja technologiczna w epoce AI</h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://10xdevs.pl" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+            10xDevs 3.0
+          </a>
+          <a href="/o-nas" class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+            Dowiedz się więcej
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Courses Section -->
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Nasze programy edukacyjne</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Inwestuj w umiejętności, które dają Ci przewagę dzisiaj i w przyszłości
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 10xDevs Course -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">10xDevs 3.0</h3>
+            <p class="text-gray-600 dark:text-gray-400">Programuj z AI</p>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-6">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          <a href="https://10xdevs.pl" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 flex items-center">
+            Szczegóły →
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Opanuj Frontend Course -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Opanuj Frontend: AI Edition</h3>
+            <p class="text-gray-600 dark:text-gray-400">Kurs</p>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-6">
+            Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!
+          </p>
+          <a href="https://opanujfrontend.pl" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 flex items-center">
+            Szczegóły →
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Opanuj TypeScript Course -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Opanuj TypeScript</h3>
+            <p class="text-gray-600 dark:text-gray-400">Kurs</p>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 mb-6">
+            Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!
+          </p>
+          <a href="https://opanujtypescript.pl" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 flex items-center">
+            Szczegóły →
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Przeprogramowany Newsletter</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
+        Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1
+      </p>
+      <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">3</h3>
+            <p class="text-gray-600 dark:text-gray-400">rekomendacje techniczne</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">2</h3>
+            <p class="text-gray-600 dark:text-gray-400">rekomendacje rozwojowe</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">1</h3>
+            <p class="text-gray-600 dark:text-gray-400">bonus niespodzianka</p>
+          </div>
+        </div>
+        <a href="https://przeprogramowani.substack.com" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+          Zapisz się za darmo →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Content Section -->
+  <section class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Filmy i podcasty</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Rozwój nowoczesnego programisty
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- YouTube Video 1 -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <div class="text-gray-500 dark:text-gray-400">Video Thumbnail</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?</h3>
+            <a href="https://www.youtube.com/watch?v=KAJTsQbqBow" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300">
+              Obejrzyj na YouTube
+            </a>
+          </div>
+        </div>
+
+        <!-- YouTube Video 2 -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <div class="text-gray-500 dark:text-gray-400">Video Thumbnail</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI</h3>
+            <a href="https://www.youtube.com/watch?v=uwi39C2O8NI" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300">
+              Obejrzyj na YouTube
+            </a>
+          </div>
+        </div>
+
+        <!-- Podcast Episode -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+          <div class="aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <div class="text-gray-500 dark:text-gray-400">Podcast Cover</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma</h3>
+            <a href="https://podcasters.spotify.com/pod/show/opanujai" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300">
+              Słuchaj podcastu
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="/podcast" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300 mr-6">
+          Wszystkie podcasty →
+        </a>
+        <a href="https://youtube.com/c/przeprogramowani" class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-800 dark:hover:text-blue-300">
+          Wszystkie filmy →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

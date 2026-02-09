@@ -1,0 +1,52 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { formatPolishDate } from "../lib/date";
+import { getLatestYoutubeVideos } from "../lib/feeds";
+
+const videos = await getLatestYoutubeVideos(12);
+---
+
+<MainLayout
+  title="YouTube | Przeprogramowani"
+  description="Ostatnie filmy z kanału YouTube Przeprogramowanych pobierane z oficjalnego feedu kanału."
+  currentPath={Astro.url.pathname}
+>
+  <section class="hero-panel rounded-3xl p-6 sm:p-10">
+    <p class="text-xs uppercase tracking-[0.22em] text-cyan-200/85">YouTube</p>
+    <h1 class="mt-3 max-w-3xl font-heading text-3xl text-white sm:text-5xl">Ostatnie filmy z kanału Przeprogramowani</h1>
+    <p class="mt-5 max-w-2xl text-slate-200">
+      Aktualne publikacje z oficjalnego feedu kanału YouTube. Praktyczne materiały o AI, produktywności i nowoczesnym
+      programowaniu.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+    {
+      videos.map((video, index) => (
+        <article class="glow-card overflow-hidden rounded-2xl">
+          <a href={video.url} target="_blank" rel="noreferrer" class="block">
+            <img
+              src={video.thumbnail ?? "/favicon.svg"}
+              alt={video.title}
+              loading={index < 3 ? "eager" : "lazy"}
+              class="aspect-video w-full object-cover"
+            />
+          </a>
+
+          <div class="p-5">
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">{formatPolishDate(video.publishedAt)}</p>
+            <h2 class="mt-2 text-base font-semibold text-white">{video.title}</h2>
+            <a
+              href={video.url}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-4 inline-flex rounded-lg border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-300/10"
+            >
+              Oglądaj na YouTube
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</MainLayout>

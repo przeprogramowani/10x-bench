@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PodcastCard from '../components/PodcastCard';
+
+const podcastEpisodes = [
+  {
+    episodeNumber: 45,
+    title: 'AI w codziennej pracy programisty - praktyczne zastosowania',
+    description: 'Rozmowa o tym, jak wykorzystać AI w codziennej pracy programisty, od analizy kodu po testowanie. Omawiamy konkretne narzędzia i techniki, które możesz wdrożyć już dziś.',
+    duration: '45 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 44,
+    title: 'TypeScript 5 - co nowego?',
+    description: 'Przegląd najnowszych funkcji TypeScript 5 i jak je wykorzystać w swoich projektach. Deklaratory, rozszerzone typy i wiele więcej.',
+    duration: '38 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 43,
+    title: 'AI w testowaniu oprogramowania',
+    description: 'Jak AI zmienia podejście do testowania i jak wykorzystać go do tworzenia lepszych testów. Automatyzacja i generative testing.',
+    duration: '42 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 42,
+    title: '10xDevs - jak uczymy programowania z AI',
+    description: 'Zaglądamy za kulisy naszego programu 10xDevs. Jak wygląda nauka programowania z wykorzystaniem Generatywnego AI?',
+    duration: '52 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 41,
+    title: 'Prompt engineering dla programistów',
+    description: 'Sztuka formułowania promptów dla AI. Jak pisać zapytania, aby otrzymywać lepszy kod i szybsze odpowiedzi.',
+    duration: '40 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+  {
+    episodeNumber: 40,
+    title: 'React 19 - rewolucja czy ewolucja?',
+    description: 'Analiza najnowszych funkcji React 19. Server Components, Actions i co to oznacza dla frontend developerów.',
+    duration: '48 min',
+    href: 'https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0',
+  },
+];
+---
+
+<Layout title="Podcast" description="Opanuj AI Podcast - rozmowy o programowaniu, AI i rozwoju kariery. Posłuchaj najnowszych odcinków na Spotify.">
+  <Header client:load currentPath="/podcast" />
+  <main className="flex-grow pt-16">
+    <section className="py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+          <div className="flex-1">
+            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              <span className="text-green-500">Podcast</span>
+            </h1>
+            <p className="text-xl text-gray-400">
+              Opanuj AI Podcast - rozmowy o programowaniu, sztucznej inteligencji
+              i rozwoju kariery w IT.
+            </p>
+          </div>
+          <div className="flex gap-4">
+            <a
+              href="https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Słuchaj na Spotify
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-dark/50 rounded-2xl border border-gray-800 p-8 mb-12">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <img
+              src="https://open.spotifycdn.com/cdn/images/ab676161d0e01572e618f0e4c599f1d6b265f92d.png"
+              alt="Opanuj AI Podcast"
+              className="w-32 h-32 rounded-xl shadow-lg"
+            />
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-2xl font-bold text-white mb-2">Opanuj AI Podcast</h2>
+              <p className="text-gray-400 mb-4">
+                Podcast dla programistów, którzy chcą rozwijać się w erze sztucznej inteligencji.
+                Rozmawiamy o technologiach, narzędziach i procesach.
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-500">
+                <span>40+ odcinków</span>
+                <span>•</span>
+                <span>Co tydzień nowy episode</span>
+                <span>•</span>
+                <span>Przeprogramowani</span>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href="https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors"
+                aria-label="Spotify"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                </svg>
+              </a>
+              <a
+                href="https://podcasts.apple.com/pl/podcast/opanuj-ai-podcast/id1683512996"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors"
+                aria-label="Apple Podcasts"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.7 19.5c-1.1 1.2-2.3 2.2-3.9 2.5-1 .2-2.2.2-3.4.1-1.3-.1-2.5-.4-3.6-1.1-1-.6-1.8-1.4-2.5-2.4-.3-.5-.6-1-1-1.6l-.7 1c.4.7.8 1.4 1.2 2 .9 1.2 2 2.1 3.4 2.6.7.2 1.4.3 2.1.3.8 0 1.5-.1 2.2-.4.9-.3 1.7-.9 2.4-1.6.6-.7 1-1.5 1.3-2.4.2-.5.2-1 .2-1.6 0-.2 0-.4-.1-.6-.1-.2-.2-.3-.3-.4-.1-.1-.3-.2-.5-.3-.1-.1-.3-.1-.4-.1-.1 0-.2 0-.3.1-.1.1-.2.2-.2.4-.1.5-.1 1-.1 1.5 0 .4 0 .8-.1 1.1zm-8.4-6c.3 0 .6.1.9.2.3.2.5.4.7.7.2.3.3.6.3 1 0 .4-.1.7-.3 1-.2.3-.5.5-.8.7-.3.2-.7.3-1.1.3-.4 0-.8-.1-1.1-.3-.3-.2-.6-.4-.8-.7-.2-.3-.3-.6-.3-1 0-.4.1-.7.3-1 .2-.3.5-.5.8-.7.3-.2.6-.2.9-.2zm5.8 1.7c-.2 0-.4 0-.5.1-.2.1-.3.2-.4.4-.1.2-.1.4-.1.7 0 .3.1.5.2.7.1.2.3.4.5.5.2.1.5.2.7.2.3 0 .5-.1.7-.2.2-.1.4-.3.5-.5.1-.2.2-.4.2-.7 0-.3-.1-.5-.2-.7-.1-.2-.3-.4-.5-.5-.2-.1-.4-.2-.6-.2z"/>
+                </svg>
+              </a>
+              <a
+                href="https://podcastindex.org/podcast/5778919"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors"
+                aria-label="Podcast Index"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10.09 2.45a5.7 5.7 0 00-4.77 2.72A5.7 5.7 0 00.55 10.2a5.7 5.7 0 004.77 2.72A5.7 5.7 0 0010.09 15a5.7 5.7 0 004.77-2.72A5.7 5.7 0 0019.37 7.9a5.7 5.7 0 00-4.77-2.72A5.68 5.68 0 0010.09 2.45zm0 1.85c.72 0 1.39.15 2 .42v4.65a6.87 6.87 0 01-2.43.7 6.84 6.84 0 01-2.43-.7V4.72c.6-.27 1.28-.42 2-.42zm0 8.07c.72 0 1.39.15 2 .42v-.52a6.84 6.84 0 010-4.28v-.52c-.6.27-1.28.42-2 .42-.72 0-1.39-.15-2-.42v.52a6.87 6.87 0 01-2.43.7c.17.49.44.94.8 1.32.54.59 1.3.99 2.17 1.12v.64zm3.35-4.04c-.35.38-.63.83-.8 1.32a6.87 6.87 0 01-2.43-.7v-4.28c.6-.27 1.28-.42 2-.42.72 0 1.39.15 2 .42v.52a6.87 6.87 0 010 4.28v.52c-.6.27-1.27.42-2 .42-.72 0-1.4-.15-2-.42.54-.13 1.19-.53 1.69-1.12.36-.38.63-.83.8-1.32h.74z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-6">Ostatnie odcinki</h2>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {podcastEpisodes.map((episode) => (
+            <PodcastCard
+              client:visible
+              episodeNumber={episode.episodeNumber}
+              title={episode.title}
+              description={episode.description}
+              duration={episode.duration}
+              href={episode.href}
+            />
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="https://open.spotify.com/show/5PzK0kz8lHJV5X4F0Z3Wb0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+          >
+            Zobacz wszystkie odcinki na Spotify
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

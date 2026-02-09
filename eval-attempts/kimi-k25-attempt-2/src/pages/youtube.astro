@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { siteData } from '../data/siteData';
+
+const title = 'YouTube — Przeprogramowani.pl';
+const description = 'Filmy o AI, programowaniu i technologii na kanale Przeprogramowani.';
+---
+
+<Layout title={title} description={description}>
+  <Header client:load />
+  
+  <main class="pt-16">
+    {/* Hero Section */}
+    <section class="py-20 bg-dark-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+            YouTube
+          </h1>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            Rozwój nowoczesnego programisty — filmy o AI, programowaniu i technologii
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Subscribe CTA */}
+    <section class="py-8 bg-dark-800 border-y border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-gray-400 mb-4">Subskrybuj nasz kanał, aby być na bieżąco</p>
+        <a
+          href={siteData.social.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>Subskrybuj kanał</span>
+        </a>
+      </div>
+    </section>
+
+    {/* Videos Grid */}
+    <section class="py-16 bg-dark-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-white mb-10">Ostatnie filmy</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {siteData.youtubeVideos.map((video, index) => (
+            <a
+              href={video.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group bg-dark-800 border border-white/10 rounded-xl overflow-hidden hover:border-primary-500/30 transition-all hover:transform hover:scale-[1.02]"
+            >
+              <div class="aspect-video relative overflow-hidden">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-semibold line-clamp-2 group-hover:text-primary-400 transition-colors">
+                  {video.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* More Videos CTA */}
+        <div class="mt-12 text-center">
+          <a
+            href={siteData.social.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-primary-400 hover:text-primary-300 font-semibold transition-colors"
+          >
+            Zobacz więcej filmów na YouTube
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

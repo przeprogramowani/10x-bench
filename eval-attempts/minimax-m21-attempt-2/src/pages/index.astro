@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import PodcastSection from '../components/PodcastSection';
+import YouTubeSection from '../components/YouTubeSection';
+import CoursesSection from '../components/CoursesSection';
+import AboutSection from '../components/AboutSection';
+import Newsletter from '../components/Newsletter';
+---
+
+<Layout title="Strona główna">
+  <Header client:load slot="header" />
+  
+  <Hero client:load />
+  
+  <CoursesSection client:visible />
+  
+  <PodcastSection client:visible />
+  
+  <YouTubeSection client:visible />
+  
+  <AboutSection client:visible />
+  
+  <Newsletter client:visible />
+  
+  <Footer slot="footer" />
+</Layout>

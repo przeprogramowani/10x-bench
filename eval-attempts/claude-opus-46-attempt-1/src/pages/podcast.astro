@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const opanujAiEpisodes = [
+  {
+    title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma',
+    description: 'Eksplorujemy rywalizacje medycznego AI miedzy ChatGPT Health a Google MedGemma 1.5. Jak AI zmienia oblicze medycyny?',
+    duration: '1:23:04',
+    category: 'AI w medycynie',
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025',
+    description: 'Roczne podsumowanie najwazniejszych modeli AI, narzedzi i liderow branzy. Co zdefiniowalo 2025 rok w AI?',
+    duration: '1:47:28',
+    category: 'Podsumowanie',
+  },
+  {
+    title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI',
+    description: 'Analiza grudniowych premier i rozwoj partnerstw miedzy gigantami AI. Kto wygrywa wyscig?',
+    duration: '0:58:41',
+    category: 'Modele AI',
+  },
+  {
+    title: 'Gemini 3 to hit, ale konkurencja nie spi!',
+    description: 'Listopadowe nowosci w AI - GPT-5.1, Grok 4.1, Opus 4.5 i wiele wiecej.',
+    duration: '1:03:20',
+    category: 'Nowosci',
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5',
+    description: 'Porownanie narzedzi do programowania z AI. Ktory edytor lepiej wspiera codziennie prace dewelopera?',
+    duration: '1:14:37',
+    category: 'Narzedzia',
+  },
+  {
+    title: 'Czy agenci AI zdominuja branze e-commerce?',
+    description: 'Automatyzacja e-commerce i premiera Claude 4.5 Sonnet. Jak agenci AI zmieniaja handel online?',
+    duration: '1:28:05',
+    category: 'E-commerce & AI',
+  },
+];
+
+const goscEpisodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    description: 'O barierach jezykowych i strategiach nauki angielskiego dla programistow.',
+    duration: '0:33:45',
+    guest: true,
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    description: 'Sciezka kariery od juniora do seniora - co naprawde ma znaczenie w rozwoju zawodowym?',
+    duration: '0:45:56',
+    guest: true,
+  },
+  {
+    title: 'Architektura frontendu: Co naprawde ma znaczenie?',
+    description: 'Zasady architektury frontendowej wykraczajace poza konkretne frameworki.',
+    duration: '1:16:44',
+    guest: true,
+  },
+  {
+    title: 'Co nowego w TypeScript?',
+    description: 'Najnowsze aktualizacje jezyka TypeScript i planowanie konferencji - format live Q&A.',
+    duration: '1:36:34',
+    guest: true,
+  },
+  {
+    title: 'No-code i Low-code - przyszlosc tworzenia aplikacji?',
+    description: 'Platformy do tworzenia aplikacji bez kodu i ich potencjal w przyszlosci.',
+    duration: '0:36:31',
+    guest: true,
+  },
+  {
+    title: 'Nauka nowoczesnego frontendu',
+    description: 'Doswiadczenia z nauki frontendu i zmiany sciezki kariery w IT.',
+    duration: '0:42:11',
+    guest: true,
+  },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani">
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-4xl sm:text-5xl font-black text-white">Podcast</h1>
+        <p class="mt-6 text-xl text-surface-200 leading-relaxed">
+          Dwa formaty podcastowe - <strong class="text-white">Opanuj.AI</strong> z miesiecznymi podsumowaniami swiata AI oraz <strong class="text-white">Przeprogramowani ft. Gosc</strong> z merytorycznymi wywiadami.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-[#1DB954]/10 border border-[#1DB954]/20 text-[#1DB954] text-sm font-medium rounded-lg hover:bg-[#1DB954]/20 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+          </a>
+          <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium rounded-lg hover:bg-purple-500/20 transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.053 2.399.397.39.37.985-.02 1.381a.96.96 0 01-1.367-.02 7.07 7.07 0 00-4.666-1.848c-3.938 0-7.139 3.197-7.139 7.139 0 3.939 3.2 7.137 7.139 7.137a7.07 7.07 0 004.666-1.848.96.96 0 011.367-.02c.39.396.418.99.02 1.381a8.982 8.982 0 01-6.053 2.399c-4.986 0-9.051-4.064-9.051-9.049 0-4.984 4.065-9.051 9.051-9.051zm.013 3.478a5.58 5.58 0 015.572 5.573 5.58 5.58 0 01-5.572 5.572 5.58 5.58 0 01-5.573-5.572 5.58 5.58 0 015.573-5.573zm0 2.802a2.771 2.771 0 00-2.77 2.771 2.771 2.771 0 002.77 2.77 2.771 2.771 0 002.77-2.77 2.771 2.771 0 00-2.77-2.771z"/></svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+
+      <!-- Opanuj.AI Section -->
+      <div class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-lg bg-brand-600/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-white">Opanuj.AI</h2>
+            <p class="text-sm text-surface-700">4 000+ sluchaczy &bull; Miesieczne podsumowania AI</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4">
+          {opanujAiEpisodes.map((ep) => (
+            <div class="group bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-brand-600/10 text-brand-300 text-xs font-medium rounded-full">{ep.category}</span>
+                    <span class="text-xs text-surface-700">{ep.duration}</span>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white group-hover:text-brand-300 transition-colors">{ep.title}</h3>
+                  <p class="mt-2 text-sm text-surface-200">{ep.description}</p>
+                </div>
+                <div class="shrink-0 w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center group-hover:bg-brand-600/30 transition-colors">
+                  <svg class="w-5 h-5 text-brand-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Przeprogramowani ft. Gosc Section -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-10 h-10 rounded-lg bg-purple-600/20 flex items-center justify-center">
+            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-white">Przeprogramowani ft. Gosc</h2>
+            <p class="text-sm text-surface-700">3 800+ sluchaczy &bull; Wywiady z ekspertami</p>
+          </div>
+        </div>
+
+        <div class="grid gap-4">
+          {goscEpisodes.map((ep) => (
+            <div class="group bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all">
+              <div class="flex items-start justify-between gap-4">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="px-2 py-0.5 bg-purple-600/10 text-purple-300 text-xs font-medium rounded-full">Wywiad</span>
+                    <span class="text-xs text-surface-700">{ep.duration}</span>
+                  </div>
+                  <h3 class="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors">{ep.title}</h3>
+                  <p class="mt-2 text-sm text-surface-200">{ep.description}</p>
+                </div>
+                <div class="shrink-0 w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center group-hover:bg-purple-600/30 transition-colors">
+                  <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

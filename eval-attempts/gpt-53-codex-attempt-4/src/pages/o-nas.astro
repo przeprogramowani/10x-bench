@@ -1,0 +1,73 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { founders, site } from "../data/site";
+---
+
+<MainLayout
+  title="O nas | Przeprogramowani"
+  description="Kim jesteśmy? Przeprogramowani to edukacja technologiczna oparta o doświadczenie z realnych projektów IT."
+  currentPath={Astro.url.pathname}
+>
+  <section class="hero-panel rounded-3xl p-6 sm:p-10">
+    <p class="text-xs uppercase tracking-[0.22em] text-cyan-200/85">O nas</p>
+    <h1 class="mt-3 max-w-3xl font-heading text-3xl text-white sm:text-5xl">Łączymy świat programowania, biznesu i rozwoju</h1>
+    <p class="mt-5 max-w-2xl text-slate-200">
+      Tworzymy treści, programy i społeczność dla developerów, którzy chcą świadomie budować przewagę technologiczną.
+      Nasze materiały powstają na bazie doświadczeń z projektów produkcyjnych oraz pracy edukacyjnej z tysiącami
+      programistów.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5 md:grid-cols-2">
+    {
+      founders.map((founder) => (
+        <article class="glow-card rounded-2xl p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">Co-founder</p>
+          <h2 class="mt-2 font-heading text-2xl text-white">{founder.name}</h2>
+          <p class="mt-1 text-sm font-semibold text-slate-300">{founder.role}</p>
+          <p class="mt-4 text-slate-300">{founder.bio}</p>
+          <a
+            href={founder.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-5 inline-flex rounded-lg border border-cyan-300/40 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-300/10"
+          >
+            LinkedIn
+          </a>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="mt-10 grid gap-5 sm:grid-cols-3">
+    <article class="glow-card rounded-2xl p-5">
+      <h3 class="font-heading text-xl text-white">Edukacja oparta o praktykę</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Każdy moduł i materiał projektujemy tak, aby dało się go od razu wdrożyć w codziennej pracy developerskiej.
+      </p>
+    </article>
+    <article class="glow-card rounded-2xl p-5">
+      <h3 class="font-heading text-xl text-white">Nowoczesne technologie</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Pracujemy na aktualnych narzędziach i aktualizujemy programy wraz ze zmianami rynku: AI, TypeScript, React,
+        workflow produkcyjne.
+      </p>
+    </article>
+    <article class="glow-card rounded-2xl p-5">
+      <h3 class="font-heading text-xl text-white">Społeczność i wsparcie</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Rozwijamy miejsce, w którym ambitni developerzy uczą się od siebie, dzielą wiedzą i wspólnie budują lepsze
+        projekty.
+      </p>
+    </article>
+  </section>
+
+  <section class="mt-10 rounded-3xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
+    <h2 class="font-heading text-2xl text-white">Masz pytania o współpracę lub programy?</h2>
+    <p class="mt-3 text-slate-300">
+      Napisz do nas na
+      <a href={`mailto:${site.email}`} class="font-semibold text-cyan-200 hover:text-cyan-100">{site.email}</a>
+      - wracamy z odpowiedzią możliwie szybko.
+    </p>
+  </section>
+</MainLayout>

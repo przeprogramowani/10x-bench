@@ -1,0 +1,28 @@
+---
+// Layout component for the website
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title ? title + ' | Przeprogramowani' : 'Przeprogramowani'}</title>
+    <meta name="description" content="Szersze spojrzenie na programowanie" />
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <slot name="head" />
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <slot />
+  </body>
+</html>

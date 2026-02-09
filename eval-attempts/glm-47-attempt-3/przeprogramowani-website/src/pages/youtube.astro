@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YouTubeCard from '../components/YouTubeCard';
+import { videos } from '../data/videos';
+---
+
+<Layout title="YouTube — Przeprogramowani">
+  <div class="pt-4 sm:pt-6">
+    <nav aria-label="Breadcrumb" class="max-w-screen-xl mx-auto px-4 py-4">
+      <ol class="flex flex-wrap items-center gap-1 text-sm text-gray-400" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" class="hover:text-white transition-colors" itemprop="item">
+            <span itemprop="name">Strona główna</span>
+          </a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="text-gray-600" aria-hidden="true">/</span>
+          <span class="text-gray-200" itemprop="name" aria-current="page">YouTube</span>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+    
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Filmy na YouTube</h1>
+      <p class="mt-2 text-lg text-gray-400">Rozwój nowoczesnego programisty</p>
+    </div>
+  </div>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Najnowsze filmy</h2>
+          <p class="mt-2 text-lg text-gray-400">
+            Sprawdź nasze najświeższe materiały o AI, programowaniu i rozwoju kariery
+          </p>
+        </div>
+        <a 
+          href="https://youtube.com/c/przeprogramowani/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white rounded-lg transition-colors duration-200 bg-red-600 hover:bg-red-500"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505a3.017 3.017 0 0 0-2.122 2.136C.302 9.073.298 12 .298 12s.004 2.927.203 3.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136c.201-.887.203-3.814.203-3.814s-.002-2.927-.203-3.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+          </svg>
+          Zobacz na YouTube
+        </a>
+      </div>
+      
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.map(video => (
+          <YouTubeCard client:load key={video.id} {...video} />
+        ))}
+      </div>
+      
+      <div class="mt-10 text-center">
+        <a 
+          href="https://youtube.com/c/przeprogramowani/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white rounded-lg transition-colors duration-200 bg-gray-800 hover:bg-gray-700"
+        >
+          Zobacz wszystkie filmy →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-gray-950">
+    <div class="max-w-screen-xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Zasubskrybuj nasz kanał</h2>
+      <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+        Otrzymuj powiadomienia o nowych filmach o AI, programowaniu, TypeScript, React i rozwoju kariery programisty.
+      </p>
+      <a 
+        href="https://youtube.com/c/przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 text-lg font-bold text-white rounded-lg transition-colors duration-200 bg-red-600 hover:bg-red-500 shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505a3.017 3.017 0 0 0-2.122 2.136C.302 9.073.298 12 .298 12s.004 2.927.203 3.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136c.201-.887.203-3.814.203-3.814s-.002-2.927-.203-3.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+        </svg>
+        Subskrybuj
+      </a>
+    </div>
+  </section>
+</Layout>

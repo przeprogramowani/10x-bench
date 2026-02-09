@@ -1,0 +1,74 @@
+---
+---
+
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="text-2xl font-bold text-gray-900 flex items-center">
+                    <span class="text-purple-600 mr-1">&lt;</span>
+                    Przeprogramowani
+                    <span class="text-purple-600 ml-1">/&gt;</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="/o-nas" class="text-gray-500 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">O nas</a>
+                <a href="/podcast" class="text-gray-500 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Podcast</a>
+                <a href="/youtube" class="text-gray-500 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">YouTube</a>
+                <div class="relative group">
+                    <button class="text-gray-500 group-hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium inline-flex items-center transition-colors">
+                        Szkolenia
+                        <svg class="ml-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform z-50">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a href="https://opanujfrontend.pl" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Opanuj Frontend</a>
+                            <a href="https://opanujtypescript.pl" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Opanuj TypeScript</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="hidden md:flex items-center">
+                <a href="https://10xdevs.pl" class="ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-colors">
+                    Dołącz do 10xDevs
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button type="button" class="mobile-menu-button bg-white p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Icon when menu is closed -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="hidden md:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="/o-nas" class="text-gray-600 hover:bg-gray-50 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">O nas</a>
+            <a href="/podcast" class="text-gray-600 hover:bg-gray-50 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">Podcast</a>
+            <a href="/youtube" class="text-gray-600 hover:bg-gray-50 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">YouTube</a>
+            <a href="https://opanujfrontend.pl" class="text-gray-600 hover:bg-gray-50 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">Opanuj Frontend</a>
+            <a href="https://opanujtypescript.pl" class="text-gray-600 hover:bg-gray-50 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">Opanuj TypeScript</a>
+            <a href="https://10xdevs.pl" class="text-white bg-purple-600 hover:bg-purple-700 block px-3 py-2 rounded-md text-base font-medium mt-4 text-center">Dołącz do 10xDevs</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    const btn = document.querySelector('button.mobile-menu-button');
+    const menu = document.querySelector('#mobile-menu');
+
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+</script>

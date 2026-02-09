@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Hero section data
+const heroData = {
+  title: "Edukacja technologiczna w epoce AI",
+  subtitle: "Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI",
+  ctaText: "Dowiedz się więcej",
+  ctaLink: "/o-nas"
+};
+
+// Featured courses
+const courses = [
+  {
+    title: "10xDevs",
+    description: "Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.",
+    image: "/img/10xdevs-hero.jpg",
+    link: "https://10xdevs.pl",
+    tag: "Nowość"
+  },
+  {
+    title: "Opanuj Frontend: AI Edition",
+    description: "Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.",
+    image: "/img/featured/kurs-ofe.jpg",
+    link: "https://www.opanujfrontend.pl",
+    tag: "Kurs"
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój.",
+    image: "/img/featured/kurs-ots.jpg",
+    link: "https://www.opanujtypescript.pl",
+    tag: "Kurs"
+  },
+  {
+    title: "Opanuj AI",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy.",
+    image: "/img/featured/kurs-ai.jpg",
+    link: "https://opanuj.ai",
+    tag: "AI"
+  }
+];
+
+// Latest videos
+const videos = [
+  {
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    image: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=KAJTsQbqBow"
+  },
+  {
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    image: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=uwi39C2O8NI"
+  },
+  {
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉",
+    image: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=b-gOI128G2s"
+  },
+  {
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    image: "https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=WJLGzf7qq-c"
+  }
+];
+
+// Latest podcast episodes
+const podcasts = [
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5"
+  }
+];
+
+// Partners
+const partners = [
+  "Huuuge Games", "Nutridome", "SmartRecruiters", "Future Processing", 
+  "Callstack", "edrone", "Xfive", "Euvic", "Strabag", "Autodesk"
+];
+---
+
+<Layout title="Strona główna">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium mb-4">
+          Nowość - Maj 2026
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{heroData.title}</h1>
+        <p class="text-xl text-gray-600 mb-8">{heroData.subtitle}</p>
+        <a 
+          href={heroData.ctaLink} 
+          class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+        >
+          {heroData.ctaText}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Courses -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Nasze programy edukacyjne</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courses.map((course) => (
+          <a 
+            href={course.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="block group"
+          >
+            <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  {course.tag}
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{course.title}</h3>
+                <p class="text-gray-600">{course.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Videos -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-bold">Filmy i podcasty</h2>
+        <a href="/youtube" class="text-blue-600 hover:text-blue-700 font-medium">Zobacz wszystkie</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {videos.map((video) => (
+          <a 
+            href={video.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="block group"
+          >
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={video.image} 
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 bg-red-600 bg-opacity-80 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-bold text-gray-900 line-clamp-2">{video.title}</h3>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Podcasts -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-bold">Najnowsze podcasty</h2>
+        <a href="/podcast" class="text-blue-600 hover:text-blue-700 font-medium">Zobacz wszystkie</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {podcasts.map((podcast) => (
+          <a 
+            href={podcast.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="flex group"
+          >
+            <div class="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+              <img 
+                src={podcast.image} 
+                alt={podcast.title}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="ml-4">
+              <h3 class="font-bold text-gray-900 line-clamp-2">{podcast.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Współpracujemy z najlepszymi</h2>
+      <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+        {partners.map((partner) => (
+          <div class="text-gray-600 font-medium text-lg">{partner}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

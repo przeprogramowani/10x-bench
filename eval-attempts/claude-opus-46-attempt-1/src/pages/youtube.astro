@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  {
+    title: 'Vibe Engineering - nowy standard programowania z AI',
+    description: 'Czym jest vibe engineering i dlaczego zastapil vibe coding? Jak swiadomie laczyc programowanie z AI?',
+    category: 'AI & Programowanie',
+    duration: '18:42',
+  },
+  {
+    title: 'Cursor i TypeScript - idealna para na 2025',
+    description: 'Jak wykorzystac pelny potencjal Cursor IDE w projektach TypeScript. Praktyczne wskazowki i konfiguracja.',
+    category: 'Narzedzia',
+    duration: '24:15',
+  },
+  {
+    title: 'Jak programowac ekstremalnie szybko',
+    description: 'Techniki i nawyki, ktore pozwola Ci znaczaco przyspieszyc tempo pracy jako programista.',
+    category: 'Produktywnosc',
+    duration: '15:33',
+  },
+  {
+    title: 'Frontend Tech Radar 2025 - przeglad technologii',
+    description: 'Nasz autorski przeglad najwazniejszych technologii frontendowych. Co adoptowac, a co odpuscic?',
+    category: 'Frontend',
+    duration: '32:07',
+  },
+  {
+    title: 'Jak wykorzystac 100% mozliwosci edytorow AI',
+    description: 'Cursor, Copilot, Windsurf - porownanie i najlepsze praktyki. Ktory edytor AI wybrac?',
+    category: 'AI & Narzedzia',
+    duration: '27:19',
+  },
+  {
+    title: 'React 19 - co nowego i jak migrować?',
+    description: 'Przeglad nowosci w React 19. Server Components, Actions i nowe hooki w praktyce.',
+    category: 'React',
+    duration: '21:45',
+  },
+  {
+    title: 'Czego nas nauczyly warsztaty 10xDevs?',
+    description: 'Podsumowanie pierwszej edycji 10xDevs. Wnioski, statystyki i plany na przyszlosc.',
+    category: '10xDevs',
+    duration: '19:08',
+  },
+  {
+    title: 'TypeScript vs JavaScript w 2025 - czy warto przejsc?',
+    description: 'Argumenty za i przeciw migracji do TypeScript. Kiedy warto, a kiedy nie?',
+    category: 'TypeScript',
+    duration: '16:22',
+  },
+  {
+    title: 'Astro 5 - najlepszy framework do stron statycznych?',
+    description: 'Recenzja Astro 5 - content collections, view transitions i integracja z React.',
+    category: 'Framework',
+    duration: '23:14',
+  },
+];
+
+const categoryColors: Record<string, string> = {
+  'AI & Programowanie': 'bg-brand-600/10 text-brand-300',
+  'Narzedzia': 'bg-amber-600/10 text-amber-300',
+  'Produktywnosc': 'bg-green-600/10 text-green-300',
+  'Frontend': 'bg-cyan-600/10 text-cyan-300',
+  'AI & Narzedzia': 'bg-brand-600/10 text-brand-300',
+  'React': 'bg-sky-600/10 text-sky-300',
+  '10xDevs': 'bg-purple-600/10 text-purple-300',
+  'TypeScript': 'bg-blue-600/10 text-blue-300',
+  'Framework': 'bg-rose-600/10 text-rose-300',
+};
+---
+
+<Layout title="YouTube - Przeprogramowani">
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-4xl sm:text-5xl font-black text-white">YouTube</h1>
+        <p class="mt-6 text-xl text-surface-200 leading-relaxed">
+          Kanal dla programistow nastawionych na wlasny rozwoj. Nowosci ze swiata IT, techniki efektywnej pracy i nauki oraz porady dotyczace kariery.
+        </p>
+        <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-lg transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Subskrybuj na YouTube
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="group block bg-white/[0.02] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-all">
+            <div class="relative aspect-video bg-surface-900 flex items-center justify-center">
+              <div class="absolute inset-0 bg-gradient-to-br from-brand-900/30 to-surface-900"></div>
+              <div class="relative z-10 w-14 h-14 rounded-full bg-red-600/80 flex items-center justify-center group-hover:bg-red-500 group-hover:scale-110 transition-all">
+                <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white text-xs font-medium rounded">{video.duration}</span>
+            </div>
+            <div class="p-5">
+              <span class={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-2 ${categoryColors[video.category] || 'bg-white/10 text-white'}`}>
+                {video.category}
+              </span>
+              <h3 class="text-base font-semibold text-white group-hover:text-brand-300 transition-colors line-clamp-2">{video.title}</h3>
+              <p class="mt-2 text-sm text-surface-700 line-clamp-2">{video.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 border border-white/10 hover:border-white/20 text-white font-medium rounded-xl transition-all hover:bg-white/5">
+          Zobacz wszystkie filmy na YouTube
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

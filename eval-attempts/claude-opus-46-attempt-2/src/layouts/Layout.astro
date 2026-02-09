@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Przeprogramowani - Szersze spojrzenie na programowanie. Kursy, podcast i społeczność dla ambitnych programistów.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-brand-900 text-brand-100 min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-900/80 backdrop-blur-xl border-b border-brand-700/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="text-xl font-bold tracking-tight text-white hover:text-accent-400 transition-colors">
+            Przeprogramowani
+          </a>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="/" class="text-sm font-medium text-brand-300 hover:text-white transition-colors">Strona Glowna</a>
+            <a href="/o-nas" class="text-sm font-medium text-brand-300 hover:text-white transition-colors">O nas</a>
+            <a href="/podcast" class="text-sm font-medium text-brand-300 hover:text-white transition-colors">Podcast</a>
+            <a href="/youtube" class="text-sm font-medium text-brand-300 hover:text-white transition-colors">YouTube</a>
+            <a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent-600 hover:bg-accent-500 text-white text-sm font-semibold rounded-lg transition-colors">
+              10xDevs
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-brand-300 hover:text-white" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden border-t border-brand-700/50 bg-brand-900/95 backdrop-blur-xl">
+        <div class="px-4 py-4 space-y-3">
+          <a href="/" class="block text-sm font-medium text-brand-300 hover:text-white transition-colors">Strona Glowna</a>
+          <a href="/o-nas" class="block text-sm font-medium text-brand-300 hover:text-white transition-colors">O nas</a>
+          <a href="/podcast" class="block text-sm font-medium text-brand-300 hover:text-white transition-colors">Podcast</a>
+          <a href="/youtube" class="block text-sm font-medium text-brand-300 hover:text-white transition-colors">YouTube</a>
+          <a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent-600 text-white text-sm font-semibold rounded-lg">
+            10xDevs
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-brand-700/50 bg-brand-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="md:col-span-2">
+            <h3 class="text-lg font-bold text-white mb-3">Przeprogramowani</h3>
+            <p class="text-brand-400 text-sm leading-relaxed max-w-md">
+              Szersze spojrzenie na programowanie. Tworzymy kursy, nagrywamy podcast i budujemy spolecznosc dla ambitnych programistow od 2017 roku.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white mb-3">Nawigacja</h4>
+            <ul class="space-y-2">
+              <li><a href="/o-nas" class="text-sm text-brand-400 hover:text-white transition-colors">O nas</a></li>
+              <li><a href="/podcast" class="text-sm text-brand-400 hover:text-white transition-colors">Podcast</a></li>
+              <li><a href="/youtube" class="text-sm text-brand-400 hover:text-white transition-colors">YouTube</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white mb-3">Kursy</h4>
+            <ul class="space-y-2">
+              <li><a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="text-sm text-brand-400 hover:text-white transition-colors">10xDevs 3.0</a></li>
+              <li><a href="https://opanujfrontend.pl/" target="_blank" rel="noopener noreferrer" class="text-sm text-brand-400 hover:text-white transition-colors">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl/" target="_blank" rel="noopener noreferrer" class="text-sm text-brand-400 hover:text-white transition-colors">Opanuj TypeScript</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 pt-8 border-t border-brand-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-brand-500">&copy; {new Date().getFullYear()} Przeprogramowani. Wszelkie prawa zastrzezone.</p>
+          <div class="flex items-center gap-4">
+            <a href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-white transition-colors" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><polygon fill="#fff" points="9.545,15.568 15.818,12 9.545,8.432"/></svg>
+            </a>
+            <a href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-white transition-colors" aria-label="Spotify">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/przeprogramowani/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-white transition-colors" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://github.com/przeprogramowani" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-white transition-colors" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

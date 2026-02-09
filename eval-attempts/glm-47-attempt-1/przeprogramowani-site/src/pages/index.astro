@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import CourseCard from '../components/CourseCard';
+import Newsletter from '../components/Newsletter';
+---
+
+<Layout title="Strona główna">
+  <Hero />
+
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-4">Edukacja technologiczna w epoce AI</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <CourseCard
+          title="Opanuj AI"
+          type="AI"
+          description="Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy."
+          link="https://opanuj.ai"
+        />
+        <CourseCard
+          title="Opanuj Frontend: AI Edition"
+          type="Kurs"
+          description="Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!"
+          link="https://www.opanujfrontend.pl"
+        />
+        <CourseCard
+          title="Opanuj TypeScript"
+          type="Kurs"
+          description="Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!"
+          link="https://www.opanujtypescript.pl"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-4">10xRules.ai — Reguły AI dla Twojego zespołu</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Buduj osobiste reguły AI i zarządzaj promptami zespołowymi na jednej platformie</p>
+
+      <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-8 text-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <span class="text-3xl">🧑‍💻</span> Rules Builder
+            </h3>
+            <p class="mb-2">Dla indywidualnych programistów</p>
+            <ul class="space-y-2 text-indigo-100">
+              <li class="flex items-start gap-2">
+                <span class="text-xl">🎨</span>
+                <span><strong>Visual Rule Builder:</strong> Intuicyjny interfejs do tworzenia reguł AI bez pisania kodu</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">📚</span>
+                <span><strong>140+ Frameworków i bibliotek:</strong> Kompleksowe wsparcie dla 6 warstw technologicznych</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">📦</span>
+                <span><strong>Smart Import:</strong> Automatycznie wykryj swój stack technologiczny przez upload pliku</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">💾</span>
+                <span><strong>Elastyczny eksport:</strong> Eksportuj jako pojedynczy plik lub wiele plików markdown</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <span class="text-3xl">👥</span> Prompt Library
+            </h3>
+            <p class="mb-2">Dla zespołów developerskich</p>
+            <ul class="space-y-2 text-indigo-100">
+              <li class="flex items-start gap-2">
+                <span class="text-xl">🏢</span>
+                <span><strong>Zarządzanie organizacją:</strong> Wsparcie dla wielu organizacji z RBAC</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">✍️</span>
+                <span><strong>Kuracja treści:</strong> Workflow draft/publish zapewnia jakość promptów</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">👥</span>
+                <span><strong>Doświadczenie użytkownika:</strong> Przeglądaj, filtruj i kopiuj prompty</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-xl">🤝</span>
+                <span><strong>Narzędzia współpracy:</strong> Centralne repozytorium wiedzy zespołowej</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <a href="https://10xrules.ai" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-50 transition text-lg">
+            Wypróbuj 10xRules.ai
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-12">7 lat na rynku edukacji technologicznej</h2>
+      <p class="text-gray-600 text-center mb-8">Współpracujemy z najlepszymi</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center opacity-70">
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Huuuge Games</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Nutridome</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">SmartRecruiters</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Future Processing</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Callstack</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">edrone</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Xfive</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Euvic</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Strabag</div>
+        <div class="flex justify-center items-center h-16 font-bold text-gray-600">Autodesk</div>
+      </div>
+    </div>
+  </section>
+</Layout>

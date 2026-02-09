@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description = "Przeprogramowani - Szersze spojrzenie na programowanie. Kursy, podcast, blog i newsletter dla ambitnych programistów.",
+  image = "/images/og-image.jpg"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Przeprogramowani" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="pl" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://przeprogramowani.pl/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://przeprogramowani.pl/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Przeprogramowani" />
+    <meta property="og:locale" content="pl_PL" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://przeprogramowani.pl/" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:site" content="@przeprogramowani" />
+    <meta name="twitter:creator" content="@przeprogramowani" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Przeprogramowani",
+      "alternateName": "Przeprogramowani.pl",
+      "url": "https://przeprogramowani.pl",
+      "logo": "https://przeprogramowani.pl/images/logo.png",
+      "description": "Polska platforma edukacyjna dla programistów. Kursy, szkolenia, blog techniczny i podcast.",
+      "foundingDate": "2017",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Przemek Smyrdek",
+          "url": "https://www.linkedin.com/in/psmyrdek/"
+        },
+        {
+          "@type": "Person",
+          "name": "Marcin Czarkowski",
+          "url": "https://www.linkedin.com/in/mkczarkowski/"
+        }
+      ],
+      "sameAs": [
+        "https://www.youtube.com/@przeprogramowani",
+        "https://www.facebook.com/przeprogramowani",
+        "https://www.instagram.com/przeprogramowani",
+        "https://przeprogramowani.substack.com",
+        "https://open.spotify.com/show/5n0eO0pl5m1d82y2jA6U5E"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "kontakt@przeprogramowani.pl",
+        "contactType": "customer service",
+        "availableLanguage": "Polish"
+      }
+    })} />
+    
+    <script is:inline>
+      // Instant page preloading
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = window.location.pathname;
+          document.head.appendChild(link);
+        });
+      }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <slot />
+  </body>
+</html>

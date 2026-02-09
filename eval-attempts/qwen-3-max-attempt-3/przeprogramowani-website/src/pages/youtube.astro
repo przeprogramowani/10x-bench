@@ -1,0 +1,40 @@
+---
+// src/pages/youtube.astro
+import Layout from '../layouts/Layout.astro';
+
+const meta = {
+  title: 'YouTube - Przeprogramowani.pl',
+  description: 'Tutoriale, live coding i porady na temat programowania na naszym kanale YouTube. Subskrybuj i ucz się razem z nami!',
+};
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <div class="container mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">YouTube</h1>
+      <p class="text-gray-600 mb-6">
+        Nasz kanał YouTube to miejsce, gdzie dzielimy się wiedzą na temat programowania 
+        w formie tutoriali, live codingów i porad.
+      </p>
+      <p class="text-gray-600 mb-6">
+        Na naszym kanale znajdziesz:
+      </p>
+      <ul class="list-disc list-inside text-gray-600 mb-6">
+        <li>Tutoriale z różnych technologii</li>
+        <li>Live coding sesje</li>
+        <li>Porady karierowe dla developerów</li>
+        <li>Recenzje narzędzi i bibliotek</li>
+        <li>Odcinki naszego podcastu</li>
+      </ul>
+      <p class="text-gray-600 mb-6">
+        Regularnie publikujemy nowe treści, więc warto subskrybować nasz kanał, 
+        aby nie przegapić żadnego odcinka.
+      </p>
+      <div class="text-center">
+        <a href="https://youtube.com/@przeprogramowani" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium inline-block">
+          Subskrybuj nasz kanał
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

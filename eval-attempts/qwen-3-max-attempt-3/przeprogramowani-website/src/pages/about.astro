@@ -1,0 +1,31 @@
+---
+// src/pages/about.astro
+import Layout from '../layouts/Layout.astro';
+
+const meta = {
+  title: 'O nas - Przeprogramowani.pl',
+  description: 'Dowiedz się więcej o naszej misji i tym, dlaczego tworzymy najlepsze materiały edukacyjne dla polskich developerów.',
+};
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <div class="container mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">O nas</h1>
+      <p class="text-gray-600 mb-6">
+        Przeprogramowani.pl to inicjatywa stworzona przez doświadczonych developerów z pasją do nauczania. 
+        Naszym celem jest dostarczanie najwyższej jakości materiałów edukacyjnych w języku polskim, 
+        które pomogą Ci stać się lepszym programistą.
+      </p>
+      <p class="text-gray-600 mb-6">
+        Wierzymy, że nauka programowania powinna być dostępna, praktyczna i przyjemna. 
+        Dlatego nasze kursy skupiają się na realnych problemach i rozwiązaniach, 
+        które napotkasz w codziennej pracy jako developer.
+      </p>
+      <p class="text-gray-600">
+        Niezależnie od tego, czy jesteś początkującym programistą, czy doświadczonym developerem, 
+        znajdziesz u nas coś dla siebie. Od podstawowych kursów po zaawansowane techniki i best practices.
+      </p>
+    </section>
+  </div>
+</Layout>

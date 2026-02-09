@@ -20,12 +20,6 @@ Vibe coding represents a one-shot approach to web development where an LLM must:
 
 | Path | Purpose |
 |------|---------|
-| `./benchmark/` | Benchmark materials and evaluation framework |
-| `./benchmark/prompt.md` | The input prompt given to all models |
-| `./benchmark/criteria.md` | Evaluation criteria used to assess implementations |
-| `./benchmark/eval.md` | Detailed evaluation results |
-| `./context/` | Reference content and specifications |
-| `./context/przeprogramowani.md` | Verified copy and page content for the Przeprogramowani.pl website |
 | `./website/` | Astro-based results dashboard (displays all benchmark results) |
 | `./scripts/process-results.ts` | TypeScript script that processes CSV results and generates dashboard data |
 | `./eval-attempts/` | Model implementations (one-shot attempts) |
@@ -33,32 +27,17 @@ Vibe coding represents a one-shot approach to web development where an LLM must:
 
 ### Model Attempt Directories
 
-Each model's implementation is stored in a dedicated directory under `./eval-attempts/`:
+Each model's implementation is stored in a dedicated directory under `./eval-attempts/`.
 
-- **`./eval-attempts/claude-opus-attempt-{1,2,3}`** — Claude Opus 4.6 implementations (via Claude Code)
-- **`./eval-attempts/gpt-codex-attempt-{1,2,3}`** — GPT-5.3-Codex implementations (via Codex Desktop)
-- **`./eval-attempts/kimi-k2.5-attempt-{1,2,3}`** — Kimi K2.5 implementations (via OpenCode)
-- **`./eval-attempts/glm-4.7-attempt-{1,2,3}`** — GLM-4.7 implementations (via OpenCode)
-- **`./eval-attempts/gemini-3-pro-attempt-{1,2,3}`** — Gemini 3 Pro implementations (via Cursor)
+Each `eval-results/{model-name}-attempt-{number}` directory contains `eval-results.csv` with criterion-by-criterion evaluation scores. Multiple attempt directories per model indicate iterative benchmark runs.
 
-Each attempt directory contains `eval-result.csv` with criterion-by-criterion evaluation scores. Multiple attempt directories per model indicate iterative benchmark runs.
-
-## Models Evaluated
-
-| Model | IDE/Tool | Organization |
-|-------|----------|--------------|
-| Claude Opus 4.6 | Claude Code | Anthropic |
-| GPT-5.3-Codex | Codex Desktop | OpenAI |
-| Kimi K2.5 | OpenCode | Moonshot AI |
-| GLM-4.7 | OpenCode | Alibaba (Aliyun) |
-| Gemini 3 Pro | Cursor | Google |
 
 ## How It Works
 
-1. **Prompt**: Each model receives the same input prompt from `./benchmark/prompt.md`
-2. **Content**: Reference content is available in `./context/przeprogramowani.md`
+1. **Prompt**: Each model receives the same input prompt (see [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval))
+2. **Content**: Reference content and specifications are maintained in [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval)
 3. **Implementation**: Models generate website code in their respective attempt directories under `./eval-attempts/`
-4. **Evaluation**: All implementations are assessed using the criteria defined in `./benchmark/criteria.md`
+4. **Evaluation**: All implementations are assessed using the criteria and tooling from [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval)
 5. **Results Processing**: The `scripts/process-results.ts` script parses evaluation CSV files and generates data for the dashboard
 6. **Results Dashboard**: An Astro-based static website (in `./website/`) displays comparative results with interactive tables and summaries
 
@@ -103,11 +82,9 @@ npm run dev
 
 ### Explore Benchmark Materials
 
-1. Read the input prompt: `cat ./benchmark/prompt.md`
-2. Review the reference content: `cat ./context/przeprogramowani.md`
-3. Examine evaluation criteria: `cat ./benchmark/criteria.md`
-4. View detailed evaluation results: `cat ./benchmark/eval.md`
-5. Explore model implementations: `ls -la ./eval-attempts/`
+Benchmark prompt, evaluation criteria and reference content are maintained in the companion repo: [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval).
+
+To explore model implementations: `ls -la ./eval-attempts/`
 
 ### Build for Production
 
@@ -140,6 +117,13 @@ This benchmark serves as a practical evaluation tool for:
 - Assessing code generation quality across different models
 - Identifying strengths and weaknesses in one-shot implementation scenarios
 - Informing technology choices for AI-assisted development workflows
+
+## Related Repositories
+
+| Repository | Purpose |
+|------------|---------|
+| **10x-bench** (this repo) | Model implementations, results dashboard, data processing, and the `/run-eval` skill |
+| [**10x-bench-eval**](../10x-bench-eval/) | Evaluation criteria, scoring methodology, benchmark prompt, reference content |
 
 ---
 

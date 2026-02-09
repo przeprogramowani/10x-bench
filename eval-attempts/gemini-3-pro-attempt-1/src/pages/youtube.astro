@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoList from '../components/VideoList';
+---
+
+<Layout title="YouTube - Przeprogramowani.pl">
+	<div class="py-12 bg-gray-800 min-h-screen">
+		<VideoList client:load />
+	</div>
+</Layout>

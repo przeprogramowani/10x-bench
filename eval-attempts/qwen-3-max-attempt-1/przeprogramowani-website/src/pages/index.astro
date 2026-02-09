@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import CoursesSection from '../components/CoursesSection';
+---
+
+<Layout title="Strona główna">
+  <Navigation />
+  <Hero />
+  <CoursesSection />
+  
+  <div class="bg-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">7 lat na rynku edukacji technologicznej</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          Współpracujemy z najlepszymi
+        </p>
+      </div>
+      
+      <div class="mt-10 grid grid-cols-2 gap-8 md:grid-cols-5 lg:mt-16">
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/huge.png" alt="Huuuge Games" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/nutridome.jpg" alt="Nutridome" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/smartrecruiters.png" alt="SmartRecruiters" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/future-proc.png" alt="Future Processing" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/callstack.png" alt="Callstack" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/edrone.png" alt="edrone" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/xfive.png" alt="Xfive" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/euvic.png" alt="Euvic" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/strabag.jpg" alt="Strabag" />
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <img class="h-12" src="/brands/autodesk.png" alt="Autodesk" />
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <p class="text-lg text-gray-700">
+          Chcesz nawiązać współpracę? 
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-indigo-600 hover:text-indigo-800 font-medium">
+            kontakt@przeprogramowani.pl
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

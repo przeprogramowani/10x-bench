@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import CourseCard from '../components/CourseCard';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+const courses = [
+  {
+    title: '10xDevs 3.0',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    image: '10x',
+    duration: '5+1 tyg.',
+    students: '3700+',
+    lessons: '40h+',
+    href: 'https://10xdevs.pl',
+    featured: true,
+    color: 'amber',
+  },
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+    image: 'O:FE',
+    duration: '10 tyg.',
+    students: '380+',
+    lessons: '30+',
+    href: 'https://opanujfrontend.pl',
+    color: 'primary',
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z TypeScript 5 i React 19!',
+    image: 'O:TS',
+    duration: '8 tyg.',
+    students: '120+',
+    lessons: '25+',
+    href: 'https://opanujtypescript.pl',
+    color: 'blue',
+  },
+];
+
+const features = [
+  {
+    title: 'Programowanie z AI',
+    description: 'Naucz się świadomie wykorzystywać najnowsze modele i narzędzia AI w całym cyklu wytwarzania oprogramowania.',
+    icon: '🤖',
+  },
+  {
+    title: 'Frontend w dużej skali',
+    description: 'Poznaj wzorce i praktyki, które stosują największe firmy technologiczne na świecie.',
+    icon: '🚀',
+  },
+  {
+    title: 'TypeScript na produkcji',
+    description: 'Zdobądź pewność w pracy z typami i buduj niezawodne aplikacje.',
+    icon: '💎',
+  },
+  {
+    title: 'Społeczność',
+    description: 'Dołącz do tysięcy ambitnych programistów, którzy codziennie się rozwijają.',
+    icon: '👥',
+  },
+];
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero Section -->    <Hero client:load />
+    
+    <!-- Features Section -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            Co nas wyróżnia?
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            7 lat na rynku edukacji technologicznej. Ponad 5000 przeszkolonych programistów.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature) => (
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-shadow">
+              <div class="text-4xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">{feature.title}</h3>
+              <p class="text-slate-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="kursy" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            Nasze programy szkoleniowe
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Wybierz ścieżkę rozwoju dopasowaną do Twoich potrzeb. Wszystkie kursy prowadzone przez doświadczonych praktyków.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map((course) => (
+            <CourseCard {...course} client:visible />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Przeprogramowany Newsletter
+        </h2>
+        <p class="text-lg text-slate-300 mb-8">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1: 3 rekomendacje techniczne, 2 rekomendacje rozwojowe, 1 bonus niespodzianka.
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-8 py-4 text-lg font-semibold text-slate-900 bg-white rounded-xl hover:bg-slate-100 transition-colors"
+        >
+          Zapisz się za darmo
+        </a>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-slate-500 mb-8">Współpracujemy z najlepszymi</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+          <div class="text-xl font-bold text-slate-700">Huuuge Games</div>
+          <div class="text-xl font-bold text-slate-700">SmartRecruiters</div>
+          <div class="text-xl font-bold text-slate-700">Future Processing</div>
+          <div class="text-xl font-bold text-slate-700">Callstack</div>
+          <div class="text-xl font-bold text-slate-700">Autodesk</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer client:visible />
+</Layout>

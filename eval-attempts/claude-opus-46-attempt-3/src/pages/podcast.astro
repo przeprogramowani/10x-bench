@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+import { podcastEpisodes, siteConfig } from '../data/site';
+---
+
+<Layout title="Podcast" description="Przeprogramowani Podcast — szersze spojrzenie na programowanie. Rozmawiamy o technologii, karierze i rozwoju z najlepszymi ekspertami.">
+  <section class="py-20 sm:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600/15 border border-brand-500/20 text-brand-300 text-sm font-medium mb-6">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+          </svg>
+          98+ odcinków
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-bold text-white">Podcast</h1>
+        <p class="mt-6 text-lg text-surface-200 leading-relaxed max-w-2xl">
+          <strong class="text-white">Przeprogramowani</strong> czyli szersze spojrzenie na programowanie.
+          Zapraszają Marcin Czarkowski i Przemek Smyrdek. Rozmawiamy z ekspertami
+          o technologii, architekturze, karierze i rozwoju.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={siteConfig.socials.spotify}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold rounded-xl transition-colors text-sm"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            Spotify
+          </a>
+          <a
+            href={siteConfig.socials.apple}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl transition-colors text-sm border border-white/10"
+          >
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+
+      <!-- Episodes list -->
+      <div class="space-y-4">
+        {podcastEpisodes.map(episode => (
+          <PodcastCard
+            title={episode.title}
+            description={episode.description}
+            date={episode.date}
+            duration={episode.duration}
+            guest={episode.guest}
+            spotifyUrl={episode.spotifyUrl}
+          />
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 text-center">
+        <a
+          href={siteConfig.socials.spotify}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-semibold transition-colors"
+        >
+          Zobacz wszystkie odcinki na Spotify
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

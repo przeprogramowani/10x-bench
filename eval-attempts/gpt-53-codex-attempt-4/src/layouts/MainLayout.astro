@@ -1,0 +1,106 @@
+---
+import MobileNav from "../components/MobileNav";
+import { navLinks, site, socialLinks } from "../data/site";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath?: string;
+}
+
+const { title, description, currentPath = "/" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl" class="h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="min-h-full bg-slate-950 text-slate-100 antialiased">
+    <div class="site-bg" aria-hidden="true"></div>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <a href="/" class="inline-flex items-center gap-3">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/15 text-cyan-200">
+            &lt;/&gt;
+          </span>
+          <span class="font-heading text-lg tracking-tight text-white">Przeprogramowani</span>
+        </a>
+
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+          {
+            navLinks.map((link) => {
+              const isActive = currentPath === link.href;
+
+              return (
+                <a
+                  href={link.href}
+                  class={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
+                    isActive
+                      ? "bg-cyan-400/15 text-cyan-200"
+                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+
+        <MobileNav links={navLinks} currentPath={currentPath} client:load />
+      </div>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl px-4 pb-20 pt-10 sm:px-6 sm:pt-14">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 bg-slate-950/90">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 sm:px-6">
+        <div>
+          <p class="font-heading text-xl text-white">{site.name}</p>
+          <p class="mt-2 max-w-md text-sm text-slate-300">{site.description}</p>
+          <a class="mt-3 inline-block text-sm text-cyan-200 hover:text-cyan-100" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
+        </div>
+
+        <div>
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Linki</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {
+              socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="rounded-lg border border-white/15 px-3 py-1.5 text-sm text-slate-200 transition hover:border-cyan-300/70 hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 px-4 py-4 text-center text-xs text-slate-400 sm:px-6">
+        {site.name} - {site.tagline}
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  {
+    id: "v1",
+    title: "Jak zostać Programistą w 2024? - Mapa Drogowa",
+    views: "15k",
+    date: "2 tygodnie temu",
+    thumbnail: "https://via.placeholder.com/320x180?text=Mapa+Drogowa+2024",
+    url: "https://www.youtube.com/watch?v=mock1"
+  },
+  {
+    id: "v2",
+    title: "React 19 - co nowego? Przegląd funkcji",
+    views: "10k",
+    date: "1 miesiąc temu",
+    thumbnail: "https://via.placeholder.com/320x180?text=React+19",
+    url: "https://www.youtube.com/watch?v=mock2"
+  },
+  {
+    id: "v3",
+    title: "Vibe Coding - czy to przyszłość programowania?",
+    views: "5k",
+    date: "3 dni temu",
+    thumbnail: "https://via.placeholder.com/320x180?text=Vibe+Coding",
+    url: "https://www.youtube.com/watch?v=mock3"
+  },
+  {
+    id: "v4",
+    title: "Rozmowa rekrutacyjna - live coding z seniorem",
+    views: "25k",
+    date: "2 miesiące temu",
+    thumbnail: "https://via.placeholder.com/320x180?text=Live+Coding",
+    url: "https://www.youtube.com/watch?v=mock4"
+  }
+];
+---
+
+<Layout title="YouTube">
+  <div class="bg-gray-50 py-16">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Kanał YouTube</h1>
+        <p class="text-xl text-gray-600">Poradniki, tutoriale i dyskusje o świecie IT.</p>
+        <a 
+          href="https://www.youtube.com/@Przeprogramowani" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center px-6 py-3 mt-4 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C3.596 15.255 3.596 12 3.596 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C7.38 4.596 12 4.596 12 4.596s4.62 0 6.18.418zM15.194 12 10 15V9l5.194 3z" clip-rule="evenodd" />
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {videos.map(video => (
+          <a href={video.url} class="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="relative aspect-video bg-gray-200">
+               <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover group-hover:opacity-90 transition-opacity" />
+               <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                 <svg class="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                   <path d="M8 5v14l11-7z" />
+                 </svg>
+               </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 line-clamp-2 mb-2 group-hover:text-red-600 transition-colors">
+                {video.title}
+              </h3>
+              <div class="flex items-center text-sm text-gray-500 space-x-2">
+                <span>{video.views} wyświetleń</span>
+                <span>•</span>
+                <span>{video.date}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

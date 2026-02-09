@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard';
+
+const videos = [
+  {
+    title: 'AI zamiast lekarza? ChatGPT Health vs Google MedGemma',
+    description: 'Omawiamy najnowsze modele medyczne AI — ChatGPT Health od OpenAI i MedGemma od Google. Czy AI moze zastapic lekarza? Przy okazji o konstytucji Anthropic i nowych modelach z Chin.',
+    date: 'lut 2026',
+    duration: '1:23:04',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025',
+    description: 'Modele, narzedzia, przelomy, liderzy i firmy — pelen przeglad roku 2025 w swiecie sztucznej inteligencji. Kto wygral, kto przegral, czego sie nauczylismy.',
+    date: 'sty 2026',
+    duration: '1:47:28',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI',
+    description: 'Porownanie najnowszych modeli OpenAI i Google. MCP w Linux Foundation, watpliwosci wokol benchmarkow METR i przyszlosc otwartych standardow AI.',
+    date: 'sty 2026',
+    duration: '58:41',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'Gemini 3 to hit, ale konkurencja nie spi!',
+    description: 'GPT-5.1, Grok 4.1, Opus 4.5 — wszyscy wielcy gracze wydali nowe modele. Ktory jest najlepszy? I czemu LLM-y zaczynaja okazywac emocje?',
+    date: 'gru 2025',
+    duration: '1:03:20',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5',
+    description: 'Porownanie dwoch najpopularniejszych edytorow AI. Czy Cursor 2.0 utrzyma pozycje lidera? Testujemy oba narzedzia w praktyce.',
+    date: 'lis 2025',
+    duration: '1:14:37',
+    tag: 'Narzedzia AI',
+  },
+  {
+    title: 'Czy agenci AI zdominuja e-commerce?',
+    description: 'ChatGPT Instant Checkout, agenci zakupowi i przyszlosc handlu online. Jak AI zmienia sposob, w jaki kupujemy i sprzedajemy w internecie.',
+    date: 'paz 2025',
+    duration: '1:28:05',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawde ma znaczenie?',
+    description: 'Rozmowa z Tomaszem Ducinem o architekturze frontendowej, micro frontendach, modularnosci i skalowaniu. Praktyczne porady dla senior developerow.',
+    date: '2025',
+    duration: '1:16:44',
+    tag: 'Gosc',
+  },
+  {
+    title: '5 mitow programowania z AI',
+    description: 'Zapomnij o Vibe Coding — obalamy 5 najpopularniejszych mitow o programowaniu z wykorzystaniem sztucznej inteligencji.',
+    date: 'lip 2025',
+    duration: '45:00',
+    tag: 'Opanuj.AI',
+  },
+  {
+    title: 'Czy AI spowalnia programistow?',
+    description: 'Halucynacje w NCBR, kontrowersyjne badania i praktyczne obserwacje. Czy korzystanie z AI naprawde zwieksza produktywnosc?',
+    date: 'sie 2025',
+    duration: '52:00',
+    tag: 'Opanuj.AI',
+  },
+];
+---
+
+<Layout title="YouTube - Przeprogramowani">
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-4xl sm:text-5xl font-black text-white mb-6">YouTube</h1>
+        <p class="text-xl text-brand-400 leading-relaxed">
+          Filmy o programowaniu, narzędziach AI, karierze w IT i najnowszych trendach technologicznych. Subskrybuj nasz kanal, aby byc na biezaco.
+        </p>
+        <div class="mt-8">
+          <a href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl transition-colors text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><polygon fill="#fff" points="9.545,15.568 15.818,12 9.545,8.432"/></svg>
+            Subskrybuj na YouTube
+          </a>
+        </div>
+      </div>
+
+      <!-- Videos Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <VideoCard client:visible {...video} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

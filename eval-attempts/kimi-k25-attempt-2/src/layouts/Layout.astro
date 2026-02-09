@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'Przeprogramowani.pl - Szersze spojrzenie na programowanie',
+  description = 'Łączymy świat programowania, biznesu i rozwoju. Tworzymy treści, kursy i narzędzia dla ambitnych programistów.'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>{title}</title>
+</head>
+<body class="font-sans antialiased bg-dark-900 text-white">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary-500: #f97316;
+    --color-primary-600: #ea580c;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    min-height: 100vh;
+  }
+  
+  ::selection {
+    background-color: rgba(249, 115, 22, 0.3);
+    color: white;
+  }
+</style>

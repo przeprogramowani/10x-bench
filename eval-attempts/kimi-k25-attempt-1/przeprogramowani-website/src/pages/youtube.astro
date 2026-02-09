@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { Youtube, Play, Eye, ThumbsUp, ExternalLink } from 'lucide-react';
+import '../styles/global.css';
+
+const videos = [
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'KAJTsQbqBow',
+    views: '12K',
+    likes: '890',
+    description: 'Testujemy możliwości darmowych modeli AI do programowania.',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'uwi39C2O8NI',
+    views: '8.5K',
+    likes: '650',
+    description: 'Praktyczne techniki usprawniające pracę z asystentami AI.',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+  },
+  {
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!',
+    thumbnail: 'b-gOI128G2s',
+    views: '5.2K',
+    likes: '420',
+    description: 'Prezentacja projektów zrealizowanych przez uczestników programu.',
+    href: 'https://www.youtube.com/watch?v=b-gOI128G2s',
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze',
+    thumbnail: 'WJLGzf7qq-c',
+    views: '15K',
+    likes: '1.2K',
+    description: 'Jak efektywnie pracować z agentami AI w codziennej pracy developera.',
+    href: 'https://www.youtube.com/watch?v=WJLGzf7qq-c',
+  },
+  {
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania',
+    thumbnail: 'jjOYxKAk_j8',
+    views: '9.8K',
+    likes: '780',
+    description: 'Odpowiadamy na najczęściej zadawane pytania o AI w programowaniu.',
+    href: 'https://www.youtube.com/watch?v=jjOYxKAk_j8',
+  },
+  {
+    title: 'Special webinar for Builders: Tu zaczyna się Twój AI-ready project',
+    thumbnail: 'iSG7PUxjfww',
+    views: '4.1K',
+    likes: '340',
+    description: 'Jak przygotować projekt do pracy z AI od samego początku.',
+    href: 'https://www.youtube.com/watch?v=iSG7PUxjfww',
+  },
+];
+
+const stats = [
+  { value: '15K+', label: 'subskrybentów' },
+  { value: '100+', label: 'filmów' },
+  { value: '500K+', label: 'wyświetleń' },
+];
+---
+
+<Layout title="YouTube - Przeprogramowani.pl">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero -->
+    <section class="relative bg-gradient-to-br from-red-600 to-red-800 text-white py-20">
+      <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" />
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 mb-8">
+          <Youtube className="h-10 w-10" />
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Przeprogramowani na YouTube
+        </h1>
+        <p class="text-xl text-red-100 max-w-3xl mx-auto mb-8">
+          Filmy i materiały wideo o programowaniu, AI i rozwoju kariery w IT.
+          Subskrybuj, aby nie przegapić nowości!
+        </p>
+        
+        {/* Stats */}
+        <div class="flex flex-wrap justify-center gap-8 mb-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold">{stat.value}</div>
+              <div class="text-red-200">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-8 py-4 text-lg font-semibold text-red-700 bg-white rounded-xl hover:bg-red-50 transition-colors"
+        >
+          <Youtube className="h-5 w-5 mr-2" />
+          Subskrybuj kanał
+        </a>
+      </div>
+    </section>
+
+    {/* Videos Grid */}
+    <section class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">
+          Najnowsze filmy
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video) => (
+            <a
+              href={video.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group bg-white rounded-xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl hover:border-red-300 transition-all"
+            >
+              {/* Thumbnail */}
+              <div class="aspect-video relative overflow-hidden bg-slate-100">
+                <img
+                  src={`https://i3.ytimg.com/vi/${video.thumbnail}/maxresdefault.jpg`}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onerror={`this.src='https://i3.ytimg.com/vi/${video.thumbnail}/hqdefault.jpg'`}
+                />
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center">
+                    <Play className="h-8 w-8 text-white ml-1" />
+                  </div>
+                </div>
+              </div>
+              
+              {/* Content */}
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-slate-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                  {video.title}
+                </h3>
+                <p class="text-slate-600 text-sm mb-4 line-clamp-2">
+                  {video.description}
+                </p>
+                <div class="flex items-center justify-between text-sm text-slate-500">
+                  <div class="flex items-center space-x-4">
+                    <span class="flex items-center">
+                      <Eye className="h-4 w-4 mr-1" />
+                      {video.views}
+                    </span>
+                    <span class="flex items-center">
+                      <ThumbsUp className="h-4 w-4 mr-1" />
+                      {video.likes}
+                    </span>
+                  </div>
+                  <ExternalLink className="h-4 w-4" />
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Load More */}
+        <div class="text-center mt-12">
+          <a
+            href="https://youtube.com/c/przeprogramowani/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-4 text-lg font-semibold text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors"
+          >
+            Zobacz wszystkie filmy
+            <ExternalLink className="h-5 w-5 ml-2" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* Playlists */}
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8">
+          Popularne playlisty
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <a
+            href="https://www.youtube.com/playlist?list=PLvL3QCFL8XvX7XvX7XvX7XvX7XvX7XvX7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg hover:border-red-300 transition-all"
+          >
+            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+              <Play className="h-6 w-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">Programowanie z AI</h3>
+            <p class="text-slate-600 text-sm">Praktyczne techniki pracy z asystentami AI w codziennym development.</p>
+          </a>
+
+          <a
+            href="https://www.youtube.com/playlist?list=PLvL3QCFL8XvX7XvX7XvX7XvX7XvX7XvX7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg hover:border-red-300 transition-all"
+          >
+            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+              <Play className="h-6 w-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">TypeScript</h3>
+            <p class="text-slate-600 text-sm">Zaawansowane techniki i wzorce w TypeScript.</p>
+          </a>
+
+          <a
+            href="https://www.youtube.com/playlist?list=PLvL3QCFL8XvX7XvX7XvX7XvX7XvX7XvX7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-white rounded-xl p-6 border border-slate-200 hover:shadow-lg hover:border-red-300 transition-all"
+          >
+            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center mb-4 group-hover:bg-red-200 transition-colors">
+              <Play className="h-6 w-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-2">Frontend w praktyce</h3>
+            <p class="text-slate-600 text-sm">Realne projekty i case study z frontendu.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer client:visible />
+</Layout>

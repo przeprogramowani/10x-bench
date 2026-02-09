@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,9min 19s,N/A,9min 19s
+Test run,9.02.2026 16:40,N/A,9.02.2026 16:40
+Local build,1,1,Build successful (Astro 5 static output) and dev server started on port 4321
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200. Navigation styles and content working properly
+Tech stack,0.5,1,Astro 5 React 19 and Tailwind CSS 4 installed. Cloudflare Adapter (@astrojs/cloudflare) NOT installed or configured in astro.config.mjs. Wrangler config present but adapter missing
+O nas page,0.5,1,Page exists and returns 200. Founder names and LinkedIn URLs match context. Bios are oversimplified - missing key details: DAZN/Cabify for Przemek and SmartRecruiters for Marcin. No course assignments listed
+Podcast page,1,1,Page exists and returns 200. Both Przeprogramowani and OpanujAI podcasts represented with real verified episode titles and correct links
+YouTube page,1,1,Page exists and returns 200. Three unique verified Przeprogramowani channel video IDs (KAJTsQbqBow uwi39C2O8NI WJLGzf7qq-c). Real titles confirmed. No Rick Roll or placeholder IDs
+Kursy section,0.5,1,Main page hero features 10xDevs prominently with correct URL (10xdevs.pl). Only 3 of 6 courses shown (10xDevs Opanuj Frontend Opanuj TypeScript). Missing: Opanuj JavaScript Opanuj AI Cursor course
+Consistent UI,1,1,UI consistent across all pages per user evaluation
+Responsive design,1,1,Containers components and navigation fully responsive per user evaluation
+SEO Tags,1,1,Layout component provides title and meta description to all pages. lang=pl correctly set. Descriptions are contextually appropriate and match brand content

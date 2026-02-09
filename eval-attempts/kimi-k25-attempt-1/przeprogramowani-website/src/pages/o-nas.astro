@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import { Linkedin, Twitter, Mail } from 'lucide-react';
+import '../styles/global.css';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'PS',
+    description: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).',
+    linkedin: 'https://www.linkedin.com/in/psmyrdek/',
+    twitter: 'https://twitter.com/psmyrdek',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'MC',
+    description: 'Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce.',
+    linkedin: 'https://www.linkedin.com/in/mkczarkowski/',
+    twitter: 'https://twitter.com/mkczarkowski',
+  },
+];
+
+const stats = [
+  { value: '7+', label: 'lat na rynku' },
+  { value: '5000+', label: 'przeszkolonych devów' },
+  { value: '15k+', label: 'społeczność' },
+  { value: '100+', label: 'odcinków podcastu' },
+];
+---
+
+<Layout title="O nas - Przeprogramowani.pl">
+  <Navigation client:load />
+  
+  <main>
+    <!-- Hero -->
+    <section class="relative bg-gradient-to-br from-primary-600 to-primary-800 text-white py-20">
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')" />
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Łączymy świat programowania,<br />biznesu i rozwoju
+        </h1>
+        <p class="text-xl text-primary-100 max-w-3xl mx-auto">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. 
+          Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej.
+        </p>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-12 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold text-primary-600">{stat.value}</div>
+              <div class="text-slate-600 mt-1">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="prose prose-lg prose-slate mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">Witaj na Przeprogramowanych!</h2>
+          <p class="text-slate-600 text-lg leading-relaxed mb-6">
+            Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. 
+            Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+          </p>
+          <p class="text-slate-600 text-lg leading-relaxed mb-6">
+            Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. 
+            Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+          </p>
+          <p class="text-slate-600 text-lg leading-relaxed">
+            Zyskaj szersze spojrzenie na programowanie.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founders -->
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            Poznaj założycieli
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Przemek i Marcin to doświadczeni programiści, którzy postanowili dzielić się swoją wiedzą z polską społecznością IT.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {founders.map((founder) => (
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
+              <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0">
+                  <div class="w-24 h-24 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center text-white text-2xl font-bold">
+                    {founder.image}
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold text-slate-900">{founder.name}</h3>
+                  <p class="text-primary-600 font-medium mb-3">{founder.role}</p>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                    {founder.description}
+                  </p>
+                  <div class="flex space-x-3">
+                    <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-600 transition-colors">
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                    <a href={founder.twitter} target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-primary-600 transition-colors">
+                      <Twitter className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Chcesz nawiązać współpracę?
+        </h2>
+        <p class="text-lg text-slate-600 mb-8">
+          Jesteśmy otwarci na nowe projekty, warsztaty dla firm i współpracę sponsorską.
+        </p>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 rounded-xl hover:bg-primary-700 transition-colors"
+        >
+          <Mail className="h-5 w-5 mr-2" />
+          Skontaktuj się z nami
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <Footer client:visible />
+</Layout>

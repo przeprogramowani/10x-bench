@@ -1,0 +1,244 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Przeprogramowani — edukacja programistyczna, kursy, podcast i społeczność dla ambitnych developerów." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://przeprogramowani.pl");
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Przeprogramowani" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content="pl_PL" />
+
+    <link rel="canonical" href={canonicalURL.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-surface-950/80 backdrop-blur-xl border-b border-surface-800/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-2 text-white font-bold text-lg hover:text-brand-400 transition-colors">
+            <span class="text-brand-400 font-mono text-xl">&lt;/&gt;</span>
+            <span>Przeprogramowani</span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                class:list={[
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                  Astro.url.pathname === link.href || (link.href !== "/" && Astro.url.pathname.startsWith(link.href))
+                    ? "text-brand-400 bg-brand-400/10"
+                    : "text-surface-300 hover:text-white hover:bg-surface-800/50",
+                ]}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ml-4 px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl transition-colors"
+            >
+              10xDevs
+            </a>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-surface-800/50 transition-colors"
+            aria-label="Otwórz menu"
+            aria-expanded="false"
+          >
+            <span class="block w-6 h-0.5 bg-surface-300 transition-transform" id="bar1"></span>
+            <span class="block w-6 h-0.5 bg-surface-300 transition-opacity" id="bar2"></span>
+            <span class="block w-6 h-0.5 bg-surface-300 transition-transform" id="bar3"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden hidden border-t border-surface-800/50">
+        <div class="px-4 py-4 space-y-1">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "block px-4 py-3 rounded-lg text-sm font-medium transition-colors",
+                Astro.url.pathname === link.href || (link.href !== "/" && Astro.url.pathname.startsWith(link.href))
+                  ? "text-brand-400 bg-brand-400/10"
+                  : "text-surface-300 hover:text-white hover:bg-surface-800/50",
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block mt-3 px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-xl text-center transition-colors"
+          >
+            10xDevs
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-surface-800/50 bg-surface-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <!-- Brand -->
+          <div class="md:col-span-1">
+            <a href="/" class="flex items-center gap-2 text-white font-bold text-lg mb-4">
+              <span class="text-brand-400 font-mono text-xl">&lt;/&gt;</span>
+              <span>Przeprogramowani</span>
+            </a>
+            <p class="text-surface-500 text-sm leading-relaxed">
+              Edukacja programistyczna nowej generacji. Kursy, podcast i społeczność dla ambitnych developerów.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div>
+            <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Nawigacja</h3>
+            <ul class="space-y-3">
+              {navLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="text-surface-400 hover:text-white text-sm transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div>
+            <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Kursy</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  10xDevs 3.0
+                </a>
+              </li>
+              <li>
+                <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  Opanuj Frontend AI Edition
+                </a>
+              </li>
+              <li>
+                <a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  Opanuj TypeScript Frontend Pro
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4">Social</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/przeprogramowani" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/psmyrdek" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  Substack
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/przeprogramowani" target="_blank" rel="noopener noreferrer" class="text-surface-400 hover:text-white text-sm transition-colors">
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-surface-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-surface-600 text-sm">
+            &copy; {new Date().getFullYear()} Przeprogramowani. Wszelkie prawa zastrzeżone.
+          </p>
+          <p class="text-surface-600 text-sm">
+            Stworzone z pasją do edukacji programistycznej.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const bar1 = document.getElementById("bar1");
+      const bar2 = document.getElementById("bar2");
+      const bar3 = document.getElementById("bar3");
+
+      if (btn && menu && bar1 && bar2 && bar3) {
+        btn.addEventListener("click", () => {
+          const isOpen = !menu.classList.contains("hidden");
+          menu.classList.toggle("hidden");
+          btn.setAttribute("aria-expanded", String(!isOpen));
+
+          if (!isOpen) {
+            bar1.style.transform = "rotate(45deg) translate(4px, 4px)";
+            bar2.style.opacity = "0";
+            bar3.style.transform = "rotate(-45deg) translate(4px, -4px)";
+          } else {
+            bar1.style.transform = "";
+            bar2.style.opacity = "";
+            bar3.style.transform = "";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

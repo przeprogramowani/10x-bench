@@ -1,0 +1,49 @@
+---
+// src/pages/courses/opanuj-frontend.astro
+import Layout from '../../layouts/Layout.astro';
+
+const meta = {
+  title: 'Opanuj Frontend - Przeprogramowani.pl',
+  description: 'Kompleksowy kurs frontendowy obejmujący HTML, CSS, JavaScript, React i nowoczesne narzędzia developerskie.',
+};
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <div class="container mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-blue-600 mb-6">Opanuj Frontend</h1>
+      <p class="text-gray-600 mb-6">
+        Kompleksowy kurs frontendowy, który przeprowadzi Cię od podstaw do zaawansowanych konceptów 
+        tworzenia nowoczesnych aplikacji webowych.
+      </p>
+      
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Co znajdziesz w kursie?</h2>
+      <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+        <li><strong>HTML & CSS</strong> - Podstawy i zaawansowane techniki stylizacji</li>
+        <li><strong>JavaScript</strong> - Od podstaw do ES6+ i nowoczesnych konceptów</li>
+        <li><strong>React</strong> - Najpopularniejsza biblioteka do tworzenia UI</li>
+        <li><strong>State Management</strong> - Redux, Context API i inne rozwiązania</li>
+        <li><strong>Build Tools</strong> - Webpack, Vite, Babel i inne narzędzia</li>
+        <li><strong>Testing</strong> - Testowanie aplikacji frontendowych</li>
+        <li><strong>Performance</strong> - Optymalizacja wydajności aplikacji</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Dla kogo jest ten kurs?</h2>
+      <p class="text-gray-600 mb-6">
+        Kurs jest idealny zarówno dla początkujących, którzy chcą nauczyć się frontendu od zera, 
+        jak i dla doświadczonych developerów, którzy chcą uzupełnić swoje umiejętności 
+        i nauczyć się nowoczesnych technologii i best practices.
+      </p>
+
+      <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Gotowy, aby zacząć?</h3>
+        <p class="text-blue-700 mb-4">
+          Zapisz się na kurs i rozpocznij swoją podróż do zostania profesjonalnym frontend developerem!
+        </p>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">
+          Zapisz się na kurs
+        </button>
+      </div>
+    </section>
+  </div>
+</Layout>

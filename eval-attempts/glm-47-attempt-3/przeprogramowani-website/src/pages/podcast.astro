@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+import { podcasts } from '../data/podcasts';
+---
+
+<Layout title="Podcast — Przeprogramowani">
+  <div class="pt-4 sm:pt-6">
+    <nav aria-label="Breadcrumb" class="max-w-screen-xl mx-auto px-4 py-4">
+      <ol class="flex flex-wrap items-center gap-1 text-sm text-gray-400" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" class="hover:text-white transition-colors" itemprop="item">
+            <span itemprop="name">Strona główna</span>
+          </a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li class="flex items-center gap-1" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span class="text-gray-600" aria-hidden="true">/</span>
+          <span class="text-gray-200" itemprop="name" aria-current="page">Podcast</span>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+    
+    <div class="max-w-screen-xl mx-auto px-4">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Podcasty</h1>
+      <p class="mt-2 text-lg text-gray-400">Słuchaj naszych podcastów o technologii, AI i programowaniu</p>
+    </div>
+  </div>
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-4">Opanuj.AI Podcast</h2>
+          <p class="text-gray-400 mb-6">Ponad 4000 słuchaczy • Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+          
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {podcasts.filter(p => p.podcast === 'Opanuj.AI Podcast').map(podcast => (
+              <PodcastCard client:load key={podcast.id} {...podcast} />
+            ))}
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-800">
+          <h2 class="text-2xl font-bold text-white mb-4">Przeprogramowani ft. Gość</h2>
+          <p class="text-gray-400 mb-6">Ponad 3800 słuchaczy • Rozmowy dla głodnych wiedzy</p>
+          
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {podcasts.filter(p => p.podcast === 'Przeprogramowani ft. Gość').map(podcast => (
+              <PodcastCard client:load key={podcast.id} {...podcast} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-gray-950">
+    <div class="max-w-screen-xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Jesteśmy na twojej ulubionej platformie</h2>
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <a 
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-32 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors text-sm font-medium text-white"
+        >
+          Apple Podcasts
+        </a>
+        <a 
+          href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-32 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors text-sm font-medium text-white"
+        >
+          Spotify
+        </a>
+        <a 
+          href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-32 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors text-sm font-medium text-white"
+        >
+          Google Podcasts
+        </a>
+        <a 
+          href="https://anchor.fm/s/22544b7c/podcast/rss"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-32 h-12 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors text-sm font-medium text-white"
+        >
+          RSS
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

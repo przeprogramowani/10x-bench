@@ -1,0 +1,51 @@
+---
+// src/pages/courses/opanuj-typescript.astro
+import Layout from '../../layouts/Layout.astro';
+
+const meta = {
+  title: 'Opanuj TypeScript - Przeprogramowani.pl',
+  description: 'Naucz się TypeScript od podstaw do zaawansowanych konceptów. Typowanie, interfejsy, generyki i wiele więcej.',
+};
+---
+
+<Layout title={meta.title} description={meta.description}>
+  <div class="container mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-green-600 mb-6">Opanuj TypeScript</h1>
+      <p class="text-gray-600 mb-6">
+        TypeScript to nadzbiór JavaScriptu, który dodaje statyczne typowanie do języka. 
+        Kurs nauczy Cię wszystkiego, co potrzebujesz wiedzieć, aby efektywnie korzystać z TypeScriptu 
+        w swoich projektach.
+      </p>
+      
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Co znajdziesz w kursie?</h2>
+      <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+        <li><strong>Podstawy TypeScriptu</strong> - Instalacja, konfiguracja i pierwsze kroki</li>
+        <li><strong>Typy podstawowe i złożone</strong> - string, number, boolean, array, object itd.</li>
+        <li><strong>Interfejsy i typy</strong> - Definiowanie własnych struktur danych</li>
+        <li><strong>Generyki</strong> - Tworzenie reużywalnego i typowanego kodu</li>
+        <li><strong>Unie i intersekcje</strong> - Zaawansowane techniki typowania</li>
+        <li><strong>Utility Types</strong> - Wbudowane typy pomocnicze</li>
+        <li><strong>Integracja z React</strong> - Typowanie komponentów i propsów</li>
+        <li><strong>Best Practices</strong> - Jak pisać czysty i łatwy w utrzymaniu kod TypeScript</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Dlaczego TypeScript?</h2>
+      <p class="text-gray-600 mb-6">
+        TypeScript pomaga łapać błędy na etapie developmentu, zamiast w czasie działania aplikacji. 
+        Ułatwia refaktoryzację kodu, poprawia czytelność i dokumentację, 
+        a także zwiększa produktywność zespołów developerskich.
+      </p>
+
+      <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+        <h3 class="text-xl font-bold text-green-800 mb-2">Chcesz pisać lepszy kod?</h3>
+        <p class="text-green-700 mb-4">
+          TypeScript to narzędzie, które zmieni sposób, w jaki myślisz o JavaScript i programowaniu w ogóle.
+        </p>
+        <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">
+          Zapisz się na kurs
+        </button>
+      </div>
+    </section>
+  </div>
+</Layout>

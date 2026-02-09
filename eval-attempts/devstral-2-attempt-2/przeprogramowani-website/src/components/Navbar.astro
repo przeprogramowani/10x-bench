@@ -1,0 +1,43 @@
+---
+// Navbar component
+const navItems = [
+  { name: 'O Nas', href: '/o-nas' },
+  { name: 'Podcast', href: '/podcast' },
+  { name: 'YouTube', href: '/youtube' },
+  { name: 'Kursy', href: '/kursy' },
+  { name: '10xDevs', href: 'https://10xdevs.pl', external: true },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+        <span class="text-white font-bold text-lg">P</span>
+      </div>
+      <span class="font-bold text-xl text-gray-900">Przeprogramowani</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-6">
+      {navItems.map((item) => (
+        <a 
+          href={item.href} 
+          class="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+          target={item.external ? "_blank" : undefined}
+          rel={item.external ? "noopener noreferrer" : undefined}
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile menu button -->
+    <button class="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</header>

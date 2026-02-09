@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { founders, siteConfig } from '../data/site';
+---
+
+<Layout title="O nas" description="Poznaj zespół Przeprogramowani — Przemek Smyrdek i Marcin Czarkowski. Ponad 7 lat doświadczenia w edukacji programistów.">
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white">O nas</h1>
+        <p class="mt-6 text-lg text-surface-200 leading-relaxed">
+          Przeprogramowani to edukacyjna platforma technologiczna, którą od ponad 7 lat tworzą
+          <strong class="text-white">Przemek Smyrdek</strong> i <strong class="text-white">Marcin Czarkowski</strong>.
+          Zaczynaliśmy jako weekendowy projekt przy pełnoetatowej pracy — dziś Przeprogramowani to nasza główna działalność.
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-600/20 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-white">Nasza misja</h2>
+          <p class="mt-3 text-surface-200 leading-relaxed">
+            Pomagamy programistom rozwijać się świadomie w erze AI. Wierzymy, że
+            szersze spojrzenie na programowanie — od architektury przez procesy po
+            rozwój zawodowy — to klucz do sukcesu w dzisiejszym świecie technologii.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-600/20 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold text-white">Co robimy</h2>
+          <p class="mt-3 text-surface-200 leading-relaxed">
+            Tworzymy sprawdzone kursy programistyczne, prowadzimy podcast będący
+            w czołówce polskich podcastów technologicznych, dzielimy się wiedzą na
+            YouTube i budujemy aktywną społeczność deweloperów.
+          </p>
+        </div>
+      </div>
+
+      <!-- Founders -->
+      <div class="mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10">Zespół</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {founders.map(founder => (
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <div class="flex items-center gap-4 mb-5">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white text-xl font-bold">
+                  {founder.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white">{founder.name}</h3>
+                  <p class="text-sm text-brand-400">{founder.role}</p>
+                </div>
+              </div>
+              <p class="text-surface-200 leading-relaxed">{founder.bio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10">Nasza droga</h2>
+        <div class="space-y-8">
+          {[
+            { year: '2018', title: 'Początek Przeprogramowani', desc: 'Start jako weekendowy projekt. Pierwsze filmy na YouTube i artykuły o programowaniu.' },
+            { year: '2020', title: 'Rozwój kursów', desc: 'Premiera Opanuj Frontend — naszego flagowego programu szkoleniowego dla frontend deweloperów.' },
+            { year: '2023', title: 'Era AI', desc: 'Uruchomienie 10xDevs — programu uczącego integracji AI w codzienną pracę programisty.' },
+            { year: '2024', title: 'Pełny etat', desc: 'Przemek i Marcin przechodzą na pełen etat w Przeprogramowani. Premiera 10xRules.ai.' },
+            { year: '2025', title: '3700+ absolwentów', desc: 'Ponad 3700 absolwentów kursów, podcast w czołówce polskich podcastów tech i rosnąca społeczność.' },
+          ].map(item => (
+            <div class="flex gap-6">
+              <div class="shrink-0 w-16 text-right">
+                <span class="text-sm font-bold text-brand-400">{item.year}</span>
+              </div>
+              <div class="relative pb-8 border-l border-white/10 pl-6">
+                <div class="absolute -left-1.5 top-0.5 w-3 h-3 rounded-full bg-brand-500 border-2 border-surface-950" />
+                <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+                <p class="mt-1 text-sm text-surface-200">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Channels -->
+      <div class="mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-10">Gdzie nas znajdziesz</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            { name: 'YouTube', url: siteConfig.socials.youtube, desc: 'Filmy o programowaniu i AI' },
+            { name: 'Podcast (Spotify)', url: siteConfig.socials.spotify, desc: '98+ odcinków o technologii' },
+            { name: 'LinkedIn', url: siteConfig.socials.linkedin, desc: 'Aktualności i networking' },
+            { name: 'GitHub', url: siteConfig.socials.github, desc: 'Kod źródłowy i projekty' },
+            { name: 'Newsletter', url: siteConfig.socials.substack, desc: 'Cotygodniowy format 3-2-1' },
+            { name: 'Kontakt', url: `mailto:${siteConfig.contact}`, desc: siteConfig.contact },
+          ].map(channel => (
+            <a
+              href={channel.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-4 rounded-xl bg-white/5 border border-white/10 p-4 hover:bg-white/[0.07] hover:border-white/20 transition-all"
+            >
+              <div>
+                <div class="text-sm font-semibold text-white">{channel.name}</div>
+                <div class="text-xs text-surface-200">{channel.desc}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

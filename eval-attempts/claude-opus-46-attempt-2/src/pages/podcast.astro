@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard';
+
+const opanujAiEpisodes = [
+  {
+    title: 'AI zamiast lekarza? ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin',
+    date: '1 lutego 2026',
+    duration: '1h 23min',
+    description: 'Omawiamy najnowsze modele medyczne AI, konstytucje Anthropic i premierowe modele z Chin.',
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025 — Modele, Narzedzia, Przelomy, Liderzy, Firmy i Wpadki Influncerow',
+    date: '9 stycznia 2026',
+    duration: '1h 47min',
+    description: 'Kompleksowe podsumowanie roku 2025 w swiecie AI — najwazniejsze modele, narzedzia i przelomy.',
+  },
+  {
+    title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i watpliwosci wokol benchmarkow METR',
+    date: '1 stycznia 2026',
+    duration: '58min',
+    description: 'Porownanie najnowszych modeli Google i OpenAI, standardy MCP i kontrowersje wokol benchmarkow.',
+  },
+  {
+    title: 'Gemini 3 to hit, ale konkurencja nie spi! GPT-5.1, Grok 4.1 i Opus 4.5, a takze emocje w LLMach',
+    date: '1 grudnia 2025',
+    duration: '1h 3min',
+    description: 'Przeglad najnowszych modeli: Gemini 3, GPT-5.1, Grok 4.1 i Opus 4.5. Dyskusja o emocjach w AI.',
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5 — dobrze, szybko i tanio?',
+    date: '4 listopada 2025',
+    duration: '1h 14min',
+    description: 'Porownanie edytorow AI: Cursor 2.0 i Windsurf SWE-1.5. Ktore narzedzie wygrywa?',
+  },
+  {
+    title: 'Czy agenci AI zdominuja branze e-commerce? ChatGPT Instant Checkout',
+    date: '4 pazdziernika 2025',
+    duration: '1h 28min',
+    description: 'Agenci AI w e-commerce, ChatGPT Instant Checkout i przyszlosc zakupow online.',
+  },
+];
+
+const guestEpisodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    date: 'Najnowszy',
+    duration: '33min',
+    guest: 'Wiktoria Sitko',
+    description: 'Jak pokonac bariere jezykowa w miedzynarodowej karierze programisty.',
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    date: 'Najnowszy',
+    duration: '45min',
+    guest: 'Wojciech Trawinski',
+    description: 'Sciezka rozwoju programisty od juniora do seniora — czym jest dojrzalosc zawodowa?',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawde ma znaczenie?',
+    date: 'Najnowszy',
+    duration: '1h 16min',
+    guest: 'Tomasz Ducin',
+    description: 'Architektura frontendowa w praktyce — micro frontendy, modularnosc i skalowanie.',
+  },
+  {
+    title: 'No-code i Low-code — przyszlosc tworzenia aplikacji?',
+    date: 'Najnowszy',
+    duration: '36min',
+    guest: 'Kamil Tarczynski',
+    description: 'Czy narzedzia no-code i low-code zagroza tradycyjnemu programowaniu?',
+  },
+  {
+    title: 'Nauka nowoczesnego frontendu',
+    date: 'Najnowszy',
+    duration: '42min',
+    guest: 'Pawel Gnat',
+    description: 'Skuteczne strategie nauki nowoczesnych technologii frontendowych.',
+  },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani">
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-4xl sm:text-5xl font-black text-white mb-6">Podcast</h1>
+        <p class="text-xl text-brand-400 leading-relaxed">
+          Prowadzimy dwa podcasty: <strong class="text-white">Opanuj.AI</strong> z comiesięcznymi podsumowaniami swiata AI oraz <strong class="text-white">Przeprogramowani ft. Gosc</strong> z rozmowami branżowymi. Lacznie ponad 140 odcinkow.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mt-8">
+          <a href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1DB954]/10 border border-[#1DB954]/20 text-[#1DB954] rounded-lg text-sm font-medium hover:bg-[#1DB954]/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+          </a>
+          <a href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-lg text-sm font-medium hover:bg-purple-500/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59-.12 1.056-.588 1.164-.468.108-.924-.18-1.044-.768-.264-1.344-.804-2.424-1.716-3.432-1.296-1.368-2.916-2.064-4.86-2.064-3.864 0-7.236 3.36-7.236 7.896 0 .756.06 1.344.228 2.04.108.48-.18.936-.648 1.044-.468.108-.924-.18-1.032-.66a9.937 9.937 0 01-.3-2.424C3 6.612 7.236 2.568 11.865 2.568zM12 7.2c1.464 0 2.784.528 3.84 1.608.792.816 1.272 1.74 1.488 2.82.072.468-.192.912-.66 1.008-.468.096-.888-.24-.972-.696-.156-.744-.48-1.38-1.008-1.932-.708-.72-1.596-1.104-2.616-1.104-2.244 0-3.96 1.884-3.96 4.296 0 .552.06.984.192 1.44.084.42-.168.852-.6.96-.432.108-.864-.168-.948-.588a6.074 6.074 0 01-.252-1.812C6.504 9.624 8.856 7.2 12 7.2zm-.024 4.656c.984 0 1.776.792 1.776 1.776a1.77 1.77 0 01-.876 1.536l.012.024v3.432c0 .468-.384.864-.864.864h-.096c-.48 0-.864-.396-.864-.864v-3.432l.012-.024a1.77 1.77 0 01-.876-1.536c0-.984.792-1.776 1.776-1.776z"/></svg>
+            Apple Podcasts
+          </a>
+          <a href="https://przeprogramowani.pl/podcast" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-700/50 border border-brand-600/50 text-brand-300 rounded-lg text-sm font-medium hover:bg-brand-700 transition-colors">
+            Wszystkie odcinki
+          </a>
+        </div>
+      </div>
+
+      <!-- Opanuj.AI Podcast -->
+      <div class="mb-20">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 bg-accent-600/20 rounded-xl flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-white">Opanuj.AI</h2>
+            <p class="text-sm text-brand-400">Comiesięczne podsumowania swiata AI · 4 000+ sluchaczy · 47+ odcinkow</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {opanujAiEpisodes.map((ep) => (
+            <PodcastEpisodeCard client:visible {...ep} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Przeprogramowani ft. Gosc -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-white">Przeprogramowani ft. Gosc</h2>
+            <p class="text-sm text-brand-400">Rozmowy z ekspertami branzy IT · 3 800+ sluchaczy · 97+ odcinkow</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {guestEpisodes.map((ep) => (
+            <PodcastEpisodeCard client:visible {...ep} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

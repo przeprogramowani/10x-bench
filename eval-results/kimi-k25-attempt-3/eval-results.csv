@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,8min 18s,N/A,8min 18s
+Test run,9.02.2026 19:10,N/A,9.02.2026 19:10
+Local build,1,1,Build successful with Astro 5 static output
+Manual testing,1,1,Dev server running on port 4321 and all sections accessible with working navigation and styles
+Tech stack,0.5,1,Astro 5 + React 19 + Tailwind CSS 4 present but Cloudflare Adapter missing - no @astrojs/cloudflare dependency and adapter set to undefined in astro.config.mjs
+O nas page,0.5,1,About section exists with correct names (Przemek Smyrdek and Marcin Czarkowski) but missing key professional details: no DAZN/Cabify for Przemek and no SmartRecruiters for Marcin. No course assignments listed. Descriptions oversimplified vs context file
+Podcast page,0.5,1,Podcast section exists but only shows Przeprogramowani podcast - OpanujAI Podcast completely missing. Spotify URL (2v0fRHPo1stfdyC6B9jLpH) does not match context file IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy). Episode data appears hallucinated with future dates
+YouTube page,1,1,All 6 video IDs verified as real Przeprogramowani channel videos via YouTube oembed API. Titles match actual content. No placeholder or rick-roll IDs
+Kursy section,1,1,10xDevs prominently featured in Hero section. Four courses listed (10xDevs + Opanuj Frontend + Opanuj TypeScript + Opanuj AI) with correct URLs matching context file
+Consistent UI,1,1,UI consistent across all sections - cohesive violet/slate color scheme throughout
+Responsive design,1,1,Containers and components and navigation fully responsive across screen sizes
+SEO Tags,0.5,1,Basic meta tags in Layout.astro (title + description + viewport + theme-color). Title matches context tagline. No dedicated SEO component and no Open Graph or Twitter card meta tags. Description is generic

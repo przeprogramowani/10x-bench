@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastList from '../components/PodcastList';
+---
+
+<Layout title="Podcast - Przeprogramowani.pl">
+	<div class="py-12 bg-gray-900 min-h-screen">
+		<PodcastList client:load />
+	</div>
+</Layout>

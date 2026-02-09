@@ -1,0 +1,64 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-gray-800">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="/" class="flex items-center gap-2 text-white font-bold text-lg shrink-0">
+      <span class="text-orange-500">&lt;/&gt;</span>
+      <span>Przeprogramowani</span>
+    </a>
+    
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Nawigacja główna">
+      <a href="/o-nas" class:list={currentPath === '/o-nas' ? "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-orange-500 bg-orange-500/10" : "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"}>
+        O Nas
+      </a>
+      <a href="/podcast" class:list={currentPath === '/podcast' ? "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-orange-500 bg-orange-500/10" : "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"}>
+        Podcasty
+      </a>
+      <a href="/youtube" class:list={currentPath === '/youtube' ? "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-orange-500 bg-orange-500/10" : "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"}>
+        YouTube
+      </a>
+      <a href="/kursy" class:list={currentPath === '/kursy' ? "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-orange-500 bg-orange-500/10" : "px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"}>
+        Kursy
+      </a>
+      <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800 flex items-center gap-1">
+        10xDevs
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3 opacity-50">
+          <path d="M15 3h6v6"></path>
+          <path d="M10 14 21 3"></path>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+        </svg>
+      </a>
+    </nav>
+    
+    <div class="lg:hidden">
+      <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800" aria-label="Otwórz menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <nav id="mobile-menu" class="hidden lg:hidden bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 flex flex-col gap-2">
+      <a href="/o-nas" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800">O Nas</a>
+      <a href="/podcast" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800">Podcasty</a>
+      <a href="/youtube" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800">YouTube</a>
+      <a href="/kursy" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800">Kursy</a>
+      <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800">10xDevs</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

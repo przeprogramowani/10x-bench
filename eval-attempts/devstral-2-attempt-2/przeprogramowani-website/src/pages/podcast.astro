@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Podcasts
+const podcasts = [
+  {
+    title: "Opanuj.AI Podcast",
+    description: "Ponad 4000 słuchaczy. Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI",
+    episodes: [
+      {
+        title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+        duration: "01:23:04",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4"
+      },
+      {
+        title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+        duration: "01:47:28",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5"
+      },
+      {
+        title: "GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR",
+        duration: "00:58:41",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf"
+      }
+    ]
+  },
+  {
+    title: "Przeprogramowani ft. Gość",
+    description: "Ponad 3800 słuchaczy. Rozmowy dla głodnych wiedzy",
+    episodes: [
+      {
+        title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko",
+        duration: "00:33:45",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo"
+      },
+      {
+        title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński",
+        duration: "00:45:56",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn"
+      },
+      {
+        title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin",
+        duration: "01:16:44",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3"
+      }
+    ]
+  }
+];
+
+// Podcast platforms
+const platforms = [
+  { name: "Apple Podcasts", icon: "a", link: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" },
+  { name: "Spotify", icon: "s", link: "https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" },
+  { name: "Google Podcasts", icon: "g", link: "https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw" },
+  { name: "RSS", icon: "r", link: "https://anchor.fm/s/22544b7c/podcast/rss" }
+];
+---
+
+<Layout title="Podcast">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Podcasty</h1>
+        <p class="text-xl text-gray-600 mb-8">Słuchaj naszych podcastów o technologii, AI i programowaniu</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcasts Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      {podcasts.map((podcast) => (
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">{podcast.title}</h2>
+          <p class="text-gray-600 mb-8">{podcast.description}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {podcast.episodes.map((episode) => (
+              <a 
+                href={episode.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block group"
+              >
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div class="relative h-48 overflow-hidden">
+                    <img 
+                      src={episode.image} 
+                      alt={episode.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div class="p-4">
+                    <div class="text-blue-600 text-sm font-medium mb-2">{episode.duration}</div>
+                    <h3 class="font-bold text-gray-900 line-clamp-3">{episode.title}</h3>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Jesteśmy na twojej ulubionej platformie</h2>
+      <div class="flex justify-center space-x-8">
+        {platforms.map((platform) => (
+          <a 
+            href={platform.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+            aria-label={platform.name}
+          >
+            {platform.icon}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

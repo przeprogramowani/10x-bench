@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,8min 21s,N/A,8min 21s
+Test run,9.02.2026 19:05,N/A,9.02.2026 19:05
+Local build,1,1,Build successful with Astro 4 static output
+Manual testing,0.5,1,Partially working - some pages accessible but issues reported
+Tech stack,0,1,All dependencies wrong: Astro 4 (not 5), React 18 (not 19), Tailwind 3 (not 4), no Cloudflare adapter
+O nas page,0.5,1,Page exists and returns 200. Team members correct but missing course assignments (Opanuj JavaScript for Przemek, 10xDevs for Marcin). Some bio details oversimplified
+Podcast page,0.5,1,Page exists and returns 200. Both podcasts displayed but Spotify URL uses wrong show ID (4qHUZJpeBK8Ij9e2wTVm2o instead of required IDs). Episode data appears hallucinated
+YouTube page,1,1,Page returns 200. 6 unique video IDs, no placeholder/rick-roll IDs. Titles match Przeprogramowani channel themes. Channel URL correct
+Kursy section,0.5,1,10xDevs prominently featured in Hero and courses grid. Only 3 of 6 courses shown (missing Opanuj JavaScript, Cursor: Programuj z AI). No course metrics displayed
+Consistent UI,0,1,UI inconsistent across pages - broken or inconsistent styles reported
+Responsive design,0,1,Layout not responsive - major issues on different screen sizes
+SEO Tags,1,1,Dedicated Layout.astro with meta tags connected to all pages. Description includes brand name and exact tagline. lang=pl set correctly

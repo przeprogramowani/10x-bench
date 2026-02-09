@@ -1,0 +1,156 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PodcastCard from "../components/PodcastCard";
+
+const mainEpisodes = [
+  {
+    title: "Jak AI zmienia pracę programisty?",
+    guest: "Dr Tomasz Lelek",
+    duration: "1h 12min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 112,
+    series: "Przeprogramowani ft. Gość",
+  },
+  {
+    title: "Od juniora do seniora — co naprawdę się liczy",
+    guest: "Kinga Kieczkowska",
+    duration: "58min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 110,
+    series: "Przeprogramowani ft. Gość",
+  },
+  {
+    title: "Architektura frontendowa w dużych projektach",
+    guest: "Bartosz Cytrowski",
+    duration: "1h 05min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 108,
+    series: "Przeprogramowani ft. Gość",
+  },
+  {
+    title: "Serverless i edge computing w praktyce",
+    guest: "Paweł Kosiec",
+    duration: "52min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 106,
+    series: "Przeprogramowani ft. Gość",
+  },
+  {
+    title: "Czy TypeScript jest przyszłością webdevu?",
+    guest: "Michał Miszczyszyn",
+    duration: "1h 01min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 104,
+    series: "Przeprogramowani ft. Gość",
+  },
+  {
+    title: "Budowanie produktów z perspektywy dewelopera",
+    guest: "Szymon Adamiak",
+    duration: "47min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    episodeNumber: 102,
+    series: "Przeprogramowani ft. Gość",
+  },
+];
+
+const aiEpisodes = [
+  {
+    title: "Claude Code i nowe podejście do programowania",
+    duration: "34min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    series: "Opanuj.AI Podcast",
+  },
+  {
+    title: "Cursor vs GitHub Copilot — porównanie narzędzi",
+    duration: "28min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    series: "Opanuj.AI Podcast",
+  },
+  {
+    title: "Jak wykorzystać LLM w codziennej pracy?",
+    duration: "31min",
+    spotifyUrl: "https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1",
+    series: "Opanuj.AI Podcast",
+  },
+];
+---
+
+<Layout
+  title="Podcast — Przeprogramowani"
+  description="Podcast Przeprogramowani — rozmowy o programowaniu, architekturze i karierze w IT."
+>
+  <section class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="mb-12 text-center">
+        <span
+          class="mb-4 inline-block rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-medium text-green-300"
+        >
+          Ponad 100 odcinków
+        </span>
+        <h1 class="mt-4 text-4xl font-extrabold text-white md:text-5xl">
+          Podcast
+        </h1>
+        <p class="mt-4 text-lg text-surface-300">
+          Rozmowy o programowaniu, technologii, architekturze i karierze w IT
+        </p>
+      </div>
+
+      <!-- Platform links -->
+      <div class="mb-12 flex flex-wrap justify-center gap-4">
+        <a
+          href="https://open.spotify.com/show/4jLFLaiEMoey3qFOaniUr1"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-5 py-2.5 text-sm font-medium text-green-300 transition-colors hover:bg-green-500/20"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+            ></path>
+          </svg>
+          Spotify
+        </a>
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1102392498"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-5 py-2.5 text-sm font-medium text-purple-300 transition-colors hover:bg-purple-500/20"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.36 1.2-.96 1.2h-.12c-.48 0-.84-.36-.96-.84-.264-1.32-.816-2.424-1.728-3.36-1.32-1.368-3-2.088-4.968-2.088-3.936 0-7.272 3.336-7.272 7.272 0 3.024 1.896 5.664 4.728 6.72.48.168.84.72.72 1.2-.12.6-.72.96-1.32.72-3.6-1.32-6-4.824-6-8.64C2.304 6.456 6.744 2.568 11.865 2.568zM12 7.128c1.608 0 3.072.648 4.152 1.776.84.888 1.32 1.896 1.56 3.12.12.528-.24 1.08-.768 1.2h-.12c-.432 0-.816-.288-.936-.72-.168-.816-.504-1.488-1.032-2.064-.744-.768-1.728-1.2-2.808-1.2-2.16 0-3.984 1.824-3.984 3.984 0 1.392.744 2.664 1.944 3.36.432.24.624.84.36 1.272-.24.432-.84.624-1.272.36-1.776-1.032-2.88-2.928-2.88-4.992 0-3.216 2.664-5.896 5.784-5.896zM12 11.544a2.452 2.452 0 012.448 2.448c0 .432-.12.84-.336 1.2l1.32 4.584c.12.456-.12.912-.576 1.032-.456.12-.912-.12-1.032-.576l-1.32-4.584a2.452 2.452 0 01-2.952-2.4v-.256A2.452 2.452 0 0112 11.544z"
+            ></path>
+          </svg>
+          Apple Podcasts
+        </a>
+      </div>
+
+      <!-- Main podcast -->
+      <h2 class="mb-6 text-2xl font-bold text-white">
+        Przeprogramowani ft. Gość
+      </h2>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          mainEpisodes.map((ep) => (
+            <PodcastCard client:load {...ep} />
+          ))
+        }
+      </div>
+
+      <!-- AI podcast -->
+      <h2 class="mb-6 mt-16 text-2xl font-bold text-white">
+        Opanuj.AI Podcast
+      </h2>
+      <p class="mb-6 text-surface-400">
+        Seria poświęcona narzędziom AI w codziennej pracy programisty
+      </p>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          aiEpisodes.map((ep) => (
+            <PodcastCard client:load {...ep} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

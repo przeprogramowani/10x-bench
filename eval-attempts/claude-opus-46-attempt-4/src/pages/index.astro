@@ -1,0 +1,45 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero";
+import CoursesSection from "../components/CoursesSection";
+import StatsBar from "../components/StatsBar";
+---
+
+<Layout title="Przeprogramowani — Szersze spojrzenie na programowanie">
+  <Hero />
+  <CoursesSection />
+  <StatsBar />
+
+  <!-- Newsletter CTA -->
+  <section class="bg-surface-950 py-20">
+    <div class="mx-auto max-w-3xl px-4 text-center">
+      <h2 class="text-3xl font-bold text-white md:text-4xl">
+        Bądź na bieżąco
+      </h2>
+      <p class="mt-4 text-surface-400">
+        Dołącz do naszego newslettera na Substack. Co tydzień dzielimy się
+        wiedzą o programowaniu, AI i rozwoju kariery w IT.
+      </p>
+      <a
+        href="https://przeprogramowani.substack.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-500 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600 hover:shadow-brand-500/40"
+      >
+        Zapisz się na newsletter
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

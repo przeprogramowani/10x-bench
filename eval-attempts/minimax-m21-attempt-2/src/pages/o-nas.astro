@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import AboutSection from '../components/AboutSection';
+import Newsletter from '../components/Newsletter';
+---
+
+<Layout title="O nas">
+  <Header client:load slot="header" />
+  
+  <div class="bg-gradient-hero py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">O nas</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Łączymy świat programowania, biznesu i rozwoju osobistego
+      </p>
+    </div>
+  </div>
+  
+  <AboutSection client:load />
+  
+  <Newsletter client:visible />
+  
+  <Footer slot="footer" />
+</Layout>
