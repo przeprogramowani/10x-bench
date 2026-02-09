@@ -43,8 +43,8 @@ export default function ResultsTable({ attempts }: Props) {
 
   const formatScore = (criterion: CriterionResult) => {
     if (isTimeRow(criterion.name)) {
-      // Show the actual time from notes (e.g. "5min 46s"), not the score number
-      const timeMatch = criterion.notes.match(/\d+min\s*\d*s?/);
+      // Standard format in notes: "5min 46s" or "N/A"
+      const timeMatch = criterion.notes.match(/\d+min\s*\d+s/);
       return timeMatch ? timeMatch[0] : 'N/A';
     }
     return criterion.score.toString();

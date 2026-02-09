@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    title: "10xDevs",
+    subtitle: "Programuj z AI",
+    description: "Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania. Poznaj najlepsze praktyki prompt engineeringu, agenty AI i workflow development.",
+    color: "from-[#ff6b35] to-[#e55a2b]",
+    textColor: "text-[#ff6b35]",
+    link: "https://10xdevs.pl",
+    features: ["Prompt Engineering", "Agenty AI (Cursor, Codex, MCP)", "CI/CD z AI", "Open Source z AI"]
+  },
+  {
+    title: "Opanuj Frontend",
+    subtitle: "AI Edition",
+    description: "Zostań nowoczesnym frontend developerem. 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!",
+    color: "from-[#38b2ac] to-[#2d9c95]",
+    textColor: "text-[#38b2ac]",
+    link: "https://www.opanujfrontend.pl",
+    features: ["React 19 + TypeScript", "Testowanie (Jest, Playwright)", "CI/CD pipelines", "Architektura aplikacji"]
+  },
+  {
+    title: "Opanuj TypeScript",
+    subtitle: "Dla zaawansowanych",
+    description: "Szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!",
+    color: "from-[#4299e1] to-[#3182ce]",
+    textColor: "text-[#4299e1]",
+    link: "https://www.opanujtypescript.pl",
+    features: ["TypeScript 5.x", "Zaawansowane typy", "Integracja z React 19", "Best practices"]
+  },
+  {
+    title: "Opanuj AI",
+    subtitle: "Warsztaty i materiały",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy.",
+    color: "from-[#9f7aea] to-[#805ad5]",
+    textColor: "text-[#9f7aea]",
+    link: "https://opanuj.ai",
+    features: ["Podstawy AI/ML", "LLM integration", "RAG systems", "Darmowe materiały"]
+  }
+];
+---
+
+<Layout title="Kursy" description="Nasze kursy programowania - 10xDevs, Opanuj Frontend, Opanuj TypeScript i Opanuj AI.">
+  <section class="py-20 bg-gray-900 text-white">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Nasze kursy</h1>
+      <p class="text-xl text-gray-300 max-w-3xl">
+        Edukacja technologiczna w epoce AI. Topowe programy edukacyjne dla ambitnych programistów.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-custom">
+      <div class="space-y-12">
+        {courses.map((course, index) => (
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class={`bg-gradient-to-br ${course.color} rounded-2xl p-8 text-white ${index % 2 === 1 ? 'md:order-2' : ''}`}>
+              <span class="inline-block bg-white/20 text-white text-sm font-semibold px-3 py-1 rounded-full mb-4">
+                KURS
+              </span>
+              <h2 class="text-3xl font-bold mb-2">{course.title}</h2>
+              <p class="text-xl opacity-90 mb-6">{course.subtitle}</p>
+              <a href={course.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Szczegóły
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+            <div class={index % 2 === 1 ? 'md:order-1' : ''}>
+              <h3 class="text-2xl font-bold mb-4">{course.title}</h3>
+              <p class="text-gray-600 mb-6">{course.description}</p>
+              <ul class="space-y-3">
+                {course.features.map((feature) => (
+                  <li class="flex items-center text-gray-700">
+                    <svg class="w-5 h-5 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl font-bold mb-4">Nie wiesz, który kurs wybrać?</h2>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+        Skontaktuj się z nami, a pomożemy dobrać odpowiedni program edukacyjny do Twoich potrzeb i poziomu zaawansowania.
+      </p>
+      <a href="mailto:kontakt@przeprogramowani.pl" class="inline-flex items-center bg-[#ff6b35] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#e55a2b] transition-colors">
+        Zapytaj o radę
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

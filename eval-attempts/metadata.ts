@@ -5,6 +5,29 @@ export enum AGENT_ENVIRONMENT {
   Cursor = "Cursor",
 }
 
+export const AGENT_NAMES: Record<string, string> = {
+  "claude-opus-attempt-1": "Claude Opus 4.6",
+  "claude-opus-attempt-2": "Claude Opus 4.6",
+  "claude-opus-attempt-3": "Claude Opus 4.6",
+  "gpt-codex-attempt-1": "GPT-5.3-Codex",
+  "gpt-codex-attempt-2": "GPT-5.3-Codex",
+  "gpt-codex-attempt-3": "GPT-5.3-Codex",
+  "glm-4.7-attempt-1": "GLM-4.7",
+  "glm-4.7-attempt-2": "GLM-4.7",
+  "glm-4.7-attempt-3": "GLM-4.7",
+  "kimi-k2.5-attempt-1": "Kimi K2.5",
+  "kimi-k2.5-attempt-2": "Kimi K2.5",
+  "kimi-k2.5-attempt-3": "Kimi K2.5",
+  "gemini-3-pro-attempt-1": "Gemini 3 Pro",
+  "gemini-3-pro-attempt-2": "Gemini 3 Pro",
+  "gemini-3-pro-attempt-3": "Gemini 3 Pro",
+  "minimax-m21-attempt-1": "Minimax M2.1",
+  "minimax-m21-attempt-2": "Minimax M2.1",
+  "minimax-m21-attempt-3": "Minimax M2.1",
+  "devstral-2-attempt-1": "Devstral 2",
+  "qwen-3-max-attempt-1": "Qwen 3 Max",
+};
+
 export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
   "claude-opus-attempt-1": AGENT_ENVIRONMENT.ClaudeCode,
   "claude-opus-attempt-2": AGENT_ENVIRONMENT.ClaudeCode,
@@ -21,4 +44,7 @@ export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
   "gemini-3-pro-attempt-1": AGENT_ENVIRONMENT.Cursor,
   "gemini-3-pro-attempt-2": AGENT_ENVIRONMENT.Cursor,
   "gemini-3-pro-attempt-3": AGENT_ENVIRONMENT.Cursor,
+  "minimax-m21-attempt-1": AGENT_ENVIRONMENT.OpenCode,
+  "devstral-2-attempt-1": AGENT_ENVIRONMENT.OpenCode,
+  "qwen-3-max-attempt-1": AGENT_ENVIRONMENT.OpenCode,
 };

@@ -1,0 +1,68 @@
+---
+const navItems = [
+  { name: 'O Nas', href: '/o-nas' },
+  { name: 'Newsletter', href: '/newsletter' },
+  { name: 'Podcast', href: '/podcast' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Kalendarz', href: '/kalendarz' },
+  { name: 'YouTube', href: 'https://youtube.com/c/przeprogramowani/videos' },
+  { name: '10xDevs', href: 'https://10xdevs.pl' },
+];
+---
+
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+      <div class="flex items-center justify-between">
+        <a href="/" class="flex items-center space-x-2">
+          <span class="text-2xl font-bold text-indigo-600">&lt;/&gt;</span>
+          <span class="text-xl font-semibold text-gray-900">Przeprogramowani</span>
+        </a>
+        <button class="md:hidden text-gray-500 focus:outline-none" id="mobile-menu-button">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <nav class="hidden md:flex space-x-6">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="text-gray-600 hover:text-indigo-600 font-medium transition-colors"
+            target={item.href.startsWith('http') ? '_blank' : '_self'}
+            rel={item.href.startsWith('http') ? 'noopener noreferrer' : ''}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+      {navItems.map((item) => (
+        <a 
+          href={item.href} 
+          class="block py-2 text-gray-600 hover:text-indigo-600 font-medium transition-colors"
+          target={item.href.startsWith('http') ? '_blank' : '_self'}
+          rel={item.href.startsWith('http') ? 'noopener noreferrer' : ''}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>

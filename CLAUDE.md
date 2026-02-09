@@ -90,6 +90,17 @@ The script handles two CSV formats:
 
 Both are parsed correctly and normalized to the same structure.
 
+### Task Completion Time Format
+
+The "Task completion time" row in eval-results CSV must use the standardized format `Xmin Ys` (e.g. `5min 46s`, `17min 3s`). Use `N/A` when time was not recorded. The format must be consistent in both the Score and Notes columns:
+
+```csv
+Task completion time,5min 46s,N/A,5min 46s
+Task completion time,N/A,N/A,N/A
+```
+
+The `ResultsTable.tsx` component relies on this exact format to parse and display times.
+
 ## Results Dashboard (Astro Site)
 
 ### Pages

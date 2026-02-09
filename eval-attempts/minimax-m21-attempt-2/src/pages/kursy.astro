@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Courses from '../components/Courses';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+---
+
+<Layout title="Kursy">
+  <Header client:load />
+  <main class="pt-16">
+    <section class="py-24 bg-gradient-to-br from-amber-900 via-orange-900 to-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-5xl sm:text-6xl font-bold mb-6">Nasze Kursy</h1>
+        <p class="text-xl text-amber-200">Topowe programy edukacyjne dla ambitnych programistów</p>
+      </div>
+    </section>
+    <Courses client:load />
+    <Newsletter client:load />
+  </main>
+  <Footer />
+</Layout>

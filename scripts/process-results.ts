@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { AGENT_ENV } from '../eval-attempts/metadata';
+import { AGENT_ENV, AGENT_NAMES } from '../eval-attempts/metadata';
 
 interface CriterionResult {
   name: string;
@@ -43,18 +43,8 @@ function extractModelInfo(dirname: string): { modelName: string; attemptNumber: 
     throw new Error(`Invalid directory name: ${dirname}`);
   }
 
-  const modelId = match[1];
   const attemptNumber = parseInt(match[2], 10);
-
-  const modelNames: Record<string, string> = {
-    'claude-opus': 'Claude Opus 4.6',
-    'gpt-codex': 'GPT-5.3-Codex',
-    'kimi-k2.5': 'Kimi K2.5',
-    'glm-4.7': 'GLM-4.7',
-    'gemini-3-pro': 'Gemini 3 Pro',
-  };
-
-  const modelName = modelNames[modelId] || modelId;
+  const modelName = AGENT_NAMES[dirname] || match[1];
   return { modelName, attemptNumber };
 }
 

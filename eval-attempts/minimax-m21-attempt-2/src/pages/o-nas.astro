@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import About from '../components/About';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+---
+
+<Layout title="O nas">
+  <Header client:load />
+  <main class="pt-16">
+    <section class="py-24 bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-5xl sm:text-6xl font-bold mb-6">O nas</h1>
+        <p class="text-xl text-indigo-200">Jesteśmy Przeprogramowani — pasjonaci programowania i edukacji</p>
+      </div>
+    </section>
+    <About client:load />
+    <Newsletter client:load />
+  </main>
+  <Footer />
+</Layout>

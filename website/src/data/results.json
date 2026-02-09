@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-02-09T08:40:27.694Z",
-  "totalAttempts": 15,
+  "generatedAt": "2026-02-09T09:58:10.743Z",
+  "totalAttempts": 20,
   "results": [
     {
       "id": "gpt-codex-attempt-2",
@@ -388,6 +388,83 @@
       ]
     },
     {
+      "id": "minimax-m21-attempt-1",
+      "modelName": "Minimax M2.1",
+      "attemptNumber": 1,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 10,
+          "max": 1,
+          "notes": "10min 5s"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.17.1 static build with Cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible and returning 200; navigation styles and content working"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Astro 5.17.1 + React 19.2.4 + Tailwind CSS 4.1.18 + @astrojs/cloudflare adapter configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page with accurate bios for Przemek (DAZN/Cabify) and Marcin (SmartRecruiters); correct LinkedIn URLs; returns 200"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Both podcasts displayed with episodes but Spotify URL uses wrong show ID (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo or 3D6LmchBdoqL2sWkQjvWOy); episode data appears plausible but unverifiable"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "All 6 video IDs verified as real Przeprogramowani channel videos with correct titles; unique IDs; channel link correct"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "4 courses displayed on main page; 10xDevs featured in Hero and course grid; course URLs match context (10xdevs.pl opanujfrontend.pl opanujtypescript.pl opanuj.ai)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive layout across screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Basic meta description and title on all pages via Layout; lang=pl set; but no dedicated SEO component no OG tags no Twitter cards no canonical URLs"
+        }
+      ]
+    },
+    {
       "id": "gemini-3-pro-attempt-1",
       "modelName": "Gemini 3 Pro",
       "attemptNumber": 1,
@@ -465,6 +542,83 @@
       ]
     },
     {
+      "id": "minimax-m21-attempt-3",
+      "modelName": "Minimax M2.1",
+      "attemptNumber": 3,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "Unknown",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 7,
+          "max": 1,
+          "notes": "7min 12s"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful with Astro 5.17.1 and Cloudflare adapter"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible and return 200. Navigation styles and content working properly."
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Astro 5.17.1 + React 19.2.4 + Tailwind CSS 4.1.18 + @astrojs/cloudflare 12.6.12 configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200 but completely missing founder bios (no Przemek Smyrdek or Marcin Czarkowski mentions no DAZN/Cabify/SmartRecruiters details)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200 but only one podcast shown (no OpanujAI Podcast). Episode data appears hallucinated. Spotify URL is placeholder (open.spotify.com/show/example)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "All 6 video IDs verified as real Przeprogramowani channel videos with correct titles and unique IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Kursy page exists with 4 courses and 10xDevs featured in hero on main page. Missing Opanuj JavaScript and Cursor: Programuj z AI courses from context"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user evaluation"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive per user evaluation"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Meta description and title tags in Layout.astro covering all pages with context-matching descriptions"
+        }
+      ]
+    },
+    {
       "id": "kimi-k2.5-attempt-2",
       "modelName": "Kimi K2.5",
       "attemptNumber": 2,
@@ -475,9 +629,9 @@
       "criteria": [
         {
           "name": "Task completion time",
-          "score": 0,
+          "score": 17,
           "max": 1,
-          "notes": "17 min 3s"
+          "notes": "17min 3s"
         },
         {
           "name": "Local build",
@@ -773,6 +927,237 @@
       ]
     },
     {
+      "id": "minimax-m21-attempt-2",
+      "modelName": "Minimax M2.1",
+      "attemptNumber": 2,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "agentEnvironment": "Unknown",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 5,
+          "max": 1,
+          "notes": "5min 3s"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - all 5 pages generated without errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible and returning 200; navigation styles and content working properly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Tailwind v3.4 instead of required v4; @astrojs/cloudflare not installed as dependency (fake adapter config in astro.config.mjs)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); team names correct with DAZN/Cabify/SmartRecruiters mentioned; missing courses (Opanuj JavaScript for Przemek and 10xDevs for Marcin); missing Open Source contributions and speaking experience; no contributors list"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200) but only shows Opanuj AI Podcast - missing Przeprogramowani ft. Gosc; wrong Spotify URL (5E4V35F7F7oYS3UoEn7Baf instead of 3D6LmchBdoqL2sWkQjvWOy); all 4 episodes are hallucinated with fabricated titles and dates"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page exists (200); 6 unique video IDs matching real Przeprogramowani channel content; no fake/placeholder IDs; titles align with actual channel focus"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "4 of 6 courses present with accurate descriptions; 10xDevs prominently featured in Hero with CTA; missing Opanuj JavaScript and Cursor: Programuj z AI courses"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages - cohesive dark theme with modern design"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive across screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Layout.astro has meta description with correct tagline and titles on all pages; lang=pl correct; missing og:title og:description og:image twitter:card meta tags; same description shared across all pages"
+        }
+      ]
+    },
+    {
+      "id": "qwen-3-max-attempt-1",
+      "modelName": "Qwen 3 Max",
+      "attemptNumber": 1,
+      "totalScore": 6,
+      "maxScore": 10,
+      "percentage": 60,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 10,
+          "max": 1,
+          "notes": "10min 40s"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful - 5 pages built in 702ms with no errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Pages not loading properly; navigation broken; content issues reported by user"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Tailwind CSS v3.4.19 instead of required v4; Cloudflare Adapter missing from package.json and astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200. Team bios include key details (DAZN/Cabify for Przemek; SmartRecruiters for Marcin; correct LinkedIn URLs). Course assignments not listed; descriptions partially simplified vs context"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Both podcasts displayed (Opanuj.AI and Przeprogramowani ft. Gosc). Episode data uses real-looking URLs. Spotify show URL incorrect (4qHUZJpeBK8Ij9e2wTVm2o vs correct 3yVvOAXSYq6sQB02w4A4wo); Opanuj.AI Spotify show URL missing"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "All 6 video IDs verified as real Przeprogramowani channel videos. Unique IDs; no placeholders or Rick Rolls. Titles match actual YouTube content"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "CoursesSection lists Opanuj AI; Opanuj Frontend; Opanuj TypeScript with correct URLs. Missing 10xDevs; Opanuj JavaScript; Cursor courses from section. 10xDevs featured in HeroSection CTA"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user evaluation"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers; components and navigation responsive per user evaluation"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Layout.astro has comprehensive meta tags (title; description; OG; Twitter) applied to all pages. Tagline correct but description generic; doesn't fully match context file content"
+        }
+      ]
+    },
+    {
+      "id": "devstral-2-attempt-1",
+      "modelName": "Devstral 2",
+      "attemptNumber": 1,
+      "totalScore": 4.5,
+      "maxScore": 10,
+      "percentage": 45,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful with Astro 5 static output - 10 pages generated in 645ms"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on port 4322 - all pages accessible and return 200"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5 + React 19 + Tailwind CSS 4 present. No @astrojs/cloudflare adapter in package.json or astro.config.mjs (only deployment docs file)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200 but content is generic - missing founder names (Przemek Smyrdek / Marcin Czarkowski) and biographical details (DAZN/Cabify/SmartRecruiters)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200 but OpanujAI Podcast completely absent - no Spotify URLs present - all episode data is hallucinated/mocked"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200 with unique video IDs (no rick rolls) but video titles are clearly fabricated/hallucinated content"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists with 10xDevs prominently featured (kursy page + Hero CTA + index courses section) but missing Opanuj JavaScript and Cursor courses from context"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "UI is inconsistent across pages - broken or inconsistent styles (user evaluation)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Overall layout is not responsive - major issues on different screen sizes (user evaluation)"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "No meta description - no OG tags - no Twitter cards - no SEO component. Only hardcoded generic title tag in Layout"
+        }
+      ]
+    },
+    {
       "id": "gemini-3-pro-attempt-2",
       "modelName": "Gemini 3 Pro",
       "attemptNumber": 2,
@@ -860,9 +1245,9 @@
       "criteria": [
         {
           "name": "Task completion time",
-          "score": 0,
+          "score": 14,
           "max": 1,
-          "notes": "14 min 40s"
+          "notes": "14min 40s"
         },
         {
           "name": "Local build",
@@ -1176,6 +1561,14 @@
       "agentEnvironment": "Claude Code"
     },
     {
+      "modelName": "Minimax M2.1",
+      "averageScore": 8.166666666666666,
+      "averageMaxScore": 10,
+      "averagePercentage": 81.66666666666667,
+      "attemptCount": 3,
+      "agentEnvironment": "OpenCode"
+    },
+    {
       "modelName": "Gemini 3 Pro",
       "averageScore": 6.166666666666667,
       "averageMaxScore": 10,
@@ -1184,11 +1577,27 @@
       "agentEnvironment": "Cursor"
     },
     {
+      "modelName": "Qwen 3 Max",
+      "averageScore": 6,
+      "averageMaxScore": 10,
+      "averagePercentage": 60,
+      "attemptCount": 1,
+      "agentEnvironment": "OpenCode"
+    },
+    {
       "modelName": "Kimi K2.5",
       "averageScore": 5.666666666666667,
       "averageMaxScore": 10,
       "averagePercentage": 56.666666666666664,
       "attemptCount": 3,
+      "agentEnvironment": "OpenCode"
+    },
+    {
+      "modelName": "Devstral 2",
+      "averageScore": 4.5,
+      "averageMaxScore": 10,
+      "averagePercentage": 45,
+      "attemptCount": 1,
       "agentEnvironment": "OpenCode"
     },
     {

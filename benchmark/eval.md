@@ -81,7 +81,7 @@ This is a hard stop - no manual testing, no automatic evaluation. Generate resul
 ### Phase 4: Generate Results
 8. Generates `eval-results.csv` in `./eval-results/{model-name}-attempt-{number}/eval-results.csv` directory:
    - Include all 10 criteria rows with scores and notes
-   - Use placeholder TIME_TAKEN for task completion time - provided by the user in Phase 2, skipped during agent evaluation
+   - Use placeholder N/A for task completion time - provided by the user in Phase 2, skipped during agent evaluation
    - For content verification criteria, always note specific discrepancies in the notes field
 
 ## Critical evaluation notes - Content verification

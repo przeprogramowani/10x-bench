@@ -22,13 +22,13 @@ export default function ModelAveragesCard({ average, rank }: Props) {
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3 flex-shrink-0">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-900 text-white font-bold text-sm">
+        <div className="flex items-center gap-3 flex-shrink-0 w-52">
+          <span className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full bg-gray-900 text-white font-bold text-sm">
             {rank}
           </span>
-          <div>
-            <h3 className="text-base font-semibold text-gray-900">{average.modelName}</h3>
-            <p className="text-xs text-gray-600">
+          <div className="min-w-0">
+            <h3 className="text-base font-semibold text-gray-900 truncate">{average.modelName}</h3>
+            <p className="text-xs text-gray-600 truncate">
               {average.attemptCount} attempt{average.attemptCount !== 1 ? 's' : ''}
               {average.agentEnvironment && <span className="ml-1 text-gray-400">via {average.agentEnvironment}</span>}
             </p>

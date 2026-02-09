@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const featuredVideos = [
+  {
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    thumbnail: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=KAJTsQbqBow",
+    views: "25K wyświetleń"
+  },
+  {
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    thumbnail: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=uwi39C2O8NI",
+    views: "18K wyświetleń"
+  },
+  {
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!",
+    thumbnail: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=b-gOI128G2s",
+    views: "12K wyświetleń"
+  }
+];
+
+const latestEpisodes = [
+  {
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    date: "Luty 2026",
+    duration: "45 min",
+    guest: "Gość specjalny"
+  },
+  {
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer",
+    date: "Luty 2026",
+    duration: "38 min",
+    guest: "Q&A"
+  },
+  {
+    title: "Special webinar for Builders: Tu zaczyna się Twój AI-ready project",
+    date: "Styczeń 2026",
+    duration: "52 min",
+    guest: "Webinar"
+  }
+];
+---
+
+<Layout title="Strona główna">
+  <section class="relative bg-gray-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#ff6b35]/20 to-[#38b2ac]/10"></div>
+    <div class="container-custom relative py-20 md:py-32">
+      <div class="max-w-3xl">
+        <span class="inline-block bg-[#ff6b35] text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
+          Nowość - Maj 2026
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          10xDevs 3.0
+        </h1>
+        <p class="text-xl text-gray-300 mb-8">
+          Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="bg-[#ff6b35] text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-[#e55a2b] transition-colors inline-block">
+            Zobacz szczegóły
+          </a>
+          <a href="/kursy" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white hover:text-gray-900 transition-colors inline-block">
+            Zobacz wszystkie kursy
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold text-center mb-4">Nasze kursy</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="group">
+          <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-[#ff6b35] to-[#e55a2b] flex items-center justify-center">
+              <span class="text-white text-5xl font-bold">&lt;/&gt;</span>
+            </div>
+            <div class="p-6">
+              <span class="text-[#ff6b35] text-sm font-semibold">KURS</span>
+              <h3 class="text-xl font-bold mt-2 group-hover:text-[#ff6b35] transition-colors">10xDevs</h3>
+              <p class="text-gray-600 mt-2">Programuj z AI. Techniki i narzędzia dla świadomego stosowania AI w development.</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="group">
+          <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-[#38b2ac] to-[#2d9c95] flex items-center justify-center">
+              <span class="text-white text-5xl font-bold">&lt;/&gt;</span>
+            </div>
+            <div class="p-6">
+              <span class="text-[#38b2ac] text-sm font-semibold">KURS</span>
+              <h3 class="text-xl font-bold mt-2 group-hover:text-[#38b2ac] transition-colors">Opanuj Frontend: AI Edition</h3>
+              <p class="text-gray-600 mt-2">Zostań nowoczesnym frontend developerem – 5 obszernych modułów o frontendzie, testowaniu, CI/CD i architekturze.</p>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="group">
+          <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="h-48 bg-gradient-to-br from-[#4299e1] to-[#3182ce] flex items-center justify-center">
+              <span class="text-white text-5xl font-bold">TS</span>
+            </div>
+            <div class="p-6">
+              <span class="text-[#4299e1] text-sm font-semibold">KURS</span>
+              <h3 class="text-xl font-bold mt-2 group-hover:text-[#4299e1] transition-colors">Opanuj TypeScript</h3>
+              <p class="text-gray-600 mt-2">Podnieś jakość swoich projektów na produkcji. Pracujemy z najnowszymi wersjami TS 5 i React 19!</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold text-center mb-12">Ostatnie filmy</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {featuredVideos.map((video) => (
+          <a href={video.url} target="_blank" rel="noopener noreferrer" class="group">
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div class="relative">
+                <img src={video.thumbnail} alt={video.title} class="w-full h-48 object-cover" />
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <svg class="w-16 h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-semibold line-clamp-2 group-hover:text-[#ff6b35] transition-colors">{video.title}</h3>
+                <p class="text-gray-500 text-sm mt-2">{video.views}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/youtube" class="inline-flex items-center text-[#ff6b35] font-semibold hover:underline">
+          Zobacz wszystkie filmy
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container-custom">
+      <h2 class="text-3xl font-bold text-center mb-12">Ostatnie odcinki podcastu</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {latestEpisodes.map((episode) => (
+          <a href="/podcast" class="group">
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-[#ff6b35] transition-colors">
+              <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                <span>{episode.date}</span>
+                <span>•</span>
+                <span>{episode.duration}</span>
+              </div>
+              <h3 class="font-semibold text-lg group-hover:text-[#ff6b35] transition-colors line-clamp-2">{episode.title}</h3>
+              <p class="text-[#38b2ac] text-sm mt-2">{episode.guest}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/podcast" class="inline-flex items-center text-[#ff6b35] font-semibold hover:underline">
+          Słuchaj wszystkich odcinków
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[#2d3748] text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl font-bold mb-4">Przeprogramowany Newsletter</h2>
+      <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+        Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+        <br />3 rekomendacje techniczne, 2 rekomendacje rozwojowe, 1 bonus niespodzianka
+      </p>
+      <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-[#ff6b35] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#e55a2b] transition-colors">
+        Zapisz się za darmo
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="container-custom">
+      <p class="text-center text-gray-500 mb-8">Współpracujemy z najlepszymi</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+        <span class="text-xl font-bold text-gray-400">Huuuge Games</span>
+        <span class="text-xl font-bold text-gray-400">Nutridome</span>
+        <span class="text-xl font-bold text-gray-400">SmartRecruiters</span>
+        <span class="text-xl font-bold text-gray-400">Future Processing</span>
+        <span class="text-xl font-bold text-gray-400">Callstack</span>
+        <span class="text-xl font-bold text-gray-400">Euvic</span>
+      </div>
+    </div>
+  </section>
+</Layout>
