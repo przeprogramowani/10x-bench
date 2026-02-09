@@ -39,9 +39,13 @@ export default function ResultsTable({ attempts }: Props) {
     return 'bg-yellow-100 text-yellow-800'; // 0 < score < max
   };
 
+  const isTimeRow = (name: string) => name === 'Task completion time';
+
   const formatScore = (criterion: CriterionResult) => {
-    if (criterion.score === 0 && criterion.name === 'Task completion time') {
-      return 'N/A';
+    if (isTimeRow(criterion.name)) {
+      // Show the actual time from notes (e.g. "5min 46s"), not the score number
+      const timeMatch = criterion.notes.match(/\d+min\s*\d*s?/);
+      return timeMatch ? timeMatch[0] : 'N/A';
     }
     return criterion.score.toString();
   };
@@ -82,26 +86,29 @@ export default function ResultsTable({ attempts }: Props) {
                     );
                   }
 
+                  const isTime = isTimeRow(criterion.name);
+
                   return (
                     <td
                       key={attempt.id}
                       className="px-4 py-3 text-center"
                       onClick={() => {
-                        if (matchedCriterion.notes && criterion.name !== 'Task completion time') {
+                        if (!isTime && matchedCriterion.notes) {
                           setExpandedNotes(isExpanded ? null : noteKey);
                         }
                       }}
                     >
                       <div className="flex flex-col items-center gap-2">
                         <span
-                          className={`inline-block px-2 py-1 rounded text-sm font-semibold cursor-pointer hover:opacity-80 ${getScoreColor(
-                            matchedCriterion.score,
-                            matchedCriterion.max
-                          )}`}
+                          className={`inline-block px-2 py-1 rounded text-sm font-semibold ${
+                            isTime
+                              ? 'bg-gray-100 text-gray-800'
+                              : `cursor-pointer hover:opacity-80 ${getScoreColor(matchedCriterion.score, matchedCriterion.max)}`
+                          }`}
                         >
                           {formatScore(matchedCriterion)}
                         </span>
-                        {isExpanded && matchedCriterion.notes && (
+                        {isExpanded && matchedCriterion.notes && !isTime && (
                           <div className="mt-2 p-2 bg-blue-50 text-blue-900 text-xs rounded max-w-xs border border-blue-200">
                             {matchedCriterion.notes}
                           </div>
