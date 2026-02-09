@@ -93,7 +93,7 @@ This is a hard stop - no manual testing, no automatic evaluation. Generate resul
 - Sample episodes: Are they real or fabricated? (e.g., made-up episode titles/dates)
 - Even if "real-looking" data exists in source code files, it may not be actual podcast content
 
-**Action**: Always verify podcast URLs and episode data against `_context/przeprogramowani.md` file. Deduct 0.5 pts if URLs are wrong or episode data appears generated/hallucinated.
+**Action**: Always verify podcast URLs and episode data against `./context/przeprogramowani.md` file. Deduct 0.5 pts if URLs are wrong or episode data appears generated/hallucinated.
 
 ### YouTube Page (0.5 pts trap)
 ⚠️ **Rick roll detection**: Pages may display correct UI with valid-looking video IDs that actually point to wrong content (e.g., dQw4w9WgXcQ = Rick Roll). Verify:

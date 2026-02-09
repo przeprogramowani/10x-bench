@@ -92,12 +92,12 @@ Exact match of the required dependencies:
 
 ### 1pkt
 - Dedicated page found in repository
-- Page content is verified and matches the copy & page content from `./_context/przeprogramowani.md` file
+- Page content is verified and matches the copy & page content from `./context/przeprogramowani.md` file
 - GET request to the page returns 200 status code
 
 ### 0.5pkt
 - Dedicated page found in repository
-- Page content does not match (or match partially) the copy & page content from `./_context/przeprogramowani.md` file
+- Page content does not match (or match partially) the copy & page content from `./context/przeprogramowani.md` file
 - GET request to the page returns 200 status code
 
 ### 0pkt
@@ -108,7 +108,7 @@ Exact match of the required dependencies:
 ### 1pkt
 - Dedicated page found in repository
 - GET request to the page returns 200 status code
-- Page content is verified and matches the copy & podcast content from `./_context/przeprogramowani.md` file
+- Page content is verified and matches the copy & podcast content from `./context/przeprogramowani.md` file
 - IMPORTANT: Both Przeprogramowany Podcast and OpanujAI Podcast are displayed and not based on any mocks
 
 ### 0.5pkt
@@ -124,7 +124,7 @@ Exact match of the required dependencies:
 ### 1pkt
 - Dedicated page found in repository
 - GET request to the page returns 200 status code
-- Page content is verified and matches the copy & YouTube content from `./_context/przeprogramowani.md` file
+- Page content is verified and matches the copy & YouTube content from `./context/przeprogramowani.md` file
 - IMPORTANT: Przeprogramowani channel episodes are displayed and not based on any mocks
 
 ### 0.5pkt
@@ -139,12 +139,12 @@ Exact match of the required dependencies:
 
 ### 1pkt
 - Dedicated component or page section found in repository
-- Component or page section content is verified and matches the copy & courses content from `./_context/przeprogramowani.md` file
+- Component or page section content is verified and matches the copy & courses content from `./context/przeprogramowani.md` file
 - Main page (index.astro) or Hero component features 10xDevs course
 
 ### 0.5pkt
 - Dedicated component or page section found in repository
-- Component or page section content does not match (or match partially) the copy & courses content from `./_context/przeprogramowani.md` file
+- Component or page section content does not match (or match partially) the copy & courses content from `./context/przeprogramowani.md` file
 - Main page (index.astro) or Hero component features 10xDevs course
 
 ### 0pkt
@@ -177,11 +177,11 @@ N/A
 ### 1pkt
 - There's a dedicated SEO component or meta tags in repository
 - SEO tags are connected to all pages (or layout that covers all pages)
-- SEO component or meta tags are verified and matches the copy & page content from `./_context/przeprogramowani.md` file
+- SEO component or meta tags are verified and matches the copy & page content from `./context/przeprogramowani.md` file
 
 ### 0.5pkt
 - There's a dedicated SEO component or meta tags in repository
-- SEO component or meta tags do not match (or match partially) the copy & page content from `./_context/przeprogramowani.md` file
+- SEO component or meta tags do not match (or match partially) the copy & page content from `./context/przeprogramowani.md` file
 
 ### 0pkt
-- No dedicated SEO component or meta tags in repository or major content discrepancy between the copy & page content from `./_context/przeprogramowani.md` file and the SEO component or meta tags
+- No dedicated SEO component or meta tags in repository or major content discrepancy between the copy & page content from `./context/przeprogramowani.md` file and the SEO component or meta tags
