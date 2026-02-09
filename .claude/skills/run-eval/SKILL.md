@@ -2,7 +2,7 @@
 name: run-eval
 description: Evaluate Przeprogramowani website implementations against benchmark criteria. Analyzes tech stack, pages, content accuracy, SEO, and responsiveness. Use when evaluating LLM-generated website attempts in the Przeprogramowani benchmark repository.
 ---
-
+IMPORTANT: Do not use this skill during the task of creating the website. Use it only to evaluate the website based on a direct request from the user.
 
 # Run Evaluation
 

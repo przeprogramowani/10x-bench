@@ -1,9 +1,0 @@
----
-import CourseLayout from '@/layouts/CourseLayout.astro';
-import { getCourseBySlug } from '@/data/courses';
-
-const course = getCourseBySlug('10xdevs');
-if (!course) throw new Error('Course 10xdevs not found');
----
-
-<CourseLayout course={course} />

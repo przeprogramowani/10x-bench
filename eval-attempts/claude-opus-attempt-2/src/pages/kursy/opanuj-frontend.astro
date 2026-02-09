@@ -1,9 +1,0 @@
----
-import CourseLayout from '@/layouts/CourseLayout.astro';
-import { getCourseBySlug } from '@/data/courses';
-
-const course = getCourseBySlug('opanuj-frontend');
-if (!course) throw new Error('Course opanuj-frontend not found');
----
-
-<CourseLayout course={course} />
