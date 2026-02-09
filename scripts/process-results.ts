@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { AGENT_ENV } from '../eval-attempts/metadata';
 
 interface CriterionResult {
   name: string;
@@ -15,6 +16,7 @@ interface AttemptResult {
   totalScore: number;
   maxScore: number;
   percentage: number;
+  agentEnvironment: string;
   criteria: CriterionResult[];
 }
 
@@ -24,6 +26,7 @@ interface ModelFamilyAverage {
   attemptCount: number;
   averageScore: number;
   averageMaxScore: number;
+  agentEnvironment: string;
 }
 
 interface ProcessedResults {
@@ -154,6 +157,7 @@ async function processResults(): Promise<void> {
       totalScore,
       maxScore,
       percentage,
+      agentEnvironment: AGENT_ENV[dir] ?? 'Unknown',
       criteria,
     });
   }
@@ -181,6 +185,7 @@ async function processResults(): Promise<void> {
     averageMaxScore: stats.totalMaxScore / stats.count,
     averagePercentage: stats.totalPercentage / stats.count,
     attemptCount: stats.count,
+    agentEnvironment: results.find((r) => r.modelName === modelName)?.agentEnvironment ?? 'Unknown',
   }));
 
   // Sort model averages by percentage (highest first)

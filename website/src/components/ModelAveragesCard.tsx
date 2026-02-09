@@ -4,6 +4,7 @@ interface ModelFamilyAverage {
   attemptCount: number;
   averageScore: number;
   averageMaxScore: number;
+  agentEnvironment?: string;
 }
 
 interface Props {
@@ -27,7 +28,10 @@ export default function ModelAveragesCard({ average, rank }: Props) {
           </span>
           <div>
             <h3 className="text-base font-semibold text-gray-900">{average.modelName}</h3>
-            <p className="text-xs text-gray-600">{average.attemptCount} attempt{average.attemptCount !== 1 ? 's' : ''}</p>
+            <p className="text-xs text-gray-600">
+              {average.attemptCount} attempt{average.attemptCount !== 1 ? 's' : ''}
+              {average.agentEnvironment && <span className="ml-1 text-gray-400">via {average.agentEnvironment}</span>}
+            </p>
           </div>
         </div>
 
