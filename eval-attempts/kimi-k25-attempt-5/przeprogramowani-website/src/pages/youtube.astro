@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.tsx';
+import YouTubePage from '../components/YouTubePage.tsx';
+import Footer from '../components/Footer.tsx';
+---
+
+<Layout title="YouTube" description="Oglądaj filmy Przeprogramowanych na YouTube. Tutoriale, recenzje narzędzi AI i rozmowy z ekspertami.">
+  <Navigation client:load />
+  <YouTubePage />
+  <Footer />
+</Layout>

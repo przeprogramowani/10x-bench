@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.tsx';
+import PodcastPage from '../components/PodcastPage.tsx';
+import Footer from '../components/Footer.tsx';
+---
+
+<Layout title="Podcast" description="Słuchaj podcastów Przeprogramowanych. Opanuj AI Podcast i Przeprogramowani - rozwój nowoczesnego programisty.">
+  <Navigation client:load />
+  <PodcastPage />
+  <Footer />
+</Layout>
