@@ -32,15 +32,31 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
           <div class="flex items-center">
             <a href="/" class="text-xl font-bold text-gray-900 hover:text-gray-700">10x Bench</a>
           </div>
-          <div class="flex gap-8">
+          <!-- Desktop nav -->
+          <div class="hidden md:flex gap-8">
             <a href="/" class="text-gray-700 hover:text-gray-900 font-medium">Results</a>
             <a href="/benchmark" class="text-gray-700 hover:text-gray-900 font-medium">Benchmark</a>
             <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-700 font-normal">Code &#8599;</a>
             <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-700 font-normal">10xDevs &#8599;</a>
           </div>
+          <!-- Hamburger button (mobile only) -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:text-gray-900" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col">
+        <a href="/" class="py-3 text-gray-700 hover:text-gray-900 font-medium border-b border-gray-100">Results</a>
+        <a href="/benchmark" class="py-3 text-gray-700 hover:text-gray-900 font-medium border-b border-gray-100">Benchmark</a>
+        <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="py-3 text-gray-500 hover:text-gray-700 font-normal border-b border-gray-100">Code &#8599;</a>
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="py-3 text-gray-500 hover:text-gray-700 font-normal">10xDevs &#8599;</a>
+      </div>
+    </div>
 
     <main class="min-h-screen py-12" style="background-color: white;">
       <slot />
@@ -56,6 +72,21 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
         </p>
       </div>
     </footer>
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('hamburger-icon');
+      if (btn && menu && icon) {
+        btn.addEventListener('click', () => {
+          const isOpen = !menu.classList.contains('hidden');
+          menu.classList.toggle('hidden');
+          icon.setAttribute('d', isOpen
+            ? 'M4 6h16M4 12h16M4 18h16'
+            : 'M6 18L18 6M6 6l12 12'
+          );
+        });
+      }
+    </script>
   </body>
 </html>
 

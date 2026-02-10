@@ -41,7 +41,57 @@ export default function ResultCard({ attempt }: Props) {
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between gap-4">
+      {/* Mobile layout */}
+      <div className="md:hidden">
+        <div className="flex items-center justify-between mb-2">
+          <div className="min-w-0">
+            <h3 className="text-base font-semibold text-gray-900">{attempt.modelName}</h3>
+            <p className="text-xs text-gray-600">
+              Attempt {attempt.attemptNumber}
+              {attempt.agentEnvironment && <span className="ml-1 text-gray-400">via {attempt.agentEnvironment}</span>}
+            </p>
+          </div>
+          <div className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap flex-shrink-0 ${getBadgeColor(attempt.percentage)}`}>
+            {attempt.percentage.toFixed(1)}%
+          </div>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+          <div
+            className={`h-2 rounded-full transition-all ${
+              attempt.percentage >= 90
+                ? 'bg-green-500'
+                : attempt.percentage >= 60
+                  ? 'bg-yellow-500'
+                  : 'bg-red-500'
+            }`}
+            style={{ width: `${attempt.percentage}%` }}
+          ></div>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-gray-600">
+            Score: <span className="font-bold text-gray-900">{attempt.totalScore.toFixed(1)}/{attempt.maxScore}</span>
+          </p>
+          {hasScreenshot && (
+            <a
+              href={screenshotPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded border border-gray-200 overflow-hidden hover:border-blue-400 transition-all"
+              title="Click to open full resolution"
+            >
+              <img
+                src={screenshotPath}
+                alt={`Screenshot of ${attempt.modelName} attempt ${attempt.attemptNumber}`}
+                className="w-16 h-11 object-cover object-top"
+                onError={() => setHasScreenshot(false)}
+              />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden md:flex items-center justify-between gap-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <div>
