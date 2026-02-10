@@ -8,7 +8,7 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" style="background-color: white; color: #111827;">
+<html lang="en" class="dark" style="background-color: #0f172a; color: #e2e8f0;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,22 +25,22 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
-  <body style="background-color: white; color: #111827;">
-    <nav class="bg-white border-b border-gray-200">
+  <body style="background-color: #0f172a; color: #e2e8f0;">
+    <nav class="bg-slate-900 border-b border-slate-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <a href="/" class="text-xl font-bold text-gray-900 hover:text-gray-700">10x Bench</a>
+            <a href="/" class="text-xl font-bold text-slate-100 hover:text-white">10x Bench</a>
           </div>
           <!-- Desktop nav -->
           <div class="hidden md:flex gap-8">
-            <a href="/" class="text-gray-700 hover:text-gray-900 font-medium">Results</a>
-            <a href="/benchmark" class="text-gray-700 hover:text-gray-900 font-medium">Benchmark</a>
-            <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-700 font-normal">Code &#8599;</a>
-            <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gray-700 font-normal">10xDevs &#8599;</a>
+            <a href="/" class="text-slate-300 hover:text-white font-medium">Results</a>
+            <a href="/benchmark" class="text-slate-300 hover:text-white font-medium">Benchmark</a>
+            <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-300 font-normal">Code &#8599;</a>
+            <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-300 font-normal">10xDevs &#8599;</a>
           </div>
           <!-- Hamburger button (mobile only) -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:text-gray-900" aria-label="Toggle menu">
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white" aria-label="Toggle menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -49,25 +49,25 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
       </div>
     </nav>
     <!-- Mobile menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col">
-        <a href="/" class="py-3 text-gray-700 hover:text-gray-900 font-medium border-b border-gray-100">Results</a>
-        <a href="/benchmark" class="py-3 text-gray-700 hover:text-gray-900 font-medium border-b border-gray-100">Benchmark</a>
-        <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="py-3 text-gray-500 hover:text-gray-700 font-normal border-b border-gray-100">Code &#8599;</a>
-        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="py-3 text-gray-500 hover:text-gray-700 font-normal">10xDevs &#8599;</a>
+        <a href="/" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">Results</a>
+        <a href="/benchmark" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">Benchmark</a>
+        <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="py-3 text-slate-400 hover:text-slate-300 font-normal border-b border-slate-700">Code &#8599;</a>
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="py-3 text-slate-400 hover:text-slate-300 font-normal">10xDevs &#8599;</a>
       </div>
     </div>
 
-    <main class="min-h-screen py-12" style="background-color: white;">
+    <main class="min-h-screen py-12" style="background-color: #0f172a;">
       <slot />
     </main>
 
-    <footer class="bg-gray-50 mt-12 border-t">
+    <footer class="bg-slate-900 mt-12 border-t border-slate-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <p class="text-gray-600 text-center">
+        <p class="text-slate-400 text-center">
           10x Bench - LLM Benchmark Results
         </p>
-        <p class="text-gray-500 text-center text-sm mt-2">
+        <p class="text-slate-500 text-center text-sm mt-2">
           Generated at {new Date().toLocaleDateString()}
         </p>
       </div>

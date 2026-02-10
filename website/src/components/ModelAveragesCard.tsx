@@ -21,9 +21,9 @@ export default function ModelAveragesCard({ average, rank }: Props) {
   const filmstripPath = `/screenshots/${average.modelBaseId}_filmstrip.png`;
 
   const getBadgeColor = (percentage: number) => {
-    if (percentage >= 90) return 'bg-green-100 text-green-800';
-    if (percentage >= 60) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-red-100 text-red-800';
+    if (percentage >= 90) return 'bg-green-900 text-green-200';
+    if (percentage >= 60) return 'bg-yellow-900 text-yellow-200';
+    return 'bg-red-900 text-red-200';
   };
 
   const handleCardClick = () => {
@@ -33,7 +33,7 @@ export default function ModelAveragesCard({ average, rank }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+    <div className="bg-slate-800 rounded-lg shadow-sm border border-slate-700 hover:shadow-md transition-shadow">
       <div
         className={`p-4 ${hasFilmstrip ? 'cursor-pointer' : ''}`}
         onClick={handleCardClick}
@@ -42,14 +42,14 @@ export default function ModelAveragesCard({ average, rank }: Props) {
         <div className="md:hidden">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-3 min-w-0">
-              <span className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full bg-gray-900 text-white font-bold text-sm">
+              <span className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full bg-blue-600 text-white font-bold text-sm">
                 {rank}
               </span>
               <div className="min-w-0">
-                <h3 className="text-base font-semibold text-gray-900 truncate">{average.modelName}</h3>
-                <p className="text-xs text-gray-600 truncate">
+                <h3 className="text-base font-semibold text-slate-100 truncate">{average.modelName}</h3>
+                <p className="text-xs text-slate-400 truncate">
                   {average.attemptCount} attempt{average.attemptCount !== 1 ? 's' : ''}
-                  {average.agentEnvironment && <span className="ml-1 text-gray-400">via {average.agentEnvironment}</span>}
+                  {average.agentEnvironment && <span className="ml-1 text-slate-500">via {average.agentEnvironment}</span>}
                 </p>
               </div>
             </div>
@@ -58,13 +58,13 @@ export default function ModelAveragesCard({ average, rank }: Props) {
                 {average.averagePercentage.toFixed(1)}%
               </div>
               {hasFilmstrip && (
-                <svg className={`w-5 h-5 text-gray-400 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className={`w-5 h-5 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               )}
             </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+          <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
             <div
               className={`h-2 rounded-full transition-all ${
                 average.averagePercentage >= 90
@@ -76,28 +76,28 @@ export default function ModelAveragesCard({ average, rank }: Props) {
               style={{ width: `${average.averagePercentage}%` }}
             ></div>
           </div>
-          <p className="text-xs text-gray-600">
-            Average: <span className="font-bold text-gray-900">{average.averageScore.toFixed(1)}/{average.averageMaxScore.toFixed(1)}</span>
+          <p className="text-xs text-slate-400">
+            Average: <span className="font-bold text-slate-100">{average.averageScore.toFixed(1)}/{average.averageMaxScore.toFixed(1)}</span>
           </p>
         </div>
 
         {/* Desktop layout */}
         <div className="hidden md:flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 flex-shrink-0 w-52">
-            <span className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full bg-gray-900 text-white font-bold text-sm">
+            <span className="inline-flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full bg-blue-600 text-white font-bold text-sm">
               {rank}
             </span>
             <div className="min-w-0">
-              <h3 className="text-base font-semibold text-gray-900 truncate">{average.modelName}</h3>
-              <p className="text-xs text-gray-600 truncate">
+              <h3 className="text-base font-semibold text-slate-100 truncate">{average.modelName}</h3>
+              <p className="text-xs text-slate-400 truncate">
                 {average.attemptCount} attempt{average.attemptCount !== 1 ? 's' : ''}
-                {average.agentEnvironment && <span className="ml-1 text-gray-400">via {average.agentEnvironment}</span>}
+                {average.agentEnvironment && <span className="ml-1 text-slate-500">via {average.agentEnvironment}</span>}
               </p>
             </div>
           </div>
 
           <div className="flex-1 min-w-0">
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-slate-700 rounded-full h-2">
               <div
                 className={`h-2 rounded-full transition-all ${
                   average.averagePercentage >= 90
@@ -113,8 +113,8 @@ export default function ModelAveragesCard({ average, rank }: Props) {
 
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="text-right">
-              <p className="text-xs text-gray-600">Average</p>
-              <p className="text-lg font-bold text-gray-900">
+              <p className="text-xs text-slate-400">Average</p>
+              <p className="text-lg font-bold text-slate-100">
                 {average.averageScore.toFixed(1)}/{average.averageMaxScore.toFixed(1)}
               </p>
             </div>
@@ -122,7 +122,7 @@ export default function ModelAveragesCard({ average, rank }: Props) {
               {average.averagePercentage.toFixed(1)}%
             </div>
             {hasFilmstrip && (
-              <svg className={`w-5 h-5 text-gray-400 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 text-slate-400 transition-transform ${expanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             )}
@@ -131,12 +131,12 @@ export default function ModelAveragesCard({ average, rank }: Props) {
       </div>
 
       {hasFilmstrip && expanded && (
-        <div className="border-t border-gray-200 p-3">
+        <div className="border-t border-slate-700 p-3">
           <a href={filmstripPath} target="_blank" rel="noopener noreferrer" title="Click to open full resolution">
             <img
               src={filmstripPath}
               alt={`Filmstrip of ${average.modelName} attempts`}
-              className="w-full rounded border border-gray-100 hover:border-blue-400 transition-colors"
+              className="w-full rounded border border-slate-600 hover:border-blue-400 transition-colors"
               onError={() => { setHasFilmstrip(false); setExpanded(false); }}
             />
           </a>

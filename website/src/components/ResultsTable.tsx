@@ -39,9 +39,9 @@ export default function ResultsTable({attempts}: Props) {
   const allCriteria = [...scoringCriteria, ...infoCriteria];
 
   const getScoreColor = (score: number, max: number): string => {
-    if (score === 0) return "bg-red-100 text-red-800";
-    if (score === max) return "bg-green-100 text-green-800";
-    return "bg-yellow-100 text-yellow-800"; // 0 < score < max
+    if (score === 0) return "bg-red-900 text-red-200";
+    if (score === max) return "bg-green-900 text-green-200";
+    return "bg-yellow-900 text-yellow-200"; // 0 < score < max
   };
 
   const formatScore = (criterion: CriterionResult) => {
@@ -61,20 +61,20 @@ export default function ResultsTable({attempts}: Props) {
 
   return (
     <div>
-      <div className='overflow-x-auto rounded-lg border border-gray-200'>
-        <table className='w-full border-collapse bg-white'>
+      <div className='overflow-x-auto rounded-lg border border-slate-700'>
+        <table className='w-full border-collapse bg-slate-800'>
           <thead>
-            <tr className='bg-gray-50 border-b'>
-              <th className='sticky left-0 bg-gray-50 z-20 px-4 py-3 text-left font-semibold text-gray-900 border-r w-56'>
+            <tr className='bg-slate-900 border-b border-slate-700'>
+              <th className='sticky left-0 bg-slate-900 z-20 px-4 py-3 text-left font-semibold text-slate-100 border-r border-slate-700 w-56'>
                 Criterion
               </th>
               {attempts.map((attempt) => (
                 <th
                   key={attempt.id}
-                  className='px-4 py-3 text-center font-semibold text-gray-900 text-sm whitespace-nowrap'
+                  className='px-4 py-3 text-center font-semibold text-slate-100 text-sm whitespace-nowrap'
                 >
                   <div className='font-semibold'>{attempt.modelName}</div>
-                  <div className='text-xs font-normal text-gray-600'>
+                  <div className='text-xs font-normal text-slate-400'>
                     Attempt {attempt.attemptNumber}
                   </div>
                 </th>
@@ -93,10 +93,10 @@ export default function ResultsTable({attempts}: Props) {
               return (
                 <tr
                   key={criterion.name}
-                  className={`${isInfo ? "bg-gray-50/60" : idx % 2 === 0 ? "bg-white" : "bg-gray-50"} ${isFirstInfo ? "border-t-2 border-gray-200" : ""}`}
+                  className={`${isInfo ? "bg-slate-900/60" : idx % 2 === 0 ? "bg-slate-800" : "bg-slate-900"} ${isFirstInfo ? "border-t-2 border-slate-700" : ""}`}
                 >
                   <td
-                    className={`sticky left-0 z-10 px-4 py-3 border-r text-sm ${isInfo ? "bg-gray-100 font-normal text-gray-500" : "bg-inherit font-medium text-gray-900"}`}
+                    className={`sticky left-0 z-10 px-4 py-3 border-r border-slate-700 text-sm ${isInfo ? "bg-slate-900 font-normal text-slate-500" : "bg-inherit font-medium text-slate-100"}`}
                   >
                     <div className='max-w-xs'>{criterion.name}</div>
                   </td>
@@ -107,7 +107,7 @@ export default function ResultsTable({attempts}: Props) {
                     if (!matchedCriterion) {
                       return (
                         <td key={attempt.id} className='px-4 py-3 text-center'>
-                          <span className='inline-block px-2 py-1 rounded bg-gray-100 text-gray-600 text-xs'>
+                          <span className='inline-block px-2 py-1 rounded bg-slate-700 text-slate-400 text-xs'>
                             N/A
                           </span>
                         </td>
@@ -128,14 +128,14 @@ export default function ResultsTable({attempts}: Props) {
                           <span
                             className={`inline-block px-2 py-1 rounded text-sm ${
                               isInfo
-                                ? "text-gray-500 font-normal"
+                                ? "text-slate-400 font-normal"
                                 : `font-semibold cursor-pointer hover:opacity-80 ${getScoreColor(matchedCriterion.score, matchedCriterion.max)}`
                             }`}
                           >
                             {formatScore(matchedCriterion)}
                           </span>
                           {isExpanded && matchedCriterion.notes && !isInfo && (
-                            <div className='mt-2 p-2 bg-blue-50 text-blue-900 text-xs rounded max-w-xs border border-blue-200'>
+                            <div className='mt-2 p-2 bg-blue-950 text-blue-200 text-xs rounded max-w-xs border border-blue-800'>
                               {matchedCriterion.notes}
                             </div>
                           )}
@@ -149,7 +149,7 @@ export default function ResultsTable({attempts}: Props) {
           </tbody>
         </table>
       </div>
-      <p className='text-xs text-gray-600 mt-3 px-4'>
+      <p className='text-xs text-slate-400 mt-3 px-4'>
         Click on score cells to view evaluation notes
       </p>
     </div>

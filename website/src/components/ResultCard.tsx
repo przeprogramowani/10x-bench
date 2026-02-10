@@ -34,28 +34,28 @@ export default function ResultCard({ attempt }: Props) {
   const handleMouseLeave = () => setPreview(null);
 
   const getBadgeColor = (percentage: number) => {
-    if (percentage >= 90) return 'bg-green-100 text-green-800';
-    if (percentage >= 60) return 'bg-yellow-100 text-yellow-800';
-    return 'bg-red-100 text-red-800';
+    if (percentage >= 90) return 'bg-green-900 text-green-200';
+    if (percentage >= 60) return 'bg-yellow-900 text-yellow-200';
+    return 'bg-red-900 text-red-200';
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 hover:shadow-md transition-shadow">
+    <div className="bg-slate-800 rounded-lg shadow-sm p-4 border border-slate-700 hover:shadow-md transition-shadow">
       {/* Mobile layout */}
       <div className="md:hidden">
         <div className="flex items-center justify-between mb-2">
           <div className="min-w-0">
-            <h3 className="text-base font-semibold text-gray-900">{attempt.modelName}</h3>
-            <p className="text-xs text-gray-600">
+            <h3 className="text-base font-semibold text-slate-100">{attempt.modelName}</h3>
+            <p className="text-xs text-slate-400">
               Attempt {attempt.attemptNumber}
-              {attempt.agentEnvironment && <span className="ml-1 text-gray-400">via {attempt.agentEnvironment}</span>}
+              {attempt.agentEnvironment && <span className="ml-1 text-slate-500">via {attempt.agentEnvironment}</span>}
             </p>
           </div>
           <div className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap flex-shrink-0 ${getBadgeColor(attempt.percentage)}`}>
             {attempt.percentage.toFixed(1)}%
           </div>
         </div>
-        <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+        <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
           <div
             className={`h-2 rounded-full transition-all ${
               attempt.percentage >= 90
@@ -68,15 +68,15 @@ export default function ResultCard({ attempt }: Props) {
           ></div>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xs text-gray-600">
-            Score: <span className="font-bold text-gray-900">{attempt.totalScore.toFixed(1)}/{attempt.maxScore}</span>
+          <p className="text-xs text-slate-400">
+            Score: <span className="font-bold text-slate-100">{attempt.totalScore.toFixed(1)}/{attempt.maxScore}</span>
           </p>
           {hasScreenshot && (
             <a
               href={screenshotPath}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded border border-gray-200 overflow-hidden hover:border-blue-400 transition-all"
+              className="block rounded border border-slate-600 overflow-hidden hover:border-blue-400 transition-all"
               title="Click to open full resolution"
             >
               <img
@@ -95,14 +95,14 @@ export default function ResultCard({ attempt }: Props) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <div>
-              <h3 className="text-base font-semibold text-gray-900">{attempt.modelName}</h3>
-              <p className="text-xs text-gray-600">
+              <h3 className="text-base font-semibold text-slate-100">{attempt.modelName}</h3>
+              <p className="text-xs text-slate-400">
                 Attempt {attempt.attemptNumber}
-                {attempt.agentEnvironment && <span className="ml-1 text-gray-400">via {attempt.agentEnvironment}</span>}
+                {attempt.agentEnvironment && <span className="ml-1 text-slate-500">via {attempt.agentEnvironment}</span>}
               </p>
             </div>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-slate-700 rounded-full h-2">
             <div
               className={`h-2 rounded-full transition-all ${
                 attempt.percentage >= 90
@@ -126,7 +126,7 @@ export default function ResultCard({ attempt }: Props) {
                 href={screenshotPath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block rounded border border-gray-200 overflow-hidden hover:border-blue-400 hover:shadow transition-all"
+                className="block rounded border border-slate-600 overflow-hidden hover:border-blue-400 hover:shadow transition-all"
                 title="Click to open full resolution"
               >
                 <img
@@ -144,7 +144,7 @@ export default function ResultCard({ attempt }: Props) {
                     bottom: `${window.innerHeight - preview.y + 8}px`,
                   }}
                 >
-                  <div className="rounded-lg shadow-2xl border border-gray-300 overflow-hidden bg-white p-1">
+                  <div className="rounded-lg shadow-2xl border border-slate-600 overflow-hidden bg-slate-800 p-1">
                     <img
                       src={screenshotPath}
                       alt={`Preview of ${attempt.modelName} attempt ${attempt.attemptNumber}`}
@@ -157,8 +157,8 @@ export default function ResultCard({ attempt }: Props) {
             </div>
           )}
           <div className="text-right">
-            <p className="text-xs text-gray-600">Score</p>
-            <p className="text-lg font-bold text-gray-900">
+            <p className="text-xs text-slate-400">Score</p>
+            <p className="text-lg font-bold text-slate-100">
               {attempt.totalScore.toFixed(1)}/{attempt.maxScore}
             </p>
           </div>
