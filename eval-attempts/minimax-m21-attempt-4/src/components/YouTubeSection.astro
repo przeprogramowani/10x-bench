@@ -1,0 +1,65 @@
+---
+interface Video {
+  id: string;
+  title: string;
+  thumbnail?: string;
+}
+
+interface Props {
+  videos: Video[];
+}
+
+const { videos } = Astro.props;
+---
+
+<section class="py-16 sm:py-20">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <div class="mb-10">
+      <div class="flex items-center gap-3 flex-wrap">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Filmy i podcasty</h2>
+      </div>
+      <p class="mt-2 text-lg text-gray-400">Rozwój nowoczesnego programisty</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map(video => (
+        <a
+          href={`https://www.youtube.com/watch?v=${video.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all"
+        >
+          <div class="relative aspect-video">
+            <img
+              src={video.thumbnail || `https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+              alt={video.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div class="w-12 h-12 rounded-full bg-red-600/90 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-white ml-0.5" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-3">
+            <h3 class="text-sm font-medium text-gray-200 line-clamp-2 group-hover:text-white transition-colors">
+              {video.title}
+            </h3>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a
+        href="/youtube"
+        class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+      >
+        Więcej filmów →
+      </a>
+    </div>
+  </div>
+</section>

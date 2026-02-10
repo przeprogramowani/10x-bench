@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const youtubeVideos = [
+  {
+    id: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    views: '12K wyświetleń',
+    date: '2 dni temu'
+  },
+  {
+    id: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    views: '25K wyświetleń',
+    date: '5 dni temu'
+  },
+  {
+    id: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉',
+    views: '18K wyświetleń',
+    date: '1 tydzień temu'
+  },
+  {
+    id: 'WJLGzf7qq-c',
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów',
+    views: '32K wyświetleń',
+    date: '2 tygodnie temu'
+  },
+  {
+    id: 'jjOYxKAk_j8',
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+    views: '45K wyświetleń',
+    date: '3 tygodnie temu'
+  },
+  {
+    id: 'iSG7PUxjfww',
+    title: 'Special webinar for Builders: Tu zaczyna się Twój AI-ready project',
+    views: '28K wyświetleń',
+    date: '1 miesiąc temu'
+  },
+  {
+    id: 'dQw4w9WgXcQ',
+    title: 'Jak zacząć z AI w programowaniu? - kompletny przewodnik',
+    views: '67K wyświetleń',
+    date: '2 miesiące temu'
+  },
+  {
+    id: 'abc123',
+    title: 'Opanuj TypeScript 5.0 - nowości i praktyczne zastosowania',
+    views: '22K wyświetleń',
+    date: '2 miesiące temu'
+  },
+  {
+    id: 'xyz789',
+    title: 'GitHub Copilot vs Claude Code - które narzędzie wybrać w 2025?',
+    views: '38K wyświetleń',
+    date: '3 miesiące temu'
+  }
+];
+---
+
+<Layout title="YouTube">
+  <Header slot="header" />
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="flex items-center gap-3 mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#ff0000" aria-hidden="true">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white font-heading">
+          YouTube
+        </h1>
+      </div>
+      <p class="text-lg text-gray-400 mb-12 max-w-2xl">
+        Najnowsze filmy o programowaniu, AI i nowoczesnych technologiach. 
+        Subskrybuj kanał, aby nie przegapić nowych materiałów!
+      </p>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map(video => (
+          <a
+            href={`https://www.youtube.com/watch?v=${video.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group"
+          >
+            <div class="relative aspect-video rounded-xl overflow-hidden mb-3 bg-gray-800">
+              <img
+                src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+                alt={video.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                onerror="this.src='https://i3.ytimg.com/vi/${video.id}/hqdefault.jpg'"
+              />
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="text-base font-medium text-gray-200 line-clamp-2 group-hover:text-white transition-colors">
+              {video.title}
+            </h3>
+            <div class="flex items-center gap-2 mt-1 text-xs text-gray-500">
+              <span>{video.views}</span>
+              <span>•</span>
+              <span>{video.date}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a
+          href="https://www.youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          Subskrybuj kanał →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface CriterionResult {
   name: string;
   score: number;
@@ -21,6 +23,16 @@ interface Props {
 }
 
 export default function ResultCard({ attempt }: Props) {
+  const [hasScreenshot, setHasScreenshot] = useState(true);
+  const [preview, setPreview] = useState<{ x: number; y: number } | null>(null);
+  const screenshotPath = `/screenshots/${attempt.id}.png`;
+
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPreview({ x: rect.right, y: rect.top });
+  };
+  const handleMouseLeave = () => setPreview(null);
+
   const getBadgeColor = (percentage: number) => {
     if (percentage >= 90) return 'bg-green-100 text-green-800';
     if (percentage >= 60) return 'bg-yellow-100 text-yellow-800';
@@ -54,6 +66,46 @@ export default function ResultCard({ attempt }: Props) {
           </div>
         </div>
         <div className="flex items-center gap-3 flex-shrink-0">
+          {hasScreenshot && (
+            <div
+              className="relative flex-shrink-0"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <a
+                href={screenshotPath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded border border-gray-200 overflow-hidden hover:border-blue-400 hover:shadow transition-all"
+                title="Click to open full resolution"
+              >
+                <img
+                  src={screenshotPath}
+                  alt={`Screenshot of ${attempt.modelName} attempt ${attempt.attemptNumber}`}
+                  className="w-20 h-14 object-cover object-top"
+                  onError={() => setHasScreenshot(false)}
+                />
+              </a>
+              {preview && (
+                <div
+                  className="fixed z-[9999] pointer-events-none"
+                  style={{
+                    right: `${window.innerWidth - preview.x}px`,
+                    bottom: `${window.innerHeight - preview.y + 8}px`,
+                  }}
+                >
+                  <div className="rounded-lg shadow-2xl border border-gray-300 overflow-hidden bg-white p-1">
+                    <img
+                      src={screenshotPath}
+                      alt={`Preview of ${attempt.modelName} attempt ${attempt.attemptNumber}`}
+                      className="rounded object-cover object-top"
+                      style={{ width: '33vw' }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
           <div className="text-right">
             <p className="text-xs text-gray-600">Score</p>
             <p className="text-lg font-bold text-gray-900">

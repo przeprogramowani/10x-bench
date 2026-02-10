@@ -1,0 +1,50 @@
+---
+import { siteData } from '../data/content';
+
+const { youtube } = siteData;
+---
+
+<section id="youtube" class="py-24 bg-white border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">YouTube</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Ostatnie filmy
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+        Zobacz co słychać na naszym kanale YouTube.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {youtube.map((video) => (
+        <a href={video.link} target="_blank" rel="noopener noreferrer" class="group relative block bg-black rounded-lg overflow-hidden shadow-lg transform transition-transform hover:-translate-y-1 hover:shadow-2xl">
+          <div class="aspect-video w-full relative">
+            <img class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src={video.thumbnail} alt={video.title} loading="lazy" />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white ml-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+              <h3 class="text-white font-medium text-lg leading-tight line-clamp-2 drop-shadow-md">
+                {video.title}
+              </h3>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="https://www.youtube.com/c/przeprogramowani" class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors">
+        <svg class="mr-2 -ml-1 h-5 w-5 text-red-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+        </svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </div>
+</section>

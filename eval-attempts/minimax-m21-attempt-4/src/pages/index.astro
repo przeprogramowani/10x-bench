@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Newsletter from '../components/Newsletter.astro';
+import YouTubeSection from '../components/YouTubeSection.astro';
+import CoursesSection from '../components/CoursesSection.astro';
+
+const youtubeVideos = [
+  {
+    id: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg'
+  },
+  {
+    id: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg'
+  },
+  {
+    id: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg'
+  }
+];
+---
+
+<Layout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <Header slot="header" />
+
+  <section class="relative bg-gray-950 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <video
+        class="absolute inset-0 w-full h-full object-cover blur-sm opacity-20 scale-110"
+        autoplay
+        loop
+        muted
+        playsinline
+        aria-hidden="true"
+      >
+        <source src="https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7%2F67bc8b1478083f050d35336e_KV_animation%20_darker-transcode.webm" type="video/webm" />
+        <source src="https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7%2F67bc8b1478083f050d35336e_KV_animation%20_darker-transcode.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/90 to-gray-950/50" />
+      <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-950 to-transparent" />
+    </div>
+
+    <div class="relative max-w-screen-xl mx-auto lg:grid lg:grid-cols-2 lg:gap-12 px-4 py-16 sm:py-24 items-center">
+      <div class="py-4">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-1 bg-orange-500 rounded-full" />
+          <span class="text-orange-500 text-sm font-bold uppercase tracking-wider">Nowość - Maj 2025</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading leading-tight">
+          10xDevs 3.0
+        </h1>
+        <p class="mt-5 text-lg text-gray-300 max-w-lg">
+          Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Szczegóły →
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex items-center justify-end" style="perspective: 1000px;">
+        <div class="relative w-full max-w-xl" style="transform: rotateY(-8deg); transform-style: preserve-3d;">
+          <video
+            class="relative z-10 rounded-xl shadow-2xl w-full"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7%2F67bc8b1478083f050d35336e_KV_animation%20_darker-transcode.webm" type="video/webm" />
+            <source src="https://cdn.prod.website-files.com/67b70debac9aae72cbe06db7%2F67bc8b1478083f050d35336e_KV_animation%20_darker-transcode.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+
+  <CoursesSection />
+
+  <YouTubeSection videos={youtubeVideos} />
+
+  <Footer slot="footer" />
+</Layout>

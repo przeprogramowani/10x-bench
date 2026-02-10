@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,6min 8s,N/A,6min 8s
+Test run,10.02.2026 09:55,N/A,10.02.2026 09:55
+Local build,1,1,Build successful - all pages prerendered (index, o-nas, podcast, youtube)
+Manual testing,1,1,Dev server running and all pages accessible with working navigation styles and content
+Tech stack,0.5,1,Astro 5 and React 19 present and Cloudflare adapter configured but Tailwind CSS v3.4.1 instead of required v4
+O nas page,0.5,1,Page exists (200) but bios hallucinated - Przemek listed as Ex-Huuuge Games (should be DAZN/Cabify) and Marcin as Ex-Future Processing (should be SmartRecruiters). Missing course assignments and detailed professional backgrounds.
+Podcast page,0.5,1,Only Przeprogramowany Podcast displayed - OpanujAI Podcast missing entirely. Spotify URL correct (3yVvOAXSYq6sQB02w4A4wo) but episode data is hallucinated with fake titles/dates. All YouTube links point to Rick Roll (dQw4w9WgXcQ).
+YouTube page,0.5,1,Page exists (200) with correct channel link. Mix of some potentially real video IDs (KAJTsQbqBow uwi39C2O8NI b-gOI128G2s) and fake ones (dQw4w9WgXcQ Rick Roll and xyz789abc placeholder). View counts and dates hallucinated.
+Kursy section,0.5,1,10xDevs 3.0 prominently featured in Hero with correct link (10xdevs.pl) but only 3 of 6 courses listed (Opanuj Frontend AI Edition and Opanuj TypeScript and Opanuj AI). Missing Opanuj JavaScript and Cursor Programuj z AI.
+Consistent UI,1,1,UI consistent across all pages with cohesive dark theme and design system
+Responsive design,1,1,Containers components and navigation fully responsive across screen sizes
+SEO Tags,0.5,1,Layout.astro has title and meta description applied to all pages. Default title matches context tagline. No Open Graph or Twitter Card meta tags. No canonical URLs.

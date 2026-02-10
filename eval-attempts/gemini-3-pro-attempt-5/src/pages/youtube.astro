@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import VideoCard from '../components/VideoCard.jsx';
+
+// Sample data for videos - expanded list
+const allVideos = [
+  {
+    title: "Cursor 2.0 vs Windsurf - Pojedynek IDE AI",
+    views: "12 tys.",
+    date: "2 dni temu",
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D",
+    link: "#"
+  },
+  {
+    title: "Jak AI zmieni frontend w 2026 roku?",
+    views: "8.5 tys.",
+    date: "Tydzień temu",
+    thumbnail: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fHww",
+    link: "#"
+  },
+  {
+    title: "React 19 - Nowe hooki, które musisz znać",
+    views: "15 tys.",
+    date: "2 tygodnie temu",
+    thumbnail: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D",
+    link: "#"
+  },
+  {
+    title: "Live Coding: Budujemy klona Spotify w Astro",
+    views: "22 tys.",
+    date: "Miesiąc temu",
+    thumbnail: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvZGluZ3xlbnwwfHwwfHx8MA%3D%3D",
+    link: "#"
+  },
+  {
+    title: "Czy warto uczyć się Angulara w 2026?",
+    views: "45 tys.",
+    date: "2 miesiące temu",
+    thumbnail: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdlYiUyMGRldmVsb3BtZW50fGVufDB8fDB8fHww",
+    link: "#"
+  },
+  {
+    title: "TypeScript 6.0 - Co nowego?",
+    views: "18 tys.",
+    date: "3 miesiące temu",
+    thumbnail: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNvZGV8ZW58MHx8MHx8fDA%3D",
+    link: "#"
+  }
+];
+---
+
+<Layout>
+  <Navbar client:load />
+
+  <main class="bg-gray-50 min-h-screen">
+    <div class="bg-red-600 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl font-bold mb-4">Kanał YouTube</h1>
+        <p class="text-xl text-red-100 max-w-2xl mx-auto">
+          Ponad 500 filmów z wiedzą dla programistów. Subskrybuj, aby być na bieżąco.
+        </p>
+        <a href="https://youtube.com/c/przeprogramowani" class="inline-block mt-8 bg-white text-red-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
+          Subskrybuj
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allVideos.map((video, index) => (
+          <VideoCard key={index} {...video} />
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

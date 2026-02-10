@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import Hero from '../components/Hero.jsx';
+import CourseCard from '../components/CourseCard.jsx';
+import EpisodeCard from '../components/EpisodeCard.jsx';
+import VideoCard from '../components/VideoCard.jsx';
+
+const courses = [
+  {
+    title: "10xDevs",
+    description: "Flagowy program mentoringowy. Zostań programistą, który wykorzystuje AI, aby dowozić 10x więcej wartości.",
+    link: "https://przeprogramowani.pl/10xdevs",
+    highlight: true,
+    badge: "Bestseller"
+  },
+  {
+    title: "Opanuj Frontend",
+    description: "Kompletny kurs frontend developmentu. Od podstaw HTML i CSS, przez React, aż po zaawansowane wzorce i AI.",
+    link: "https://opanujfrontend.pl",
+    highlight: false,
+    badge: "AI Edition"
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Poznaj TypeScript od podszewki. Typy generyczne, utility types i bezpieczny kod w dużych projektach.",
+    link: "https://przeprogramowani.pl/opanuj-typescript",
+    highlight: false,
+    badge: "Must Have"
+  }
+];
+
+const episodes = [
+  {
+    title: "Doktor AI nadchodzi - MedGemma vs ChatGPT Health",
+    date: "10 Lutego 2026",
+    duration: "1h 23m",
+    description: "Czy sztuczna inteligencja zastąpi lekarzy? Analizujemy najnowsze modele medyczne od Google i OpenAI.",
+    link: "/podcast/doktor-ai"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 roku",
+    date: "2 Stycznia 2026",
+    duration: "1h 47m",
+    description: "Przegląd najważniejszych wydarzeń, premier i przełomów w świecie sztucznej inteligencji w minionym roku.",
+    link: "/podcast/podsumowanie-2025"
+  },
+  {
+    title: "GPT-5.3 Codex - Czy to koniec programowania?",
+    date: "15 Grudnia 2025",
+    duration: "58m",
+    description: "Testujemy najnowszy model od OpenAI. Czy faktycznie radzi sobie lepiej z kodem niż ludzie?",
+    link: "/podcast/gpt-5-codex"
+  }
+];
+
+const videos = [
+  {
+    title: "Cursor 2.0 vs Windsurf - Pojedynek IDE AI",
+    views: "12 tys.",
+    date: "2 dni temu",
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8fDA%3D",
+    link: "#"
+  },
+  {
+    title: "Jak AI zmieni frontend w 2026 roku?",
+    views: "8.5 tys.",
+    date: "Tydzień temu",
+    thumbnail: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29kaW5nfGVufDB8fDB8fHww",
+    link: "#"
+  },
+  {
+    title: "React 19 - Nowe hooki, które musisz znać",
+    views: "15 tys.",
+    date: "2 tygodnie temu",
+    thumbnail: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D",
+    link: "#"
+  }
+];
+---
+
+<Layout>
+  <Navbar client:load />
+  
+  <main>
+    <Hero />
+
+    <section id="kursy" class="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Nasze Kursy</h2>
+          <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+            Wiedza prosto z placu boju. Uczymy tego, czego sami używamy w komercyjnych projektach.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {courses.map((course, index) => (
+            <CourseCard key={index} {...course} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-3xl font-extrabold text-gray-900">Ostatnio w podcaście</h2>
+            <p className="mt-2 text-gray-500">Słuchaj nas w drodze do pracy lub podczas biegania.</p>
+          </div>
+          <a href="/podcast" className="hidden sm:block text-blue-600 font-semibold hover:text-blue-800">
+            Wszystkie odcinki &rarr;
+          </a>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {episodes.map((episode, index) => (
+            <EpisodeCard key={index} {...episode} />
+          ))}
+        </div>
+        <div className="mt-8 text-center sm:hidden">
+          <a href="/podcast" className="text-blue-600 font-semibold hover:text-blue-800">
+            Wszystkie odcinki &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <h2 className="text-3xl font-extrabold text-gray-900">Nowe filmy na YouTube</h2>
+            <p className="mt-2 text-gray-500">Tutoriale, live coding i analizy technologiczne.</p>
+          </div>
+          <a href="/youtube" className="hidden sm:block text-blue-600 font-semibold hover:text-blue-800">
+            Zobacz kanał &rarr;
+          </a>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video, index) => (
+            <VideoCard key={index} {...video} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-blue-600">
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <h2 className="text-3xl font-bold text-white mb-6">Dołącz do społeczności Przeprogramowanych</h2>
+        <p className="text-blue-100 text-lg mb-10">
+          Zapisz się do naszego newslettera, aby otrzymywać najnowsze informacje o kursach,
+          podcastach i wydarzeniach ze świata IT.
+        </p>
+        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+          <input 
+            type="email" 
+            placeholder="Twój adres email" 
+            class="flex-1 px-5 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+          <button 
+            type="submit" 
+            class="px-8 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
+          >
+            Zapisz się
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

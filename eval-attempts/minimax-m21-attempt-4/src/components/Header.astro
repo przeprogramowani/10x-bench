@@ -1,0 +1,58 @@
+---
+const navItems = [
+  { href: '/o-nas', label: 'O Nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/kursy', label: 'Kursy' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-gray-800">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="/" class="flex items-center gap-2 text-white font-bold text-lg shrink-0">
+      <span class="text-orange-500">&lt;/&gt;</span>
+      <span>Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Nawigacja główna">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={[
+            "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+            currentPath === item.href
+              ? "text-white bg-gray-800"
+              : "text-gray-300 hover:text-white hover:bg-gray-800"
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"
+      >
+        10xDevs
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1 opacity-50" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+      </a>
+    </nav>
+
+    <div class="lg:hidden">
+      <a href="#" class="p-2 text-gray-300 hover:text-white" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

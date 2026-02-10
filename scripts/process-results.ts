@@ -22,6 +22,7 @@ interface AttemptResult {
 
 interface ModelFamilyAverage {
   modelName: string;
+  modelBaseId: string;
   averagePercentage: number;
   attemptCount: number;
   averageScore: number;
@@ -193,16 +194,18 @@ async function processResults(): Promise<void> {
 
   const modelAverages: ModelFamilyAverage[] = Array.from(
     modelAveragesMap.entries(),
-  ).map(([modelName, stats]) => ({
-    modelName,
-    averageScore: stats.totalScore / stats.count,
-    averageMaxScore: stats.totalMaxScore / stats.count,
-    averagePercentage: stats.totalPercentage / stats.count,
-    attemptCount: stats.count,
-    agentEnvironment:
-      results.find((r) => r.modelName === modelName)?.agentEnvironment ??
-      "Unknown",
-  }));
+  ).map(([modelName, stats]) => {
+    const matchingResult = results.find((r) => r.modelName === modelName);
+    return {
+      modelName,
+      modelBaseId: matchingResult ? getModelBaseId(matchingResult.id) : modelName,
+      averageScore: stats.totalScore / stats.count,
+      averageMaxScore: stats.totalMaxScore / stats.count,
+      averagePercentage: stats.totalPercentage / stats.count,
+      attemptCount: stats.count,
+      agentEnvironment: matchingResult?.agentEnvironment ?? "Unknown",
+    };
+  });
 
   // Sort model averages by percentage (highest first)
   modelAverages.sort((a, b) => b.averagePercentage - a.averagePercentage);

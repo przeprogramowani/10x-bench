@@ -1,0 +1,109 @@
+---
+const courses = [
+  {
+    id: '10xdevs',
+    title: '10xDevs',
+    subtitle: 'Kurs',
+    tag: 'AI',
+    tagColor: 'text-cyan-400',
+    lineColor: 'bg-cyan-500',
+    borderColor: 'border-cyan-800',
+    gradientFrom: 'from-cyan-900',
+    gradientTo: 'to-gray-900',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    stats: ['3,700+ absolwentów', '6 tygodni'],
+    url: 'https://10xdevs.pl'
+  },
+  {
+    id: 'frontend',
+    title: 'Opanuj Frontend',
+    subtitle: 'Kurs',
+    tag: 'Frontend',
+    tagColor: 'text-pink-400',
+    lineColor: 'bg-pink-500',
+    borderColor: 'border-pink-900',
+    gradientFrom: 'from-rose-900',
+    gradientTo: 'to-gray-900',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszarnych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!',
+    stats: ['383+ zapisanych', '10 tygodni'],
+    url: 'https://www.opanujfrontend.pl'
+  },
+  {
+    id: 'typescript',
+    title: 'Opanuj TypeScript',
+    subtitle: 'Kurs',
+    tag: 'TypeScript',
+    tagColor: 'text-sky-400',
+    lineColor: 'bg-sky-500',
+    borderColor: 'border-blue-800',
+    gradientFrom: 'from-blue-900',
+    gradientTo: 'to-gray-900',
+    description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!',
+    stats: ['121+ zapisanych', 'TypeScript 5'],
+    url: 'https://www.opanujtypescript.pl'
+  }
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <div class="mb-10 text-center">
+      <div class="flex items-center gap-3 flex-wrap justify-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Edukacja technologiczna w epoce AI</h2>
+      </div>
+      <p class="mt-2 text-lg text-gray-400">Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-3">
+      {courses.map(course => (
+        <a
+          href={course.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`group block overflow-hidden shadow-xl sm:rounded-lg bg-gradient-to-br border transition-all duration-200 hover:shadow-2xl ${course.gradientFrom} ${course.gradientTo} ${course.borderColor}`}
+        >
+          <div class="relative aspect-[16/9] overflow-hidden">
+            <div class={`absolute inset-0 bg-gradient-to-br ${course.gradientFrom} to-${course.gradientTo} opacity-50`} />
+            <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-30">
+              {course.id === '10xdevs' ? '🚀' : course.id === 'frontend' ? '🎨' : '📘'}
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-col h-full justify-between min-h-48">
+              <div>
+                <div class="flex items-center gap-3 mb-3">
+                  <div class={`w-8 h-1 rounded ${course.lineColor}`} />
+                  <span class={`text-xs font-bold uppercase tracking-wider ${course.tagColor}`}>{course.tag}</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-white sm:text-2xl font-heading">{course.title}</h3>
+                <p class="mt-3 text-base text-gray-300">{course.description}</p>
+              </div>
+              <div class="mt-6">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {course.stats.map(stat => (
+                    <span class="text-xs bg-white/10 text-gray-300 px-2 py-1 rounded">
+                      {stat}
+                    </span>
+                  ))}
+                </div>
+                <span class={`inline-flex items-center gap-2 px-6 py-3 font-semibold text-white rounded-md shadow transition duration-150 ease-in-out hover:shadow-lg ${course.tagColor.replace('text-', 'bg-').replace('400', '500')}`}>
+                  Szczegóły
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="/kursy" class="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors">
+        Wszystkie kursy →
+      </a>
+    </div>
+  </div>
+</section>

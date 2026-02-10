@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import EpisodeCard from '../components/EpisodeCard.jsx';
+
+// Sample data for episodes - expanded list
+const allEpisodes = [
+  {
+    title: "Doktor AI nadchodzi - MedGemma vs ChatGPT Health",
+    date: "10 Lutego 2026",
+    duration: "1h 23m",
+    description: "Czy sztuczna inteligencja zastąpi lekarzy? Analizujemy najnowsze modele medyczne od Google i OpenAI, ich skuteczność oraz potencjalne zagrożenia etyczne.",
+    link: "#"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 roku",
+    date: "2 Stycznia 2026",
+    duration: "1h 47m",
+    description: "Przegląd najważniejszych wydarzeń, premier i przełomów w świecie sztucznej inteligencji w minionym roku. Co nas zaskoczyło, a co rozczarowało?",
+    link: "#"
+  },
+  {
+    title: "GPT-5.3 Codex - Czy to koniec programowania?",
+    date: "15 Grudnia 2025",
+    duration: "58m",
+    description: "Testujemy najnowszy model od OpenAI. Czy faktycznie radzi sobie lepiej z kodem niż ludzie? Czy Junior Developerzy mają się czego obawiać?",
+    link: "#"
+  },
+  {
+    title: "Gemini 3 to hit, ale konkurencja nie śpi!",
+    date: "20 Listopada 2025",
+    duration: "1h 03m",
+    description: "Google kontratakuje z modelem Gemini 3. Porównujemy go z GPT-5 i Claude Opus. Kto wygrywa w benchmarkach, a kto w codziennym użytkowaniu?",
+    link: "#"
+  },
+  {
+    title: "Cursor 2.0 vs Windsurf SWE-1.5",
+    date: "5 Listopada 2025",
+    duration: "1h 14m",
+    description: "Pojedynek edytorów kodu wspomaganych AI. Czy Cursor nadal jest królem, czy Windsurf z nowym agentem SWE-1.5 przejął koronę?",
+    link: "#"
+  },
+  {
+    title: "Czy Senior Developer jest jeszcze potrzebny?",
+    date: "15 Października 2025",
+    duration: "55m",
+    description: "W dobie autonomicznych agentów AI rola Senior Developera ewoluuje. Dyskutujemy o tym, jakie kompetencje będą kluczowe w najbliższych latach.",
+    link: "#"
+  }
+];
+---
+
+<Layout>
+  <Navbar client:load />
+  
+  <main class="bg-gray-50 min-h-screen">
+    <div class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl font-bold mb-4">Podcast Przeprogramowani</h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+          Rozmowy o technologii, AI i życiu w branży IT. Bez ściemy, prosto z mostu.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allEpisodes.map((episode, index) => (
+          <EpisodeCard key={index} {...episode} />
+        ))}
+      </div>
+      
+      <div class="mt-16 text-center">
+        <p class="text-gray-600 mb-6">Słuchaj nas również na:</p>
+        <div class="flex justify-center space-x-6">
+          <a href="#" class="text-gray-900 hover:text-green-600 font-bold text-lg transition-colors">Spotify</a>
+          <a href="#" class="text-gray-900 hover:text-purple-600 font-bold text-lg transition-colors">Apple Podcasts</a>
+          <a href="#" class="text-gray-900 hover:text-red-600 font-bold text-lg transition-colors">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,61 @@
+---
+const footerLinks = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/kursy', label: 'Kursy' },
+  { href: 'https://youtube.com/c/przeprogramowani', label: 'YouTube', external: true },
+  { href: 'https://10xdevs.pl', label: '10xDevs', external: true },
+  { href: 'https://opanujfrontend.pl', label: 'Opanuj Frontend', external: true },
+  { href: 'https://opanuj.ai', label: 'Opanuj AI', external: true },
+];
+---
+
+<footer class="bg-gray-900 border-t border-gray-800 mt-auto">
+  <div class="max-w-screen-xl mx-auto px-4 py-12">
+    <nav class="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-8" aria-label="Stopka">
+      {footerLinks.map(link => (
+        <a
+          href={link.href}
+          target={link.external ? '_blank' : undefined}
+          rel={link.external ? 'noopener noreferrer' : undefined}
+          class="text-sm text-gray-400 hover:text-white transition-colors"
+        >
+          {link.label}
+          {link.external && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block ml-1 opacity-50" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          )}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex justify-center gap-5 mb-8">
+      <a href="https://facebook.com/przeprogramowani" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-500 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      </a>
+      <a href="https://instagram.com/przeprogramowani" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-500 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+      </a>
+      <a href="mailto:kontakt@przeprogramowani.pl" rel="noopener noreferrer" aria-label="Email" class="text-gray-500 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+        </svg>
+      </a>
+    </div>
+
+    <p class="text-center text-xs text-gray-600">
+      Przeprogramowani.pl — Szersze spojrzenie na programowanie
+    </p>
+  </div>
+</footer>

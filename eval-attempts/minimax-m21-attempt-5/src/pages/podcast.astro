@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const episodes = [
+  {
+    number: 156,
+    title: 'AI developerzy — czy oprogramowanie tworzą ludzie czy maszyny?',
+    date: 'Luty 2026',
+    duration: '45 min',
+    description: 'Rozmawiamy o tym, jak AI zmienia rolę programistów i czy developerzy powinni obawiać się o swoją przyszłość.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  },
+  {
+    number: 155,
+    title: 'TypeScript 5.5 — co nowego i czy warto aktualizować?',
+    date: 'Luty 2026',
+    duration: '38 min',
+    description: 'Deep dive w najnowsze funkcje TypeScript 5.5 i praktyczne porady dotyczące migracji projektów.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  },
+  {
+    number: 154,
+    title: 'Cursor, Codex, Continue — który AI editor wybrać w 2026?',
+    date: 'Styczeń 2026',
+    duration: '52 min',
+    description: 'Porównujemy popularne AI-powered edytory kodu i dzielimy się naszymi preferencjami.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  },
+  {
+    number: 153,
+    title: '10xDevs 3.0 — jak uczymy programowania z AI?',
+    date: 'Styczeń 2026',
+    duration: '41 min',
+    description: 'O nowej edycji naszego flagowego programu i podejściu do nauczania wykorzystującego Generative AI.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  },
+  {
+    number: 152,
+    title: 'React 19 — co nas czeka i jak się przygotować?',
+    date: 'Grudzień 2025',
+    duration: '47 min',
+    description: 'Omawiamy nadchodzące zmiany w React 19 i strategie migracji dla istniejących projektów.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  },
+  {
+    number: 151,
+    title: 'Open source i AI — czy modele open source pokonają GPT-4?',
+    date: 'Grudzień 2025',
+    duration: '39 min',
+    description: 'Analizujemy landscape modeli językowych open source i ich zastosowania w codziennej pracy programisty.',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  }
+];
+---
+
+<Layout title="Podcast - Przeprogramowani">
+  <Header />
+  
+  <main>
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <span class="inline-block px-4 py-1 rounded-full bg-[#e30f55]/20 text-[#e30f55] text-sm font-semibold mb-4">
+            Podcast
+          </span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+            Przeprogramowany Podcast
+          </h1>
+          <p class="mt-6 text-xl text-gray-300">
+            Rozmowy o programowaniu, technologiach i rozwoju zawodowym.
+            Co tydzień nowy odcinek z praktycznymi wskazówkami dla developerów.
+          </p>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-16">
+          {episodes.map(episode => (
+            <article class="bg-gray-900/50 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all group">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl font-bold text-gray-700 group-hover:text-[#e30f55] transition-colors">
+                  #{episode.number}
+                </span>
+                <span class="text-sm text-gray-500">{episode.date} • {episode.duration}</span>
+              </div>
+              
+              <h2 class="text-lg font-bold text-white leading-tight mb-3">
+                <a href={episode.youtubeUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[#e30f55] transition-colors">
+                  {episode.title}
+                </a>
+              </h2>
+              
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                {episode.description}
+              </p>
+              
+              <div class="flex items-center gap-3">
+                <a 
+                  href={episode.spotifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[#1DB954] hover:bg-[#1ed760] rounded-lg transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.439-1.38 9.9-0.719 13.44 1.56.42.24.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                  </svg>
+                  Spotify
+                </a>
+                <a 
+                  href={episode.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-500 rounded-lg transition-colors"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  YouTube
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <div class="text-center">
+          <a 
+            href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#1DB954] hover:bg-[#1ed760] rounded-lg transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.439-1.38 9.9-0.719 13.44 1.56.42.24.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            Wszystkie odcinki na Spotify
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

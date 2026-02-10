@@ -1,0 +1,75 @@
+---
+const navItems = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur-md border-b border-gray-800">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3">
+    <a href="/" class="flex items-center gap-2 text-white font-bold text-lg shrink-0">
+      <span class="text-main">&lt;/&gt;</span>
+      <span>Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Nawigacja główna">
+      {navItems.map(item => (
+        <a 
+          href={item.href}
+          class="px-3 py-2 rounded-lg text-sm font-medium transition-colors text-gray-300 hover:text-white hover:bg-gray-800"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a 
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 px-4 py-2 rounded-lg text-sm font-medium bg-main text-white hover:bg-main-hover transition-colors"
+      >
+        10xDevs
+      </a>
+    </nav>
+
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800">
+    <nav class="px-4 py-3 space-y-1">
+      {navItems.map(item => (
+        <a 
+          href={item.href}
+          class="block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a 
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block px-3 py-2 rounded-lg text-base font-medium bg-main text-white"
+      >
+        10xDevs
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

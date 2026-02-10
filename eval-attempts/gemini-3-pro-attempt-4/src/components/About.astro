@@ -1,0 +1,33 @@
+---
+import { siteData } from '../data/content';
+
+const { about } = siteData;
+---
+
+<section id="about" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">O nas</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        {about.title}
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+        {about.description}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+      {about.founders.map((founder) => (
+        <div class="flex flex-col items-center text-center">
+          <div class="relative w-48 h-48 mb-6 group">
+            <div class="absolute inset-0 bg-indigo-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            <img class="w-full h-full rounded-full object-cover shadow-lg border-4 border-indigo-50 transform group-hover:scale-105 transition-transform duration-300" src={founder.image} alt={founder.name} loading="lazy" />
+          </div>
+          <h3 class="text-xl font-medium text-gray-900">{founder.name}</h3>
+          <p class="text-indigo-600 text-sm mb-4 font-medium">{founder.role}</p>
+          <p class="text-gray-500 max-w-sm leading-relaxed">{founder.bio}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

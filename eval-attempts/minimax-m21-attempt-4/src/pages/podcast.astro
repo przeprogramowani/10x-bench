@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const podcastEpisodes = [
+  {
+    id: '1',
+    title: 'Opanuj Agenta AI - praktyczne scenariusze dla programistów',
+    description: 'Jak skutecznie wykorzystywać agentów AI w codziennej pracy programisty?',
+    date: 'Luty 2025',
+    duration: '45 min'
+  },
+  {
+    id: '2',
+    title: 'Claude Code vs GitHub Copilot - które narzędzie wybrać?',
+    description: 'Porównanie dwóch najpopularniejszych asystentów AI dla developerów.',
+    date: 'Luty 2025',
+    duration: '38 min'
+  },
+  {
+    id: '3',
+    title: 'TypeScript 5.0 - co nowego?',
+    description: 'Deep dive do najnowszych funkcji TypeScript 5.',
+    date: 'Styczeń 2025',
+    duration: '52 min'
+  },
+  {
+    id: '4',
+    title: 'Opanuj Frontend - AI Edition - behind the scenes',
+    description: 'Jak powstawał nasz flagowy kurs?',
+    date: 'Styczeń 2025',
+    duration: '41 min'
+  },
+  {
+    id: '5',
+    title: '10xDevs 3.0 - zapowiedź nowej edycji',
+    description: 'Co nowego w trzeciej edycji naszego programu AI-first?',
+    date: 'Grudzień 2024',
+    duration: '33 min'
+  },
+  {
+    id: '6',
+    title: 'AI w zespole - jak wdrożyć narzędzia AI w firmie?',
+    description: 'Praktyczne porady dla team leaderów i CTO.',
+    date: 'Grudzień 2024',
+    duration: '47 min'
+  }
+];
+---
+
+<Layout title="Podcast">
+  <Header slot="header" />
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-screen-xl mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-orange-500 bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-1 mb-4">
+          Podcast
+        </span>
+        <h1 class="text-4xl sm:text-5xl font-bold text-white font-heading mb-6">
+          Przeprogramowany Podcast
+        </h1>
+        <p class="text-lg text-gray-400">
+          Rozmowy o programowaniu, AI i nowoczesnych technologiach. 
+          Słuchaj na Spotify, Apple Podcasts i Anchor.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {podcastEpisodes.map(episode => (
+          <a
+            href={`https://podcast.przeprogramowani.pl/episode/${episode.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card group p-6"
+          >
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-orange-500">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <span class="text-xs text-gray-500">{episode.duration}</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-orange-500 transition-colors">
+              {episode.title}
+            </h3>
+            <p class="text-gray-400 text-sm mb-4 line-clamp-2">
+              {episode.description}
+            </p>
+            <span class="text-xs text-gray-500">{episode.date}</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-gray-400 mb-4">Słuchaj gdziekolwiek jesteś:</p>
+        <div class="flex justify-center gap-4">
+          <a
+            href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            Spotify
+          </a>
+          <a
+            href="https://podcast.apple.com/pl/show/przeprogramowani/id1526650605"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            Apple Podcasts
+          </a>
+          <a
+            href="https://anchor.fm/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            Anchor
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

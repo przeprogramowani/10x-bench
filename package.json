@@ -6,7 +6,8 @@
   "scripts": {
     "process-results": "tsx scripts/process-results.ts",
     "dev": "npm run process-results && cd website && npm run dev",
-    "build": "npm run process-results && cd website && npm run build"
+    "build": "npm run process-results && cd website && npm run build",
+    "take-screenshots": "tsx scripts/take-screenshots.ts"
   },
   "keywords": [
     "benchmark",
@@ -17,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "25.2.2",
+    "playwright": "^1.50.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }

@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,10.02.2026 10:00,N/A,10.02.2026 10:00
+Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter
+Manual testing,1,1,Dev server running and single-page app accessible with navigation styles and content working
+Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) Cloudflare adapter configured in astro.config.mjs
+O nas page,0,1,No dedicated page - only a section in About.astro component on index page. GET /o-nas returns 404. Bios simplified - missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin
+Podcast page,0,1,No dedicated page - only a section in Podcasts.astro component on index page. GET /podcast returns 404. Content includes episodes from both OpanujAI and Przeprogramowani podcasts with real-looking URLs
+YouTube page,0,1,No dedicated page - only a section in YouTube.astro component on index page. GET /youtube returns 404. Video IDs are unique and not placeholders
+Kursy section,0.5,1,Courses.astro component exists and Hero features 10xDevs 3.0 with link to 10xdevs.pl. Only 2 of 6 courses listed (Opanuj Frontend AI Edition and Opanuj TypeScript). Missing Opanuj JavaScript Opanuj AI and Cursor courses
+Consistent UI,1,1,UI consistent across all sections - clean indigo/purple color scheme throughout
+Responsive design,0.5,1,Majority responsive with some minor issues on different screen sizes
+SEO Tags,1,1,Meta tags in Layout.astro covering all pages - title description viewport charset and favicon. Description matches context mission statement

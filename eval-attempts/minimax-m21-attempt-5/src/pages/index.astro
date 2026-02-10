@@ -1,0 +1,271 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const courses = [
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+    href: 'https://www.opanujfrontend.pl',
+    color: 'from-pink-600 to-rose-900',
+    badge: 'Kurs',
+    icon: '🎨'
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!',
+    href: 'https://www.opanujtypescript.pl',
+    color: 'from-sky-500 to-blue-900',
+    badge: 'Kurs',
+    icon: '📘'
+  },
+  {
+    title: 'Opanuj AI',
+    description: 'Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy.',
+    href: 'https://opanuj.ai',
+    color: 'from-cyan-600 to-teal-900',
+    badge: 'AI',
+    icon: '🤖'
+  }
+];
+
+const latestVideos = [
+  {
+    id: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg'
+  },
+  {
+    id: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg'
+  },
+  {
+    id: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników!',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg'
+  }
+];
+---
+
+<Layout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <Header />
+  
+  <main>
+    <section class="relative bg-gray-950 overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-gray-950/30"></div>
+        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950 to-transparent"></div>
+      </div>
+      
+      <div class="relative max-w-screen-xl mx-auto px-4 py-20 sm:py-28">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-1 bg-orange-500 rounded-full"></div>
+            <span class="text-orange-500 text-sm font-bold uppercase tracking-wider">Nowość - Maj 2026</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading leading-tight">
+            10xDevs 3.0
+          </h1>
+          
+          <p class="mt-6 text-lg text-gray-300 max-w-lg">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a 
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-colors duration-150 px-8 py-3 text-base bg-orange-500 text-white shadow-lg hover:bg-orange-400"
+            >
+              Szczegóły →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="mb-10 text-center">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Nasze kursy</h2>
+          <p class="mt-2 text-lg text-gray-400">Topowe programy edukacyjne dla ambitnych programistów</p>
+        </div>
+        
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map(course => (
+            <a 
+              href={course.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block overflow-hidden rounded-xl bg-gradient-to-br border border-gray-800 hover:border-gray-700 transition-all hover:shadow-2xl"
+            >
+              <div class={`h-48 bg-gradient-to-br ${course.color} flex items-center justify-center`}>
+                <span class="text-6xl">{course.icon}</span>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <div class={`w-8 h-1 rounded bg-gradient-to-r ${course.color.split(' ')[0]}`}></div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-gray-400">{course.badge}</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-white font-heading">{course.title}</h3>
+                <p class="mt-3 text-base text-gray-300">{course.description}</p>
+                <div class="mt-6">
+                  <span class="inline-flex items-center gap-2 px-6 py-3 font-semibold text-white rounded-md transition duration-150 ease-in-out hover:shadow-lg bg-gray-800 group-hover:bg-gray-700">
+                    Szczegóły <span>→</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="relative overflow-hidden shadow-xl rounded-lg bg-gradient-to-br from-gray-900 to-rose-950/30 border border-gray-800">
+          <div class="lg:grid lg:grid-cols-5 lg:gap-8 p-6 sm:p-10">
+            <div class="lg:col-span-3">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-1 bg-[#e30f55] rounded"></div>
+                <span class="text-[#e30f55] text-sm font-bold uppercase tracking-wider">Newsletter</span>
+              </div>
+              <h2 class="text-white text-3xl font-extrabold tracking-tight sm:text-4xl font-heading">
+                Przeprogramowany<br />Newsletter
+              </h2>
+              <p class="mt-4 text-lg text-gray-300">
+                Co tydzień w piątek otrzymaj porcję wartościowych treści:
+              </p>
+              <ul class="mt-6 space-y-3">
+                <li class="flex items-start gap-3">
+                  <span class="text-[#1ff1af] font-bold text-xl">3</span>
+                  <span class="text-gray-200">rekomendacje techniczne</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-[#1ff1af] font-bold text-xl">2</span>
+                  <span class="text-gray-200">rekomendacje rozwojowe</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-[#1ff1af] font-bold text-xl">1</span>
+                  <span class="text-gray-200">bonus niespodzianka</span>
+                </li>
+              </ul>
+              <div class="mt-8">
+                <a 
+                  href="https://przeprogramowani.substack.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-8 py-3 text-base font-semibold bg-[#e30f55] text-white rounded-md shadow transition duration-150 ease-in-out hover:bg-red-500 hover:shadow-lg"
+                >
+                  Zapisz się za darmo →
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-2 flex flex-col items-center justify-center mt-10 lg:mt-0">
+              <div class="p-4 bg-gray-800/50 rounded-2xl shadow-lg border border-gray-700">
+                <img 
+                  src="/newsletter-qr.png" 
+                  alt="QR kod - Przeprogramowany Newsletter"
+                  class="rounded-xl w-full max-w-xs"
+                  loading="lazy"
+                />
+              </div>
+              <p class="mt-4 text-sm text-gray-500 text-center tracking-wider uppercase">Zeskanuj i dołącz</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="mb-10">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Ostatnie filmy</h2>
+          <p class="mt-2 text-lg text-gray-400">Rozwój nowoczesnego programisty</p>
+        </div>
+        
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {latestVideos.map(video => (
+            <a 
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all"
+            >
+              <div class="relative aspect-video">
+                <img 
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-14 h-14 rounded-full bg-red-600/90 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white ml-1">
+                      <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3">
+                <h3 class="text-sm font-medium text-gray-200 line-clamp-2 group-hover:text-white transition-colors">
+                  {video.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+        
+        <div class="mt-10 text-center">
+          <a 
+            href="/youtube"
+            class="inline-flex items-center gap-2 px-6 py-3 font-semibold text-white rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+          >
+            Więcej filmów →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="mb-10 text-center">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">7 lat na rynku edukacji technologicznej</h2>
+          <p class="mt-2 text-lg text-gray-400">Współpracujemy z najlepszymi</p>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">Huuuge Games</span>
+          </div>
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">Nutridome</span>
+          </div>
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">SmartRecruiters</span>
+          </div>
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">Future Processing</span>
+          </div>
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">Callstack</span>
+          </div>
+          <div class="w-[180px] h-[80px] relative rounded-lg overflow-hidden border border-gray-700 bg-gray-800 flex items-center justify-center">
+            <span class="text-gray-400 font-semibold">edrone</span>
+          </div>
+        </div>
+        
+        <p class="mt-12 text-center text-sm text-gray-500">
+          Chcesz nawiązać współpracę?
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-orange-500 hover:text-orange-400 transition-colors ml-1">kontakt@przeprogramowani.pl</a>
+        </p>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
