@@ -30,6 +30,10 @@ export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
   "qwen-3-max": AGENT_ENVIRONMENT.OpenCode,
 };
 
+/** Base model IDs to exclude from processed results (all attempts are skipped) */
+// Sonnet results are ready but not to publish before YT video release on 16.02.2026.
+export const DISABLED_MODELS: Set<string> = new Set(["claude-sonnet-45"]);
+
 /** Extract base model ID from a directory name like "claude-opus-46-attempt-3" → "claude-opus-46" */
 export function getModelBaseId(dirname: string): string {
   const match = dirname.match(/^(.+)-attempt-\d+$/);

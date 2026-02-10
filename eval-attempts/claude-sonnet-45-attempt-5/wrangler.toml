@@ -1,0 +1,14 @@
+name = "przeprogramowani"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = "./dist"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dirs = ["src"]
+
+[[env.production.routes]]
+pattern = "przeprogramowani.pl"
+zone_name = "przeprogramowani.pl"

@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard';
+import videos from '../data/videos.json';
+---
+
+<Layout title="YouTube" description="Najnowsze filmy z kanału Przeprogramowani na YouTube">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-red-600 to-pink-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        📺 YouTube Przeprogramowani
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-white/90">
+        Praktyczne porady i analizy technologii
+      </p>
+      <p class="text-lg max-w-3xl mx-auto text-white/80 mb-8">
+        Nasz kanał YouTube to miejsce, gdzie dzielimy się wiedzą o programowaniu,
+        AI, nowoczesnych narzędziach deweloperskich i trendach w branży IT.
+        Tutoriale, porównania, analizy i praktyczne przykłady.
+      </p>
+      <a
+        href="https://youtube.com/@przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-white text-red-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-colors text-lg"
+      >
+        🔔 Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <!-- Video Categories -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">
+        Co znajdziesz na kanale?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6">
+          <div class="text-4xl mb-4">🤖</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">AI & Narzędzia</h3>
+          <p class="text-gray-700">
+            Porównania modeli AI (GPT, Claude, Gemini), przeglądy narzędzi
+            do programowania z AI (Cursor, Windsurf, Copilot) i praktyczne zastosowania.
+          </p>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6">
+          <div class="text-4xl mb-4">⚛️</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Frontend & Frameworki</h3>
+          <p class="text-gray-700">
+            React, TypeScript, Astro, Next.js - najnowsze funkcje, best practices
+            i praktyczne tutoriale z nowoczesnych technologii frontendowych.
+          </p>
+        </div>
+
+        <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6">
+          <div class="text-4xl mb-4">💼</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Kariera & Rozwój</h3>
+          <p class="text-gray-700">
+            Porady dotyczące kariery programisty, efektywnej nauki,
+            narzędzi zwiększających produktywność i odpowiedzi na pytania społeczności.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Najnowsze filmy</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {videos.map((video) => (
+          <VideoCard video={video} client:load />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg transition-colors text-lg"
+        >
+          Zobacz wszystkie filmy →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-16 bg-gradient-to-r from-red-500 to-orange-500">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold text-white mb-4">
+        Dołącz do społeczności
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Subskrybuj kanał i włącz dzwonek, aby nie przegapić nowych filmów
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-red-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          🔔 Subskrybuj na YouTube
+        </a>
+        <a
+          href="https://instagram.com/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-red-700 hover:bg-red-800 text-white font-bold py-4 px-8 rounded-lg transition-colors"
+        >
+          📸 Śledź na Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

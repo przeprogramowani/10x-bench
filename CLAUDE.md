@@ -202,3 +202,7 @@ The script handles variable max scores per criterion and computes accurate perce
 - **Tailwind v3 required**: v4 is not compatible in this environment; stick with Tailwind v3.4
 - **File path traversal in Astro**: Use `fileURLToPath` + `dirname` when accessing files relative to Astro pages
 - **Markdown rendering**: Uses `marked` library; ensure proper HTML escaping for user-provided content
+
+## Building the website
+
+You are absolutely NOT ALLOWED to read other attempts of models during the process of building the website. You are only focused on the task given by the user. If there's such attempt, use AskUserQuestion tool for permission to proceed.

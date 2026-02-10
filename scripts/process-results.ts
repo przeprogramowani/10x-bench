@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import {AGENT_ENV, AGENT_NAMES, getModelBaseId} from "../eval-attempts/metadata";
+import {AGENT_ENV, AGENT_NAMES, DISABLED_MODELS, getModelBaseId} from "../eval-attempts/metadata";
 
 interface CriterionResult {
   name: string;
@@ -109,10 +109,10 @@ async function processResults(): Promise<void> {
     fs.mkdirSync(outputDir, {recursive: true});
   }
 
-  // Read all attempt directories
+  // Read all attempt directories, excluding disabled model families
   const attemptDirs = fs.readdirSync(evalResultsDir).filter((f) => {
     const fullPath = path.join(evalResultsDir, f);
-    return fs.statSync(fullPath).isDirectory();
+    return fs.statSync(fullPath).isDirectory() && !DISABLED_MODELS.has(getModelBaseId(f));
   });
 
   const results: AttemptResult[] = [];

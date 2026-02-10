@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+import podcasts from '../data/podcasts.json';
+---
+
+<Layout title="Podcast" description="Posłuchaj najnowszych odcinków podcastu Przeprogramowani">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        🎙️ Podcast Przeprogramowani
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-white/90">
+        Szersze spojrzenie na programowanie
+      </p>
+      <p class="text-lg max-w-3xl mx-auto text-white/80 mb-8">
+        Podcast technologiczny prowadzony przez Marcina Czarkowskiego i Przemka Smyrdka.
+        Rozmawiamy o najnowszych trendach w programowaniu, AI, narzędziach deweloperskich
+        i rozwoju kariery w IT.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="https://creators.spotify.com/pod/profile/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+        >
+          🎵 Spotify
+        </a>
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+        >
+          🎧 Apple Podcasts
+        </a>
+        <a
+          href="https://youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+        >
+          📺 YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Series Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Opanuj.AI Podcast</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Seria odcinków poświęcona sztucznej inteligencji, najnowszym modelom językowym,
+            narzędziom AI dla programistów i trendom w branży. Omawiamy GPT, Claude, Gemini
+            i inne przełomowe technologie.
+          </p>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Przeprogramowani ft. Gość</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Wywiady z ekspertami, programistami i liderami branży technologicznej.
+            Rozmawiamy o karierze, rozwoju zawodowym, wyzwaniach w pracy programisty
+            i praktycznych aspektach codziennej pracy.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Wszystkie odcinki</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {podcasts.map((podcast) => (
+          <PodcastCard podcast={podcast} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-16 bg-gradient-to-r from-indigo-500 to-purple-500">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold text-white mb-4">
+        Nie przegap nowych odcinków
+      </h2>
+      <p class="text-xl text-white/90 mb-8">
+        Subskrybuj podcast na swojej ulubionej platformie
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://creators.spotify.com/pod/profile/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-indigo-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          Subskrybuj na Spotify
+        </a>
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-4 px-8 rounded-lg transition-colors"
+        >
+          Subskrybuj na Apple Podcasts
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
