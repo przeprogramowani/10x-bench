@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteContent } from '../lib/content';
+
+const content = await getSiteContent();
+const videos = content.videos.slice(0, 12);
+---
+
+<Layout
+  title="YouTube | Przeprogramowani.pl"
+  description="Ostatnie filmy z kanału Przeprogramowani na YouTube - programowanie, AI i praktyczne workflow developerów."
+  currentPath="/youtube"
+  updatedAt={content.fetchedAt}
+>
+  <section class="surface grid-pattern p-6 sm:p-10">
+    <p class="text-xs font-bold uppercase tracking-[0.16em] text-rose-700">YouTube</p>
+    <h1 class="font-display mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">Ostatnie filmy</h1>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+      Lista materiałów jest pobierana z oficjalnej strony Przeprogramowani.pl i aktualizowana przy każdym buildzie.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+    {
+      videos.map((video, index) => (
+        <article class="surface animate-rise overflow-hidden p-3" style={`animation-delay: ${index * 70}ms;`}>
+          <a href={video.url} target="_blank" rel="noopener noreferrer" class="group block">
+            <div class="relative">
+              <img
+                src={video.image}
+                alt={video.title}
+                loading="lazy"
+                class="aspect-video w-full rounded-2xl object-cover transition duration-300 group-hover:scale-[1.01]"
+              />
+              <span class="animate-float absolute inset-0 m-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-rose-600 shadow-lg">
+                ▶
+              </span>
+            </div>
+
+            <h2 class="font-display mt-4 clamp-3 text-xl font-bold text-slate-900">{video.title}</h2>
+            <p class="mt-4 text-sm font-semibold text-slate-700 group-hover:text-slate-900">Otwórz film →</p>
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

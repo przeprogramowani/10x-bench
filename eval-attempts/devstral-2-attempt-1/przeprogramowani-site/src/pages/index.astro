@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.tsx';
+import Courses from '../components/Courses.tsx';
+import LatestContent from '../components/LatestContent.tsx';
+import Newsletter from '../components/Newsletter.tsx';
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <main>
+    <Hero client:load />
+    <Courses client:load />
+    <LatestContent client:load />
+    <Newsletter client:load />
+  </main>
+</Layout>

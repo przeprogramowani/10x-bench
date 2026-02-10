@@ -1,0 +1,123 @@
+---
+import MediaSwitcher from "../components/MediaSwitcher";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { COURSES, getLatestPodcastEpisodes, getLatestYouTubeVideos } from "../lib/content";
+
+const [videos, episodes] = await Promise.all([
+  getLatestYouTubeVideos(6),
+  getLatestPodcastEpisodes(6)
+]);
+---
+
+<BaseLayout
+  title="Przeprogramowani | Nowoczesna strona projektu"
+  description="Nowoczesna i responsywna strona projektu Przeprogramowani.pl z sekcjami O nas, Podcast i YouTube."
+>
+  <section class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="frost-card rounded-3xl p-6 sm:p-8">
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-300/35 bg-orange-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-200">
+        Hero · 10xDevs 3.0
+      </p>
+      <h1 class="text-4xl leading-tight font-semibold tracking-tight text-slate-100 sm:text-5xl">
+        Programowanie z AI dla developerow nowej generacji.
+      </h1>
+      <p class="mt-4 max-w-2xl text-base text-slate-300 sm:text-lg">
+        10xDevs to praktyczny program, ktory prowadzi przez caly workflow AI-assisted development: od
+        specyfikacji i architektury po wdrozenie i utrzymanie kodu.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-orange-400 px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-orange-300"
+        >
+          Przejdz do 10xDevs
+        </a>
+        <a
+          href="/o-nas"
+          class="rounded-full border border-slate-500/80 px-6 py-3 text-sm font-semibold text-slate-100 hover:border-slate-300"
+        >
+          Poznaj Przeprogramowanych
+        </a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-2">
+        <span class="tag-pill rounded-full px-3 py-1 text-xs">AI workflow</span>
+        <span class="tag-pill rounded-full px-3 py-1 text-xs">Production-ready code</span>
+        <span class="tag-pill rounded-full px-3 py-1 text-xs">Realne scenariusze zespolowe</span>
+      </div>
+    </div>
+
+    <aside class="frost-card rounded-3xl p-6">
+      <p class="text-sm font-semibold uppercase tracking-wide text-cyan-200">Dlaczego Przeprogramowani</p>
+      <ul class="mt-4 space-y-4 text-sm text-slate-300">
+        <li class="rounded-2xl border border-slate-600/50 bg-slate-900/60 p-4">
+          7+ lat edukacji technologicznej i wspolpracy z rynkiem.
+        </li>
+        <li class="rounded-2xl border border-slate-600/50 bg-slate-900/60 p-4">
+          Kursy i podcasty prowadzone przez aktywnych praktykow IT.
+        </li>
+        <li class="rounded-2xl border border-slate-600/50 bg-slate-900/60 p-4">
+          Integracja nowoczesnego frontendu, TypeScript i AI development.
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="mt-10">
+    <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-cyan-200">Kursy</p>
+        <h2 class="mt-1 text-3xl font-semibold text-slate-100">Sciezki rozwoju</h2>
+      </div>
+      <p class="max-w-lg text-sm text-slate-300">
+        Programy przygotowane dla osob, ktore chca budowac realna przewage techniczna i skutecznie dostarczac
+        produkty.
+      </p>
+    </div>
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        COURSES.map((course) => (
+          <article class="frost-card rounded-3xl p-5">
+            <div class={`rounded-2xl bg-gradient-to-r p-4 ${course.accent}`}>
+              <h3 class="text-xl font-semibold text-slate-100">{course.name}</h3>
+              <p class="mt-2 text-sm text-slate-100/90">{course.shortDescription}</p>
+            </div>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              {course.details.map((detail) => (
+                <li>• {detail}</li>
+              ))}
+            </ul>
+            <a
+              href={course.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex rounded-full border border-cyan-300/60 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-300/10"
+            >
+              {course.cta}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10 grid gap-5">
+    <MediaSwitcher client:load videos={videos} episodes={episodes} />
+    <div class="frost-card rounded-3xl p-5 text-sm text-slate-300">
+      <p>
+        Dane o aktywnosci online sa pobierane automatycznie z oficjalnych zrodel:
+        <a href="https://przeprogramowani.pl/podcast" class="text-cyan-200 hover:text-cyan-100">
+          przeprogramowani.pl/podcast
+        </a>
+        oraz
+        <a
+          href="https://www.youtube.com/feeds/videos.xml?channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw"
+          class="text-cyan-200 hover:text-cyan-100"
+        >
+          feedu YouTube
+        </a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

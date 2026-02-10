@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+
+const opanujAIPodcasts = [
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+    duration: "01:23:04",
+    description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia? Inny z gigantów, Anthropic, próbuje na...",
+    date: "2025"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+    duration: "01:47:28",
+    description: "OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Bielik czy PLLuM? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach, a rozwój AI raz jeszcze przebił najśmielsze ocze...",
+    date: "2025"
+  },
+  {
+    title: "GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR",
+    duration: "00:58:41",
+    description: "Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI, by odzyskać koronę w starciu z rodziną Google Gemini 3 i zmieniającą się dynamiką rynku? Jak czytać partnerstwo autorów ChataGPT...",
+    date: "2025"
+  },
+  {
+    title: "Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5, a także emocje w LLMach i nowy Projekt Manhattan w USA",
+    duration: "01:03:20",
+    description: "Listopad 2025 przejdzie do historii jako jeden z najintensywniejszych miesięcy w rozwoju sztucznej inteligencji. W dzisiejszym odcinku analizujemy 'listopadowe szaleństwo'...",
+    date: "2025"
+  },
+  {
+    title: "Cursor 2.0 vs Windsurf SWE-1.5 - dobrze, szybko i tanio? Nowa era programowania z AI już tu jest",
+    duration: "01:14:37",
+    description: "Cursor 2.0 rozszerza tradycyjne środowisko programistyczne na rzecz rewolucyjnej platformy wieloagentowej, fundamentalnie zmieniając podejście do pisania kodu...",
+    date: "2025"
+  },
+  {
+    title: "Czy agenci AI zdominują branżę e-commerce? ChatGPT Instant Checkout, premiera Claude Sonnet 4.5 i drakońskie regulacje w Chinach",
+    duration: "01:28:05",
+    description: "Tym razem zaczynamy od szybkich newsów: premiera Claude 4.5 Sonnet i nowej wersji Claude Code, rozbudowa Codex CLI od OpenAI, debiut modeli Grok 4 od xAI oraz zwycięstwo Gemini 2.5 Deep Think...",
+    date: "2025"
+  }
+];
+
+const przeprogramowaniPodcasts = [
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Przeprogramowani ft. Gość",
+    duration: "00:33:45",
+    description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT...",
+    date: "2025"
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramowani ft. Gość",
+    duration: "00:45:56",
+    description: "Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty...",
+    date: "2024"
+  },
+  {
+    title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przeprogramowani ft. Gość",
+    duration: "01:16:44",
+    description: "W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia, koncentrując się zamiast tego na kluczowych decyzjach...",
+    date: "2024"
+  },
+  {
+    title: "Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne (LIVE YT)",
+    duration: "01:36:34",
+    description: "Zapraszamy na kolejne LIVE Q&A - w najbliższy wtorek o 19 porozmawiamy o nadchodzącym szkoleniu Opanuj TypeScript...",
+    date: "2024"
+  },
+  {
+    title: "No-code i Low-code - przyszłość tworzenia aplikacji? | Kamil Tarczyński - Przeprogramowani ft. Gość",
+    duration: "00:36:31",
+    description: "Kamil Tarczyński, Co-founder oraz CTO agencji havenocode, która specjalizuje się w tworzeniu aplikacji za pomocą platform i narzędzi no-code i low-code...",
+    date: "2024"
+  },
+  {
+    title: "Nauka nowoczesnego frontendu | Paweł Gnat - Przeprogramowani ft. Gość",
+    duration: "00:42:11",
+    description: "Paweł Gnat to frontend developer, którzy przebranżowił się do IT z budownictwa. W tym podcaście dzieli się swoimi wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend...",
+    date: "2024"
+  }
+];
+---
+
+<Layout title="Podcast - Przeprogramowani.pl">
+  <Navigation />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-gray-900 via-purple-950 to-gray-900 text-white py-24">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+      </div>
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+          Nasze{' '}
+          <span class="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            podcasty
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu. Ponad 4000 słuchaczy regularnie 
+          śledzi nowości ze świata sztucznej inteligencji.
+        </p>
+        
+        {/* Platform Links */}
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-full font-semibold hover:bg-white/20 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple Podcasts
+          </a>
+          <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-full font-semibold hover:bg-white/20 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+          </a>
+          <a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-full font-semibold hover:bg-white/20 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+            RSS
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opanuj.AI Podcast Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4 mb-12">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">Opanuj.AI Podcast</h2>
+            <p class="text-gray-600">Ponad 4000 słuchaczy • Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {opanujAIPodcasts.map((podcast) => (
+            <div class="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition-shadow">
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold text-gray-900 mb-2">{podcast.title}</h3>
+                  <p class="text-gray-600 text-sm line-clamp-2">{podcast.description}</p>
+                </div>
+                <div class="flex items-center gap-4 md:justify-end">
+                  <span class="text-sm text-gray-500 font-mono">{podcast.duration}</span>
+                  <a 
+                    href="https://podcasters.spotify.com/pod/show/opanujai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-700 transition-colors"
+                  >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Słuchaj
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Przeprogramowani ft. Gość Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4 mb-12">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-4M3 20h5v-2a3 3 0 00-5.356-1.857M3 20h14M4 20V10a2 2 0 012-2h12a2 2 0 012 2v10M9 9a2 2 0 114 0 2 2 0 01-4 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900">Przeprogramowani ft. Gość</h2>
+            <p class="text-gray-600">Ponad 3800 słuchaczy • Rozmowy dla głodnych wiedzy</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {przeprogramowaniPodcasts.map((podcast) => (
+            <div class="bg-white rounded-2xl p-6 hover:shadow-md transition-shadow">
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold text-gray-900 mb-2">{podcast.title}</h3>
+                  <p class="text-gray-600 text-sm line-clamp-2">{podcast.description}</p>
+                </div>
+                <div class="flex items-center gap-4 md:justify-end">
+                  <span class="text-sm text-gray-500 font-mono">{podcast.duration}</span>
+                  <a 
+                    href="https://podcasters.spotify.com/pod/show/przeprogramowani"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-700 transition-colors"
+                  >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Słuchaj
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="py-20 bg-gradient-to-br from-purple-600 to-blue-600 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+          Nie przegap nowego odcinka
+        </h2>
+        <p class="text-lg text-white/80 mb-8">
+          Zapisz się do naszego newslettera, aby otrzymywać powiadomienia o nowych odcinkach 
+          i innych wartościowych treściach.
+        </p>
+        <a 
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full font-bold hover:shadow-lg transition-shadow"
+        >
+          Zapisz się za darmo
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Podcast from '../components/Podcast';
+import YouTubeSection from '../components/YouTubeSection';
+---
+
+<Layout>
+  <main>
+    <Hero client:load />
+    <About client:load />
+    <Podcast client:load />
+    <YouTubeSection client:load />
+  </main>
+</Layout>

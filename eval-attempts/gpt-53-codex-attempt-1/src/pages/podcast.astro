@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteContent } from '../lib/content';
+
+const content = await getSiteContent();
+const episodes = content.podcasts.slice(0, 12);
+---
+
+<Layout
+  title="Podcast | Przeprogramowani.pl"
+  description="Najświeższe odcinki podcastów Przeprogramowanych o programowaniu, AI i rozwoju kariery developerskiej."
+  currentPath="/podcast"
+  updatedAt={content.fetchedAt}
+>
+  <section class="surface grid-pattern p-6 sm:p-10">
+    <p class="text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">Podcast</p>
+    <h1 class="font-display mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">Najnowsze odcinki</h1>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+      Aktualna lista odcinków pobierana bezpośrednio z oficjalnej strony Przeprogramowani.pl.
+    </p>
+  </section>
+
+  <section class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+    {
+      episodes.map((episode, index) => (
+        <article class="surface animate-rise overflow-hidden p-4" style={`animation-delay: ${index * 70}ms;`}>
+          <a href={episode.url} target="_blank" rel="noopener noreferrer" class="group block">
+            <img
+              src={episode.image}
+              alt={episode.title}
+              loading="lazy"
+              class="aspect-square w-full rounded-2xl object-cover transition duration-300 group-hover:scale-[1.01]"
+            />
+
+            <div class="mt-4">
+              <p class="text-xs font-bold uppercase tracking-[0.12em] text-emerald-700">{episode.duration}</p>
+              <h2 class="font-display mt-2 clamp-2 text-xl font-bold text-slate-900">{episode.title}</h2>
+              <p class="mt-2 clamp-3 text-sm leading-relaxed text-slate-600">{episode.description}</p>
+              <p class="mt-4 text-sm font-semibold text-slate-700 group-hover:text-slate-900">Otwórz odcinek →</p>
+            </div>
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getOrganizationInfo } from "../../lib/content";
+
+export const prerender = false;
+
+const organization = await getOrganizationInfo();
+---
+
+<Layout
+  title="O nas | Przeprogramowani.pl"
+  description="Poznaj zespol Przeprogramowani i nasza misje laczenia programowania, biznesu i rozwoju."
+>
+  <section class="fade-in-up space-y-8">
+    <div class="hero-grid rounded-3xl p-6 md:p-10">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">O nas</p>
+      <h1 class="mt-2 text-4xl font-bold text-white md:text-5xl">{organization.name}</h1>
+      <p class="mt-4 max-w-3xl text-lg text-slate-200">{organization.description}</p>
+      <p class="mt-4 max-w-3xl text-base text-slate-300">
+        Tworzymy tresci i programy edukacyjne dla ambitnych developerow. Laczymy wiedze techniczna z praktyka
+        biznesowa, aby pomoc budowac trwaly rozwoj kariery.
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {organization.founders.map((founder) => (
+        <article class="glass-card rounded-2xl p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-sky-100">{founder.role}</p>
+          <h2 class="mt-2 text-2xl font-bold text-white">{founder.name}</h2>
+          <p class="mt-3 text-sm leading-relaxed text-slate-300">{founder.bio}</p>
+          <a
+            href={founder.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-100 hover:text-white"
+          >
+            LinkedIn
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <div class="hero-grid rounded-3xl p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-white">Dzialalnosc online</h2>
+      <p class="mt-3 text-slate-300">
+        Nasze tresci obejmuja podcast, YouTube, newsletter oraz wyspecjalizowane programy kursowe (10xDevs,
+        Opanuj Frontend, Opanuj TypeScript).
+      </p>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        {organization.socials.map((social) => (
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-100 transition-colors hover:bg-white/15"
+          >
+            {social.label}
+          </a>
+        ))}
+      </div>
+
+      <p class="mt-6 text-sm text-slate-300">
+        Kontakt: <a href={`mailto:${organization.contactEmail}`} class="text-cyan-100 hover:text-white">{organization.contactEmail}</a>
+      </p>
+    </div>
+  </section>
+</Layout>

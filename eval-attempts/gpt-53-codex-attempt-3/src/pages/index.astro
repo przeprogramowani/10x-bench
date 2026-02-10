@@ -1,0 +1,133 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getPrzeprogramowaniData } from '../lib/przeprogramowani';
+
+const data = await getPrzeprogramowaniData();
+const courses = data.courses;
+const latestEpisodes = data.podcast.episodes.slice(0, 3);
+const latestVideos = data.youtube.videos.slice(0, 3);
+---
+
+<MainLayout
+  title="Przeprogramowani.pl - Kursy, podcast i YouTube"
+  description="Nowoczesna strona projektu Przeprogramowani.pl: O nas, Podcast, YouTube i kursy Opanuj Frontend, Opanuj TypeScript oraz 10xDevs."
+  active="home"
+>
+  <section class="reveal grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <article class="rounded-[2rem] border border-white bg-gradient-to-br from-[var(--ink)] to-[var(--ink-2)] p-8 text-white shadow-[0_30px_80px_rgba(6,46,38,0.28)] md:p-10">
+      <p class="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">
+        {data.hero.badge}
+      </p>
+      <h1 class="mt-5 font-display text-4xl font-extrabold leading-tight md:text-5xl">{data.hero.title}</h1>
+      <p class="mt-4 max-w-2xl text-base text-white/85 md:text-lg">{data.hero.description}</p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={data.hero.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-[var(--brand)] px-6 py-3 text-sm font-bold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--brand-2)]"
+        >
+          Przejdź do 10xDevs
+        </a>
+        <a href="/podcast" class="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+          Posłuchaj podcastu
+        </a>
+      </div>
+    </article>
+
+    <aside class="grid gap-4 rounded-[2rem] border border-white bg-white/80 p-5 shadow-[0_20px_60px_rgba(6,46,38,0.08)] backdrop-blur">
+      <h2 class="font-display text-2xl font-bold text-[var(--ink)]">Dlaczego Przeprogramowani?</h2>
+      <p class="text-[var(--ink-soft)]">{data.about.headline}</p>
+      {
+        data.about.mission.map((paragraph) => (
+          <p class="text-sm text-[var(--ink-soft)]">{paragraph}</p>
+        ))
+      }
+      <a href="/o-nas" class="mt-2 text-sm font-bold uppercase tracking-[0.14em] text-[var(--brand)]">Więcej o nas</a>
+    </aside>
+  </section>
+
+  <section class="reveal mt-14 space-y-5" style="animation-delay: 120ms;">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="section-kicker">Kursy</p>
+        <h2 class="font-display text-3xl font-extrabold text-[var(--ink)] md:text-4xl">Ścieżki rozwoju</h2>
+      </div>
+      <p class="text-sm text-[var(--ink-soft)]">Opanuj Frontend, Opanuj TypeScript i 10xDevs.</p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        courses.map((course) => (
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-lift rounded-3xl border border-white bg-white p-6 shadow-[0_18px_48px_rgba(6,46,38,0.08)]"
+          >
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-[var(--brand)]">{course.category}</p>
+            <h3 class="mt-3 font-display text-2xl font-bold text-[var(--ink)]">{course.name}</h3>
+            <p class="mt-3 text-sm text-[var(--ink-soft)]">{course.description}</p>
+            <span class="mt-6 inline-block text-sm font-semibold text-[var(--ink)]">Zobacz szczegóły -></span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="reveal mt-14 grid gap-8 lg:grid-cols-2" style="animation-delay: 200ms;">
+    <article class="space-y-4">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="section-kicker">Podcast</p>
+          <h2 class="font-display text-3xl font-bold text-[var(--ink)]">Ostatnie odcinki</h2>
+        </div>
+        <a href="/podcast" class="text-sm font-semibold text-[var(--brand)]">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-3">
+        {
+          latestEpisodes.map((episode) => (
+            <a
+              href={episode.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-lift flex gap-4 rounded-2xl border border-white bg-white p-4 shadow-[0_14px_40px_rgba(6,46,38,0.08)]"
+            >
+              <img src={episode.image} alt={episode.title} class="h-20 w-20 rounded-xl object-cover" loading="lazy" />
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand)]">{episode.duration}</p>
+                <h3 class="mt-1 line-clamp-2 text-sm font-semibold text-[var(--ink)]">{episode.title}</h3>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article class="space-y-4">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="section-kicker">YouTube</p>
+          <h2 class="font-display text-3xl font-bold text-[var(--ink)]">Ostatnie filmy</h2>
+        </div>
+        <a href="/youtube" class="text-sm font-semibold text-[var(--brand)]">Zobacz wszystkie</a>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2">
+        {
+          latestVideos.map((video) => (
+            <a
+              href={video.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="card-lift rounded-2xl border border-white bg-white p-3 shadow-[0_14px_40px_rgba(6,46,38,0.08)] sm:last:col-span-2"
+            >
+              <img src={video.image} alt={video.title} class="aspect-video w-full rounded-xl object-cover" loading="lazy" />
+              <h3 class="mt-3 line-clamp-2 text-sm font-semibold text-[var(--ink)]">{video.title}</h3>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</MainLayout>

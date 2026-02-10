@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+
+const recentVideos = [
+  {
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    thumbnail: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    duration: "15:42",
+    views: "12K"
+  },
+  {
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    thumbnail: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    duration: "18:25",
+    views: "8.5K"
+  },
+  {
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉",
+    thumbnail: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    duration: "45:30",
+    views: "5.2K"
+  },
+  {
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    thumbnail: "https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg",
+    duration: "22:15",
+    views: "15K"
+  },
+  {
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer",
+    thumbnail: "https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg",
+    duration: "28:40",
+    views: "9.8K"
+  },
+  {
+    title: "Special webinar for Builders: Tu zaczyna się Twój AI-ready project",
+    thumbnail: "https://i3.ytimg.com/vi/iSG7PUxjfww/maxresdefault.jpg",
+    duration: "1:12:05",
+    views: "4.1K"
+  }
+];
+
+const playlists = [
+  {
+    title: "10xDevs - Programowanie z AI",
+    description: "Najnowsze techniki pracy z AI w programowaniu",
+    videos: "24"
+  },
+  {
+    title: "Opanuj Frontend",
+    description: "Wszystko o nowoczesnym frontendzie",
+    videos: "45"
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "TypeScript od podstaw po zaawansowane techniki",
+    videos: "18"
+  },
+  {
+    title: "Live Q&A",
+    description: "Nagrania z sesji na żywo",
+    videos: "32"
+  }
+];
+---
+
+<Layout title="YouTube - Przeprogramowani.pl">
+  <Navigation />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-gray-900 via-red-950 to-gray-900 text-white py-24">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+      </div>
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+          <span>Kanał YouTube</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+          Przeprogramowani{' '}
+          <span class="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+            na YouTube
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          Setki materiałów wideo o programowaniu, AI i rozwoju kariery. 
+          Dołącz do naszej społeczności i ucz się razem z nami!
+        </p>
+        
+        <a 
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-red-600 text-white px-8 py-4 rounded-full font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-xl"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </section>
+
+    <!-- Recent Videos Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-12">
+          <h2 class="text-3xl font-bold text-gray-900">Najnowsze filmy</h2>
+          <a 
+            href="https://youtube.com/c/przeprogramowani/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-red-600 font-semibold hover:text-red-700 transition-colors"
+          >
+            Zobacz wszystkie
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recentVideos.map((video) => (
+            <a 
+              href={`https://youtube.com/watch?v=${video.thumbnail.split('/')[4]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block"
+            >
+              <div class="relative rounded-2xl overflow-hidden mb-4">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-semibold px-2 py-1 rounded">
+                  {video.duration}
+                </div>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <h3 class="font-bold text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2 mb-2">
+                {video.title}
+              </h3>
+              <div class="flex items-center gap-2 text-sm text-gray-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                {video.views} wyświetleń
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Playlists Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12">Playlisty tematyczne</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {playlists.map((playlist) => (
+            <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-900 mb-2">{playlist.title}</h3>
+              <p class="text-gray-600 text-sm mb-4">{playlist.description}</p>
+              <span class="inline-flex items-center gap-1 text-sm text-red-600 font-semibold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                {playlist.videos} filmów
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Types Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Co znajdziesz na kanale?</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Regularnie publikujemy różnorodne treści, które pomogą Ci w rozwoju kariery programisty.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Poradniki techniczne</h3>
+            <p class="text-gray-600">
+              Praktyczne tutoriale omawiające nowoczesne technologie i narzędzia wykorzystywane w branży.
+            </p>
+          </div>
+
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-4M9 12h.01M15 12h.01M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Live Q&A</h3>
+            <p class="text-gray-600">
+              Sesje na żywo, podczas których odpowiadamy na Wasze pytania i omawiamy aktualności.
+            </p>
+          </div>
+
+          <div class="text-center p-6">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Relacje z wydarzeń</h3>
+            <p class="text-gray-600">
+              Reportaże z konferencji, meetupów i innych wydarzeń branżowych.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,23 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import VideoGallery from '../components/VideoGallery';
+import { getPrzeprogramowaniData } from '../lib/przeprogramowani';
+
+const data = await getPrzeprogramowaniData();
+---
+
+<MainLayout
+  title="YouTube | Przeprogramowani.pl"
+  description="Najnowsze filmy YouTube od Przeprogramowani o AI i nowoczesnym software development."
+  active="youtube"
+>
+  <section class="reveal space-y-4">
+    <p class="section-kicker">YouTube</p>
+    <h1 class="font-display text-4xl font-extrabold text-[var(--ink)] md:text-5xl">Najnowsze filmy</h1>
+    <p class="max-w-3xl text-lg text-[var(--ink-soft)]">{data.youtube.description}</p>
+  </section>
+
+  <div class="reveal mt-10" style="animation-delay: 100ms;">
+    <VideoGallery client:load videos={data.youtube.videos} />
+  </div>
+</MainLayout>

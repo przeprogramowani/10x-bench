@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MediaGrid from "../../components/MediaGrid";
+import { getYoutubeVideos } from "../../lib/content";
+
+export const prerender = false;
+
+const videos = await getYoutubeVideos(12);
+const latestDate = videos[0]?.publishedAt;
+---
+
+<Layout
+  title="YouTube | Przeprogramowani.pl"
+  description="Najnowsze filmy YouTube projektu Przeprogramowani pobierane z oficjalnego feedu kanalu."
+>
+  <section class="fade-in-up space-y-6">
+    <div class="hero-grid rounded-3xl p-6 md:p-9">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">YouTube</p>
+      <h1 class="mt-2 text-4xl font-bold text-white md:text-5xl">Najnowsze filmy</h1>
+      <p class="mt-4 max-w-3xl text-slate-200">
+        Dane pobierane sa z oficjalnego feedu YouTube kanalu Przeprogramowani, dzieki czemu lista filmow odswieza sie automatycznie.
+      </p>
+      {
+        latestDate ? (
+          <p class="mt-4 text-sm text-slate-300">
+            Ostatnia publikacja: {new Intl.DateTimeFormat("pl-PL", { day: "2-digit", month: "long", year: "numeric" }).format(new Date(latestDate))}
+          </p>
+        ) : null
+      }
+    </div>
+
+    <MediaGrid
+      client:load
+      items={videos}
+      initialCount={6}
+      emptyMessage="Nie udalo sie pobrac filmow z YouTube."
+    />
+  </section>
+</Layout>

@@ -1,0 +1,99 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Przeprogramowani.pl - nowoczesna platforma edukacyjna dla programistow."
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const nowYear = new Date().getFullYear();
+
+const navItems = [
+  { href: "/", label: "Start" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" }
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="hero-glow"></div>
+    <header class="sticky top-0 z-40 border-b border-slate-700/40 bg-slate-950/65 backdrop-blur-md">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 py-3">
+          <a href="/" class="flex items-center gap-2 text-lg font-semibold text-slate-100">
+            <span class="rounded-full border border-cyan-300/50 px-2 py-0.5 text-cyan-300">{"</>"}</span>
+            Przeprogramowani
+          </a>
+
+          <nav class="flex flex-wrap items-center gap-2">
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class:list={[
+                    "rounded-full border px-4 py-1.5 text-sm font-medium",
+                    currentPath === item.href
+                      ? "border-cyan-300/70 bg-cyan-400/10 text-cyan-200"
+                      : "border-slate-600/60 text-slate-300 hover:border-slate-400 hover:text-slate-100"
+                  ]}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto min-h-[calc(100vh-176px)] w-full max-w-6xl px-4 pb-14 pt-8 md:pt-10">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-700/40 bg-slate-950/65">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+        <p>Przeprogramowani.pl - szersze spojrzenie na programowanie.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-slate-100">
+            10xDevs
+          </a>
+          <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="hover:text-slate-100">
+            Opanuj Frontend
+          </a>
+          <a
+            href="https://opanujtypescript.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-slate-100"
+          >
+            Opanuj TypeScript
+          </a>
+        </div>
+      </div>
+      <p class="pb-8 text-center text-xs text-slate-500">© {nowYear} Przeprogramowani</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+  --color-brand-ice: #9ce6ff;
+  --color-brand-cyan: #30b6e8;
+  --color-brand-deep: #041326;
+  --color-brand-aqua: #7ff2ff;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 0%, rgba(71, 130, 255, 0.16), transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(18, 215, 214, 0.15), transparent 35%),
+    linear-gradient(165deg, #030b17 0%, #020913 50%, #01050d 100%);
+  color: #e9f4ff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: radial-gradient(circle at 70% 80%, rgba(25, 176, 255, 0.14), transparent 55%),
+    radial-gradient(circle at 15% 20%, rgba(2, 217, 214, 0.14), transparent 45%);
+}
+
+.hero-grid {
+  background: linear-gradient(140deg, rgba(18, 31, 52, 0.85), rgba(6, 13, 26, 0.9));
+  border: 1px solid rgba(173, 232, 255, 0.24);
+  box-shadow: 0 30px 70px -48px rgba(59, 166, 255, 0.85);
+}
+
+.glass-card {
+  background: linear-gradient(155deg, rgba(12, 24, 42, 0.85), rgba(8, 15, 30, 0.9));
+  border: 1px solid rgba(145, 218, 255, 0.2);
+  box-shadow: 0 24px 50px -38px rgba(0, 0, 0, 0.8);
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.7s ease both;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

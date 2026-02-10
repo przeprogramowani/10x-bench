@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MediaGrid from "../components/MediaGrid";
+import { getOrganizationInfo, getPodcastEpisodes, getYoutubeVideos } from "../lib/content";
+
+export const prerender = false;
+
+const [organization, podcastEpisodes, youtubeVideos] = await Promise.all([
+  getOrganizationInfo(),
+  getPodcastEpisodes(3),
+  getYoutubeVideos(3)
+]);
+
+const courses = [
+  {
+    title: "10xDevs",
+    subtitle: "Programuj z AI",
+    description:
+      "Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzedzia do swiadomej pracy w calym cyklu tworzenia oprogramowania.",
+    href: "https://10xdevs.pl",
+    tag: "Hero"
+  },
+  {
+    title: "Opanuj Frontend",
+    subtitle: "AI Edition",
+    description:
+      "Intensywny program rozwojowy dla frontend developerow: testowanie, architektura, CI/CD i praktyczne wykorzystanie AI w codziennej pracy.",
+    href: "https://opanujfrontend.pl",
+    tag: "Kurs"
+  },
+  {
+    title: "Opanuj TypeScript",
+    subtitle: "TypeScript 5 + React 19",
+    description:
+      "Praktyczny kurs budowania niezawodnych aplikacji. Typy generyczne, wzorce React i ponad 40 cwiczen do wdrozenia od razu na produkcji.",
+    href: "https://opanujtypescript.pl",
+    tag: "Kurs"
+  }
+];
+---
+
+<Layout
+  title="Przeprogramowani.pl - nowoczesna strona projektu"
+  description="Nowoczesna i responsywna strona projektu Przeprogramowani.pl: O nas, Podcast, YouTube oraz kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript."
+>
+  <section class="hero-grid fade-in-up overflow-hidden rounded-3xl p-6 md:p-9">
+    <div class="grid gap-8 lg:grid-cols-[1.15fr_1fr]">
+      <div class="space-y-6">
+        <p class="inline-flex rounded-full border border-cyan-300/35 bg-cyan-200/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100">
+          Projekt edukacyjny
+        </p>
+
+        <h1 class="text-4xl font-bold leading-[1.04] text-white md:text-6xl">
+          {organization.name}
+          <span class="block bg-gradient-to-r from-cyan-100 via-cyan-300 to-sky-400 bg-clip-text text-transparent">
+            {organization.tagline}
+          </span>
+        </h1>
+
+        <p class="max-w-2xl text-lg text-slate-200/90">
+          Platforma laczaca programowanie, biznes i rozwoj. Tworzymy kursy, podcasty i materialy o nowoczesnym software developmencie.
+        </p>
+
+        <div class="flex flex-wrap gap-3 text-sm text-slate-200">
+          <span class="rounded-lg border border-white/20 bg-white/5 px-3 py-2">{organization.foundingDate ?? "2017"}+ na rynku</span>
+          <span class="rounded-lg border border-white/20 bg-white/5 px-3 py-2">2 founderow</span>
+          <span class="rounded-lg border border-white/20 bg-white/5 px-3 py-2">Podcast + YouTube + kursy</span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        {courses.map((course) => (
+          <article class="glass-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <span class="rounded-full border border-cyan-200/35 bg-cyan-200/10 px-2 py-1 text-xs font-semibold tracking-[0.15em] text-cyan-100">
+                {course.tag}
+              </span>
+              <a
+                href={course.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100 hover:text-white"
+              >
+                Zobacz
+              </a>
+            </div>
+
+            <h2 class="text-2xl font-bold text-white">{course.title}</h2>
+            <p class="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-sky-200/85">{course.subtitle}</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">{course.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-14 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h2 class="text-3xl font-bold text-white">Podcast - najnowsze odcinki</h2>
+      <a href="/podcast" class="text-sm font-semibold text-cyan-100 hover:text-white">Przejdz do strony Podcast</a>
+    </div>
+    <MediaGrid client:load items={podcastEpisodes} initialCount={3} emptyMessage="Brak aktualnych odcinkow podcastu." />
+  </section>
+
+  <section class="mt-14 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h2 class="text-3xl font-bold text-white">YouTube - najnowsze filmy</h2>
+      <a href="/youtube" class="text-sm font-semibold text-cyan-100 hover:text-white">Przejdz do strony YouTube</a>
+    </div>
+    <MediaGrid client:load items={youtubeVideos} initialCount={3} emptyMessage="Brak aktualnych filmow z YouTube." />
+  </section>
+</Layout>

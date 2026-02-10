@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Nowoczesna edukacja technologiczna dla ambitnych programistow." } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Start" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" }
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="selection:bg-cyan-300/30 selection:text-white">
+    <div class="ambient-bg" aria-hidden="true"></div>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3 md:px-6">
+        <a href="/" class="inline-flex items-center gap-2 text-white">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-300/50 bg-cyan-400/15 text-cyan-100">
+            &lt;/&gt;
+          </span>
+          <span class="font-display text-lg">Przeprogramowani.pl</span>
+        </a>
+
+        <nav class="flex flex-wrap items-center gap-1" aria-label="Nawigacja glowna">
+          {navItems.map((item) => {
+            const isActive = currentPath === item.href;
+
+            return (
+              <a
+                href={item.href}
+                class:list={[
+                  "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
+                  isActive
+                    ? "bg-cyan-300/20 text-cyan-100"
+                    : "text-slate-300 hover:bg-white/10 hover:text-white"
+                ]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto min-h-[calc(100vh-13rem)] max-w-6xl px-4 py-10 md:px-6 md:py-14">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 bg-slate-950/80">
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-6">
+        <p>Przeprogramowani.pl - szersze spojrzenie na programowanie</p>
+        <div class="flex items-center gap-4">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-100">10xDevs</a>
+          <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-100">Opanuj Frontend</a>
+          <a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-100">Opanuj TypeScript</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

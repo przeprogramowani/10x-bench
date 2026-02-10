@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: 'home' | 'about' | 'podcast' | 'youtube';
+}
+
+const { title, description, active = 'home' } = Astro.props;
+
+const nav = [
+  { href: '/', label: 'Start', key: 'home' },
+  { href: '/o-nas', label: 'O nas', key: 'about' },
+  { href: '/podcast', label: 'Podcast', key: 'podcast' },
+  { href: '/youtube', label: 'YouTube', key: 'youtube' }
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[var(--surface)] text-[var(--ink)]">
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="orb orb-c"></div>
+    </div>
+
+    <header class="sticky top-0 z-30 border-b border-white/60 bg-white/80 backdrop-blur">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4">
+        <a href="/" class="font-display text-lg font-extrabold tracking-tight text-[var(--ink)]">
+          Przeprogramowani<span class="text-[var(--brand)]">.pl</span>
+        </a>
+
+        <nav class="hidden items-center gap-1 md:flex">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  'rounded-xl px-3 py-2 text-sm font-semibold transition-colors',
+                  active === item.key
+                    ? 'bg-[var(--brand)] text-white'
+                    : 'text-[var(--ink-soft)] hover:bg-white hover:text-[var(--ink)]'
+                ]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-[var(--ink)] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-[var(--brand)]"
+        >
+          10xDevs
+        </a>
+      </div>
+
+      <nav class="mx-auto flex w-full max-w-6xl gap-2 overflow-x-auto px-5 pb-3 md:hidden">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'whitespace-nowrap rounded-xl px-3 py-2 text-sm font-semibold transition-colors',
+                active === item.key
+                  ? 'bg-[var(--brand)] text-white'
+                  : 'bg-white text-[var(--ink-soft)] hover:text-[var(--ink)]'
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl px-5 py-10 md:py-14">
+      <slot />
+    </main>
+
+    <footer class="mt-10 border-t border-white/60 bg-white/70">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-5 px-5 py-8 text-sm text-[var(--ink-soft)] md:flex-row md:items-center md:justify-between">
+        <p>Przeprogramowani.pl - szersze spojrzenie na programowanie.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink)]">Opanuj Frontend</a>
+          <a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink)]">Opanuj TypeScript</a>
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink)]">10xDevs</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

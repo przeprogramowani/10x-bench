@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ABOUT_TEXT, FOUNDERS } from "../lib/content";
+---
+
+<BaseLayout title="O nas | Przeprogramowani" description="Kim sa Przeprogramowani i jaka jest ich misja.">
+  <section class="frost-card rounded-3xl p-6 sm:p-8">
+    <p class="text-sm font-semibold uppercase tracking-wide text-cyan-200">{ABOUT_TEXT.kicker}</p>
+    <h1 class="mt-2 text-4xl font-semibold leading-tight text-slate-100">{ABOUT_TEXT.title}</h1>
+    <p class="mt-4 max-w-4xl text-base text-slate-300">{ABOUT_TEXT.intro}</p>
+    <p class="mt-3 max-w-4xl text-base text-slate-300">{ABOUT_TEXT.mission}</p>
+  </section>
+
+  <section class="mt-8">
+    <h2 class="text-2xl font-semibold text-slate-100">Zespol zalozycieli</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      {
+        FOUNDERS.map((person) => (
+          <article class="frost-card rounded-3xl p-5">
+            <p class="text-sm font-semibold uppercase tracking-wide text-cyan-200">{person.role}</p>
+            <h3 class="mt-1 text-2xl font-semibold text-slate-100">{person.name}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">{person.bio}</p>
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex rounded-full border border-slate-500 px-4 py-2 text-sm font-semibold text-slate-100 hover:border-slate-200"
+            >
+              LinkedIn
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-8 grid gap-4 md:grid-cols-3">
+    <article class="frost-card rounded-3xl p-5">
+      <h3 class="text-lg font-semibold text-slate-100">Praktyka ponad teoria</h3>
+      <p class="mt-2 text-sm text-slate-300">
+        Tresci i kursy budowane na realnych problemach zespolow developerskich.
+      </p>
+    </article>
+    <article class="frost-card rounded-3xl p-5">
+      <h3 class="text-lg font-semibold text-slate-100">Szeroka perspektywa</h3>
+      <p class="mt-2 text-sm text-slate-300">
+        Laczymy frontend, backend, produkty i kompetencje komunikacyjne.
+      </p>
+    </article>
+    <article class="frost-card rounded-3xl p-5">
+      <h3 class="text-lg font-semibold text-slate-100">Edukacja w epoce AI</h3>
+      <p class="mt-2 text-sm text-slate-300">
+        Pokazujemy, jak swiadomie wykorzystywac AI bez utraty jakosci i kontroli.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

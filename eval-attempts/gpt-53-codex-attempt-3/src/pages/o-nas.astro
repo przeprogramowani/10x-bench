@@ -1,0 +1,46 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getPrzeprogramowaniData } from '../lib/przeprogramowani';
+
+const data = await getPrzeprogramowaniData();
+---
+
+<MainLayout title="O nas | Przeprogramowani.pl" description={data.about.description} active="about">
+  <section class="reveal space-y-4">
+    <p class="section-kicker">O projekcie</p>
+    <h1 class="font-display text-4xl font-extrabold text-[var(--ink)] md:text-5xl">Przeprogramowani</h1>
+    <p class="max-w-3xl text-lg text-[var(--ink-soft)]">{data.about.headline}</p>
+  </section>
+
+  <section class="reveal mt-12 grid gap-5 md:grid-cols-2" style="animation-delay: 100ms;">
+    {
+      data.about.founders.map((founder) => (
+        <article class="card-lift rounded-3xl border border-white bg-white p-6 shadow-[0_18px_48px_rgba(6,46,38,0.08)]">
+          <div class="flex items-start gap-4">
+            <img src={founder.image} alt={founder.name} class="h-20 w-20 rounded-2xl object-cover" loading="lazy" />
+            <div>
+              <h2 class="font-display text-2xl font-bold text-[var(--ink)]">{founder.name}</h2>
+              <p class="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-[var(--brand)]">{founder.role}</p>
+            </div>
+          </div>
+          <p class="mt-5 text-sm leading-relaxed text-[var(--ink-soft)]">{founder.bio}</p>
+          <a href={founder.linkedin} target="_blank" rel="noopener noreferrer" class="mt-5 inline-block text-sm font-semibold text-[var(--ink)]">
+            LinkedIn ->
+          </a>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="reveal mt-12 rounded-[2rem] border border-white bg-white p-8 shadow-[0_18px_48px_rgba(6,46,38,0.08)]" style="animation-delay: 180ms;">
+    <p class="section-kicker">Misja</p>
+    <div class="mt-4 grid gap-5 md:grid-cols-2">
+      {
+        data.about.mission.map((paragraph) => (
+          <p class="text-base leading-relaxed text-[var(--ink-soft)]">{paragraph}</p>
+        ))
+      }
+    </div>
+    <p class="mt-7 font-display text-2xl font-bold text-[var(--ink)]">{data.about.slogan}</p>
+  </section>
+</MainLayout>

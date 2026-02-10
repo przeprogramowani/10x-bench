@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteContent } from '../lib/content';
+
+const content = await getSiteContent();
+const founders = content.about.founders;
+---
+
+<Layout
+  title="O nas | Przeprogramowani.pl"
+  description="Kim są Przeprogramowani? Poznaj misję projektu, founderów i podejście do edukacji programistów."
+  currentPath="/o-nas"
+  updatedAt={content.fetchedAt}
+>
+  <section class="surface overflow-hidden p-6 sm:p-10">
+    <div class="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+      <div class="animate-rise">
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">O nas</p>
+        <h1 class="font-display mt-3 text-4xl font-bold text-slate-900 sm:text-5xl">{content.about.subtitle}</h1>
+        <p class="mt-5 text-lg leading-relaxed text-slate-600">{content.about.summary[0]}</p>
+        <p class="mt-3 text-lg leading-relaxed text-slate-600">{content.about.summary[1]}</p>
+        <p class="font-display mt-6 text-2xl font-semibold text-sky-700">{content.about.tagline}</p>
+      </div>
+
+      <div class="animate-rise rounded-3xl border border-slate-200 bg-slate-50 p-6" style="animation-delay: 120ms;">
+        <p class="font-display text-lg font-semibold text-slate-900">Dlaczego to działa?</p>
+        <ul class="mt-4 space-y-3 text-sm leading-relaxed text-slate-600">
+          <li>Łączymy doświadczenie inżynierskie z praktyką biznesową i mentoringiem.</li>
+          <li>Uczymy przez realne scenariusze projektowe i nowoczesny workflow z AI.</li>
+          <li>Budujemy społeczność developerów, którzy rosną razem i wymieniają się feedbackiem.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-600">Zespół</p>
+        <h2 class="font-display text-3xl font-bold text-slate-900">Founderzy Przeprogramowani</h2>
+      </div>
+      <p class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700">
+        {content.about.yearsOnMarket}
+      </p>
+    </div>
+
+    <div class="grid gap-5 lg:grid-cols-2">
+      {
+        founders.map((founder, index) => (
+          <article
+            class="surface animate-rise overflow-hidden p-5 sm:p-6"
+            style={`animation-delay: ${index * 140}ms;`}
+          >
+            <div class="flex flex-wrap items-center gap-4">
+              {founder.image && (
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  loading="lazy"
+                  class="h-24 w-24 rounded-2xl border border-slate-200 object-cover"
+                />
+              )}
+
+              <div>
+                <h3 class="font-display text-2xl font-bold text-slate-900">{founder.name}</h3>
+                <p class="text-sm font-semibold text-slate-600">{founder.role}</p>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-relaxed text-slate-600">{founder.bio}</p>
+
+            <a
+              href={founder.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+            >
+              LinkedIn
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

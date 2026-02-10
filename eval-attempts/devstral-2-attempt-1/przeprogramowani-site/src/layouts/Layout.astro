@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Przeprogramowani.pl - Edukacja technologiczna w epoce AI" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50">
+    <Navigation />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style>
+  :root {
+    --accent: 124, 58, 237;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 50%, white);
+  }
+</style>
+
+<script>
+  import Navigation from '../components/Navigation.tsx';
+  import Footer from '../components/Footer.tsx';
+</script>

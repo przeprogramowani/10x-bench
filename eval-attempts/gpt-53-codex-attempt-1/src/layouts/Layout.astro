@@ -1,0 +1,110 @@
+---
+import MobileNav from '../components/MobileNav';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath?: string;
+  updatedAt?: string;
+}
+
+const { title, description, currentPath = '/', updatedAt } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Start' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' }
+];
+
+const isActive = (href: string) => {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+
+const formattedDate = updatedAt
+  ? new Intl.DateTimeFormat('pl-PL', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    }).format(new Date(updatedAt))
+  : null;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/75 backdrop-blur-lg">
+        <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          <a href="/" class="flex items-center gap-2">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-sky-600 text-sm font-extrabold text-white">
+              &lt;/&gt;
+            </span>
+            <div>
+              <p class="font-display text-base font-bold text-slate-900 sm:text-lg">Przeprogramowani.pl</p>
+              <p class="text-xs text-slate-500">Szersze spojrzenie na programowanie</p>
+            </div>
+          </a>
+
+          <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+            {
+              navLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class:list={[
+                    'rounded-xl px-4 py-2 text-sm font-semibold transition-colors',
+                    isActive(link.href)
+                      ? 'bg-sky-600 text-white shadow-sm'
+                      : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'
+                  ]}
+                >
+                  {link.label}
+                </a>
+              ))
+            }
+          </nav>
+
+          <MobileNav client:load links={navLinks} currentPath={currentPath} />
+        </div>
+      </header>
+
+      <main class="mx-auto w-full max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
+        <slot />
+      </main>
+
+      <footer class="border-t border-slate-200/90 bg-white/90">
+        <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p>
+            © {new Date().getFullYear()} Przeprogramowani.pl
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="https://przeprogramowani.pl" target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">
+              Oficjalna strona
+            </a>
+            <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">
+              YouTube
+            </a>
+            <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noopener noreferrer" class="underline-offset-4 hover:underline">
+              Spotify
+            </a>
+          </div>
+          {formattedDate && <p class="text-slate-500">Dane zaktualizowane: {formattedDate}</p>}
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

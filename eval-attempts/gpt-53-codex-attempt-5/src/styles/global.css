@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --bg-start: #050914;
+  --bg-end: #0c1728;
+  --surface: #11203a;
+  --surface-strong: #172b4c;
+  --text-main: #ecf2ff;
+  --text-muted: #b6c5e3;
+  --brand: #32d4ff;
+  --brand-strong: #1ab9f0;
+  --accent: #ff8d4d;
+  --accent-soft: #ffb88f;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(1000px 500px at 0% -10%, rgba(80, 165, 255, 0.2), transparent 60%),
+    radial-gradient(1100px 500px at 100% -20%, rgba(255, 141, 77, 0.16), transparent 62%),
+    linear-gradient(170deg, var(--bg-start), var(--bg-end));
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+}
+
+a {
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(500px 220px at 18% 8%, rgba(50, 212, 255, 0.2), transparent 72%),
+    radial-gradient(420px 200px at 86% 16%, rgba(255, 141, 77, 0.18), transparent 74%);
+  animation: pulseGlow 10s ease-in-out infinite alternate;
+}
+
+.frost-card {
+  background: linear-gradient(160deg, rgba(23, 43, 76, 0.74), rgba(17, 32, 58, 0.74));
+  border: 1px solid rgba(137, 166, 214, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.tag-pill {
+  border: 1px solid rgba(178, 199, 236, 0.34);
+  color: var(--text-muted);
+  background: rgba(15, 29, 52, 0.78);
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.78;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}

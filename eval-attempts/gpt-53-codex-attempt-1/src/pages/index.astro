@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteContent } from '../lib/content';
+
+const content = await getSiteContent();
+const featuredCourses = content.courses;
+const latestPodcastEpisodes = content.podcasts.slice(0, 3);
+const latestVideos = content.videos.slice(0, 3);
+---
+
+<Layout
+  title="Przeprogramowani.pl | Nowoczesna strona projektu"
+  description="Nowoczesna i responsywna strona Przeprogramowani.pl z sekcjami O nas, Podcast, YouTube oraz kursami Opanuj Frontend, Opanuj TypeScript i 10xDevs."
+  currentPath="/"
+  updatedAt={content.fetchedAt}
+>
+  <section class="surface grid-pattern relative overflow-hidden p-6 sm:p-10">
+    <div class="absolute -left-20 -top-24 h-56 w-56 rounded-full bg-sky-300/30 blur-3xl"></div>
+    <div class="absolute -bottom-28 right-0 h-64 w-64 rounded-full bg-emerald-300/30 blur-3xl"></div>
+
+    <div class="relative grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-start">
+      <div class="animate-rise">
+        <p class="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-sky-700">
+          Przeprogramowani.pl
+        </p>
+
+        <h1 class="font-display mt-6 text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+          Szersze spojrzenie na programowanie,
+          <span class="text-sky-600"> praktyka z AI i realny rozwój kariery</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+          {content.about.summary[0]}
+          {content.about.summary[1] && ` ${content.about.summary[1]}`}
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/o-nas" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
+            Poznaj nas
+          </a>
+          <a href="/podcast" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50">
+            Ostatnie odcinki podcastu
+          </a>
+        </div>
+
+        <div class="mt-8 grid gap-3 text-sm text-slate-600 sm:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-white/80 p-3">
+            <p class="font-display text-2xl font-bold text-slate-900">{content.about.yearsOnMarket.split(' ')[0]}+</p>
+            <p>lat doświadczenia edukacyjnego</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white/80 p-3">
+            <p class="font-display text-2xl font-bold text-slate-900">{content.podcasts.length}+</p>
+            <p>najnowszych odcinków w feedzie</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white/80 p-3">
+            <p class="font-display text-2xl font-bold text-slate-900">{content.videos.length}+</p>
+            <p>ostatnich filmów YouTube</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-4">
+        {
+          featuredCourses.map((course, index) => (
+            <a
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="animate-rise group rounded-2xl border border-slate-200 bg-white/90 p-5 transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg"
+              style={`animation-delay: ${index * 120}ms;`}
+            >
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-sky-700">{course.name}</p>
+              <h2 class="font-display mt-2 text-xl font-bold text-slate-900">{course.title}</h2>
+              <p class="mt-2 clamp-3 text-sm leading-relaxed text-slate-600">{course.description}</p>
+              <p class="mt-4 text-sm font-semibold text-sky-700 group-hover:text-sky-600">{course.ctaLabel} →</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-10 grid gap-8 lg:grid-cols-2">
+    <article class="surface p-6 sm:p-8">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">Podcast</p>
+          <h2 class="font-display text-2xl font-bold text-slate-900">Najnowsze odcinki</h2>
+        </div>
+        <a href="/podcast" class="text-sm font-semibold text-slate-700 hover:text-slate-900">Więcej</a>
+      </div>
+
+      <div class="space-y-4">
+        {
+          latestPodcastEpisodes.map((episode, index) => (
+            <a
+              href={episode.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="animate-rise group flex gap-4 rounded-2xl border border-slate-200 p-3 transition hover:bg-slate-50"
+              style={`animation-delay: ${index * 100}ms;`}
+            >
+              <img src={episode.image} alt={episode.title} loading="lazy" class="h-20 w-20 rounded-xl object-cover" />
+              <div class="min-w-0">
+                <p class="text-xs font-semibold text-emerald-700">{episode.duration}</p>
+                <h3 class="clamp-2 text-sm font-bold text-slate-900 group-hover:text-slate-700">{episode.title}</h3>
+                <p class="clamp-2 mt-1 text-xs text-slate-600">{episode.description}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article class="surface p-6 sm:p-8">
+      <div class="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-rose-700">YouTube</p>
+          <h2 class="font-display text-2xl font-bold text-slate-900">Ostatnie filmy</h2>
+        </div>
+        <a href="/youtube" class="text-sm font-semibold text-slate-700 hover:text-slate-900">Więcej</a>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          latestVideos.map((video, index) => (
+            <a
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="animate-rise group rounded-2xl border border-slate-200 p-2 transition hover:bg-slate-50"
+              style={`animation-delay: ${index * 100}ms;`}
+            >
+              <img src={video.image} alt={video.title} loading="lazy" class="aspect-video w-full rounded-xl object-cover" />
+              <h3 class="clamp-2 px-1 pb-1 pt-3 text-sm font-bold text-slate-900 group-hover:text-slate-700">{video.title}</h3>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</Layout>
