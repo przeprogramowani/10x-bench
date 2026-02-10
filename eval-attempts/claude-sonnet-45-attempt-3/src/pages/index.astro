@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CourseCard from '../components/CourseCard';
+---
+
+<Layout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-20">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            Szersze spojrzenie na programowanie
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-primary-100">
+            Edukacja techniczna w erze AI. Kursy, podcast, YouTube i newsletter o nowoczesnym programowaniu.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#kursy" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+              Poznaj nasze kursy
+            </a>
+            <a href="https://przeprogramowani.substack.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary border-white text-white hover:bg-white hover:text-primary-600">
+              Zapisz się do newslettera
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="kursy" class="py-16">
+      <div class="section-container">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Nasze kursy</h2>
+          <p class="text-xl text-gray-600">
+            Praktyczna wiedza dla nowoczesnych programistów
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <CourseCard
+            title="Opanuj Frontend"
+            description="Kluczowa wiedza dla nowoczesnego frontend developera. 58 lekcji o nowoczesnym frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych."
+            link="https://opanujfrontend.pl/"
+            icon="⚡"
+            color="bg-blue-500"
+            client:load
+          />
+          <CourseCard
+            title="Opanuj TypeScript"
+            description="Praktyczny kurs TypeScript 5 i React 19. Naucz się pewnie używać typów generycznych, podejmować lepsze decyzje dotyczące typowania i efektywnie rozwijać projekty produkcyjne."
+            link="https://opanujtypescript.pl/"
+            icon="📘"
+            color="bg-purple-500"
+            client:load
+          />
+          <CourseCard
+            title="10xDevs"
+            description="Dołącz do programistów nowej generacji! Produktywny workflow programowania z AI. Pełna kontrola nad wynikami, gdzie Ty ustalasz zasady, a AI jest Twoim precyzyjnym asystentem."
+            link="https://www.10xdevs.pl/"
+            icon="🚀"
+            color="bg-green-500"
+            client:load
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="section-container">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold text-primary-600 mb-2">1500+</div>
+            <div class="text-gray-600">Absolwentów kursów</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-primary-600 mb-2">98</div>
+            <div class="text-gray-600">Odcinków podcastu</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-primary-600 mb-2">7</div>
+            <div class="text-gray-600">Lat doświadczenia</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-primary-600 mb-2">Top 10</div>
+            <div class="text-gray-600">Tech podcast w Polsce</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-16">
+      <div class="section-container">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-5xl mb-4">🎙️</div>
+            <h3 class="text-3xl font-bold mb-4">Podcast</h3>
+            <p class="text-purple-100 mb-6">
+              Opanuj.AI Podcast oraz Przeprogramowani ft. Gość. Rozmowy o AI, programowaniu i rozwoju zawodowym developerów.
+            </p>
+            <a href="/podcast" class="inline-flex items-center text-white font-semibold hover:underline">
+              Zobacz odcinki
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="bg-gradient-to-br from-red-600 to-red-800 text-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-5xl mb-4">📺</div>
+            <h3 class="text-3xl font-bold mb-4">YouTube</h3>
+            <p class="text-red-100 mb-6">
+              Filmy edukacyjne o programowaniu, narzędziach AI i najlepszych praktykach w tworzeniu oprogramowania.
+            </p>
+            <a href="/youtube" class="inline-flex items-center text-white font-semibold hover:underline">
+              Zobacz kanał
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="bg-primary-600 py-16 text-white">
+      <div class="section-container text-center">
+        <h2 class="text-4xl font-bold mb-4">Newsletter Przeprogramowany</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          Format 3-2-1: 3 rekomendacje techniczno-lifestylowe, 2 porady dotyczące rozwoju i 1 bonus. Co tydzień w Twojej skrzynce.
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary bg-white text-primary-600 hover:bg-gray-100"
+        >
+          Zapisz się za darmo
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

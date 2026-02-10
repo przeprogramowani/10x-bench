@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404 - Strona nie znaleziona" description="Strona, której szukasz nie istnieje.">
+  <Header />
+
+  <main class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="section-container py-20 text-center">
+      <div class="max-w-2xl mx-auto">
+        <h1 class="text-9xl font-bold text-primary-600 mb-4">404</h1>
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Strona nie znaleziona</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Przepraszamy, ale strona której szukasz nie istnieje lub została przeniesiona.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-primary">
+            Wróć do strony głównej
+          </a>
+          <a href="/podcast" class="btn-secondary">
+            Posłuchaj podcastu
+          </a>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a href="/o-nas" class="card p-6 text-left hover:shadow-xl transition-shadow">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">O nas</h3>
+            <p class="text-gray-600">Poznaj zespół Przeprogramowani</p>
+          </a>
+          <a href="/youtube" class="card p-6 text-left hover:shadow-xl transition-shadow">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">YouTube</h3>
+            <p class="text-gray-600">Zobacz nasze najnowsze filmy</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

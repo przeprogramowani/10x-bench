@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastEpisode from '../components/PodcastEpisode';
+---
+
+<Layout
+  title="Podcast - Przeprogramowani"
+  description="Posłuchaj najnowszych odcinków podcastu Przeprogramowani i Opanuj.AI. Szersze spojrzenie na programowanie i AI."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Podcast</h1>
+        <p class="text-xl md:text-2xl text-purple-100 mb-8">
+          Szersze spojrzenie na programowanie. Regularne odcinki o technologii, AI i rozwoju kariery w IT.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary bg-green-600 hover:bg-green-700 inline-flex items-center"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            Spotify
+          </a>
+          <a
+            href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary border-white text-white hover:bg-white/10 inline-flex items-center"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12zm0 2.951c2.516 0 4.551 2.036 4.551 4.55 0 2.516-2.035 4.552-4.55 4.552-2.516 0-4.552-2.036-4.552-4.551 0-2.515 2.036-4.551 4.551-4.551zm0 1.5c-1.687 0-3.051 1.365-3.051 3.051 0 1.687 1.364 3.052 3.05 3.052 1.687 0 3.052-1.365 3.052-3.052 0-1.686-1.365-3.05-3.051-3.05zm0 15.549c-3.415 0-6.286-2.072-7.504-5.017.122-.028.244-.062.36-.106 1.019-.389 1.675-1.388 1.675-2.548v-.309c0-.094-.008-.186-.024-.276.676.428 1.478.677 2.331.677h.324c.853 0 1.655-.249 2.331-.677-.016.09-.024.182-.024.276v.309c0 1.16.656 2.159 1.675 2.548.116.044.238.078.36.106-1.218 2.945-4.089 5.017-7.504 5.017z"/>
+            </svg>
+            Apple Podcasts
+          </a>
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary border-white text-white hover:bg-white/10 inline-flex items-center"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Info -->
+  <section class="py-12 bg-white">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-purple-50 to-primary-50 rounded-2xl p-8 mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">O naszych podcastach</h2>
+          <div class="space-y-4 text-gray-700">
+            <p class="leading-relaxed">
+              <strong class="text-purple-700">Opanuj.AI</strong> - Podcast poświęcony sztucznej inteligencji,
+              nowym modelom językowym, narzędziom AI i ich zastosowaniu w programowaniu. Analizujemy najnowsze
+              osiągnięcia OpenAI, Google, Anthropic i innych graczy rynku AI.
+            </p>
+            <p class="leading-relaxed">
+              <strong class="text-primary-700">Przeprogramowani ft. Gość</strong> - Rozmowy z ekspertami
+              z branży IT o programowaniu, karierze, najlepszych praktykach i wyzwaniach współczesnego
+              rozwoju oprogramowania.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Episodes -->
+  <section class="py-12 bg-gray-50">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12">Ostatnie odcinki</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin"
+          duration="01:23:04"
+          description="Analizujemy zastosowania AI w ochronie zdrowia oraz najnowsze modele językowe z Chin i USA."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów"
+          duration="01:47:28"
+          description="Kompleksowy przegląd roku 2025 w sztucznej inteligencji - największe osiągnięcia, nowe modele i kierunki rozwoju."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR"
+          duration="00:58:41"
+          description="Rywalizacja gigantów AI, nowe standardy i problemy z metodologią benchmarkowania modeli językowych."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5"
+          duration="01:03:20"
+          description="Przegląd najnowszych wydań modeli AI od wszystkich głównych graczy rynku."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="Cursor 2.0 vs Windsurf SWE-1.5 - dobrze, szybko i tanio? Nowa era programowania z AI"
+          duration="01:14:37"
+          description="Porównanie najlepszych edytorów kodu z AI i ich wpływ na codzienną pracę programistów."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="opanuj-ai"
+          title="Czy agenci AI zdominują branżę e-commerce? ChatGPT Instant Checkout, premiera Claude Sonnet 4.5"
+          duration="01:28:05"
+          description="Agenty AI w handlu elektronicznym i najnowsze wydania modeli językowych."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="guest"
+          title="Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko"
+          duration="00:33:45"
+          description="Rozmowa o przełamywaniu barier językowych w karierze programisty."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="guest"
+          title="O dojrzewaniu zawodowym programisty, Wojciech Trawiński"
+          duration="00:45:56"
+          description="Jak rozwijać się jako programista i budować dojrzałą karierę w IT."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="guest"
+          title="Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin"
+          duration="01:16:44"
+          description="Głęboka dyskusja o architekturze aplikacji frontendowych poza modą na frameworki."
+        />
+
+        <PodcastEpisode
+          client:load
+          type="przeprogramowani"
+          title="Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne (LIVE YT)"
+          duration="01:36:34"
+          description="Sesja Q&A na żywo o nowościach w TypeScript i planach na przyszłość."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-20 bg-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        Nie przegap nowych odcinków
+      </h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Subskrybuj podcast na swojej ulubionej platformie i bądź na bieżąco z najnowszymi trendami w programowaniu i AI
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary bg-green-600 hover:bg-green-700"
+        >
+          Spotify
+        </a>
+        <a
+          href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary"
+        >
+          Apple Podcasts
+        </a>
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-secondary"
+        >
+          YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

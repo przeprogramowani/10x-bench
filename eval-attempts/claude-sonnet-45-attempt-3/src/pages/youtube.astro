@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import VideoCard from '../components/VideoCard';
+
+const videos = [
+  {
+    title: "Cursor 2.0 - Rewolucja w AI Coding",
+    description: "Kompleksowy przegląd nowego Cursor 2.0 i jak zmienia podejście do programowania z AI.",
+    thumbnail: "https://placehold.co/640x360/6366f1/white?text=Cursor+2.0",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "15K",
+    date: "2 dni temu"
+  },
+  {
+    title: "10xDevs - Jak programować 10x szybciej z AI",
+    description: "Praktyczne wskazówki i techniki produktywnego programowania z wykorzystaniem narzędzi AI.",
+    thumbnail: "https://placehold.co/640x360/8b5cf6/white?text=10xDevs",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "22K",
+    date: "1 tydzień temu"
+  },
+  {
+    title: "TypeScript 5 - Co nowego?",
+    description: "Przegląd najważniejszych nowości w TypeScript 5 i jak wpływają na codzienne programowanie.",
+    thumbnail: "https://placehold.co/640x360/3b82f6/white?text=TypeScript+5",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "18K",
+    date: "2 tygodnie temu"
+  },
+  {
+    title: "Frontend Architecture - Best Practices",
+    description: "Jak budować skalowalne aplikacje frontendowe - wzorce, narzędzia i dobre praktyki.",
+    thumbnail: "https://placehold.co/640x360/10b981/white?text=Frontend+Arch",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "25K",
+    date: "3 tygodnie temu"
+  },
+  {
+    title: "React 19 - Kompletny przewodnik",
+    description: "Wszystko co musisz wiedzieć o React 19 - nowe funkcje, zmiany i migracja.",
+    thumbnail: "https://placehold.co/640x360/ef4444/white?text=React+19",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "31K",
+    date: "1 miesiąc temu"
+  },
+  {
+    title: "GitHub Actions - Automatyzacja CI/CD",
+    description: "Praktyczny tutorial automatyzacji procesów deweloperskich z GitHub Actions.",
+    thumbnail: "https://placehold.co/640x360/f59e0b/white?text=GitHub+Actions",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "19K",
+    date: "1 miesiąc temu"
+  },
+  {
+    title: "Vibe Coding vs Vibe Engineering",
+    description: "Czym różni się vibe coding od vibe engineering i dlaczego to ważne dla twojej kariery.",
+    thumbnail: "https://placehold.co/640x360/ec4899/white?text=Vibe+Engineering",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "28K",
+    date: "1 miesiąc temu"
+  },
+  {
+    title: "Astro 5 - Nowoczesny framework do stron statycznych",
+    description: "Dlaczego Astro 5 to game-changer dla tworzenia szybkich stron internetowych.",
+    thumbnail: "https://placehold.co/640x360/14b8a6/white?text=Astro+5",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "16K",
+    date: "2 miesiące temu"
+  },
+  {
+    title: "Testowanie aplikacji React - Kompletny kurs",
+    description: "Od unit testów po testy E2E - jak prawidłowo testować aplikacje React.",
+    thumbnail: "https://placehold.co/640x360/6366f1/white?text=React+Testing",
+    videoUrl: "https://www.youtube.com/@przeprogramowani",
+    views: "27K",
+    date: "2 miesiące temu"
+  }
+];
+---
+
+<Layout title="YouTube - Przeprogramowani" description="Oglądaj filmy Przeprogramowani na YouTube - tutoriale, kursy i najlepsze praktyki w programowaniu.">
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-red-600 to-red-800 text-white py-20">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="text-6xl mb-6">📺</div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">Kanał YouTube</h1>
+          <p class="text-xl md:text-2xl text-red-100 mb-8">
+            Filmy edukacyjne o programowaniu, narzędziach AI i najlepszych praktykach w tworzeniu oprogramowania
+          </p>
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-lg"
+          >
+            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-gray-100 py-12">
+      <div class="section-container">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold text-red-600 mb-2">6 lat</div>
+            <div class="text-gray-600">Aktywności na YouTube</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-red-600 mb-2">200+</div>
+            <div class="text-gray-600">Opublikowanych filmów</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-red-600 mb-2">Premium</div>
+            <div class="text-gray-600">Jakość treści</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Grid -->
+    <section class="py-16">
+      <div class="section-container">
+        <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Najnowsze filmy</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video) => (
+            <VideoCard {...video} client:load />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="bg-gray-100 py-16">
+      <div class="section-container">
+        <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Tematy, które omawiamy</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-4">🤖</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">AI Coding</h3>
+            <p class="text-gray-600 text-sm">
+              Cursor, GitHub Copilot, Windsurf i inne narzędzia AI dla programistów
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-4">⚛️</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Frontend</h3>
+            <p class="text-gray-600 text-sm">
+              React, TypeScript, Astro, Next.js i nowoczesny development frontendowy
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-4">🏗️</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Architektura</h3>
+            <p class="text-gray-600 text-sm">
+              Wzorce projektowe, clean code i budowanie skalowalnych aplikacji
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-4">🔧</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">DevOps</h3>
+            <p class="text-gray-600 text-sm">
+              CI/CD, GitHub Actions, automatyzacja i deployment
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Channel -->
+    <section class="py-16">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center">O kanale</h2>
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <p class="text-lg text-gray-700 mb-6">
+              Kanał YouTube Przeprogramowani to miejsce, gdzie dzielimy się praktyczną wiedzą o programowaniu.
+              Utworzony 6 lat temu przez <strong>Marcina Czarkowskiego</strong>, <strong>Przemka Smyrdka</strong>
+              i <strong>Adama Gospodarczyka</strong> jako projekt weekendowy, dziś jest jednym z wiodących
+              polskich kanałów o tematyce programistycznej.
+            </p>
+            <p class="text-lg text-gray-700 mb-6">
+              Tworzymy treści dla programistów skupione na rozwoju osobistym, nowościach ze świata IT,
+              efektywnych technikach pracy i nauki oraz poradach dotyczących kariery. W 2024 roku Przemek
+              i Marcin postanowili w pełni zaangażować się w rozwój Przeprogramowani.
+            </p>
+            <div class="bg-primary-50 border-l-4 border-primary-600 p-6 rounded">
+              <p class="text-gray-800">
+                <strong>Nasza społeczność</strong> powstała głównie dzięki YouTube i newsletterowi
+                z darmowymi treściami o programowaniu. Nadal dzielimy się darmową wiedzą przez
+                YouTube, newsletter i podcast, który konsekwentnie plasuje się wśród najlepszych
+                technicznych podcastów w Polsce.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-red-600 py-16 text-white">
+      <div class="section-container text-center">
+        <h2 class="text-4xl font-bold mb-6">Dołącz do społeczności</h2>
+        <p class="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+          Subskrybuj kanał, aby nie przegapić żadnego filmu. Publikujemy regularne treści o programowaniu, AI i rozwoju zawodowym.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary bg-white text-red-600 hover:bg-gray-100"
+          >
+            Subskrybuj na YouTube
+          </a>
+          <a
+            href="https://przeprogramowani.substack.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary border-white text-white hover:bg-white hover:text-red-600"
+          >
+            Zapisz się do newslettera
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

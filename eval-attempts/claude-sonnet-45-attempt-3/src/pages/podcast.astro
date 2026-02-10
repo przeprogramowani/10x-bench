@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard';
+
+const episodes = [
+  {
+    title: "Doktor AI nadchodzi",
+    duration: "01:23:04",
+    description: "Eksplorujemy AI w służbie zdrowia, porównując ChatGPT Health z Google MedGemma i omawiając konstytucyjne podejście Anthropic do AI.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025",
+    duration: "01:47:28",
+    description: "Analiza roku z perspektywy AI - główne wydania modeli, rywalizacja w branży i najważniejsze osiągnięcia.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "GPT-5.2 to GEMINI KILLER?",
+    duration: "00:58:41",
+    description: "Analiza grudniowych wydań, badając pozycję konkurencyjną OpenAI wobec rodziny Gemini od Google.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "Gemini 3 to hit, ale konkurencja nie śpi",
+    duration: "01:03:20",
+    description: "Przegląd najważniejszych wydań AI w listopadzie - jeden z najintensywniejszych miesięcy w rozwoju AI.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "Cursor 2.0 vs Windsurf SWE-1.5",
+    duration: "01:14:37",
+    description: "Porównanie narzędzi deweloperskich opartych na AI, które przekształcają podejście do programowania.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "Programista vs. Angielski",
+    duration: "00:33:45",
+    description: "Wiktoria Sitko omawia bariery językowe i strategie nauki angielskiego dla programistów.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty",
+    duration: "00:45:56",
+    description: "Wojciech Trawiński dzieli się perspektywą na temat rozwoju zawodowego w tworzeniu oprogramowania.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  },
+  {
+    title: "Architektura frontendu",
+    duration: "01:16:44",
+    description: "Tomasz Ducin bada decyzje dotyczące architektury frontendu wykraczające poza konkretne narzędzia.",
+    spotifyUrl: "https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo",
+    appleUrl: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+  }
+];
+---
+
+<Layout title="Podcast - Przeprogramowani" description="Posłuchaj podcastu Przeprogramowani - rozmowy o AI, programowaniu i rozwoju zawodowym developerów.">
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="text-6xl mb-6">🎙️</div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">Podcast Przeprogramowani</h1>
+          <p class="text-xl md:text-2xl text-purple-100 mb-8">
+            Opanuj.AI Podcast oraz Przeprogramowani ft. Gość - rozmowy o AI, programowaniu i rozwoju zawodowym
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+            >
+              <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Słuchaj na Spotify
+            </a>
+            <a
+              href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12zm0 2.182c5.423 0 9.818 4.395 9.818 9.818 0 5.423-4.395 9.818-9.818 9.818-5.423 0-9.818-4.395-9.818-9.818 0-5.423 4.395-9.818 9.818-9.818zM12 6c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm0 8c-2.761 0-5 1.791-5 4v.5c0 .276.224.5.5.5h9c.276 0 .5-.224.5-.5V18c0-2.209-2.239-4-5-4z"/>
+              </svg>
+              Apple Podcasts
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-gray-100 py-12">
+      <div class="section-container">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold text-purple-600 mb-2">98</div>
+            <div class="text-gray-600">Opublikowanych odcinków</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-purple-600 mb-2">2019-2025</div>
+            <div class="text-gray-600">Lata aktywności</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold text-purple-600 mb-2">Top 10</div>
+            <div class="text-gray-600">Tech podcast w Polsce</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Episodes -->
+    <section class="py-16">
+      <div class="section-container">
+        <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Najnowsze odcinki</h2>
+        <div class="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
+          {episodes.map((episode) => (
+            <PodcastEpisodeCard {...episode} client:load />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- About Podcast -->
+    <section class="bg-gray-100 py-16">
+      <div class="section-container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6 text-center">O podcaście</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Opanuj.AI Podcast</h3>
+              <p class="text-gray-600 mb-4">
+                Seria skupiająca się na sztucznej inteligencji w programowaniu. Omawiamy najnowsze modele AI, narzędzia dla deweloperów i praktyczne zastosowania AI w tworzeniu oprogramowania.
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Najnowsze trendy AI
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Porównania modeli i narzędzi
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Praktyczne case study
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Przeprogramowani ft. Gość</h3>
+              <p class="text-gray-600 mb-4">
+                Rozmowy z ekspertami z branży IT. Dzielimy się doświadczeniami, poznajemy różne perspektywy i rozmawiamy o rozwoju zawodowym programistów.
+              </p>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Wywiady z ekspertami
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Rozwój kariery
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-purple-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  Best practices w programowaniu
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16">
+      <div class="section-container text-center">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Nie przegap żadnego odcinka</h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Subskrybuj podcast na swojej ulubionej platformie i bądź na bieżąco z najnowszymi trendami w programowaniu i AI.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary bg-green-600 hover:bg-green-700"
+          >
+            Subskrybuj na Spotify
+          </a>
+          <a
+            href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            Subskrybuj na Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

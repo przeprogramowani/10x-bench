@@ -8,6 +8,7 @@ export enum AGENT_ENVIRONMENT {
 // Keyed by base model ID (directory name without "-attempt-{n}")
 export const AGENT_NAMES: Record<string, string> = {
   "claude-opus-46": "Claude Opus 4.6",
+  "claude-sonnet-45": "Claude Sonnet 4.5",
   "gpt-53-codex": "GPT-5.3-Codex",
   "glm-47": "GLM-4.7",
   "kimi-k25": "Kimi K2.5",
@@ -19,6 +20,7 @@ export const AGENT_NAMES: Record<string, string> = {
 
 export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
   "claude-opus-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
+  "claude-sonnet-45": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-53-codex": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "glm-47": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k25": AGENT_ENVIRONMENT.OpenCode,

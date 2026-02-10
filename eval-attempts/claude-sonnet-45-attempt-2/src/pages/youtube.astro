@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard';
+import content from '../data/content.json';
+
+const { videos } = content;
+---
+
+<Layout title="YouTube - Przeprogramowani.pl" description="Praktyczne filmy o programowaniu, narzędziach AI i technikach pracy. Wszystko, czego potrzebujesz by rozwijać się jako programista.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-accent-600 to-primary-600 text-white py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex justify-center mb-6">
+        <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+        </svg>
+      </div>
+      <h1 class="text-5xl font-bold mb-6">Kanał YouTube</h1>
+      <p class="text-2xl text-accent-100 mb-8">
+        Praktyczne filmy o programowaniu i narzędziach AI
+      </p>
+      <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener" class="inline-block bg-white text-accent-700 font-semibold px-8 py-4 rounded-lg hover:bg-accent-50 transition text-lg">
+        Odwiedź kanał YouTube
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Programowanie w praktyce</h2>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Na naszym kanale YouTube znajdziesz praktyczne poradniki, prezentacje narzędzi oraz analizy najnowszych technologii.
+        Pomagamy programistom rozwijać umiejętności poprzez konkretne przykłady i case studies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Video Categories -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Kategorie filmów</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Tutoriale</h3>
+          <p class="text-gray-600 text-sm">Krok po kroku przez praktyczne implementacje</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 7H7v6h6V7z" />
+              <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">AI & Tools</h3>
+          <p class="text-gray-600 text-sm">Narzędzia AI zwiększające produktywność</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Tech News</h3>
+          <p class="text-gray-600 text-sm">Aktualności ze świata technologii</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Best Practices</h3>
+          <p class="text-gray-600 text-sm">Sprawdzone rozwiązania i wzorce</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Videos -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Najnowsze filmy</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <VideoCard video={video} client:load />
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener" class="inline-block bg-accent-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-accent-700 transition text-lg">
+          Zobacz wszystkie filmy
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Topics -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Popularne tematy</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {[
+          'TypeScript',
+          'React',
+          'Cursor AI',
+          'Frontend',
+          'Angular',
+          'Node.js',
+          'AI Tools',
+          'Produktywność',
+          'Testing',
+          'Architecture',
+          'DevOps',
+          'Career Tips'
+        ].map((topic) => (
+          <div class="bg-white px-4 py-3 rounded-lg shadow-sm text-center font-semibold text-gray-700 hover:shadow-md transition">
+            {topic}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Subscribe -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Dlaczego warto subskrybować?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-10 h-10 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Regularne publikacje</h3>
+          <p class="text-gray-600">Nowe filmy co tydzień z najnowszymi trendami i narzędziami</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-10 h-10 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Praktyczna wiedza</h3>
+          <p class="text-gray-600">Konkretne przykłady i case studies, które możesz od razu zastosować</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-10 h-10 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Aktywna społeczność</h3>
+          <p class="text-gray-600">Dołącz do dyskusji w komentarzach i rozwijaj się razem z innymi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-accent-600 to-primary-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Dołącz do społeczności na YouTube</h2>
+      <p class="text-xl text-accent-100 mb-8">
+        Zostaw subskrypcję i dzwonek, aby nie przegapić nowych filmów
+      </p>
+      <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener" class="inline-block bg-white text-accent-700 font-semibold px-8 py-4 rounded-lg hover:bg-accent-50 transition text-lg">
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+</Layout>

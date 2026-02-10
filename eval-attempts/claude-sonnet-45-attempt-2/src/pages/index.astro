@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard';
+import content from '../data/content.json';
+
+const courses = content.courses.filter(c => c.featured);
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-600 via-primary-700 to-accent-700 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          Szersze spojrzenie na programowanie
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">
+          Od 2017 roku tworzymy kursy, podcast i materiały dla społeczności 15 000+ programistów
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/podcast" class="bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+            Posłuchaj podcastu
+          </a>
+          <a href="/o-nas" class="bg-primary-800 text-white font-semibold px-8 py-4 rounded-lg hover:bg-primary-900 transition text-lg border-2 border-white">
+            Poznaj nas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Nasze kursy</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Rozwijaj swoje umiejętności z najlepszymi kursami programowania w Polsce
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <CourseCard course={course} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2">15k+</div>
+          <div class="text-gray-600 font-medium">Społeczność</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2">98</div>
+          <div class="text-gray-600 font-medium">Odcinków podcastu</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2">7+</div>
+          <div class="text-gray-600 font-medium">Lat doświadczenia</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-bold text-primary-600 mb-2">3</div>
+          <div class="text-gray-600 font-medium">Kursy premium</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Content -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <svg class="w-12 h-12 text-primary-600 mr-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+            </svg>
+            <h3 class="text-2xl font-bold text-gray-900">Podcast</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            98 odcinków o szerokim spojrzeniu na programowanie. Rozmawiamy o architekturze, biznesie, ludzi i sobie samych.
+          </p>
+          <a href="/podcast" class="text-primary-600 font-semibold hover:text-primary-700 transition inline-flex items-center">
+            Sprawdź odcinki
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-center mb-6">
+            <svg class="w-12 h-12 text-accent-600 mr-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+            </svg>
+            <h3 class="text-2xl font-bold text-gray-900">YouTube</h3>
+          </div>
+          <p class="text-gray-600 mb-6">
+            Praktyczne filmy o programowaniu, narzędziach AI i technikach pracy. Wszystko, czego potrzebujesz by rozwijać się jako programista.
+          </p>
+          <a href="/youtube" class="text-accent-600 font-semibold hover:text-accent-700 transition inline-flex items-center">
+            Zobacz filmy
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-accent-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Gotowy na szersze spojrzenie?</h2>
+      <p class="text-xl text-primary-100 mb-8">
+        Dołącz do tysięcy programistów, którzy już rozwijają się z Przeprogramowani.pl
+      </p>
+      <a href="/o-nas" class="inline-block bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+        Dowiedz się więcej
+      </a>
+    </div>
+  </section>
+</Layout>

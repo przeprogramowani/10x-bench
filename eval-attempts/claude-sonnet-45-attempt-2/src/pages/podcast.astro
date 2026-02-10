@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+import content from '../data/content.json';
+
+const { podcasts } = content;
+---
+
+<Layout title="Podcast - Przeprogramowani.pl" description="98 odcinków o szerokim spojrzeniu na programowanie. Rozmawiamy o architekturze, biznesie, ludzi i sobie samych.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-600 to-accent-600 text-white py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex justify-center mb-6">
+        <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+        </svg>
+      </div>
+      <h1 class="text-5xl font-bold mb-6">Podcast Przeprogramowani</h1>
+      <p class="text-2xl text-primary-100 mb-8">
+        Szersze spojrzenie na programowanie w 98 odcinkach
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526" target="_blank" rel="noopener" class="bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+          Apple Podcasts
+        </a>
+        <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noopener" class="bg-primary-800 text-white font-semibold px-8 py-4 rounded-lg hover:bg-primary-900 transition text-lg border-2 border-white">
+          Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Dwa podcasty, jedno podejście</h2>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        <strong>Przeprogramowani ft. Gość</strong> to rozmowy z ekspertami branży IT o ich doświadczeniach, karierze i podejściu do programowania.
+        <strong>Opanuj.AI Podcast</strong> to najpopularniejszy techniczny podcast o LLM w Polsce, w którym omawiamy najnowsze modele, narzędzia i trendy w AI.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg p-6 text-center shadow-md">
+          <div class="text-4xl font-bold text-primary-600 mb-2">98</div>
+          <div class="text-gray-600 font-medium">Odcinków</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-md">
+          <div class="text-4xl font-bold text-primary-600 mb-2">4000+</div>
+          <div class="text-gray-600 font-medium">Słuchaczy</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-md">
+          <div class="text-4xl font-bold text-primary-600 mb-2">2019</div>
+          <div class="text-gray-600 font-medium">Rok startu</div>
+        </div>
+        <div class="bg-white rounded-lg p-6 text-center shadow-md">
+          <div class="text-4xl font-bold text-primary-600 mb-2">6+</div>
+          <div class="text-gray-600 font-medium">Lat na antenie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Najnowsze odcinki</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {podcasts.map((podcast) => (
+          <PodcastCard podcast={podcast} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Topics -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">O czym rozmawiamy</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Rozwój kariery</h3>
+          <p class="text-gray-600">Dojrzewanie zawodowe, ścieżki kariery i budowanie pozycji w branży IT</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 7H7v6h6V7z" />
+              <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Sztuczna inteligencja</h3>
+          <p class="text-gray-600">Najnowsze modele AI, narzędzia i ich praktyczne zastosowanie w pracy</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+              <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+              <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Architektura</h3>
+          <p class="text-gray-600">Projektowanie systemów, frontend architecture i best practices</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Produktywność</h3>
+          <p class="text-gray-600">Efektywna nauka, zarządzanie czasem i narzędzia zwiększające wydajność</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Ludzie i zespoły</h3>
+          <p class="text-gray-600">Współpraca w zespole, komunikacja i soft skills programistów</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Technologie</h3>
+          <p class="text-gray-600">Nowoczesne frameworki, języki programowania i trendy w development</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-accent-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Słuchaj gdzie tylko chcesz</h2>
+      <p class="text-xl text-primary-100 mb-8">
+        Podcast dostępny na wszystkich popularnych platformach
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526" target="_blank" rel="noopener" class="bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+          Apple Podcasts
+        </a>
+        <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noopener" class="bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+          Spotify
+        </a>
+        <a href="https://przeprogramowani.pl/podcast" target="_blank" rel="noopener" class="bg-primary-800 text-white font-semibold px-8 py-4 rounded-lg hover:bg-primary-900 transition text-lg border-2 border-white">
+          Więcej platform
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

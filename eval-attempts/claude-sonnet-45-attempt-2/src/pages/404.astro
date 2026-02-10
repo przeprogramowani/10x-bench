@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Strona nie znaleziona - Przeprogramowani.pl">
+  <section class="py-20 bg-gray-50 min-h-screen flex items-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <svg class="w-32 h-32 mx-auto text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h1 class="text-6xl font-bold text-gray-900 mb-4">404</h1>
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Strona nie znaleziona</h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Przepraszamy, ale strona której szukasz nie istnieje lub została przeniesiona.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="bg-primary-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-primary-700 transition text-lg">
+          Strona główna
+        </a>
+        <a href="/podcast" class="bg-gray-200 text-gray-800 font-semibold px-8 py-4 rounded-lg hover:bg-gray-300 transition text-lg">
+          Podcast
+        </a>
+        <a href="/o-nas" class="bg-gray-200 text-gray-800 font-semibold px-8 py-4 rounded-lg hover:bg-gray-300 transition text-lg">
+          O nas
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

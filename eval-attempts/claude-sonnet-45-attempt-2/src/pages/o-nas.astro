@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TeamCard from '../components/TeamCard';
+import content from '../data/content.json';
+
+const { team, about } = content;
+---
+
+<Layout title="O nas - Przeprogramowani.pl" description={about.mission}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-600 to-accent-600 text-white py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl font-bold mb-6">O nas</h1>
+      <p class="text-2xl text-primary-100">
+        {about.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Nasza misja</h2>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          {about.mission}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary-600 mb-2">{about.founded}</div>
+          <div class="text-gray-600 font-medium">Rok założenia</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary-600 mb-2">15k+</div>
+          <div class="text-gray-600 font-medium">Społeczność</div>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary-600 mb-2">7+</div>
+          <div class="text-gray-600 font-medium">Lat doświadczenia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Zespół</h2>
+        <p class="text-xl text-gray-600">
+          Poznaj ludzi tworzących Przeprogramowani.pl
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {team.map((member) => (
+          <TeamCard member={member} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Czym się zajmujemy</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Kursy</h3>
+          <p class="text-gray-600">
+            Tworzymy kompleksowe kursy programowania, które pomagają developerom rozwijać się na każdym poziomie zaawansowania.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="w-16 h-16 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Podcast</h3>
+          <p class="text-gray-600">
+            Prowadzimy dwa popularne podcasty: Przeprogramowani oraz Opanuj.AI Podcast, w których rozmawiamy o szerszym spojrzeniu na programowanie.
+          </p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-8">
+          <div class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Społeczność</h3>
+          <p class="text-gray-600">
+            Budujemy aktywną społeczność programistów, którzy wspierają się wzajemnie w rozwoju i dzielą się wiedzą.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8">Współpracują z nami</h2>
+      <div class="flex flex-wrap justify-center items-center gap-8">
+        {about.partners.map((partner) => (
+          <div class="text-xl font-semibold text-gray-600 px-6 py-3 bg-white rounded-lg shadow">
+            {partner}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-primary-600 to-accent-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Dołącz do naszej społeczności</h2>
+      <p class="text-xl text-primary-100 mb-8">
+        Poznaj nasze kursy, posłuchaj podcastu i rozwijaj się razem z tysiącami programistów
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/podcast" class="bg-white text-primary-700 font-semibold px-8 py-4 rounded-lg hover:bg-primary-50 transition text-lg">
+          Posłuchaj podcastu
+        </a>
+        <a href="/" class="bg-primary-800 text-white font-semibold px-8 py-4 rounded-lg hover:bg-primary-900 transition text-lg border-2 border-white">
+          Zobacz kursy
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
