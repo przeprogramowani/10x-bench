@@ -13,12 +13,15 @@ interface ModelFamilyAverage {
 interface Props {
   average: ModelFamilyAverage;
   rank: number;
+  screenshotHashes?: Record<string, string>;
 }
 
-export default function ModelAveragesCard({ average, rank }: Props) {
+export default function ModelAveragesCard({ average, rank, screenshotHashes }: Props) {
   const [hasFilmstrip, setHasFilmstrip] = useState(true);
   const [expanded, setExpanded] = useState(false);
-  const filmstripPath = `/screenshots/${average.modelBaseId}_filmstrip.png`;
+  const filmstripFilename = `${average.modelBaseId}_filmstrip.png`;
+  const filmstripHash = screenshotHashes?.[filmstripFilename];
+  const filmstripPath = `/screenshots/${filmstripFilename}${filmstripHash ? `?v=${filmstripHash}` : ''}`;
 
   const getBadgeColor = (percentage: number) => {
     if (percentage >= 90) return 'bg-green-900 text-green-200';

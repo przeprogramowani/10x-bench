@@ -18,12 +18,14 @@
 
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 import {spawn, ChildProcess} from "child_process";
 import {chromium, Browser} from "playwright";
 import net from "net";
 
 const EVAL_ATTEMPTS_DIR = path.resolve("eval-attempts");
 const SCREENSHOTS_DIR = path.resolve("./website/public/screenshots");
+const SCREENSHOT_HASHES_PATH = path.resolve("./website/src/data/screenshot-hashes.json");
 const BASE_PORT = 4321;
 const DEV_SERVER_TIMEOUT_MS = 60_000;
 const CLEANUP_WAIT_MS = 3000;
@@ -442,6 +444,20 @@ async function processAttemptsInParallel(
   return {successes, failures};
 }
 
+function generateHashManifest(): void {
+  const hashes: Record<string, string> = {};
+  const files = fs.readdirSync(SCREENSHOTS_DIR).filter((f) => f.endsWith(".png"));
+
+  for (const file of files) {
+    const content = fs.readFileSync(path.join(SCREENSHOTS_DIR, file));
+    const hash = crypto.createHash("md5").update(content).digest("hex").slice(0, 8);
+    hashes[file] = hash;
+  }
+
+  fs.writeFileSync(SCREENSHOT_HASHES_PATH, JSON.stringify(hashes, null, 2) + "\n");
+  console.log(`Screenshot hash manifest written (${files.length} files).`);
+}
+
 async function main() {
   // Set up signal handlers for graceful shutdown
   setupSignalHandlers();
@@ -494,6 +510,9 @@ async function main() {
     await browser.close();
     await cleanupAllProcesses();
   }
+
+  // Generate content-hash manifest for cache busting
+  generateHashManifest();
 
   // Summary
   console.log("\n--- Summary ---");

@@ -4,9 +4,10 @@ import ResultCard from './ResultCard';
 interface AccordionSectionProps {
   title: string;
   attempts: any[];
+  screenshotHashes?: Record<string, string>;
 }
 
-export default function AccordionSection({ title, attempts }: AccordionSectionProps) {
+export default function AccordionSection({ title, attempts, screenshotHashes }: AccordionSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,7 +30,7 @@ export default function AccordionSection({ title, attempts }: AccordionSectionPr
       {isOpen && (
         <div className="mt-6 flex flex-col gap-4">
           {attempts.map((attempt) => (
-            <ResultCard key={attempt.id} attempt={attempt} />
+            <ResultCard key={attempt.id} attempt={attempt} screenshotHashes={screenshotHashes} />
           ))}
         </div>
       )}
