@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YouTubeVideoCard from '../components/YouTubeVideoCard.astro';
+import { videos, youtubeChannel } from '../data/youtube';
+---
+
+<Layout title="YouTube — Przeprogramowani" description="Filmy o programowaniu, karierze w IT i technologiach na kanale Przeprogramowani.">
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white">YouTube</h1>
+          <p class="text-xl text-slate-400 mt-4">
+            Filmy o programowaniu, karierze w IT i technologiach. Subskrybuj i nie przegap nowych materiałów.
+          </p>
+          <p class="text-blue-400 text-sm font-medium mt-2">{youtubeChannel.subscriberCount} subskrybentów</p>
+        </div>
+
+        <a
+          href={youtubeChannel.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary text-base px-6 py-3 self-start"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subskrybuj na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos grid -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <YouTubeVideoCard video={video} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="card text-center p-8 md:p-12 border-blue-600/30">
+        <div class="max-w-2xl mx-auto">
+          <svg class="w-12 h-12 mx-auto mb-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">
+            Nie przegap nowych filmów
+          </h2>
+          <p class="text-slate-400 mt-3">
+            Subskrybuj kanał Przeprogramowani i włącz powiadomienia, aby być na bieżąco z najnowszymi materiałami.
+          </p>
+          <a
+            href={youtubeChannel.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary text-base px-8 py-4 mt-6 inline-flex"
+          >
+            Subskrybuj na YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

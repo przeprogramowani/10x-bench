@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PodcastEpisodeCard from "../components/PodcastEpisodeCard.tsx";
+import { podcastEpisodes, podcastLinks } from "../data/podcast-episodes";
+---
+
+<Layout title="Podcast — Przeprogramowani" description="Podcast Przeprogramowani — rozmowy o programowaniu, karierze w IT i rozwoju zawodowym. Ponad 100 odcinków z ekspertami branży.">
+
+  <!-- Header -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/30 via-surface-950 to-surface-950"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">Podcast</h1>
+        <p class="mt-6 text-lg text-surface-300 leading-relaxed">
+          Podcast Przeprogramowani to rozmowy o programowaniu, karierze w IT i rozwoju zawodowym. Zapraszamy ekspertów z branży, by wspólnie szukać szerszego spojrzenia na świat technologii.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={podcastLinks.spotify}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-[#1DB954] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1ed760] transition-colors"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            Spotify
+          </a>
+          <a
+            href={podcastLinks.apple}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-b from-[#F452FF] to-[#832BC1] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.6-.12 1.2-.72 1.32s-1.2-.12-1.32-.72c-.264-1.344-.792-2.4-1.68-3.36-1.272-1.344-2.952-2.04-4.8-2.04-1.704 0-3.312.624-4.536 1.776-.264.24-.528.504-.768.792-.36.432-.936.504-1.368.144-.432-.36-.504-.936-.144-1.368.312-.36.624-.696.96-1.008 1.56-1.44 3.6-2.316 5.856-2.316zM12 7.32c1.896 0 3.552.672 4.8 1.944.84.864 1.392 1.872 1.656 3.048.12.6-.12 1.2-.72 1.32-.6.12-1.2-.12-1.32-.72-.168-.792-.552-1.488-1.128-2.088-.864-.888-2.04-1.344-3.408-1.344-1.08 0-2.112.36-2.976 1.032-.216.168-.408.36-.6.576-.384.408-.96.456-1.368.072-.408-.384-.456-.96-.072-1.368.24-.264.48-.504.744-.72 1.128-.888 2.544-1.368 4.032-1.368zm-.12 4.56c1.08 0 2.04.408 2.784 1.176.504.528.84 1.128 1.008 1.824.12.6-.12 1.2-.72 1.32-.6.12-1.2-.12-1.32-.72-.072-.312-.24-.6-.48-.84-.384-.408-.912-.6-1.464-.6-.432 0-.84.12-1.176.384-.12.096-.24.192-.336.312-.384.432-.984.48-1.392.096-.408-.384-.456-.984-.072-1.392.168-.192.36-.36.552-.504.6-.456 1.32-.696 2.088-.696zm.24 4.032c.768 0 1.368.6 1.368 1.368v3.408c0 .768-.6 1.368-1.368 1.368-.768 0-1.368-.6-1.368-1.368V17.28c0-.768.6-1.368 1.368-1.368z"/>
+            </svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes: Przeprogramowani ft. Gość -->
+  <section class="border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Przeprogramowani ft. Gość</h2>
+      <p class="mt-3 text-surface-400 max-w-2xl">
+        Wybrane odcinki z serii rozmów z ekspertami z branży IT. Każdy odcinek to pogłębiona dyskusja na temat, który naprawdę ma znaczenie.
+      </p>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {podcastEpisodes.map((episode) => (
+          <PodcastEpisodeCard episode={episode} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Opanuj.AI section -->
+  <section class="border-t border-surface-800/50 bg-surface-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center rounded-full bg-brand-600/20 border border-brand-500/30 px-3 py-1 text-xs font-medium text-brand-300">
+          Drugi podcast
+        </span>
+        <h2 class="mt-4 text-2xl sm:text-3xl font-extrabold text-white">Opanuj.AI</h2>
+        <p class="mt-4 text-surface-300 leading-relaxed">
+          Podcast Marcina Czarkowskiego poświęcony sztucznej inteligencji w kontekście programowania i codziennej pracy. Praktyczne porady, narzędzia i strategie wykorzystania AI.
+        </p>
+        <a
+          href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors"
+        >
+          Słuchaj na Spotify
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

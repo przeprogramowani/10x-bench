@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,8min 36s,N/A,8min 36s
+Test run,11.02.2026 21:48,N/A,11.02.2026 21:48
+Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter. Static output with prerendered pages.
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200. Navigation styles and content working properly.
+Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 and @astrojs/cloudflare 12.6.12 configured in astro.config.mjs.
+O nas page,0.5,1,Page exists and returns 200. Team members Przemek Smyrdek and Marcin Czarkowski present with DAZN/Cabify and SmartRecruiters mentions. However bios are simplified - missing Open Source contributions (CursorLens openapi-typescript) conference speaking (4Developers ReactiveConf InfoShare) publications (Magazyn Programista Increment by Stripe) and neuroscience detail for Marcin. Contributors section (Adam Gospodarczyk Wiktor Jamro Olaf Sulich Jakub Paczkowski Krzysztof Bohaczyk) completely missing.
+Podcast page,1,1,Both podcasts displayed. Correct Spotify URLs verified: Przeprogramowani (3yVvOAXSYq6sQB02w4A4wo) and OpanujAI (3D6LmchBdoqL2sWkQjvWOy). Live data fetched from Spotify podcasters platform showing 6 episodes per podcast with real titles dates and descriptions.
+YouTube page,1,1,Page returns 200. Uses real Przeprogramowani YouTube channel feed (UCb2Y3vMeD6N4WDt5Acw7Arw). 9 video IDs verified as real channel content including Skills vs AgentsMD Demo Day 10xDevs and other authentic titles. No rick rolls or placeholder IDs.
+Kursy section,0.5,1,10xDevs 3.0 prominently featured in hero section on main page with proper CTA. Courses section present with Opanuj Frontend AI Edition and Opanuj TypeScript. However missing 4 of 6 required courses: Opanuj JavaScript Opanuj AI Cursor: Programuj z AI. Course descriptions lack metrics (editions graduates ratings).
+Consistent UI,1,1,UI consistent across all pages confirmed by manual testing.
+Responsive design,1,1,Containers components and navigation fully responsive confirmed by manual testing.
+SEO Tags,0.5,1,Basic SEO via MainLayout.astro with meta description and title on all pages. Brand name and mission present in descriptions. Missing Open Graph tags Twitter Card tags canonical links and Schema.org structured data. Podcast and YouTube page descriptions are minimal.

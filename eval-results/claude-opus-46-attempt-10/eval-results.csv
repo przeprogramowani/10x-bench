@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,11.02.2026 21:40,N/A,11.02.2026 21:40
+Local build,1,1,Build succeeded - 4 pages generated in 695ms
+Manual testing,1,1,All pages accessible and return 200. Navigation styles and content working properly
+Tech stack,0.5,1,Astro 5 React 19 Tailwind CSS 4 present. Cloudflare Adapter (@astrojs/cloudflare) not installed or configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Team bios simplified - missing key details: Przemek missing specific roles at DAZN/Cabify and publications/conferences/course assignment; Marcin missing lead role at SmartRecruiters and OpanujAI podcast authorship/course assignment. DAZN/Cabify/SmartRecruiters only as experience tags
+Podcast page,0.5,1,Both podcasts displayed and returns 200. Spotify URLs fabricated (slug-based /show/przeprogramowani and /show/opanuj-ai instead of real IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy). All 6 episodes from Przeprogramowani only - no OpanujAI episodes. Episode data appears hallucinated
+YouTube page,1,1,All 6 video IDs verified as real Przeprogramowani channel videos via YouTube oembed API. Unique IDs - no rick rolls or placeholders
+Kursy section,0.5,1,CoursesSection component exists with 10xDevs featured prominently on Hero. Only 3 of 6 courses from context (missing Opanuj JavaScript/Opanuj AI/Cursor). Content partially matches
+Consistent UI,1,1,UI consistent across all pages - dark theme with cohesive styling
+Responsive design,1,1,Containers components and navigation fully responsive across screen sizes
+SEO Tags,1,1,Meta title and description in Layout.astro covering all pages. Default description matches context tagline. Each page has custom title and description

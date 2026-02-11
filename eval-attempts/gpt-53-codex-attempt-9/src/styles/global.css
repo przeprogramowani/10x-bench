@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Manrope", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: #0f172a;
+  background:
+    radial-gradient(900px 400px at -8% -5%, rgb(20 184 166 / 0.2), transparent 65%),
+    radial-gradient(760px 360px at 108% -10%, rgb(249 115 22 / 0.18), transparent 62%),
+    #f4f7f7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+@layer utilities {
+  .section-shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+
+  @media (width >= 40rem) {
+    .section-shell {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .section-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  .glass-panel {
+    box-shadow: 0 22px 40px -22px rgb(15 23 42 / 0.6);
+    backdrop-filter: blur(10px);
+  }
+
+  .card-raise {
+    transition: transform 240ms ease, box-shadow 240ms ease;
+  }
+
+  .card-raise:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 36px -26px rgb(15 23 42 / 0.3);
+  }
+
+  .fade-up {
+    animation: fade-up 620ms ease both;
+  }
+
+  .fade-up-delay-1 {
+    animation-delay: 90ms;
+  }
+
+  .fade-up-delay-2 {
+    animation-delay: 190ms;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

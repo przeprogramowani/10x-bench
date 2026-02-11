@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import PodcastCard from '../components/PodcastCard';
+import VideoCard from '../components/VideoCard';
+import { podcasts, videos } from '../data/content';
+
+const recentPodcasts = podcasts.flatMap((show) =>
+  show.episodes.slice(0, 2).map((ep) => ({ ...ep, show: show.name }))
+);
+const recentVideos = videos.slice(0, 3);
+---
+
+<Layout
+  title="Strona główna"
+  description="Przeprogramowani.pl — edukacja technologiczna w epoce AI. Kursy programowania, podcasty i społeczność dla programistów."
+  canonicalPath="/"
+>
+  <Hero client:load />
+
+  <!-- O Przeprogramowani -->
+  <section class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">O Przeprogramowani</h2>
+        <p class="mt-4 text-lg leading-relaxed text-slate-400">
+          Od 2017 roku pomagamy programistom rozwijać umiejętności techniczne. Nasza społeczność
+          liczy ponad 15 000 osób, a z naszych kursów skorzystało już ponad 3 700 absolwentów.
+          Łączymy wiedzę praktyczną z najnowszymi trendami AI.
+        </p>
+        <a
+          href="/o-nas"
+          class="mt-6 inline-flex items-center gap-2 rounded-lg bg-slate-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-slate-700"
+        >
+          Dowiedz się więcej o nas
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Najnowsze -->
+  <section class="border-t border-slate-800/50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-white sm:text-4xl">Najnowsze</h2>
+
+      <!-- Podcast -->
+      <div class="mt-10">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-slate-200">Podcast</h3>
+          <a href="/podcast" class="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300">
+            Wszystkie odcinki &rarr;
+          </a>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {recentPodcasts.map((ep) => (
+            <PodcastCard episode={ep} />
+          ))}
+        </div>
+      </div>
+
+      <!-- YouTube -->
+      <div class="mt-14">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-slate-200">YouTube</h3>
+          <a href="/youtube" class="text-sm font-medium text-indigo-400 transition-colors hover:text-indigo-300">
+            Wszystkie filmy &rarr;
+          </a>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {recentVideos.map((video) => (
+            <VideoCard video={video} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

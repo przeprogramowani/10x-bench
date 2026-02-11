@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { aboutHighlights, team } from '@/lib/site-data';
+---
+
+<BaseLayout
+  title="O nas - Przeprogramowani.pl"
+  description="Poznaj zespół Przeprogramowani i naszą misję łączenia programowania, biznesu i rozwoju."
+  pathname="/o-nas"
+>
+  <section class="container-shell pb-12 pt-14 sm:pt-20">
+    <p class="text-sm uppercase tracking-[0.12em] text-cyan-200/85">O nas</p>
+    <h1 class="section-title mt-3 text-4xl font-extrabold text-white sm:text-5xl">
+      Łączymy świat programowania, biznesu i rozwoju
+    </h1>
+    <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-300">
+      Przeprogramowani to platforma edukacyjna tworzona przez praktyków. Skupiamy się na realnych
+      umiejętnościach, które pomagają budować lepszy kod, lepsze produkty i lepszą karierę.
+    </p>
+  </section>
+
+  <section class="container-shell pb-16 sm:pb-20">
+    <div class="glass-card p-7 sm:p-9">
+      <h2 class="section-title text-2xl font-bold text-white">Co robimy</h2>
+      <ul class="mt-5 grid gap-3 sm:grid-cols-3">
+        {
+          aboutHighlights.map((highlight) => (
+            <li class="rounded-xl border border-white/10 bg-white/4 p-4 text-sm leading-relaxed text-slate-200">
+              {highlight}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-shell pb-20 sm:pb-24">
+    <div class="mb-8">
+      <h2 class="section-title text-3xl font-bold text-white">Zespół</h2>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        team.map((person) => (
+          <article class="glass-card overflow-hidden">
+            <div class="relative h-64 w-full border-b border-white/10 bg-slate-900/20">
+              <img
+                src={person.image}
+                alt={person.name}
+                loading="lazy"
+                class="h-full w-full object-contain px-4 pt-4"
+              />
+            </div>
+            <div class="space-y-4 p-6">
+              <div>
+                <h3 class="section-title text-2xl font-bold text-white">{person.name}</h3>
+                <p class="mt-1 text-sm font-semibold uppercase tracking-[0.08em] text-cyan-200/85">
+                  {person.role}
+                </p>
+              </div>
+              <p class="text-sm leading-relaxed text-slate-300">{person.bio}</p>
+              <a
+                href={person.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white transition hover:border-cyan-100/60 hover:bg-cyan-200/10"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

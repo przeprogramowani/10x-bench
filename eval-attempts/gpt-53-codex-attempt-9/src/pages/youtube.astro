@@ -1,0 +1,52 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { fetchLatestYouTubeVideos } from '../lib/content';
+
+const videos = await fetchLatestYouTubeVideos(12);
+const dateFormatter = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'medium' });
+---
+
+<MainLayout
+  title="YouTube - Przeprogramowani"
+  description="Najnowsze filmy z kanalu YouTube Przeprogramowani."
+>
+  <section class="section-shell pt-14">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-wide text-cyan-700">YouTube</p>
+      <h1 class="mt-3 font-display text-4xl font-semibold text-slate-900 sm:text-5xl">Ostatnie materialy wideo</h1>
+      <p class="mt-5 text-lg text-slate-700">
+        Najnowsze filmy publikowane na kanale Przeprogramowani. Workflow AI, architektura, TypeScript i praktyczne case studies.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-shell mt-10">
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {
+        videos.map((video) => (
+          <a
+            href={video.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-raise group overflow-hidden rounded-2xl border border-slate-200 bg-white"
+          >
+            <img
+              src={video.thumbnail}
+              alt={video.title}
+              loading="lazy"
+              class="aspect-video w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+            />
+
+            <div class="p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {dateFormatter.format(new Date(video.publishedAt))}
+              </p>
+              <h2 class="mt-2 line-clamp-2 text-base font-semibold text-slate-900">{video.title}</h2>
+              <p class="mt-2 line-clamp-3 text-sm text-slate-600">{video.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

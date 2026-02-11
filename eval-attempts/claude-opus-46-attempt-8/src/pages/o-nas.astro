@@ -1,0 +1,153 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { team } from "../data/team";
+---
+
+<Layout title="O nas — Przeprogramowani" description="Poznaj Przeprogramowani — platformę edukacyjną dla programistów założoną w 2017 roku przez Przemka Smyrdka i Marcina Czarkowskiego.">
+
+  <!-- Header -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/30 via-surface-950 to-surface-950"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">O nas</h1>
+        <p class="mt-6 text-lg text-surface-300 leading-relaxed">
+          Przeprogramowani to platforma edukacyjna założona w 2017 roku. Tworzymy kursy, nagrywamy podcast i budujemy społeczność programistów, którzy chcą rozwijać się zawodowo i patrzeć na programowanie szerzej.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="border-t border-surface-800/50 bg-surface-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Szersze spojrzenie na programowanie
+          </h2>
+          <p class="mt-4 text-surface-300 leading-relaxed">
+            Wierzymy, że bycie dobrym programistą to więcej niż znajomość języków i frameworków. Naszą misją jest pomagać programistom w rozwoju — nie tylko technicznym, ale też zawodowym i osobistym.
+          </p>
+          <p class="mt-4 text-surface-300 leading-relaxed">
+            Przez lata stworzyliśmy kursy, które ukończyło ponad 1770 osób, nagraliśmy ponad 100 odcinków podcastu i zbudowaliśmy społeczność liczącą 15 000+ osób.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-xl bg-surface-800/50 border border-surface-700/50 p-6 text-center">
+            <div class="text-3xl font-extrabold text-white">2017</div>
+            <div class="mt-1 text-sm text-surface-400">rok założenia</div>
+          </div>
+          <div class="rounded-xl bg-surface-800/50 border border-surface-700/50 p-6 text-center">
+            <div class="text-3xl font-extrabold text-white">1770+</div>
+            <div class="mt-1 text-sm text-surface-400">absolwentów</div>
+          </div>
+          <div class="rounded-xl bg-surface-800/50 border border-surface-700/50 p-6 text-center">
+            <div class="text-3xl font-extrabold text-white">100+</div>
+            <div class="mt-1 text-sm text-surface-400">odcinków</div>
+          </div>
+          <div class="rounded-xl bg-surface-800/50 border border-surface-700/50 p-6 text-center">
+            <div class="text-3xl font-extrabold text-white">3</div>
+            <div class="mt-1 text-sm text-surface-400">aktywne kursy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nasz zespół</h2>
+        <p class="mt-4 text-surface-400">
+          Przeprogramowani tworzą doświadczeni programiści, którzy łączą pracę w międzynarodowych firmach technologicznych z pasją do edukacji.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {team.map((member) => (
+          <div class="rounded-2xl border border-surface-700/50 bg-surface-800/50 p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600/20 text-brand-400 text-xl font-bold">
+                {member.name.split(" ").map((n) => n[0]).join("")}
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">{member.name}</h3>
+                <p class="text-sm text-brand-400">{member.role}</p>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm text-surface-300 leading-relaxed">{member.bio}</p>
+
+            <ul class="mt-4 space-y-2">
+              {member.experience.map((exp) => (
+                <li class="flex items-start gap-2 text-sm text-surface-400">
+                  <svg class="h-4 w-4 mt-0.5 flex-shrink-0 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {exp}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="border-t border-surface-800/50 bg-surface-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white text-center">Nasze wartości</h2>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/20">
+            <svg class="h-6 w-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-white">Praktyczne podejście</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Uczymy tego, co naprawdę przydaje się w codziennej pracy programisty. Teoria poparta praktyką i realnymi projektami.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/20">
+            <svg class="h-6 w-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-white">Społeczność</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Budujemy przestrzeń do wymiany doświadczeń i wzajemnego wspierania się. Razem rozwijamy się szybciej.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-600/20">
+            <svg class="h-6 w-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-white">Aktualność</h3>
+          <p class="mt-2 text-sm text-surface-400">
+            Śledzimy najnowsze trendy i narzędzia. Nasze materiały są zawsze aktualne i odzwierciedlają realia branży.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

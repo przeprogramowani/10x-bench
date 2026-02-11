@@ -1,0 +1,40 @@
+---
+import type { PodcastEpisode } from '../data/podcasts';
+
+interface Props {
+  episode: PodcastEpisode;
+  seriesName: string;
+}
+
+const { episode, seriesName } = Astro.props;
+
+const formattedDate = new Date(episode.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<a href={episode.url} target="_blank" rel="noopener noreferrer" class="card group block">
+  <div class="flex items-start gap-4">
+    <!-- Episode number -->
+    <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-600/10 text-blue-400 font-bold rounded-lg border border-blue-600/20">
+      #{episode.number}
+    </div>
+
+    <div class="flex-1 min-w-0">
+      <p class="text-xs text-slate-500 mb-1">{seriesName} &middot; {formattedDate}</p>
+      <h4 class="text-white font-semibold group-hover:text-blue-400 transition-colors truncate">
+        {episode.title}
+      </h4>
+      <p class="text-slate-400 text-sm mt-1 line-clamp-2">{episode.description}</p>
+    </div>
+
+    <!-- Play icon -->
+    <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all">
+      <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+  </div>
+</a>

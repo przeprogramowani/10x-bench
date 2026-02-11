@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,9min 25s,N/A,9min 25s
+Test run,11.02.2026 21:46,N/A,11.02.2026 21:46
+Local build,1,1,Build successful (astro build completed without errors)
+Manual testing,1,1,Dev server running on port 4322; all main pages accessible (/ /o-nas /podcast /youtube return 200); navigation styles and content working
+Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 and Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Names Przemek Smyrdek and Marcin Czarkowski present but bios simplified - missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin and course assignments
+Podcast page,0.5,1,Page exists and returns 200. Fetches real RSS from anchor.fm but only OpanujAI podcast displayed - Przeprogramowany Podcast missing entirely. Only one of two required podcasts shown
+YouTube page,1,1,Page exists and returns 200. Fetches from real YouTube RSS feed. Fallback video IDs unique and match Przeprogramowani channel content (no rick rolls or placeholders)
+Kursy section,0.5,1,Courses section on index page with 10xDevs prominently featured in Hero. Only 3 of 6 courses listed (missing Opanuj JavaScript and Opanuj AI and Cursor). Partial content match
+Consistent UI,1,1,UI consistent across all pages per manual testing
+Responsive design,0.5,1,Majority responsive with some minor issues per manual testing
+SEO Tags,1,1,Layout.astro includes title description canonical OG tags and Twitter card on all pages. Content matches context with correct site name URL and description

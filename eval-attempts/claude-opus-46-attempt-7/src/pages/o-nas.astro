@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TeamMemberCard from '../components/TeamMemberCard.astro';
+import PartnerLogos from '../components/PartnerLogos.astro';
+import { team } from '../data/team';
+
+const whatWeDo = [
+  {
+    title: 'Kursy programowania',
+    description: 'Intensywne kursy online prowadzone przez doświadczonych programistów. Od frontendów po AI-assisted development.',
+    icon: '{}',
+  },
+  {
+    title: 'Podcasty',
+    description: 'Dwa podcasty — "Przeprogramowani" o karierze w IT i "Opanuj AI Podcast" o sztucznej inteligencji.',
+    icon: '()',
+  },
+  {
+    title: 'YouTube',
+    description: 'Regularne filmy na kanale YouTube — tutoriale, przeglądy technologii i porady kariery.',
+    icon: '<>',
+  },
+  {
+    title: 'Społeczność',
+    description: 'Ponad 15 000 członków społeczności programistów, którzy uczą się i rozwijają razem.',
+    icon: '[]',
+  },
+];
+---
+
+<Layout title="O nas — Przeprogramowani">
+  <!-- Hero -->
+  <section class="py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white">O nas</h1>
+        <p class="text-xl text-slate-400 mt-4">
+          Szersze spojrzenie na programowanie
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="section-title">Nasza misja</h2>
+        <p class="text-lg text-slate-400 mt-6 leading-relaxed">
+          Od 2017 roku pomagamy programistom rozwijać się szybciej i skuteczniej. Wierzymy, że dobre programowanie to nie tylko kod — to szersze spojrzenie na technologię, karierę i ciągły rozwój. Tworzymy kursy, podcasty i treści, które dają realną wartość.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Zespół</h2>
+        <p class="section-subtitle">Ludzie stojący za Przeprogramowani</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {team.map((member) => (
+          <TeamMemberCard member={member} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we do -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Co robimy</h2>
+        <p class="section-subtitle">Edukacja techniczna w wielu formatach</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {whatWeDo.map((item) => (
+          <div class="card">
+            <span class="text-2xl font-mono text-blue-500 mb-3 block">{item.icon}</span>
+            <h3 class="text-lg font-bold text-white">{item.title}</h3>
+            <p class="text-slate-400 text-sm mt-2">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PartnerLogos />
+
+  <!-- Contact -->
+  <section class="border-t border-slate-800 py-16 md:py-24">
+    <div class="container-narrow">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="section-title">Kontakt</h2>
+        <p class="text-slate-400 mt-4">
+          Masz pytania? Chcesz nawiązać współpracę? Napisz do nas.
+        </p>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="btn-primary mt-6 inline-flex"
+        >
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

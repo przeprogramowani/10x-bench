@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VideoCard from "../components/VideoCard.tsx";
+
+interface VideoEntry {
+  title: string;
+  videoId: string;
+  thumbnail: string;
+}
+
+let videos: VideoEntry[] = [];
+let fetchError = false;
+
+try {
+  const response = await fetch(
+    "https://www.youtube.com/feeds/videos.xml?channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw"
+  );
+  if (response.ok) {
+    const xml = await response.text();
+
+    // Parse entries from YouTube RSS XML
+    const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
+    const titleRegex = /<title>([\s\S]*?)<\/title>/;
+    const videoIdRegex = /<yt:videoId>([\s\S]*?)<\/yt:videoId>/;
+
+    let match;
+    while ((match = entryRegex.exec(xml)) !== null && videos.length < 6) {
+      const entryXml = match[1];
+      const titleMatch = titleRegex.exec(entryXml);
+      const videoIdMatch = videoIdRegex.exec(entryXml);
+
+      if (titleMatch && videoIdMatch) {
+        const videoId = videoIdMatch[1].trim();
+        videos.push({
+          title: titleMatch[1].trim(),
+          videoId,
+          thumbnail: `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
+        });
+      }
+    }
+  } else {
+    fetchError = true;
+  }
+} catch {
+  fetchError = true;
+}
+---
+
+<Layout title="YouTube — Przeprogramowani" description="Kanał YouTube Przeprogramowani — filmy o programowaniu, tutoriale, wywiady i porady dla programistów.">
+
+  <!-- Header -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/30 via-surface-950 to-surface-950"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white">YouTube</h1>
+        <p class="mt-6 text-lg text-surface-300 leading-relaxed">
+          Na naszym kanale YouTube znajdziesz filmy o programowaniu, tutoriale, wywiady z ekspertami i porady dotyczące kariery w IT. Ponad 15 000 subskrybentów.
+        </p>
+        <a
+          href="https://www.youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#FF0000] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#cc0000] transition-colors"
+        >
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Najnowsze filmy</h2>
+
+      {videos.length > 0 ? (
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {videos.map((video) => (
+            <VideoCard
+              title={video.title}
+              videoId={video.videoId}
+              thumbnail={video.thumbnail}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="mt-10 rounded-2xl border border-surface-700/50 bg-surface-800/50 p-8 text-center">
+          <p class="text-surface-400">
+            {fetchError
+              ? "Nie udało się załadować filmów. Odwiedź nasz kanał bezpośrednio:"
+              : "Brak filmów do wyświetlenia. Odwiedź nasz kanał:"}
+          </p>
+          <a
+            href="https://www.youtube.com/c/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors"
+          >
+            youtube.com/c/przeprogramowani
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { teamMembers } from "../data/content";
+---
+
+<Layout
+  title="O nas — Przeprogramowani"
+  description="Poznaj zespół Przeprogramowani. Przemek Smyrdek i Marcin Czarkowski — doświadczeni inżynierowie budujący społeczność dla programistów."
+  ogTitle="O nas — Przeprogramowani"
+  ogDescription="Szersze spojrzenie na programowanie. Poznaj naszą misję, zespół i wartości."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-500/5 via-transparent to-transparent pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">O nas</h1>
+        <p class="mt-6 text-lg text-zinc-400 sm:text-xl">
+          Szersze spojrzenie na programowanie — to nasza misja od samego początku.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl">Nasza misja</h2>
+        <div class="mt-6 space-y-4 text-zinc-400 leading-relaxed">
+          <p>
+            Przeprogramowani powstało z przekonania, że programowanie to coś więcej niż pisanie kodu.
+            To sposób myślenia, rozwiązywania problemów i budowania produktów, które mają realny wpływ na ludzi.
+          </p>
+          <p>
+            Naszym celem jest pomaganie programistom w rozwoju — nie tylko technicznym, ale także zawodowym i osobistym.
+            Przez kursy, podcast i społeczność dostarczamy wiedzę, która przekłada się na konkretne rezultaty w codziennej pracy.
+          </p>
+          <p>
+            Wierzymy, że najlepszym sposobem nauki jest praktyka. Dlatego wszystko, co tworzymy, opiera się na
+            prawdziwych doświadczeniach z pracy w międzynarodowych firmach technologicznych.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="border-t border-white/5 bg-surface-900/50">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl">Zespół</h2>
+        <p class="mt-4 text-zinc-400">Ludzie stojący za Przeprogramowani</p>
+      </div>
+
+      <div class="mt-14 grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
+        {teamMembers.map((member) => (
+          <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-brand-500/10 text-2xl font-bold text-brand-400">
+              {member.name.split(" ").map((n) => n[0]).join("")}
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">{member.name}</h3>
+            <p class="mt-1 text-sm font-medium text-brand-400">{member.role}</p>
+            <p class="mt-4 text-sm text-zinc-400 leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl">Nasze wartości</h2>
+      </div>
+
+      <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
+            <svg class="h-6 w-6 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Praktyczne podejście</h3>
+          <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+            Uczymy tego, co działa w praktyce. Każdy kurs i odcinek podcastu opiera się na realnych doświadczeniach z pracy w branży technologicznej.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
+            <svg class="h-6 w-6 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Społeczność</h3>
+          <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+            Budujemy społeczność, w której programiści wspierają się nawzajem. 15000+ osób, które dzielą pasję do rozwoju i technologii.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 sm:col-span-2 lg:col-span-1">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10">
+            <svg class="h-6 w-6 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Aktualność</h3>
+          <p class="mt-3 text-sm text-zinc-400 leading-relaxed">
+            Technologia zmienia się szybko. Nasze treści są zawsze aktualne — od AI i LLM po najnowsze frameworki i narzędzia programistyczne.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

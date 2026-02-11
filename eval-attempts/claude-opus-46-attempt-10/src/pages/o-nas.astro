@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { team } from "../data/team";
+---
+
+<Layout title="O nas — Przeprogramowani" description="Poznaj zespół Przeprogramowani. Marka edukacyjna dla programistów z Krakowa, działająca od 2017 roku.">
+  <section class="px-4 pt-32 pb-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <h1 class="mb-6 text-4xl font-extrabold text-white sm:text-5xl">O nas</h1>
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-surface-300">
+        Przeprogramowani to marka edukacyjna założona w 2017 roku w Krakowie.
+        Nasze motto: <strong class="text-white">"Szersze spojrzenie na programowanie"</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Historia -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <div class="rounded-2xl border border-surface-700 bg-surface-900 p-8 sm:p-12">
+        <h2 class="mb-6 text-2xl font-bold text-white">Nasza historia</h2>
+        <div class="space-y-4 text-surface-300 leading-relaxed">
+          <p>
+            Wszystko zaczęło się w 2017 roku w Krakowie. Jako programiści z doświadczeniem
+            w międzynarodowych firmach technologicznych, widzieliśmy potrzebę praktycznych
+            materiałów edukacyjnych tworzonych przez praktyków dla praktyków.
+          </p>
+          <p>
+            Zaczynaliśmy od podcastu "Przeprogramowani ft. Gość" — rozmów z ekspertami
+            ze świata IT o programowaniu, karierze i technologiach. Szybko okazało się,
+            że nasza społeczność potrzebuje czegoś więcej — praktycznych kursów.
+          </p>
+          <p>
+            Dziś Przeprogramowani to kompleksowa platforma edukacyjna z kursami
+            (10xDevs, Opanuj Frontend, Opanuj TypeScript), dwoma podcastami, kanałem
+            YouTube i aktywną społecznością ponad 2500 absolwentów.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zespół -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-8 text-center text-2xl font-bold text-white">Nasz zespół</h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {team.map((member) => (
+          <div class="rounded-2xl border border-surface-700 bg-surface-900 p-6 sm:p-8">
+            <div class="mb-4 flex items-center gap-4">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 text-lg font-bold text-white">
+                {member.avatar}
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">{member.name}</h3>
+                <p class="text-sm text-brand-400">{member.role}</p>
+              </div>
+            </div>
+            <p class="mb-4 text-sm leading-relaxed text-surface-400">{member.bio}</p>
+            <div class="flex flex-wrap gap-2">
+              {member.experience.map((exp) => (
+                <span class="rounded-md bg-surface-800 px-2.5 py-1 text-xs font-medium text-surface-300">
+                  {exp}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metryki -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-8 text-center text-2xl font-bold text-white">W liczbach</h2>
+      <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <div class="rounded-xl border border-surface-700 bg-surface-900 p-6 text-center">
+          <div class="text-3xl font-extrabold text-brand-400">2500+</div>
+          <div class="mt-1 text-sm text-surface-400">Absolwentów</div>
+        </div>
+        <div class="rounded-xl border border-surface-700 bg-surface-900 p-6 text-center">
+          <div class="text-3xl font-extrabold text-brand-400">3</div>
+          <div class="mt-1 text-sm text-surface-400">Kursy</div>
+        </div>
+        <div class="rounded-xl border border-surface-700 bg-surface-900 p-6 text-center">
+          <div class="text-3xl font-extrabold text-brand-400">98+</div>
+          <div class="mt-1 text-sm text-surface-400">Odcinków</div>
+        </div>
+        <div class="rounded-xl border border-surface-700 bg-surface-900 p-6 text-center">
+          <div class="text-3xl font-extrabold text-brand-400">2017</div>
+          <div class="mt-1 text-sm text-surface-400">Rok założenia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produkty -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-8 text-center text-2xl font-bold text-white">Nasze produkty</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-surface-700 bg-surface-900 p-6 transition-all hover:border-brand-500/40">
+          <h3 class="mb-2 font-bold text-white group-hover:text-brand-300">10xDevs 3.0</h3>
+          <p class="text-sm text-surface-400">Programowanie z AI — cohort-based</p>
+        </a>
+        <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-surface-700 bg-surface-900 p-6 transition-all hover:border-brand-500/40">
+          <h3 class="mb-2 font-bold text-white group-hover:text-brand-300">Opanuj Frontend</h3>
+          <p class="text-sm text-surface-400">Kompleksowy kurs frontendowy</p>
+        </a>
+        <a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="group rounded-xl border border-surface-700 bg-surface-900 p-6 transition-all hover:border-brand-500/40">
+          <h3 class="mb-2 font-bold text-white group-hover:text-brand-300">Opanuj TypeScript</h3>
+          <p class="text-sm text-surface-400">Dogłębny kurs TypeScriptu</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnerzy -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-8 text-center text-2xl font-bold text-white">Zaufali nam</h2>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {["Huuuge Games", "SmartRecruiters", "Callstack", "Autodesk"].map((partner) => (
+          <div class="flex items-center justify-center rounded-xl border border-surface-700 bg-surface-900 p-6">
+            <span class="text-sm font-semibold text-surface-300">{partner}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

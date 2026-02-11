@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero";
+import CoursesSection from "../components/CoursesSection";
+import NewsletterCTA from "../components/NewsletterCTA";
+---
+
+<Layout title="Przeprogramowani — Programuj z AI. Buduj szybciej.">
+  <Hero />
+
+  <!-- Stats bar -->
+  <section class="border-y border-surface-800 bg-surface-900/50 px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-4">
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-brand-400">2500+</div>
+        <div class="mt-1 text-sm text-surface-400">Absolwentów kursów</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-brand-400">900+</div>
+        <div class="mt-1 text-sm text-surface-400">Uczestników community</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-brand-400">98+</div>
+        <div class="mt-1 text-sm text-surface-400">Odcinków podcastu</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-extrabold text-brand-400">63</div>
+        <div class="mt-1 text-sm text-surface-400">Repozytoria open source</div>
+      </div>
+    </div>
+  </section>
+
+  <CoursesSection />
+
+  <!-- About intro -->
+  <section class="px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="mb-4 text-3xl font-bold text-white">Kim jesteśmy?</h2>
+      <p class="mb-8 text-lg leading-relaxed text-surface-300">
+        Przeprogramowani to marka edukacyjna założona w 2017 roku w Krakowie.
+        Tworzymy praktyczne kursy programowania, prowadzimy podcast i budujemy
+        społeczność programistów, którzy chcą patrzeć szerzej na swoją pracę.
+      </p>
+      <a
+        href="/o-nas"
+        class="inline-flex items-center gap-2 rounded-xl border border-surface-700 px-6 py-3 font-semibold text-white transition-colors hover:border-surface-500 hover:bg-surface-900"
+      >
+        Poznaj nasz zespół
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <NewsletterCTA />
+</Layout>

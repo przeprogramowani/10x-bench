@@ -1,0 +1,54 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<div class:list={['card flex flex-col h-full', course.featured && 'border-blue-600/50 ring-1 ring-blue-600/20']}>
+  {course.featured && (
+    <div class="flex items-center gap-2 mb-4">
+      <span class="px-2 py-0.5 text-xs font-semibold bg-blue-600 text-white rounded">Wyróżniony</span>
+      {course.startDate && (
+        <span class="text-xs text-slate-400">Start: {course.startDate}</span>
+      )}
+    </div>
+  )}
+
+  <h3 class="text-xl font-bold text-white">{course.title}</h3>
+  <p class="text-blue-400 text-sm font-medium mt-1">{course.subtitle}</p>
+  <p class="text-slate-400 text-sm mt-3 flex-1">{course.description}</p>
+
+  <!-- Tags -->
+  <div class="flex flex-wrap gap-2 mt-4">
+    {course.tags.map((tag) => (
+      <span class="px-2 py-1 text-xs bg-slate-800 text-slate-300 rounded-md">{tag}</span>
+    ))}
+  </div>
+
+  <!-- Price + CTA -->
+  <div class="flex items-center justify-between mt-6 pt-4 border-t border-slate-800">
+    {course.price ? (
+      <span class="text-white font-semibold">{course.price}</span>
+    ) : (
+      <span class="text-slate-400 text-sm">Sprawdź szczegóły</span>
+    )}
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[
+        'text-sm font-semibold transition-colors',
+        course.featured ? 'btn-primary px-4 py-2' : 'text-blue-400 hover:text-blue-300',
+      ]}
+    >
+      {course.featured ? 'Zapisz się' : 'Więcej'}
+      {!course.featured && (
+        <span class="ml-1">&rarr;</span>
+      )}
+    </a>
+  </div>
+</div>

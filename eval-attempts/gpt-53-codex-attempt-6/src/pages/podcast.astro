@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeedExplorer from '@/components/FeedExplorer';
+import { formatDatePl } from '@/lib/format';
+import { getLatestPodcastEpisodes } from '@/lib/feeds';
+
+const episodes = await getLatestPodcastEpisodes(15);
+
+const items = episodes.map((episode) => ({
+  title: episode.title,
+  link: episode.link,
+  publishedAt: formatDatePl(episode.publishedAt),
+  description: episode.description,
+  duration: episode.duration,
+  image: episode.image,
+}));
+---
+
+<BaseLayout
+  title="Podcast - Przeprogramowani.pl"
+  description="Najnowsze odcinki podcastu Przeprogramowani. Rozmowy o programowaniu, technologii i rozwoju kariery."
+  pathname="/podcast"
+>
+  <section class="container-shell pb-10 pt-14 sm:pt-20">
+    <p class="text-sm uppercase tracking-[0.12em] text-cyan-200/85">Podcast</p>
+    <h1 class="section-title mt-3 text-4xl font-extrabold text-white sm:text-5xl">
+      Ostatnie odcinki
+    </h1>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
+      Aktualizowane automatycznie z oficjalnego RSS Przeprogramowani.
+    </p>
+  </section>
+
+  <section class="container-shell pb-20 sm:pb-24">
+    <FeedExplorer
+      client:load
+      items={items}
+      searchPlaceholder="np. TypeScript, frontend, kariera"
+      emptyMessage="Brak odcinków pasujących do wyszukiwania."
+    />
+  </section>
+</BaseLayout>

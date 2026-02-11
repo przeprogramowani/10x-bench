@@ -1,0 +1,27 @@
+---
+const partners = [
+  'Autodesk',
+  'Future Processing',
+  'SmartRecruiters',
+  'Huuuge Games',
+  'edrone',
+  'Xfive',
+];
+---
+
+<section class="py-16 md:py-24 border-t border-slate-800">
+  <div class="container-narrow">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Nasi partnerzy</h2>
+      <p class="section-subtitle">Firmy, które zaufały Przeprogramowani</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+      {partners.map((partner) => (
+        <div class="px-6 py-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 font-medium text-sm md:text-base hover:border-slate-700 hover:text-white transition-all">
+          {partner}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

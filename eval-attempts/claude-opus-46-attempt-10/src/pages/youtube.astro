@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VideoCard from "../components/VideoCard";
+import { videos } from "../data/videos";
+---
+
+<Layout title="YouTube — Przeprogramowani" description="Kanał YouTube Przeprogramowani — filmy o programowaniu, AI i rozwoju kariery w IT.">
+  <section class="px-4 pt-32 pb-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <h1 class="mb-6 text-4xl font-extrabold text-white sm:text-5xl">YouTube</h1>
+      <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-surface-300">
+        Filmy o programowaniu, AI i narzędziach dla developerów.
+        Subskrybuj nasz kanał i bądź na bieżąco.
+      </p>
+      <a
+        href="https://www.youtube.com/@Przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl bg-[#FF0000] px-6 py-3 font-bold text-white transition-opacity hover:opacity-90"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <section class="px-4 py-8 pb-20 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => (
+        <VideoCard video={video} />
+      ))}
+    </div>
+  </section>
+</Layout>

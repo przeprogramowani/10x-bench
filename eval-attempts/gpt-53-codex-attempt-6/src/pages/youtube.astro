@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeedExplorer from '@/components/FeedExplorer';
+import { formatDatePl } from '@/lib/format';
+import { getLatestYouTubeVideos } from '@/lib/feeds';
+
+const videos = await getLatestYouTubeVideos(15);
+
+const items = videos.map((video) => ({
+  title: video.title,
+  link: video.link,
+  publishedAt: formatDatePl(video.publishedAt),
+  description: video.description,
+  image: video.thumbnail,
+}));
+---
+
+<BaseLayout
+  title="YouTube - Przeprogramowani.pl"
+  description="Najnowsze filmy z kanału YouTube Przeprogramowani."
+  pathname="/youtube"
+>
+  <section class="container-shell pb-10 pt-14 sm:pt-20">
+    <p class="text-sm uppercase tracking-[0.12em] text-cyan-200/85">YouTube</p>
+    <h1 class="section-title mt-3 text-4xl font-extrabold text-white sm:text-5xl">
+      Najnowsze filmy
+    </h1>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
+      Lista pobierana automatycznie z oficjalnego feedu kanału Przeprogramowani.
+    </p>
+  </section>
+
+  <section class="container-shell pb-20 sm:pb-24">
+    <FeedExplorer
+      client:load
+      items={items}
+      searchPlaceholder="np. AI, workflow, TypeScript"
+      emptyMessage="Brak filmów pasujących do wyszukiwania."
+    />
+  </section>
+</BaseLayout>

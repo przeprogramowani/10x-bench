@@ -1,0 +1,125 @@
+---
+import MobileMenu from "../components/MobileMenu.tsx";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const { title, description, ogTitle, ogDescription } = Astro.props;
+
+const navLinks = [
+  { href: "/", label: "Strona główna" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={ogTitle || title} />
+    <meta property="og:description" content={ogDescription || description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-30 border-b border-white/5 bg-surface-950/80 backdrop-blur-lg">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-white">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500 text-sm font-extrabold">P</span>
+          Przeprogramowani
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm font-medium text-zinc-400 hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="https://10xdevs.pl"
+            class="rounded-full bg-accent-400 px-5 py-2 text-sm font-semibold text-surface-950 hover:bg-accent-500 transition-colors"
+          >
+            Dołącz do 10xDevs
+          </a>
+        </nav>
+
+        <MobileMenu client:load />
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/5 bg-surface-900">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <a href="/" class="flex items-center gap-2 text-lg font-bold text-white">
+              <span class="flex h-7 w-7 items-center justify-center rounded-md bg-brand-500 text-xs font-extrabold">P</span>
+              Przeprogramowani
+            </a>
+            <p class="mt-3 text-sm text-zinc-500">
+              Szersze spojrzenie na programowanie. Kursy, podcast i społeczność dla ambitnych programistów.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-white">Nawigacja</h3>
+            <ul class="mt-3 space-y-2">
+              {navLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-white">Kursy</h3>
+            <ul class="mt-3 space-y-2">
+              <li><a href="https://10xdevs.pl" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">10xDevs 3.0</a></li>
+              <li><a href="https://opanujfrontend.pl" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">Opanuj TypeScript</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-white">Social</h3>
+            <ul class="mt-3 space-y-2">
+              <li><a href="https://www.youtube.com/@Przeprogramowani" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">YouTube</a></li>
+              <li><a href="https://open.spotify.com/show/przeprogramowani" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">Spotify</a></li>
+              <li><a href="https://przeprogramowani.substack.com" class="text-sm text-zinc-500 hover:text-zinc-300 transition-colors">Newsletter</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 border-t border-white/5 pt-6 text-center text-sm text-zinc-600">
+          &copy; {new Date().getFullYear()} Przeprogramowani. Wszelkie prawa zastrzeżone.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

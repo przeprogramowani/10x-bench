@@ -1,0 +1,148 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { courses, hero10x } from '../lib/site-data';
+import { fetchLatestYouTubeVideos, fetchPodcastShows } from '../lib/content';
+
+const [videos, podcastShows] = await Promise.all([fetchLatestYouTubeVideos(3), fetchPodcastShows(2)]);
+const dateFormatter = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'medium' });
+
+const latestEpisodes = podcastShows
+  .flatMap((show) =>
+    show.episodes.map((episode) => ({
+      ...episode,
+      showTitle: show.title
+    }))
+  )
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+  .slice(0, 3);
+---
+
+<MainLayout
+  title="Przeprogramowani.pl - nowoczesna strona projektu"
+  description="Przeprogramowani: O nas, podcast, YouTube oraz kursy Opanuj Frontend, Opanuj TypeScript i 10xDevs."
+>
+  <section class="section-shell pt-12 sm:pt-16">
+    <div class="relative overflow-hidden rounded-3xl bg-slate-950 p-8 text-white sm:p-12">
+      <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-400/30 blur-3xl"></div>
+      <div class="absolute -bottom-20 left-20 h-56 w-56 rounded-full bg-orange-400/30 blur-3xl"></div>
+
+      <div class="relative grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+        <div>
+          <p class="mb-4 inline-flex rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-100">
+            Hero kursu
+          </p>
+          <h1 class="font-display text-4xl font-semibold leading-tight sm:text-5xl">
+            {hero10x.name}
+          </h1>
+          <p class="mt-4 max-w-2xl text-lg text-slate-200">{hero10x.tagline}</p>
+          <p class="mt-4 max-w-2xl text-slate-300">{hero10x.description}</p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href={hero10x.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-cyan-100"
+            >
+              Przejdz do 10xDevs
+            </a>
+            <a href="/o-nas" class="inline-flex items-center rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+              Poznaj Przeprogramowanych
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cyan-100">Dlaczego teraz?</p>
+          <ul class="mt-4 space-y-3 text-sm text-slate-200">
+            <li class="flex gap-3"><span class="text-cyan-300">01</span> Programowanie wspierane AI staje sie nowym standardem pracy.</li>
+            <li class="flex gap-3"><span class="text-cyan-300">02</span> Przeprogramowani lacza praktyke software engineeringu i edukacje.</li>
+            <li class="flex gap-3"><span class="text-cyan-300">03</span> Otrzymujesz materialy, podcasty i filmy stale aktualizowane.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell mt-14">
+    <div class="mb-6 flex items-end justify-between gap-4">
+      <h2 class="font-display text-3xl font-semibold text-slate-900">Programy edukacyjne</h2>
+      <p class="text-sm text-slate-600">Skoncentrowane na realnych umiejetnosciach produkcyjnych</p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        courses.map((course, index) => (
+          <article class={`card-raise rounded-2xl border border-slate-200 bg-white p-6 fade-up fade-up-delay-${index + 1}`}>
+            <p class={`mb-3 inline-flex rounded-full bg-gradient-to-r px-3 py-1 text-xs font-semibold text-white ${course.accent}`}>
+              {course.badge}
+            </p>
+            <h3 class="font-display text-2xl font-semibold text-slate-900">{course.short}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{course.description}</p>
+            <a
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-cyan-300 hover:text-cyan-700"
+            >
+              Zobacz szczegoly
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-shell mt-16 grid gap-6 lg:grid-cols-2">
+    <article class="rounded-2xl border border-slate-200 bg-white p-6">
+      <div class="mb-5 flex items-center justify-between">
+        <h2 class="font-display text-2xl font-semibold text-slate-900">Najnowsze podcasty</h2>
+        <a href="/podcast" class="text-sm font-semibold text-cyan-700 hover:text-cyan-800">Zobacz wszystko</a>
+      </div>
+
+      <div class="space-y-4">
+        {
+          latestEpisodes.map((episode) => (
+            <a
+              href={episode.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block rounded-xl border border-slate-200 p-4 transition hover:border-cyan-300 hover:bg-cyan-50/50"
+            >
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{episode.showTitle}</p>
+              <h3 class="mt-1 text-sm font-semibold text-slate-900">{episode.title}</h3>
+              <p class="mt-2 text-xs text-slate-600">{episode.duration} • {dateFormatter.format(new Date(episode.publishedAt))}</p>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-6">
+      <div class="mb-5 flex items-center justify-between">
+        <h2 class="font-display text-2xl font-semibold text-slate-900">Najnowsze filmy YouTube</h2>
+        <a href="/youtube" class="text-sm font-semibold text-cyan-700 hover:text-cyan-800">Zobacz wszystko</a>
+      </div>
+
+      <div class="space-y-4">
+        {
+          videos.map((video) => (
+            <a
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="grid gap-3 rounded-xl border border-slate-200 p-3 transition hover:border-cyan-300 hover:bg-cyan-50/50 sm:grid-cols-[132px_1fr]"
+            >
+              <img src={video.thumbnail} alt={video.title} class="aspect-video h-full w-full rounded-lg object-cover" loading="lazy" />
+              <div>
+                <h3 class="text-sm font-semibold text-slate-900">{video.title}</h3>
+                <p class="mt-1 text-xs text-slate-600">{dateFormatter.format(new Date(video.publishedAt))}</p>
+                <p class="mt-2 line-clamp-2 text-xs text-slate-500">{video.description}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</MainLayout>

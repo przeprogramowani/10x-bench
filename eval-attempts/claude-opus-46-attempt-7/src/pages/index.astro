@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import CoursesSection from '../components/CoursesSection.astro';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard.astro';
+import YouTubeVideoCard from '../components/YouTubeVideoCard.astro';
+import PartnerLogos from '../components/PartnerLogos.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import { podcastSeries } from '../data/podcasts';
+import { videos } from '../data/youtube';
+---
+
+<Layout title="Przeprogramowani — Kursy programowania, podcasty i społeczność">
+  <Hero />
+  <StatsBar />
+  <CoursesSection />
+
+  <!-- Podcasts preview -->
+  <section class="py-16 md:py-24 border-t border-slate-800">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <h2 class="section-title">Podcasty</h2>
+        <p class="section-subtitle">Słuchaj o programowaniu, karierze i AI</p>
+      </div>
+
+      {podcastSeries.map((series) => (
+        <div class="mb-12 last:mb-0">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-xl font-bold text-white">{series.title}</h3>
+              <p class="text-slate-400 text-sm mt-1">{series.episodeCount} odcinków</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {series.episodes.slice(0, 3).map((episode) => (
+              <PodcastEpisodeCard episode={episode} seriesName={series.title} />
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="text-center mt-8">
+        <a href="/podcast" class="btn-secondary">
+          Wszystkie odcinki
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube preview -->
+  <section class="py-16 md:py-24 border-t border-slate-800">
+    <div class="container-narrow">
+      <div class="text-center mb-12">
+        <h2 class="section-title">YouTube</h2>
+        <p class="section-subtitle">Najnowsze filmy z kanału Przeprogramowani</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.slice(0, 3).map((video) => (
+          <YouTubeVideoCard video={video} />
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/youtube" class="btn-secondary">
+          Więcej filmów
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <PartnerLogos />
+  <NewsletterCTA />
+</Layout>

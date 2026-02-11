@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CourseCard from "../components/CourseCard.tsx";
+import { courses } from "../data/courses";
+---
+
+<Layout title="Przeprogramowani — Kursy programowania, Podcast, Społeczność" description="Przeprogramowani to platforma edukacyjna dla programistów. Kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcast i społeczność od 2017 roku.">
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-900/40 via-surface-950 to-surface-950"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-brand-600)_0%,_transparent_50%)] opacity-20"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center rounded-full bg-brand-600/20 border border-brand-500/30 px-4 py-1.5 text-sm font-medium text-brand-300">
+          Programowanie z AI
+        </span>
+
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+          Zostań <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">10x Developerem</span>
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-surface-300 leading-relaxed max-w-2xl">
+          Dołącz do 10xDevs 3.0 — intensywnego kursu programowania z&nbsp;AI. Naucz się budować aplikacje szybciej i efektywniej, korzystając z&nbsp;najnowszych narzędzi.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 transition-colors"
+          >
+            Zapisz się na 10xDevs 3.0
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a
+            href="/o-nas"
+            class="inline-flex items-center gap-2 rounded-lg border border-surface-600 px-6 py-3 text-sm font-semibold text-surface-200 hover:bg-surface-800 hover:border-surface-500 transition-colors"
+          >
+            Poznaj nas
+          </a>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-6 sm:gap-10 text-sm text-surface-400">
+          <div>
+            <span class="block text-2xl font-bold text-white">1250+</span>
+            uczestników
+          </div>
+          <div>
+            <span class="block text-2xl font-bold text-white">5</span>
+            tygodni kursu
+          </div>
+          <div>
+            <span class="block text-2xl font-bold text-white">AI-first</span>
+            podejście
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-surface-800/50 bg-surface-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">7+</div>
+          <div class="mt-1 text-sm text-surface-400">lat doświadczenia</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">1770+</div>
+          <div class="mt-1 text-sm text-surface-400">absolwentów kursów</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">100+</div>
+          <div class="mt-1 text-sm text-surface-400">odcinków podcastu</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white">15 000+</div>
+          <div class="mt-1 text-sm text-surface-400">społeczność</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Nasze kursy</h2>
+        <p class="mt-4 text-surface-400">
+          Praktyczne kursy programowania tworzone przez doświadczonych programistów. Od frontendu, przez TypeScript, po programowanie z AI.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+      <div class="relative rounded-2xl bg-gradient-to-br from-brand-900/50 to-surface-800/50 border border-brand-500/20 p-8 sm:p-12 text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Bądź na bieżąco</h2>
+        <p class="mt-4 text-surface-300 max-w-lg mx-auto">
+          Subskrybuj nasz newsletter na Substack. Otrzymuj najnowsze artykuły, porady i informacje o kursach prosto na swoją skrzynkę.
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 hover:bg-brand-500 transition-colors"
+        >
+          Subskrybuj newsletter
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

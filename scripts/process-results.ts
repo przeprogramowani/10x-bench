@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
-import {AGENT_ENV, AGENT_NAMES, DISABLED_MODELS, getModelBaseId} from "../eval-attempts/metadata";
+import {
+  AGENT_ENV,
+  AGENT_NAMES,
+  DISABLED_MODELS,
+  getModelBaseId,
+} from "../eval-attempts/metadata";
 
 interface CriterionResult {
   name: string;
@@ -112,7 +117,10 @@ async function processResults(): Promise<void> {
   // Read all attempt directories, excluding disabled model families
   const attemptDirs = fs.readdirSync(evalResultsDir).filter((f) => {
     const fullPath = path.join(evalResultsDir, f);
-    return fs.statSync(fullPath).isDirectory() && !DISABLED_MODELS.has(getModelBaseId(f));
+    return (
+      fs.statSync(fullPath).isDirectory() &&
+      !DISABLED_MODELS.has(getModelBaseId(f))
+    );
   });
 
   const results: AttemptResult[] = [];
@@ -198,7 +206,9 @@ async function processResults(): Promise<void> {
     const matchingResult = results.find((r) => r.modelName === modelName);
     return {
       modelName,
-      modelBaseId: matchingResult ? getModelBaseId(matchingResult.id) : modelName,
+      modelBaseId: matchingResult
+        ? getModelBaseId(matchingResult.id)
+        : modelName,
       averageScore: stats.totalScore / stats.count,
       averageMaxScore: stats.totalMaxScore / stats.count,
       averagePercentage: stats.totalPercentage / stats.count,
@@ -221,16 +231,7 @@ async function processResults(): Promise<void> {
   const outputPath = path.join(outputDir, "results.json");
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 
-  console.log(`✓ Processed ${results.length} attempt(s)`);
   console.log(`✓ Generated ${outputPath}`);
-
-  // Print individual results
-  console.log("\nIndividual Results:");
-  results.forEach((r) => {
-    console.log(
-      `  ${r.modelName} (Attempt ${r.attemptNumber}): ${r.totalScore}/${r.maxScore} (${r.percentage.toFixed(1)}%)`,
-    );
-  });
 
   // Print model family averages
   console.log("\nModel Family Averages:");

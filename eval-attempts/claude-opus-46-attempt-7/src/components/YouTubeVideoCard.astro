@@ -1,0 +1,41 @@
+---
+import type { YouTubeVideo } from '../data/youtube';
+
+interface Props {
+  video: YouTubeVideo;
+}
+
+const { video } = Astro.props;
+
+const formattedDate = new Date(video.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<a href={video.url} target="_blank" rel="noopener noreferrer" class="card group block p-0 overflow-hidden">
+  <!-- CSS gradient thumbnail placeholder -->
+  <div class="relative aspect-video bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 flex items-center justify-center">
+    <!-- Play button overlay -->
+    <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600/80 text-white group-hover:bg-blue-500 transition-colors shadow-lg">
+      <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </div>
+
+    <!-- Duration badge -->
+    <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white text-xs font-mono rounded">
+      {video.duration}
+    </span>
+  </div>
+
+  <!-- Video info -->
+  <div class="p-4">
+    <h4 class="text-white font-semibold group-hover:text-blue-400 transition-colors line-clamp-2">
+      {video.title}
+    </h4>
+    <p class="text-slate-400 text-sm mt-2 line-clamp-2">{video.description}</p>
+    <p class="text-xs text-slate-500 mt-3">{formattedDate}</p>
+  </div>
+</a>

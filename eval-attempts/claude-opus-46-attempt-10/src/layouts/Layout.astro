@@ -1,0 +1,99 @@
+---
+import Navigation from "../components/Navigation";
+import { socialLinks } from "../data/social-links";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Przeprogramowani — szersze spojrzenie na programowanie. Kursy, podcasty i społeczność dla programistów." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-surface-950 text-surface-100 antialiased">
+    <Navigation client:load />
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-surface-800 px-4 py-12 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Brand -->
+          <div class="sm:col-span-2 lg:col-span-1">
+            <div class="mb-4 flex items-center gap-2">
+              <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-sm font-bold text-white">
+                P
+              </div>
+              <span class="text-lg font-bold text-white">Przeprogramowani</span>
+            </div>
+            <p class="text-sm leading-relaxed text-surface-400">
+              Szersze spojrzenie na programowanie. Kraków, od 2017.
+            </p>
+          </div>
+
+          <!-- Kursy -->
+          <div>
+            <h3 class="mb-4 text-sm font-semibold text-white uppercase">Kursy</h3>
+            <ul class="space-y-2">
+              <li><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-surface-400 transition-colors hover:text-white">10xDevs 3.0</a></li>
+              <li><a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-surface-400 transition-colors hover:text-white">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-surface-400 transition-colors hover:text-white">Opanuj TypeScript</a></li>
+            </ul>
+          </div>
+
+          <!-- Nawigacja -->
+          <div>
+            <h3 class="mb-4 text-sm font-semibold text-white uppercase">Nawigacja</h3>
+            <ul class="space-y-2">
+              <li><a href="/" class="text-sm text-surface-400 transition-colors hover:text-white">Strona główna</a></li>
+              <li><a href="/o-nas" class="text-sm text-surface-400 transition-colors hover:text-white">O nas</a></li>
+              <li><a href="/podcast" class="text-sm text-surface-400 transition-colors hover:text-white">Podcast</a></li>
+              <li><a href="/youtube" class="text-sm text-surface-400 transition-colors hover:text-white">YouTube</a></li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div>
+            <h3 class="mb-4 text-sm font-semibold text-white uppercase">Social</h3>
+            <ul class="space-y-2">
+              {socialLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm text-surface-400 transition-colors hover:text-white"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-surface-800 pt-8 text-center text-sm text-surface-500">
+          &copy; {new Date().getFullYear()} Przeprogramowani. Wszelkie prawa zastrzeżone.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
