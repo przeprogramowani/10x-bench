@@ -1,0 +1,342 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    title: '10xDevs',
+    subtitle: 'Programuj z AI',
+    description: 'Najbardziej praktyczny kurs programowania z AI. Naucz się świadomie wykorzystywać najnowsze modele i narzędzia AI na każdym etapie rozwoju projektu.',
+    href: 'https://10xdevs.pl',
+    highlight: true,
+    stats: '3700+ absolwentów',
+    badge: 'NOWOŚĆ',
+  },
+  {
+    title: 'Opanuj Frontend',
+    subtitle: 'AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem. 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+    href: 'https://www.opanujfrontend.pl',
+    highlight: false,
+    stats: '400+ absolwentów',
+    badge: null,
+  },
+  {
+    title: 'Opanuj TypeScript',
+    subtitle: 'Od podstaw do produkcji',
+    description: 'Opanuj TypeScript i podnieś jakość swoich projektów działających na produkcji. Pracuj z najnowszymi wersjami TypeScript 5 i React 19!',
+    href: 'https://www.opanujtypescript.pl',
+    highlight: false,
+    stats: '',
+    badge: null,
+  },
+];
+
+const youtubeVideos = [
+  {
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=_kQHwE6zAbM',
+    views: '10K wyświetleń',
+  },
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+    views: '8K wyświetleń',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+    views: '15K wyświetleń',
+  },
+];
+---
+
+<Layout title="Strona główna">
+  <section class="relative overflow-hidden bg-gradient-to-br from-secondary via-accent to-secondary py-20 lg:py-32">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-6">
+          NOWOŚĆ - Maj 2026
+        </span>
+        
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          10xDevs 3.0
+        </h1>
+        
+        <p class="text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Nowe oblicze programowania z wykorzystaniem Generatywnego AI. 
+          Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://10xdevs.pl"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all hover:shadow-xl hover:shadow-primary/25"
+          >
+            Dowiedz się więcej
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a 
+            href="/o-nas"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all"
+          >
+            Poznaj nas
+          </a>
+        </div>
+
+        <p class="mt-8 text-gray-400">
+          Dołącz do <span class="text-primary font-bold">3700+</span> absolwentów
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-4">
+          Nasze Kursy
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <article class={`relative rounded-2xl overflow-hidden transition-all hover:shadow-2xl ${course.highlight ? 'bg-secondary text-white lg:-mt-8 lg:shadow-2xl lg:shadow-primary/20' : 'bg-white'}`}>
+            {course.badge && (
+              <span class="absolute top-4 right-4 px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
+                {course.badge}
+              </span>
+            )}
+            
+            <div class="p-8">
+              <span class={`text-sm font-semibold ${course.highlight ? 'text-primary' : 'text-primary'}`}>
+                {course.subtitle}
+              </span>
+              
+              <h3 class={`text-2xl font-bold mt-2 mb-4 ${course.highlight ? 'text-white' : 'text-gray-900'}`}>
+                {course.title}
+              </h3>
+              
+              <p class={`mb-6 ${course.highlight ? 'text-gray-300' : 'text-gray-600'}`}>
+                {course.description}
+              </p>
+
+              {course.stats && (
+                <p class={`text-sm font-medium mb-6 ${course.highlight ? 'text-primary' : 'text-gray-500'}`}>
+                  {course.stats}
+                </p>
+              )}
+              
+              <a 
+                href={course.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`inline-flex items-center gap-2 font-semibold transition-colors ${
+                  course.highlight 
+                    ? 'text-primary hover:text-white' 
+                    : 'text-primary hover:text-primary-dark'
+                }`}
+              >
+                Szczegóły
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">
+          Przeprogramowany Newsletter
+        </h2>
+        
+        <p class="text-gray-600 mb-8">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+        </p>
+
+        <ul class="text-left space-y-3 mb-8 max-w-md mx-auto">
+          <li class="flex items-center gap-3">
+            <span class="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold">3</span>
+            <span class="text-gray-700">rekomendacje techniczne</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold">2</span>
+            <span class="text-gray-700">rekomendacje rozwojowe</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold">1</span>
+            <span class="text-gray-700">bonus niespodzianka</span>
+          </li>
+        </ul>
+
+        <a 
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-white font-bold rounded-xl hover:bg-accent transition-all hover:shadow-xl"
+        >
+          Zapisz się za darmo
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50">
+    <div class="container">
+      <div class="flex items-center justify-between mb-12">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+            Ostatnie filmy
+          </h2>
+          <p class="text-gray-600">
+            Rozwiń się razem z nami
+          </p>
+        </div>
+        <a 
+          href="/youtube"
+          class="hidden sm:inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
+        >
+          Zobacz wszystkie
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {youtubeVideos.map((video) => (
+          <a 
+            href={video.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block"
+          >
+            <div class="relative aspect-video rounded-xl overflow-hidden mb-4">
+              <img 
+                src={video.thumbnail} 
+                alt={video.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg class="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
+              {video.title}
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">{video.views}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-8 sm:hidden">
+        <a 
+          href="/youtube"
+          class="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors"
+        >
+          Zobacz wszystkie filmy
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+          7 lat na rynku edukacji technologicznej
+        </h2>
+        <p class="text-gray-600">
+          Współpracujemy z najlepszymi
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+        <div class="text-gray-400 font-bold text-xl">Huuuge Games</div>
+        <div class="text-gray-400 font-bold text-xl">SmartRecruiters</div>
+        <div class="text-gray-400 font-bold text-xl">Future Processing</div>
+        <div class="text-gray-400 font-bold text-xl">Callstack</div>
+        <div class="text-gray-400 font-bold text-xl">edrone</div>
+        <div class="text-gray-400 font-bold text-xl">Xfive</div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-600">
+          Chcesz nawiązać współpracę? 
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-primary font-semibold hover:text-primary-dark transition-colors">
+            kontakt@przeprogramowani.pl
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .bg-secondary {
+    background-color: #1a1a2e;
+  }
+  .bg-accent {
+    background-color: #16213e;
+  }
+  .text-secondary {
+    color: #1a1a2e;
+  }
+  .text-primary {
+    color: #ff6b35;
+  }
+  .bg-primary {
+    background-color: #ff6b35;
+  }
+  .bg-primary-dark {
+    background-color: #e85a24;
+  }
+  .hover\:text-primary-dark:hover {
+    color: #e85a24;
+  }
+  .hover\:bg-primary-dark:hover {
+    background-color: #e85a24;
+  }
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  .hover\:shadow-2xl:hover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  }
+  .hover\:shadow-primary\/25:hover {
+    --tw-shadow-color: rgb(255 107 53 / 0.25);
+    box-shadow: var(--tw-shadow);
+  }
+  .hover\:shadow-primary\/20:hover {
+    --tw-shadow-color: rgb(255 107 53 / 0.2);
+    box-shadow: var(--tw-shadow);
+  }
+</style>

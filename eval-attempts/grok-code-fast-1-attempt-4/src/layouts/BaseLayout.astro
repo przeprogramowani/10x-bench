@@ -1,0 +1,23 @@
+---
+// Base layout with header and footer
+import HeaderSection from '../components/HeaderSection.astro';
+import FooterSection from '../components/FooterSection.astro';
+---
+
+<!doctype html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Przeprogramowani.pl - Szersze spojrzenie na programowanie" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Przeprogramowani.pl</title>
+	</head>
+	<body class="bg-gray-50 text-gray-900">
+		<HeaderSection />
+		<main>
+			<slot />
+		</main>
+		<FooterSection />
+	</body>
+</html>

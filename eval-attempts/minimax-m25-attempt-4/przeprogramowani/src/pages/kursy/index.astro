@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter';
+
+const courses = [
+  {
+    id: "10xdevs",
+    title: "10xDevs",
+    subtitle: "Programuj z AI",
+    description: "Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania. Naucz się pracować z Claude Code, Cursor, Codex i agentami AI.",
+    features: [
+      "Praca z Claude Code, Cursor, Codex",
+      "Modele AI i agentów",
+      "Best practices i wzorce",
+      "Projekty praktyczne",
+      "Certyfikat ukończenia",
+      "Wsparcie mentora"
+    ],
+    price: "od 1999 zł",
+    cta: "Dowiedz się więcej",
+    ctaLink: "https://10xdevs.pl",
+    badge: "Nowość",
+    color: "indigo"
+  },
+  {
+    id: "opanuj-frontend",
+    title: "Opanuj Frontend",
+    subtitle: "AI Edition",
+    description: "Zostań nowoczesnym frontend developerem. 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.",
+    features: [
+      "5 modułów tematycznych",
+      "Frontend z AI",
+      "Testowanie i CI/CD",
+      "Architektura aplikacji",
+      "Projekty praktyczne",
+      "400+ absolwentów"
+    ],
+    price: "od 1499 zł",
+    cta: "Zobacz szczegóły",
+    ctaLink: "https://www.opanujfrontend.pl",
+    badge: "Hitr sprzedażowy",
+    color: "emerald"
+  },
+  {
+    id: "opanuj-typescript",
+    title: "Opanuj TypeScript",
+    subtitle: "Frontend Pro",
+    description: "Kurs, który podniesie jakość Twoich projektów działających na produkcji. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!",
+    features: [
+      "TypeScript 5.7+",
+      "React 19",
+      "40+ ćwiczeń",
+      "Projekty produkcyjne",
+      "Typy generyczne",
+      "Best practices"
+    ],
+    price: "od 999 zł",
+    cta: "Zobacz agendę",
+    ctaLink: "https://www.opanujtypescript.pl",
+    badge: "120+ uczestników",
+    color: "blue"
+  },
+  {
+    id: "opanuj-ai",
+    title: "Opanuj AI",
+    subtitle: "Warsztaty i ebooki",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdóż ją w codziennej pracy.",
+    features: [
+      "Warsztaty praktyczne",
+      "Podcast o AI",
+      "Darmowe ebooki",
+      "Blog techniczny",
+      "Newsletter",
+      "Społeczność"
+    ],
+    price: "Bezpłatnie",
+    cta: "Dowiedz się więcej",
+    ctaLink: "https://opanuj.ai/",
+    badge: "Darmowe",
+    color: "purple"
+  }
+];
+---
+
+<Layout title="Kursy">
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Nasze Kursy
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {courses.map((course) => (
+          <div class={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col border-2 border-${course.color}-100`}>
+            <div class={`h-3 bg-${course.color}-500`}></div>
+            
+            <div class="p-8 flex-1 flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                {course.badge && (
+                  <span class={`inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-${course.color}-100 text-${course.color}-700`}>
+                    {course.badge}
+                  </span>
+                )}
+                <div class="text-right">
+                  <div class={`text-2xl font-bold text-${course.color}-600`}>
+                    {course.price}
+                  </div>
+                </div>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-1">
+                {course.title}
+              </h3>
+              <p class={`text-lg text-${course.color}-600 font-medium mb-4`}>
+                {course.subtitle}
+              </p>
+              
+              <p class="text-gray-600 mb-6">
+                {course.description}
+              </p>
+              
+              <ul class="space-y-3 mb-8 flex-1">
+                {course.features.map((feature) => (
+                  <li class="flex items-start gap-3 text-gray-700">
+                    <svg class={`w-5 h-5 text-${course.color}-500 shrink-0 mt-0.5`} fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
+              <a
+                href={course.ctaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`w-full mt-auto block text-center px-6 py-4 bg-${course.color}-500 hover:bg-${course.color}-600 text-white font-bold rounded-lg transition-colors duration-200 text-lg`}
+              >
+                {course.cta}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <h2 class="text-2xl font-bold mb-4">Potrzebujesz pomocy w wyborze?</h2>
+        <p class="text-indigo-100 mb-6 max-w-xl mx-auto">
+          Nie wiesz, który kurs będzie najlepszy dla Ciebie? Napisz do nas, a pomożemy Ci wybrać!
+        </p>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="inline-flex items-center px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-indigo-50 transition-colors"
+        >
+          Skontaktuj się z nami
+        </a>
+      </div>
+    </div>
+  </section>
+  <Newsletter client:load />
+</Layout>

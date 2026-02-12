@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Przeprogramowani - Szersze spojrzenie na programowanie. Kursy, podcasty i edukacja technologiczna w epoce AI." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Przeprogramowani</title>
+  </head>
+  <body class="min-h-screen">
+    <header class="fixed top-0 w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-slate-800">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2 text-xl font-bold">
+            <span class="text-indigo-500">&lt;/&gt;</span>
+            <span class="bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+              Przeprogramowani
+            </span>
+          </a>
+          
+          <div class="hidden md:flex items-center gap-8">
+            <a href="/" class="text-slate-300 hover:text-white transition-colors">Start</a>
+            <a href="/o-nas" class="text-slate-300 hover:text-white transition-colors">O nas</a>
+            <a href="/podcast" class="text-slate-300 hover:text-white transition-colors">Podcast</a>
+            <a href="/youtube" class="text-slate-300 hover:text-white transition-colors">YouTube</a>
+            <a href="/kursy" class="text-slate-300 hover:text-white transition-colors">Kursy</a>
+          </div>
+
+          <a 
+            href="https://10xdevs.pl" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden sm:inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors"
+          >
+            10xDevs
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <footer class="bg-[#0f172a] border-t border-slate-800 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <a href="/" class="flex items-center gap-2 text-xl font-bold mb-4">
+              <span class="text-indigo-500">&lt;/&gt;</span>
+              <span class="text-white">Przeprogramowani</span>
+            </a>
+            <p class="text-slate-400 text-sm">
+              Szersze spojrzenie na programowanie. Edukacja technologiczna w epoce AI.
+            </p>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-white mb-4">Kursy</h4>
+            <ul class="space-y-2 text-slate-400 text-sm">
+              <li><a href="https://10xdevs.pl" target="_blank" class="hover:text-white transition-colors">10xDevs</a></li>
+              <li><a href="https://www.opanujfrontend.pl" target="_blank" class="hover:text-white transition-colors">Opanuj Frontend</a></li>
+              <li><a href="https://www.opanujtypescript.pl" target="_blank" class="hover:text-white transition-colors">Opanuj TypeScript</a></li>
+              <li><a href="https://opanuj.ai" target="_blank" class="hover:text-white transition-colors">Opanuj AI</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-white mb-4">Społeczność</h4>
+            <ul class="space-y-2 text-slate-400 text-sm">
+              <li><a href="/o-nas" class="hover:text-white transition-colors">O nas</a></li>
+              <li><a href="/podcast" class="hover:text-white transition-colors">Podcast</a></li>
+              <li><a href="/youtube" class="hover:text-white transition-colors">YouTube</a></li>
+              <li><a href="https://przeprogramowani.substack.com" target="_blank" class="hover:text-white transition-colors">Newsletter</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-white mb-4">Kontakt</h4>
+            <ul class="space-y-2 text-slate-400 text-sm">
+              <li>kontakt@przeprogramowani.pl</li>
+              <li class="flex gap-4 mt-4">
+                <a href="https://facebook.com/przeprogramowani" target="_blank" class="hover:text-white transition-colors">Facebook</a>
+                <a href="https://instagram.com/przeprogramowani" target="_blank" class="hover:text-white transition-colors">Instagram</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-slate-800 mt-8 pt-8 text-center text-slate-500 text-sm">
+          &copy; 2026 Przeprogramowani. Wszelkie prawa zastrzeżone.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

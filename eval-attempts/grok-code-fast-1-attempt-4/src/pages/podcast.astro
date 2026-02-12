@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Podcast data based on the website
+const opanujAiEpisodes = [
+	{
+		title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin',
+		description: 'ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia?',
+		duration: '01:23:04',
+		url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4',
+		date: 'Najnowszy'
+	},
+	{
+		title: 'Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów',
+		description: 'OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Bielik czy PLLuM? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach...',
+		duration: '01:47:28',
+		url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5',
+		date: 'Poprzedni'
+	},
+	{
+		title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR',
+		description: 'Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI, by odzyskać koronę w starciu z rodziną Google Gemini 3...',
+		duration: '00:58:41',
+		url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf',
+		date: 'Grudzień 2025'
+	}
+];
+
+const przeprogramowaniEpisodes = [
+	{
+		title: 'Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko',
+		description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT.',
+		duration: '00:33:45',
+		url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo',
+		date: 'Najnowszy'
+	},
+	{
+		title: 'O dojrzewaniu zawodowym programisty, Wojciech Trawiński',
+		description: 'Wojciech Trawiński opowiada o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.',
+		duration: '00:45:56',
+		url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn',
+		date: 'Poprzedni'
+	},
+	{
+		title: 'Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin',
+		description: 'W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia.',
+		duration: '01:16:44',
+		url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3',
+		date: 'Październik 2025'
+	}
+];
+
+const podcastApps = [
+	{ name: 'Apple Podcasts', url: 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250', icon: '🍎' },
+	{ name: 'Spotify', url: 'https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o', icon: '🎵' },
+	{ name: 'Google Podcasts', url: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw', icon: '🎙️' },
+	{ name: 'RSS', url: 'https://anchor.fm/s/22544b7c/podcast/rss', icon: '📡' }
+];
+---
+
+<BaseLayout>
+	<section class="py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold text-gray-900 mb-6">Podcasty</h1>
+				<p class="text-xl text-gray-600">
+					Słuchaj naszych podcastów o technologii, AI i programowaniu
+				</p>
+			</div>
+
+			<!-- Podcast Apps -->
+			<div class="bg-gray-900 text-white rounded-xl p-8 mb-12 text-center">
+				<h2 class="text-2xl font-bold mb-6">Jesteśmy na twojej ulubionej platformie</h2>
+				<div class="flex flex-wrap justify-center gap-4">
+					{podcastApps.map(app => (
+						<a href={app.url} class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">
+							{app.icon} {app.name}
+						</a>
+					))}
+				</div>
+			</div>
+
+			<!-- Opanuj.AI Podcast -->
+			<div class="mb-16">
+				<div class="bg-blue-600 text-white rounded-lg p-6 mb-6">
+					<h2 class="text-2xl font-bold mb-2">Opanuj.AI Podcast</h2>
+					<p class="text-lg">Ponad 4000 słuchaczy • Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+				</div>
+
+				<div class="space-y-6">
+					{opanujAiEpisodes.map(episode => (
+						<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
+							<div class="flex justify-between items-start mb-4">
+								<h3 class="text-lg font-semibold text-gray-900 flex-1">{episode.title}</h3>
+								<span class="text-sm text-gray-500 ml-4">{episode.duration}</span>
+							</div>
+							<p class="text-gray-600 text-sm mb-4">{episode.description}</p>
+							<div class="flex items-center justify-between">
+								<span class="text-xs text-gray-400">{episode.date}</span>
+								<a href={episode.url} class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+									Słuchaj teraz 🎧
+								</a>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<!-- Przeprogramowani ft. Gość -->
+			<div class="mb-16">
+				<div class="bg-green-600 text-white rounded-lg p-6 mb-6">
+					<h2 class="text-2xl font-bold mb-2">Przeprogramowani ft. Gość</h2>
+					<p class="text-lg">Ponad 3800 słuchaczy • Rozmowy dla głodnych wiedzy</p>
+				</div>
+
+				<div class="space-y-6">
+					{przeprogramowaniEpisodes.map(episode => (
+						<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
+							<div class="flex justify-between items-start mb-4">
+								<h3 class="text-lg font-semibold text-gray-900 flex-1">{episode.title}</h3>
+								<span class="text-sm text-gray-500 ml-4">{episode.duration}</span>
+							</div>
+							<p class="text-gray-600 text-sm mb-4">{episode.description}</p>
+							<div class="flex items-center justify-between">
+								<span class="text-xs text-gray-400">{episode.date}</span>
+								<a href={episode.url} class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
+									Słuchaj teraz 🎧
+								</a>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<!-- Call to action -->
+			<div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-8 text-center">
+				<h2 class="text-2xl font-bold text-gray-900 mb-4">Śledź nasze podcasty</h2>
+				<p class="text-gray-600 mb-6">Raz w tygodniu nowe treści o programowaniu, AI i rozwoju kariery</p>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="bg-green-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition-colors">
+						Subskrybuj Spotify
+					</a>
+					<a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors">
+						Subskrybuj Apple
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

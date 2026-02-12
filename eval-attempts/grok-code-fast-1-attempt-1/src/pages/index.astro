@@ -1,0 +1,19 @@
+---
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.tsx';
+---
+
+<MainLayout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <Hero client:load />
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Co nowego?</h2>
+      <div class="text-center">
+        <p class="text-lg mb-4">Nowość! <strong>10xDevs 3.0</strong> — Programuj z AI</p>
+        <p>Nowe oblicze programowania z wykorzystaniem Generatywnego AI.</p>
+        <a href="https://10xdevs.pl" class="mt-4 bg-purple-600 text-white px-6 py-3 rounded inline-block">Szczegóły →</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

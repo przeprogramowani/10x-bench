@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,12.02.2026 19:55,N/A,12.02.2026 19:55
+Local build,1,1,Build successful - static output with 4 pages generated
+Manual testing,0,1,Pages not working properly - navigation styles and content broken
+Tech stack,0,1,Astro 5 and React 19 present but Tailwind CSS 3.4 (not v4) and no Cloudflare adapter configured
+O nas page,0.5,1,Page exists and returns 200 but no team member bios (Przemek Smyrdek and Marcin Czarkowski missing entirely) - content is generic mission text without matching context details
+Podcast page,0.5,1,Both Przeprogramowani and OpanujAI podcasts displayed with 200 status but Spotify URL wrong (4qHUZJpeBK8Ij9e2wTVm2o vs expected 3yVvOAXSYq6sQB02w4A4wo/3D6LmchBdoqL2sWkQjvWOy) - broken Django template syntax in platform links - episode data potentially hallucinated
+YouTube page,1,1,All 6 video IDs verified as real Przeprogramowani channel videos via YouTube oEmbed API - titles match exactly
+Kursy section,0.5,1,10xDevs 3.0 featured in hero section with correct URL - courses section exists but incomplete (missing Opanuj JavaScript and Cursor course from context)
+Consistent UI,0,1,User evaluation: styles broken and inconsistent across pages
+Responsive design,0,1,User evaluation: layout not responsive with major issues
+SEO Tags,0.5,1,Basic title and description meta tags in BaseLayout covering all pages - default description matches context tagline - but no OG or social media tags

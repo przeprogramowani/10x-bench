@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Team data
+const team = [
+	{
+		name: 'Przemek Smyrdek',
+		role: 'Co-founder, Przeprogramowani',
+		description: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).',
+		linkedin: 'https://www.linkedin.com/in/psmyrdek/',
+		image: 'https://www.przeprogramowani.pl/img/profiles/przemek.webp'
+	},
+	{
+		name: 'Marcin Czarkowski',
+		role: 'Co-founder, Przeprogramowani',
+		description: 'Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista TypeScript, React, Node.js.',
+		linkedin: 'https://www.linkedin.com/in/mkczarkowski/',
+		image: 'https://www.przeprogramowani.pl/img/profiles/marcin.webp'
+	}
+];
+
+// Companies we're collaborating with
+const companies = [
+	'Huuuge Games', 'Nutridome', 'SmartRecruiters', 'Future Processing', 'Callstack', 'edrone', 'Xfive', 'Euvic', 'Strabag', 'Autodesk'
+];
+---
+
+<BaseLayout>
+	<section class="py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold text-gray-900 mb-6">O nas</h1>
+				<p class="text-xl text-gray-600">
+					Łączymy świat programowania, biznesu i rozwoju
+				</p>
+			</div>
+
+			<div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 text-center mb-16">
+				<h2 class="text-2xl font-bold text-gray-900 mb-4">Witaj na Przeprogramowanych!</h2>
+				<p class="text-lg text-gray-700 max-w-4xl mx-auto">
+					Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+					Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę,
+					na biznes, na ludzi i na siebie.
+				</p>
+				<p class="text-gray-600 mt-4">
+					Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach.
+					Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+				</p>
+				<p class="text-gray-800 font-semibold mt-6">Zyskaj szersze spojrzenie na programowanie.</p>
+			</div>
+
+			<!-- Team Section -->
+			<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Poznaj naszego zespołu</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+				{team.map(member => (
+					<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+						<div class="p-6">
+							<div class="flex items-center mb-4">
+								<img
+									src={member.image}
+									alt={member.name}
+									class="w-16 h-16 rounded-full mr-4 object-cover"
+								/>
+								<div>
+									<h3 class="text-xl font-bold text-gray-900">{member.name}</h3>
+									<p class="text-blue-600 font-medium">{member.role}</p>
+								</div>
+							</div>
+							<p class="text-gray-600 text-sm leading-relaxed mb-4">{member.description}</p>
+							<a href={member.linkedin} class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+								Zobacz profil LinkedIn →
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<!-- Experience Section -->
+			<div class="bg-gray-900 text-white rounded-xl p-8 text-center">
+				<h2 class="text-3xl font-bold mb-4">7 lat na rynku edukacji technologicznej</h2>
+				<p class="text-lg text-gray-300 mb-8">
+					Współpracujemy z najlepszymi firmami i specjalistami w branży IT
+				</p>
+
+				<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+					{companies.map(company => (
+						<div class="bg-gray-800 rounded-lg p-4 text-center">
+							<span class="text-sm font-medium">{company}</span>
+						</div>
+					))}
+				</div>
+
+				<div class="mt-8">
+					<p class="text-gray-300 mb-4">Chcesz nawiązać współpracę?</p>
+					<a href="mailto:kontakt@przeprogramowani.pl" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+						kontakt@przeprogramowani.pl
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

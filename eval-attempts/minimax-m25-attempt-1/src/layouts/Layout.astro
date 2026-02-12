@@ -1,0 +1,33 @@
+---
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Szersze spojrzenie na programowanie. Tworzymy topowe programy edukacyjne dla ambitnych programistów.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title} | Przeprogramowani</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navigation client:load />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer client:load />
+  </body>
+</html>

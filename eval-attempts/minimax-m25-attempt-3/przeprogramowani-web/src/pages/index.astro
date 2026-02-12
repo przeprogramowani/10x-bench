@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Strona główna">
+  <!-- Hero Section - 10xDevs -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 hero-gradient opacity-20"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/40 via-[#0f172a] to-[#0f172a]"></div>
+    
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/20 border border-indigo-500/30 rounded-full text-indigo-300 text-sm mb-8">
+        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        Nowość - Maj 2026
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          10xDevs 3.0
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-slate-300 mb-4 max-w-2xl mx-auto">
+        Nowe oblicze programowania z wykorzystaniem Generatywnego AI
+      </p>
+      
+      <p class="text-slate-400 mb-10 max-w-xl mx-auto">
+        Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://10xdevs.pl" 
+          target="_blank"
+          class="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-all hover:scale-105"
+        >
+          Zobacz szczegóły
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+        <a 
+          href="/kursy"
+          class="inline-flex items-center justify-center px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition-all"
+        >
+          Zobacz wszystkie kursy
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-[#0f172a]">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-4xl font-bold text-indigo-400 mb-2">7+ lat</div>
+          <div class="text-slate-400">na rynku edukacji</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-emerald-400 mb-2">4000+</div>
+          <div class="text-slate-400">słuchaczy podcastu</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-pink-400 mb-2">400+</div>
+          <div class="text-slate-400">absolwentów kursów</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-bold text-purple-400 mb-2">1M+ zł</div>
+          <div class="text-slate-400">przychodu rocznie</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">
+        <span class="bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+          Poznaj naszą społeczność
+        </span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <a href="/o-nas" class="group card-gradient p-8 rounded-2xl border border-slate-800 card-hover transition-all">
+          <div class="w-14 h-14 bg-indigo-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-500/30 transition-colors">
+            <svg class="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">O nas</h3>
+          <p class="text-slate-400">Poznaj historię Przeprogramowanych i naszą misję edukacyjną.</p>
+        </a>
+        
+        <a href="/podcast" class="group card-gradient p-8 rounded-2xl border border-slate-800 card-hover transition-all">
+          <div class="w-14 h-14 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/30 transition-colors">
+            <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Podcast</h3>
+          <p class="text-slate-400">Słuchaj comiesięcznych podsumowań AI i programowania.</p>
+        </a>
+        
+        <a href="/youtube" class="group card-gradient p-8 rounded-2xl border border-slate-800 card-hover transition-all">
+          <div class="w-14 h-14 bg-pink-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-500/30 transition-colors">
+            <svg class="w-7 h-7 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">YouTube</h3>
+          <p class="text-slate-400">Oglądaj najnowsze filmy o programowaniu i AI na naszym kanale.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gradient-to-b from-[#0f172a] to-indigo-950/30">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">
+        <span class="bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+          Przeprogramowany Newsletter
+        </span>
+      </h2>
+      <p class="text-slate-300 mb-8">
+        Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+      </p>
+      <ul class="text-left text-slate-400 mb-8 space-y-2 max-w-md mx-auto">
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center text-white text-sm font-bold">3</span>
+          rekomendacje techniczne
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-bold">2</span>
+          rekomendacje rozwojowe
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center text-white text-sm font-bold">1</span>
+          bonus niespodzianka
+        </li>
+      </ul>
+      <a 
+        href="https://przeprogramowani.substack.com" 
+        target="_blank"
+        class="inline-flex items-center justify-center px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-all hover:scale-105"
+      >
+        Zapisz się za darmo
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

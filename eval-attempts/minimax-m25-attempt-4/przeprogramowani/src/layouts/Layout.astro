@@ -1,0 +1,30 @@
+---
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Szersze spojrzenie na programowanie" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Przeprogramowani</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+    <Navigation client:load />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer client:load />
+  </body>
+</html>

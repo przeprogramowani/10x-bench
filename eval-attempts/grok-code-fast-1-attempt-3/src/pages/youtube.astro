@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<Layout title="YouTube - Przeprogramowani">
+  <Navigation client:load />
+
+  <div class="pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center mb-16">
+        <div class="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-12 h-12 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Kanał Przeprogramowani na YouTube
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          Najnowsze filmy o programowaniu, AI i rozwoju technologicznych umiejętności
+        </p>
+        <a
+          href="https://youtube.com/c/przeprogramowani/videos"
+          class="inline-flex items-center px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+        >
+          Oglądaj na YouTube
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Analiza porównawcza wyników różnych podejść do rozwoju technologicznego
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Oceny punktów</span>
+              <span class="mx-2">•</span>
+              <span>3 dni temu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Porównanie nowych narzędzi programistycznych wspieranych przez AI
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Tech news</span>
+              <span class="mx-2">•</span>
+              <span>1 tydzień temu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Praktyczne wskazówki do optymalizacji pracy programisty z wykorzystaniem AI
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Tutorial</span>
+              <span class="mx-2">•</span>
+              <span>2 tygodnie temu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Prezentacja najciekawszych rozwiązań stworzonych podczas szkolenia
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Wydarzenie</span>
+              <span class="mx-2">•</span>
+              <span>3 tygodnie temu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Poradnik pracy z różnymi agentami AI w codziennej praktyce programisty
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Poradnik</span>
+              <span class="mx-2">•</span>
+              <span>1 miesiąc temu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-video bg-gray-200 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <p class="text-sm text-gray-600">Miniaturka</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+              Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer
+            </h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Kompletny przewodnik po wykorzystaniu AI w pracy programisty
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>FAQ</span>
+              <span class="mx-2">•</span>
+              <span>6 tygodni temu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-lg text-gray-600 mb-6">
+          Nowe filmy publikujemy regularnie. Subskrybuj kanał, żeby być na bieżąco!
+        </p>
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          class="inline-flex items-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          Subskrybuj kanał
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

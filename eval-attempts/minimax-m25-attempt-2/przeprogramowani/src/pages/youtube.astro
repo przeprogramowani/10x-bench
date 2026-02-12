@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  {
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=_kQHwE6zAbM',
+    views: '10K wyświetleń',
+    date: '2 dni temu',
+  },
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+    views: '8K wyświetleń',
+    date: '5 dni temu',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+    views: '15K wyświetleń',
+    date: '1 tydzień temu',
+  },
+  {
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=b-gOI128G2s',
+    views: '12K wyświetleń',
+    date: '2 tygodnie temu',
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów',
+    thumbnail: 'https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=WJLGzf7qq-c',
+    views: '20K wyświetleń',
+    date: '3 tygodnie temu',
+  },
+  {
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+    thumbnail: 'https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=jjOYxKAk_j8',
+    views: '18K wyświetleń',
+    date: '1 miesiąc temu',
+  },
+  {
+    title: 'Jak połączyć VS Code z Cursor i używać razem? Kiedy to ma sens?',
+    thumbnail: 'https://i3.ytimg.com/vi/7bH6dU2b6C4/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=7bH6dU2b6C4',
+    views: '25K wyświetleń',
+    date: '1 miesiąc temu',
+  },
+  {
+    title: 'MCP - Model Context Protocol - Przyszłość AI w programowaniu?',
+    thumbnail: 'https://i3.ytimg.com/vi/lCpNN5-vcQQ/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=lCpNN5-vcQQ',
+    views: '30K wyświetleń',
+    date: '2 miesiące temu',
+  },
+  {
+    title: 'Wyczerpany? Zmęczony AI? Oto co musisz zrobić (wrześniowy Q&A)',
+    thumbnail: 'https://i3.ytimg.com/vi/T7J7r2r6bIk/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=T7J7r2r6bIk',
+    views: '8K wyświetleń',
+    date: '2 miesiące temu',
+  },
+];
+
+const playlists = [
+  { name: '10xDevs', href: 'https://www.youtube.com/playlist?list=PLs4KstKt4bJpD6p9g6P2Z5YqM6yX8mZ9K', count: '50+ filmów' },
+  { name: 'Opanuj TypeScript', href: 'https://www.youtube.com/playlist?list=PLs4KstKt4bJpD6p9g6P2Z5YqM6yX8mZ9K', count: '30+ filmów' },
+  { name: 'Opanuj Frontend', href: 'https://www.youtube.com/playlist?list=PLs4KstKt4bJpD6p9g6P2Z5YqM6yX8mZ9K', count: '40+ filmów' },
+  { name: 'AI w programowaniu', href: 'https://www.youtube.com/playlist?list=PLs4KstKt4bJpD6p9g6P2Z5YqM6yX8mZ9K', count: '60+ filmów' },
+];
+---
+
+<Layout title="YouTube">
+  <section class="py-20 bg-white">
+    <div class="container">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-12">
+        <div>
+          <h1 class="text-4xl lg:text-5xl font-bold text-secondary mb-2">
+            YouTube
+          </h1>
+          <p class="text-xl text-gray-600">
+            Rozwój nowoczesnego programisty
+          </p>
+        </div>
+        <a 
+          href="https://youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.5,6.19a3.02,3.02,0,0,0-2.12-2.14C19.54,3.5,12,3.5,12,3.5s-7.54,0-9.38.55A3.02,3.02,0,0,0,.5,6.19,31.56,31.56,0,0,0,0,12a31.56,31.56,0,0,0,.5,5.81,3.02,3.02,0,0,0,2.12,2.14c1.84.55,9.38.55,9.38.55s7.54,0,9.38-.55a3.02,3.02,0,0,0,2.12-2.14A31.56,31.56,0,0,0,24,12,31.56,31.56,0,0,0,23.5,6.19ZM9.55,15.57V8.43L15.82,12Z"/>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <a 
+            href={video.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block"
+          >
+            <div class="relative aspect-video rounded-xl overflow-hidden mb-4">
+              <img 
+                src={video.thumbnail} 
+                alt={video.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg class="w-8 h-8 text-red-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2 mb-2">
+              {video.title}
+            </h3>
+            <div class="flex items-center gap-3 text-sm text-gray-500">
+              <span>{video.views}</span>
+              <span>•</span>
+              <span>{video.date}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <h2 class="text-2xl font-bold text-secondary text-center mb-8">
+        Playlisty
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {playlists.map((playlist) => (
+          <a 
+            href={playlist.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-4 p-6 bg-white rounded-xl hover:shadow-lg transition-shadow"
+          >
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors">
+              <svg class="w-6 h-6 text-red-600 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                {playlist.name}
+              </h3>
+              <p class="text-sm text-gray-500">
+                {playlist.count}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .text-secondary {
+    color: #1a1a2e;
+  }
+  .text-primary {
+    color: #ff6b35;
+  }
+  .hover\:text-primary:hover {
+    color: #ff6b35;
+  }
+  .text-red-600 {
+    color: #dc2626;
+  }
+  .bg-red-600 {
+    background-color: #dc2626;
+  }
+  .hover\:bg-red-700:hover {
+    background-color: #b91c1c;
+  }
+  .bg-red-100 {
+    background-color: #fee2e2;
+  }
+  .hover\:bg-red-600:hover {
+    background-color: #dc2626;
+  }
+  .hover\:text-white:hover {
+    color: white;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

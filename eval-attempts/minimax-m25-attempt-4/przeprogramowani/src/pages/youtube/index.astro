@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter';
+
+const videos = [
+  {
+    id: "_kQHwE6zAbM",
+    title: "Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?",
+    thumbnail: "https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg",
+    views: "12K wyświetleń",
+    date: "2 dni temu",
+    duration: "15:32"
+  },
+  {
+    id: "KAJTsQbqBow",
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    thumbnail: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    views: "8.5K wyświetleń",
+    date: "5 dni temu",
+    duration: "22:18"
+  },
+  {
+    id: "uwi39C2O8NI",
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    thumbnail: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    views: "15K wyświetleń",
+    date: "1 tydzień temu",
+    duration: "18:45"
+  },
+  {
+    id: "b-gOI128G2s",
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉",
+    thumbnail: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    views: "22K wyświetleń",
+    date: "2 tygodnie temu",
+    duration: "45:20"
+  },
+  {
+    id: "WJLGzf7qq-c",
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    thumbnail: "https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg",
+    views: "18K wyświetleń",
+    date: "3 tygodnie temu",
+    duration: "35:10"
+  },
+  {
+    id: "jjOYxKAk_j8",
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer",
+    thumbnail: "https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg",
+    views: "10K wyświetleń",
+    date: "1 miesiąc temu",
+    duration: "28:55"
+  },
+  {
+    id: "abc123",
+    title: "Infoshare 2025: Nadchodzi koniec programowania (jakie znamy...)",
+    thumbnail: "https://i3.ytimg.com/vi/abc123def456/maxresdefault.jpg",
+    views: "25K wyświetleń",
+    date: "2 miesiące temu",
+    duration: "58:30"
+  },
+  {
+    id: "def456",
+    title: "Jak efektywnie uczyć się nowych technologii w 2025?",
+    thumbnail: "https://i3.ytimg.com/vi/def456ghi789/maxresdefault.jpg",
+    views: "14K wyświetleń",
+    date: "3 miesiące temu",
+    duration: "24:15"
+  },
+  {
+    id: "ghi789",
+    title: "TypeScript 5.7 - co nowego? Przegląd najnowszych funkcji",
+    thumbnail: "https://i3.ytimg.com/vi/ghi789jkl012/maxresdefault.jpg",
+    views: "9K wyświetleń",
+    date: "3 miesiące temu",
+    duration: "19:40"
+  }
+];
+---
+
+<Layout title="YouTube">
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <svg class="w-10 h-10 text-red-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 2.122-2.136C0 0-19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+            YouTube
+          </h1>
+        </div>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Oglądaj najnowsze filmy o programowaniu, AI i nowoczesnych technologiach
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <a
+            key={video.id}
+            href={`https://www.youtube.com/watch?v=${video.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block bg-white rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+          >
+            <div class="relative aspect-video bg-gray-200">
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                onerror="this.src='https://i3.ytimg.com/vi/default/maxresdefault.jpg'"
+              />
+              <div class="absolute bottom-2 right-2 bg-black/80 text-white text-sm px-2 py-1 rounded">
+                {video.duration}
+              </div>
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-75 group-hover:scale-100">
+                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors duration-200">
+                {video.title}
+              </h3>
+              <div class="flex items-center gap-3 mt-2 text-sm text-gray-500">
+                <span>{video.views}</span>
+                <span>•</span>
+                <span>{video.date}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Przejdź do kanału YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+  <Newsletter client:load />
+</Layout>

@@ -14,8 +14,10 @@ export const AGENT_NAMES: Record<string, string> = {
   "kimi-k25": "Kimi K2.5",
   "gemini-3-pro": "Gemini 3 Pro",
   "minimax-m21": "Minimax M2.1",
+  "minimax-m25": "Minimax M2.5",
   "devstral-2": "Devstral 2",
   "qwen-3-max": "Qwen 3 Max",
+  "grok-code-fast-1": "Grok Code Fast 1",
 };
 
 export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
@@ -26,13 +28,15 @@ export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
   "kimi-k25": AGENT_ENVIRONMENT.OpenCode,
   "gemini-3-pro": AGENT_ENVIRONMENT.Cursor,
   "minimax-m21": AGENT_ENVIRONMENT.OpenCode,
+  "minimax-m25": AGENT_ENVIRONMENT.OpenCode,
   "devstral-2": AGENT_ENVIRONMENT.OpenCode,
   "qwen-3-max": AGENT_ENVIRONMENT.OpenCode,
+  "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
 };
 
 /** Base model IDs to exclude from processed results (all attempts are skipped) */
 // Sonnet results are ready but not to publish before YT video release on 16.02.2026.
-export const DISABLED_MODELS: Set<string> = new Set(["claude-sonnet-45"]);
+export const DISABLED_MODELS: Set<string> = new Set();
 
 /** Extract base model ID from a directory name like "claude-opus-46-attempt-3" → "claude-opus-46" */
 export function getModelBaseId(dirname: string): string {

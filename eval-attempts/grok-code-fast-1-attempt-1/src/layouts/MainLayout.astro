@@ -1,0 +1,48 @@
+---
+// src/layouts/MainLayout.astro
+interface Props {
+  description?: string;
+  title?: string;
+}
+
+const {
+  description = "Szersze spojrzenie na programowanie - Przeprogramowani.pl",
+  title = "Przeprogramowani"
+} = Astro.props as Props;
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-gray-900">
+    <header class="bg-black text-white px-4 py-3">
+      <nav class="flex justify-between items-center max-w-6xl mx-auto">
+        <a href="/" class="text-xl font-bold">Przeprogramowani</a>
+        <ul class="flex space-x-6">
+          <li><a href="/onas" class="hover:text-gray-300">O Nas</a></li>
+          <li><a href="/podcast" class="hover:text-gray-300">Podcast</a></li>
+          <li><a href="/youtube" class="hover:text-gray-300">YouTube</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-100 py-8">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p>&copy; 2026 Przeprogramowani.pl — Szersze spojrzenie na programowanie</p>
+        <div class="mt-4">
+          <a href="https://facebook.com/przeprogramowani" class="mr-4">Facebook</a>
+          <a href="https://instagram.com/przeprogramowani" class="mr-4">Instagram</a>
+          <a href="mailto:kontakt@przeprogramowani.pl">Kontakt</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

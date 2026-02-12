@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const podcasts = [
+  {
+    name: 'Opanuj.AI Podcast',
+    description: 'Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI',
+    listeners: '4000+ słuchaczy',
+    color: 'primary',
+    episodes: [
+      {
+        title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin',
+        duration: '01:23:04',
+        date: 'Luty 2026',
+        description: 'ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia? Anthropic próbuje na nowo zdefiniować relację człowiek-AI.'
+      },
+      {
+        title: 'Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów',
+        duration: '01:47:28',
+        date: 'Styczeń 2026',
+        description: 'Rok 2025 w AI - wszystko co musisz wiedzieć o rozwoju sztucznej inteligencji.'
+      },
+      {
+        title: 'Koniec kodowania? Claude 3.5 Sonnet i Gemini 2.0 zmieniają everything',
+        duration: '01:15:42',
+        date: 'Grudzień 2025',
+        description: 'Najnowsze modele AI zmieniają sposób programowania. Czy nadszedł koniec tradycyjnego kodowania?'
+      }
+    ]
+  },
+  {
+    name: 'Przeprogramowany Podcast',
+    description: 'Rozmowy o technologii, AI i programowaniu',
+    listeners: 'Tysiące słuchaczy',
+    color: 'purple',
+    episodes: [
+      {
+        title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+        duration: '01:12:35',
+        date: 'Luty 2026',
+        description: 'Analiza porównawcza podejścia skill-based vs agent-based w programowaniu z AI.'
+      },
+      {
+        title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+        duration: '00:58:20',
+        date: 'Styczeń 2026',
+        description: 'Praktyczne techniki poprawiające efektywność pracy z AI w codziennym programowaniu.'
+      },
+      {
+        title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+        duration: '01:25:10',
+        date: 'Grudzień 2025',
+        description: 'Q&A z widzami o programowaniu z AI - wszystko co chcieliście wiedzieć.'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Podcast">
+  <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-primary-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-center">
+        Podcasty
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto text-center">
+        Słuchaj naszych podcastów o technologii, AI i programowaniu
+      </p>
+    </div>
+  </section>
+
+  {podcasts.map((podcast) => (
+    <section class={`py-20 bg-${podcast.color === 'primary' ? 'white' : 'gray-50'}`}>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+          <div>
+            <h2 class={`text-3xl md:text-4xl font-bold mb-2 ${podcast.color === 'primary' ? 'text-gray-900' : 'text-gray-900'}`}>
+              {podcast.name}
+            </h2>
+            <p class={`text-lg ${podcast.color === 'primary' ? 'text-primary-600' : 'text-purple-600'} font-medium`}>
+              {podcast.listeners}
+            </p>
+            <p class="text-gray-600 mt-2">
+              {podcast.description}
+            </p>
+          </div>
+          <div class="mt-6 md:mt-0 flex gap-4">
+            <a
+              href="https://open.spotify.com/show/4e10KvmSqE2TJDdP2N6T8Y"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center px-4 py-2 bg-[#1DB954] text-white rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Spotify
+            </a>
+            <a
+              href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1496502791"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6zm0-9c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z"/>
+              </svg>
+              Apple Podcasts
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          {podcast.episodes.map((episode) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+              <div class="flex flex-col md:flex-row md:items-start gap-4">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center text-white">
+                  <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    {episode.title}
+                  </h3>
+                  <p class="text-gray-600 mb-3">
+                    {episode.description}
+                  </p>
+                  <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <span class="flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {episode.duration}
+                    </span>
+                    <span class="flex items-center">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {episode.date}
+                    </span>
+                  </div>
+                </div>
+                <div class="flex-shrink-0 mt-4 md:mt-0">
+                  <button class="flex items-center justify-center w-12 h-12 bg-primary-500 text-white rounded-full hover:bg-primary-600 transition-colors">
+                    <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        Słuchaj gdzie chcesz
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="https://open.spotify.com/show/4e10KvmSqE2TJDdP2N6T8Y"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-6 py-3 bg-[#1DB954] text-white rounded-xl hover:opacity-90 transition-opacity"
+        >
+          <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+          Spotify
+        </a>
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1496502791"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-6 py-3 bg-gray-900 text-white rounded-xl hover:opacity-90 transition-opacity"
+        >
+          <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6zm0-9c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z"/>
+          </svg>
+          Apple Podcasts
+        </a>
+        <a
+          href="https://pca.st/5fhepmf6"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-6 py-3 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Pocket Casts
+        </a>
+        <a
+          href="https://overcast.fm/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-6 py-3 bg-orange-500 text-white rounded-xl hover:opacity-90 transition-opacity"
+        >
+          <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+          Overcast
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

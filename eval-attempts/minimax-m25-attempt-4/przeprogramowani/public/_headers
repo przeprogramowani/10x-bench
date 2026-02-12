@@ -1,0 +1,15 @@
+# Cloudflare Pages headers
+
+# Cache static assets
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Enable compression
+*.html
+  Content-Encoding: gzip
+
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

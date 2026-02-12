@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import AboutSection from '../components/AboutSection';
+import PodcastSection from '../components/PodcastSection';
+import YouTubeSection from '../components/YouTubeSection';
+import CoursesSection from '../components/CoursesSection';
+import Newsletter from '../components/Newsletter';
+---
+
+<Layout title="Start">
+  <Hero client:load />
+  <AboutSection client:load />
+  <CoursesSection client:load />
+  <PodcastSection client:load />
+  <YouTubeSection client:load />
+  <Newsletter client:load />
+</Layout>

@@ -1,0 +1,133 @@
+---
+const navLinks = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+
+const courses = [
+  { href: 'https://10xdevs.pl', label: '10xDevs', highlight: true },
+  { href: 'https://opanujfrontend.pl', label: 'Opanuj Frontend' },
+  { href: 'https://opanujtypescript.pl', label: 'Opanuj TypeScript' },
+];
+---
+
+<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+  <div class="container">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/" class="flex items-center gap-2 group">
+        <span class="text-2xl font-bold text-secondary group-hover:text-primary transition-colors">
+          &lt;/&gt;
+        </span>
+        <span class="text-xl font-bold text-secondary group-hover:text-primary transition-colors">
+          Przeprogramowani
+        </span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <ul class="flex items-center gap-6">
+          {navLinks.map((link) => (
+            <li>
+              <a 
+                href={link.href}
+                class="text-gray-600 hover:text-primary transition-colors font-medium"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="flex items-center gap-3">
+          {courses.map((course) => (
+            <a 
+              href={course.href}
+              class={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+                course.highlight 
+                  ? 'bg-primary text-white hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/25' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {course.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <button 
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-gray-600 hover:text-primary"
+        aria-label="Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+    <div class="container py-4 space-y-3">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href}
+          class="block py-2 text-gray-600 hover:text-primary font-medium"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="pt-3 border-t border-gray-100 space-y-2">
+        {courses.map((course) => (
+          <a 
+            href={course.href}
+            class={`block px-4 py-2 rounded-lg font-medium text-sm text-center ${
+              course.highlight 
+                ? 'bg-primary text-white' 
+                : 'bg-gray-100 text-gray-700'
+            }`}
+          >
+            {course.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>
+
+<style>
+  .text-secondary {
+    color: #1a1a2e;
+  }
+  .text-primary {
+    color: #ff6b35;
+  }
+  .bg-primary {
+    background-color: #ff6b35;
+  }
+  .bg-primary-dark {
+    background-color: #e85a24;
+  }
+  .hover\:text-primary:hover {
+    color: #ff6b35;
+  }
+  .hover\:bg-primary-dark:hover {
+    background-color: #e85a24;
+  }
+  .hover\:shadow-lg:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  .hover\:shadow-primary\/25:hover {
+    --tw-shadow-color: rgb(255 107 53 / 0.25);
+    box-shadow: var(--tw-shadow);
+  }
+</style>

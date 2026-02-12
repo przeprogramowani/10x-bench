@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Nowoczesne kursy programowania, podcasty i rozwój technologiczny. Opanuj Frontend, TypeScript i AI z liderami branży programowania w Polsce.">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white font-sans text-gray-900">
+    <slot />
+  </body>
+</html>

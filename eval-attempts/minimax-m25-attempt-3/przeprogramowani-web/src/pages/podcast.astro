@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const podcasts = [
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+    duration: "01:23:04",
+    description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia?",
+    date: "Luty 2026"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+    duration: "01:47:28",
+    description: "OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach.",
+    date: "Styczeń 2026"
+  },
+  {
+    title: "GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR",
+    duration: "00:58:41",
+    description: "Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI, by odzyskać koronę w starciu z rodziną Google Gemini 3?",
+    date: "Grudzień 2025"
+  },
+  {
+    title: "Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5",
+    duration: "01:03:20",
+    description: "Lista ogromnych premier AI w ostatnim czasie. Czy Gemini 3 to rzeczywiście przełom? Sprawdźmy co oferuje konkurencja.",
+    date: "Listopad 2025"
+  },
+  {
+    title: "Claude 4 - Kto rządzi w AI? OpenAI vs Anthropic, Gemini 2.5 Pro i nowy GPT",
+    duration: "01:12:45",
+    description: "Claude 4 od Anthropic zaszokował rynek swoimi możliwościami. Sprawdzamy co nowego w świecie AI.",
+    date: "Październik 2025"
+  },
+  {
+    title: "GPT-5o i Gemini 2.0 - Czy AI jest gotowe na AGI?",
+    duration: "01:05:30",
+    description: "Dwa giganty tech ogłosiły swoje najnowsze modele. Czy jesteśmy coraz bliżej sztucznej inteligencji ogólnej?",
+    date: "Wrzesień 2025"
+  }
+];
+---
+
+<Layout title="Podcast">
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+            Podcasty
+          </span>
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+        
+        <div class="inline-flex items-center gap-3 mt-6 px-6 py-3 bg-emerald-500/20 border border-emerald-500/30 rounded-full">
+          <span class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></span>
+          <span class="text-emerald-300 font-medium">Opanuj.AI Podcast</span>
+          <span class="text-slate-400">•</span>
+          <span class="text-slate-400">4000+ słuchaczy</span>
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-white mb-6">Co tydzień</h2>
+        <div class="bg-gradient-to-br from-emerald-900/30 to-slate-800/50 rounded-2xl p-8 border border-slate-700">
+          <div class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-24 h-24 bg-emerald-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-12 h-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-white mb-2">Comiesięczne podsumowanie AI</h3>
+              <p class="text-slate-300 mb-4">
+                W każdym odcinku omawiamy najważniejsze wydarzenia ze świata sztucznej inteligencji, 
+                programowania i nowych technologii. Analizujemy najnowsze modele, narzędzia i trendy.
+              </p>
+              <ul class="text-slate-400 space-y-1">
+                <li>• Najnowsze modele AI (GPT, Claude, Gemini, Llama)</li>
+                <li>• Narzędzia dla programistów</li>
+                <li>• Trendy w branży technologicznej</li>
+                <li>• Praktyczne zastosowania AI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-semibold text-white mb-6">Ostatnie odcinki</h2>
+      <div class="space-y-4">
+        {podcasts.map((podcast, index) => (
+          <article class="group bg-slate-800/50 hover:bg-slate-800 rounded-xl border border-slate-700 hover:border-emerald-500/30 transition-all p-6">
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-48 h-32 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-slate-500 text-sm">Odcinek {podcasts.length - index}</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 text-sm text-slate-500 mb-2">
+                  <span class="text-emerald-400 font-medium">{podcast.duration}</span>
+                  <span>•</span>
+                  <span>{podcast.date}</span>
+                </div>
+                <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                  {podcast.title}
+                </h3>
+                <p class="text-slate-400 text-sm">
+                  {podcast.description}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a 
+          href="https://podcasty.przeprogramowani.pl" 
+          target="_blank"
+          class="inline-flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors"
+        >
+          Słuchaj więcej odcinków
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

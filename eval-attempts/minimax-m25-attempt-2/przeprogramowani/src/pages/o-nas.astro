@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    description: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).',
+    linkedin: 'https://www.linkedin.com/in/psmyrdek/',
+    image: 'https://przeprogramowani.pl/img/profiles/przemek.webp',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    description: 'Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista TypeScript, React, Node.js.',
+    linkedin: 'https://www.linkedin.com/in/mkczarkowski/',
+    image: 'https://przeprogramowani.pl/img/profiles/marcin.webp',
+  },
+];
+
+const partners = [
+  'Huuuge Games',
+  'Nutridome',
+  'SmartRecruiters',
+  'Future Processing',
+  'Callstack',
+  'edrone',
+  'Xfive',
+  'Euvic',
+  'Strabag',
+  'Autodesk',
+];
+---
+
+<Layout title="O nas">
+  <section class="py-20 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl lg:text-5xl font-bold text-secondary mb-8">
+          O nas
+        </h1>
+
+        <p class="text-xl lg:text-2xl text-gray-600 mb-12">
+          Łączymy świat programowania, biznesu i rozwoju
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          {founders.map((founder) => (
+            <div class="flex flex-col lg:flex-row gap-8 p-8 bg-gray-50 rounded-2xl">
+              <div class="flex-shrink-0">
+                <img 
+                  src={founder.image} 
+                  alt={founder.name}
+                  class="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover border-4 border-primary/20"
+                />
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-secondary mb-1">
+                  {founder.name}
+                </h3>
+                <p class="text-primary font-medium mb-4">
+                  {founder.role}
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                  {founder.description}
+                </p>
+                <a 
+                  href={founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:text-primary-dark transition-colors"
+                >
+                  LinkedIn
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="prose max-w-none mb-16">
+          <h2 class="text-3xl font-bold text-secondary mb-6">
+            Witaj na Przeprogramowanych!
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. 
+            Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. 
+            Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+          </p>
+          <p class="text-xl text-primary font-semibold">
+            Zyskaj szersze spojrzenie na programowanie.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+          7 lat na rynku edukacji technologicznej
+        </h2>
+        <p class="text-gray-600">
+          Współpracujemy z najlepszymi
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+        {partners.map((partner) => (
+          <div class="text-gray-400 font-bold text-xl">{partner}</div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-gray-600">
+          Chcesz nawiązać współpracę? 
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-primary font-semibold hover:text-primary-dark transition-colors">
+            kontakt@przeprogramowani.pl
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .text-secondary {
+    color: #1a1a2e;
+  }
+  .text-primary {
+    color: #ff6b35;
+  }
+  .bg-primary {
+    background-color: #ff6b35;
+  }
+  .border-primary\/20 {
+    border-color: rgb(255 107 53 / 0.2);
+  }
+  .hover\:text-primary-dark:hover {
+    color: #e85a24;
+  }
+</style>

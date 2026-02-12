@@ -1,0 +1,77 @@
+---
+// src/pages/podcast.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import PodcastEpisode from '../components/PodcastEpisode.tsx';
+
+const opanujAIepisodes = [
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+    description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny...",
+    duration: "01:23:04",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+    description: "OpenAI czy Google? GPT-5.2 czy Gemini 3?...",
+    duration: "01:47:28",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg"
+  },
+  {
+    title: "GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR",
+    description: "Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI...",
+    duration: "00:58:41",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg"
+  }
+];
+
+const przeprogramowaniEpisodes = [
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Przeprogramowani ft. Gość",
+    description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów...",
+    duration: "00:33:45",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg"
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramowani ft. Gość",
+    description: "Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty...",
+    duration: "00:45:56",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg"
+  },
+  {
+    title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przeprogramowani ft. Gość",
+    description: "W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia...",
+    duration: "01:16:44",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg"
+  }
+];
+---
+
+<MainLayout title="Podcasty - Przeprogramowani" description="Słuchaj naszych podcastów o technologii, AI i programowaniu">
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-12">Podcasty</h1>
+      
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6">Opanuj.AI Podcast</h2>
+        <p class="text-lg mb-4">Ponad 4000 słuchaczy. Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+        {opanujAIepisodes.slice(0, 3).map((episode) => (
+          <PodcastEpisode episode={episode} client:load />
+        ))}
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold mb-6">Przeprogramowani ft. Gość</h2>
+        <p class="text-lg mb-4">Ponad 3800 słuchaczy. Rozmowy dla głodnych wiedzy</p>
+        {przeprogramowaniEpisodes.slice(0, 3).map((episode) => (
+          <PodcastEpisode episode={episode} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

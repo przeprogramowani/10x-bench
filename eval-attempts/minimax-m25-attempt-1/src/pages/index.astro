@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Strona główna">
+  <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-primary-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-50"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-4 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm font-medium mb-6">
+            Nowość - Maj 2026
+          </span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            10xDevs 3.0
+          </h1>
+          <p class="text-xl lg:text-2xl text-gray-300 mb-8">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Zobacz szczegóły
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href="/o-nas"
+              class="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all duration-200"
+            >
+              Dowiedz się więcej
+            </a>
+          </div>
+          
+          <div class="mt-12 flex items-center gap-8">
+            <div>
+              <div class="text-3xl font-bold text-primary-400">3700+</div>
+              <div class="text-gray-400 text-sm">Absolwentów</div>
+            </div>
+            <div class="w-px h-12 bg-gray-600"></div>
+            <div>
+              <div class="text-3xl font-bold text-primary-400">5+1</div>
+              <div class="text-gray-400 text-sm">Tygodni nauki</div>
+            </div>
+            <div class="w-px h-12 bg-gray-600"></div>
+            <div>
+              <div class="flex items-center gap-1">
+                <span class="text-3xl font-bold text-primary-400">4.9</span>
+                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+              <div class="text-gray-400 text-sm">Ocena kursantów</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative hidden lg:block">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary-500 to-purple-500 rounded-2xl blur-2xl opacity-30"></div>
+          <div class="relative bg-gray-800 rounded-2xl p-8 border border-gray-700">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <pre class="text-sm text-gray-300 font-mono"><code><span class="text-purple-400">import</span> <span class="text-blue-400">{'{'}</span> Cursor, ClaudeCode <span class="text-blue-400">{'}'}</span> <span class="text-purple-400">from</span> <span class="text-green-400">'ai-devtools'</span>;
+
+<span class="text-gray-500">// Twój nowy workflow programisty</span>
+<span class="text-purple-400">const</span> developer = <span class="text-purple-400">new</span> <span class="text-yellow-400">ModernDeveloper</span>({'{'}</span>
+  aiAssistant: <span class="text-purple-400">new</span> <span class="text-yellow-400">ClaudeCode</span>(),
+  ide: <span class="text-purple-400">new</span> <span class="text-yellow-400">Cursor</span>(),
+  mcpTools: [<span class="text-green-400">'filesystem'</span>, <span class="text-green-400">'git'</span>]
+{'}'});
+
+<span class="text-gray-500">// AI-accelerated development</span>
+<span class="text-purple-400">await</span> developer.build(<span class="text-green-400">'production-app'</span>);
+
+<span class="text-gray-500">// Wynik: 10x szybciej</span>
+console.<span class="text-yellow-400">log</span>(<span class="text-green-400">'Gotowe! 🚀'</span>);</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Nasze kursy
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+        >
+          <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">10xDevs</h3>
+          <p class="text-primary-100 mb-6">
+            Programuj z AI. Naucz się świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          <div class="flex items-center text-white font-medium">
+            <span>Zobacz kurs</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+
+        <a
+          href="https://www.opanujfrontend.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl p-8 text-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+        >
+          <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Opanuj Frontend</h3>
+          <p class="text-purple-100 mb-6">
+            Zostań nowoczesnym frontend developerem. 5 obszernych modułów o frontendzie, testowaniu, CI/CD i architekturze.
+          </p>
+          <div class="flex items-center text-white font-medium">
+            <span>Zobacz kurs</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+
+        <a
+          href="https://www.opanujtypescript.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-8 text-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+        >
+          <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Opanuj TypeScript</h3>
+          <p class="text-blue-100 mb-6">
+            Opanuj TypeScript 5 i React 19. Praktyczny kurs, który pomoże Ci pewnie używać typów generycznych.
+          </p>
+          <div class="flex items-center text-white font-medium">
+            <span>Zobacz kurs</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Edukacja technologiczna w epoce AI
+        </h2>
+        <p class="text-xl text-gray-600">
+          Współpracujemy z najlepszymi firmami tech
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
+        <div class="flex items-center justify-center p-4">
+          <span class="text-xl font-bold text-gray-700">Huuuge Games</span>
+        </div>
+        <div class="flex items-center justify-center p-4">
+          <span class="text-xl font-bold text-gray-700">SmartRecruiters</span>
+        </div>
+        <div class="flex items-center justify-center p-4">
+          <span class="text-xl font-bold text-gray-700">Future Processing</span>
+        </div>
+        <div class="flex items-center justify-center p-4">
+          <span class="text-xl font-bold text-gray-700">Callstack</span>
+        </div>
+        <div class="flex items-center justify-center p-4">
+          <span class="text-xl font-bold text-gray-700">edrone</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Przeprogramowany Newsletter
+          </h2>
+          <p class="text-xl text-gray-600 mb-8">
+            Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm mr-4">3</span>
+              <span class="text-gray-700">rekomendacje techniczne</span>
+            </li>
+            <li class="flex items-start">
+              <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm mr-4">2</span>
+              <span class="text-gray-700">rekomendacje rozwojowe</span>
+            </li>
+            <li class="flex items-start">
+              <span class="flex-shrink-0 w-8 h-8 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center font-bold text-sm mr-4">1</span>
+              <span class="text-gray-700">bonus niespodzianka</span>
+            </li>
+          </ul>
+          <a
+            href="https://przeprogramowani.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-xl transition-all duration-200"
+          >
+            Zapisz się za darmo
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="bg-gray-100 rounded-2xl p-8 text-center">
+          <div class="w-48 h-48 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-white text-6xl font-bold">3-2-1</span>
+          </div>
+          <p class="text-gray-600">Nie przegapisz nowości od Przeprogramowanych i ofert specjalnych</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

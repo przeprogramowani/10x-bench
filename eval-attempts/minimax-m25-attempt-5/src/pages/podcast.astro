@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const podcasts = [
+  {
+    name: "Opanuj.AI Podcast",
+    listeners: "4000+ słuchaczy",
+    description: "Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI",
+    episodes: [
+      {
+        title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+        duration: "01:23:04",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        url: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4"
+      },
+      {
+        title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+        duration: "01:47:28",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        url: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5"
+      },
+      {
+        title: "GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR",
+        duration: "00:58:41",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        url: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf"
+      },
+      {
+        title: "Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5, a także emocje w LLMach i nowy Projekt Manhattan w USA",
+        duration: "01:03:20",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+        url: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Gemini-3-to-hit--ale-konkurencja-nie-pi--GPT-5-1--Grok-4-1-i-Opus-4-5--a-take-emocje-w-LLMach-i-nowy-Projekt-Manhattan-w-USA-e3bn687"
+      }
+    ]
+  },
+  {
+    name: "Przeprogramowani ft. Gość",
+    listeners: "3800+ słuchaczy",
+    description: "Rozmowy dla głodnych wiedzy",
+    episodes: [
+      {
+        title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko",
+        duration: "00:33:45",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        url: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo"
+      },
+      {
+        title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński",
+        duration: "00:45:56",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        url: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn"
+      },
+      {
+        title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin",
+        duration: "01:16:44",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        url: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3"
+      },
+      {
+        title: "Nauka nowoczesnego frontendu | Paweł Gnat",
+        duration: "00:42:11",
+        image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+        url: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Nauka-nowoczesnego-frontendu--Pawe-Gnat---Przeprogramowani-ft--Go-e2kj935"
+      }
+    ]
+  }
+];
+
+const platforms = [
+  { name: "Apple Podcasts", url: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250", icon: "M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" },
+  { name: "Spotify", url: "https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o", icon: "M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" },
+  { name: "Google Podcasts", url: "https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw", icon: "M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm-1.2 16.8c-1.14.06-2.22-.48-2.82-1.32l-.72-1.02c-.36-.48-.54-1.08-.54-1.68v-3.6c0-.72.3-1.38.78-1.86l1.2-1.2c.54-.48 1.26-.78 2.04-.78h1.2v1.2h-1.2c-.42.06-.78.3-1.02.66l-1.2 1.2c-.12.18-.18.42-.18.66v3.6c0 .24.06.48.18.66l1.2 1.2c.24.36.6.6 1.02.66h1.2v1.2h-1.68zm2.4-2.4v-1.2h1.68v1.2h-1.68zm0-3.6V9.6h1.68v1.2h-1.68z" }
+];
+---
+
+<Layout title="Podcast">
+  <section class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-purple-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Podcasty</h1>
+      <p class="text-xl text-indigo-100 max-w-3xl">
+        Słuchaj naszych podcastów o technologii, AI i programowaniu
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {podcasts.map((podcast) => (
+        <div class="mb-16 last:mb-0">
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="text-2xl md:text-3xl font-bold">{podcast.name}</h2>
+            <span class="text-indigo-600 font-medium">{podcast.listeners}</span>
+          </div>
+          <p class="text-gray-600 mb-8">{podcast.description}</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {podcast.episodes.map((episode) => (
+              <a href={episode.url} target="_blank" rel="noopener noreferrer" class="group block bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-all">
+                <div class="relative h-40 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <img src={episode.image} alt={episode.title} class="absolute inset-0 w-full h-full object-cover" />
+                  <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                  <div class="relative z-10 w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                    <svg class="w-5 h-5 text-indigo-600 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">{episode.duration}</span>
+                </div>
+                <div class="p-4">
+                  <h3 class="font-semibold text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors">{episode.title}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-center mb-8">Jesteśmy na twojej ulubionej platformie</h2>
+      
+      <div class="flex flex-wrap justify-center gap-6">
+        {platforms.map((platform) => (
+          <a href={platform.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 px-6 py-3 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
+            <svg class="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+              <path d={platform.icon} />
+            </svg>
+            <span class="font-medium text-gray-700">{platform.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const teamMembers = [
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Współtwórca',
+    description: 'Inżynier oprogramowania z pasją do dzielenia się wiedzą. Współzałożyciel Przeprogramowanych.'
+  },
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Współtwórca',
+    description: 'Ekspert od nowoczesnych technologii webowych. Twórca popularnych kursów programowania.'
+  },
+  {
+    name: 'Adam Gospodarczyk',
+    role: 'Współtwórca',
+    description: 'Specjalista od JavaScript i TypeScript. Entuzjasta AI i automatyzacji.'
+  }
+];
+---
+
+<Layout title="O nas">
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">
+        <span class="bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+          O nas
+        </span>
+      </h1>
+      
+      <div class="prose prose-invert max-w-none">
+        <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-12">
+          <h2 class="text-2xl font-semibold text-white mb-4">Nasza historia</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Sześć lat temu Marcin Czarkowski, Przemek Smyrdek i Adam Gospodarczyk założyli Przeprogramowanych. 
+            Był to dla nich poboczny projekt realizowany głównie w weekendy i po godzinach, który miał na celu 
+            dzielenie się wiedzą z programowania.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Ich pierwszy kurs, "Opanuj JavaScript", powstał w atmosferze entuzjazmu, ale i niepewności. 
+            Sprzedawali go za 500 zł na platformie Web2Learn. Budowanie społeczności odbywało się głównie 
+            przez YouTube.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Dziś Przeprogramowani to jedna z największych polskich marek edukacyjnych dla programistów. 
+            Kohorty Przeprogramowanych gromadzą nawet 2000 uczestników w jednej edycji i generują ponad 
+            1 mln zł przychodu.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-12">
+          <h2 class="text-2xl font-semibold text-white mb-4">Nasza misja</h2>
+          <p class="text-slate-300 leading-relaxed">
+            Naszą misją jest dostarczanie najwyższej jakości edukacji technologicznej w epoce AI. 
+            Wierzymy, że każdy programista może wykorzystać potencjał sztucznej inteligencji, 
+            aby pracować efektywniej i tworzyć lepsze oprogramowanie.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-white mb-6">Nasz zespół</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {teamMembers.map((member) => (
+            <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500/50 transition-colors">
+              <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-pink-500 rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-white">
+                {member.name.charAt(0)}
+              </div>
+              <h3 class="text-lg font-semibold text-white mb-1">{member.name}</h3>
+              <p class="text-indigo-400 text-sm mb-3">{member.role}</p>
+              <p class="text-slate-400 text-sm">{member.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="py-16 bg-[#0f172a]">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl font-semibold text-center text-white mb-8">Współpracujemy z najlepszymi</h2>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div class="text-slate-500 font-semibold text-xl">Huuuge Games</div>
+        <div class="text-slate-500 font-semibold text-xl">Nutridome</div>
+        <div class="text-slate-500 font-semibold text-xl">SmartRecruiters</div>
+        <div class="text-slate-500 font-semibold text-xl">Future Processing</div>
+        <div class="text-slate-500 font-semibold text-xl">Callstack</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Dołącz do naszej społeczności</h2>
+      <p class="text-slate-400 mb-8">
+        Oglądaj nasze filmy, słuchaj podcastów i ucz się z naszych kursów. Razem tworzymy przyszłość programowania.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/youtube" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors">
+          YouTube
+        </a>
+        <a href="/podcast" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors">
+          Podcast
+        </a>
+        <a href="/kursy" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors">
+          Kursy
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

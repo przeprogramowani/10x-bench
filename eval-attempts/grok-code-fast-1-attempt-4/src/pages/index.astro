@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Hero data
+const courses = [
+	{
+		title: '10xDevs',
+		subtitle: 'Programuj z AI',
+		description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+		link: 'https://10xdevs.pl?utm_source=przeprogramowani_website',
+		color: 'bg-blue-600',
+		highlight: true
+	},
+	{
+		title: 'Opanuj Frontend',
+		subtitle: 'AI Edition',
+		description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+		link: 'https://www.opanujfrontend.pl?utm_source=przeprogramowani_website',
+		color: 'bg-green-600'
+	},
+	{
+		title: 'Opanuj TypeScript',
+		subtitle: 'Nowoczesne programowanie',
+		description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój.',
+		link: 'https://www.opanujtypescript.pl?utm_source=przeprogramowani_website',
+		color: 'bg-purple-600'
+	}
+];
+
+// Latest videos
+const latestVideos = [
+	{
+		title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+		url: 'https://www.youtube.com/watch?v=_kQHwE6zAbM',
+		duration: '25:34'
+	},
+	{
+		title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+		url: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+		duration: '18:22'
+	},
+	{
+		title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+		url: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+		duration: '32:11'
+	}
+];
+---
+
+<BaseLayout>
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center">
+				<h1 class="text-4xl md:text-6xl font-bold mb-6">
+					Szersze spojrzenie na programowanie
+				</h1>
+				<p class="text-xl mb-12 max-w-3xl mx-auto">
+					Łączymy świat programowania, biznesu i rozwoju. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej.
+				</p>
+
+				<!-- Featured Courses -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+					{courses.map(course => (
+						<div class={`rounded-lg p-6 ${course.highlight ? 'bg-white/10 border-2 border-white/20' : 'bg-white/5'} hover:bg-white/20 transition-all`}>
+							<h3 class="text-2xl font-bold mb-2">{course.title}</h3>
+							{course.subtitle && <p class="text-lg opacity-90 mb-4">{course.subtitle}</p>}
+							<p class="text-sm mb-6 opacity-80">{course.description}</p>
+							<a href={course.link} class="bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block">
+								Szczegóły →
+							</a>
+						</div>
+					))}
+				</div>
+
+				<div class="text-center">
+					<p class="text-lg mb-4">Chcesz zostać programistą nowej generacji?</p>
+					<a href="https://10xdevs.pl" class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 px-8 rounded-lg transition-colors">
+						Zobacz 10xDevs 3.0 — Start 18.05 🎉
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Newsletter Section -->
+	<section class="py-16 bg-gray-100">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<h2 class="text-3xl font-bold text-gray-900 mb-4">Przeprogramowany Newsletter</h2>
+			<p class="text-lg text-gray-600 mb-8">
+				Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+				3 rekomendacje techniczne, 2 rozwojowe, 1 bonus niespodzianka.
+			</p>
+			<a href="https://przeprogramowani.substack.com" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+				Zapisz się za darmo →
+			</a>
+		</div>
+	</section>
+
+	<!-- Latest Content Section -->
+	<section class="py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+				<!-- Podcast Section -->
+				<div>
+					<h2 class="text-2xl font-bold text-gray-900 mb-6">Najnowsze podcasty</h2>
+					<div class="space-y-4">
+						<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-blue-500">
+							<h3 class="font-semibold mb-2">Opanuj.AI Podcast</h3>
+							<p class="text-sm text-gray-600 mb-2">Ponad 4000 słuchaczy • Comiesięczne podsumowanie AI</p>
+							<p class="text-sm font-medium">Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma...</p>
+							<a href="/podcast" class="text-blue-600 text-sm hover:underline">Słuchaj wszystkich odcinków →</a>
+						</div>
+						<div class="bg-white rounded-lg shadow-sm p-6 border-l-4 border-green-500">
+							<h3 class="font-semibold mb-2">Przeprogramowani ft. Gość</h3>
+							<p class="text-sm text-gray-600 mb-2">Ponad 3800 słuchaczy • Rozmowy dla głodnych wiedzy</p>
+							<p class="text-sm font-medium">Programista vs. Angielski: Od strachu do sukcesu...</p>
+							<a href="/podcast" class="text-blue-600 text-sm hover:underline">Słuchaj wszystkich rozmów →</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- YouTube Section -->
+				<div>
+					<h2 class="text-2xl font-bold text-gray-900 mb-6">Najnowsze filmy</h2>
+					<div class="space-y-4">
+						{latestVideos.map(video => (
+							<div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+								<a href={video.url} class="block">
+									<h3 class="font-medium text-gray-900 mb-1 hover:text-blue-600">{video.title}</h3>
+									<p class="text-sm text-gray-500">Czas trwania: {video.duration}</p>
+								</a>
+							</div>
+						))}
+					</div>
+					<div class="mt-6">
+						<a href="/youtube" class="text-blue-600 hover:underline font-medium">Zobacz wszystkie filmy →</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Products Section -->
+	<section class="py-16 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-bold text-gray-900 mb-4">Nasze produkty</h2>
+				<p class="text-lg text-gray-600">Narządzia i platformy dla nowoczesnych programistów</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 text-center">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">10xRules.ai</h3>
+					<p class="text-gray-600 mb-6">Reguły AI dla Twojego zespołu — zarządzaj promptami zespołowymi na jednej platformie</p>
+					<a href="https://10xrules.ai" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors">Wypróbuj teraz</a>
+				</div>
+
+				<div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-8 text-center">
+					<h3 class="text-2xl font-bold text-gray-900 mb-4">10xDevs Platform</h3>
+					<p class="text-gray-600 mb-6">Wszystko co potrzeba do nauki programowania z AI w jednym miejscu</p>
+					<a href="https://10xdevs.pl" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">Dołącz teraz</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

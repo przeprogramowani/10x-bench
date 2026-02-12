@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Latest videos from the website
+const latestVideos = [
+	{
+		id: '_kQHwE6zAbM',
+		title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+		description: 'Czy AI będzie najlepszy w pracy programistów?',
+		date: 'Marzec 2026',
+		thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=_kQHwE6zAbM'
+	},
+	{
+		id: 'KAJTsQbqBow',
+		title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+		description: 'Poznaj nowe narzędzia do programowania z AI!',
+		date: 'Luty 2026',
+		thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=KAJTsQbqBow'
+	},
+	{
+		id: 'uwi39C2O8NI',
+		title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+		description: 'Praktyczne porady dla codziennej pracy z AI',
+		date: 'Styczeń 2026',
+		thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=uwi39C2O8NI'
+	},
+	{
+		id: 'b-gOI128G2s',
+		title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉',
+		description: 'Najlepsze projekty z kursu 10xDevs',
+		date: 'Grudzień 2025',
+		thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=b-gOI128G2s'
+	},
+	{
+		id: 'WJLGzf7qq-c',
+		title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów',
+		description: 'Praktyczne scenariusze użycia agentów AI',
+		date: 'Listopad 2025',
+		thumbnail: 'https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=WJLGzf7qq-c'
+	},
+	{
+		id: 'jjOYxKAk_j8',
+		title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+		description: 'Odpowiedzi na najczęściej zadawane pytania',
+		date: 'Październik 2025',
+		thumbnail: 'https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg',
+		url: 'https://www.youtube.com/watch?v=jjOYxKAk_j8'
+	}
+];
+---
+
+<BaseLayout>
+	<section class="py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12">
+				<h1 class="text-4xl font-bold text-gray-900 mb-6">Filmy i wideo</h1>
+				<p class="text-xl text-gray-600 mb-8">
+					Rozwój nowoczesnego programisty w erze AI
+				</p>
+				<a href="https://youtube.com/c/przeprogramowani/videos" class="bg-red-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors">
+					Kanał YouTube →
+				</a>
+			</div>
+
+			<!-- Featured Video -->
+			<div class="mb-12">
+				<div class="bg-gray-900 text-white rounded-xl p-6">
+					<h2 class="text-2xl font-bold mb-6">Najnowszy film</h2>
+					<div class="aspect-video w-full bg-gray-800 rounded-lg overflow-hidden">
+						<iframe
+							src="https://www.youtube.com/embed/{latestVideos[0].id}?autoplay=0&amp;rel=0&amp;modestbranding=1"
+							class="w-full h-full"
+							title={latestVideos[0].title}
+							allowfullscreen
+						></iframe>
+					</div>
+					<div class="mt-4">
+						<h3 class="text-xl font-semibold mb-2">{latestVideos[0].title}</h3>
+						<p class="text-gray-300">{latestVideos[0].description}</p>
+						<p class="text-sm text-gray-400 mt-2">{latestVideos[0].date}</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Other Videos Grid -->
+			<div>
+				<h2 class="text-3xl font-bold text-gray-900 mb-8">Więcej filmów</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{latestVideos.slice(1).map(video => (
+						<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+							<div class="aspect-video w-full">
+								<iframe
+									src="https://www.youtube.com/embed/{video.id}?autoplay=0&amp;rel=0&amp;modestbranding=1"
+									class="w-full h-full"
+									title={video.title}
+									allowfullscreen
+								></iframe>
+							</div>
+							<div class="p-4">
+								<h3 class="font-semibold text-gray-900 mb-2 line-clamp-2">{video.title}</h3>
+								<p class="text-gray-600 text-sm mb-2 line-clamp-2">{video.description}</p>
+								<div class="flex items-center justify-between">
+									<span class="text-xs text-gray-400">{video.date}</span>
+									<a href={video.url} class="text-red-600 text-sm hover:text-red-700 font-medium">
+										Obejrzyj →
+									</a>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+
+				<div class="mt-12 text-center">
+					<h3 class="text-xl font-bold text-gray-900 mb-4">Oglądasz na YouTube?</h3>
+					<p class="text-gray-600 mb-6">Subskrybuj nasz kanał i bądź pierwszy z nowymi treściami</p>
+					<a href="https://youtube.com/c/przeprogramowani?sub_confirmation=1" class="bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors">
+						Subskrybuj kanał
+					</a>
+				</div>
+			</div>
+
+			<!-- Content Categories -->
+			<div class="mt-16 bg-gray-50 rounded-xl p-8">
+				<h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">O czym rozmawiamy?</h2>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<div class="text-center">
+						<div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+							<span class="text-2xl">🤖</span>
+						</div>
+						<h3 class="font-semibold text-gray-900 mb-2">Programowanie z AI</h3>
+						<p class="text-gray-600 text-sm">Narzędzia, workflow i najlepsze praktyki pracy z modelami AI</p>
+					</div>
+					<div class="text-center">
+						<div class="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+							<span class="text-2xl">💻</span>
+						</div>
+						<h3 class="font-semibold text-gray-900 mb-2">Techniczne deep-dive</h3>
+						<p class="text-gray-600 text-sm">Analizy narzędzi, frameworków i technologii dla developerów</p>
+					</div>
+					<div class="text-center">
+						<div class="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+							<span class="text-2xl">🎯</span>
+						</div>
+						<h3 class="font-semibold text-gray-900 mb-2">Rozwój kariery</h3>
+						<p class="text-gray-600 text-sm">Porady dotyczące kariery, rozmowy kwalifikacyjne i rozwoju osobistego</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

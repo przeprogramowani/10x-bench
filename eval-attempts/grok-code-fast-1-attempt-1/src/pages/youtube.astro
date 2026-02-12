@@ -1,0 +1,57 @@
+---
+// src/pages/youtube.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import VideoCard from '../components/VideoCard.tsx';
+
+const videos = [
+  {
+    title: "Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?",
+    thumbnail: "https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=_kQHwE6zAbM"
+  },
+  {
+    title: "Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?",
+    thumbnail: "https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=KAJTsQbqBow"
+  },
+  {
+    title: "5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI",
+    thumbnail: "https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=uwi39C2O8NI"
+  },
+  {
+    title: "Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów",
+    thumbnail: "https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=WJLGzf7qq-c"
+  },
+  {
+    title: "Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer",
+    thumbnail: "https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=jjOYxKAk_j8"
+  },
+  {
+    title: "Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji! 🎉",
+    thumbnail: "https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg",
+    url: "https://www.youtube.com/watch?v=b-gOI128G2s"
+  }
+];
+---
+
+<MainLayout title="YouTube - Przeprogramowani" description="Rozwój nowoczesnego programisty - filmy z kanału Przeprogramowani">
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-center mb-12">Filmy i nagrania</h1>
+      <p class="text-lg text-center mb-8">Rozwój nowoczesnego programisty</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {videos.map((video) => (
+          <VideoCard video={video} client:load />
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="https://youtube.com/c/przeprogramowani/videos" class="bg-red-500 text-white px-6 py-3 rounded inline-block">Zobacz wszystkie na YouTube</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

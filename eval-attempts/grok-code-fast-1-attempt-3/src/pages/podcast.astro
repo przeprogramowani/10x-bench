@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<Layout title="Podcast - Przeprogramowani">
+  <Navigation client:load />
+
+  <div class="pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Podcasty Przeprogramowanych
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+        <!-- Opanuj.AI Podcast -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              🤖
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Opanuj.AI Podcast</h2>
+            <p class="text-sm text-gray-600">Ponad 4000 słuchaczy</p>
+            <p class="text-gray-600 mt-4">Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin
+              </h3>
+              <p class="text-sm text-gray-600">01:23:04</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Wielkie Podsumowanie AI w 2025
+              </h3>
+              <p class="text-sm text-gray-600">01:47:28</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                GPT-5.2 to GEMINI KILLER?
+              </h3>
+              <p class="text-sm text-gray-600">00:58:41</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Przeprogramowani ft. Gość -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              🎙️
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Przeprogramowani ft. Gość</h2>
+            <p class="text-sm text-gray-600">Ponad 3800 słuchaczy</p>
+            <p class="text-gray-600 mt-4">Rozmowy dla głodnych wiedzy</p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko
+              </h3>
+              <p class="text-sm text-gray-600">00:33:45</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                O dojrzewaniu zawodowym programisty, Wojciech Trawiński
+              </h3>
+              <p class="text-sm text-gray-600">00:45:56</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+
+            <div class="border border-gray-100 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+              <h3 class="font-semibold text-gray-900 mb-2">
+                Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin
+              </h3>
+              <p class="text-sm text-gray-600">01:16:44</p>
+              <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2 inline-block">
+                Posłuchaj na Spotify →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8">Jesteśmy na twojej ulubionej platformie</h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#" class="flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
+            <span class="mr-2">Apple Podcasts</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12.017 0C5.396 0 0 5.396 0 12.017c0 6.62 5.396 12.017 12.017 12.017s12.017-5.396 12.017-12.017C24.034 5.396 18.638 0 12.017 0zM13.813 17.455c-.31 0-.61-.05-.91-.15-.745-.25-1.55-.75-2.27-1.475-.745-.735-1.24-1.545-1.5-2.285-.2-.735-.745-1.475-.745-2.22 0-.745.55-1.485 1.24-2.03.685-.55 1.55-.885 2.315-.885.765 0 1.53.335 2.215.885.685.54 1.24 1.21 1.47 1.97-.05-.05-.165-.16-.27-.26-.115-.1-.22-.185-.31-.275-.08-.08-.225-.21-.26-.21-.3-.26-.575-.51-.95-.51-.475 0-.93.16-1.27.475-.34.315-.51.71-.51 1.15 0 .34.11.63.315.87.22.265.255.215.22.22.05.05.2.2.31.31.115.115.24.23.36.35.165.16.33.28.5.37.69.375 1.445.57 2.195.57.335 0 .665-.04.99-.125-.08.335-.22.66-.415.945-.175.265-.38.495-.61.675-.505.39-1.08.615-1.76.685-.665.06-1.34-.21-2-.21zm4.33-1.91c.025-.17.04-.34.04-.51 0-.335-.06-.665-.175-.99-.085-.26-.2-.51-.355-.735-.15-.21-.33-.395-.54-.55-.325-.23-.68-.39-1.075-.485-.39-.095-.805-.14-1.235-.14-.43 0-.85.045-1.26.14-.405.09-.76.26-1.09.485-.21.155-.39.34-.54.55-.155.225-.275.475-.355.735-.12.325-.18.655-.18.99 0 .175.015.345.04.515-.46 0-.91-.085-1.335-.255-.425-.17-.81-.39-1.145-.665-.34-.275-.52-.605-.52-1.03 0-.425.185-.835.555-1.205.37-.375.845-.69 1.415-.95.565-.255 1.165-.385 1.795-.385.63 0 1.23.13 1.805.385.57.26 1.05.575 1.415.95.375.37.555.78.555 1.205 0 .525-.21.89-.635 1.11-.42.22-.89.325-1.41.325-.24 0-.48-.025-.715-.08zm-.51-1.115c.015-.32.04-.49.08-.615l-.55.175-.__(
+"/>find
+            </svg>
+          </a>
+
+          <a href="#" class="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+            <span class="mr-2">Spotify</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 6.628 5.374 12.01 12.01 12.01S24.01 18.628 24.01 12C24.01.373 18.626 0 12 0zm5.238 16.818c-.25-.104-.55-.218-1.03-.38-.66-.217-1.387-.482-2.003-.68-.69-.213-1.348-.624-1.928-1.13-.65-.59-1.19-1.35-1.506-2.318-.223-.688-.366-1.41-.366-2.147 0-1.146.44-2.254 1.257-2.998.75-.686 1.705-.996 2.67-.996.99 0 1.933.326 2.61.938.77.732 1.148 1.724 1.148 2.91 0 .964-.258 1.855-.74 2.56-.37.543-.843.965-1.384 1.293-.68.406-1.386.66-2.127.747-.796.115-1.577.03-2.38-.045-.354-.028-.7-.07-1.035-.11-.844-.116-1.37-.394-1.74-.78-.275-.268-.472-.58-.602-.94-.228-.634-.29-1.33-.234-2.045.09-1.05.46-1.967 1.086-2.67.547-.607 1.287-.947 2.114-.947 1.57 0 2.87.933 3.342 2.405.266.833.321 1.77.12 2.706-.08.408-.228.832-.428 1.256-.212.445-.48.886-.778 1.29-.49.69-1.027 1.35-1.587 1.99-.482.55-.93 1.09-1.35 1.61-.218.27-.42.54-.6.78-.166.22-.32.44-.47.65-.22.31-.43.62-.63.93-.33.51-.65 1.01-.94 1.51-.315.59-.61 1.18-.78 1.79-.14.49-.19 1-.14 1.49.09.96.41 1.87.95 2.65.48.68 1.06 1.23 1.72 1.67.67.42 1.39.73 2.15.87 1.66.31 3.31-.25 4.54-1.51.76-.77 1.32-1.81 1.57-2.95.49-2.25-.2-4.88-2.22-6.52-1.56-1.31-3.52-1.98-5.5-1.87-1.85.08-3.6.71-5.03 1.9-1.4 1.16-2.37 2.71-2.82 4.47-.73 2.88.3 6.04 3.3 7.92 1.28.81 2.76 1.19 4.25.98.84-.11 1.66-.4 2.42-.83.74-.4 1.4-.91 1.97-1.51-.75-.144-1.5-.37-2.22-.69zm2.46-7.16c.22-.33.4-.67.54-1.03.13-.32.21-.67.24-.98.05-.75-.1-1.45-.52-2-.38-.52-.92-.89-1.53-.95-.67-.08-1.3.12-1.86.53-.51.38-.91.92-1.13 1.54-.11.33-.17.67-.17 1.01 0 .28.04.55.12.82.09.27.22.54.37.78.18.26.38.51.58.74.26.32.53.62.8.9.32.32.65.6 1 .85.41.35.82.65 1.21.88.46.29.93.52 1.38.68.58.2 1.14.29 1.68.27.68-.03 1.29-.18 1.8-.52.46-.3.83-.71 1.06-1.21.27-.58.4-1.22.35-1.88-.08-.76-.38-1.48-.9-2.06-.49-.57-1.12-.93-1.82-.99-.84-.08-1.63.24-2.23.84-.49.48-.86 1.12-.95 1.85-.05.34-.03.68.06 1 .14.87.196 1.84.04 2.78z"/>
+            </svg>
+          </a>
+
+          <a href="#" class="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <span class="mr-2">RSS</span>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.18 20.25a1.176 1.176 0 0 1-1.175-1.176c0-.647.528-1.175 1.176-1.175.647 0 1.175.528 1.175 1.175 0 .648-.528 1.176-1.175 1.176zm15.82-8.75c-.528 0-1.175-.528-1.175-1.176 0-.647.647-1.175 1.175-1.175.529 0 1.176.528 1.176 1.175 0 .648-.647 1.176-1.176 1.176zM19.894.25h-5.588c-2.056 0-3.529 1.472-3.529 3.529v5.588c0 2.057 1.473 3.53 3.529 3.53h5.588c2.057 0 3.53-1.473 3.53-3.53V3.779c0-2.057-1.473-3.529-3.53-3.529zM6.18 15.088c-.647 0-1.175.528-1.175 1.176 0 .647-.529 1.175-1.176 1.175-.647 0-1.175-.528-1.175-1.175 0-.648.528-1.176 1.175-1.176.648 0 1.176-.529 1.176-1.176C4.004.25 3.476-.278 2.829-.278c-.648 0-1.176.528-1.176 1.176 0 .647-.528 1.175-1.175 1.175-.648 0-1.176-.528-1.176-1.175C-.703-.924.824-.278 2.006 2.35c1.182 2.572 3.473 4.176 6.07 4.176.648 0 1.176-.528 1.176-1.176 0-.647.528-1.175 1.176-1.175zm0-10.914c-.647 0-1.175-.528-1.175-1.176 0-.647-.529-1.175-1.176-1.175-.647 0-1.175.528-1.175 1.175 0 .648-.528 1.176-1.176 1.176-.647 0-1.175.528-1.175 1.176 0 .647.528 1.175 1.175 1.175.648 0 1.176.528 1.176 1.176 0 .647.529 1.175 1.176 1.175.647 0 1.175-.528 1.175-1.175 0-.648.528-1.176 1.176-1.176.647 0 1.175-.528 1.175-1.176 0-.647-.528-1.175-1.175-1.175z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

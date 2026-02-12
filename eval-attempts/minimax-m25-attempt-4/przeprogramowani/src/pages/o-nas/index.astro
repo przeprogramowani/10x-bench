@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter';
+---
+
+<Layout title="O nas">
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
+        O nas
+      </h1>
+      
+      <div class="prose prose-lg max-w-none">
+        <p class="text-xl text-gray-600 mb-8 text-center">
+          Jesteśmy <strong>Przeprogramowani</strong> – zespół pasjonatów technologii i edukacji.
+        </p>
+
+        <div class="bg-indigo-50 rounded-2xl p-8 mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Nasza misja</h2>
+          <p class="text-gray-700">
+            Od 7 lat dzielimy się wiedzą o nowoczesnym programowaniu, AI i technologiach webowych. 
+            Naszą misją jest dostarczanie najwyższej jakości treści edukacyjnych, które pomagają 
+            programistom rozwijać się w epoce sztucznej inteligencji.
+          </p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Co robimy</h2>
+        <ul class="space-y-4 mb-12">
+          <li class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">🎙️</span>
+            <div>
+              <strong class="text-gray-900">Podcasty</strong>
+              <p class="text-gray-600">Comiesięczne podsumowania najważniejszych wydarzeń ze świata AI</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">📺</span>
+            <div>
+              <strong class="text-gray-900">YouTube</strong>
+              <p class="text-gray-600">Filmy o programowaniu, AI i nowoczesnych technologiach</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">📚</span>
+            <div>
+              <strong class="text-gray-900">Kursy</strong>
+              <p class="text-gray-600">10xDevs, Opanuj Frontend, Opanuj TypeScript, Opanuj AI</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-indigo-600 text-xl">📧</span>
+            <div>
+              <strong class="text-gray-900">Newsletter</strong>
+              <p class="text-gray-600">Cotygodniowe wiadomości w formacie 3-2-1</p>
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Nasze osiągnięcia</h2>
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="text-center p-6 bg-indigo-50 rounded-xl">
+            <div class="text-4xl font-bold text-indigo-600">7+ lat</div>
+            <div class="text-gray-600">na rynku edukacji</div>
+          </div>
+          <div class="text-center p-6 bg-emerald-50 rounded-xl">
+            <div class="text-4xl font-bold text-emerald-600">1500+</div>
+            <div class="text-gray-600">przeszkolonych programistów</div>
+          </div>
+          <div class="text-center p-6 bg-blue-50 rounded-xl">
+            <div class="text-4xl font-bold text-blue-600">4000+</div>
+            <div class="text-gray-600">słuchaczy podcastu</div>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Współpraca</h2>
+        <p class="text-gray-600 mb-8">
+          Współpracujemy z wiodącymi firmami technologicznymi, organizujemy konferencje 
+          i szkolenia. Zaufały nam między innymi: Huuuge Games, SmartRecruiters, 
+          Future Processing, Callstack, edrone, Xfive, Euvic, Strabag i Autodesk.
+        </p>
+
+        <div class="bg-gray-900 text-white rounded-2xl p-8 text-center">
+          <h3 class="text-xl font-semibold mb-4">Chcesz nawiązać współpracę?</h3>
+          <a 
+            href="mailto:kontakt@przeprogramowani.pl"
+            class="inline-flex items-center px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-lg transition-colors"
+          >
+            Napisz do nas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Newsletter client:load />
+</Layout>
