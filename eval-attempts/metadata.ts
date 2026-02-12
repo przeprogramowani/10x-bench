@@ -38,6 +38,26 @@ export const AGENT_ENV: Record<string, AGENT_ENVIRONMENT> = {
 // Sonnet results are ready but not to publish before YT video release on 16.02.2026.
 export const DISABLED_MODELS: Set<string> = new Set();
 
+/** Token pricing per 1M tokens (USD, no cache) */
+export interface ModelPricing {
+  input: number;
+  output: number;
+}
+
+export const MODEL_PRICING: Record<string, ModelPricing> = {
+  "claude-opus-46": { input: 5.0, output: 25.0 },
+  "claude-sonnet-45": { input: 3.0, output: 15.0 },
+  "gpt-53-codex": { input: 1.75, output: 14.0 },
+  "glm-47": { input: 0.6, output: 2.2 },
+  "kimi-k25": { input: 0.6, output: 3.0 },
+  "gemini-3-pro": { input: 2.0, output: 12.0 },
+  "minimax-m21": { input: 0.27, output: 0.95 },
+  "minimax-m25": { input: 0.3, output: 2.4 },
+  "devstral-2": { input: 0.4, output: 2.0 },
+  "qwen-3-max": { input: 1.2, output: 6.0 },
+  "grok-code-fast-1": { input: 0.2, output: 1.5 },
+};
+
 /** Extract base model ID from a directory name like "claude-opus-46-attempt-3" → "claude-opus-46" */
 export function getModelBaseId(dirname: string): string {
   const match = dirname.match(/^(.+)-attempt-\d+$/);

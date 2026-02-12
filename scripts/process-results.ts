@@ -4,6 +4,7 @@ import {
   AGENT_ENV,
   AGENT_NAMES,
   DISABLED_MODELS,
+  MODEL_PRICING,
   getModelBaseId,
 } from "../eval-attempts/metadata";
 
@@ -33,6 +34,7 @@ interface ModelFamilyAverage {
   averageScore: number;
   averageMaxScore: number;
   agentEnvironment: string;
+  pricing?: { input: number; output: number };
 }
 
 interface ProcessedResults {
@@ -214,6 +216,7 @@ async function processResults(): Promise<void> {
       averagePercentage: stats.totalPercentage / stats.count,
       attemptCount: stats.count,
       agentEnvironment: matchingResult?.agentEnvironment ?? "Unknown",
+      pricing: MODEL_PRICING[matchingResult ? getModelBaseId(matchingResult.id) : modelName],
     };
   });
 
