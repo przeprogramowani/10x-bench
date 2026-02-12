@@ -1,21 +1,5 @@
 import {useState} from "react";
-
-interface CriterionResult {
-  name: string;
-  score: number;
-  max: number;
-  notes: string;
-}
-
-interface AttemptResult {
-  id: string;
-  modelName: string;
-  attemptNumber: number;
-  totalScore: number;
-  maxScore: number;
-  percentage: number;
-  criteria: CriterionResult[];
-}
+import type {AttemptResult} from "./DetailedComparison";
 
 interface Props {
   attempts: AttemptResult[];

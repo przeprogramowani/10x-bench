@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AccordionSection from '../components/AccordionSection';
-import ResultsTable from '../components/ResultsTable';
+import DetailedComparison from '../components/DetailedComparison';
 import ModelAveragesCard from '../components/ModelAveragesCard';
 import resultsData from '../data/results.json';
 import screenshotHashes from '../data/screenshot-hashes.json';
@@ -59,7 +59,7 @@ const sortedResults = [...resultsData.results].sort((a, b) => {
       <p class="text-slate-300 text-sm mb-4">
         Click on any score to reveal the detailed scoring explanation for that criterion.
       </p>
-      <ResultsTable client:load attempts={sortedResults} />
+      <DetailedComparison client:load attempts={sortedResults} />
     </div>
 
     <!-- Legend -->
