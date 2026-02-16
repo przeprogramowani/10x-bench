@@ -62,6 +62,41 @@ const promptContentEN = await marked(
         <Fragment set:html={criteriaContent} />
       </div>
     </div>
+
+    <!-- Penalties Section -->
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold text-slate-100 mb-6">Penalties</h2>
+      <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
+        <p class="text-slate-300 text-base mb-4">
+          Penalty is an optional deduction subtracted from the total score. It is <strong class="text-slate-100">not included in the max score calculation</strong> and is only applied when issues are identified that are not covered by the standard criteria.
+        </p>
+        <div class="mb-4">
+          <h3 class="text-lg font-semibold text-slate-100 mb-2">Severity Levels</h3>
+          <ul class="space-y-2 text-slate-300 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="inline-block bg-green-900/50 text-green-400 text-xs font-mono px-2 py-0.5 rounded mt-0.5">0 pts</span>
+              <span>Fully autonomous, error-free run of the AI agent — website delivered in a direct approach</span>
+            </li>
+<li class="flex items-start gap-2">
+              <span class="inline-block bg-red-900/50 text-red-400 text-xs font-mono px-2 py-0.5 rounded mt-0.5">1 pt</span>
+              <span>Significant issues not covered by other criteria (e.g. major functionality broken, serious UX problems)</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-100 mb-3">Examples</h3>
+          <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+            <div class="flex items-start gap-3">
+              <span class="inline-block bg-red-900/50 text-red-400 text-xs font-mono px-2 py-0.5 rounded mt-0.5 shrink-0">1 pt</span>
+              <div>
+                <p class="text-slate-200 font-medium text-sm">Manual intervention required to correct paths of agent work</p>
+                <p class="text-slate-400 text-sm mt-1">The agent generated incorrect file paths or directory structures that required human correction before the project could build or run. This falls outside standard criteria as it reflects a fundamental workflow failure rather than a specific feature deficiency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </Layout>
 
