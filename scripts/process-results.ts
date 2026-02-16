@@ -6,6 +6,7 @@ import {
   DISABLED_MODELS,
   MODEL_PRICING,
   getModelBaseId,
+  isModelId,
 } from "../eval-attempts/metadata";
 
 interface CriterionResult {
@@ -56,7 +57,7 @@ function extractModelInfo(dirname: string): {
 
   const attemptNumber = parseInt(match[2], 10);
   const baseId = getModelBaseId(dirname);
-  const modelName = AGENT_NAMES[baseId] || match[1];
+  const modelName = isModelId(baseId) ? AGENT_NAMES[baseId] : match[1];
   return {modelName, attemptNumber};
 }
 
@@ -174,7 +175,7 @@ async function processResults(): Promise<void> {
       totalScore,
       maxScore,
       percentage,
-      agentEnvironment: AGENT_ENV[getModelBaseId(dir)] ?? "Unknown",
+      agentEnvironment: (() => { const id = getModelBaseId(dir); return isModelId(id) ? AGENT_ENV[id] : "Unknown"; })(),
       criteria,
     });
   }
@@ -223,7 +224,7 @@ async function processResults(): Promise<void> {
       averagePercentage: stats.totalPercentage / stats.count,
       attemptCount: stats.count,
       agentEnvironment: matchingResult?.agentEnvironment ?? "Unknown",
-      pricing: MODEL_PRICING[matchingResult ? getModelBaseId(matchingResult.id) : modelName],
+      pricing: (() => { const id = matchingResult ? getModelBaseId(matchingResult.id) : modelName; return isModelId(id) ? MODEL_PRICING[id] : undefined; })(),
     };
   });
 
