@@ -58,6 +58,7 @@ export const MODEL_PRICING: Record<string, ModelPricing> = {
   "devstral-2": {input: 0.4, output: 2.0},
   "qwen-3-max": {input: 1.2, output: 6.0},
   "grok-code-fast-1": {input: 0.2, output: 1.5},
+  "glm-5": {input: 0.3, output: 2.55},
 };
 
 /** Extract base model ID from a directory name like "claude-opus-46-attempt-3" → "claude-opus-46" */
