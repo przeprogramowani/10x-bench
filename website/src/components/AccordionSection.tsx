@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import ResultCard from './ResultCard';
+import type { AttemptResult } from './DetailedComparison';
 
 interface AccordionSectionProps {
   title: string;
-  attempts: any[];
+  attempts: AttemptResult[];
   screenshotHashes?: Record<string, string>;
 }
 
