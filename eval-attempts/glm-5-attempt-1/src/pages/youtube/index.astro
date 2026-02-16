@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.tsx';
+import Footer from '../../components/Footer.tsx';
+
+const videos = [
+  {
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    videoId: '_kQHwE6zAbM',
+    thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+  },
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    videoId: 'KAJTsQbqBow',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    videoId: 'uwi39C2O8NI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+  },
+  {
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!',
+    videoId: 'b-gOI128G2s',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze',
+    videoId: 'WJLGzf7qq-c',
+    thumbnail: 'https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg',
+  },
+  {
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania',
+    videoId: 'jjOYxKAk_j8',
+    thumbnail: 'https://i3.ytimg.com/vi/jjOYxKAk_j8/maxresdefault.jpg',
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5 - dobrze, szybko i tanio?',
+    videoId: 'e3af168',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+  },
+  {
+    title: 'Czy agenci AI zdominują branżę e-commerce?',
+    videoId: 'e392tfi',
+    thumbnail: 'https://i3.ytimg.com/vi/b-gOI128G2s/maxresdefault.jpg',
+  },
+  {
+    title: 'Gemini 3 to hit, ale konkurencja nie śpi!',
+    videoId: 'e3bn687',
+    thumbnail: 'https://i3.ytimg.com/vi/WJLGzf7qq-c/maxresdefault.jpg',
+  },
+];
+---
+
+<Layout title="YouTube - Przeprogramowani" description="Darmowe materiały o programowaniu i AI na YouTube">
+  <Header currentPage="/youtube" />
+
+  <main>
+    <section class="hero-gradient text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          YouTube
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+          Darmowe materiały o programowaniu, AI i rozwoju kariery
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            Ostatnie filmy
+          </h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">
+            Zobacz nasze najnowsze materiały o programowaniu z AI, frontendzie i rozwoju zawodowym
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {videos.map((video) => (
+            <a
+              href={`https://www.youtube.com/watch?v=${video.videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-white rounded-xl overflow-hidden shadow-md card-hover border border-slate-100 group"
+            >
+              <div class="relative aspect-video">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="font-semibold text-slate-900 group-hover:text-primary-600 transition-colors line-clamp-2 text-sm">
+                  {video.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">
+          Subskrybuj nasz kanał
+        </h2>
+        <p class="text-slate-600 mb-8 max-w-2xl mx-auto">
+          Dołącz do tysięcy programistów otrzymujących powiadomienia o nowych materiałach
+        </p>
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

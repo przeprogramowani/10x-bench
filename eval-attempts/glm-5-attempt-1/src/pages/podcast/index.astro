@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.tsx';
+import Footer from '../../components/Footer.tsx';
+
+const podcasts = [
+  {
+    title: 'Opanuj.AI Podcast',
+    description: 'Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI',
+    listeners: 'Ponad 4000 słuchaczy',
+    episodes: [
+      {
+        title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma',
+        description: 'ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny.',
+        duration: '1:23:04',
+        date: 'Styczeń 2026',
+        url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+      },
+      {
+        title: 'Wielkie Podsumowanie AI w 2025',
+        description: 'OpenAI czy Google? GPT-5.2 czy Gemini 3? Ubiegły rok był pełen zaciekłych rywalizacji.',
+        duration: '1:47:28',
+        date: 'Grudzień 2025',
+        url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+      },
+      {
+        title: 'GPT-5.2 to GEMINI KILLER?',
+        description: 'Gorące premiery grudnia – czy GPT-5.2 wystarczy OpenAI, by odzyskać koronę?',
+        duration: '58:41',
+        date: 'Grudzień 2025',
+        url: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+      },
+    ],
+  },
+  {
+    title: 'Przeprogramowani ft. Gość',
+    description: 'Rozmowy dla głodnych wiedzy z ciekawymi osobowościami ze świata IT',
+    listeners: 'Ponad 3800 słuchaczy',
+    episodes: [
+      {
+        title: 'Programista vs. Angielski: Od strachu do sukcesu',
+        description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów.',
+        duration: '33:45',
+        date: 'Styczeń 2026',
+        url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+      },
+      {
+        title: 'O dojrzewaniu zawodowym programisty',
+        description: 'Wojciech Trawiński opowiada o tym jak przejść drogę od entuzjasty do profesjonalisty.',
+        duration: '45:56',
+        date: 'Grudzień 2025',
+        url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+      },
+      {
+        title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+        description: 'W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia.',
+        duration: '1:16:44',
+        date: 'Listopad 2025',
+        url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3',
+        image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+      },
+    ],
+  },
+];
+
+const platforms = [
+  { name: 'Apple Podcasts', url: 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250' },
+  { name: 'Spotify', url: 'https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o' },
+  { name: 'Google Podcasts', url: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw' },
+  { name: 'RSS', url: 'https://anchor.fm/s/22544b7c/podcast/rss' },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani" description="Słuchaj naszych podcastów o technologii, AI i programowaniu">
+  <Header currentPage="/podcast" />
+
+  <main>
+    <section class="hero-gradient text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Podcasty
+        </h1>
+        <p class="text-xl text-slate-300 max-w-2xl mx-auto">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+      </div>
+    </section>
+
+    {podcasts.map((podcast) => (
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                {podcast.title}
+              </h2>
+              <p class="text-slate-600 mb-1">{podcast.description}</p>
+              <p class="text-sm text-primary-600 font-medium">{podcast.listeners}</p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {podcast.episodes.map((episode) => (
+              <a
+                href={episode.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-slate-50 rounded-xl p-5 hover:bg-slate-100 transition-colors group border border-slate-100"
+              >
+                <div class="flex gap-4">
+                  <img
+                    src={episode.image}
+                    alt={episode.title}
+                    class="w-20 h-20 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-xs font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
+                        {episode.duration}
+                      </span>
+                      <span class="text-xs text-slate-400">{episode.date}</span>
+                    </div>
+                    <h3 class="font-semibold text-slate-900 group-hover:text-primary-600 transition-colors line-clamp-2 mb-2">
+                      {episode.title}
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-2">{episode.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">
+          Jesteśmy na twojej ulubionej platformie
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {platforms.map((platform) => (
+            <a
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-primary-300 hover:shadow-md transition-all flex items-center gap-2"
+            >
+              <span class="text-slate-700 font-medium">{platform.name}</span>
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

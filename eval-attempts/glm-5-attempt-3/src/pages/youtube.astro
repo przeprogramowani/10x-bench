@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const videos = [
+  {
+    id: '_kQHwE6zAbM',
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    description: 'Porównanie wyników między Skills a AgentsMD - analiza co poszło nie tak i jak to naprawić.',
+    date: '2025',
+    views: '3.2K',
+    duration: '18:24',
+    tags: ['AI', 'Benchmark', 'Programowanie'],
+  },
+  {
+    id: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    description: 'Testujemy GLM-4.7 z Claude Code - czy darmowe AI może być realną alternatywą dla płatnych rozwiązań?',
+    date: '2025',
+    views: '5.8K',
+    duration: '24:15',
+    tags: ['AI', 'Claude', 'GLM-4'],
+  },
+  {
+    id: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    description: 'Praktyczne techniki które znacząco poprawiły efektywność pracy z AI w programowaniu.',
+    date: '2025',
+    views: '12.4K',
+    duration: '21:08',
+    tags: ['AI', 'Produktywność', 'Workflow'],
+  },
+  {
+    id: 'b-gOI128G2s',
+    title: 'Demo Day 10xDevs – zobacz najlepsze projekty uczestników 2 edycji!',
+    description: 'Prezentacja projektów końcowych uczestników drugiej edycji kursu 10xDevs.',
+    date: '2025',
+    views: '2.1K',
+    duration: '1:45:32',
+    tags: ['10xDevs', 'Demo', 'Projekty'],
+  },
+  {
+    id: 'WJLGzf7qq-c',
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze dla programistów',
+    description: 'Jak efektywnie pracować z agentami AI - Cursor, Codex i MCP w praktyce.',
+    date: '2025',
+    views: '8.7K',
+    duration: '35:42',
+    tags: ['AI', 'Cursor', 'MCP'],
+  },
+  {
+    id: 'jjOYxKAk_j8',
+    title: 'Programowanie z AI bez tajemnic – odpowiedzi na pytania, które zadaje każdy developer',
+    description: 'Q&A o programowaniu z AI - odpowiedzi na najczęściej zadawane pytania.',
+    date: '2025',
+    views: '4.5K',
+    duration: '42:18',
+    tags: ['AI', 'Q&A', 'Programowanie'],
+  },
+  {
+    id: 'RCF5HbjFVaQ',
+    title: 'AI jako asystent programisty (AWS, Terraform, GitHub Actions)',
+    description: 'Praktyczne zastosowania AI w DevOps - AWS, Terraform i GitHub Actions.',
+    date: '2024',
+    views: '6.3K',
+    duration: '28:55',
+    tags: ['DevOps', 'AWS', 'AI'],
+  },
+  {
+    id: 'EeYdqOI3VgQ',
+    title: 'Od juniora do seniora z ChatGPT: Lepsze decyzje techniczne',
+    description: 'Jak ChatGPT może pomóc w podejmowaniu lepszych decyzji technicznych.',
+    date: '2024',
+    views: '15.2K',
+    duration: '16:25',
+    tags: ['ChatGPT', 'Kariera', 'Decyzje'],
+  },
+];
+
+const stats = {
+  subscribers: '25K+',
+  videos: '200+',
+  views: '2M+',
+};
+---
+
+<Layout title="YouTube">
+  <Header />
+  
+  <main class="pt-16">
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-red-600 mb-8">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            YouTube
+          </h1>
+          <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+            Filmy o programowaniu, AI i rozwoju kariery. Nowe materiały co tydzień.
+          </p>
+          
+          <div class="flex flex-wrap justify-center gap-8 mb-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-white">{stats.subscribers}</div>
+              <div class="text-slate-400 text-sm">Subskrybentów</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-white">{stats.videos}</div>
+              <div class="text-slate-400 text-sm">Filmów</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-white">{stats.views}</div>
+              <div class="text-slate-400 text-sm">Wyświetleń</div>
+            </div>
+          </div>
+          
+          <a
+            href="https://youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-red-600 rounded-xl text-lg font-semibold text-white hover:bg-red-500 transition-colors"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-32 bg-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">
+          Ostatnie filmy
+        </h2>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {videos.map((video) => (
+            <a
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative rounded-xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-red-500/50 transition-all duration-300"
+            >
+              <div class="relative aspect-video">
+                <img
+                  src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                    <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-2 right-2 px-2 py-1 bg-black/80 rounded text-xs text-white">
+                  {video.duration}
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex flex-wrap gap-1 mb-2">
+                  {video.tags.slice(0, 2).map((tag) => (
+                    <span class="px-2 py-0.5 text-xs bg-slate-700 text-slate-300 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 class="text-white font-medium group-hover:text-red-400 transition-colors line-clamp-2 mb-2">
+                  {video.title}
+                </h3>
+                <div class="flex items-center gap-3 text-xs text-slate-500">
+                  <span>{video.views} wyświetleń</span>
+                  <span>•</span>
+                  <span>{video.date}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="https://youtube.com/@przeprogramowani/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800 border border-slate-700 rounded-xl text-lg font-semibold text-white hover:bg-slate-700 transition-colors"
+          >
+            Zobacz wszystkie filmy
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-32 bg-slate-950">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Chcesz więcej treści?
+        </h2>
+        <p class="text-xl text-slate-400 mb-8">
+          Zapisz się do newslettera i otrzymuj powiadomienia o nowych materiałach
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-xl font-semibold hover:bg-slate-100 transition-colors"
+        >
+          Zapisz się do newslettera
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -145,17 +145,24 @@ async function processResults(): Promise<void> {
 
     const {modelName, attemptNumber} = extractModelInfo(dir);
 
-    // Calculate total score and max score (excluding Task completion time)
+    // Calculate total score and max score (excluding Task completion time, Test run, and Penalty)
     let totalScore = 0;
     let maxScore = 0;
 
+    const excludedCriteria = new Set(["Task completion time", "Test run", "Penalty"]);
     const scoredCriteria = criteria.filter(
-      (c) => c.name !== "Task completion time" && c.name !== "Test run",
+      (c) => !excludedCriteria.has(c.name),
     );
 
     for (const criterion of scoredCriteria) {
       totalScore += criterion.score;
       maxScore += criterion.max;
+    }
+
+    // Subtract penalty if present (Penalty row score is deducted from total)
+    const penaltyRow = criteria.find((c) => c.name === "Penalty");
+    if (penaltyRow) {
+      totalScore -= penaltyRow.score;
     }
 
     const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;

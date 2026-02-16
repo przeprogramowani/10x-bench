@@ -7,6 +7,7 @@ interface Props {
 
 const isTimeRow = (name: string) => name === "Task completion time";
 const isTestRunRow = (name: string) => name === "Test run";
+const isPenaltyRow = (name: string) => name === "Penalty";
 const isInfoRow = (name: string) => isTimeRow(name) || isTestRunRow(name);
 
 export default function ResultsTable({attempts}: Props) {
@@ -18,14 +19,22 @@ export default function ResultsTable({attempts}: Props) {
       attempts.flatMap((a) => a.criteria).map((c) => [c.name, c]),
     ).values(),
   );
-  const scoringCriteria = allCriteriaUnsorted.filter((c) => !isInfoRow(c.name));
+  const scoringCriteria = allCriteriaUnsorted.filter((c) => !isInfoRow(c.name) && !isPenaltyRow(c.name));
+  const penaltyCriteria = allCriteriaUnsorted.filter((c) => isPenaltyRow(c.name));
   const infoCriteria = allCriteriaUnsorted.filter((c) => isInfoRow(c.name));
-  const allCriteria = [...scoringCriteria, ...infoCriteria];
+  const allCriteria = [...scoringCriteria, ...penaltyCriteria, ...infoCriteria];
 
   const getScoreColor = (score: number, max: number): string => {
     if (score === 0) return "bg-red-900 text-red-200";
     if (score === max) return "bg-green-900 text-green-200";
     return "bg-yellow-900 text-yellow-200"; // 0 < score < max
+  };
+
+  // Inverted colors for penalty: 0 = good (green), >0 = bad (red)
+  const getPenaltyColor = (score: number): string => {
+    if (score === 0) return "bg-green-900 text-green-200";
+    if (score >= 1) return "bg-red-900 text-red-200";
+    return "bg-yellow-900 text-yellow-200"; // 0.5
   };
 
   const formatScore = (criterion: CriterionResult) => {
@@ -71,16 +80,19 @@ export default function ResultsTable({attempts}: Props) {
               const isExpanded = expandedNotes === noteKey;
 
               const isInfo = isInfoRow(criterion.name);
+              const isPenalty = isPenaltyRow(criterion.name);
               const isFirstInfo =
                 isInfo && (idx === 0 || !isInfoRow(allCriteria[idx - 1].name));
+              const isFirstPenalty =
+                isPenalty && (idx === 0 || !isPenaltyRow(allCriteria[idx - 1].name));
 
               return (
                 <tr
                   key={criterion.name}
-                  className={`${isInfo ? "bg-slate-900/60" : idx % 2 === 0 ? "bg-slate-800" : "bg-slate-900"} ${isFirstInfo ? "border-t-2 border-slate-700" : ""}`}
+                  className={`${isInfo ? "bg-slate-900/60" : isPenalty ? "bg-slate-900/40" : idx % 2 === 0 ? "bg-slate-800" : "bg-slate-900"} ${isFirstInfo || isFirstPenalty ? "border-t-2 border-slate-700" : ""}`}
                 >
                   <td
-                    className={`sticky left-0 z-10 px-4 py-3 border-r border-slate-700 text-sm ${isInfo ? "bg-slate-900 font-normal text-slate-500" : "bg-inherit font-medium text-slate-100"}`}
+                    className={`sticky left-0 z-10 px-4 py-3 border-r border-slate-700 text-sm ${isInfo ? "bg-slate-900 font-normal text-slate-500" : isPenalty ? "bg-slate-900 font-medium text-slate-300" : "bg-inherit font-medium text-slate-100"}`}
                   >
                     <div className='max-w-xs'>{criterion.name}</div>
                   </td>
@@ -88,7 +100,7 @@ export default function ResultsTable({attempts}: Props) {
                     const matchedCriterion = attempt.criteria.find(
                       (c) => c.name === criterion.name,
                     );
-                    if (!matchedCriterion) {
+                    if (!matchedCriterion || (isPenalty && matchedCriterion.score === 0)) {
                       return (
                         <td key={attempt.id} className='px-4 py-3 text-center'>
                           <span className='inline-block px-2 py-1 rounded bg-slate-700 text-slate-400 text-xs'>
@@ -98,12 +110,14 @@ export default function ResultsTable({attempts}: Props) {
                       );
                     }
 
+                    const hasClickableNotes = !isInfo && matchedCriterion.notes;
+
                     return (
                       <td
                         key={attempt.id}
                         className='px-4 py-3 text-center'
                         onClick={() => {
-                          if (!isInfo && matchedCriterion.notes) {
+                          if (hasClickableNotes) {
                             setExpandedNotes(isExpanded ? null : noteKey);
                           }
                         }}
@@ -113,10 +127,12 @@ export default function ResultsTable({attempts}: Props) {
                             className={`inline-block px-2 py-1 rounded text-sm ${
                               isInfo
                                 ? "text-slate-400 font-normal"
-                                : `font-semibold cursor-pointer hover:opacity-80 ${getScoreColor(matchedCriterion.score, matchedCriterion.max)}`
+                                : isPenalty
+                                  ? `font-semibold cursor-pointer hover:opacity-80 ${getPenaltyColor(matchedCriterion.score)}`
+                                  : `font-semibold cursor-pointer hover:opacity-80 ${getScoreColor(matchedCriterion.score, matchedCriterion.max)}`
                             }`}
                           >
-                            {formatScore(matchedCriterion)}
+                            {isPenalty ? `-${matchedCriterion.score}` : formatScore(matchedCriterion)}
                           </span>
                           {isExpanded && matchedCriterion.notes && !isInfo && (
                             <div className='mt-2 p-2 bg-blue-950 text-blue-200 text-xs rounded max-w-xs border border-blue-800'>

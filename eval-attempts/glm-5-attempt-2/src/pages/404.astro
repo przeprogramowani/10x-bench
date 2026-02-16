@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+---
+
+<Layout title="404 - Strona nie znaleziona">
+  <Header client:load />
+
+  <main class="min-h-screen flex items-center justify-center pt-16">
+    <div class="text-center px-4">
+      <h1 class="text-8xl font-bold gradient-text mb-4">404</h1>
+      <h2 class="text-2xl font-semibold text-slate-300 mb-4">Strona nie znaleziona</h2>
+      <p class="text-slate-400 mb-8 max-w-md mx-auto">
+        Strona, której szukasz, nie istnieje lub została przeniesiona.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 hover:bg-primary-600 rounded-lg font-medium transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Wróć na stronę główną
+      </a>
+    </div>
+  </main>
+
+  <Footer client:load />
+</Layout>

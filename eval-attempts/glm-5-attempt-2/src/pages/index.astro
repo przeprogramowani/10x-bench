@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Hero from '../components/Hero';
+import CourseCard from '../components/CourseCard';
+import PodcastCard from '../components/PodcastCard';
+import VideoCard from '../components/VideoCard';
+
+const courses = [
+  {
+    title: '10xDevs 3.0',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    href: 'https://10xdevs.pl',
+    tag: 'Nowość',
+    gradient: 'bg-gradient-to-br from-primary-500/10 to-accent-500/10',
+  },
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!',
+    href: 'https://opanujfrontend.pl',
+    tag: 'Kurs',
+    gradient: 'bg-gradient-to-br from-blue-500/10 to-cyan-500/10',
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!',
+    href: 'https://opanujtypescript.pl',
+    tag: 'Kurs',
+    gradient: 'bg-gradient-to-br from-blue-600/10 to-indigo-500/10',
+  },
+];
+
+const podcasts = [
+  {
+    title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma',
+    duration: '1:23:04',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025',
+    duration: '1:47:28',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    duration: '33:45',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+];
+
+const videos = [
+  {
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=_kQHwE6zAbM',
+  },
+  {
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=KAJTsQbqBow',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=uwi39C2O8NI',
+  },
+];
+
+const brands = [
+  { name: 'Huuuge Games', src: '/img/brands/huge.png' },
+  { name: 'Nutridome', src: '/img/brands/nutridome.jpg' },
+  { name: 'SmartRecruiters', src: '/img/brands/smartrecruiters.png' },
+  { name: 'Future Processing', src: '/img/brands/future-proc.png' },
+  { name: 'Callstack', src: '/img/brands/callstack.png' },
+  { name: 'edrone', src: '/img/brands/edrone.png' },
+];
+---
+
+<Layout title="Przeprogramowani - Szersze spojrzenie na programowanie">
+  <Header client:load />
+  
+  <Hero client:load />
+
+  <section id="courses" class="py-24 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Programy edukacyjne</h2>
+        <p class="text-slate-400 max-w-2xl mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <CourseCard {...course} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-2">Najnowsze podcasty</h2>
+          <p class="text-slate-400">Słuchaj naszych podcastów o technologii, AI i programowaniu</p>
+        </div>
+        <a href="/podcast" class="mt-4 md:mt-0 text-primary-400 hover:text-primary-300 font-medium flex items-center gap-2">
+          Zobacz wszystkie
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {podcasts.map((podcast) => (
+          <PodcastCard {...podcast} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-2">Najnowsze filmy</h2>
+          <p class="text-slate-400">Rozwój nowoczesnego programisty na YouTube</p>
+        </div>
+        <a href="/youtube" class="mt-4 md:mt-0 text-primary-400 hover:text-primary-300 font-medium flex items-center gap-2">
+          Zobacz wszystkie
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <VideoCard {...video} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">7 lat na rynku edukacji technologicznej</h2>
+        <p class="text-slate-400">Współpracujemy z najlepszymi</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
+        {brands.map((brand) => (
+          <div class="h-12 flex items-center justify-center">
+            <img src={brand.src} alt={brand.name} class="max-h-full max-w-full grayscale hover:grayscale-0 transition-all" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer client:load />
+</Layout>

@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PodcastCard from '../components/PodcastCard';
+
+const podcastsOpanujAI = [
+  {
+    title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin',
+    duration: '1:23:04',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów',
+    duration: '1:47:28',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR',
+    duration: '58:41',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-2-to-GEMINI-KILLER--Google-VS-OpenAI--MCP-w-Linux-Foundation-i-wtpliwoci-wok-benchmarkw-METR-e3d20pf',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Gemini 3 to hit, ale konkurencja nie śpi! GPT-5.1, Grok 4.1 i Opus 4.5',
+    duration: '1:03:20',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Gemini-3-to-hit--ale-konkurencja-nie-pi--GPT-5-1--Grok-4-1-i-Opus-4-5--a-take-emocje-w-LLMach-i-nowy-Projekt-Manhattan-w-USA-e3bn687',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5 - dobrze, szybko i tanio?',
+    duration: '1:14:37',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Cursor-2-0-vs-Windsurf-SWE-1-5---dobrze--szybko-i-tanio--Nowa-era-programowania-z-AI-ju-tu-jest--DGX-Spark--ChatGPT-Atlas-i-nanochat-e3af168',
+    showName: 'Opanuj.AI Podcast',
+  },
+  {
+    title: 'Czy agenci AI zdominują branżę e-commerce? ChatGPT Instant Checkout, premiera Claude Sonnet 4.5',
+    duration: '1:28:05',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai/episodes/Czy-agenci-AI-zdominuj-bran-e-commerce--ChatGPT-Instant-Checkout--premiera-Claude-Sonnet-4-5-i-drakoskie-regulacje-w-Chinach-e392tfi',
+    showName: 'Opanuj.AI Podcast',
+  },
+];
+
+const podcastsFtGosc = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko',
+    duration: '33:45',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty, Wojciech Trawiński',
+    duration: '45:56',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin',
+    duration: '1:16:44',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+  {
+    title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne',
+    duration: '1:36:34',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+  {
+    title: 'No-code i Low-code - przyszłość tworzenia aplikacji? | Kamil Tarczyński',
+    duration: '36:31',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/No-code-i-Low-code---przyszo-tworzenia-aplikacji---Kamil-Tarczyski---Przeprogramowani-ft--Go-e2kqhp6',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+  {
+    title: 'Nauka nowoczesnego frontendu | Paweł Gnat',
+    duration: '42:11',
+    image: 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Nauka-nowoczesnego-frontendu--Pawe-Gnat---Przeprogramowani-ft--Go-e2kj935',
+    showName: 'Przeprogramowani ft. Gość',
+  },
+];
+
+const platforms = [
+  { name: 'Apple Podcasts', icon: 'apple', href: 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250' },
+  { name: 'Spotify', icon: 'spotify', href: 'https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o' },
+  { name: 'Google Podcasts', icon: 'google', href: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw' },
+  { name: 'RSS', icon: 'rss', href: 'https://anchor.fm/s/22544b7c/podcast/rss' },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani">
+  <Header client:load />
+
+  <main class="pt-24 pb-24">
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Podcasty</h1>
+          <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+            Słuchaj naszych podcastów o technologii, AI i programowaniu
+          </p>
+        </div>
+
+        <div class="mb-20">
+          <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-2xl font-bold">Opanuj.AI Podcast</h2>
+            <span class="px-3 py-1 rounded-full bg-primary-500/10 text-primary-400 text-sm">4000+ słuchaczy</span>
+          </div>
+          <p class="text-slate-400 mb-8">Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {podcastsOpanujAI.map((podcast) => (
+              <PodcastCard {...podcast} client:load />
+            ))}
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-2xl font-bold">Przeprogramowani ft. Gość</h2>
+            <span class="px-3 py-1 rounded-full bg-accent-500/10 text-accent-400 text-sm">3800+ słuchaczy</span>
+          </div>
+          <p class="text-slate-400 mb-8">Rozmowy dla głodnych wiedzy</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {podcastsFtGosc.map((podcast) => (
+              <PodcastCard {...podcast} client:load />
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
+          <h3 class="text-xl font-bold mb-6 text-center">Jesteśmy na twojej ulubionej platformie</h3>
+          
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            {platforms.map((platform) => (
+              <a
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 px-6 py-3 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
+              >
+                {platform.icon === 'apple' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                  </svg>
+                )}
+                {platform.icon === 'spotify' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                  </svg>
+                )}
+                {platform.icon === 'google' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z" />
+                  </svg>
+                )}
+                {platform.icon === 'rss' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-8.18v4.819c12.606.062 22.818 10.267 22.881 22.816h4.819c-.062-15.267-12.423-27.633-27.7-27.695z" />
+                  </svg>
+                )}
+                <span>{platform.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

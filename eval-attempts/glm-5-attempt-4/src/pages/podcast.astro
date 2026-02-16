@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PodcastEpisode from '../components/PodcastEpisode';
+
+const episodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów i jak skutecznie uczyć się angielskiego w IT.',
+    date: '25 Wrz 2025',
+    duration: '33:45',
+    href: 'https://open.spotify.com/episode/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    description: 'Wojciech Trawiński, Senior Software Engineer w XTB opowiada o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.',
+    date: '10 Wrz 2025',
+    duration: '45:57',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    description: 'Rozmowa z Tomaszem Ducinem o tym jak architektura wykracza poza konkretne narzędzia.',
+    date: '10 Paź 2024',
+    duration: '1:16:44',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany',
+    description: 'LIVE Q&A o nadchodzącym szkoleniu OpanujTypeScript oraz planach konferencyjnych.',
+    date: '21 Sie 2024',
+    duration: '1:36:35',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'No-code i Low-code - przyszłość tworzenia aplikacji?',
+    description: 'Kamil Tarczyński, Co-founder havenocode, o potencjale i wyzwaniach narzędzi no-code i low-code.',
+    date: '13 Cze 2024',
+    duration: '36:32',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Nauka nowoczesnego frontendu',
+    description: 'Paweł Gnat dzieli się wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend: AI Edition.',
+    date: '6 Cze 2024',
+    duration: '42:12',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Techniczny Product Management: Jira, MongoDB',
+    description: 'Jakub Łaziński, Technical Product Manager, o pracy TPM w firmach technologicznych.',
+    date: '24 Kwi 2024',
+    duration: '1:08:27',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Czym jest Frontend Tech Radar 2024?',
+    description: 'Przegląd technologii i technik frontendowych, które pomogą w podejmowaniu decyzji.',
+    date: '14 Sty 2024',
+    duration: '35:50',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+];
+
+const platforms = [
+  { name: 'Spotify', href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo', icon: 'spotify' },
+  { name: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/przeprogramowany-podcast/id1471770526', icon: 'apple' },
+  { name: 'RSS', href: 'https://anchor.fm/s/c72d808/podcast/rss', icon: 'rss' },
+];
+---
+
+<Layout title="Podcast" description="Przeprogramowany Podcast - szersze spojrzenie na programowanie">
+  <Navigation />
+  
+  <main class="pt-16">
+    <section class="py-20 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <div class="w-24 h-24 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+            <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">Podcast</h1>
+          <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+            Przeprogramowani czyli szersze spojrzenie na programowanie. Zapraszają Marcin Czarkowski i Przemek Smyrdek.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          {platforms.map(platform => (
+            <a 
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-slate-800 border border-slate-700 text-slate-300 px-6 py-3 rounded-xl font-medium hover:border-indigo-500 hover:text-white transition-all flex items-center gap-2"
+            >
+              {platform.icon === 'spotify' && (
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                </svg>
+              )}
+              {platform.icon === 'apple' && (
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+              )}
+              {platform.icon === 'rss' && (
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+                </svg>
+              )}
+              {platform.name}
+            </a>
+          ))}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {episodes.map(episode => (
+            <PodcastEpisode
+              client:load
+              title={episode.title}
+              description={episode.description}
+              date={episode.date}
+              duration={episode.duration}
+              href={episode.href}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

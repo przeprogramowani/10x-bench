@@ -1,0 +1,371 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const youtubeVideos = [
+  {
+    id: '_kQHwE6zAbM',
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    thumbnail: 'https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg',
+  },
+  {
+    id: 'KAJTsQbqBow',
+    title: 'Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?',
+    thumbnail: 'https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg',
+  },
+  {
+    id: 'uwi39C2O8NI',
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg',
+  },
+];
+
+const podcastEpisodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    guest: 'Wiktoria Sitko',
+    date: '25 Sep 2025',
+    duration: '33:45',
+    description: 'Omawiamy największe bariery językowe programistów i jak skutecznie uczyć się angielskiego w IT.',
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    guest: 'Wojciech Trawiński',
+    date: '10 Sep 2025',
+    duration: '45:57',
+    description: 'Jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10 Oct 2024',
+    duration: '1:16:44',
+    description: 'Czym (nie) jest architektura frontendu? Kluczowe decyzje kształtujące charakterystykę systemu.',
+  },
+];
+
+const courses = [
+  {
+    title: '10xDevs',
+    subtitle: 'Programuj z AI',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    href: 'https://10xdevs.pl',
+    gradient: 'from-violet-500 to-purple-600',
+    badge: 'Nowość',
+  },
+  {
+    title: 'Opanuj Frontend',
+    subtitle: 'AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych.',
+    href: 'https://opanujfrontend.pl',
+    gradient: 'from-blue-500 to-cyan-500',
+    badge: '4 edycje',
+  },
+  {
+    title: 'Opanuj TypeScript',
+    subtitle: 'TypeScript 5 & React 19',
+    description: 'Szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój.',
+    href: 'https://opanujtypescript.pl',
+    gradient: 'from-primary-500 to-blue-600',
+    badge: 'Najnowsze',
+  },
+];
+
+const partners = [
+  'Huuuge Games',
+  'SmartRecruiters',
+  'Callstack',
+  'Xfive',
+  'Strabag',
+  'Nutridome',
+  'Future Processing',
+  'edrone',
+  'Euvic',
+  'Autodesk',
+];
+---
+
+<Layout title="Strona główna">
+  <Header />
+  
+  <main>
+    <section class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-900/20 via-transparent to-transparent"></div>
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMDI5M2EiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnYyaDR2MmgtNHYyem0wLTMwaDJ2NGgtMnYyaC00di0yaDR2LTR6bS0zMCAwaC0ydjRoMnYyaDR2LTJoLTR2LTR6bTAgMzBoMnY0aC0ydi0yaC00djJoNHYtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 mb-8">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+            </span>
+            <span class="text-sm text-primary-300 font-medium">Nowość - Maj 2026</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6">
+            <span class="block text-white">10xDevs 3.0</span>
+          </h1>
+          
+          <p class="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-8">
+            Nowe oblicze programowania z wykorzystaniem <span class="text-primary-400">Generatywnego AI</span>. 
+            Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl text-lg font-semibold text-white hover:from-primary-400 hover:to-accent-400 transition-all duration-300 shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5"
+            >
+              Szczegóły
+              <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <a
+              href="/podcast"
+              class="px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-lg font-semibold text-white hover:bg-slate-800 transition-all duration-300"
+            >
+              Posłuchaj podcastu
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+
+    <section id="courses" class="py-20 lg:py-32 bg-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Edukacja technologiczna w epoce AI
+          </h2>
+          <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+            Topowe programy edukacyjne dla ambitnych programistów
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          {courses.map((course) => (
+            <a
+              href={course.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div class={`h-2 bg-gradient-to-r ${course.gradient}`}></div>
+              <div class="p-8">
+                <div class="flex items-center justify-between mb-4">
+                  <span class={`text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${course.gradient} text-white`}>
+                    {course.badge}
+                  </span>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-1 group-hover:text-primary-400 transition-colors">
+                  {course.title}
+                </h3>
+                <p class="text-sm text-slate-400 mb-4">{course.subtitle}</p>
+                <p class="text-slate-300 mb-6">{course.description}</p>
+                <div class="flex items-center text-primary-400 font-medium">
+                  Szczegóły
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="youtube" class="py-20 lg:py-32 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+              YouTube
+            </h2>
+            <p class="text-xl text-slate-400">
+              Najnowsze filmy o programowaniu i AI
+            </p>
+          </div>
+          <a
+            href="https://youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium"
+          >
+            Zobacz wszystkie
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          {youtubeVideos.map((video) => (
+            <a
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative rounded-xl overflow-hidden bg-slate-800/50 border border-slate-700/50 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div class="relative aspect-video">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-white font-medium group-hover:text-primary-400 transition-colors line-clamp-2">
+                  {video.title}
+                </h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="podcast" class="py-20 lg:py-32 bg-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Podcast
+            </h2>
+            <p class="text-xl text-slate-400">
+              Rozmowy o programowaniu, karierze i rozwoju
+            </p>
+          </div>
+          <a
+            href="https://anchor.fm/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-4 md:mt-0 inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium"
+          >
+            Wszystkie odcinki
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="space-y-4">
+          {podcastEpisodes.map((episode) => (
+            <a
+              href="https://anchor.fm/przeprogramowani"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block p-6 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-4">
+                <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors">
+                    {episode.title}
+                  </h3>
+                  <p class="text-slate-400 text-sm mt-1">
+                    z {episode.guest} • {episode.date} • {episode.duration}
+                  </p>
+                  <p class="text-slate-500 text-sm mt-2 line-clamp-1">
+                    {episode.description}
+                  </p>
+                </div>
+                <div class="flex-shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-slate-700 group-hover:bg-primary-500 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="py-20 lg:py-32 bg-gradient-to-br from-slate-950 via-primary-950/20 to-slate-950">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Przeprogramowany Newsletter
+        </h2>
+        <p class="text-xl text-slate-400 mb-8">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div class="flex items-center gap-6 text-slate-300">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-bold text-primary-400">3</span>
+              <span class="text-sm">rekomendacje techniczne</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-bold text-accent-400">2</span>
+              <span class="text-sm">rekomendacje rozwojowe</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-bold text-white">1</span>
+              <span class="text-sm">bonus</span>
+            </div>
+          </div>
+        </div>
+        
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 mt-8 px-8 py-4 bg-white text-slate-900 rounded-xl font-semibold hover:bg-slate-100 transition-colors"
+        >
+          Zapisz się za darmo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section id="partners" class="py-20 lg:py-32 bg-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+            7 lat na rynku edukacji technologicznej
+          </h2>
+          <p class="text-slate-400">Współpracujemy z najlepszymi</p>
+        </div>
+        
+        <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+          {partners.map((partner) => (
+            <div class="px-6 py-3 text-slate-500 hover:text-slate-300 transition-colors font-medium">
+              {partner}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

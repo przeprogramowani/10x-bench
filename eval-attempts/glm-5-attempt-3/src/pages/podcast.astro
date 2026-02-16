@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const episodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    guest: 'Wiktoria Sitko',
+    date: '25 Sep 2025',
+    duration: '33:45',
+    description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT. Praktyczne porady dla każdego, kto chce przełamać strach przed mówieniem i otworzyć sobie drzwi do międzynarodowych projektów.',
+    tags: ['Angielski', 'Kariera', 'Rozwój'],
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    guest: 'Wojciech Trawiński',
+    date: '10 Sep 2025',
+    duration: '45:57',
+    description: 'Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty. Dlaczego mit "ciężka praca = sukces" nie działa w IT? Jak oddzielić ego od pracy i kiedy walczyć, a kiedy odpuścić.',
+    tags: ['Kariera', 'Senior', 'Rozwój'],
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10 Oct 2024',
+    duration: '1:16:44',
+    description: 'W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia, koncentrując się zamiast tego na kluczowych decyzjach, które kształtują charakterystykę systemu. Czym (nie) jest architektura frontendu?',
+    tags: ['Architektura', 'Frontend', 'TypeScript'],
+  },
+  {
+    title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne',
+    guest: 'LIVE YT',
+    date: '21 Aug 2024',
+    duration: '1:36:35',
+    description: 'Zapraszamy na kolejne LIVE Q&A - rozmawiamy o nadchodzącym szkoleniu OpanujTypeScript, a także opowiadamy, gdzie będzie można przybić pionę w trakcie nadchodzących eventów.',
+    tags: ['TypeScript', 'Wydarzenia', 'Kurs'],
+  },
+  {
+    title: 'No-code i Low-code - przyszłość tworzenia aplikacji?',
+    guest: 'Kamil Tarczyński',
+    date: '13 Jun 2024',
+    duration: '36:32',
+    description: 'Kamil Tarczyński, Co-founder oraz CTO agencji havenocode, która specjalizuje się w tworzeniu aplikacji za pomocą platform i narzędzi no-code i low-code. Rozmowa o potencjale, wyzwaniach oraz przyszłości tych narzędzi w kontekście web developmentu.',
+    tags: ['No-code', 'Low-code', 'Trendy'],
+  },
+  {
+    title: 'Nauka nowoczesnego frontendu',
+    guest: 'Paweł Gnat',
+    date: '6 Jun 2024',
+    duration: '42:12',
+    description: 'Paweł Gnat to frontend developer, którzy przebranżowił się do IT z budownictwa. W tym podcaście dzieli się swoimi wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend: AI Edition.',
+    tags: ['Frontend', 'Nauka', 'Przebranżowienie'],
+  },
+  {
+    title: 'Techniczny Product Management: Jira, MongoDB',
+    guest: 'Jakub Łaziński',
+    date: '24 Apr 2024',
+    duration: '1:08:27',
+    description: 'Jakub Łazinski to Technical Product Manager, który pracował nad rozwojem produktów MongoDB (CLI), Atlassian (Jira) oraz SmartRecruiters. Jak wygląda specyfika pracy TPM w różnorodnych firmach technologicznych?',
+    tags: ['Product Management', 'Kariera', 'MongoDB'],
+  },
+  {
+    title: 'Czym jest Frontend Tech Radar 2024?',
+    guest: 'Przeprogramowani',
+    date: '14 Jan 2024',
+    duration: '35:50',
+    description: 'Frontend Tech Radar to nasza pierwsza duża inicjatywa w 2024 roku. Przygotujemy dla Was przegląd technologii i technik frontendowych, która pomoże Wam w podejmowaniu decyzji z czego korzystać i czego warto się uczyć w projektach realizowanych w nowym roku.',
+    tags: ['Frontend', 'Trendy', 'Tech Radar'],
+  },
+];
+
+const platforms = [
+  { name: 'Spotify', href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo', icon: 'spotify' },
+  { name: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/przeprogramowany-podcast/id1471770526', icon: 'apple' },
+  { name: 'Google Podcasts', href: 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9jNzJkODA4L3BvZGNhc3QvcnNz', icon: 'google' },
+  { name: 'Anchor', href: 'https://anchor.fm/przeprogramowani', icon: 'anchor' },
+];
+---
+
+<Layout title="Podcast">
+  <Header />
+  
+  <main class="pt-16">
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 mb-8">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Przeprogramowany Podcast
+          </h1>
+          <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+            Rozmowy o programowaniu, karierze i rozwoju. Zapraszają Marcin Czarkowski i Przemek Smyrdek.
+          </p>
+          
+          <div class="flex flex-wrap justify-center gap-4">
+            {platforms.map((platform) => (
+              <a
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all duration-300"
+              >
+                {platform.icon === 'spotify' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                  </svg>
+                )}
+                {platform.icon === 'apple' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 3.6a4.94 4.94 0 013.27 1.267 4.92 4.92 0 011.55 3.15 4.88 4.88 0 01-1.275 3.562 4.94 4.94 0 01-3.51 1.576h-.045a4.88 4.88 0 01-3.51-1.47 4.88 4.88 0 01-1.365-3.54 4.94 4.94 0 011.5-3.33 4.94 4.94 0 013.385-1.215zm.045 1.65a3.29 3.29 0 00-2.34.87 3.27 3.27 0 00-.99 2.34v.03a3.24 3.24 0 00.9 2.37 3.27 3.27 0 002.37.93 3.29 3.29 0 002.37-.96 3.24 3.24 0 00.84-2.37v-.03a3.27 3.27 0 00-.99-2.34 3.29 3.29 0 00-2.16-.84zm-1.5 8.82a6.6 6.6 0 013.6 1.08 6.57 6.57 0 012.794 3.87.84.84 0 01-.645.99h-.165a.84.84 0 01-.81-.63 4.92 4.92 0 00-2.085-2.88 4.92 4.92 0 00-2.685-.78 4.92 4.92 0 00-2.685.78 4.92 4.92 0 00-2.085 2.88.84.84 0 01-.99.585.84.84 0 01-.63-.99 6.57 6.57 0 012.794-3.87 6.6 6.6 0 013.597-1.08z"/>
+                  </svg>
+                )}
+                {platform.icon === 'google' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 110-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0012.545 2C7.021 2 2.543 6.477 2.543 12s4.478 10 10.002 10c8.396 0 10.249-7.85 9.426-11.748l-9.426-.013z"/>
+                  </svg>
+                )}
+                {platform.icon === 'anchor' && (
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-3.5l5-4.5-5-4.5v9z"/>
+                  </svg>
+                )}
+                {platform.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-32 bg-slate-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-8">
+          Ostatnie odcinki
+        </h2>
+        
+        <div class="space-y-4">
+          {episodes.map((episode, index) => (
+            <a
+              href="https://anchor.fm/przeprogramowani"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block p-6 bg-slate-800/50 rounded-xl border border-slate-700/50 hover:border-primary-500/50 transition-all duration-300"
+            >
+              <div class="flex flex-col lg:flex-row lg:items-start gap-4">
+                <div class="flex-shrink-0">
+                  <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    {episode.tags.map((tag) => (
+                      <span class="px-2 py-1 text-xs font-medium bg-slate-700 text-slate-300 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 class="text-lg font-semibold text-white group-hover:text-primary-400 transition-colors mb-1">
+                    {episode.title}
+                  </h3>
+                  <p class="text-slate-400 text-sm mb-2">
+                    z {episode.guest} • {episode.date} • {episode.duration}
+                  </p>
+                  <p class="text-slate-500 text-sm line-clamp-2">
+                    {episode.description}
+                  </p>
+                </div>
+                <div class="flex-shrink-0 self-center lg:self-start">
+                  <div class="w-12 h-12 rounded-full bg-slate-700 group-hover:bg-primary-500 flex items-center justify-center transition-colors">
+                    <svg class="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="https://anchor.fm/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl text-lg font-semibold text-white hover:from-primary-400 hover:to-accent-400 transition-all duration-300"
+          >
+            Zobacz wszystkie odcinki
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

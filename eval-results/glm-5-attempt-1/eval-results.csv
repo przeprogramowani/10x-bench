@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,N/A,N/A,N/A
+Local build,1,1,Build successful with Astro 5.17.2 static output
+Manual testing,1,1,Dev server starts and all 4 pages accessible with working navigation styles and content
+Tech stack,0.5,1,Astro 5 React 19 Tailwind CSS 4 all present but no @astrojs/cloudflare adapter installed or configured
+O nas page,0.5,1,Page exists and returns 200. Team bios include key details (DAZN/Cabify for Przemek SmartRecruiters for Marcin) but missing course assignments and some professional details from context
+Podcast page,0.5,1,Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts displayed. Spotify platform URL is wrong (4qHUZJpeBK8Ij9e2wTVm2o instead of correct show IDs). Episode data appears realistic but unverifiable
+YouTube page,0.5,1,9 videos displayed. First 6 have valid YouTube IDs. Last 3 have invalid/hallucinated IDs (e3af168 e392tfi e3bn687) and reuse thumbnails from other videos
+Kursy section,0.5,1,CourseCard component with 3 courses (10xDevs Opanuj Frontend Opanuj TypeScript). 10xDevs featured prominently in hero CTA. Missing 3 of 6 courses from context (Opanuj JavaScript Opanuj AI Cursor)
+Consistent UI,1,1,UI consistent across all pages per manual testing
+Responsive design,0.5,1,Majority responsive with some minor issues per manual testing
+SEO Tags,1,1,Meta title and description in Layout.astro covering all pages. Default description matches context tagline. lang=pl set correctly
+Penalty,1,N/A,Manual intervention required - incorrect paths during code generation

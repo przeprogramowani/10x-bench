@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    image: '/img/profiles/przemek.webp',
+    bio: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).',
+    linkedin: 'https://www.linkedin.com/in/psmyrdek/',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    image: '/img/profiles/marcin.webp',
+    bio: 'Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista TypeScript, React, Node.js.',
+    linkedin: 'https://www.linkedin.com/in/mkczarkowski/',
+  },
+];
+
+const brands = [
+  { name: 'Huuuge Games', src: '/img/brands/huge.png' },
+  { name: 'Nutridome', src: '/img/brands/nutridome.jpg' },
+  { name: 'SmartRecruiters', src: '/img/brands/smartrecruiters.png' },
+  { name: 'Future Processing', src: '/img/brands/future-proc.png' },
+  { name: 'Callstack', src: '/img/brands/callstack.png' },
+  { name: 'edrone', src: '/img/brands/edrone.png' },
+  { name: 'Xfive', src: '/img/brands/xfive.png' },
+  { name: 'Euvic', src: '/img/brands/euvic.png' },
+  { name: 'Strabag', src: '/img/brands/strabag.jpg' },
+  { name: 'Autodesk', src: '/img/brands/autodesk.png' },
+];
+---
+
+<Layout title="O nas - Przeprogramowani">
+  <Header client:load />
+
+  <main class="pt-24 pb-24">
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">O nas</h1>
+          <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+            Łączymy świat programowania, biznesu i rozwoju
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+          {founders.map((founder) => (
+            <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-colors">
+              <div class="flex flex-col sm:flex-row items-start gap-6">
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  class="w-24 h-24 rounded-full object-cover"
+                />
+                <div class="flex-1">
+                  <h3 class="text-xl font-bold mb-1">{founder.name}</h3>
+                  <p class="text-primary-400 text-sm mb-4">{founder.role}</p>
+                  <p class="text-slate-400 text-sm leading-relaxed mb-4">{founder.bio}</p>
+                  <a
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-slate-300 hover:text-primary-400 transition-colors"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center mb-24">
+          <div class="bg-gradient-to-r from-primary-500/10 to-accent-500/10 border border-slate-800 rounded-2xl p-8 sm:p-12">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Witaj na Przeprogramowanych!</h2>
+            <p class="text-slate-300 text-lg leading-relaxed mb-6">
+              Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+            </p>
+            <p class="text-slate-400 leading-relaxed">
+              Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">7 lat na rynku edukacji technologicznej</h2>
+          <p class="text-slate-400">Współpracujemy z najlepszymi</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-60">
+          {brands.map((brand) => (
+            <div class="h-12 flex items-center justify-center">
+              <img src={brand.src} alt={brand.name} class="max-h-full max-w-full grayscale hover:grayscale-0 transition-all" />
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-16 text-center">
+          <p class="text-slate-400 mb-4">Chcesz nawiązać współpracę?</p>
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-primary-400 hover:text-primary-300 font-medium text-lg">
+            kontakt@przeprogramowani.pl
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>
