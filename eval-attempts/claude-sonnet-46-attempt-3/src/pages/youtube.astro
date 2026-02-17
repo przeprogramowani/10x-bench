@@ -1,0 +1,339 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const channelInfo = {
+  name: 'Przeprogramowani',
+  handle: '@przeprogramowani',
+  url: 'https://www.youtube.com/c/przeprogramowani',
+  description: 'Kanał YouTube Przeprogramowani to najlepsza biblioteka polskich treści o programowaniu dla zaawansowanych developerów. Tutoriale, analizy narzędzi AI, webinary z ekspertami i preview kursów.',
+};
+
+const categories = [
+  { id: 'ai', label: 'AI & Narzędzia', color: 'bg-green-500/10 text-green-400 border-green-500/20' },
+  { id: 'typescript', label: 'TypeScript', color: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+  { id: 'frontend', label: 'Frontend', color: 'bg-violet-500/10 text-violet-400 border-violet-500/20' },
+  { id: 'kariera', label: 'Kariera', color: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
+];
+
+const videos = [
+  {
+    id: 1,
+    title: 'Cursor AI vs GitHub Copilot — który jest lepszy w 2026?',
+    duration: '24:15',
+    views: '48K',
+    date: 'Styczeń 2026',
+    category: 'ai',
+    description: 'Szczegółowe porównanie dwóch najpopularniejszych narzędzi AI do kodowania. Konkretne case studies, benchmarki i wnioski dla codziennej pracy developera.',
+    thumbnail: null,
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'TypeScript 5.7 — Wszystko co powinieneś wiedzieć',
+    duration: '31:42',
+    views: '32K',
+    date: 'Grudzień 2025',
+    category: 'typescript',
+    description: 'Przegląd wszystkich nowych funkcji TypeScript 5.7. Practical examples, migracja z 5.6 i co to oznacza dla Twoich projektów.',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 3,
+    title: 'Jak zbudować MVP z AI w tydzień — live coding',
+    duration: '1:52:30',
+    views: '27K',
+    date: 'Grudzień 2025',
+    category: 'ai',
+    description: 'Live coding session — budujemy pełne MVP z AI tools w ciągu jednego dnia. React, tRPC, Cloudflare i deployment na żywo.',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 4,
+    title: 'Architektura Frontendu 2025 — od chaosu do porządku',
+    duration: '45:18',
+    views: '21K',
+    date: 'Listopad 2025',
+    category: 'frontend',
+    description: 'Jak projektować skalowalne aplikacje frontendowe. Feature-based architecture, monorepo strategies i kiedy stosować micro-frontends.',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 5,
+    title: '10xDevs 3.0 — Co nowego w nowej edycji?',
+    duration: '18:55',
+    views: '19K',
+    date: 'Listopad 2025',
+    category: 'ai',
+    description: 'Marcin i Przemek omawiają co zmieniło się w nowej edycji 10xDevs. Nowe moduły, zmiany w curriculum i co możesz oczekiwać.',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 6,
+    title: 'Jak awansować jako developer bez zmiany firmy?',
+    duration: '38:22',
+    views: '15K',
+    date: 'Październik 2025',
+    category: 'kariera',
+    description: 'Strategie awansu zawodowego dla developerów. Jak budować widoczność, przejmować odpowiedzialność i negocjować podwyżkę bez zmiany pracodawcy.',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 7,
+    title: 'React 19 — Wszystkie nowe hoooki i Server Components',
+    duration: '42:10',
+    views: '38K',
+    date: 'Październik 2025',
+    category: 'frontend',
+    description: 'Kompletny przegląd React 19. useActionState, useOptimistic, use() hook i Server Components w praktyce. Kiedy migrować?',
+    thumbnail: null,
+    featured: false,
+  },
+  {
+    id: 8,
+    title: 'Zaawansowane typy w TypeScript — Conditional & Mapped Types',
+    duration: '55:40',
+    views: '12K',
+    date: 'Wrzesień 2025',
+    category: 'typescript',
+    description: 'Deep dive w zaawansowane wzorce typów TypeScript. Conditional types, mapped types, template literal types — od teorii do praktyki.',
+    thumbnail: null,
+    featured: false,
+  },
+];
+
+const getCategoryInfo = (categoryId: string) => {
+  return categories.find(c => c.id === categoryId) ?? categories[0];
+};
+---
+
+<Layout
+  title="YouTube"
+  description="Kanał YouTube Przeprogramowani — tutoriale, analizy AI i webinary dla zaawansowanych developerów."
+>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-red-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="flex-1 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-medium mb-6">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+            YouTube
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            Wiedza na
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
+              ekranie
+            </span>
+          </h1>
+          <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl">
+            {channelInfo.description}
+          </p>
+          <a
+            href={channelInfo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-red-500/25 hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+            </svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+
+        <!-- Channel preview card -->
+        <div class="lg:w-80 flex-shrink-0">
+          <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-black text-xl">
+                P
+              </div>
+              <div>
+                <div class="font-bold text-white">{channelInfo.name}</div>
+                <div class="text-sm text-slate-500">{channelInfo.handle}</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-800 rounded-xl p-3 text-center">
+                <div class="font-black text-white text-lg">100+</div>
+                <div class="text-xs text-slate-500">Filmów</div>
+              </div>
+              <div class="bg-slate-800 rounded-xl p-3 text-center">
+                <div class="font-black text-white text-lg">10K+</div>
+                <div class="text-xs text-slate-500">Subskrybentów</div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              {categories.map((cat) => (
+                <div class={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-medium mr-2 ${cat.color}`}>
+                  {cat.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos grid -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+        <h2 class="text-2xl font-black text-white">Ostatnie filmy</h2>
+        <a
+          href={channelInfo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-semibold text-red-400 hover:text-red-300 transition-colors"
+        >
+          Wszystkie filmy na YouTube →
+        </a>
+      </div>
+
+      <!-- Featured video -->
+      {videos.filter(v => v.featured).map((video) => {
+        const cat = getCategoryInfo(video.category);
+        return (
+          <div class="group mb-8 bg-slate-900 border border-slate-800 hover:border-red-500/30 rounded-3xl overflow-hidden transition-all hover:-translate-y-0.5">
+            <div class="flex flex-col lg:flex-row">
+              <!-- Thumbnail placeholder -->
+              <div class="lg:w-2/5 aspect-video lg:aspect-auto bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/5"></div>
+                <div class="relative z-10 w-16 h-16 rounded-full bg-red-600/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                  <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <div class="absolute bottom-3 right-3 px-2 py-1 bg-black/80 rounded text-xs text-white font-mono">
+                  {video.duration}
+                </div>
+                <div class="absolute top-3 left-3">
+                  <span class="px-2 py-1 rounded-lg bg-red-600 text-white text-xs font-bold">Featured</span>
+                </div>
+              </div>
+              <!-- Info -->
+              <div class="flex-1 p-8">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class={`inline-flex items-center px-2.5 py-1 rounded-lg border text-xs font-medium ${cat.color}`}>
+                    {cat.label}
+                  </span>
+                  <span class="text-xs text-slate-500">{video.date}</span>
+                  <span class="text-xs text-slate-500">{video.views} wyświetleń</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors">
+                  {video.title}
+                </h3>
+                <p class="text-slate-400 leading-relaxed mb-6">{video.description}</p>
+                <a
+                  href={channelInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl transition-all text-sm"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  Obejrzyj na YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      <!-- Regular grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {videos.filter(v => !v.featured).map((video) => {
+          const cat = getCategoryInfo(video.category);
+          return (
+            <a
+              href={channelInfo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group bg-slate-900 border border-slate-800 hover:border-red-500/30 rounded-2xl overflow-hidden transition-all hover:-translate-y-0.5"
+            >
+              <!-- Thumbnail -->
+              <div class="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 relative flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-red-600/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 rounded text-xs text-white font-mono">
+                  {video.duration}
+                </div>
+              </div>
+              <!-- Info -->
+              <div class="p-4">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class={`inline-flex items-center px-2 py-0.5 rounded-md border text-xs font-medium ${cat.color}`}>
+                    {cat.label}
+                  </span>
+                  <span class="text-xs text-slate-600">{video.views}</span>
+                </div>
+                <h3 class="text-sm font-bold text-white group-hover:text-red-400 transition-colors leading-snug mb-2">
+                  {video.title}
+                </h3>
+                <p class="text-xs text-slate-500">{video.date}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- See more -->
+      <div class="text-center mt-12">
+        <a
+          href={channelInfo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 border border-slate-700 hover:border-red-500/50 text-slate-300 hover:text-white font-semibold rounded-xl transition-all hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+          </svg>
+          Zobacz wszystkie filmy na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter crosslink -->
+  <section class="py-20 bg-slate-900/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-black text-white mb-4">Nie przegap żadnej treści</h2>
+      <p class="text-slate-400 mb-8">
+        Subskrybuj nasz kanał i zapisz się na newsletter. Cotygodniowe podsumowania, nowe odcinki podcastów i artykuły — wszystko w jednym miejscu.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={channelInfo.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all hover:-translate-y-0.5 w-full sm:w-auto justify-center"
+        >
+          Subskrybuj YouTube
+        </a>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 px-6 py-3 border border-slate-700 hover:border-green-500/50 text-slate-300 hover:text-white font-semibold rounded-xl transition-all hover:bg-slate-800/50 hover:-translate-y-0.5 w-full sm:w-auto justify-center"
+        >
+          Zapisz się na newsletter
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

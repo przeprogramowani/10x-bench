@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import CourseCard from '../components/CourseCard';
+import PodcastCard from '../components/PodcastCard';
+import VideoCard from '../components/VideoCard';
+import { courses } from '../data/courses';
+import { podcastEpisodes } from '../data/podcasts';
+import { videos } from '../data/videos';
+
+const featuredCourse = courses.find((c) => c.featured) ?? courses[0];
+const previewPodcasts = podcastEpisodes.slice(0, 4);
+const previewVideos = videos.slice(0, 3);
+---
+
+<Layout title="Przeprogramowani.pl — Kursy, Podcast i Filmy dla Programistów">
+  <!-- Hero -->
+  <Hero featuredCourse={featuredCourse} client:load />
+
+  <!-- Kursy -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nasze Kursy</h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Praktyczna wiedza dla programistów — od podstaw po zaawansowane techniki w erze AI
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <CourseCard course={course} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Preview -->
+  <section class="py-20" style="background-color: #111111;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Najnowsze Odcinki</h2>
+          <p class="text-gray-400 text-lg">
+            Dwie serie: Opanuj.AI i rozmowy z gościem
+          </p>
+        </div>
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 text-sm font-semibold whitespace-nowrap hover:opacity-80 transition-opacity"
+          style="color: #22d3ee;"
+        >
+          Wszystkie odcinki
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {previewPodcasts.map((episode) => (
+          <PodcastCard episode={episode} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube Preview -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Filmy na YouTube</h2>
+          <p class="text-gray-400 text-lg">
+            Tutoriale, live coding i przeglądy nowości
+          </p>
+        </div>
+        <a
+          href="/youtube"
+          class="inline-flex items-center gap-2 text-sm font-semibold whitespace-nowrap hover:opacity-80 transition-opacity"
+          style="color: #22d3ee;"
+        >
+          Więcej filmów
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {previewVideos.map((video) => (
+          <VideoCard video={video} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-20" style="background: linear-gradient(135deg, #0e7490 0%, #312e81 100%);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Gotowy, żeby programować 10x szybciej?
+      </h2>
+      <p class="text-cyan-100 text-lg mb-8 max-w-xl mx-auto">
+        Dołącz do społeczności programistów, którzy opanowali pracę z AI. Kurs 10xDevs 3.0 startuje 18 maja 2026.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-gray-900 transition-all hover:scale-105"
+          style="background-color: #22d3ee;"
+        >
+          Zapisz się na 10xDevs 3.0
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a
+          href="/o-nas"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/30 hover:border-white/60 transition-all hover:scale-105"
+        >
+          Dowiedz się więcej o nas
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

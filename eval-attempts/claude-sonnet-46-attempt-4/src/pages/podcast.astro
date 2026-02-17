@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastCard from '../components/PodcastCard.tsx';
+
+const spotifyUrl = 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo';
+const appleUrl = 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1471770526';
+
+const mainEpisodes = [
+  {
+    number: 98,
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    guest: 'Wiktoria Sitko',
+    date: '25 wrz 2025',
+    description:
+      'Rozmowa o tym, jak przezwyciężyć barierę językową i dlaczego angielski jest kluczowy w karierze programisty. Wiktoria opowiada o swojej drodze od strachu przed rozmowami po swobodną komunikację w środowisku międzynarodowym.',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 97,
+    title: 'O dojrzewaniu zawodowym programisty',
+    guest: 'Wojciech Trawiński',
+    date: '10 wrz 2025',
+    description:
+      'Czym jest dojrzałość zawodowa w świecie programowania i jak ją rozwijać na każdym etapie kariery. Wojtek dzieli się refleksjami po wielu latach w branży.',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 96,
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10 paź 2024',
+    description:
+      'Ekspercka rozmowa o decyzjach architektonicznych w dużych aplikacjach frontendowych. Jakie wzorce działają, a jakie są tylko teorią?',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 95,
+    title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne',
+    guest: null,
+    date: '21 sie 2024',
+    description:
+      'Przegląd najnowszych zmian w TypeScript oraz plany konferencyjne Przeprogramowani na koniec 2024 roku. Co warto wiedzieć o nowych funkcjach języka?',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 94,
+    title: 'No-code i Low-code — przyszłość tworzenia aplikacji?',
+    guest: null,
+    date: '13 cze 2024',
+    description:
+      'Czy narzędzia no-code i low-code zmienią sposób tworzenia oprogramowania? Analiza aktualnych trendów, dostępnych narzędzi i ich realnych możliwości.',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 93,
+    title: 'Senior Developer — jak nim zostać i co to tak naprawdę znaczy?',
+    guest: null,
+    date: '15 maj 2024',
+    description:
+      'Czy Senior to tylko kwestia lat doświadczenia? Rozmawiamy o tym, czym naprawdę jest seniority i jak świadomie budować swoją karierę.',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 92,
+    title: 'AI w codziennej pracy programisty — realny wpływ na produktywność',
+    guest: null,
+    date: '20 mar 2024',
+    description:
+      'Jak GitHub Copilot, ChatGPT i Claude zmieniają codzienną pracę programistów? Nasze doświadczenia po 12 miesiącach intensywnego używania narzędzi AI.',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    number: 91,
+    title: 'React Server Components — rewolucja czy ewolucja?',
+    guest: null,
+    date: '28 lut 2024',
+    description:
+      'Deep dive w React Server Components i nowy model myślenia o aplikacjach webowych. Co to oznacza dla programistów frontendowych?',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+];
+
+const aiPodcastEpisodes = [
+  {
+    title: 'Doktor AI nadchodzi',
+    description: 'Medyczne modele AI i ich potencjał w służbie zdrowia',
+    date: 'Sty 2026',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    title: 'Wielkie Podsumowanie AI w 2025',
+    description: 'Rok w którym AI zmieniło wszystko — przegląd najważniejszych wydarzeń',
+    date: 'Gru 2025',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    title: 'GPT-5.2 to GEMINI KILLER?',
+    description: 'OpenAI vs Google — porównanie najnowszych modeli językowych',
+    date: 'Lis 2025',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+  {
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5',
+    description: 'Które narzędzie AI dla programistów wygrywa w 2025 roku?',
+    date: 'Paź 2025',
+    spotifyUrl,
+    applePodcastsUrl: appleUrl,
+  },
+];
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Przeprogramowani Podcast — 98 odcinków o programowaniu, karierze i technologii. Dostępny na Spotify i Apple Podcasts."
+>
+  <!-- Hero -->
+  <section class="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-violet-900/10 rounded-full blur-[100px] pointer-events-none"
+    ></div>
+
+    <div class="relative max-w-4xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center gap-12">
+        <!-- Podcast artwork placeholder -->
+        <div class="flex-shrink-0">
+          <div
+            class="w-48 h-48 rounded-3xl bg-gradient-to-br from-violet-600 to-indigo-700 flex items-center justify-center shadow-2xl shadow-violet-900/50 glow-violet"
+          >
+            <div class="text-center">
+              <div class="text-5xl mb-2">🎙️</div>
+              <div class="text-white font-black text-sm">PODCAST</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <div class="badge mb-4">98 odcinków · 4.88/5 ⭐</div>
+          <h1 class="text-4xl sm:text-5xl font-black text-white mb-2">Przeprogramowani</h1>
+          <p class="text-violet-400 font-semibold mb-4 text-base">
+            Prowadzą: Marcin Czarkowski i Przemek Smyrdek
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-8 text-base max-w-xl">
+            Szersze spojrzenie na programowanie. Rozmowy z najlepszymi specjalistami ze świata
+            technologii. Oceniony przez słuchaczy na <strong class="text-white">4.88/5</strong> z
+            ponad 49 recenzji.
+          </p>
+
+          <!-- Platform buttons -->
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={spotifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#1DB954]/10 border border-[#1DB954]/30 text-[#1DB954] font-semibold hover:bg-[#1DB954]/20 transition-colors"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                ></path>
+              </svg>
+              Spotify
+            </a>
+            <a
+              href={appleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 font-semibold hover:bg-purple-500/20 transition-colors"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.608 1.685 2.467 3.775 2.467 6.22 0 4.644-3.29 9.487-6.87 9.487-1.044 0-2.023-.419-2.737-1.18-.688-.733-1.036-1.688-1.036-2.779 0-.484.064-.972.19-1.45.128-.487.31-.966.54-1.42l.165-.33.165-.33c.117-.262.256-.53.413-.807l.413-.805a12.35 12.35 0 0 0 .408-.905c.052-.14.105-.278.155-.42.15-.43.29-.953.38-1.446.092-.496.138-.978.138-1.447 0-1.18-.287-2.077-.86-2.739-.596-.677-1.443-1.02-2.55-1.02-.74 0-1.396.2-1.982.606-.587.407-1.027.94-1.335 1.618-.31.677-.468 1.408-.468 2.215 0 .72.134 1.36.41 1.895.273.537.63.96 1.086 1.285.237.167.463.282.672.346a.48.48 0 0 1 .315.457.48.48 0 0 1-.47.483c-.15 0-.348-.047-.594-.14a4.573 4.573 0 0 1-1.03-.574 4.78 4.78 0 0 1-.88-.91c-.5-.696-.777-1.565-.777-2.64 0-1.036.218-2.006.655-2.887.44-.88 1.076-1.593 1.914-2.1a5.11 5.11 0 0 1 2.724-.772z"
+                ></path>
+              </svg>
+              Apple Podcasts
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main podcast episodes -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-white">Najnowsze odcinki</h2>
+        <span class="text-slate-500 text-sm">Łącznie 98 odcinków</span>
+      </div>
+
+      <div class="space-y-4">
+        {mainEpisodes.map((ep) => <PodcastCard client:load {...ep} />)}
+      </div>
+
+      <!-- Load more placeholder -->
+      <div class="text-center mt-10">
+        <a
+          href={spotifyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/[0.05] border border-white/[0.10] text-slate-300 text-sm font-medium hover:bg-white/[0.10] transition-colors"
+        >
+          Wszystkie odcinki na Spotify →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Podcast section -->
+  <section class="py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div
+        class="rounded-3xl border border-violet-500/20 bg-gradient-to-br from-violet-950/30 to-[#0d0d1a] p-8 sm:p-10"
+      >
+        <div class="flex flex-col sm:flex-row items-start gap-8 mb-10">
+          <!-- Artwork -->
+          <div
+            class="flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center shadow-xl"
+          >
+            <div class="text-center">
+              <div class="text-3xl">🤖</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="badge mb-3">Nowy podcast</div>
+            <h2 class="text-2xl font-bold text-white mb-2">Opanuj.AI Podcast</h2>
+            <p class="text-violet-400 font-semibold text-sm mb-3">
+              Prowadzi: Marcin Czarkowski · 4 000+ słuchaczy
+            </p>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Praktyczne insights
+              dla programistów i liderów technologicznych.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {
+            aiPodcastEpisodes.map((ep) => (
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-violet-500/25 transition-colors">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-violet-600/20 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-violet-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-white text-sm font-semibold mb-0.5 line-clamp-1">{ep.title}</h4>
+                  <p class="text-slate-400 text-xs mb-1.5 line-clamp-1">{ep.description}</p>
+                  <span class="text-xs text-slate-500">{ep.date}</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={spotifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1DB954]/10 border border-[#1DB954]/25 text-[#1DB954] text-sm font-semibold hover:bg-[#1DB954]/20 transition-colors"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+              ></path>
+            </svg>
+            Słuchaj na Spotify
+          </a>
+          <a
+            href={appleUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-500/10 border border-purple-500/25 text-purple-400 text-sm font-semibold hover:bg-purple-500/20 transition-colors"
+          >
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter reminder -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-slate-400 text-sm mb-4">
+        Nie przegap żadnego odcinka — zapisz się na newsletter
+      </p>
+      <a
+        href="https://przeprogramowani.substack.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl font-bold text-white text-sm hover:opacity-90 transition-all shadow-lg shadow-violet-900/30"
+      >
+        Subskrybuj bezpłatny newsletter →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

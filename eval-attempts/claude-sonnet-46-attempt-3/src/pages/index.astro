@@ -1,0 +1,364 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    id: '10xdevs',
+    name: '10xDevs',
+    version: '3.0',
+    tagline: 'Programuj z AI jak senior, nie jak junior',
+    description: 'Intensywny 5-tygodniowy program, który zamienia Cię w developera potrafiącego strategicznie wykorzystywać AI przez cały cykl tworzenia oprogramowania. Bez "vibe coding" — z pełną kontrolą jakości.',
+    graduates: '3700+',
+    duration: '5 tygodni',
+    format: 'Kohortowy',
+    badge: 'Bestseller',
+    badgeColor: 'bg-green-500',
+    href: 'https://10xdevs.pl',
+    featured: true,
+    color: 'from-green-500/20 to-emerald-600/10',
+    borderColor: 'border-green-500/30',
+    accentColor: 'text-green-400',
+    highlights: [
+      'Research → Plan → Implement',
+      'AI-First MVP w tydzień',
+      'Test-Driven Generation',
+      'Legacy code z AI',
+    ],
+  },
+  {
+    id: 'frontend',
+    name: 'Opanuj Frontend',
+    version: 'AI Edition',
+    tagline: 'Od seniora do niezależnego architekta',
+    description: '10-tygodniowy intensywny program dla doświadczonych frontend developerów, którzy chcą wyeliminować luki kompetencyjne i zdobyć niezależność techniczną.',
+    graduates: '383+',
+    duration: '10 tygodni',
+    format: 'Kohortowy',
+    badge: 'Edycja 5.',
+    badgeColor: 'bg-blue-500',
+    href: 'https://opanujfrontend.pl',
+    featured: false,
+    color: 'from-blue-500/20 to-violet-600/10',
+    borderColor: 'border-blue-500/30',
+    accentColor: 'text-blue-400',
+    highlights: [
+      'Architektura & Best Practices',
+      'CI/CD & AWS Deployment',
+      'Design Systems',
+      'Performance & Testing',
+    ],
+  },
+  {
+    id: 'typescript',
+    name: 'Opanuj TypeScript',
+    version: '5.x',
+    tagline: 'TypeScript na poziomie eksperckim',
+    description: 'Kompleksowy kurs TypeScript 5 z React 19. Od zaawansowanych typów po praktyczne wzorce architektoniczne używane w produkcji przez topowe firmy technologiczne.',
+    graduates: '',
+    duration: 'Samodzielny',
+    format: 'Online',
+    badge: 'Nowy',
+    badgeColor: 'bg-violet-500',
+    href: 'https://opanujfrontend.pl/typescript',
+    featured: false,
+    color: 'from-violet-500/20 to-purple-600/10',
+    borderColor: 'border-violet-500/30',
+    accentColor: 'text-violet-400',
+    highlights: [
+      'TypeScript 5.x & React 19',
+      'Zaawansowane typy generyczne',
+      'Wzorce architektoniczne',
+      'Praktyczne projekty',
+    ],
+  },
+];
+
+const stats = [
+  { value: '3700+', label: 'Absolwentów kursów' },
+  { value: '7 lat', label: 'Doświadczenia' },
+  { value: '4000+', label: 'Słuchaczy podcastu' },
+  { value: '9.5/10', label: 'Średnia ocena kursów' },
+];
+
+const recentEpisodes = [
+  {
+    title: 'Doctor AI is Coming',
+    duration: '1:23:04',
+    description: 'ChatGPT Health, Google MedGemma i chińskie modele AI wchodzą do medycyny. Co to oznacza dla przyszłości ochrony zdrowia?',
+    podcast: 'Opanuj AI Podcast',
+  },
+  {
+    title: 'Big AI Summary 2025',
+    duration: '1:47:28',
+    description: 'Podsumowanie roku — przełomowe modele, narzędzia, które zmieniły rynek i wnioski na 2026.',
+    podcast: 'Opanuj AI Podcast',
+  },
+  {
+    title: 'GPT-5.2 Gemini Killer?',
+    duration: '58:41',
+    description: 'Grudniowe wydania od OpenAI i Google. Porównanie możliwości i co to oznacza dla developerów.',
+    podcast: 'Opanuj AI Podcast',
+  },
+];
+---
+
+<Layout
+  title="Gdzie programowanie spotyka się z rozwojem osobistym"
+  description="Przeprogramowani.pl — kursy, podcast i materiały dla ambitnych developerów. Opanuj Frontend AI Edition, TypeScript i 10xDevs."
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-950">
+      <div class="absolute inset-0 hero-pattern opacity-100"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-green-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/4 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <!-- Badge -->
+      <div class="flex justify-center mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          10xDevs 3.0 — nowa edycja od 18 maja 2026
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <div class="text-center mb-6">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
+          Gdzie programowanie<br class="hidden sm:block" />
+          spotyka się z<br class="hidden sm:block" />
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400">
+            rozwojem osobistym
+          </span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-400 leading-relaxed">
+          Pomagamy ambitnym deweloperom stać się lepszymi specjalistami. Kursy, podcast i materiały, które łączą technikę z architekturą, biznesem i rozwojem kariery.
+        </p>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-4 text-base font-bold bg-green-500 hover:bg-green-400 text-white rounded-xl transition-all hover:shadow-xl hover:shadow-green-500/30 hover:-translate-y-0.5 w-full sm:w-auto text-center"
+        >
+          Zacznij z 10xDevs →
+        </a>
+        <a
+          href="/o-nas"
+          class="px-8 py-4 text-base font-semibold border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white rounded-xl transition-all hover:bg-slate-800/50 w-full sm:w-auto text-center"
+        >
+          Poznaj nas
+        </a>
+      </div>
+
+      <!-- Course Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`relative group p-6 rounded-2xl border bg-gradient-to-br ${course.color} ${course.borderColor} hover:border-opacity-60 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${course.featured ? 'md:col-span-1 ring-1 ring-green-500/30' : ''}`}
+          >
+            <!-- Badge -->
+            <div class="flex items-start justify-between mb-4">
+              <span class={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold text-white ${course.badgeColor}`}>
+                {course.badge}
+              </span>
+              <div class="flex items-center gap-1">
+                <span class="text-xs text-slate-500">{course.format}</span>
+                <span class="text-slate-700">•</span>
+                <span class="text-xs text-slate-500">{course.duration}</span>
+              </div>
+            </div>
+
+            <!-- Name & tagline -->
+            <div class="mb-4">
+              <div class="flex items-baseline gap-2 mb-1">
+                <h2 class="text-xl font-bold text-white">{course.name}</h2>
+                <span class={`text-sm font-semibold ${course.accentColor}`}>{course.version}</span>
+              </div>
+              <p class={`text-sm font-medium ${course.accentColor} mb-3`}>{course.tagline}</p>
+              <p class="text-sm text-slate-400 leading-relaxed">{course.description}</p>
+            </div>
+
+            <!-- Highlights -->
+            <ul class="space-y-2 mb-4">
+              {course.highlights.map((h) => (
+                <li class="flex items-center gap-2 text-sm text-slate-300">
+                  <svg class={`w-4 h-4 flex-shrink-0 ${course.accentColor}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {h}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Bottom -->
+            <div class="flex items-center justify-between pt-4 border-t border-slate-700/50">
+              {course.graduates ? (
+                <span class="text-sm text-slate-400">
+                  <strong class="text-white">{course.graduates}</strong> absolwentów
+                </span>
+              ) : (
+                <span class="text-sm text-slate-500">Zapisz się teraz</span>
+              )}
+              <span class={`text-sm font-semibold ${course.accentColor} group-hover:translate-x-1 transition-transform inline-block`}>
+                Sprawdź →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 border-y border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-black text-white mb-1">{stat.value}</div>
+            <div class="text-sm text-slate-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About teaser -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 text-slate-400 text-xs font-medium mb-6">
+            Od 2017 roku
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
+            Szersza perspektywa<br />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-300">
+              na programowanie
+            </span>
+          </h2>
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Przeprogramowani to inicjatywa Przemka Smyrdka i Marcina Czarkowskiego — doświadczonych inżynierów z wiodących firm technologicznych (DAZN, Cabify, SmartRecruiters), którzy postanowili połączyć siły, by dzielić się wiedzą z polską społecznością deweloperów.
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-8">
+            Naszą misją jest kształcenie developerów, którzy rozumieją nie tylko kod, ale też architekturę, biznes i kontekst, w którym pracują. Nie uczymy "jak zrobić", ale "dlaczego tak, a nie inaczej".
+          </p>
+          <a
+            href="/o-nas"
+            class="inline-flex items-center gap-2 px-6 py-3 border border-slate-700 hover:border-green-500/50 text-white rounded-xl transition-all hover:bg-slate-800/50 text-sm font-semibold"
+          >
+            Poznaj nasz zespół →
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Team card: Przemek -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg mb-4">
+              P
+            </div>
+            <h3 class="font-bold text-white mb-1">Przemek Smyrdek</h3>
+            <p class="text-xs text-slate-500 mb-3">Co-founder</p>
+            <p class="text-sm text-slate-400">Lead Front-End Engineer. Ex-DAZN, ex-Cabify. Speaker 4Developers, ReactiveConf.</p>
+          </div>
+          <!-- Team card: Marcin -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white font-bold text-lg mb-4">
+              M
+            </div>
+            <h3 class="font-bold text-white mb-1">Marcin Czarkowski</h3>
+            <p class="text-xs text-slate-500 mb-3">Co-founder</p>
+            <p class="text-sm text-slate-400">Platform Lead w SmartRecruiters. Twórca Opanuj AI Podcast — najpopularniejszego tech podcastu o LLM w Polsce.</p>
+          </div>
+          <!-- Partners badge -->
+          <div class="col-span-2 bg-slate-900/50 border border-slate-800 rounded-2xl p-4">
+            <p class="text-xs text-slate-500 mb-3 uppercase tracking-wider font-medium">Współpraca z firmami</p>
+            <div class="flex flex-wrap gap-2">
+              {['Autodesk', 'Future Processing', 'SmartRecruiters', 'Callstack'].map((p) => (
+                <span class="px-3 py-1 rounded-lg bg-slate-800 text-slate-400 text-xs font-medium">{p}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast teaser -->
+  <section class="py-24 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium mb-3">
+            🎙️ Podcast
+          </div>
+          <h2 class="text-3xl font-black text-white">Ostatnie odcinki</h2>
+          <p class="text-slate-400 mt-2">Opanuj AI Podcast — 4000+ słuchaczy</p>
+        </div>
+        <a
+          href="/podcast"
+          class="text-sm font-semibold text-green-400 hover:text-green-300 transition-colors whitespace-nowrap"
+        >
+          Wszystkie odcinki →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {recentEpisodes.map((ep, i) => (
+          <div class="group bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-6 transition-all hover:-translate-y-0.5">
+            <div class="flex items-start justify-between mb-4">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/10 text-green-400 text-xs font-medium">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z"/>
+                </svg>
+                {ep.podcast}
+              </span>
+              <span class="text-xs text-slate-500 font-mono">{ep.duration}</span>
+            </div>
+            <h3 class="font-bold text-white mb-3 group-hover:text-green-400 transition-colors">{ep.title}</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">{ep.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-3xl p-12">
+        <div class="w-12 h-12 rounded-2xl bg-green-500/10 flex items-center justify-center mx-auto mb-6">
+          <svg class="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white mb-4">
+          Cotygodniowa dawka wiedzy
+        </h2>
+        <p class="text-slate-400 mb-8 leading-relaxed">
+          Dołącz do newslettera Przeprogramowani. Co tydzień: AI w programowaniu, architektura, narzędzia i przemyślenia od doświadczonych inżynierów.
+        </p>
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-400 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
+        >
+          Zapisz się bezpłatnie
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

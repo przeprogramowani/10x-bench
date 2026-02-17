@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stats = [
+  { value: '10 000+', label: 'Studentów' },
+  { value: '3', label: 'Kursy online' },
+  { value: '100+', label: 'Odcinków podcastu' },
+  { value: '50 tys.+', label: 'Subskrybentów YT' },
+];
+
+const founders = [
+  {
+    initials: 'PS',
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder & Lead Instructor',
+    accent: '#22d3ee',
+    bio: 'Były Lead Frontend Engineer w DAZN i Cabify. Pasjonat TypeScript, React i narzędzi AI. Uczy programistów, jak pracować mądrzej — nie ciężej.',
+    accentBg: 'rgba(34, 211, 238, 0.15)',
+  },
+  {
+    initials: 'MC',
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder & Instructor',
+    accent: '#818cf8',
+    bio: 'Były Lead Technician w SmartRecruiters. Ekspert od architektury frontendu, automatyzacji i procesów deweloperskich w dużych zespołach.',
+    accentBg: 'rgba(129, 140, 248, 0.15)',
+  },
+];
+---
+
+<Layout
+  title="O nas — Przeprogramowani.pl"
+  description="Poznaj twórców Przeprogramowani.pl — Przemka Smyrdka i Marcina Czarkowskiego"
+>
+  <!-- Page header -->
+  <section
+    class="py-20 md:py-28"
+    style="background: radial-gradient(ellipse at top, #0e7490 0%, #0f0f0f 60%);"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Nasz <span
+          style="background: linear-gradient(to right, #22d3ee, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+        >
+          cel
+        </span>
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        Pomagamy polskim programistom rozwijać się w erze AI — przez praktyczne kursy, szczery podcast i wartościowe filmy na YouTube.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="rounded-2xl p-8 md:p-10"
+        style="background-color: #1a1a1a; border: 1px solid #2a2a2a;"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">Nasza historia</h2>
+        <div class="space-y-4 text-gray-400 leading-relaxed">
+          <p>
+            Przeprogramowani.pl powstało z prostej obserwacji: programiści mają dostęp do mnóstwa materiałów po angielsku, ale brakuje wysokiej jakości treści po polsku, które naprawdę uczą — nie tylko pokazują jak wpisać komendę, ale tłumaczą <em>dlaczego</em>.
+          </p>
+          <p>
+            Przemek i Marcin poznali się pracując w dużych, międzynarodowych firmach technologicznych. Obaj przeszli drogę od juniora do liderów technicznych i wiedzą, co naprawdę robi różnicę w karierze programisty.
+          </p>
+          <p>
+            Kiedy AI zrewolucjonizowało sposób pisania kodu, postanowiliśmy pomóc polskiej społeczności nie tylko <em>nadążyć</em> za zmianami, ale być krok przed nimi. Tak powstał kurs 10xDevs i podcast Przeprogramowani.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16" style="background-color: #111111;">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {stats.map((stat) => (
+          <div
+            class="text-center py-8 rounded-2xl"
+            style="background-color: #1a1a1a; border: 1px solid #2a2a2a;"
+          >
+            <div
+              class="text-3xl md:text-4xl font-bold mb-2"
+              style="color: #22d3ee;"
+            >
+              {stat.value}
+            </div>
+            <div class="text-gray-500 text-sm">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Założyciele</h2>
+        <p class="text-gray-400 text-lg">Programiści, którzy postanowili dzielić się wiedzą</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {founders.map((founder) => (
+          <div
+            class="rounded-2xl p-8"
+            style={`background-color: #1a1a1a; border: 1px solid #2a2a2a;`}
+          >
+            <div class="flex items-start gap-5 mb-5">
+              <!-- Avatar -->
+              <div
+                class="w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold flex-shrink-0"
+                style={`background-color: ${founder.accentBg}; color: ${founder.accent};`}
+              >
+                {founder.initials}
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">{founder.name}</h3>
+                <p class="text-sm" style={`color: ${founder.accent};`}>{founder.role}</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">{founder.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Misja + CTA -->
+  <section
+    class="py-20"
+    style="background: linear-gradient(135deg, #0e7490 0%, #312e81 100%);"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nasza misja</h2>
+      <p class="text-cyan-100 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+        Chcemy, żeby każdy polski programista miał dostęp do wiedzy, która naprawdę przydaje się w pracy. Nie teoria — praktyka. Nie tutoriale — projekty. Nie angielski — po polsku.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-gray-900 transition-all hover:scale-105"
+          style="background-color: #22d3ee;"
+        >
+          Dołącz do 10xDevs 3.0
+        </a>
+        <a
+          href="/podcast"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/30 hover:border-white/60 transition-all hover:scale-105"
+        >
+          Słuchaj podcastu
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

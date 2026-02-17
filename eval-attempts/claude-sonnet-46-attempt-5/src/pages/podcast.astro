@@ -1,0 +1,336 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const mainPodcastEpisodes = [
+  {
+    number: 98,
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    guest: 'Wiktoria Sitko',
+    date: '25 września 2025',
+    duration: '34 min',
+    description: 'Dlaczego tradycyjne metody nauki angielskiego zawodzą w IT? Jak pokonać barierę językową i nauczyć się komunikować efektywnie w środowisku międzynarodowym?',
+    tags: ['Kariera', 'Języki', 'Soft skills'],
+  },
+  {
+    number: 97,
+    title: 'O dojrzewaniu zawodowym programisty',
+    guest: 'Wojciech Trawiński',
+    guestRole: 'Senior Software Engineer @ XTB',
+    date: '10 września 2025',
+    duration: '46 min',
+    description: 'Droga od juniora do seniora – mity o karierze developera, strategie negocjacyjne i to, co naprawdę liczy się w długoterminowej karierze programisty.',
+    tags: ['Kariera', 'Senior Developer', 'Negocjacje'],
+  },
+  {
+    number: 96,
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10 października 2024',
+    duration: '1h 17min',
+    description: 'Architektura frontendu poza narzędziami. Jakie kluczowe decyzje kształtują charakterystykę systemu? Co wybierają doświadczeni architekci w dużych projektach?',
+    tags: ['Architektura', 'Frontend', 'Design patterns'],
+  },
+  {
+    number: 95,
+    title: 'Co nowego w TypeScript? Live Q&A',
+    guest: null,
+    date: '21 sierpnia 2024',
+    duration: '1h 37min',
+    description: 'Specjalny odcinek Q&A na żywo poświęcony nowościom w TypeScript i nadchodzącym programom Przeprogramowani. Pytania od społeczności, szczere odpowiedzi.',
+    tags: ['TypeScript', 'Q&A', 'Live'],
+  },
+  {
+    number: 94,
+    title: 'No-code i Low-code – przyszłość tworzenia aplikacji?',
+    guest: 'Kamil Tarczyński',
+    guestRole: 'Co-founder & CTO, havenocode',
+    date: '13 czerwca 2024',
+    duration: '37 min',
+    description: 'Czy no-code to rzeczywiście przyszłość? Kiedy warto sięgnąć po narzędzia low-code zamiast pisać kod? Szczera rozmowa z twórcą firmy budującej produkty bez kodu.',
+    tags: ['No-code', 'Low-code', 'Narzędzia'],
+  },
+  {
+    number: 93,
+    title: 'Micro Frontend Architecture w praktyce',
+    guest: 'Olaf Sulich',
+    date: '15 maja 2024',
+    duration: '55 min',
+    description: 'Kiedy mikrofrontendy mają sens, a kiedy są przerostem formy nad treścią? Praktyczne wnioski z wdrożeń w dużych organizacjach.',
+    tags: ['Architektura', 'Micro Frontends', 'Enterprise'],
+  },
+];
+
+const aiPodcastEpisodes = [
+  {
+    number: 18,
+    title: 'Doktor AI nadchodzi...',
+    date: 'Grudzień 2025',
+    duration: '1h 23min',
+    description: 'ChatGPT Health, Google MedGemma 1.5, konstytucyjne podejście Anthropic i AI w opiece zdrowotnej. Jak AI transformuje medycynę?',
+    tags: ['AI Health', 'ChatGPT', 'Anthropic'],
+  },
+  {
+    number: 17,
+    title: 'Wielkie Podsumowanie AI w 2025',
+    date: 'Grudzień 2025',
+    duration: '1h 47min',
+    description: 'Najważniejsze modele, narzędzia, przełomy i liderzy roku 2025 w świecie AI. Kto wygrał, kto przegrał i co czeka nas w 2026?',
+    tags: ['Podsumowanie', '2025', 'Trendy'],
+  },
+  {
+    number: 16,
+    title: 'GPT-5.2 to GEMINI KILLER?',
+    date: 'Grudzień 2025',
+    duration: '58 min',
+    description: 'Grudniowe premiery modeli AI, rywalizacja OpenAI vs Google i co to oznacza dla developerów korzystających z tych narzędzi na co dzień.',
+    tags: ['GPT-5.2', 'Gemini', 'OpenAI'],
+  },
+  {
+    number: 15,
+    title: 'Cursor 2.0 vs Windsurf SWE-1.5',
+    date: 'Listopad 2025',
+    duration: '1h 14min',
+    description: 'Szczegółowe porównanie dwóch wiodących platform do AI-wspomaganego programowania. Które narzędzie wybrać na codzień w 2026?',
+    tags: ['Cursor', 'Windsurf', 'AI Tools'],
+  },
+  {
+    number: 14,
+    title: 'Czy agenci AI zdominują e-commerce?',
+    date: 'Październik 2025',
+    duration: '1h 28min',
+    description: 'Premiera Claude Sonnet 4.5, ChatGPT Instant Checkout i przyszłość zakupów online z AI. Jak agenci zmieniają handel?',
+    tags: ['AI Agents', 'E-commerce', 'Claude'],
+  },
+  {
+    number: 13,
+    title: 'Gemini 3 vs GPT-5.1 – starcie gigantów',
+    date: 'Październik 2025',
+    duration: '1h 3min',
+    description: 'Grok 4.1, Opus 4.5, emocje w modelach językowych i kolejna runda walki Google vs OpenAI. Comiesięczne podsumowanie ze świata AI.',
+    tags: ['Gemini', 'GPT-5.1', 'Modele'],
+  },
+];
+
+const platforms = [
+  {
+    name: 'Spotify',
+    href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+    color: 'hover:border-green-500/40',
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>`,
+  },
+  {
+    name: 'Apple Podcasts',
+    href: 'https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526',
+    color: 'hover:border-violet-500/40',
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 0C5.597 0 0 5.597 0 12.5S5.597 25 12.5 25 25 19.403 25 12.5 19.403 0 12.5 0zm0 4.839a7.662 7.662 0 0 1 7.661 7.661 7.662 7.662 0 0 1-7.661 7.661 7.662 7.662 0 0 1-7.661-7.661A7.662 7.662 0 0 1 12.5 4.839zm0 2.41a5.252 5.252 0 0 0-5.25 5.251 5.249 5.249 0 0 0 3.63 4.983v-1.092a.806.806 0 0 1 .806-.806h1.628a.806.806 0 0 1 .806.806v1.092a5.249 5.249 0 0 0 3.63-4.983A5.252 5.252 0 0 0 12.5 7.25z"/></svg>`,
+  },
+  {
+    name: 'RSS',
+    href: 'https://przeprogramowani.pl/podcast',
+    color: 'hover:border-orange-500/40',
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>`,
+  },
+];
+---
+
+<Layout
+  title="Podcast"
+  description="Przeprogramowani Podcast – rozmowy dla głodnych wiedzy. Ponad 98 odcinków o programowaniu, karierze i AI. Słuchaj na Spotify i Apple Podcasts."
+>
+
+  <!-- Page Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-950/30 via-zinc-950 to-transparent pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-6">
+            PODCAST
+          </div>
+          <h1 class="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
+            Rozmowy dla<br />
+            <span class="bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
+              głodnych wiedzy.
+            </span>
+          </h1>
+          <p class="text-xl text-zinc-400 leading-relaxed">
+            Dwa formaty: głębokie wywiady z ekspertami oraz miesięczne podsumowania ze świata AI. Ponad <strong class="text-zinc-200">3 800</strong> słuchaczy.
+          </p>
+        </div>
+
+        <!-- Platform links -->
+        <div class="flex flex-wrap gap-3">
+          {platforms.map(platform => (
+            <a
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`inline-flex items-center gap-2.5 px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-800 transition-all text-sm font-medium text-zinc-300 hover:text-white ${platform.color}`}
+            >
+              <span set:html={platform.icon} />
+              {platform.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Przeprogramowani ft. Gość -->
+  <section class="py-16 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-5 mb-10">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center flex-shrink-0">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2H3v2a9 9 0 0 0 8 8.94V21H8v2h8v-2h-3v-.06A9 9 0 0 0 21 12v-2h-2z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-2xl font-black text-white">Przeprogramowani ft. Gość</h2>
+          <p class="text-zinc-400 mt-1">Szczere rozmowy z ekspertami z branży. Kariera, technologie, AI i praca w IT.</p>
+          <div class="flex items-center gap-4 mt-3">
+            <span class="text-sm text-zinc-500">98+ odcinków</span>
+            <span class="text-zinc-700">·</span>
+            <span class="text-sm text-zinc-500">3 800+ słuchaczy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        {mainPodcastEpisodes.map((ep) => (
+          <a href="https://przeprogramowani.pl/podcast" target="_blank" rel="noopener noreferrer"
+             class="group flex flex-col sm:flex-row sm:items-start gap-4 p-5 rounded-xl bg-zinc-900/60 border border-zinc-800/60 hover:border-zinc-700 transition-all">
+            <!-- Episode number -->
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center flex-shrink-0 group-hover:bg-violet-600/20 transition-colors">
+              <span class="text-xs font-bold text-zinc-400 group-hover:text-violet-400">#{ep.number}</span>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex flex-wrap items-start justify-between gap-2 mb-1.5">
+                <h3 class="font-semibold text-white group-hover:text-violet-300 transition-colors text-base">
+                  {ep.title}
+                </h3>
+              </div>
+              {ep.guest && (
+                <p class="text-sm text-violet-400 mb-2">
+                  Gość: {ep.guest}{ep.guestRole ? ` · ${ep.guestRole}` : ''}
+                </p>
+              )}
+              <p class="text-sm text-zinc-400 leading-relaxed mb-3 line-clamp-2">{ep.description}</p>
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="flex items-center gap-2 text-xs text-zinc-500">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  {ep.duration}
+                  <span>·</span>
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  {ep.date}
+                </div>
+                <div class="flex gap-1.5 flex-wrap">
+                  {ep.tags.map(tag => (
+                    <span class="text-xs px-2 py-0.5 rounded bg-zinc-800 text-zinc-400">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- Play icon -->
+            <div class="hidden sm:flex items-center self-center">
+              <div class="w-9 h-9 rounded-full bg-zinc-800 group-hover:bg-violet-600 flex items-center justify-center transition-colors">
+                <svg class="w-4 h-4 text-zinc-400 group-hover:text-white ml-0.5 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Opanuj.AI Podcast -->
+  <section class="py-16 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-5 mb-10">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-700 flex items-center justify-center flex-shrink-0">
+          <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-2xl font-black text-white">Opanuj.AI Podcast</h2>
+          <p class="text-zinc-400 mt-1">Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Dla developerów, którzy chcą być na bieżąco.</p>
+          <div class="flex items-center gap-4 mt-3">
+            <span class="text-sm text-zinc-500">18+ odcinków</span>
+            <span class="text-zinc-700">·</span>
+            <span class="text-sm text-zinc-500">4 000+ słuchaczy</span>
+            <span class="text-zinc-700">·</span>
+            <span class="text-sm text-zinc-500">Co miesiąc</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {aiPodcastEpisodes.map((ep) => (
+          <a href="https://opanuj.ai" target="_blank" rel="noopener noreferrer"
+             class="group p-5 rounded-xl bg-zinc-900/60 border border-zinc-800/60 hover:border-blue-500/40 transition-all hover:-translate-y-0.5">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-700 flex items-center justify-center flex-shrink-0">
+                <span class="text-xs font-bold text-white">#{ep.number}</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-zinc-500">
+                <span>{ep.duration}</span>
+                <span>·</span>
+                <span>{ep.date}</span>
+              </div>
+            </div>
+            <h3 class="font-semibold text-white group-hover:text-blue-300 transition-colors mb-2">{ep.title}</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-3 line-clamp-3">{ep.description}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {ep.tags.map(tag => (
+                <span class="text-xs px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription CTA -->
+  <section class="py-20 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-violet-900/30 via-zinc-900 to-blue-900/20 border border-violet-500/20 p-10 text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-violet-600/8 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative">
+          <div class="text-4xl mb-4">🎧</div>
+          <h2 class="text-2xl font-black text-white mb-3">Subskrybuj i nie przegap nowych odcinków</h2>
+          <p class="text-zinc-400 mb-6 max-w-md mx-auto">
+            Słuchaj na swojej ulubionej platformie. Nowe odcinki co 2–3 tygodnie.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            {platforms.map(platform => (
+              <a
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-zinc-600 text-sm font-medium text-zinc-300 hover:text-white transition-all"
+              >
+                <span set:html={platform.icon} />
+                {platform.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

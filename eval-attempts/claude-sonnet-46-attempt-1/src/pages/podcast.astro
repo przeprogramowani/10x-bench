@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard';
+import { podcastEpisodes } from '../data/podcasts';
+
+const opanujAiEpisodes = podcastEpisodes.filter((e) => e.series === 'opanuj-ai');
+const ftGoscEpisodes = podcastEpisodes.filter((e) => e.series === 'ft-gosc');
+
+const subscribeLinks = [
+  {
+    name: 'Spotify',
+    icon: '🎵',
+    url: 'https://spotify.com',
+    color: '#1DB954',
+  },
+  {
+    name: 'Apple Podcasts',
+    icon: '🎙️',
+    url: 'https://podcasts.apple.com',
+    color: '#b86bff',
+  },
+  {
+    name: 'YouTube',
+    icon: '▶️',
+    url: 'https://youtube.com/@przeprogramowani',
+    color: '#ff0000',
+  },
+];
+---
+
+<Layout
+  title="Podcast — Przeprogramowani.pl"
+  description="Podcast Przeprogramowani — dwie serie: Opanuj.AI i rozmowy ft. Gość"
+>
+  <!-- Header -->
+  <section
+    class="py-20 md:py-28"
+    style="background: radial-gradient(ellipse at top, #0e7490 0%, #0f0f0f 60%);"
+  >
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
+        style="background-color: #1a1a1a; border: 1px solid #2a2a2a;"
+      >
+        <span class="text-lg">🎧</span>
+        <span class="text-gray-400 text-sm">Nowe odcinki co tydzień</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Podcast <span
+          style="background: linear-gradient(to right, #22d3ee, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+        >Przeprogramowani</span>
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+        Dwie serie dla programistów: nowości ze świata AI i szczere rozmowy z gośćmi ze świata tech.
+      </p>
+
+      <!-- Subscribe links -->
+      <div class="flex flex-wrap gap-3 justify-center">
+        {subscribeLinks.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white transition-all hover:scale-105"
+            style={`background-color: #1a1a1a; border: 1px solid #2a2a2a;`}
+          >
+            <span>{link.icon}</span>
+            {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Seria: Opanuj.AI -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div
+          class="w-1 h-10 rounded-full"
+          style="background-color: #22d3ee;"
+        ></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">Opanuj.AI</h2>
+          <p class="text-gray-500 text-sm mt-0.5">Seria o narzędziach i modelach AI dla programistów</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {opanujAiEpisodes.map((episode) => (
+          <PodcastCard episode={episode} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Seria: ft. Gość -->
+  <section class="py-20" style="background-color: #111111;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-4 mb-8">
+        <div
+          class="w-1 h-10 rounded-full"
+          style="background-color: #a78bfa;"
+        ></div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-white">ft. Gość</h2>
+          <p class="text-gray-500 text-sm mt-0.5">Rozmowy z ekspertami ze świata polskiego tech</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {ftGoscEpisodes.map((episode) => (
+          <PodcastCard episode={episode} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Nie przegap żadnego odcinka</h2>
+      <p class="text-gray-400 mb-8">Subskrybuj na swojej ulubionej platformie i bądź na bieżąco.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        {subscribeLinks.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:scale-105"
+            style={`background-color: ${link.color}20; color: ${link.color}; border: 1px solid ${link.color}40;`}
+          >
+            <span>{link.icon}</span>
+            Subskrybuj na {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

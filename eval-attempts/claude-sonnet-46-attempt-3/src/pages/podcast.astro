@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const opanujAI = {
+  name: 'Opanuj AI Podcast',
+  host: 'Marcin Czarkowski',
+  listeners: '4000+',
+  description: 'Najważniejsze wydarzenia ze świata AI w jednym miejscu. Miesięczne podsumowania najistotniejszych modeli, narzędzi i przełomów — bez szumu, z perspektywą doświadczonego inżyniera. Opisywany jako najpopularniejszy techniczny podcast o LLM w Polsce.',
+  episodes: [
+    {
+      number: 'E12',
+      title: 'Doctor AI is Coming',
+      duration: '1:23:04',
+      date: 'Styczeń 2026',
+      description: 'ChatGPT Health, Google MedGemma i chińskie modele AI wchodzą do medycyny. Analiza implikacji dla systemu ochrony zdrowia i rola AI w diagnozie.',
+      tags: ['ChatGPT', 'MedGemma', 'AI w medycynie'],
+    },
+    {
+      number: 'E11',
+      title: 'Big AI Summary 2025',
+      duration: '1:47:28',
+      date: 'Grudzień 2025',
+      description: 'Podsumowanie przełomowego roku — modele, które zmieniły rynek (Claude 3.7, GPT-5, Gemini Ultra), narzędzia, które trafiły do mainstreamu i wnioski na 2026.',
+      tags: ['Podsumowanie roku', 'Modele AI', '2025'],
+    },
+    {
+      number: 'E10',
+      title: 'GPT-5.2 Gemini Killer?',
+      duration: '58:41',
+      date: 'Grudzień 2025',
+      description: 'Grudniowe wydania od OpenAI i Google — analiza możliwości, benchmarki i co to oznacza dla codziennej pracy z AI jako programista.',
+      tags: ['GPT-5.2', 'Gemini', 'OpenAI vs Google'],
+    },
+    {
+      number: 'E9',
+      title: 'Gemini 3 Hit',
+      duration: '1:03:20',
+      date: 'Listopad 2025',
+      description: 'Listopadowe premiery ze świata AI. Gemini 3 jako niespodziewany hit miesiąca. Analiza rynku asystentów AI i nowych możliwości dla developerów.',
+      tags: ['Gemini 3', 'Google AI', 'Asystenci AI'],
+    },
+    {
+      number: 'E8',
+      title: 'Cursor 2.0 vs Windsurf',
+      duration: '1:14:37',
+      date: 'Październik 2025',
+      description: 'Porównanie najlepszych narzędzi AI do kodowania. Cursor 2.0 kontra Windsurf — który wybrać? Konkretne scenariusze z pracy inżyniera.',
+      tags: ['Cursor', 'Windsurf', 'AI Coding Tools'],
+    },
+    {
+      number: 'E7',
+      title: 'AI w e-commerce',
+      duration: '1:28:05',
+      date: 'Wrzesień 2025',
+      description: 'ChatGPT Instant Checkout zmienia zakupy online. Aktualizacje Claude i nowe możliwości agentów AI w kontekście e-commerce i automatyzacji.',
+      tags: ['ChatGPT', 'E-commerce', 'AI Agents'],
+    },
+  ],
+};
+
+const przeprogramowani = {
+  name: 'Przeprogramowani ft. Gość',
+  listeners: '3800+',
+  description: 'Rozmowy z ekspertami i poszukiwaczami wiedzy ze świata IT. Format wywiadu — szczere rozmowy o karierze, architekturze, wyborach technologicznych i dojrzałości zawodowej.',
+  episodes: [
+    {
+      number: 'E45',
+      title: 'Jak zostać architektem frontendu?',
+      duration: '1:05:22',
+      date: 'Grudzień 2025',
+      description: 'Rozmowa z senior architektem o ścieżce od juniora do architekta. Jakie decyzje naprawdę mają znaczenie i co odróżnia dobrego od wybitnego developera.',
+      tags: ['Kariera', 'Architektura', 'Frontend'],
+      guest: 'Mateusz Trojak',
+    },
+    {
+      number: 'E44',
+      title: 'React vs Vue vs Angular w 2025',
+      duration: '58:30',
+      date: 'Listopad 2025',
+      description: 'Szczera rozmowa o wyborze frameworka. Kiedy React, kiedy Angular, a kiedy warto postawić na Vue? Perspektywa ze startupu i korporacji.',
+      tags: ['React', 'Angular', 'Vue', 'Frameworki'],
+      guest: 'Adrian Połubiński',
+    },
+    {
+      number: 'E43',
+      title: 'No-code w dużych firmach — mit czy rzeczywistość?',
+      duration: '47:15',
+      date: 'Październik 2025',
+      description: 'Czy no-code/low-code zastępuje developerów? Szczera rozmowa z CTO, który wdrożył no-code tools w firmie zatrudniającej 500 programistów.',
+      tags: ['No-code', 'Low-code', 'CTO'],
+      guest: 'Krzysztof Drzymalski',
+    },
+  ],
+};
+
+const platforms = [
+  { name: 'Spotify', href: '#', icon: 'spotify' },
+  { name: 'Apple Podcasts', href: '#', icon: 'apple' },
+  { name: 'YouTube', href: 'https://www.youtube.com/c/przeprogramowani', icon: 'youtube' },
+  { name: 'RSS', href: '#', icon: 'rss' },
+];
+---
+
+<Layout
+  title="Podcast"
+  description="Opanuj AI Podcast i Przeprogramowani ft. Gość — techniczne podcasty dla polskich developerów. 4000+ słuchaczy."
+>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-green-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-medium mb-6">
+        🎙️ Podcast
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+        Wiedza w
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-300">
+          drodze
+        </span>
+      </h1>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10">
+        Dwa podcasty dla ambitnych developerów. Techniczne analizy AI i szczere rozmowy z ekspertami branży IT — wszystko po polsku, bez ściemy.
+      </p>
+
+      <!-- Platform links -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {platforms.map((p) => (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white rounded-xl text-sm font-medium transition-all hover:-translate-y-0.5"
+          >
+            {p.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Opanuj AI Podcast -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12">
+        <div class="lg:w-80 flex-shrink-0">
+          <!-- Podcast cover -->
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-green-500 via-emerald-600 to-teal-700 flex items-center justify-center mb-6 shadow-2xl shadow-green-500/20">
+            <div class="text-center text-white p-6">
+              <div class="text-5xl mb-3">🤖</div>
+              <div class="font-black text-lg leading-tight">Opanuj AI</div>
+              <div class="text-xs text-green-200 mt-1">Podcast</div>
+            </div>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white font-bold text-sm">MC</div>
+              <div>
+                <div class="text-sm font-semibold text-white">{opanujAI.host}</div>
+                <div class="text-xs text-slate-500">Prowadzący</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span class="text-sm text-slate-400">{opanujAI.listeners} słuchaczy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1">
+          <h2 class="text-3xl font-black text-white mb-4">{opanujAI.name}</h2>
+          <p class="text-slate-400 leading-relaxed mb-8 text-lg">{opanujAI.description}</p>
+
+          <div class="space-y-4">
+            {opanujAI.episodes.map((ep) => (
+              <div class="group bg-slate-900 border border-slate-800 hover:border-green-500/30 rounded-2xl p-5 transition-all hover:-translate-y-0.5 cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
+                    <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                      <div>
+                        <span class="text-xs text-slate-500 font-mono">{ep.number}</span>
+                        <h3 class="font-bold text-white group-hover:text-green-400 transition-colors">{ep.title}</h3>
+                      </div>
+                      <div class="text-right flex-shrink-0">
+                        <div class="text-xs font-mono text-slate-400">{ep.duration}</div>
+                        <div class="text-xs text-slate-600 mt-0.5">{ep.date}</div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-3">{ep.description}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {ep.tags.map((tag) => (
+                        <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-500 text-xs">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="border-t border-slate-800"></div>
+  </div>
+
+  <!-- Przeprogramowani ft. Gość -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12">
+        <div class="lg:w-80 flex-shrink-0">
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-violet-600 via-purple-600 to-blue-700 flex items-center justify-center mb-6 shadow-2xl shadow-violet-500/20">
+            <div class="text-center text-white p-6">
+              <div class="text-5xl mb-3">🎤</div>
+              <div class="font-black text-lg leading-tight">Przeprogramowani</div>
+              <div class="text-xs text-violet-200 mt-1">ft. Gość</div>
+            </div>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-violet-500"></div>
+              <span class="text-sm text-slate-400">{przeprogramowani.listeners} słuchaczy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1">
+          <h2 class="text-3xl font-black text-white mb-4">{przeprogramowani.name}</h2>
+          <p class="text-slate-400 leading-relaxed mb-8 text-lg">{przeprogramowani.description}</p>
+
+          <div class="space-y-4">
+            {przeprogramowani.episodes.map((ep) => (
+              <div class="group bg-slate-900 border border-slate-800 hover:border-violet-500/30 rounded-2xl p-5 transition-all hover:-translate-y-0.5 cursor-pointer">
+                <div class="flex items-start gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-violet-500/20 transition-colors">
+                    <svg class="w-5 h-5 text-violet-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                      <div>
+                        <span class="text-xs text-slate-500 font-mono">{ep.number}</span>
+                        <h3 class="font-bold text-white group-hover:text-violet-400 transition-colors">{ep.title}</h3>
+                        {ep.guest && <span class="text-xs text-slate-500">z {ep.guest}</span>}
+                      </div>
+                      <div class="text-right flex-shrink-0">
+                        <div class="text-xs font-mono text-slate-400">{ep.duration}</div>
+                        <div class="text-xs text-slate-600 mt-0.5">{ep.date}</div>
+                      </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-3">{ep.description}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {ep.tags.map((tag) => (
+                        <span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-500 text-xs">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-20 bg-slate-900/30">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-4xl mb-6">🎙️</div>
+      <h2 class="text-2xl sm:text-3xl font-black text-white mb-4">Słuchaj gdzie chcesz</h2>
+      <p class="text-slate-400 mb-8">Nasze podcasty są dostępne na wszystkich głównych platformach. Subskrybuj i nie przegap żadnego odcinka.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {platforms.map((p) => (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-5 py-3 bg-slate-900 border border-slate-700 hover:border-green-500/50 text-slate-300 hover:text-white rounded-xl text-sm font-medium transition-all hover:-translate-y-0.5"
+          >
+            {p.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

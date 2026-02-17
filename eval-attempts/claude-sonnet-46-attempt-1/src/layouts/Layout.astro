@@ -1,0 +1,175 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Przeprogramowani.pl — kursy, podcast i filmy dla programistów' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-surface text-gray-100 min-h-screen">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md border-b border-surface-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-lg bg-accent-400 flex items-center justify-center font-bold text-gray-900 text-sm group-hover:bg-accent-300 transition-colors">
+              P
+            </div>
+            <span class="font-bold text-white hidden sm:inline">Przeprogramowani</span>
+            <span class="font-bold text-white sm:hidden">Przepr.</span>
+          </a>
+
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6">
+            <a href="/" class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Strona główna</a>
+            <a href="/podcast" class="text-gray-400 hover:text-white transition-colors text-sm font-medium">Podcast</a>
+            <a href="/youtube" class="text-gray-400 hover:text-white transition-colors text-sm font-medium">YouTube</a>
+            <a href="/o-nas" class="text-gray-400 hover:text-white transition-colors text-sm font-medium">O nas</a>
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-accent-400 text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent-300 transition-colors"
+            >
+              10xDevs 3.0
+            </a>
+          </nav>
+
+          <!-- Mobile hamburger -->
+          <button
+            id="hamburger-btn"
+            class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-surface-card transition-colors"
+            aria-label="Otwórz menu"
+          >
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-surface-border py-4">
+          <nav class="flex flex-col gap-1">
+            <a href="/" class="text-gray-400 hover:text-white hover:bg-surface-card px-3 py-2 rounded-lg transition-colors text-sm font-medium">Strona główna</a>
+            <a href="/podcast" class="text-gray-400 hover:text-white hover:bg-surface-card px-3 py-2 rounded-lg transition-colors text-sm font-medium">Podcast</a>
+            <a href="/youtube" class="text-gray-400 hover:text-white hover:bg-surface-card px-3 py-2 rounded-lg transition-colors text-sm font-medium">YouTube</a>
+            <a href="/o-nas" class="text-gray-400 hover:text-white hover:bg-surface-card px-3 py-2 rounded-lg transition-colors text-sm font-medium">O nas</a>
+            <div class="mt-2 pt-2 border-t border-surface-border">
+              <a
+                href="https://10xdevs.pl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block bg-accent-400 text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-accent-300 transition-colors text-center"
+              >
+                10xDevs 3.0
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-surface-border mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Kolumna 1: Logo + opis -->
+          <div>
+            <a href="/" class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-accent-400 flex items-center justify-center font-bold text-gray-900 text-sm">P</div>
+              <span class="font-bold text-white">Przeprogramowani.pl</span>
+            </a>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Rozwijamy polską społeczność programistów przez kursy, podcast i filmy na YouTube.
+            </p>
+          </div>
+
+          <!-- Kolumna 2: Kursy -->
+          <div>
+            <h3 class="text-white font-semibold mb-4 text-sm">Kursy</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">
+                  10xDevs 3.0
+                </a>
+              </li>
+              <li>
+                <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">
+                  Opanuj Frontend: AI Edition
+                </a>
+              </li>
+              <li>
+                <a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">
+                  Opanuj TypeScript: Frontend Pro
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kolumna 3: Treści -->
+          <div>
+            <h3 class="text-white font-semibold mb-4 text-sm">Treści</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/podcast" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">Podcast</a>
+              </li>
+              <li>
+                <a href="/youtube" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">YouTube</a>
+              </li>
+              <li>
+                <a href="/o-nas" class="text-gray-500 hover:text-accent-400 text-sm transition-colors">O nas</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-surface-border flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-gray-600 text-sm">© 2026 Przeprogramowani.pl. Wszelkie prawa zastrzeżone.</p>
+          <p class="text-gray-600 text-sm">Przemek Smyrdek & Marcin Czarkowski</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Hamburger script -->
+    <script>
+      const btn = document.getElementById('hamburger-btn');
+      const menu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      btn?.addEventListener('click', () => {
+        const isOpen = !menu?.classList.contains('hidden');
+        if (isOpen) {
+          menu?.classList.add('hidden');
+          hamburgerIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        } else {
+          menu?.classList.remove('hidden');
+          hamburgerIcon?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

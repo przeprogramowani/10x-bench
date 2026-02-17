@@ -1,0 +1,114 @@
+---
+const currentYear = new Date().getFullYear();
+
+const links = {
+  kursy: [
+    { href: 'https://10xdevs.pl', label: '10xDevs', external: true },
+    { href: 'https://opanujfrontend.pl', label: 'Opanuj Frontend', external: true },
+    { href: 'https://opanujfrontend.pl/typescript', label: 'Opanuj TypeScript', external: true },
+  ],
+  strony: [
+    { href: '/', label: 'Start' },
+    { href: '/o-nas', label: 'O nas' },
+    { href: '/podcast', label: 'Podcast' },
+    { href: '/youtube', label: 'YouTube' },
+  ],
+  social: [
+    { href: 'https://www.youtube.com/c/przeprogramowani', label: 'YouTube', external: true },
+    { href: 'https://open.spotify.com/show/przeprogramowani', label: 'Spotify', external: true },
+    { href: 'https://przeprogramowani.substack.com', label: 'Newsletter', external: true },
+  ],
+};
+---
+
+<footer class="bg-slate-950 border-t border-slate-800/50 mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="/" class="flex items-center gap-2 group mb-4">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">
+            P
+          </div>
+          <span class="font-bold text-white">
+            Przeprogramowani<span class="text-green-500">.pl</span>
+          </span>
+        </a>
+        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+          Gdzie programowanie spotyka się z rozwojem osobistym. Pomagamy ambitnym deweloperom stać się lepszymi specjalistami od 2017 roku.
+        </p>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="text-sm text-slate-400 hover:text-green-400 transition-colors"
+        >
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+
+      <!-- Kursy -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Kursy</h3>
+        <ul class="space-y-3">
+          {links.kursy.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                class="text-sm text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Strony -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Strony</h3>
+        <ul class="space-y-3">
+          {links.strony.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Społeczność -->
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Społeczność</h3>
+        <ul class="space-y-3">
+          {links.social.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                class="text-sm text-slate-400 hover:text-white transition-colors hover:translate-x-1 inline-block"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">
+        © {currentYear} Przeprogramowani.pl — Wszelkie prawa zastrzeżone
+      </p>
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-slate-600">Zbudowane z</span>
+        <span class="text-xs text-slate-500">Astro + React + Tailwind</span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -8,6 +8,7 @@ export enum AGENT_ENVIRONMENT {
 export type ModelId =
   | "claude-opus-46"
   | "claude-sonnet-45"
+  | "claude-sonnet-46"
   | "gpt-53-codex"
   | "glm-47"
   | "kimi-k25"
@@ -23,6 +24,7 @@ export type ModelId =
 export const AGENT_NAMES: Record<ModelId, string> = {
   "claude-opus-46": "Claude Opus 4.6",
   "claude-sonnet-45": "Claude Sonnet 4.5",
+  "claude-sonnet-46": "Claude Sonnet 4.6",
   "gpt-53-codex": "GPT-5.3-Codex",
   "glm-47": "GLM-4.7",
   "kimi-k25": "Kimi K2.5",
@@ -38,6 +40,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "claude-opus-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "claude-sonnet-45": AGENT_ENVIRONMENT.ClaudeCodeHigh,
+  "claude-sonnet-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-53-codex": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "glm-47": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k25": AGENT_ENVIRONMENT.OpenCode,
@@ -63,6 +66,7 @@ export interface ModelPricing {
 export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "claude-opus-46": {input: 5.0, output: 25.0},
   "claude-sonnet-45": {input: 3.0, output: 15.0},
+  "claude-sonnet-46": {input: 3.0, output: 15.0},
   "gpt-53-codex": {input: 1.75, output: 14.0},
   "glm-47": {input: 0.6, output: 2.2},
   "kimi-k25": {input: 0.6, output: 3.0},

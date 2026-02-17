@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-Founder',
+    bio: 'Lead Technical Architect w SmartRecruiters, entuzjasta neuronauki i twórca podcastu Przeprogramowani. Od 2024 roku w pełnym wymiarze czasu skupiony na rozwoju platformy.',
+    linkedin: 'https://linkedin.com/in/mkczarkowski',
+    twitter: 'https://twitter.com/mkczarkowski',
+    initials: 'MC',
+    gradient: 'from-brand-green to-teal-600',
+  },
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-Founder',
+    bio: 'Lead Front-End Engineer (ex-DAZN, ex-Cabify). Pasjonat architektury frontendu i nowoczesnych narzędzi developerskich. Od 2024 roku w pełnym wymiarze skupiony na Przeprogramowani.',
+    linkedin: 'https://linkedin.com/in/psmyrdek',
+    initials: 'PS',
+    gradient: 'from-brand-blue to-indigo-600',
+  },
+];
+
+const milestones = [
+  { year: '2017', event: 'Założenie Przeprogramowani.pl' },
+  { year: '2019', event: 'Start podcastu "Przeprogramowani ft. Gość"' },
+  { year: '2022', event: 'Pierwsza edycja kursu Opanuj Frontend' },
+  { year: '2023', event: 'Start 10xDevs — 1 250 uczestników w pierwszej edycji' },
+  { year: '2024', event: 'Pełen etat — kursy, podcast i społeczność 15 000+ developerów' },
+  { year: '2025', event: '10xDevs 3.0 — 3 700+ absolwentów łącznie' },
+];
+
+const stats = [
+  { value: '15 000+', label: 'Developerów w społeczności' },
+  { value: '3 700+', label: 'Absolwentów kursów' },
+  { value: '98', label: 'Odcinków podcastu' },
+  { value: '4.9/5', label: 'Ocena podcastu' },
+  { value: '4 000+', label: 'Słuchaczy Opanuj.AI' },
+  { value: '2 000+', label: 'Subskrybentów newslettera' },
+];
+
+const partners = [
+  'Huuuge Games', 'Autodesk', 'SmartRecruiters', 'Future Processing',
+  'Callstack', 'VirtusLab',
+];
+---
+
+<Layout title="O nas" description="Poznaj historię i zespół stojący za Przeprogramowani.pl">
+  <!-- Page Hero -->
+  <section class="pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-brand-blue/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-sm font-medium mb-6">
+          O nas
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6">
+          Pomagamy developerom<br />
+          <span class="text-gradient-green">rozwijać się mądrze</span>
+        </h1>
+        <p class="text-xl text-gray-400 leading-relaxed">
+          Przeprogramowani.pl to platforma edukacyjna dla ambitnych programistów, stworzona przez developerów — dla developerów.
+          Nasze motto: <strong class="text-white">szersze spojrzenie na programowanie</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold text-white mb-6">Nasza misja</h2>
+          <div class="space-y-4 text-gray-400 leading-relaxed">
+            <p>
+              Zaczęliśmy w 2017 roku z prostą obserwacją: polscy programiści potrzebują nie tylko technicznej wiedzy,
+              ale też szerszego spojrzenia na swój zawód. Na aspekty miękkie, architekturę, pracę w zespole i rozwój kariery.
+            </p>
+            <p>
+              Dziś, po ponad 7 latach, jesteśmy społecznością 15 000+ developerów, którzy dzielą się wiedzą,
+              słuchają podcastów i uczestniczą w kursach zamieniających ich w lepszych specjalistów.
+            </p>
+            <p>
+              W 2024 roku przeszliśmy na pełny etat — bo wierzymy, że to co budujemy,
+              zmienia rzeczywiście kariery i sposób myślenia o programowaniu.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {stats.map(stat => (
+            <div class="p-6 rounded-2xl bg-dark-700 border border-white/5 text-center">
+              <div class="text-3xl font-extrabold text-white mb-1">{stat.value}</div>
+              <div class="text-gray-500 text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-16 bg-dark-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Twórcy</h2>
+        <p class="text-gray-400 max-w-xl mx-auto">Dwóch seniorów, którzy postanowili pomóc innym developerom rosnąć szybciej niż sami rośli.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {team.map(member => (
+          <div class="p-8 rounded-2xl bg-dark-700 border border-white/5 hover:border-white/10 transition-all">
+            <div class="flex items-start gap-5 mb-6">
+              <div class:list={[
+                'w-16 h-16 rounded-2xl bg-gradient-to-br flex items-center justify-center text-white font-bold text-xl flex-shrink-0',
+                member.gradient
+              ]}>
+                {member.initials}
+              </div>
+              <div>
+                <h3 class="text-white font-bold text-xl">{member.name}</h3>
+                <p class="text-gray-500 text-sm">{member.role}</p>
+                <div class="flex items-center gap-3 mt-2">
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
+                    class="text-gray-600 hover:text-brand-blue transition-colors text-xs">
+                    LinkedIn ↗
+                  </a>
+                  {member.twitter && (
+                    <a href={member.twitter} target="_blank" rel="noopener noreferrer"
+                      class="text-gray-600 hover:text-white transition-colors text-xs">
+                      Twitter/X ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-extrabold text-white mb-4">Historia</h2>
+        <p class="text-gray-400">Ponad 7 lat budowania społeczności developerów</p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <div class="absolute left-8 top-0 bottom-0 w-px bg-white/10"></div>
+          <div class="space-y-8">
+            {milestones.map((m, i) => (
+              <div class="flex gap-6 relative">
+                <div class="w-16 h-16 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center flex-shrink-0 z-10">
+                  <span class="text-xs font-bold text-brand-green font-mono">{m.year}</span>
+                </div>
+                <div class="flex-1 pt-4">
+                  <p class="text-white font-medium">{m.event}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-16 bg-dark-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Zaufali nam</h2>
+      <p class="text-gray-500 mb-12">Firmy, których zespoły szkolimy i rozwijamy</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        {partners.map(partner => (
+          <div class="px-6 py-3 rounded-xl bg-dark-700 border border-white/5 text-gray-400 text-sm font-medium">
+            {partner}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-white mb-4">Chcesz porozmawiać?</h2>
+      <p class="text-gray-400 mb-8">
+        Zainteresowany szkoleniami firmowymi, współpracą lub po prostu chcesz powiedzieć cześć — napisz do nas.
+      </p>
+      <a
+        href="mailto:kontakt@przeprogramowani.pl"
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-dark-700 border border-white/10 text-white font-semibold hover:bg-dark-600 hover:border-white/20 transition-all"
+      >
+        <svg class="w-5 h-5 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        kontakt@przeprogramowani.pl
+      </a>
+    </div>
+  </section>
+</Layout>

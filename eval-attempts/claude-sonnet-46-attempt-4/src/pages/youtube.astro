@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.tsx';
+
+const channelUrl = 'https://www.youtube.com/c/przeprogramowani';
+
+const videos = [
+  {
+    title: '10xDevs 3.0 — Pełny przegląd programu kursu i co Cię czeka',
+    views: '18K',
+    date: '2 tyg. temu',
+    duration: '24:17',
+    href: channelUrl,
+    gradientFrom: 'from-violet-700',
+    gradientTo: 'to-indigo-800',
+    category: 'Kurs',
+  },
+  {
+    title: 'Claude 3.7 Sonnet vs GPT-4o — Który model AI pisze lepszy kod w 2026?',
+    views: '41K',
+    date: '3 tyg. temu',
+    duration: '35:12',
+    href: channelUrl,
+    gradientFrom: 'from-emerald-700',
+    gradientTo: 'to-cyan-800',
+    category: 'AI Tools',
+  },
+  {
+    title: 'Architektura modułowa w React — jak to robić dobrze?',
+    views: '27K',
+    date: '1 mies. temu',
+    duration: '28:44',
+    href: channelUrl,
+    gradientFrom: 'from-blue-700',
+    gradientTo: 'to-indigo-800',
+    category: 'React',
+  },
+  {
+    title: 'TypeScript 5.7 — Wszystkie nowe funkcje w 20 minutach',
+    views: '24K',
+    date: '2 mies. temu',
+    duration: '19:55',
+    href: channelUrl,
+    gradientFrom: 'from-amber-600',
+    gradientTo: 'to-orange-700',
+    category: 'TypeScript',
+  },
+  {
+    title: 'Cursor AI — kompletny przewodnik po najlepszym edytorze z AI',
+    views: '53K',
+    date: '2 mies. temu',
+    duration: '42:08',
+    href: channelUrl,
+    gradientFrom: 'from-pink-700',
+    gradientTo: 'to-rose-800',
+    category: 'AI Tools',
+  },
+  {
+    title: 'React Server Components — kiedy używać, kiedy nie. Praktyczny przewodnik',
+    views: '31K',
+    date: '3 mies. temu',
+    duration: '33:21',
+    href: channelUrl,
+    gradientFrom: 'from-sky-700',
+    gradientTo: 'to-blue-800',
+    category: 'React',
+  },
+  {
+    title: 'Context Engineering — jak komunikować się z AI jak senior developer',
+    views: '19K',
+    date: '3 mies. temu',
+    duration: '22:14',
+    href: channelUrl,
+    gradientFrom: 'from-purple-700',
+    gradientTo: 'to-violet-800',
+    category: 'AI',
+  },
+  {
+    title: 'GitHub Actions od zera — CI/CD dla frontend developerów',
+    views: '16K',
+    date: '4 mies. temu',
+    duration: '45:30',
+    href: channelUrl,
+    gradientFrom: 'from-slate-600',
+    gradientTo: 'to-zinc-700',
+    category: 'DevOps',
+  },
+  {
+    title: 'Next.js 15 vs Astro 5 — Który wybrać w 2026 roku?',
+    views: '38K',
+    date: '4 mies. temu',
+    duration: '29:47',
+    href: channelUrl,
+    gradientFrom: 'from-teal-700',
+    gradientTo: 'to-emerald-800',
+    category: 'Web',
+  },
+];
+
+const categories = ['Wszystkie', 'AI Tools', 'TypeScript', 'React', 'Kurs', 'DevOps', 'Web', 'AI'];
+
+const channelStats = [
+  { label: 'Subskrybentów', value: '25K+' },
+  { label: 'Filmów', value: '200+' },
+  { label: 'Wyświetleń', value: '2M+' },
+];
+---
+
+<BaseLayout
+  title="YouTube"
+  description="Kanał YouTube Przeprogramowani — tutoriale, recenzje narzędzi AI, rozmowy z ekspertami i przeglądy technologii dla programistów."
+>
+  <!-- Hero / Channel header -->
+  <section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div
+      class="absolute -top-20 left-1/3 w-[500px] h-[400px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none"
+    ></div>
+
+    <div class="relative max-w-5xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8">
+        <!-- Channel avatar -->
+        <div
+          class="flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-2xl shadow-red-900/40 text-4xl"
+        >
+          ▶️
+        </div>
+
+        <!-- Channel info -->
+        <div class="flex-1">
+          <div class="badge mb-3">
+            <svg class="w-3 h-3 text-red-400" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              />
+            </svg>
+            <span class="text-red-400">YouTube</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-black text-white mb-2">Przeprogramowani</h1>
+          <p class="text-slate-400 text-base mb-6 max-w-xl">
+            Tutoriale, recenzje narzędzi AI, rozmowy z ekspertami i przeglądy nowych technologii
+            dla ambitnych programistów.
+          </p>
+
+          <!-- Stats row -->
+          <div class="flex flex-wrap items-center gap-6 mb-6">
+            {
+              channelStats.map((s) => (
+                <div>
+                  <span class="text-xl font-black text-white">{s.value}</span>
+                  <span class="text-slate-500 text-sm ml-1.5">{s.label}</span>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Subscribe CTA -->
+          <a
+            href={channelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold text-white text-sm transition-colors shadow-lg shadow-red-900/30"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              />
+            </svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter tags (visual only) -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap gap-2">
+        {
+          categories.map((cat, i) => (
+            <span
+              class={`px-3 py-1.5 rounded-lg text-xs font-medium cursor-default transition-colors ${
+                i === 0
+                  ? 'bg-violet-600/20 border border-violet-500/40 text-violet-300'
+                  : 'bg-white/[0.04] border border-white/[0.07] text-slate-400 hover:text-slate-200 hover:bg-white/[0.07]'
+              }`}
+            >
+              {cat}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos grid -->
+  <section class="py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-lg font-bold text-white mb-6">
+        Najnowsze filmy
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {videos.map((v) => <VideoCard client:load {...v} />)}
+      </div>
+
+      <!-- More button -->
+      <div class="text-center mt-12">
+        <a
+          href={channelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-red-600/10 border border-red-500/25 rounded-2xl text-red-400 font-bold text-sm hover:bg-red-600/20 transition-colors"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+            />
+          </svg>
+          Zobacz wszystkie filmy na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playlists section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl font-bold text-white mb-8">Playlisty tematyczne</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {
+          [
+            {
+              title: 'AI-First Development',
+              count: '24 filmy',
+              gradient: 'from-violet-700 to-indigo-800',
+              emoji: '🤖',
+            },
+            {
+              title: 'TypeScript Masterclass',
+              count: '18 filmów',
+              gradient: 'from-amber-600 to-orange-700',
+              emoji: '🔷',
+            },
+            {
+              title: 'React & Next.js',
+              count: '31 filmów',
+              gradient: 'from-cyan-700 to-blue-800',
+              emoji: '⚛️',
+            },
+            {
+              title: 'Kariera Programisty',
+              count: '15 filmów',
+              gradient: 'from-emerald-700 to-teal-800',
+              emoji: '🎯',
+            },
+          ].map((playlist) => (
+            <a
+              href={channelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative overflow-hidden rounded-2xl border border-white/[0.07] hover:border-white/[0.14] transition-all duration-300"
+            >
+              <div class={`h-32 bg-gradient-to-br ${playlist.gradient} flex items-end p-4`}>
+                <span class="text-3xl">{playlist.emoji}</span>
+              </div>
+              <div class="p-4 bg-[#0d0d1a]">
+                <h3 class="text-white font-bold text-sm group-hover:text-violet-200 transition-colors mb-1">
+                  {playlist.title}
+                </h3>
+                <p class="text-slate-500 text-xs">{playlist.count}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-slate-400 text-sm mb-2">Podoba Ci się co tworzymy?</p>
+      <h2 class="text-2xl font-bold text-white mb-6">
+        Zostaw subskrypcję i dzwonek 🔔
+      </h2>
+      <a
+        href={channelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 rounded-2xl font-bold text-white transition-colors shadow-xl shadow-red-900/30"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+          />
+        </svg>
+        Subskrybuj Przeprogramowani
+      </a>
+    </div>
+  </section>
+</BaseLayout>

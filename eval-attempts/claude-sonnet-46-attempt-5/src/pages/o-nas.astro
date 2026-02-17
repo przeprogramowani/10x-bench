@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder & Engineering Manager',
+    bio: 'Były Engineering Manager w DAZN i Cabify. Pasjonat architektury frontendowej i zarządzania zespołami technicznymi. Od 2024 roku skupiony w 100% na Przeprogramowani.pl.',
+    twitter: 'https://twitter.com/psmyrdek',
+    linkedin: 'https://linkedin.com/in/psmyrdek',
+    github: 'https://github.com/psmyrdek',
+    initials: 'PS',
+    color: 'from-violet-600 to-purple-700',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder & Lead Software Engineer',
+    bio: 'Były tech lead w SmartRecruiters. Ekspert TypeScript i React, twórca newslettera "Przeprogramowany Newsletter". Prowadzi cotygodniowe podsumowanie 3-2-1.',
+    twitter: 'https://twitter.com/mkczarkowski',
+    linkedin: 'https://linkedin.com/in/mkczarkowski',
+    initials: 'MC',
+    color: 'from-blue-600 to-sky-700',
+  },
+  {
+    name: 'Adam Gospodarczyk',
+    role: 'Co-founder',
+    bio: 'Znany jako "Overment". Współtwórca platformy od samego początku. Aktywny twórca treści w polskiej społeczności programistycznej.',
+    initials: 'AG',
+    color: 'from-emerald-600 to-teal-700',
+  },
+  {
+    name: 'Jakub Paczkowski',
+    role: 'Trener & Lead Engineer',
+    bio: 'Specjalista GenAI i architektury systemów. Lead Engineer z doświadczeniem w dużych projektach enterprise. Prowadzi moduły AI w kursach.',
+    initials: 'JP',
+    color: 'from-amber-600 to-orange-700',
+  },
+  {
+    name: 'Krzysztof Bohaczyk',
+    role: 'Trener & Full-stack Developer',
+    bio: 'Full-stack developer i autor newslettera Detechtive. Specjalizuje się w jakości kodu, testowaniu i dobrych praktykach w projektach JavaScript.',
+    initials: 'KB',
+    color: 'from-rose-600 to-pink-700',
+  },
+];
+
+const milestones = [
+  { year: '2017', title: 'Początek', desc: 'Przeprogramowani.pl rusza jako weekendowy projekt trzech przyjaciół z Krakowa.' },
+  { year: '2019', title: 'Podcast', desc: 'Pierwszy odcinek podcastu "Przeprogramowani ft. Gość". Rozmowy dla głodnych wiedzy.' },
+  { year: '2021', title: 'Opanuj Frontend', desc: 'Premiera pierwszej edycji kursu kohortowego dla frontend developerów.' },
+  { year: '2022', title: 'Newsletter', desc: 'Start newslettera "3-2-1" – dziś czyta go ponad 2 500 subskrybentów co piątek.' },
+  { year: '2023', title: '10xDevs', desc: 'Pierwsza edycja 10xDevs generuje ponad $400 000 i zdobywa 1 250 uczestników.' },
+  { year: '2024', title: 'Full-time', desc: 'Przemek i Marcin rzucają etaty. Przeprogramowani.pl staje się ich głównym zajęciem.' },
+  { year: '2025', title: 'AI Era', desc: '10xRules.ai, Opanuj.AI i kolejne edycje kursów z focus na narzędzia AI dla developerów.' },
+];
+
+const partners = ['Huuuge Games', 'Autodesk', 'SmartRecruiters', 'Future Processing', 'Callstack', 'BRAVE'];
+---
+
+<Layout
+  title="O nas"
+  description="Poznaj zespół Przeprogramowani.pl – platforma edukacyjna dla developerów od 2017 roku. Przemek Smyrdek, Marcin Czarkowski i cały team."
+>
+
+  <!-- Page Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-violet-950/30 via-zinc-950 to-transparent pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-6">
+          O NAS
+        </div>
+        <h1 class="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
+          Budujemy przestrzeń<br />
+          <span class="bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+            dla developerów,<br />którym zależy.
+          </span>
+        </h1>
+        <p class="text-xl text-zinc-400 leading-relaxed max-w-2xl">
+          Od 2017 roku tworzymy materiały edukacyjne, które pomagają developerom rozwijać się szybciej i mądrzej. Naszą misją jest "szersze spojrzenie na programowanie".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="py-16 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🎯',
+            title: 'Nasza misja',
+            desc: 'Tworzyć przestrzeń, w której każdy kto dba o swój rozwój, będzie czuł się u siebie. Uczymy nie tylko technologii – uczymy myślenia o karierze i pracy z narzędziami AI.',
+          },
+          {
+            icon: '⚡',
+            title: 'Jak działamy',
+            desc: 'Praktyka ponad teorię. Każdy kurs, odcinek podcastu czy film na YouTube bazuje na realnym doświadczeniu z produkcji i pracy z zespołami technicznymi.',
+          },
+          {
+            icon: '🌍',
+            title: 'Dla kogo',
+            desc: 'Dla doświadczonych developerów, którzy chcą wyjść poza podstawy. Naszymi kursami nie startują juniorzy – to programy dla osób gotowych na następny poziom.',
+          },
+        ].map(item => (
+          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800/60">
+            <div class="text-3xl mb-4">{item.icon}</div>
+            <h3 class="text-lg font-bold text-white mb-3">{item.title}</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-24 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-4">
+          ZESPÓŁ
+        </div>
+        <h2 class="text-3xl font-black text-white">Poznaj nasz team</h2>
+        <p class="text-zinc-400 mt-2">Praktycy, którzy uczą z doświadczenia</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {team.map((member) => (
+          <div class="p-6 rounded-xl bg-zinc-900/60 border border-zinc-800/60 hover:border-zinc-700 transition-all group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class={`w-14 h-14 rounded-xl bg-gradient-to-br ${member.color} flex items-center justify-center flex-shrink-0`}>
+                <span class="text-white font-bold text-base">{member.initials}</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-base">{member.name}</h3>
+                <p class="text-xs text-zinc-400 mt-0.5">{member.role}</p>
+              </div>
+            </div>
+            <p class="text-sm text-zinc-400 leading-relaxed mb-4">{member.bio}</p>
+            <div class="flex items-center gap-3">
+              {member.twitter && (
+                <a href={member.twitter} target="_blank" rel="noopener noreferrer"
+                   class="text-xs text-zinc-500 hover:text-zinc-300 transition-colors flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  Twitter
+                </a>
+              )}
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
+                   class="text-xs text-zinc-500 hover:text-zinc-300 transition-colors flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-24 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-400 mb-4">
+          HISTORIA
+        </div>
+        <h2 class="text-3xl font-black text-white">Nasza droga</h2>
+      </div>
+
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-[calc(3.5rem/2)] top-0 bottom-0 w-px bg-zinc-800 hidden md:block"></div>
+
+        <div class="space-y-8">
+          {milestones.map((milestone, i) => (
+            <div class="flex gap-6 items-start">
+              <div class="w-14 h-14 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 relative z-10">
+                <span class="text-xs font-bold text-violet-400">{milestone.year}</span>
+              </div>
+              <div class="pt-3">
+                <h3 class="font-bold text-white mb-1">{milestone.title}</h3>
+                <p class="text-sm text-zinc-400">{milestone.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-20 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm text-zinc-500 mb-8 uppercase tracking-wider font-medium">
+        Zaufali nam
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        {partners.map(partner => (
+          <span class="text-zinc-400 font-semibold text-sm tracking-wide hover:text-zinc-200 transition-colors">
+            {partner}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-24 border-t border-zinc-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Skontaktuj się z nami</h2>
+      <p class="text-zinc-400 mb-8 max-w-md mx-auto">
+        Masz pytania o kursy, szkolenia firmowe lub współpracę? Napisz do nas!
+      </p>
+      <a
+        href="mailto:kontakt@przeprogramowani.pl"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-xl transition-all border border-zinc-700 hover:border-zinc-600"
+      >
+        kontakt@przeprogramowani.pl
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+
+  ::selection {
+    @apply bg-green-500/30 text-green-100;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-300;
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-400 to-blue-400;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-green-500/10;
+  }
+
+  .glow-green {
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.15);
+  }
+}

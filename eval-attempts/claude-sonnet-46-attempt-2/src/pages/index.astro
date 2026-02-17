@@ -1,0 +1,356 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    id: '10xdevs',
+    name: '10xDevs 3.0',
+    tagline: 'Programuj z AI na poziomie eksperta',
+    description: 'Kurs kohortowy dla profesjonalnych developerów. Naucz się integrować narzędzia AI w realnych projektach – od workflow, przez architekturę, po pracę zespołową. 3 700+ absolwentów.',
+    url: 'https://10xdevs.pl',
+    gradient: 'from-brand-green to-brand-blue',
+    textGradient: 'text-gradient-10x',
+    badge: 'Najpopularniejszy',
+    stats: ['3 700+ absolwentów', '5 tygodni', '40h materiału'],
+    accent: 'border-brand-green/30 hover:border-brand-green/60',
+    cta: 'Zapisz się teraz',
+    icon: '🤖',
+  },
+  {
+    id: 'frontend',
+    name: 'Opanuj Frontend',
+    tagline: 'AI Edition – Zostań Senior Frontendem',
+    description: 'Intensywny 10-tygodniowy program dla mid-level developerów. Testy, CI/CD, architektura, design systemy i praca w dużych zespołach z wykorzystaniem narzędzi AI.',
+    url: 'https://opanujfrontend.pl',
+    gradient: 'from-brand-pink to-brand-purple',
+    textGradient: 'text-gradient-frontend',
+    badge: 'AI Edition',
+    stats: ['383+ uczestników', '10 tygodni', '5 modułów'],
+    accent: 'border-brand-pink/30 hover:border-brand-pink/60',
+    cta: 'Sprawdź program',
+    icon: '⚡',
+  },
+  {
+    id: 'typescript',
+    name: 'Opanuj TypeScript',
+    tagline: 'Frontend Pro – Zaawansowany TypeScript',
+    description: 'Praktyczny kurs TypeScript + React 19 dla produkcyjnych aplikacji. Generyki, zaawansowane typy, integracja z bibliotekami i wzorce projektowe dla profesjonalistów.',
+    url: 'https://opanujtypescript.pl',
+    gradient: 'from-brand-blue to-blue-800',
+    textGradient: 'text-gradient-typescript',
+    badge: 'Frontend Pro',
+    stats: ['121+ studentów', 'Self-paced', '2 moduły'],
+    accent: 'border-brand-blue/30 hover:border-brand-blue/60',
+    cta: 'Sprawdź program',
+    icon: '📘',
+  },
+];
+
+const podcastEpisodes = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu',
+    guest: 'Wiktoria Sitko',
+    date: '25 września 2025',
+    duration: '33:45',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty',
+    guest: 'Wojciech Trawiński',
+    date: '10 września 2025',
+    duration: '45:56',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie?',
+    guest: 'Tomasz Ducin',
+    date: '10 października 2024',
+    duration: '1:16:44',
+    spotifyUrl: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo',
+  },
+];
+
+const youtubeVideos = [
+  {
+    title: 'Topowe AI do budowania stron? Mamy wyniki naszego benchmarku!',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+    channelUrl: 'https://www.youtube.com/@przeprogramowani',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+    channelUrl: 'https://www.youtube.com/@przeprogramowani',
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) – praktyczne scenariusze',
+    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+    channelUrl: 'https://www.youtube.com/@przeprogramowani',
+  },
+];
+---
+
+<Layout title="Szersze spojrzenie na programowanie">
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <!-- Background glow -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/20 text-brand-green text-sm font-medium mb-8">
+        <span class="w-2 h-2 bg-brand-green rounded-full animate-pulse"></span>
+        10xDevs 3.0 — Nowa edycja otwarta
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
+        Szersze spojrzenie<br />
+        <span class="text-gradient-green">na programowanie</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+        Pomagamy ambitnym developerom rozwijać się zawodowo, technicznie i mentalnie.
+        Kursy, podcast i społeczność 15 000+ programistów.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-10x text-white font-bold text-lg hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-brand-green/20"
+        >
+          Dołącz do 10xDevs 🚀
+        </a>
+        <a
+          href="/podcast"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-lg hover:bg-white/10 transition-all"
+        >
+          Słuchaj podcastu
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-8 max-w-lg mx-auto mt-20">
+        {[
+          { value: '15 000+', label: 'Developerów' },
+          { value: '3 700+', label: 'Absolwentów' },
+          { value: '98', label: 'Odcinków podcastu' },
+        ].map(stat => (
+          <div class="text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white">{stat.value}</div>
+            <div class="text-gray-500 text-sm mt-1">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="py-24 bg-dark-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Nasze kursy</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">
+          Sprawdzone programy szkoleniowe dla profesjonalnych developerów, którzy chcą rozwijać się szybciej.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {courses.map((course, i) => (
+          <a
+            href={course.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              'group relative p-8 rounded-2xl bg-dark-700 border transition-all duration-300 hover:-translate-y-1',
+              course.accent,
+              i === 0 ? 'lg:row-span-1 ring-1 ring-brand-green/20' : ''
+            ]}
+          >
+            {course.badge && (
+              <span class:list={[
+                'inline-block px-3 py-1 rounded-full text-xs font-bold mb-4',
+                i === 0 ? 'bg-brand-green/20 text-brand-green' :
+                i === 1 ? 'bg-brand-pink/20 text-brand-pink' :
+                'bg-brand-blue/20 text-brand-blue'
+              ]}>
+                {course.badge}
+              </span>
+            )}
+            <div class="text-4xl mb-4">{course.icon}</div>
+            <h3 class="text-xl font-bold text-white mb-2">{course.name}</h3>
+            <p class:list={['text-base font-semibold mb-3', course.textGradient]}>{course.tagline}</p>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">{course.description}</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              {course.stats.map(stat => (
+                <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">{stat}</span>
+              ))}
+            </div>
+            <div class:list={[
+              'inline-flex items-center gap-2 text-sm font-semibold',
+              i === 0 ? 'text-brand-green' : i === 1 ? 'text-brand-pink' : 'text-brand-blue'
+            ]}>
+              {course.cta}
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Podcast Episodes -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Najnowsze odcinki</h2>
+          <p class="text-gray-400">Przeprogramowani ft. Gość — rozmowy dla głodnych wiedzy</p>
+        </div>
+        <a href="/podcast" class="hidden sm:flex items-center gap-2 text-brand-green text-sm font-semibold hover:opacity-80 transition-opacity">
+          Wszystkie odcinki
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="space-y-4">
+        {podcastEpisodes.map((ep, i) => (
+          <a
+            href={ep.spotifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-6 p-6 rounded-2xl bg-dark-700 border border-white/5 hover:border-brand-green/20 hover:bg-dark-600 transition-all group"
+          >
+            <!-- Episode number -->
+            <div class="hidden sm:flex w-10 h-10 rounded-full bg-brand-green/10 border border-brand-green/20 items-center justify-center text-brand-green font-mono text-sm font-bold flex-shrink-0">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+
+            <!-- Play button -->
+            <div class="w-10 h-10 rounded-full bg-dark-500 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-green/20 group-hover:border-brand-green/30 transition-all">
+              <svg class="w-4 h-4 text-gray-400 group-hover:text-brand-green transition-colors ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <h3 class="text-white font-semibold truncate group-hover:text-brand-green transition-colors">{ep.title}</h3>
+              <p class="text-gray-500 text-sm mt-1">{ep.guest && `Gość: ${ep.guest} · `}{ep.date}</p>
+            </div>
+
+            <div class="hidden sm:block text-gray-600 text-sm font-mono">{ep.duration}</div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-6 sm:hidden">
+        <a href="/podcast" class="flex items-center justify-center gap-2 text-brand-green text-sm font-semibold">
+          Wszystkie odcinki
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube Section -->
+  <section class="py-24 bg-dark-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Ostatnie filmy</h2>
+          <p class="text-gray-400">Praktyczne materiały wideo na naszym kanale YouTube</p>
+        </div>
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:flex items-center gap-2 text-red-400 text-sm font-semibold hover:opacity-80 transition-opacity"
+        >
+          Kanał YouTube
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {youtubeVideos.map(video => (
+          <a
+            href={video.channelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group rounded-2xl overflow-hidden bg-dark-700 border border-white/5 hover:border-white/15 transition-all hover:-translate-y-1"
+          >
+            <div class="relative aspect-video bg-dark-600 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center bg-dark-600">
+                <div class="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/80 rounded text-white text-xs font-mono">
+                YouTube
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-white font-semibold text-sm leading-snug group-hover:text-red-400 transition-colors line-clamp-2">
+                {video.title}
+              </h3>
+              <p class="text-gray-600 text-xs mt-2">Przeprogramowani</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8 text-center sm:hidden">
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-red-400 text-sm font-semibold"
+        >
+          Odwiedź kanał
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="p-12 rounded-3xl bg-dark-700 border border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-radial from-brand-green/5 via-transparent to-transparent"></div>
+        <div class="relative">
+          <div class="text-4xl mb-4">✉️</div>
+          <h2 class="text-3xl font-extrabold text-white mb-4">Newsletter co piątek</h2>
+          <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+            3x technicznie, 2x rozwojowo, 1x bonus. Dołącz do 2 000+ subskrybentów, którzy rozwijają się szybciej.
+          </p>
+          <a
+            href="https://przeprogramowani.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-dark-900 font-bold hover:bg-gray-100 transition-colors"
+          >
+            Zapisz się bezpłatnie
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

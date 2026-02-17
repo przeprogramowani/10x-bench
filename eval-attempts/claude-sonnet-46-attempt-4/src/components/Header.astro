@@ -1,0 +1,153 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-[#07070f]/85 backdrop-blur-xl border-b border-white/[0.07] transition-all"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group flex-shrink-0">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-black text-base shadow-lg shadow-violet-900/30"
+        >
+          P
+        </div>
+        <span class="font-bold text-white text-base hidden sm:block">Przeprogramowani</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        {
+          navLinks.map((link) => {
+            const isActive =
+              link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href);
+            return (
+              <a
+                href={link.href}
+                class={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  isActive
+                    ? 'bg-violet-600/15 text-violet-300'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })
+        }
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl text-sm font-semibold text-white hover:opacity-90 transition-all shadow-lg shadow-violet-900/30 hover:shadow-violet-900/50"
+        >
+          10xDevs 3.0 →
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="mobile-toggle"
+        class="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.05] transition-colors"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+      >
+        <svg
+          id="icon-open"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+        <svg
+          id="icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 hidden"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-white/[0.07] bg-[#07070f]/95 backdrop-blur-xl"
+  >
+    <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
+      {
+        navLinks.map((link) => {
+          const isActive =
+            link.href === '/' ? currentPath === '/' : currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                isActive
+                  ? 'bg-violet-600/15 text-violet-300'
+                  : 'text-slate-400 hover:text-white hover:bg-white/[0.05]'
+              }`}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+      <div class="pt-2">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-xl text-sm font-semibold text-white"
+        >
+          10xDevs 3.0 — Dołącz →
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

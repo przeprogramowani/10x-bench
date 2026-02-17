@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder',
+    initials: 'PS',
+    color: 'from-green-500 to-emerald-600',
+    bio: 'Doświadczony Lead Front-End Engineer i Manager z praktyką w międzynarodowych firmach produktowych. Fullstack developer z szerokim portfolio technologicznym.',
+    longBio: 'Przez lata pracował jako Lead Front-End Engineer i Manager w takich firmach jak DAZN i Cabify. Fullstack developer biegły w .NET/C#, Java, Node.js, Angular i TypeScript. Aktywny mówca konferencyjny (4Developers, ReactiveConf, InfoShare) i kontrybutor open source (CursorLens, openapi-typescript).',
+    tags: ['TypeScript', 'Angular', 'Node.js', 'Architecture', 'AI Tools'],
+    companies: ['DAZN', 'Cabify'],
+    social: {
+      linkedin: '#',
+    },
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder',
+    initials: 'MC',
+    color: 'from-blue-500 to-violet-600',
+    bio: 'Platform Lead i Lead Frontend Architect w SmartRecruiters. Twórca najpopularniejszego technicznego podcastu o LLM w Polsce.',
+    longBio: 'Platform Lead i Lead Frontend Architect w SmartRecruiters z ponad 10-letnim doświadczeniem komercyjnym. Twórca Opanuj AI Podcast — opisywanego jako najpopularniejszy techniczny podcast o LLM w Polsce. Entuzjasta neurobiologii, który opiera projektowanie edukacyjne na badaniach naukowych dotyczących uczenia się.',
+    tags: ['TypeScript', 'React', 'Node.js', 'PHP', 'LLM'],
+    companies: ['SmartRecruiters'],
+    social: {
+      linkedin: '#',
+    },
+  },
+];
+
+const timeline = [
+  { year: '2017', event: 'Założenie Przeprogramowani.pl — blog i pierwsze treści edukacyjne dla polskich developerów.' },
+  { year: '2019', event: 'Start podcastu "Przeprogramowani ft. Gość" — rozmowy z ekspertami branży IT.' },
+  { year: '2021', event: 'Premiera kursu Opanuj Frontend — pierwsza edycja dla zaawansowanych frontend developerów.' },
+  { year: '2023', event: 'Premiera 10xDevs — program dla developerów chcących strategicznie pracować z AI.' },
+  { year: '2024', event: 'Start Opanuj AI Podcast — najpopularniejszego technicznego podcastu o LLM w Polsce. Launch 10xRules.ai.' },
+  { year: '2025', event: 'Ponad 3700 absolwentów kursów. Rozszerzenie oferty o Opanuj TypeScript i kolejne edycje kursów.' },
+];
+
+const values = [
+  {
+    icon: '🎯',
+    title: 'Szersza perspektywa',
+    description: 'Nie uczymy tylko "jak zrobić" — pokazujemy "dlaczego tak, a nie inaczej". Łączymy technikę z architekturą, biznesem i rozwojem kariery.',
+  },
+  {
+    icon: '🧠',
+    title: 'Oparte na nauce',
+    description: 'Nasze programy są projektowane zgodnie z naukowymi badaniami dotyczącymi uczenia się. Spaced repetition, active recall, projekt końcowy.',
+  },
+  {
+    icon: '⚡',
+    title: 'Praktyczne podejście',
+    description: 'Każda lekcja to teoria + ćwiczenie + projekt. Uczymy na realnych problemach z produkcji, nie wymyślonych przykładach.',
+  },
+  {
+    icon: '🤝',
+    title: 'Społeczność',
+    description: 'Dostęp do społeczności ponad 200 aktywnych uczestników, cotygodniowe sesje Q&A z mentorami i codzienny support.',
+  },
+];
+
+const partners = ['Autodesk', 'Future Processing', 'SmartRecruiters', 'Callstack'];
+---
+
+<Layout
+  title="O nas"
+  description="Poznaj Przeprogramowani.pl — Przemek Smyrdek i Marcin Czarkowski. Pomagamy ambitnym deweloperom od 2017 roku."
+>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-green-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 text-slate-400 text-xs font-medium mb-6">
+        Od 2017 roku
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+        Szersza perspektywa<br />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-300">
+          na programowanie
+        </span>
+      </h1>
+      <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
+        Przeprogramowani to inicjatywa dwóch doświadczonych inżynierów, którzy postanowili połączyć siły, by pomagać polskim developerom wyjść poza schemat "coder" i stać się kompletnymi specjalistami.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-black text-white mb-4">Nasz zespół</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Dwóch inżynierów z doświadczeniem w wiodących firmach technologicznych, którzy postanowili dzielić się wiedzą z polską społecznością developerów.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {team.map((member) => (
+          <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all">
+            <div class="flex items-start gap-6 mb-6">
+              <div class={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white font-black text-2xl flex-shrink-0`}>
+                {member.initials}
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-1">{member.name}</h3>
+                <p class="text-slate-500 text-sm mb-3">{member.role}</p>
+                <div class="flex flex-wrap gap-1.5">
+                  {member.companies.map((c) => (
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-400 text-xs font-medium">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-300 leading-relaxed mb-6">{member.longBio}</p>
+
+            <div class="flex flex-wrap gap-2">
+              {member.tags.map((tag) => (
+                <span class="px-3 py-1 rounded-lg bg-slate-800/80 text-slate-400 text-xs font-mono border border-slate-700/50">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-black text-white mb-4">Nasze wartości</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">To, co odróżnia nasze programy edukacyjne od innych kursów online.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((value) => (
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all hover:-translate-y-0.5">
+            <div class="text-3xl mb-4">{value.icon}</div>
+            <h3 class="font-bold text-white mb-2">{value.title}</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-black text-white mb-4">Nasza historia</h2>
+        <p class="text-slate-400">Od bloga po jeden z największych programów edukacyjnych dla developerów w Polsce.</p>
+      </div>
+
+      <div class="relative">
+        <div class="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-green-500/50 via-slate-700 to-transparent"></div>
+
+        <div class="space-y-8">
+          {timeline.map((item) => (
+            <div class="relative flex gap-8 pl-20">
+              <div class="absolute left-0 w-16 flex items-center justify-center">
+                <div class="w-4 h-4 rounded-full bg-green-500 ring-4 ring-slate-950 relative z-10"></div>
+              </div>
+              <div class="flex-1 pb-2">
+                <div class="text-green-400 font-mono font-bold text-sm mb-1">{item.year}</div>
+                <p class="text-slate-300 leading-relaxed">{item.event}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-20 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm text-slate-500 uppercase tracking-widest font-medium mb-8">
+        7 lat współpracy z wiodącymi firmami
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        {partners.map((partner) => (
+          <div class="px-8 py-4 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 font-semibold text-sm hover:text-white hover:border-slate-700 transition-all">
+            {partner}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Gotowy na kolejny krok?</h2>
+      <p class="text-slate-400 mb-8">Dołącz do ponad 3700 developerów, którzy zmienili swoje podejście do programowania.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-4 bg-green-500 hover:bg-green-400 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5 w-full sm:w-auto"
+        >
+          Sprawdź 10xDevs →
+        </a>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="px-8 py-4 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-semibold rounded-xl transition-all hover:bg-slate-800/50 w-full sm:w-auto"
+        >
+          Napisz do nas
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

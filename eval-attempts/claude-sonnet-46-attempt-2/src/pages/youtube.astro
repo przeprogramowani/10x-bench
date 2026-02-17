@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  {
+    title: 'Topowe AI do budowania stron? Mamy wyniki naszego benchmarku!',
+    description: 'Porównujemy najlepsze modele AI w zadaniu budowania strony Przeprogramowani.pl. Wyniki mogą Cię zaskoczyć!',
+    category: 'AI & Narzędzia',
+    categoryColor: 'text-brand-green bg-brand-green/10 border-brand-green/20',
+  },
+  {
+    title: 'Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?',
+    description: 'Analiza porównania podejść do programowania z AI — dlaczego AgentsMD osiągnął lepsze wyniki?',
+    category: 'Analiza',
+    categoryColor: 'text-brand-blue bg-brand-blue/10 border-brand-blue/20',
+  },
+  {
+    title: 'Claude Code + GLM-4.7 — Programowanie z darmowym AI wreszcie możliwe?',
+    description: 'Testujemy GLM-4.7 jako darmową alternatywę do programowania z AI. Czy to realny kandydat?',
+    category: 'AI & Narzędzia',
+    categoryColor: 'text-brand-green bg-brand-green/10 border-brand-green/20',
+  },
+  {
+    title: '5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI',
+    description: 'Praktyczne techniki, które poprawiły jakość i efektywność pracy z modeli językowych w codziennym kodowaniu.',
+    category: 'Workflow',
+    categoryColor: 'text-brand-pink bg-brand-pink/10 border-brand-pink/20',
+  },
+  {
+    title: 'Demo Day 10xDevs — zobacz najlepsze projekty uczestników 2. edycji!',
+    description: 'Przegląd najciekawszych projektów stworzonych przez uczestników 2. edycji kursu 10xDevs.',
+    category: '10xDevs',
+    categoryColor: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20',
+  },
+  {
+    title: 'Opanuj Agenta AI (Cursor, Codex, MCP) — praktyczne scenariusze dla programistów',
+    description: 'Jak efektywnie korzystać z agentów AI w codziennej pracy programisty — konkretne przypadki użycia.',
+    category: 'AI & Narzędzia',
+    categoryColor: 'text-brand-green bg-brand-green/10 border-brand-green/20',
+  },
+];
+
+const playlists = [
+  {
+    name: 'AI & Programowanie',
+    count: '12+ filmów',
+    description: 'Praktyczne materiały o programowaniu z narzędziami AI',
+    icon: '🤖',
+    color: 'from-brand-green/20 to-transparent border-brand-green/20',
+  },
+  {
+    name: 'Kariera Programisty',
+    count: '18+ filmów',
+    description: 'Rozmowy i porady o rozwoju kariery w IT',
+    icon: '🚀',
+    color: 'from-brand-blue/20 to-transparent border-brand-blue/20',
+  },
+  {
+    name: 'Frontend & TypeScript',
+    count: '24+ filmów',
+    description: 'Techniczne deep-divy z frontendu i TypeScript',
+    icon: '⚡',
+    color: 'from-brand-pink/20 to-transparent border-brand-pink/20',
+  },
+  {
+    name: 'Architektura',
+    count: '10+ filmów',
+    description: 'Wzorce projektowe i dobre praktyki architektoniczne',
+    icon: '🏗️',
+    color: 'from-yellow-500/20 to-transparent border-yellow-500/20',
+  },
+];
+---
+
+<Layout title="YouTube" description="Praktyczne materiały wideo o programowaniu, AI i karierze developera. Subskrybuj kanał Przeprogramowani na YouTube.">
+  <!-- Hero -->
+  <section class="pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute bottom-0 right-1/3 w-80 h-80 bg-red-600/8 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600/10 border border-red-600/20 text-red-400 text-sm font-medium mb-6">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          YouTube
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">
+          Praktyczne materiały<br />
+          <span class="text-red-400">wideo dla developerów</span>
+        </h1>
+        <p class="text-xl text-gray-400 leading-relaxed mb-8">
+          Tutoriale, analizy, demo days i rozmowy o programowaniu, AI i karierze.
+          Subskrybuj i nie przegap żadnego materiału.
+        </p>
+
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-white mb-8">Ostatnie filmy</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map(video => (
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group rounded-2xl overflow-hidden bg-dark-700 border border-white/5 hover:border-red-500/20 transition-all hover:-translate-y-1 duration-300"
+          >
+            <!-- Thumbnail placeholder -->
+            <div class="relative aspect-video bg-dark-600 flex items-center justify-center overflow-hidden">
+              <!-- Grid pattern background -->
+              <div class="absolute inset-0 opacity-5"
+                style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 20px 20px;">
+              </div>
+              <!-- P logo -->
+              <div class="relative flex flex-col items-center gap-3">
+                <div class="w-14 h-14 rounded-xl bg-gradient-10x flex items-center justify-center text-white font-extrabold text-2xl shadow-lg">
+                  P
+                </div>
+                <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/80 rounded text-white text-xs">
+                Przeprogramowani
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-5">
+              <span class:list={[
+                'inline-block px-2 py-0.5 rounded-full text-xs font-medium border mb-3',
+                video.categoryColor
+              ]}>
+                {video.category}
+              </span>
+              <h3 class="text-white font-semibold text-sm leading-snug group-hover:text-red-400 transition-colors line-clamp-2 mb-2">
+                {video.title}
+              </h3>
+              <p class="text-gray-600 text-xs leading-relaxed line-clamp-2">
+                {video.description}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- View more -->
+      <div class="mt-10 text-center">
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-dark-700 border border-white/10 text-white font-semibold hover:bg-dark-600 hover:border-white/20 transition-all"
+        >
+          Więcej filmów na YouTube
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playlists -->
+  <section class="py-16 bg-dark-800/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-white mb-8">Playlisty tematyczne</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {playlists.map(pl => (
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              'p-6 rounded-2xl bg-gradient-to-br border transition-all hover:-translate-y-1 duration-300 group',
+              pl.color
+            ]}
+          >
+            <div class="text-3xl mb-4">{pl.icon}</div>
+            <h3 class="text-white font-bold mb-1">{pl.name}</h3>
+            <p class="text-gray-500 text-xs mb-3">{pl.count}</p>
+            <p class="text-gray-400 text-sm leading-relaxed">{pl.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscribe CTA -->
+  <section class="py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="p-12 rounded-3xl bg-dark-700 border border-red-600/10 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-radial from-red-600/5 via-transparent to-transparent"></div>
+        <div class="relative">
+          <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-600/30">
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-extrabold text-white mb-4">Nie przegap żadnego materiału</h2>
+          <p class="text-gray-400 mb-8 max-w-md mx-auto">
+            Subskrybuj kanał i włącz powiadomienia, żeby zawsze być na bieżąco z nowymi filmami.
+          </p>
+          <a
+            href="https://www.youtube.com/@przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-red-600 text-white font-bold text-lg hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            Subskrybuj — @przeprogramowani
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
