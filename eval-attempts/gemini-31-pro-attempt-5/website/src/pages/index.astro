@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowRight, Code, Terminal, Cpu } from 'lucide-react';
+---
+
+<Layout title="Strona Główna">
+  {/* Hero Section - 10xDevs */}
+  <div class="relative bg-slate-900 overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="md:w-2/3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-sm font-medium mb-6 border border-indigo-500/30">
+          <span class="flex h-2 w-2 rounded-full bg-indigo-500"></span>
+          Nowość w ofercie
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">10xDevs</span>
+          Programowanie z AI
+        </h1>
+        <p class="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+          Wejdź na wyższy poziom z Generatywnym AI. Poznaj techniki i narzędzia do świadomego stosowania sztucznej inteligencji w całym cyklu wytwarzania oprogramowania.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#" class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
+            Dołącz do programu
+            <ArrowRight className="ml-2 -mr-1 h-5 w-5" />
+          </a>
+          <a href="#kursy" class="inline-flex justify-center items-center px-6 py-3 border border-slate-700 text-base font-medium rounded-lg text-slate-300 bg-slate-800/50 hover:bg-slate-800 transition-colors backdrop-blur-sm">
+            Zobacz inne kursy
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Courses Section */}
+  <div id="kursy" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Nasza oferta</h2>
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          Opanuj technologie webowe
+        </p>
+        <p class="mt-4 max-w-2xl text-xl text-slate-500 mx-auto">
+          Praktyczne szkolenia, które przygotują Cię do wyzwań w nowoczesnych projektach produkcyjnych.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* Opanuj Frontend */}
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <Code className="h-6 w-6" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Opanuj Frontend</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Obszerny kurs z 5 modułami o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Ukończyło go już prawie 400 zadowolonych absolwentów.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-500 mr-2 shrink-0" />
+                <span>Architektura aplikacji webowych</span>
+              </li>
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-500 mr-2 shrink-0" />
+                <span>Zaawansowane testowanie</span>
+              </li>
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-500 mr-2 shrink-0" />
+                <span>Procesy CI/CD we frontendzie</span>
+              </li>
+            </ul>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center transition-colors">
+              Dowiedz się więcej <ArrowRight className="ml-1 h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* Opanuj TypeScript */}
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center mb-6">
+              <Terminal className="h-6 w-6" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Opanuj TypeScript</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Szkolenie podnoszące jakość projektów produkcyjnych. Naucz się pracować z najnowszymi wersjami TypeScript 5 i React 19 jak prawdziwy profesjonalista.
+            </p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-600 mr-2 shrink-0" />
+                <span>TypeScript 5 w praktyce</span>
+              </li>
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-600 mr-2 shrink-0" />
+                <span>Integracja z React 19</span>
+              </li>
+              <li class="flex items-start text-slate-700">
+                <ArrowRight className="h-5 w-5 text-blue-600 mr-2 shrink-0" />
+                <span>Zaawansowane typy i wzorce</span>
+              </li>
+            </ul>
+            <a href="#" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center transition-colors">
+              Dowiedz się więcej <ArrowRight className="ml-1 h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Stats / Trust Section */}
+  <div class="bg-slate-900 py-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
+        <div>
+          <div class="text-4xl font-extrabold text-white mb-2">7+</div>
+          <div class="text-sm font-medium text-slate-400 uppercase tracking-wide">Lat na rynku</div>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-white mb-2">400+</div>
+          <div class="text-sm font-medium text-slate-400 uppercase tracking-wide">Absolwentów</div>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-white mb-2">4000+</div>
+          <div class="text-sm font-medium text-slate-400 uppercase tracking-wide">Słuchaczy podcastu</div>
+        </div>
+        <div>
+          <div class="text-4xl font-extrabold text-white mb-2">100%</div>
+          <div class="text-sm font-medium text-slate-400 uppercase tracking-wide">Praktyki</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

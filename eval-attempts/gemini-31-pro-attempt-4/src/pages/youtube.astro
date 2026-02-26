@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Play, Eye, ThumbsUp } from 'lucide-react';
+
+const videos = [
+	{
+		id: "v1",
+		title: "Jak Cursor zmienia pracę programisty w 2026?",
+		thumbnail: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+		views: "15 tys.",
+		date: "1 tydzień temu",
+		duration: "18:24"
+	},
+	{
+		id: "v2",
+		title: "React 19 - Co nowego? Przegląd najważniejszych funkcji",
+		thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+		views: "22 tys.",
+		date: "3 tygodnie temu",
+		duration: "24:15"
+	},
+	{
+		id: "v3",
+		title: "Zbuduj aplikację Fullstack z Astro i Cloudflare",
+		thumbnail: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+		views: "18 tys.",
+		date: "1 miesiąc temu",
+		duration: "45:30"
+	},
+	{
+		id: "v4",
+		title: "TypeScript dla zaawansowanych - Typy warunkowe",
+		thumbnail: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+		views: "30 tys.",
+		date: "2 miesiące temu",
+		duration: "21:10"
+	}
+];
+---
+
+<Layout title="YouTube" description="Oglądaj materiały edukacyjne na kanale Przeprogramowani">
+	<div class="bg-white py-16 sm:py-24 min-h-screen">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="mx-auto max-w-2xl text-center mb-16">
+				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Kanał YouTube</h2>
+				<p class="mt-4 text-lg leading-8 text-gray-600">
+					Najwyższej jakości materiały wideo o programowaniu, polecane przez specjalistów i wykładowców.
+				</p>
+				<div class="mt-6">
+					<a href="https://youtube.com/@Przeprogramowani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors">
+						Subskrybuj kanał
+					</a>
+				</div>
+			</div>
+			
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+				{videos.map(video => (
+					<div class="group cursor-pointer">
+						<div class="relative w-full overflow-hidden rounded-xl bg-gray-200 aspect-video mb-4">
+							<img src={video.thumbnail} alt={video.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+							<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-2 py-1 rounded">
+								{video.duration}
+							</div>
+							<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+								<Play className="h-12 w-12 text-white" />
+							</div>
+						</div>
+						<h3 class="text-lg font-semibold text-gray-900 leading-tight mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+							{video.title}
+						</h3>
+						<div class="flex items-center text-sm text-gray-500 gap-4">
+							<span class="flex items-center">
+								<Eye className="h-4 w-4 mr-1" />
+								{video.views}
+							</span>
+							<span>{video.date}</span>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</Layout>

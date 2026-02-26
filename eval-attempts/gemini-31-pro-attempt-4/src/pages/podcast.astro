@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PlayCircle, Clock, Calendar } from 'lucide-react';
+
+const episodes = [
+	{
+		id: 1,
+		title: "Opanuj.AI #12: Najnowsze modele językowe i ich zastosowanie",
+		description: "W tym odcinku omawiamy najnowsze modele LLM, jak GPT-4o, Claude 3.5 Sonnet i ich wpływ na codzienną pracę programisty.",
+		date: "15 Lut 2026",
+		duration: "45 min",
+		image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+	},
+	{
+		id: 2,
+		title: "Przeprogramowani #98: Jak efektywnie uczyć się TypeScriptu?",
+		description: "Rozmawiamy o najlepszych praktykach, pułapkach i zasobach do nauki TypeScriptu w 2026 roku.",
+		date: "02 Lut 2026",
+		duration: "52 min",
+		image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+	},
+	{
+		id: 3,
+		title: "Przeprogramowani #97: Przyszłość frameworków frontendowych",
+		description: "Astro, Next.js, Remix - co wybrać do nowego projektu? Analizujemy wady i zalety popularnych rozwiązań.",
+		date: "20 Sty 2026",
+		duration: "61 min",
+		image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+	}
+];
+---
+
+<Layout title="Podcast" description="Posłuchaj podcastów Przeprogramowani i Opanuj.AI">
+	<div class="bg-gray-50 py-16 sm:py-24 min-h-screen">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="mx-auto max-w-2xl text-center">
+				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nasze Podcasty</h2>
+				<p class="mt-4 text-lg leading-8 text-gray-600">
+					Posłuchaj rozmów o programowaniu, technologii, sztucznej inteligencji i rozwoju kariery w IT.
+				</p>
+			</div>
+			
+			<div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 lg:max-w-none lg:grid-cols-3">
+				{episodes.map(episode => (
+					<article class="flex flex-col items-start justify-between bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+						<div class="relative w-full">
+							<img src={episode.image} alt={episode.title} class="aspect-[16/9] w-full object-cover sm:aspect-[2/1] lg:aspect-[3/2]" />
+							<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+								<PlayCircle className="h-16 w-16 text-white" />
+							</div>
+						</div>
+						<div class="max-w-xl p-6">
+							<div class="flex items-center gap-x-4 text-xs mb-4">
+								<div class="flex items-center text-gray-500">
+									<Calendar className="h-4 w-4 mr-1" />
+									<time datetime={episode.date}>{episode.date}</time>
+								</div>
+								<div class="flex items-center text-gray-500">
+									<Clock className="h-4 w-4 mr-1" />
+									<span>{episode.duration}</span>
+								</div>
+							</div>
+							<div class="group relative">
+								<h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-blue-600 transition-colors">
+									<a href="#">
+										<span class="absolute inset-0"></span>
+										{episode.title}
+									</a>
+								</h3>
+								<p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{episode.description}</p>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+
+			<div class="mt-16 text-center">
+				<a href="https://spotify.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 transition-colors">
+					Słuchaj na Spotify
+				</a>
+			</div>
+		</div>
+	</div>
+</Layout>

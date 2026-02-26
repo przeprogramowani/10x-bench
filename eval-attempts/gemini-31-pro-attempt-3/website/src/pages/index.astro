@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Courses from '../components/Courses';
+import RecentPodcasts from '../components/RecentPodcasts';
+import RecentYouTube from '../components/RecentYouTube';
+---
+
+<Layout title="Strona Główna">
+	<Hero client:load />
+	<Courses client:load />
+	<RecentPodcasts client:load />
+	<RecentYouTube client:load />
+</Layout>

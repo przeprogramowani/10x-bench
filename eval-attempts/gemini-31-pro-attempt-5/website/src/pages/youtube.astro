@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Youtube, Play, ExternalLink } from 'lucide-react';
+
+const videos = [
+  {
+    id: "1",
+    title: "Jak zacząć z TypeScript w 2026?",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "15 tys. wyświetleń",
+    publishedAt: "2 tygodnie temu",
+    duration: "18:24"
+  },
+  {
+    id: "2",
+    title: "React 19 - Nowości i zmiany, które musisz znać",
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "22 tys. wyświetleń",
+    publishedAt: "1 miesiąc temu",
+    duration: "24:15"
+  },
+  {
+    id: "3",
+    title: "Architektura Frontendu na produkcji",
+    thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "34 tys. wyświetleń",
+    publishedAt: "2 miesiące temu",
+    duration: "32:10"
+  },
+  {
+    id: "4",
+    title: "AI w pracy programisty - Cursor i Windsurf",
+    thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "45 tys. wyświetleń",
+    publishedAt: "3 miesiące temu",
+    duration: "28:45"
+  },
+  {
+    id: "5",
+    title: "Testowanie E2E z Playwright",
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "12 tys. wyświetleń",
+    publishedAt: "4 miesiące temu",
+    duration: "21:30"
+  },
+  {
+    id: "6",
+    title: "Zarządzanie stanem w React - co wybrać?",
+    thumbnail: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    views: "28 tys. wyświetleń",
+    publishedAt: "5 miesięcy temu",
+    duration: "19:55"
+  }
+];
+---
+
+<Layout title="YouTube">
+  <div class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center justify-center p-4 bg-red-50 rounded-full mb-6">
+          <Youtube className="h-12 w-12 text-red-600" />
+        </div>
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl mb-6">
+          Kanał YouTube
+        </h1>
+        <p class="text-xl text-slate-500 leading-relaxed mb-8">
+          Darmowa wiedza, tutoriale i wywiady. Subskrybuj nasz kanał, aby być na bieżąco z nowościami w świecie frontendu i nie tylko.
+        </p>
+        <a 
+          href="https://www.youtube.com/c/Zaprogramowani" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 transition-colors shadow-lg shadow-red-600/20"
+        >
+          Subskrybuj kanał
+          <ExternalLink className="ml-2 -mr-1 h-5 w-5" />
+        </a>
+      </div>
+
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 border-b border-slate-200 pb-4">
+          Ostatnie filmy
+        </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video) => (
+            <div class="group cursor-pointer flex flex-col h-full">
+              <div class="relative aspect-video rounded-xl overflow-hidden mb-4 bg-slate-100">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div class="bg-red-600 text-white rounded-full p-3 shadow-lg transform scale-90 group-hover:scale-100 transition-all">
+                    <Play className="h-6 w-6 fill-current" />
+                  </div>
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-2 py-1 rounded">
+                  {video.duration}
+                </div>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors line-clamp-2 mb-2">
+                {video.title}
+              </h3>
+              <div class="text-sm text-slate-500 mt-auto">
+                {video.views} • {video.publishedAt}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

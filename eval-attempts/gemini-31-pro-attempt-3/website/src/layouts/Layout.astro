@@ -1,0 +1,31 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Przeprogramowani - Skuteczna nauka programowania, kursy, podcast i YouTube" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl" className="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Przeprogramowani</title>
+	</head>
+	<body className="bg-gray-950 text-gray-50 antialiased min-h-screen flex flex-col">
+		<Header client:load />
+		<main className="flex-grow">
+			<slot />
+		</main>
+		<Footer client:load />
+	</body>
+</html>

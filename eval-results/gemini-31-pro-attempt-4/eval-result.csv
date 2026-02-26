@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,26.02.2026 14:53,N/A,26.02.2026 14:53
+Local build,1,1,Build successful (astro build completed without errors)
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200. Navigation styles and content working properly.
+Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.2.1) Cloudflare Adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Team members named correctly but descriptions oversimplified - Przemek missing DAZN/Cabify experience Marcin missing SmartRecruiters. No LinkedIn links or course assignments.
+Podcast page,0.5,1,Page exists and returns 200. Episode data is fabricated/hallucinated (fake titles). No real Spotify URLs - links to generic spotify.com instead of show IDs. Both podcasts mixed into one generic list.
+YouTube page,0.5,1,Page exists and returns 200. Video data fabricated - IDs are v1/v2/v3/v4 not real YouTube IDs. Uses stock Unsplash images. Titles plausible but dont match real channel content.
+Kursy section,0.5,1,Section exists on main page with id=kursy. 10xDevs featured in Hero. Only 3 courses listed - missing Opanuj JavaScript (primary 850+ graduates) Opanuj AI and Cursor course.
+Consistent UI,1,1,UI is consistent across all pages
+Responsive design,1,1,Containers components and navigation are responsive on different screen sizes
+SEO Tags,0.5,1,Meta tags in Layout.astro covering all pages with description and title. Content doesnt match context - missing tagline and Open Graph tags.
+Penalty,0,N/A,No penalty applied

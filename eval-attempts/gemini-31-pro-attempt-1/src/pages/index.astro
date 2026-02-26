@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import Courses from '../components/Courses';
+import Podcast from '../components/Podcast';
+import YouTube from '../components/YouTube';
+import About from '../components/About';
+import Footer from '../components/Footer';
+---
+
+<Layout title="Przeprogramowani | Platforma edukacyjna dla programistów">
+	<Navigation client:load />
+	<main>
+		<Hero client:load />
+		<Courses client:visible />
+		<Podcast client:visible />
+		<YouTube client:visible />
+		<About client:visible />
+	</main>
+	<Footer />
+</Layout>

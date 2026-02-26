@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RecentYouTube from '../components/RecentYouTube';
+---
+
+<Layout title="YouTube - Przeprogramowani">
+  <div className="pt-24 pb-12 bg-gray-950">
+    <div className="container mx-auto px-4 text-center max-w-3xl">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">Kanał <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-400">YouTube</span></h1>
+      <p className="text-xl text-gray-400 leading-relaxed">
+        Praktyczne techniki programowania, najnowsze modele AI, rzetelne recenzje narzędzi deweloperskich i konkretna wiedza dla programistów.
+      </p>
+    </div>
+  </div>
+
+  <RecentYouTube client:load showAll={true} />
+</Layout>

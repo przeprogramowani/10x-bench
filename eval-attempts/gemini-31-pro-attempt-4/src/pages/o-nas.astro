@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, BookOpen, Mic, Youtube } from 'lucide-react';
+---
+
+<Layout title="O nas" description="Poznaj zespół Przeprogramowani.pl">
+	<div class="bg-white py-16 sm:py-24">
+		<div class="mx-auto max-w-7xl px-6 lg:px-8">
+			<div class="mx-auto max-w-2xl lg:mx-0">
+				<h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">O nas</h2>
+				<p class="mt-6 text-lg leading-8 text-gray-600">
+					Jesteśmy platformą edukacyjną stworzoną przez programistów dla programistów. Naszym celem jest dostarczanie najwyższej jakości materiałów do nauki nowoczesnych technologii webowych, takich jak JavaScript, TypeScript, React i narzędzia AI.
+				</p>
+			</div>
+			
+			<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+				<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+					<div class="flex flex-col">
+						<dt class="text-base font-semibold leading-7 text-gray-900">
+							<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+								<BookOpen className="h-6 w-6 text-white" />
+							</div>
+							Praktyczne kursy
+						</dt>
+						<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+							<p class="flex-auto">Tworzymy kompleksowe programy nauczania, m.in. Opanuj Frontend i Opanuj TypeScript, które przygotowują do pracy w branży IT na najwyższym poziomie.</p>
+						</dd>
+					</div>
+					<div class="flex flex-col">
+						<dt class="text-base font-semibold leading-7 text-gray-900">
+							<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+								<Mic className="h-6 w-6 text-white" />
+							</div>
+							Popularny podcast
+						</dt>
+						<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+							<p class="flex-auto">Prowadzimy podcasty o programowaniu i sztucznej inteligencji, w tym Opanuj.AI Podcast oraz Przeprogramowani Podcast, których słuchają tysiące osób.</p>
+						</dd>
+					</div>
+					<div class="flex flex-col">
+						<dt class="text-base font-semibold leading-7 text-gray-900">
+							<div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+								<Youtube className="h-6 w-6 text-white" />
+							</div>
+							Wiedza na YouTube
+						</dt>
+						<dd class="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+							<p class="flex-auto">Dzielimy się wiedzą na naszym kanale YouTube, tworząc materiały tak dobre, że polecają je nawet wykładowcy akademiccy.</p>
+						</dd>
+					</div>
+				</dl>
+			</div>
+
+			<div class="mt-24 sm:mt-32">
+				<h3 class="text-2xl font-bold tracking-tight text-gray-900 mb-12 text-center">Nasz zespół</h3>
+				<div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:gap-16 max-w-4xl mx-auto">
+					<div class="text-center">
+						<div class="mx-auto h-40 w-40 rounded-full bg-gray-200 overflow-hidden mb-6">
+							<img src="https://ui-avatars.com/api/?name=Marcin+Czarkowski&background=0D8ABC&color=fff&size=160" alt="Marcin Czarkowski" class="h-full w-full object-cover" />
+						</div>
+						<h4 class="text-lg font-semibold text-gray-900">Marcin Czarkowski</h4>
+						<p class="text-sm text-blue-600 mb-4">Współtwórca & Instruktor</p>
+						<p class="text-gray-600 text-sm">Ekspert od AI i nowoczesnego frontendu. Prowadzi najpopularniejszy techniczny podcast o LLM w Polsce.</p>
+					</div>
+					<div class="text-center">
+						<div class="mx-auto h-40 w-40 rounded-full bg-gray-200 overflow-hidden mb-6">
+							<img src="https://ui-avatars.com/api/?name=Przemek+Smyrdek&background=0D8ABC&color=fff&size=160" alt="Przemek Smyrdek" class="h-full w-full object-cover" />
+						</div>
+						<h4 class="text-lg font-semibold text-gray-900">Przemek Smyrdek</h4>
+						<p class="text-sm text-blue-600 mb-4">Współtwórca & Instruktor</p>
+						<p class="text-gray-600 text-sm">Architekt rozwiązań webowych, pasjonat czystego kodu i TypeScriptu. Twórca programów szkoleniowych.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</Layout>

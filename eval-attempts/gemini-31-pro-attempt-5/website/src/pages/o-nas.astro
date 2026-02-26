@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, Target, BookOpen } from 'lucide-react';
+---
+
+<Layout title="O nas">
+  <div class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl mb-4">
+          Kim jesteśmy?
+        </h1>
+        <p class="text-xl text-slate-500 leading-relaxed">
+          Przeprogramowani to platforma edukacyjna działająca od 7 lat, łącząca programowanie z rozwojem osobistym. Naszą misją jest pomoc programistom w osiąganiu mistrzostwa.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">Twórcy projektu</h2>
+          <div class="space-y-8">
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Przemek Smyrdek</h3>
+              <p class="text-slate-600">
+                Full-stack developer, były Lead Engineer w DAZN i Cabify. Pasjonat nowoczesnych technologii webowych, architektury oprogramowania i dzielenia się wiedzą.
+              </p>
+            </div>
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <h3 class="text-xl font-bold text-slate-900 mb-2">Marcin Czarkowski</h3>
+              <p class="text-slate-600">
+                Specjalista TypeScript i React, twórca "Opanuj AI Podcast". Ekspert w dziedzinie sztucznej inteligencji i jej zastosowań w nowoczesnym programowaniu.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="bg-indigo-50 rounded-2xl p-6 text-center">
+            <Users className="h-10 w-10 text-indigo-600 mx-auto mb-4" />
+            <div class="text-3xl font-bold text-indigo-900 mb-2">Społeczność</div>
+            <p class="text-indigo-700 text-sm">Tysiące zaangażowanych programistów w całej Polsce</p>
+          </div>
+          <div class="bg-blue-50 rounded-2xl p-6 text-center sm:mt-12">
+            <Target className="h-10 w-10 text-blue-600 mx-auto mb-4" />
+            <div class="text-3xl font-bold text-blue-900 mb-2">Praktyka</div>
+            <p class="text-blue-700 text-sm">Skupiamy się na realnych problemach z projektów produkcyjnych</p>
+          </div>
+          <div class="bg-cyan-50 rounded-2xl p-6 text-center">
+            <BookOpen className="h-10 w-10 text-cyan-600 mx-auto mb-4" />
+            <div class="text-3xl font-bold text-cyan-900 mb-2">Wiedza</div>
+            <p class="text-cyan-700 text-sm">Aktualne materiały, kursy i podcasty na najwyższym poziomie</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 rounded-3xl p-8 md:p-16 text-center shadow-xl">
+        <h2 class="text-3xl font-bold text-white mb-6">Zaufali nam najlepsi</h2>
+        <p class="text-slate-300 max-w-2xl mx-auto mb-10 text-lg">
+          Współpracujemy z czołowymi firmami technologicznymi w Polsce i na świecie, dostarczając najwyższej jakości szkolenia i materiały edukacyjne.
+        </p>
+        <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+          <div class="text-2xl font-bold text-white">SmartRecruiters</div>
+          <div class="text-2xl font-bold text-white">Future Processing</div>
+          <div class="text-2xl font-bold text-white">Callstack</div>
+          <div class="text-2xl font-bold text-white">Autodesk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

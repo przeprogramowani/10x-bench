@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mic, Headphones, PlayCircle, Clock } from 'lucide-react';
+
+const episodes = [
+  {
+    title: "Doktor AI nadchodzi",
+    description: "ChatGPT Health vs Google MedGemma, konstytucja Anthropic i modele z Chin. Jak sztuczna inteligencja zmienia medycynę i nasze podejście do zdrowia.",
+    duration: "01:23:04",
+    date: "Luty 2026",
+    tag: "Opanuj.AI"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025",
+    description: "Modele, narzędzia, przełomy, liderzy i firmy. Co wydarzyło się w świecie sztucznej inteligencji w minionym roku i czego możemy spodziewać się dalej.",
+    duration: "01:47:28",
+    date: "Styczeń 2026",
+    tag: "Opanuj.AI"
+  },
+  {
+    title: "GPT-5.2 to GEMINI KILLER?",
+    description: "Porównanie OpenAI i Google, MCP w Linux Foundation. Analizujemy najnowsze modele i ich wpływ na rynek narzędzi dla programistów.",
+    duration: "00:58:41",
+    date: "Styczeń 2026",
+    tag: "Opanuj.AI"
+  },
+  {
+    title: "Gemini 3 to hit",
+    description: "Analiza GPT-5.1, Grok 4.1 i Opus 4.5. Przegląd najnowszych modeli językowych i ich możliwości w kontekście programowania.",
+    duration: "01:03:20",
+    date: "Grudzień 2025",
+    tag: "Opanuj.AI"
+  },
+  {
+    title: "Cursor 2.0 vs Windsurf SWE-1.5",
+    description: "Nowa era programowania z AI. Porównujemy najpopularniejsze edytory kodu wspierane przez sztuczną inteligencję.",
+    duration: "01:14:37",
+    date: "Listopad 2025",
+    tag: "Opanuj.AI"
+  }
+];
+---
+
+<Layout title="Podcast">
+  <div class="bg-slate-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row gap-12 items-center mb-16">
+        <div class="md:w-1/2">
+          <div class="inline-flex items-center justify-center p-3 bg-indigo-100 rounded-xl mb-6">
+            <Mic className="h-8 w-8 text-indigo-600" />
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl mb-6">
+            Podcast Przeprogramowani
+          </h1>
+          <p class="text-xl text-slate-600 leading-relaxed mb-8">
+            Posłuchaj naszych dyskusji o technologii, programowaniu i sztucznej inteligencji. Dwa formaty: technologiczny "Przeprogramowani" oraz dedykowany AI "Opanuj.AI".
+          </p>
+          <div class="flex gap-4">
+            <a href="https://open.spotify.com/show/7h11r1w8X9yU1Z1H1d1u1d" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-[#1DB954] text-white font-medium rounded-lg hover:bg-[#1ed760] transition-colors">
+              <Headphones className="mr-2 h-5 w-5" />
+              Spotify
+            </a>
+            <a href="https://podcasts.apple.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors">
+              <Headphones className="mr-2 h-5 w-5" />
+              Apple Podcasts
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 relative">
+          <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl transform rotate-3 scale-105 opacity-20 blur-lg"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+            alt="Podcast Studio" 
+            class="relative rounded-3xl shadow-2xl object-cover h-[400px] w-full"
+          />
+        </div>
+      </div>
+
+      <div class="mt-20">
+        <h2 class="text-3xl font-bold text-slate-900 mb-10 flex items-center">
+          <PlayCircle className="mr-3 h-8 w-8 text-indigo-600" />
+          Ostatnie odcinki
+        </h2>
+        
+        <div class="space-y-6">
+          {episodes.map((episode) => (
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 hover:shadow-md transition-shadow group">
+              <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+                <div class="flex-shrink-0">
+                  <button class="h-14 w-14 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <PlayCircle className="h-8 w-8" />
+                  </button>
+                </div>
+                <div class="flex-grow">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      {episode.tag}
+                    </span>
+                    <span class="text-sm text-slate-500 flex items-center">
+                      <Clock className="mr-1 h-4 w-4" />
+                      {episode.duration}
+                    </span>
+                    <span class="text-sm text-slate-500">• {episode.date}</span>
+                  </div>
+                  <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                    {episode.title}
+                  </h3>
+                  <p class="text-slate-600">
+                    {episode.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

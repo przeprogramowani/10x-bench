@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, BookOpen, Mic2 } from 'lucide-react';
+---
+
+<Layout title="O nas - Przeprogramowani">
+  <div className="pt-24 pb-16 bg-gray-950 border-b border-gray-900">
+    <div className="container mx-auto px-4 text-center max-w-3xl">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">O <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Przeprogramowanych</span></h1>
+      <p className="text-xl text-gray-400 leading-relaxed">
+        Tworzymy najpopularniejszą platformę dla programistów szukających przewagi w świecie AI i nowoczesnego oprogramowania.
+      </p>
+    </div>
+  </div>
+
+  <section className="py-20 bg-gray-950">
+    <div className="container mx-auto px-4 max-w-5xl">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 className="text-3xl font-bold text-white mb-6">Kim jesteśmy?</h2>
+          <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+            <p>
+              Przeprogramowani to platforma edukacyjna założona przez <strong>Przemka Smyrdka</strong> i <strong>Marcina Czarkowskiego</strong>. Działamy na rynku od 7 lat z misją edukowania inżynierów oprogramowania.
+            </p>
+            <p>
+              Dostarczamy wiedzę łączącą techniczne deep-dive'y, architekturę systemów, biznes oraz rozwój zawodowy. Tworzymy dla programistów i programistek, którzy nie chcą stać w miejscu.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col items-center text-center">
+            <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 mb-4">
+              <BookOpen size={28} />
+            </div>
+            <h3 className="font-bold text-white mb-1">Kursy</h3>
+            <p className="text-sm text-gray-500">Tysiące zadowolonych kursantów</p>
+          </div>
+          <div className="bg-gray-900 p-6 rounded-2xl border border-gray-800 flex flex-col items-center text-center translate-y-8">
+            <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-500 mb-4">
+              <Mic2 size={28} />
+            </div>
+            <h3 className="font-bold text-white mb-1">Podcast</h3>
+            <p className="text-sm text-gray-500">Opanuj.AI z rzeszami słuchaczy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
