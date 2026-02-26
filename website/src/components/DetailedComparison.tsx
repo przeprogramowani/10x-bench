@@ -12,6 +12,7 @@ export interface CriterionResult {
 export interface AttemptResult {
   id: string;
   modelName: string;
+  modelBaseId: string;
   attemptNumber: number;
   totalScore: number;
   maxScore: number;

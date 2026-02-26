@@ -5,6 +5,7 @@ import {
   AGENT_NAMES,
   DISABLED_MODELS,
   MODEL_PRICING,
+  SUPERSEDED_MODELS,
   getModelBaseId,
   isModelId,
 } from "../eval-attempts/metadata";
@@ -19,6 +20,7 @@ interface CriterionResult {
 interface AttemptResult {
   id: string;
   modelName: string;
+  modelBaseId: string;
   attemptNumber: number;
   totalScore: number;
   maxScore: number;
@@ -43,6 +45,7 @@ interface ProcessedResults {
   totalAttempts: number;
   results: AttemptResult[];
   modelAverages: ModelFamilyAverage[];
+  supersededModels: Record<string, string>;
 }
 
 // Extract model name from directory name
@@ -171,6 +174,7 @@ async function processResults(): Promise<void> {
     results.push({
       id: dir,
       modelName,
+      modelBaseId: getModelBaseId(dir),
       attemptNumber,
       totalScore,
       maxScore,
@@ -236,6 +240,9 @@ async function processResults(): Promise<void> {
     totalAttempts: results.length,
     results,
     modelAverages,
+    supersededModels: Object.fromEntries(
+      Object.entries(SUPERSEDED_MODELS) as [string, string][],
+    ),
   };
 
   // Write output

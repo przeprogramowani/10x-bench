@@ -18,6 +18,7 @@ export type ModelId =
   | "devstral-2"
   | "qwen-3-max"
   | "grok-code-fast-1"
+  | "gemini-31-pro"
   | "glm-5";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
@@ -34,6 +35,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "devstral-2": "Devstral 2",
   "qwen-3-max": "Qwen 3 Max",
   "grok-code-fast-1": "Grok Code Fast 1",
+  "gemini-31-pro": "Gemini 3.1 Pro",
   "glm-5": "GLM-5",
 };
 
@@ -50,7 +52,16 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "devstral-2": AGENT_ENVIRONMENT.OpenCode,
   "qwen-3-max": AGENT_ENVIRONMENT.OpenCode,
   "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
+  "gemini-31-pro": AGENT_ENVIRONMENT.Cursor,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
+};
+
+/** Models superseded by newer versions (old → new) */
+export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
+  "claude-sonnet-45": "claude-sonnet-46",
+  "gemini-3-pro": "gemini-31-pro",
+  "glm-47": "glm-5",
+  "minimax-m21": "minimax-m25",
 };
 
 /** Base model IDs to exclude from processed results (all attempts are skipped) */
@@ -76,6 +87,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "devstral-2": {input: 0.4, output: 2.0},
   "qwen-3-max": {input: 1.2, output: 6.0},
   "grok-code-fast-1": {input: 0.2, output: 1.5},
+  "gemini-31-pro": {input: 2.0, output: 12.0},
   "glm-5": {input: 0.3, output: 2.55},
 };
 

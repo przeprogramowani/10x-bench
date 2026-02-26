@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AccordionSection from '../components/AccordionSection';
-import DetailedComparison from '../components/DetailedComparison';
-import ModelAveragesCard from '../components/ModelAveragesCard';
+import ResultsDashboard from '../components/ResultsDashboard';
 import resultsData from '../data/results.json';
 import screenshotHashes from '../data/screenshot-hashes.json';
 
@@ -40,27 +38,14 @@ const sortedResults = [...resultsData.results].sort((a, b) => {
       </p>
     </div>
 
-    <!-- Model Family Averages Section -->
-    <div class="mb-12">
-      <h2 class="text-2xl font-bold text-slate-100 mb-6">Model Family Rankings</h2>
-      <div class="flex flex-col gap-4">
-        {resultsData.modelAverages.map((average, index) => (
-          <ModelAveragesCard client:load average={average} rank={index + 1} screenshotHashes={screenshotHashes} />
-        ))}
-      </div>
-    </div>
-
-    <!-- Individual Attempts Accordion Section -->
-    <AccordionSection client:load title="Individual Attempts" attempts={sortedResults} screenshotHashes={screenshotHashes} />
-
-    <!-- Detailed Table Section -->
-    <div class="mb-8">
-      <h2 class="text-2xl font-bold text-slate-100 mb-4">Detailed Comparison</h2>
-      <p class="text-slate-300 text-sm mb-4">
-        Click on any score to reveal the detailed scoring explanation for that criterion.
-      </p>
-      <DetailedComparison client:load attempts={sortedResults} />
-    </div>
+    <!-- Results Dashboard with "Only latest models" toggle -->
+    <ResultsDashboard
+      client:load
+      modelAverages={resultsData.modelAverages}
+      sortedResults={sortedResults}
+      supersededModels={resultsData.supersededModels ?? {}}
+      screenshotHashes={screenshotHashes}
+    />
 
     <!-- Legend -->
     <div class="mt-8 p-4 bg-slate-800 rounded-lg border border-slate-700">
