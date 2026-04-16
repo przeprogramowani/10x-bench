@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { podcastEpisodes } from '../data/site';
+---
+
+<Layout
+  title="Podcast"
+  description="Ostatnie odcinki podcastowe z ekosystemu Przeprogramowani i Opanuj AI zebrane w jednym miejscu."
+  currentPath="/podcast"
+>
+  <section class="mx-auto max-w-7xl px-5 pb-12 pt-16 lg:pt-24">
+    <div class="max-w-3xl space-y-5">
+      <p class="eyebrow">Podcast</p>
+      <h1 class="section-title">Ostatnie odcinki z oficjalnego feedu i strony Przeprogramowani</h1>
+      <p class="text-lg leading-8 text-slate-300">
+        Ta sekcja zbiera najnowsze pozycje widoczne na oficjalnej stronie podcastu i prowadzi bezpośrednio do Spotify.
+        Układ jest przygotowany pod dalszą automatyzację lub podpięcie realnego API/RSS.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-8">
+    <div class="grid gap-5 lg:grid-cols-2">
+      {
+        podcastEpisodes.map((episode, index) => (
+          <article class="surface-card flex h-full flex-col gap-5 p-6">
+            <div class="flex items-center justify-between gap-4">
+              <p class="eyebrow">{episode.series}</p>
+              <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">0{index + 1}</span>
+            </div>
+            <h2 class="font-heading text-2xl font-bold text-white">{episode.title}</h2>
+            <p class="text-sm leading-7 text-slate-300">{episode.description}</p>
+            <div class="mt-auto pt-2">
+              <a class="button-primary" href={episode.href} target="_blank" rel="noreferrer">
+                Słuchaj odcinka
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

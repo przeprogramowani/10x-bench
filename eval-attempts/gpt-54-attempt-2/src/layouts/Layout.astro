@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+import MobileNav from '../components/MobileNav';
+import { navigation, siteMeta, socialLinks, sourceLinks } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activePath?: string;
+}
+
+const {
+  title = siteMeta.title,
+  description = siteMeta.description,
+  activePath = Astro.url.pathname,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#f76f3c" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-[var(--bg)] text-[var(--ink)]">
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute left-[-8rem] top-[-8rem] h-72 w-72 rounded-full bg-[radial-gradient(circle,_rgba(247,111,60,0.30),_transparent_68%)] blur-2xl"></div>
+      <div class="absolute right-[-6rem] top-24 h-96 w-96 rounded-full bg-[radial-gradient(circle,_rgba(29,120,116,0.22),_transparent_68%)] blur-3xl"></div>
+      <div class="absolute bottom-[-8rem] left-1/3 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,_rgba(34,76,152,0.18),_transparent_70%)] blur-3xl"></div>
+      <div class="grid-overlay absolute inset-0 opacity-40"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 border-b border-black/5 bg-[color:rgba(248,244,235,0.84)] backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-3 text-sm font-semibold tracking-[0.22em] text-[var(--ink)] uppercase">
+          <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--ink)] text-[var(--paper)] shadow-[0_16px_30px_rgba(16,21,33,0.18)]">
+            &lt;/&gt;
+          </span>
+          <span>
+            <span class="block font-display text-base tracking-[0.18em] normal-case">Przeprogramowani</span>
+            <span class="block text-[10px] text-[var(--muted)]">szersze spojrzenie na programowanie</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-2 lg:flex" aria-label="Główna nawigacja">
+          {navigation.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'rounded-full px-4 py-2 text-sm font-medium transition',
+                activePath === item.href
+                  ? 'bg-[var(--ink)] text-[var(--paper)] shadow-[0_12px_24px_rgba(16,21,33,0.16)]'
+                  : 'text-[var(--ink)]/78 hover:bg-white hover:text-[var(--ink)]',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="hidden items-center gap-3 lg:flex">
+          <a
+            href="https://www.10xdevs.pl/"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full border border-[var(--ink)]/10 bg-white px-4 py-2 text-sm font-semibold text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(16,21,33,0.10)]"
+          >
+            10xDevs
+          </a>
+          <a
+            href="https://przeprogramowani.pl/newsletter"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-[0_16px_30px_rgba(247,111,60,0.28)]"
+          >
+            Newsletter
+          </a>
+        </div>
+
+        <div class="lg:hidden">
+          <MobileNav client:load items={navigation} />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-20 border-t border-black/5 bg-white/70">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.35fr_0.8fr_0.85fr] lg:px-8">
+        <div class="space-y-4">
+          <p class="font-display text-2xl text-[var(--ink)]">{siteMeta.name}</p>
+          <p class="max-w-xl text-sm leading-7 text-[var(--muted)]">{siteMeta.footerNote}</p>
+          <div class="flex flex-wrap gap-3">
+            {socialLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-full border border-black/8 px-4 py-2 text-sm font-medium text-[var(--ink)] transition hover:-translate-y-0.5 hover:bg-[var(--panel)]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Strony</p>
+          <div class="mt-4 flex flex-col gap-3">
+            {navigation.map((item) => (
+              <a href={item.href} class="text-sm text-[var(--ink)] transition hover:text-[var(--accent)]">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">Źródła</p>
+          <div class="mt-4 flex flex-col gap-3">
+            {sourceLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                class="text-sm text-[var(--ink)] transition hover:text-[var(--accent)]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

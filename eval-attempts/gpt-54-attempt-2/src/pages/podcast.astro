@@ -1,0 +1,88 @@
+---
+import MediaCard from '../components/MediaCard.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import Layout from '../layouts/Layout.astro';
+import { podcastEpisodes, podcastPlatforms } from '../data/site';
+
+const aiEpisodes = podcastEpisodes.filter((episode) => episode.series === 'Opanuj.AI Podcast');
+const guestEpisodes = podcastEpisodes.filter((episode) => episode.series === 'Przeprogramowani ft. Gość');
+---
+
+<Layout
+  title="Przeprogramowani.pl | Podcast"
+  description="Podstrona Podcast z aktualnymi odcinkami serii Opanuj.AI Podcast i Przeprogramowani ft. Gość."
+  activePath="/podcast"
+>
+  <PageHero
+    eyebrow="Podcast"
+    title="Dwie serie dla osób, które chcą słuchać szerzej"
+    lead="Oficjalna strona podcastowa Przeprogramowanych zbiera rozmowy o technologii, AI i programowaniu. Poniżej znajdują się najnowsze odcinki dostępne na stronie w dniu przygotowania projektu."
+    badge="Źródło: przeprogramowani.pl/podcast"
+  />
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl rounded-[2.2rem] border border-black/6 bg-white/80 p-6 shadow-[0_20px_50px_rgba(16,21,33,0.08)] sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">Platformy</p>
+          <p class="mt-2 text-sm leading-7 text-[var(--muted)]">Przeprogramowani kierują słuchaczy do najpopularniejszych platform podcastowych.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          {podcastPlatforms.map((platform) => (
+            <a
+              href={platform.href}
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-black/8 bg-[var(--panel)] px-4 py-2 text-sm font-semibold text-[var(--ink)] transition hover:-translate-y-0.5"
+            >
+              {platform.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Opanuj.AI Podcast"
+        title="Comiesięczne podsumowania świata AI"
+        body="Na oficjalnej stronie seria jest opisana jako podcast dla ponad 4000 słuchaczy. Odcinki koncentrują się na najważniejszych wydarzeniach, narzędziach i trendach związanych z LLM oraz codzienną pracą z AI."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {aiEpisodes.map((episode) => (
+          <MediaCard
+            kicker={`${episode.series} • ${episode.duration}`}
+            title={episode.title}
+            description={episode.description}
+            href={episode.href}
+            ctaLabel="Otwórz odcinek"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Przeprogramowani ft. Gość"
+        title="Rozmowy dla głodnych wiedzy"
+        body="Druga seria zbiera rozmowy z praktykami branży IT. W oficjalnym opisie przewija się wiedza o karierze, architekturze, komunikacji oraz nowoczesnym programowaniu."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {guestEpisodes.map((episode) => (
+          <MediaCard
+            kicker={`${episode.series} • ${episode.duration}`}
+            title={episode.title}
+            description={episode.description}
+            href={episode.href}
+            ctaLabel="Otwórz odcinek"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

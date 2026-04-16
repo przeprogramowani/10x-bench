@@ -1,0 +1,48 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+const canonicalUrl = new URL(pathname, Astro.site ?? Astro.url).toString();
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Przeprogramowani.pl" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+  </head>
+  <body class="min-h-screen bg-[var(--page)] text-[var(--text)] antialiased">
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute left-1/2 top-0 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_rgba(77,207,255,0.24),_transparent_62%)] blur-3xl"></div>
+      <div class="absolute right-[-10rem] top-[18rem] h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,_rgba(255,110,77,0.16),_transparent_62%)] blur-3xl"></div>
+      <div class="absolute bottom-[-8rem] left-[-8rem] h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,_rgba(255,212,77,0.18),_transparent_62%)] blur-3xl"></div>
+    </div>
+    <SiteHeader pathname={pathname} />
+    <main class="pb-20 pt-8 sm:pt-10">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

@@ -1,0 +1,85 @@
+---
+import FounderCard from '../components/FounderCard.astro';
+import Layout from '../layouts/Layout.astro';
+import { founders, partners, site, values } from '../data/site';
+---
+
+<Layout
+  title="O nas"
+  description="Przeprogramowani to platforma edukacyjna łącząca programowanie, biznes i rozwój nowoczesnego specjalisty."
+  currentPath="/o-nas"
+>
+  <section class="mx-auto max-w-7xl px-5 pb-14 pt-16 lg:pt-24">
+    <div class="max-w-3xl space-y-5">
+      <p class="eyebrow">O nas</p>
+      <h1 class="section-title">Programowanie spotyka się tu z rozwojem, biznesem i praktyką produktową</h1>
+      <p class="text-lg leading-8 text-slate-300">
+        Oficjalne materiały Przeprogramowanych opisują projekt jako miejsce, w którym ambitni programiści mogą rozwijać
+        nie tylko kompetencje techniczne, ale też sposób myślenia o produktach, komunikacji i realnych problemach biznesowych.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-8">
+    <div class="grid gap-5 lg:grid-cols-2">
+      {founders.map((founder) => <FounderCard founder={founder} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14">
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {
+        values.map((value) => (
+          <article class="surface-card p-6">
+            <p class="eyebrow">Filozofia</p>
+            <h2 class="mt-3 font-heading text-2xl font-bold text-white">{value.title}</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-300">{value.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14">
+    <div class="surface-card p-6 sm:p-8">
+      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div class="space-y-5">
+          <p class="eyebrow">Skala i wiarygodność</p>
+          <h2 class="section-title">Od 2017 rozwijają markę edukacyjną dla developerów i zespołów</h2>
+          <p class="text-base leading-8 text-slate-300">
+            W danych strukturalnych oficjalnej strony organizacja wskazuje rok założenia 2017. Równolegle na stronie
+            głównej eksponowane są współprace z rozpoznawalnymi firmami technologicznymi i produktowymi.
+          </p>
+          <p class="text-base leading-8 text-slate-300">
+            To dobra baza do komunikowania zaufania: marka nie sprzedaje pojedynczych lekcji, tylko spójny ekosystem
+            wiedzy, społeczności i produktów edukacyjnych.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          {
+            partners.map((partner) => (
+              <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-200">{partner}</span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14">
+    <div class="surface-card flex flex-col gap-6 p-6 sm:flex-row sm:items-end sm:justify-between sm:p-8">
+      <div>
+        <p class="eyebrow">Kontakt</p>
+        <h2 class="section-title">Chcesz wykorzystać tę stronę jako bazę pod dalszy rozwój marki?</h2>
+        <p class="mt-3 max-w-2xl text-base leading-8 text-slate-300">
+          Projekt jest gotowy pod wdrożenie na Cloudflare i daje klarowny punkt wyjścia do rozbudowy o CMS, newsletter,
+          integracje formularzy lub automatyczne pobieranie nowych materiałów.
+        </p>
+      </div>
+      <a class="button-primary" href={`mailto:${site.contactEmail}`}>
+        {site.contactEmail}
+      </a>
+    </div>
+  </section>
+</Layout>

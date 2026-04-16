@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,24min 0s,N/A,24min 0s
+Test run,16.04.2026 21:19,N/A,16.04.2026 21:19
+Local build,1,1,astro build completed successfully with Cloudflare adapter
+Manual testing,1,1,Dev server starts on :4321; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation and styles
+Tech stack,1,1,Astro 6.1.7 + React 19.2.5 + Tailwind CSS 4.2.2 + @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs
+O nas page,0.5,1,"Page renders and founders listed (Przemek Smyrdek with DAZN/Cabify, Marcin Czarkowski with SmartRecruiters). Bios are simplified/paraphrased and miss key context details: no mention of Przemek's ""Opanuj JavaScript"" course, no mention of Marcin's ""10xDevs"" course assignment or his OpanujAI Podcast authorship. Missing mission/goal statements and brand values from context."
+Podcast page,0.5,1,"Page renders with 6 episode cards, but all are labeled as ""Opanuj AI / Spotify"" series — the Przeprogramowani Podcast is entirely missing. Only OpanujAI podcast represented. Spotify show IDs from context (3yVvOAXSYq6sQB02w4A4wo for Przeprogramowani, 3D6LmchBdoqL2sWkQjvWOy for OpanujAI) are not referenced; URLs use podcasters.spotify.com/anchor format instead."
+YouTube page,1,1,Page renders with 6 videos. Unique YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg) — no placeholder/rickroll IDs detected. Titles and descriptions are specific to Przeprogramowani/AI content.
+Kursy section,0.5,1,"10xDevs is featured prominently on index.astro as hero card (course #1). However only 3 courses listed (10xDevs, Opanuj Frontend, Opanuj TypeScript) vs 6 in context — missing Opanuj JavaScript, Opanuj AI, and Cursor: Programuj z AI. URLs point to correct domains (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl)."
+Consistent UI,1,1,UI is consistent across all pages (user verified)
+Responsive design,0.5,1,Majority of the page is responsive with some minor issues (user verified)
+SEO Tags,1,1,"Layout.astro provides shared SEO tags (title, description, viewport, charset, theme-color, generator) connected to all pages. Title format ""{page} | Przeprogramowani"" and description uses site brand content matching context."
+Penalty,0,N/A,No penalty applied

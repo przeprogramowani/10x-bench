@@ -1,0 +1,98 @@
+---
+import FounderCard from "../components/FounderCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { founders, partnerNames, siteMeta } from "../data/site";
+---
+
+<MainLayout title="O nas | Przeprogramowani.pl" description="Kim są Przeprogramowani i jak łączą programowanie, biznes oraz rozwój.">
+  <section class="mx-auto max-w-7xl px-5 pb-12 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+    <div class="max-w-4xl space-y-6">
+      <p class="font-display text-xs uppercase tracking-[0.3em] text-[var(--color-brand-2)]">O nas</p>
+      <h1 class="font-display text-5xl leading-tight text-white sm:text-6xl">Łączymy świat programowania, biznesu i rozwoju</h1>
+      <p class="text-lg leading-8 text-[var(--color-muted)]">
+        Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Najlepsi programiści patrzą szerzej - na architekturę, biznes, ludzi i na siebie.
+      </p>
+      <p class="text-base leading-8 text-[var(--color-muted)]">
+        Tworzone tutaj treści, kursy i narzędzia mają pomagać w rozwoju na wielu płaszczyznach: od technicznych deep-dive'ów po rozmowy o karierze, AI i nowoczesnym workflow.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-8 sm:px-6 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-2">
+      {founders.map((founder) => <FounderCard founder={founder} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Co tworzą"
+      title="Ekosystem treści i produktów"
+      description="Przeprogramowani budują spójny system edukacyjny: od darmowych materiałów po programy premium i społeczność wokół nowoczesnego software engineeringu."
+    />
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+        <h2 class="font-display text-2xl text-white">Treści</h2>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Podcasty, YouTube, newsletter i artykuły dla osób, które chcą rozumieć technologię szerzej niż tylko przez pryzmat jednego narzędzia.
+        </p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+        <h2 class="font-display text-2xl text-white">Szkolenia</h2>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Programy Opanuj Frontend, Opanuj TypeScript oraz 10xDevs prowadzą uczestników od jakości kodu i architektury po współpracę z AI na produkcji.
+        </p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+        <h2 class="font-display text-2xl text-white">Społeczność</h2>
+        <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+          Przeprogramowani rozwijają społeczność programistów wokół nauki, wymiany doświadczeń i świadomego korzystania z nowych narzędzi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Zaufali im"
+      title="Współpraca z firmami technologicznymi"
+      description="Na oficjalnej stronie Przeprogramowanych pojawiają się partnerzy z rynku produktowego, software house'ów i dużych organizacji."
+    />
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      {
+        partnerNames.map((name) => (
+          <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-[var(--color-text)]">{name}</span>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-[2rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-8 sm:p-10">
+      <SectionHeading
+        eyebrow="Kontakt"
+        title="Chcesz nawiązać współpracę?"
+        description="Najprostsza droga prowadzi przez oficjalny kontakt Przeprogramowanych albo przez ich publiczne kanały."
+      />
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+        <a
+          href={`mailto:${siteMeta.email}`}
+          class="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-brand-2))] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-surface)]"
+        >
+          {siteMeta.email}
+        </a>
+        <a
+          href={siteMeta.home}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center rounded-full border border-white/12 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/24 hover:bg-white/6"
+        >
+          Oficjalna strona
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

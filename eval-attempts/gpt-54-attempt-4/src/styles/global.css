@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #08111a;
+  --bg-soft: #0e1a27;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(11, 20, 30, 0.9);
+  --border: rgba(255, 255, 255, 0.09);
+  --text: #f5f7fb;
+  --muted: #9fb0bf;
+  --accent: #ff7448;
+  --accent-soft: #ffd6c6;
+  --accent-cool: #65d8c4;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(255, 116, 72, 0.08), transparent 28rem),
+    linear-gradient(180deg, #09131d 0%, var(--bg) 42%, #060c13 100%);
+  font-family: 'Manrope', system-ui, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+::selection {
+  background: rgba(255, 116, 72, 0.28);
+  color: white;
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+}
+
+.surface-card {
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+    var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.section-title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: 'Space Grotesk', 'Manrope', sans-serif;
+  font-size: clamp(2.2rem, 3vw, 3.8rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: white;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.95rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #08111a;
+}
+
+.button-primary:hover {
+  transform: translateY(-1px);
+  background: #ff8b67;
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+}
+
+.button-secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}

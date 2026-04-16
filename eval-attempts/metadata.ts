@@ -3,10 +3,12 @@ export enum AGENT_ENVIRONMENT {
   OpenCode = "OpenCode",
   CodexDesktopHigh = "Codex Desktop (High Effort)",
   Cursor = "Cursor",
+  ClaudeDesktop = "Claude Desktop",
 }
 
 export type ModelId =
   | "claude-opus-46"
+  | "claude-opus-47"
   | "claude-sonnet-45"
   | "claude-sonnet-46"
   | "gpt-53-codex"
@@ -19,11 +21,16 @@ export type ModelId =
   | "qwen-3-max"
   | "grok-code-fast-1"
   | "gemini-31-pro"
-  | "glm-5";
+  | "glm-5"
+  // | "glm-51"
+  // | "minimax-m27"
+  // | "qwen-36-plus"
+  | "gpt-54";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
 export const AGENT_NAMES: Record<ModelId, string> = {
   "claude-opus-46": "Claude Opus 4.6",
+  "claude-opus-47": "Claude Opus 4.7",
   "claude-sonnet-45": "Claude Sonnet 4.5",
   "claude-sonnet-46": "Claude Sonnet 4.6",
   "gpt-53-codex": "GPT-5.3-Codex",
@@ -37,10 +44,15 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "grok-code-fast-1": "Grok Code Fast 1",
   "gemini-31-pro": "Gemini 3.1 Pro",
   "glm-5": "GLM-5",
+  // "glm-51": "GLM-5.1",
+  // "minimax-m27": "Minimax M2.7",
+  // "qwen-36-plus": "Qwen 3.6 Plus",
+  "gpt-54": "GPT-5.4",
 };
 
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "claude-opus-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
+  "claude-opus-47": AGENT_ENVIRONMENT.ClaudeDesktop,
   "claude-sonnet-45": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "claude-sonnet-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-53-codex": AGENT_ENVIRONMENT.CodexDesktopHigh,
@@ -54,6 +66,10 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
   "gemini-31-pro": AGENT_ENVIRONMENT.Cursor,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
+  // "glm-51": AGENT_ENVIRONMENT.OpenCode,
+  // "minimax-m27": AGENT_ENVIRONMENT.OpenCode,
+  // "qwen-36-plus": AGENT_ENVIRONMENT.OpenCode,
+  "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
 };
 
 /** Models superseded by newer versions (old → new) */
@@ -62,6 +78,9 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "gemini-3-pro": "gemini-31-pro",
   "glm-47": "glm-5",
   "minimax-m21": "minimax-m25",
+  // "glm-5": "glm-51",
+  // "minimax-m25": "minimax-m27",
+  // "qwen-3-max": "qwen-36-plus",
 };
 
 /** Base model IDs to exclude from processed results (all attempts are skipped) */
@@ -76,6 +95,7 @@ export interface ModelPricing {
 
 export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "claude-opus-46": {input: 5.0, output: 25.0},
+  "claude-opus-47": {input: 5.0, output: 25.0},
   "claude-sonnet-45": {input: 3.0, output: 15.0},
   "claude-sonnet-46": {input: 3.0, output: 15.0},
   "gpt-53-codex": {input: 1.75, output: 14.0},
@@ -89,6 +109,10 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "grok-code-fast-1": {input: 0.2, output: 1.5},
   "gemini-31-pro": {input: 2.0, output: 12.0},
   "glm-5": {input: 0.3, output: 2.55},
+  // "glm-51": {input: 1.0, output: 3.2},
+  // "minimax-m27": {input: 0.3, output: 1.2},
+  // "qwen-36-plus": {input: 0.5, output: 3.0},
+  "gpt-54": {input: 1.75, output: 14.0},
 };
 
 /** Type guard: check whether a runtime string is a known ModelId */

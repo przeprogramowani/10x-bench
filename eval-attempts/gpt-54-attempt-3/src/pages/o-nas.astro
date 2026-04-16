@@ -1,0 +1,108 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import {
+  aboutHighlights,
+  externalLinks,
+  founders,
+  partners,
+  siteDescription,
+  siteTitle
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title={`${siteTitle} | O nas`}
+  description={`O nas — ${siteDescription}`}
+>
+  <section class="shell">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div class="space-y-6">
+        <span class="eyebrow">O nas</span>
+        <h1 class="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+          Łączymy świat programowania, biznesu i rozwoju.
+        </h1>
+        <p class="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+          Najlepsi programiści patrzą szerzej: na architekturę, na biznes, na ludzi i na siebie.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a class="button-primary" href={externalLinks.about} target="_blank" rel="noreferrer">
+            Oficjalna strona O nas
+          </a>
+          <a class="button-secondary" href={externalLinks.contact}>
+            Nawiąż współpracę
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-strong p-6 sm:p-8">
+        <p class="kicker">Witaj na Przeprogramowanych</p>
+        <p class="mt-4 text-base leading-8 text-slate-200/85">
+          Tworzą treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu
+          płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze, pracy zespołowej i
+          rozwoju.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          {
+            aboutHighlights.map((highlight) => (
+              <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                <h2 class="font-display text-xl font-bold text-white">{highlight.title}</h2>
+                <p class="mt-2 text-sm leading-7 text-[var(--muted)]">{highlight.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <SectionHeading
+      eyebrow="Founders"
+      title="Ludzie stojący za projektem"
+      description="Treści i programy szkoleniowe tworzą doświadczeni praktycy software engineeringu, którzy łączą pracę w produktach globalnych z działalnością edukacyjną."
+    />
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {
+        founders.map((founder) => (
+          <article class="panel-strong overflow-hidden">
+            <div class="grid h-full gap-0 md:grid-cols-[0.44fr_0.56fr]">
+              <img src={founder.image} alt={founder.name} class="h-full w-full object-cover" />
+              <div class="space-y-5 p-6 sm:p-8">
+                <div>
+                  <p class="kicker text-cyan-200/80">Co-founder</p>
+                  <h2 class="mt-2 font-display text-3xl font-bold text-white">{founder.name}</h2>
+                  <p class="mt-2 text-sm font-medium text-cyan-100/80">{founder.role}</p>
+                </div>
+                <p class="text-sm leading-7 text-[var(--muted)]">{founder.bio}</p>
+                <a class="button-secondary" href={founder.linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <div class="panel px-6 py-8 sm:px-8">
+      <SectionHeading
+        eyebrow="Rynek"
+        title="7 lat edukacji technologicznej"
+        description="Na oficjalnej stronie Przeprogramowani podkreślają długoletnią obecność na rynku i współpracę z firmami, które na co dzień rozwijają złożone produkty cyfrowe."
+      />
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {
+          partners.map((partner) => (
+            <div class="rounded-[1.25rem] border border-white/10 bg-slate-950/45 px-4 py-4 text-center text-sm font-semibold text-slate-200">
+              {partner}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

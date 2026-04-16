@@ -1,0 +1,41 @@
+---
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+    <div class="page-shell">
+      <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div class="absolute left-[-10%] top-[-5%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,rgba(255,122,89,0.22),transparent_60%)] blur-3xl"></div>
+        <div class="absolute right-[-10%] top-[8%] h-[24rem] w-[24rem] rounded-full bg-[radial-gradient(circle,rgba(21,198,180,0.18),transparent_60%)] blur-3xl"></div>
+        <div class="absolute bottom-[-12%] left-[25%] h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,rgba(122,162,255,0.16),transparent_60%)] blur-3xl"></div>
+        <div class="grid-pattern absolute inset-0 opacity-30"></div>
+      </div>
+
+      <SiteHeader />
+      <main>
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

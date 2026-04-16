@@ -1,0 +1,36 @@
+---
+import type { Course } from '../data/site';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<article class="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-black/6 bg-white shadow-[0_18px_45px_rgba(16,21,33,0.08)]">
+  <div class={`bg-gradient-to-br ${course.accent} p-6 text-white`}>
+    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/75">{course.badge}</p>
+    <h3 class="mt-3 font-display text-3xl">{course.name}</h3>
+    <p class="mt-4 max-w-md text-sm leading-7 text-white/90">{course.tagline}</p>
+  </div>
+  <div class="flex flex-1 flex-col p-6">
+    <ul class="space-y-4 text-sm leading-7 text-[var(--muted)]">
+      {course.bullets.map((bullet) => (
+        <li class="flex gap-3">
+          <span class="mt-2 h-2.5 w-2.5 flex-none rounded-full bg-[var(--accent)]"></span>
+          <span>{bullet}</span>
+        </li>
+      ))}
+    </ul>
+    <a
+      href={course.href}
+      target="_blank"
+      rel="noreferrer"
+      class="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[var(--ink)] px-5 py-3 text-sm font-semibold text-[var(--paper)] transition group-hover:-translate-y-0.5"
+    >
+      Przejdź do programu
+      <span>→</span>
+    </a>
+  </div>
+</article>

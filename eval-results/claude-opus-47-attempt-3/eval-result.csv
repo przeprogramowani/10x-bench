@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.04.2026 22:35,N/A,16.04.2026 22:35
+Local build,1,1,Build succeeded — 7 pages generated (index, o-nas, podcast, youtube, kursy, 2x kursy slug); astro dev starts at http://localhost:4321/
+Manual testing,1,1,Dev server running; all pages return 200; navigation/styles/content working
+Tech stack,0,1,"Astro ^5.1.0 (required v6), Tailwind CSS ^3.4.17 (required v4), React ^19 OK. No @astrojs/cloudflare adapter configured in astro.config.mjs (output: 'static')"
+O nas page,0.5,1,"Page exists and returns 200. Both founders present with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin). However bios are simplified vs. context — no mention of Przemek's 'Opanuj JavaScript' course or Marcin's '10xDevs' course assignment in the bio; no Open Source contributions or publications detail; Marcin's bio says 'frontend' instead of Lead Platforma Frontendowa"
+Podcast page,0.5,1,"Page exists and returns 200. Only Przeprogramowani podcast is displayed — OpanujAI Podcast (show ID 3D6LmchBdoqL2sWkQjvWOy) entirely missing. Episodes appear fabricated: titles, episode numbers (92–97), dates, and durations are not verifiable against real show; most spotifyUrls point to the show URL rather than episode URLs"
+YouTube page,0.5,1,"Page exists and returns 200. Content is fabricated — video 'id' fields (e.g. 'ai-agents-claude-code-2026', 'mvp-weekend-ai', 'typescript-5-advanced') are NOT real 11-character YouTube IDs; titles, view counts, and publish dates appear hallucinated. Does not display real Przeprogramowani channel videos"
+Kursy section,0.5,1,"Dedicated /kursy page + Hero prominently features 10xDevs ✓. Courses listed: 10xDevs, Opanuj Frontend (AI Edition), Opanuj TypeScript. Missing from context: Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI. Partial content match"
+Consistent UI,1,1,UI consistent across all pages (user confirmed)
+Responsive design,1,1,Containers, components and navigation responsive across screen sizes (user confirmed)
+SEO Tags,1,1,"BaseLayout.astro includes title, meta description, theme-color, og:title/description/type/url/site_name, twitter:card, favicon, and lang='pl'. Applied to all pages via shared layout. Title/description use site.ts values matching context (tagline 'Szersze spojrzenie na programowanie', name 'Przeprogramowani')"
+Penalty,0,N/A,No penalty applied

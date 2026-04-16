@@ -1,0 +1,42 @@
+---
+import MediaCard from '../components/MediaCard.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import Layout from '../layouts/Layout.astro';
+import { latestVideos } from '../data/site';
+---
+
+<Layout
+  title="Przeprogramowani.pl | YouTube"
+  description="Podstrona YouTube z najnowszymi materiałami z kanału Przeprogramowani."
+  activePath="/youtube"
+>
+  <PageHero
+    eyebrow="YouTube"
+    title="Najnowsze filmy z kanału Przeprogramowani"
+    lead="Lista poniżej bazuje na oficjalnym feedzie RSS kanału YouTube Przeprogramowanych. Zawiera sześć najświeższych publikacji dostępnych w dniu 16 kwietnia 2026."
+    badge="Źródło: YouTube RSS"
+  />
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Feed kanału"
+        title="Materiały o AI, produkcyjnej jakości i nowoczesnym workflow"
+        body="Ostatnie publikacje mocno koncentrują się na programowaniu z AI, benchmarkach, pracy z agentami i budowaniu procesów jakościowych. To naturalne przedłużenie kierunku rozwijanego w 10xDevs."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+        {latestVideos.map((video) => (
+          <MediaCard
+            kicker={`YouTube • ${video.published}`}
+            title={video.title}
+            description={video.description}
+            href={video.href}
+            image={video.thumbnail}
+            ctaLabel="Otwórz film"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

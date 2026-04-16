@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.04.2026 22:40,N/A,16.04.2026 22:40
+Local build,1,1,Build completed successfully with Astro 5.18.1; 5 static pages generated
+Manual testing,1,1,Dev server on http://localhost:4321/ started; all pages (/, /o-nas, /podcast, /youtube, /kursy) returned HTTP 200; navigation/styles/content working
+Tech stack,0,1,"Missing required deps: Astro 5.1 instead of Astro 6, Tailwind CSS 3.4 instead of Tailwind 4, no @astrojs/cloudflare adapter (uses wrangler devDep for Pages deploy only)"
+O nas page,0.5,1,"Page exists and returns 200; mentions Przemek/DAZN/Cabify and Marcin/SmartRecruiters correctly; Opanuj AI Podcast referenced; however bios are simplified — missing course assignments (Opanuj JavaScript for Przemek, 10xDevs for Marcin), open source contributions (CursorLens, openapi-typescript), publications (Programista, Increment), and specific conference names (4Developers, ReactiveConf, InfoShare); contributors list not included"
+Podcast page,0.5,1,"Page exists and returns 200; only Przeprogramowani podcast displayed — OpanujAI Podcast completely missing despite being required; all 8 episodes share the same Spotify show URL (3yVvOAXSYq6sQB02w4A4wo is correct) rather than unique episode URLs, indicating fabricated/hallucinated episode data (titles, dates, guests)"
+YouTube page,0.5,1,"Page exists and returns 200; video data is fabricated — all 8 videos use the channel URL (https://www.youtube.com/@Przeprogramowani) instead of unique video IDs; titles and descriptions appear hallucinated rather than matching actual Przeprogramowani channel content"
+Kursy section,0.5,1,"Dedicated /kursy page and homepage section exist; 10xDevs featured in Hero on main page ✓; however only 3 of 6 courses from context (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript) — missing Opanuj JavaScript, Opanuj AI, and Cursor: Programuj z AI; course URLs correct (10xdevs.pl, opanujfrontend.pl)"
+Consistent UI,1,1,User confirmed UI is consistent across all pages
+Responsive design,1,1,User confirmed containers/components/navigation are fully responsive
+SEO Tags,1,1,"Comprehensive SEO in BaseLayout applied to all pages: title, description, canonical, OG (type/title/description/url/image/locale/site_name), Twitter card, theme-color; content matches context (tagline 'Szersze spojrzenie na programowanie', Polish locale)"
+Penalty,0,N/A,No penalty applied

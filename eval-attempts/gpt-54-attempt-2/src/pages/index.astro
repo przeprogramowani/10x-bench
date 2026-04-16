@@ -1,0 +1,157 @@
+---
+import CourseCard from '../components/CourseCard.astro';
+import FounderCard from '../components/FounderCard.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import MediaTabs from '../components/MediaTabs';
+import Layout from '../layouts/Layout.astro';
+import { aboutBlocks, courses, founders, hero, latestVideos, podcastEpisodes, stats } from '../data/site';
+---
+
+<Layout
+  title="Przeprogramowani.pl | Start"
+  description="Nowoczesna strona projektu Przeprogramowani.pl z sekcjami o działalności, podcaście, YouTube i flagowych programach rozwojowych."
+>
+  <section class="px-4 pb-8 pt-10 sm:px-6 sm:pt-14 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-[2.8rem] border border-black/6 bg-white/80 p-8 shadow-[0_25px_60px_rgba(16,21,33,0.08)] sm:p-10 lg:p-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">{hero.eyebrow}</p>
+        <h1 class="mt-5 max-w-3xl font-display text-5xl leading-[0.95] text-[var(--ink)] sm:text-6xl lg:text-7xl">
+          {hero.title}
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">{hero.lead}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={hero.primaryCta.href}
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-full bg-[var(--ink)] px-6 py-3 text-sm font-semibold text-[var(--paper)] transition hover:-translate-y-0.5"
+          >
+            {hero.primaryCta.label}
+          </a>
+          <a
+            href={hero.secondaryCta.href}
+            class="rounded-full border border-black/8 bg-white px-6 py-3 text-sm font-semibold text-[var(--ink)] transition hover:-translate-y-0.5 hover:bg-[var(--panel)]"
+          >
+            {hero.secondaryCta.label}
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div class="rounded-[1.8rem] bg-[var(--panel)] p-5">
+              <p class="font-display text-3xl text-[var(--ink)]">{stat.value}</p>
+              <p class="mt-2 text-sm leading-6 text-[var(--muted)]">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="overflow-hidden rounded-[2.8rem] bg-[linear-gradient(160deg,#101521_0%,#19345b_48%,#2d7d74_100%)] p-8 text-white shadow-[0_28px_60px_rgba(16,21,33,0.22)] sm:p-10">
+        <div class="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/78">
+          Program w hero
+        </div>
+        <h2 class="mt-6 font-display text-4xl leading-tight">{hero.highlightTitle}</h2>
+        <p class="mt-5 text-base leading-8 text-white/82">{hero.highlightLead}</p>
+        <ul class="mt-8 space-y-4">
+          {hero.highlightBullets.map((bullet) => (
+            <li class="flex gap-3 text-sm leading-7 text-white/82">
+              <span class="mt-2 h-2.5 w-2.5 flex-none rounded-full bg-[var(--accent)]"></span>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-10 rounded-[2rem] border border-white/10 bg-white/8 p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/65">Dlaczego to działa</p>
+          <p class="mt-3 text-lg leading-8 text-white/84">
+            10xDevs nie kończy się na promptowaniu. Program prowadzi od setupu środowiska i pracy z agentem, przez budowę MVP, po skalowanie kontekstu w projektach legacy i pracę zespołową z AI.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="O projekcie"
+        title="Treści, kursy i praktyka zamiast hype’u"
+        body="Projekt Przeprogramowani od lat łączy wiedzę techniczną z kontekstem biznesowym i rozwojowym. Oficjalna komunikacja stawia na pragmatyzm, rzetelne podejście do AI oraz materiały, które można wykorzystać w codziennej pracy."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {aboutBlocks.map((block) => (
+          <article class="rounded-[2rem] border border-black/6 bg-white/80 p-6 shadow-[0_18px_45px_rgba(16,21,33,0.08)]">
+            <h3 class="font-display text-2xl text-[var(--ink)]">{block.title}</h3>
+            <p class="mt-4 text-sm leading-7 text-[var(--muted)]">{block.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Twarze projektu"
+        title="Doświadczenie z dużych produktów i rynku edukacji"
+        body="Za Przeprogramowanymi stoją Przemek Smyrdek i Marcin Czarkowski. Obaj prowadzą programy, podcasty i materiały edukacyjne, bazując na doświadczeniu w firmach produktowych i pracy z frontendem, TypeScriptem oraz AI."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        {founders.map((founder) => (
+          <FounderCard founder={founder} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Media"
+        title="Podcast i YouTube w jednym miejscu"
+        body="Na stronie głównej zebrałem najświeższe materiały z oficjalnej strony podcastowej i kanału YouTube Przeprogramowanych. Pełne archiwa są dostępne na osobnych podstronach."
+      />
+      <div class="mt-8">
+        <MediaTabs client:load podcast={podcastEpisodes} videos={latestVideos} />
+      </div>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/podcast" class="rounded-full bg-[var(--ink)] px-5 py-3 text-sm font-semibold text-[var(--paper)]">Zobacz podcast</a>
+        <a href="/youtube" class="rounded-full border border-black/8 bg-white px-5 py-3 text-sm font-semibold text-[var(--ink)]">Zobacz YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kursy" class="px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionIntro
+        eyebrow="Programy"
+        title="Trzy filary oferty Przeprogramowanych"
+        body="Poniżej znajdują się najważniejsze programy rozwijane wokół marki. Każdy odpowiada na inny etap rozwoju: AI-native software engineering, jakość frontendu oraz zaawansowany TypeScript."
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {courses.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl rounded-[2.6rem] bg-[var(--ink)] px-8 py-10 text-[var(--paper)] shadow-[0_28px_60px_rgba(16,21,33,0.20)] sm:px-10 lg:px-12">
+      <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent-soft)]">Następny krok</p>
+          <h2 class="mt-4 font-display text-4xl leading-tight sm:text-5xl">Strona gotowa pod nowoczesny rollout.</h2>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-white/72">
+            Projekt bazuje na Astro, React i Tailwind, ma osobne podstrony, wspólny design system oraz konfigurację adaptera Cloudflare. Wystarczy dodać repo i wykonać build.
+          </p>
+        </div>
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="inline-flex h-fit items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+        >
+          Skontaktuj się
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

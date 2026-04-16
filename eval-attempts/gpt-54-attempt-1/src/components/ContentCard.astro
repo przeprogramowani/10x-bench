@@ -1,0 +1,50 @@
+---
+import type { ContentItem } from "../data/site";
+
+type Props = {
+  item: ContentItem;
+  kind: "video" | "podcast";
+};
+
+const { item, kind } = Astro.props;
+
+const formatter = new Intl.DateTimeFormat("pl-PL", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const label = kind === "video" ? "YouTube" : "Podcast";
+---
+
+<article class="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 transition hover:-translate-y-1 hover:border-white/18 hover:bg-white/7">
+  <a href={item.href} target="_blank" rel="noreferrer" class="block">
+    <div class="relative aspect-[16/10] overflow-hidden">
+      <img
+        src={item.image}
+        alt={item.title}
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,9,18,0.06),rgba(3,9,18,0.82))]"></div>
+      <div class="absolute left-4 top-4 inline-flex rounded-full bg-[rgba(6,12,24,0.72)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white">
+        {label}
+      </div>
+      {item.duration && (
+        <div class="absolute bottom-4 left-4 rounded-full bg-[rgba(6,12,24,0.82)] px-3 py-1 text-xs font-semibold text-white">
+          {item.duration}
+        </div>
+      )}
+    </div>
+
+    <div class="space-y-4 p-5">
+      <p class="text-xs uppercase tracking-[0.24em] text-[var(--color-muted)]">{formatter.format(new Date(item.publishedAt))}</p>
+      <h3 class="font-display text-xl leading-tight text-white">{item.title}</h3>
+      <p class="text-sm leading-7 text-[var(--color-muted)]">{item.description}</p>
+      <span class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-brand)]">
+        Otwórz materiał
+        <span aria-hidden="true">↗</span>
+      </span>
+    </div>
+  </a>
+</article>

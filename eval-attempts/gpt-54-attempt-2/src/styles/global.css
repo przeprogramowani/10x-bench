@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+:root {
+  --bg: #f8f4eb;
+  --panel: #efe4d3;
+  --paper: #fffdf8;
+  --ink: #101521;
+  --muted: #556072;
+  --accent: #f76f3c;
+  --accent-soft: #f4bf80;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at top left, rgba(247, 111, 60, 0.12), transparent 26%),
+    radial-gradient(circle at top right, rgba(29, 120, 116, 0.10), transparent 28%),
+    linear-gradient(180deg, #fbf8f1 0%, #f6f0e4 100%);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(16, 21, 33, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 21, 33, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, white 5%, rgba(255, 255, 255, 0.18) 82%, transparent);
+}
+
+::selection {
+  background: rgba(247, 111, 60, 0.18);
+}

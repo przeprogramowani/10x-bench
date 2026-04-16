@@ -1,0 +1,43 @@
+---
+import { contentNotes, externalLinks, navigation } from '../data/site';
+---
+
+<footer class="shell pb-8">
+  <div class="panel mt-10 px-6 py-8 sm:px-8">
+    <div class="grid gap-8 lg:grid-cols-[1.4fr_0.8fr]">
+      <div class="space-y-4">
+        <p class="font-display text-2xl font-bold text-white">Przeprogramowani.pl</p>
+        <p class="max-w-2xl text-sm leading-7 text-[var(--muted)]">
+          Szersze spojrzenie na programowanie. Strona przygotowana w Astro, React i Tailwind, z
+          konfiguracją gotową do wdrożenia na Cloudflare.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a class="button-primary" href={externalLinks.main} target="_blank" rel="noreferrer">
+            Oficjalna strona
+          </a>
+          <a class="button-secondary" href={externalLinks.contact}>
+            kontakt@przeprogramowani.pl
+          </a>
+        </div>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/80">
+            Nawigacja
+          </p>
+          <div class="space-y-2">
+            {navigation.map((item) => <a class="block text-sm text-[var(--muted)] hover:text-white" href={item.href}>{item.label}</a>)}
+          </div>
+        </div>
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200/80">
+            Źródła treści
+          </p>
+          <div class="space-y-2 text-sm text-[var(--muted)]">
+            {contentNotes.map((note) => <p>{note}</p>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

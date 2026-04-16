@@ -29,6 +29,7 @@ const SCREENSHOT_HASHES_PATH = path.resolve("./website/src/data/screenshot-hashe
 const BASE_PORT = 4321;
 const DEV_SERVER_TIMEOUT_MS = 60_000;
 const CLEANUP_WAIT_MS = 3000;
+const SCREENSHOT_DELAY_MS = 2000;
 const DEFAULT_CONCURRENCY = 3;
 
 const VIEWPORT_WIDTH = 1280;
@@ -382,6 +383,9 @@ async function processAttempt(
       waitUntil: "networkidle",
       timeout: 30_000,
     });
+
+    // Brief delay to let client-side hydration, fonts, and late-rendering content settle
+    await sleep(SCREENSHOT_DELAY_MS);
 
     const screenshotPath = path.join(SCREENSHOTS_DIR, `${attempt.dirName}.png`);
     await page.screenshot({path: screenshotPath});

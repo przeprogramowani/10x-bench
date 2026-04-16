@@ -1,0 +1,191 @@
+---
+import ContentCard from "../components/ContentCard.astro";
+import CourseCard from "../components/CourseCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import {
+  courses,
+  hero,
+  latestVideos,
+  overviewPillars,
+  podcastSeries,
+  siteMeta,
+  stats,
+} from "../data/site";
+---
+
+<MainLayout title="Przeprogramowani.pl - nowoczesna strona projektu" description={siteMeta.description}>
+  <section class="mx-auto max-w-7xl px-5 pb-18 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div class="space-y-8">
+        <div class="inline-flex rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-[var(--color-brand-2)]">
+          {hero.eyebrow}
+        </div>
+        <div class="space-y-6">
+          <h1 class="font-display text-5xl leading-[0.98] text-white sm:text-6xl lg:text-7xl">
+            {hero.title}
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
+            {hero.lead}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={hero.spotlight.href}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-brand-2))] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-surface)] transition hover:scale-[1.01]"
+          >
+            Zobacz 10xDevs
+          </a>
+          <a
+            href="#kursy"
+            class="inline-flex items-center justify-center rounded-full border border-white/12 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/24 hover:bg-white/6"
+          >
+            Przegląd kursów
+          </a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {
+            stats.map((stat) => (
+              <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                <p class="font-display text-3xl text-white">{stat.value}</p>
+                <p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">{stat.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.28)] sm:p-8">
+        <div class="mb-6 inline-flex rounded-full bg-[var(--color-brand)]/14 px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[var(--color-brand)]">
+          {hero.spotlight.label}
+        </div>
+        <h2 class="font-display text-3xl text-white">{hero.spotlight.name}</h2>
+        <p class="mt-4 text-base leading-8 text-[var(--color-muted)]">{hero.spotlight.description}</p>
+
+        <ul class="mt-8 grid gap-4">
+          {
+            hero.spotlight.bullets.map((bullet) => (
+              <li class="flex gap-3 rounded-[1.35rem] border border-white/8 bg-[rgba(255,255,255,0.04)] px-4 py-4 text-sm leading-7 text-[var(--color-text)]">
+                <span class="mt-2 h-2 w-2 rounded-full bg-[var(--color-brand-2)]"></span>
+                <span>{bullet}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
+    <div class="rounded-[2.25rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-8 sm:p-10">
+      <SectionHeading
+        eyebrow="Dlaczego Przeprogramowani"
+        title="Edukacja technologiczna w epoce AI"
+        description="Treści i produkty Przeprogramowanych są zbudowane wokół jednego celu: pomóc programistom patrzeć szerzej niż tylko na framework czy chwilowy hype."
+      />
+
+      <div class="mt-10 grid gap-4 lg:grid-cols-2">
+        {
+          overviewPillars.map((pillar) => (
+            <div class="rounded-[1.5rem] border border-white/10 bg-[var(--color-surface-2)]/60 px-5 py-5 text-sm leading-7 text-[var(--color-text)]">
+              {pillar}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="kursy" class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <SectionHeading
+        eyebrow="Programy"
+        title="Kursy i ścieżki rozwoju"
+        description="Od nowoczesnego frontendu i TypeScriptu po pełny workflow AI-native software engineering."
+      />
+      <a
+        href="https://przeprogramowani.pl/"
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-brand)] transition hover:text-white"
+      >
+        Oficjalna strona
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-6 xl:grid-cols-3">
+      {courses.map((course, index) => <CourseCard course={course} index={index} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-14 xl:grid-cols-2">
+      <div class="space-y-8">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Ostatnie odcinki"
+          description="Dwa formaty audio: Opanuj.AI Podcast i Przeprogramowani ft. Gość. Każdy odcinek jest osadzony w realnych problemach branży."
+        />
+        <div class="grid gap-6">
+          {podcastSeries[0].items.slice(0, 2).map((item) => <ContentCard item={item} kind="podcast" />)}
+        </div>
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 rounded-full border border-white/12 px-5 py-3 text-sm font-semibold text-white transition hover:border-[var(--color-brand)] hover:bg-white/6"
+        >
+          Zobacz stronę Podcast
+        </a>
+      </div>
+
+      <div class="space-y-8">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Najnowsze filmy"
+          description="Kanał skupia się na AI-native engineeringu, benchmarkach modeli, jakości kodu i nowoczesnym workflow programisty."
+        />
+        <div class="grid gap-6">
+          {latestVideos.slice(0, 2).map((item) => <ContentCard item={item} kind="video" />)}
+        </div>
+        <a
+          href="/youtube"
+          class="inline-flex items-center gap-2 rounded-full border border-white/12 px-5 py-3 text-sm font-semibold text-white transition hover:border-[var(--color-brand)] hover:bg-white/6"
+        >
+          Zobacz stronę YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-[2.25rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,122,89,0.18),rgba(21,198,180,0.14))] p-[1px]">
+      <div class="rounded-[calc(2.25rem-1px)] bg-[var(--color-surface)] px-8 py-10 sm:px-10 sm:py-12">
+        <SectionHeading
+          eyebrow="Newsletter"
+          title="Przeprogramowany Newsletter"
+          description="Co tydzień w piątek: 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. To dobry punkt wejścia do całego ekosystemu Przeprogramowanych."
+        />
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+          <a
+            href={siteMeta.newsletter}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-brand-2))] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-surface)]"
+          >
+            Zapisz się
+          </a>
+          <a
+            href="/o-nas"
+            class="inline-flex items-center justify-center rounded-full border border-white/12 px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-white/24 hover:bg-white/6"
+          >
+            Poznaj Przeprogramowanych
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

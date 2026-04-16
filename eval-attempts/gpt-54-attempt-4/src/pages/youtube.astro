@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { videoCards } from '../data/site';
+---
+
+<Layout
+  title="YouTube"
+  description="Najnowsze filmy i live'y Przeprogramowani zebrane na dedykowanej stronie YouTube."
+  currentPath="/youtube"
+>
+  <section class="mx-auto max-w-7xl px-5 pb-12 pt-16 lg:pt-24">
+    <div class="max-w-3xl space-y-5">
+      <p class="eyebrow">YouTube</p>
+      <h1 class="section-title">Świeże live'y, materiały o AI i workflow programisty</h1>
+      <p class="text-lg leading-8 text-slate-300">
+        Lista bazuje na najnowszych filmach podlinkowanych na oficjalnej stronie głównej Przeprogramowanych.
+        Każda karta prowadzi bezpośrednio do materiału na YouTube.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-8">
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {
+        videoCards.map((video) => (
+          <a class="surface-card group flex h-full flex-col overflow-hidden p-4" href={video.href} target="_blank" rel="noreferrer">
+            <img class="aspect-video w-full rounded-[1.25rem] border border-white/10 object-cover" src={video.thumbnail} alt={video.title} loading="lazy" />
+            <div class="flex h-full flex-col gap-4 p-2 pt-5">
+              <p class="eyebrow">YouTube</p>
+              <h2 class="font-heading text-2xl font-bold text-white transition group-hover:text-[#ffd6c6]">{video.title}</h2>
+              <p class="text-sm leading-7 text-slate-300">{video.description}</p>
+              <span class="mt-auto inline-flex text-sm font-semibold text-[#ffd6c6]">
+                Obejrzyj materiał →
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,43 @@
+---
+import type { Course } from "../data/site";
+
+type Props = {
+  course: Course;
+  index: number;
+};
+
+const { course, index } = Astro.props;
+const gradients = [
+  "from-[#ff7a59]/22 to-[#ffd166]/10",
+  "from-[#15c6b4]/22 to-[#8de6ff]/10",
+  "from-[#7aa2ff]/22 to-[#ff7a59]/10",
+];
+---
+
+<article class={`group rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.2)] transition hover:-translate-y-1 hover:border-white/18 hover:bg-white/7`}>
+  <div class={`mb-6 h-1 w-20 rounded-full bg-gradient-to-r ${gradients[index % gradients.length]}`}></div>
+  <p class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">{course.eyebrow}</p>
+  <h3 class="mt-3 font-display text-2xl text-white">{course.name}</h3>
+  <p class="mt-4 text-sm leading-7 text-[var(--color-muted)]">{course.description}</p>
+
+  <ul class="mt-6 grid gap-3">
+    {
+      course.bullets.map((bullet) => (
+        <li class="flex items-start gap-3 text-sm leading-6 text-[var(--color-text)]">
+          <span class="mt-2 h-2 w-2 rounded-full bg-[var(--color-brand)]"></span>
+          <span>{bullet}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={course.href}
+    target="_blank"
+    rel="noreferrer"
+    class="mt-8 inline-flex items-center gap-2 rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-brand)] hover:bg-[var(--color-brand)] hover:text-[var(--color-surface)]"
+  >
+    {course.cta}
+    <span aria-hidden="true">↗</span>
+  </a>
+</article>

@@ -1,0 +1,95 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import { externalLinks, siteDescription, siteTitle } from '../data/site';
+import { getPodcastCollections } from '../lib/content';
+import Layout from '../layouts/Layout.astro';
+
+const podcasts = await getPodcastCollections();
+---
+
+<Layout
+  title={`${siteTitle} | Podcast`}
+  description={`Podcasty Przeprogramowanych i Opanuj.AI — ${siteDescription}`}
+>
+  <section class="shell">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <div class="space-y-6">
+        <span class="eyebrow">Podcast</span>
+        <h1 class="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+          Słuchaj podcastów o technologii, AI i programowaniu.
+        </h1>
+        <p class="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          Podstrona pobiera aktualne odcinki z oficjalnej sekcji podcastowej
+          <span class="text-white"> przeprogramowani.pl/podcast</span>, dzięki czemu po wdrożeniu na
+          Cloudflare lista materiałów pozostaje świeża.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a class="button-primary" href={externalLinks.podcast} target="_blank" rel="noreferrer">
+            Oficjalna strona podcastów
+          </a>
+          <a class="button-secondary" href={externalLinks.newsletter} target="_blank" rel="noreferrer">
+            Newsletter
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-strong px-6 py-6 sm:px-8">
+        <p class="kicker">Dlaczego działa to dobrze</p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+            <p class="font-display text-2xl font-bold text-white">2</p>
+            <p class="mt-2 text-sm leading-6 text-[var(--muted)]">serie podcastowe widoczne od razu</p>
+          </div>
+          <div class="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+            <p class="font-display text-2xl font-bold text-white">live</p>
+            <p class="mt-2 text-sm leading-6 text-[var(--muted)]">odświeżanie treści na request, nie tylko na build</p>
+          </div>
+          <div class="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+            <p class="font-display text-2xl font-bold text-white">Cloudflare</p>
+            <p class="mt-2 text-sm leading-6 text-[var(--muted)]">SSR gotowy na publikację bez dodatkowego backendu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell mt-20 space-y-12 sm:mt-24">
+    {
+      podcasts.map((collection) => (
+        <div class="space-y-8">
+          <SectionHeading
+            eyebrow={collection.listeners}
+            title={collection.title}
+            description={collection.description}
+          />
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {collection.episodes.map((episode) => (
+              <a
+                href={episode.href}
+                target="_blank"
+                rel="noreferrer"
+                class="panel-strong group flex h-full flex-col overflow-hidden"
+              >
+                <img
+                  src={episode.image}
+                  alt={episode.title}
+                  class="aspect-square w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                />
+                <div class="flex flex-1 flex-col gap-4 p-6">
+                  <div class="flex items-center justify-between gap-3">
+                    <span class="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                      {collection.title}
+                    </span>
+                    <span class="text-xs font-medium text-[var(--muted)]">{episode.duration}</span>
+                  </div>
+                  <h2 class="font-display text-2xl font-bold text-white">{episode.title}</h2>
+                  <p class="text-sm leading-7 text-[var(--muted)]">{episode.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </section>
+</Layout>

@@ -1,0 +1,176 @@
+---
+import MediaShowcase from '../components/MediaShowcase';
+import SectionHeading from '../components/SectionHeading.astro';
+import {
+  courses,
+  externalLinks,
+  homePillars,
+  partners,
+  siteDescription,
+  siteTagline,
+  siteTitle,
+  stats
+} from '../data/site';
+import { getPodcastCollections, getRecentVideos } from '../lib/content';
+import Layout from '../layouts/Layout.astro';
+
+const [videos, podcasts] = await Promise.all([getRecentVideos(), getPodcastCollections()]);
+---
+
+<Layout
+  title={`${siteTitle} | Nowoczesna strona projektu`}
+  description={siteDescription}
+>
+  <section class="shell">
+    <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+      <div class="space-y-8">
+        <span class="eyebrow">Szersze spojrzenie na programowanie</span>
+        <div class="space-y-5">
+          <p class="kicker">Przeprogramowani.pl</p>
+          <h1 class="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl xl:text-7xl">
+            Edukacja technologiczna w epoce AI.
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+            {siteTagline}. Treści, kursy i materiały audio/video dla developerów, którzy chcą
+            rozwijać się szerzej: od frontendu i TypeScriptu po AI-Native Software Engineering.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a class="button-primary" href={externalLinks.tenXDevs} target="_blank" rel="noreferrer">
+            Zobacz 10xDevs 3.0
+          </a>
+          <a class="button-secondary" href="/o-nas">
+            Poznaj zespół
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {
+            stats.map((stat) => (
+              <div class="panel px-5 py-5">
+                <p class="font-display text-3xl font-bold text-white">{stat.value}</p>
+                <p class="mt-2 text-sm leading-6 text-[var(--muted)]">{stat.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="panel-strong relative overflow-hidden p-6 sm:p-8">
+        <div class={`absolute inset-0 bg-gradient-to-br ${courses[0].accent}`}></div>
+        <div class="absolute inset-0 grid-overlay opacity-40"></div>
+        <div class="relative space-y-6">
+          <div class="flex items-center justify-between gap-4">
+            <span class="rounded-full border border-cyan-300/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">
+              Hero programu
+            </span>
+            <span class="rounded-full bg-white/8 px-3 py-1 text-xs font-medium text-white/80">
+              Astro + React + TypeScript
+            </span>
+          </div>
+          <div class="space-y-4">
+            <p class="kicker text-cyan-200/90">10xDevs 3.0</p>
+            <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Czas na AI-Native Software Engineering.
+            </h2>
+            <p class="text-base leading-8 text-slate-200/85">
+              Program pokazuje, jak stosować AI w produkcyjnych scenariuszach programowania: od
+              zebrania kontekstu i planowania, przez implementację, testy, wdrożenia i utrzymanie.
+            </p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3">
+            {courses[0].stats.map((item) => <div class="rounded-[1.5rem] border border-white/10 bg-slate-950/60 p-4 text-sm leading-6 text-slate-200">{item}</div>)}
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a class="button-primary" href={externalLinks.tenXDevs} target="_blank" rel="noreferrer">
+              Szczegóły programu
+            </a>
+            <a class="button-secondary" href="/podcast">
+              Ostatnie odcinki
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <div class="grid gap-10 lg:grid-cols-[0.65fr_1fr] lg:items-start">
+      <SectionHeading
+        eyebrow="Co robicie"
+        title="Treści, kursy i narzędzia dla nowoczesnych developerów"
+        description="Oferta Przeprogramowanych łączy rozwój technologiczny, świadomość produktową i sensowne wykorzystanie AI w codziennej pracy."
+      />
+      <div class="grid gap-5 md:grid-cols-3">
+        {
+          homePillars.map((pillar) => (
+            <article class="panel px-6 py-6">
+              <h3 class="font-display text-2xl font-bold text-white">{pillar.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-[var(--muted)]">{pillar.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <MediaShowcase client:load videos={videos} podcasts={podcasts} />
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <SectionHeading
+      eyebrow="Programy"
+      title="Oferta edukacyjna Przeprogramowanych"
+      description="Sekcja kursów eksponuje trzy najmocniejsze filary oferty: 10xDevs, Opanuj Frontend oraz Opanuj TypeScript."
+    />
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {
+        courses.map((course) => (
+          <article class="panel-strong relative overflow-hidden p-6">
+            <div class={`absolute inset-0 bg-gradient-to-br ${course.accent}`}></div>
+            <div class="absolute inset-0 grid-overlay opacity-30"></div>
+            <div class="relative space-y-5">
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full border border-white/12 bg-white/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                  {course.badge}
+                </span>
+                <span class="text-sm font-medium text-[var(--muted)]">{course.tagline}</span>
+              </div>
+              <div>
+                <h3 class="font-display text-3xl font-bold text-white">{course.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-200/85">{course.description}</p>
+              </div>
+              <div class="space-y-3">
+                {course.stats.map((item) => <div class="rounded-[1.2rem] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm leading-6 text-slate-200">{item}</div>)}
+              </div>
+              <a class="button-secondary w-full" href={course.href} target="_blank" rel="noreferrer">
+                Przejdź do programu
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <div class="panel px-6 py-8 sm:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.7fr_1fr] lg:items-center">
+        <SectionHeading
+          eyebrow="Zaufanie"
+          title="Współpraca z najlepszymi markami"
+          description="Oficjalna strona podkreśla 7 lat na rynku edukacji technologicznej i współpracę z czołowymi firmami produktowymi oraz software house'ami."
+        />
+        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+          {
+            partners.map((partner) => (
+              <div class="rounded-[1.25rem] border border-white/10 bg-slate-950/45 px-4 py-4 text-center text-sm font-semibold text-slate-200">
+                {partner}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

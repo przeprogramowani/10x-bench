@@ -1,0 +1,53 @@
+---
+import ContentCard from "../components/ContentCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { latestVideos, siteMeta, youtubeHighlights } from "../data/site";
+---
+
+<MainLayout title="YouTube | Przeprogramowani.pl" description="Najnowsze filmy z kanału YouTube Przeprogramowanych.">
+  <section class="mx-auto max-w-7xl px-5 pb-12 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+    <div class="grid gap-10 xl:grid-cols-[1fr_0.8fr]">
+      <div class="space-y-6">
+        <p class="font-display text-xs uppercase tracking-[0.3em] text-[var(--color-brand-2)]">YouTube</p>
+        <h1 class="font-display text-5xl leading-tight text-white sm:text-6xl">Kanał dla developerów pracujących z nowoczesnym webem i AI</h1>
+        <p class="text-lg leading-8 text-[var(--color-muted)]">
+          Na kanale Przeprogramowanych najnowsze materiały krążą wokół benchmarków modeli, workflowów agentowych, jakości kodu oraz praktycznego software engineeringu z AI.
+        </p>
+        <a
+          href={siteMeta.youtube}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--color-brand),var(--color-brand-2))] px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-[var(--color-surface)]"
+        >
+          Otwórz kanał
+        </a>
+      </div>
+
+      <aside class="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+        <p class="font-display text-sm uppercase tracking-[0.24em] text-[var(--color-muted)]">Tematy przewodnie</p>
+        <div class="mt-6 grid gap-3">
+          {
+            youtubeHighlights.map((highlight) => (
+              <div class="rounded-[1.35rem] border border-white/8 bg-[var(--color-surface-2)]/60 px-4 py-4 text-sm leading-7 text-[var(--color-text)]">
+                {highlight}
+              </div>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Najnowsze publikacje"
+      title="Ostatnie filmy z kanału"
+      description="Lista została przygotowana na podstawie feedu kanału YouTube Przeprogramowanych i odzwierciedla najnowsze publikacje."
+    />
+
+    <div class="mt-10 grid gap-6 xl:grid-cols-2">
+      {latestVideos.map((item) => <ContentCard item={item} kind="video" />)}
+    </div>
+  </section>
+</MainLayout>

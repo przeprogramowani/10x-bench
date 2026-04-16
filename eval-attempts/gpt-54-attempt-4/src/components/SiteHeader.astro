@@ -1,0 +1,79 @@
+---
+import MobileMenu from './MobileMenu';
+import { navigation } from '../data/site';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<div class="border-b border-white/8 bg-[rgba(10,18,27,0.72)] backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 text-sm text-slate-300">
+    <p class="flex items-center gap-2">
+      <span class="inline-flex h-2 w-2 rounded-full bg-[#65d8c4] shadow-[0_0_18px_rgba(101,216,196,0.9)]"></span>
+      <span>Nowość: <strong class="font-semibold text-white">10xDevs 3.0</strong> i podejście AI-Native Software Engineering.</span>
+    </p>
+    <a
+      class="hidden font-semibold text-[#ffd6c6] transition hover:text-white md:inline-flex"
+      href="https://www.10xdevs.pl/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Zobacz program
+    </a>
+  </div>
+</div>
+
+<header class="sticky top-0 z-40 border-b border-white/8 bg-[rgba(5,10,16,0.72)] backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4">
+    <a class="flex items-center gap-3 text-white" href="/">
+      <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,116,72,0.22),rgba(101,216,196,0.18))] text-base font-bold shadow-[0_18px_40px_rgba(0,0,0,0.25)]">
+        &lt;/&gt;
+      </span>
+      <span>
+        <span class="block font-heading text-lg font-bold tracking-tight">Przeprogramowani</span>
+        <span class="block text-xs uppercase tracking-[0.24em] text-slate-400">Szersze spojrzenie na programowanie</span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-2 md:flex" aria-label="Nawigacja główna">
+      {
+        navigation.map((item) => {
+          const active = currentPath === item.href;
+
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                'rounded-full px-4 py-2 text-sm transition',
+                active
+                  ? 'bg-[rgba(255,255,255,0.1)] text-white'
+                  : 'text-slate-300 hover:bg-white/6 hover:text-white'
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 md:flex">
+      <a class="text-sm text-slate-300 transition hover:text-white" href="mailto:kontakt@przeprogramowani.pl">
+        kontakt@przeprogramowani.pl
+      </a>
+      <a
+        class="inline-flex items-center rounded-full bg-[#ff7448] px-4 py-2 text-sm font-semibold text-slate-950 transition hover:translate-y-[-1px] hover:bg-[#ff8b67]"
+        href="https://www.10xdevs.pl/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Poznaj 10xDevs
+      </a>
+    </div>
+
+    <MobileMenu items={navigation} currentPath={currentPath} client:load />
+  </div>
+</header>

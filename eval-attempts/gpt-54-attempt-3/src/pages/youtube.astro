@@ -1,0 +1,74 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import { externalLinks, siteDescription, siteTitle } from '../data/site';
+import { getRecentVideos } from '../lib/content';
+import Layout from '../layouts/Layout.astro';
+
+const videos = await getRecentVideos();
+---
+
+<Layout
+  title={`${siteTitle} | YouTube`}
+  description={`Najnowsze filmy z kanału Przeprogramowani — ${siteDescription}`}
+>
+  <section class="shell">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div class="space-y-6">
+        <span class="eyebrow">YouTube</span>
+        <h1 class="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl">
+          Najnowsze filmy z kanału Przeprogramowani.
+        </h1>
+        <p class="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          Lista video pobierana jest z oficjalnej strony głównej Przeprogramowanych, która publikuje
+          najświeższe materiały z kanału YouTube razem z miniaturami i linkami.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a class="button-primary" href={externalLinks.youtube} target="_blank" rel="noreferrer">
+            Otwórz kanał YouTube
+          </a>
+          <a class="button-secondary" href="/">
+            Wróć na start
+          </a>
+        </div>
+      </div>
+
+      <div class="panel-strong p-6 sm:p-8">
+        <SectionHeading
+          eyebrow="Format"
+          title="Live demo, AI product engineering i praktyka codziennego developmentu"
+          description="Na stronie głównej Przeprogramowanych widoczne są aktualne filmy o agentach AI, benchmarkach, Claude Code i budowaniu produktów z użyciem nowoczesnych narzędzi."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="shell mt-20 sm:mt-24">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {
+        videos.map((video) => (
+          <a
+            href={video.href}
+            target="_blank"
+            rel="noreferrer"
+            class="panel-strong group overflow-hidden"
+          >
+            <img
+              src={video.image}
+              alt={video.title}
+              class="aspect-video w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+            />
+            <div class="space-y-4 p-6">
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full border border-red-300/20 bg-red-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-red-200">
+                  Latest video
+                </span>
+                <span class="text-sm text-[var(--muted)]">YouTube</span>
+              </div>
+              <h2 class="font-display text-2xl font-bold text-white">{video.title}</h2>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
