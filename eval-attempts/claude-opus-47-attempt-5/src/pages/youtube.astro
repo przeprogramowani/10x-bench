@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoGrid from '../components/VideoGrid.tsx';
+import { videos } from '../data/videos';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="YouTube — Przeprogramowani"
+  description="Kanał YouTube Przeprogramowani — praktyczny frontend, TypeScript, AI i architektura. Obejrzyj najnowsze filmy."
+>
+  <section class="container-x pt-16 pb-10 md:pt-24">
+    <span class="badge">YouTube</span>
+    <h1 class="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+      Nasz kanał <span class="gradient-text">YouTube</span>
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-ink-200">
+      Darmowe materiały video — praktyczny frontend, TypeScript, architektura aplikacji, świadoma praca z AI. Publikujemy regularnie, zawsze z myślą o tym, żeby to, co pokazujemy, realnie zmieniło Twoją codzienną pracę.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Subskrybuj kanał
+        <span aria-hidden="true">→</span>
+      </a>
+      <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        Dołącz do newslettera
+      </a>
+    </div>
+  </section>
+
+  <section class="py-10" aria-labelledby="filmy-heading">
+    <div class="container-x">
+      <h2 id="filmy-heading" class="text-2xl font-bold text-white">Najnowsze filmy</h2>
+      <p class="mt-2 text-sm text-ink-300">
+        Wybierz kategorię, żeby szybciej znaleźć to, czego szukasz.
+      </p>
+      <div class="mt-8">
+        <VideoGrid videos={videos} client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

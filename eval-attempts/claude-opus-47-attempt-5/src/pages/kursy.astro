@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CourseCard from '../components/CourseCard.tsx';
+import SectionHeading from '../components/SectionHeading.astro';
+import { courses } from '../data/courses';
+import { site } from '../data/site';
+
+const featured = courses.find((c) => c.id === '10xdevs')!;
+const rest = courses.filter((c) => c.id !== '10xdevs');
+
+const faq = [
+  {
+    q: 'Czy kursy są dla osób zmieniających branżę?',
+    a: 'Opanuj Frontend i 10xDevs zakładają już pewne podstawy programistyczne — jeśli dopiero startujesz, polecamy zacząć od naszych darmowych materiałów i podcastu. Opanuj TypeScript najlepiej sprawdzi się u osób z doświadczeniem w JS/React.',
+  },
+  {
+    q: 'Jak wygląda nauka w trakcie kursu?',
+    a: 'Każdy kurs łączy teorię, własny projekt, zadania praktyczne i spotkania live z prowadzącymi. Całość rozłożona na wygodne tygodnie — tak, żebyś mógł(a) uczyć się obok pracy.',
+  },
+  {
+    q: 'Czy dostaję dostęp na zawsze?',
+    a: 'Tak, po ukończeniu kursu masz stały dostęp do materiałów i kolejnych aktualizacji programu w ramach danej edycji.',
+  },
+  {
+    q: 'Czy dostanę fakturę i certyfikat?',
+    a: 'Tak — wystawiamy faktury VAT i po ukończeniu programu otrzymujesz imienny certyfikat.',
+  },
+];
+---
+
+<BaseLayout
+  title="Kursy — Przeprogramowani"
+  description="Kursy dla programistów: 10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript. Wybierz program, który przyspieszy Twój rozwój."
+>
+  <section class="container-x pt-16 pb-10 md:pt-24">
+    <span class="badge">Kursy</span>
+    <h1 class="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+      Programy, które <span class="gradient-text">realnie zmieniają</span> Twój sposób pracy.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-ink-200">
+      Trzy kursy — jedna filozofia. Uczymy programowania jako rzemiosła: z uwzględnieniem architektury, produkcji, testów i świadomej pracy z AI. Wybierz program, który najlepiej pasuje do Twojej ścieżki.
+    </p>
+  </section>
+
+  <section class="py-10" aria-labelledby="flagship-heading">
+    <div class="container-x">
+      <h2 id="flagship-heading" class="text-sm font-semibold uppercase tracking-[0.25em] text-ink-400">
+        Flagowy program
+      </h2>
+      <div class="mt-6 grid gap-6">
+        <CourseCard course={featured} featured client:visible />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10" aria-labelledby="other-courses-heading">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Pozostałe kursy"
+        title="Wyspecjalizowane programy"
+        lead="Kiedy chcesz pogłębić konkretną umiejętność."
+      />
+      <h2 id="other-courses-heading" class="sr-only">Pozostałe kursy</h2>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {rest.map((course) => (
+          <CourseCard course={course} client:visible />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" aria-labelledby="jak-uczymy-heading">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Jak uczymy"
+        title="Nasza metodyka"
+        lead="Metodyka, która sprawdziła się u ponad 1500 absolwentów wszystkich naszych programów."
+      />
+      <h2 id="jak-uczymy-heading" class="sr-only">Jak uczymy</h2>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {[
+          {
+            title: 'Własny projekt',
+            description: 'Nie oglądasz slajdów — od pierwszego modułu budujesz własną aplikację, na której trenujemy wszystkie techniki.',
+          },
+          {
+            title: 'Code review i mentoring',
+            description: 'Dostajesz regularne feedbacki do kodu od doświadczonych inżynierów. To najszybsza droga do wzrostu.',
+          },
+          {
+            title: 'Społeczność',
+            description: 'Uczysz się razem z dziesiątkami innych programistów — zadajesz pytania, wymieniasz doświadczenia, nawiązujesz kontakty.',
+          },
+        ].map((item) => (
+          <div class="card">
+            <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+            <p class="mt-3 text-sm text-ink-300">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" aria-labelledby="faq-heading">
+    <div class="container-x max-w-3xl">
+      <SectionHeading eyebrow="FAQ" title="Najczęstsze pytania" />
+      <h2 id="faq-heading" class="sr-only">FAQ</h2>
+
+      <div class="mt-10 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.02]">
+        {faq.map((item) => (
+          <details class="group px-6 py-5">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-left text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+              {item.q}
+              <span aria-hidden="true" class="grid h-7 w-7 place-items-center rounded-full border border-white/10 bg-white/5 text-sm transition-transform group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-ink-300">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-x">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/20 via-accent-600/10 to-transparent p-10 md:p-14">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">Nie wiesz, który kurs wybrać?</h2>
+        <p class="mt-4 max-w-xl text-ink-200">
+          Zapisz się na newsletter — co tydzień publikujemy fragmenty materiałów z naszych kursów i doradzamy, jak najlepiej ułożyć ścieżkę rozwoju.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="btn-primary">Zapisz się</a>
+          <a href="/o-nas" class="btn-secondary">Poznaj zespół</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

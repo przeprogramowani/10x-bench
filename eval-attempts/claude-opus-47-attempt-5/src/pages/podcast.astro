@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EpisodeCard from '../components/EpisodeCard.tsx';
+import { episodes } from '../data/episodes';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Podcast — Przeprogramowani"
+  description="Podcast Przeprogramowani — rozmowy o programowaniu, architekturze, karierze i AI. Posłuchaj najnowszych odcinków."
+>
+  <section class="container-x pt-16 pb-10 md:pt-24">
+    <span class="badge">Podcast</span>
+    <h1 class="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+      Podcast <span class="gradient-text">Przeprogramowani</span>
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-ink-200">
+      Od 2019 roku rozmawiamy z ekspertami o tym, co w programowaniu naprawdę ma znaczenie — architekturze, nauce, karierze, AI i produktach. Ponad 98 odcinków i stale rosnąca baza gości.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href={site.social.spotify} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Posłuchaj na Spotify
+        <span aria-hidden="true">→</span>
+      </a>
+      <a href="https://podcasts.apple.com/us/podcast/przeprogramowani/id1471770526" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        Apple Podcasts
+      </a>
+    </div>
+
+    <div class="mt-10 grid max-w-2xl grid-cols-3 gap-4">
+      {[
+        { value: '98+', label: 'odcinków' },
+        { value: '6 lat', label: 'regularnych publikacji' },
+        { value: 'TOP 10', label: 'polskich podcastów IT' },
+      ].map((item) => (
+        <div class="card">
+          <div class="text-2xl font-bold gradient-text">{item.value}</div>
+          <div class="mt-1 text-xs text-ink-300">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-10" aria-labelledby="odcinki-heading">
+    <div class="container-x">
+      <div class="flex items-end justify-between">
+        <h2 id="odcinki-heading" class="text-2xl font-bold text-white">Ostatnie odcinki</h2>
+        <span class="text-sm text-ink-400">Sortowanie: najnowsze</span>
+      </div>
+
+      <div class="mt-8 grid gap-4">
+        {episodes.map((episode, index) => (
+          <EpisodeCard episode={episode} index={index} client:load />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-x">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/20 via-accent-600/10 to-transparent p-10 md:p-14">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">Nie przegap nowego odcinka</h2>
+        <p class="mt-4 max-w-xl text-ink-200">
+          Subskrybuj nas na Spotify lub w Apple Podcasts i otrzymuj powiadomienia o nowych rozmowach — zwykle nowe epizody co 2 tygodnie.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.spotify} target="_blank" rel="noopener noreferrer" class="btn-primary">Spotify</a>
+          <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="btn-secondary">Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

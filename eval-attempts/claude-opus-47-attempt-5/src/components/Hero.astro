@@ -1,0 +1,80 @@
+---
+const features = [
+  { label: '5 modułów', detail: 'Teoria + projekt + live' },
+  { label: '1250+ absolwentów', detail: '1. edycji 10xDevs' },
+  { label: 'AI-native', detail: 'Cursor, Copilot, Aider, agenci' },
+];
+
+const codeSample = `<span class="text-ink-400">// Świadoma praca z agentem AI — dokładnie ten mindset</span>
+<span class="text-brand-300">const</span> <span class="text-white">agent</span> = <span class="text-brand-300">await</span> <span class="text-accent-400">createAgent</span>({
+  <span class="text-white">goal</span>: <span class="text-emerald-300">'Zrefaktoryzuj legacy API'</span>,
+  <span class="text-white">tools</span>: [<span class="text-emerald-300">'code'</span>, <span class="text-emerald-300">'tests'</span>, <span class="text-emerald-300">'docs'</span>],
+  <span class="text-white">rules</span>: <span class="text-accent-400">projectRules</span>,
+});
+
+<span class="text-brand-300">const</span> <span class="text-white">plan</span> = <span class="text-brand-300">await</span> <span class="text-white">agent</span>.<span class="text-accent-400">plan</span>();
+<span class="text-brand-300">await</span> <span class="text-white">plan</span>.<span class="text-accent-400">review</span>(<span class="text-emerald-300">'human-in-the-loop'</span>);
+<span class="text-brand-300">await</span> <span class="text-white">plan</span>.<span class="text-accent-400">execute</span>();
+
+<span class="text-ink-400">// Efekt: 8h roboty w 2h. Na produkcji. Z testami.</span>`;
+---
+
+<section class="relative overflow-hidden">
+  <div class="container-x pt-16 pb-20 md:pt-24 md:pb-28">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+      <div>
+        <span class="badge">
+          <span class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></span>
+          10xDevs 3.0 — zapisy otwarte
+        </span>
+
+        <h1 class="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+          Programuj w erze AI.
+          <span class="block gradient-text">Zostań 10xDev-em.</span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg text-ink-200">
+          <strong class="text-white">10xDevs</strong> to flagowy program dla programistów, którzy chcą świadomie pracować
+          z generatywną AI — od generowania POC, przez refaktoryzację legacy, po testy i CI/CD. Bez magii. Z konkretną praktyką.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="https://www.10xdevs.pl/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Sprawdź 10xDevs 3.0
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="/kursy" class="btn-secondary">Zobacz wszystkie kursy</a>
+        </div>
+
+        <dl class="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-6">
+          {features.map((feature) => (
+            <div>
+              <dt class="text-sm font-semibold text-white">{feature.label}</dt>
+              <dd class="mt-1 text-xs text-ink-300">{feature.detail}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="relative">
+        <div aria-hidden="true" class="absolute -inset-4 rounded-3xl bg-gradient-to-br from-brand-500/30 via-accent-500/20 to-transparent blur-2xl"></div>
+
+        <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-ink-900/60 backdrop-blur-xl">
+          <div class="flex items-center gap-2 border-b border-white/5 bg-white/[0.02] px-4 py-3">
+            <span class="h-3 w-3 rounded-full bg-red-400/70"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-400/70"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-400/70"></span>
+            <span class="ml-3 text-xs text-ink-400 font-mono">10xdevs · module-3/ai-agents.ts</span>
+          </div>
+
+          <pre class="px-5 py-6 text-xs leading-relaxed text-ink-100 font-mono whitespace-pre-wrap"><code set:html={codeSample}></code></pre>
+        </div>
+
+        <div class="absolute -bottom-6 -right-6 hidden rounded-2xl border border-white/10 bg-ink-900/90 px-5 py-4 shadow-glow backdrop-blur-xl md:block">
+          <div class="text-xs uppercase tracking-wider text-ink-400">Średni wzrost produktywności</div>
+          <div class="mt-1 text-2xl font-bold gradient-text">4x</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
