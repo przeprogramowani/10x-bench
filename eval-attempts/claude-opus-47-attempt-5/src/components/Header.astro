@@ -1,0 +1,110 @@
+---
+import { site } from '../data/site';
+
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-white/5 bg-ink-950/70 backdrop-blur-xl">
+  <div class="container-x flex items-center justify-between py-4">
+    <a href="/" class="group flex items-center gap-2 font-semibold text-white" aria-label="Strona główna Przeprogramowani">
+      <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-600 font-mono text-sm font-bold shadow-glow transition-transform group-hover:scale-105">
+        &gt;_
+      </span>
+      <span class="text-lg tracking-tight">{site.name}</span>
+    </a>
+
+    <nav aria-label="Nawigacja główna" class="hidden md:block">
+      <ul class="flex items-center gap-1">
+        {site.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+                isActive(item.href)
+                  ? 'bg-white/10 text-white'
+                  : 'text-ink-200 hover:bg-white/5 hover:text-white',
+              ]}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="https://www.10xdevs.pl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-accent-600 px-4 py-2 text-sm font-medium text-white shadow-glow hover:-translate-y-px transition-transform"
+      >
+        Dołącz do 10xDevs
+        <span aria-hidden="true">→</span>
+      </a>
+
+      <button
+        type="button"
+        class="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-white"
+        data-mobile-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Otwórz menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    aria-label="Nawigacja mobilna"
+    class="md:hidden hidden border-t border-white/5 bg-ink-950/95 backdrop-blur-xl"
+  >
+    <ul class="container-x flex flex-col gap-1 py-4">
+      {site.nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              'block rounded-lg px-4 py-3 text-sm font-medium',
+              isActive(item.href) ? 'bg-white/10 text-white' : 'text-ink-200 hover:bg-white/5 hover:text-white',
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-2">
+        <a
+          href="https://www.10xdevs.pl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary w-full justify-center"
+        >
+          Dołącz do 10xDevs
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector('[data-mobile-menu-toggle]');
+  const menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

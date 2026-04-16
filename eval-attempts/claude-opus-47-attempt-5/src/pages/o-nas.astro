@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { site } from '../data/site';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Współzałożyciel · Lead Engineer',
+    bio: 'Były Lead Engineer i Manager w DAZN i Cabify. Full-stack developer z doświadczeniem w .NET/C#, Java, Node.js, Angular i TypeScript. Prelegent na największych polskich konferencjach technicznych i kontrybutor open source.',
+    stack: ['TypeScript', 'Node.js', 'Angular', 'React', '.NET'],
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Współzałożyciel · Lead Engineer',
+    bio: 'Lead Engineer w SmartRecruiters z ponad 10-letnim doświadczeniem. Twórca materiałów edukacyjnych opartych na badaniach nad uczeniem się. Prowadzi „Opanuj AI Podcast" — najpopularniejszy techniczny podcast o LLM-ach w Polsce.',
+    stack: ['TypeScript', 'React', 'Node.js', 'AI/LLM'],
+  },
+];
+
+const values = [
+  {
+    title: 'Szersze spojrzenie',
+    description:
+      'Najlepsi programiści patrzą dalej niż na sam kod — widzą architekturę, biznes, ludzi i rozwój osobisty. Tego uczymy.',
+    icon: '⌖',
+  },
+  {
+    title: 'Praktyka ponad teorię',
+    description:
+      'Nasze kursy to własne projekty, code review i produkcyjne scenariusze. Teorii jest dokładnie tyle, ile trzeba.',
+    icon: '⚒',
+  },
+  {
+    title: 'Długofalowy rozwój',
+    description:
+      'Budujemy społeczność programistów, którzy chcą rosnąć latami — nie uczymy na jeden framework na kwartał.',
+    icon: '∞',
+  },
+  {
+    title: 'AI świadomie, nie bezmyślnie',
+    description:
+      'Pokazujemy, jak realnie korzystać z generatywnej AI — bez hype\'u, bez fałszywych obietnic, z konkretnym workflow.',
+    icon: '◈',
+  },
+];
+
+const milestones = [
+  { year: '2019', label: 'Start podcastu Przeprogramowani i pierwsze treści edukacyjne' },
+  { year: '2020', label: 'Pierwsza edycja kursu Opanuj Frontend — 100+ uczestników' },
+  { year: '2022', label: 'Uruchomienie Opanuj TypeScript i rozwój platformy szkoleniowej' },
+  { year: '2024', label: 'Pierwsza edycja 10xDevs — 1250 programistów w programie' },
+  { year: '2026', label: 'Start 10xDevs 3.0 i kontynuacja rozwoju społeczności 15 000+' },
+];
+---
+
+<BaseLayout
+  title="O nas — Przeprogramowani"
+  description="Poznaj zespół Przeprogramowani — od 7 lat pomagamy programistom spojrzeć na programowanie szerzej. Poznaj naszych founderów, wartości i historię projektu."
+>
+  <!-- Hero -->
+  <section class="container-x pt-16 pb-10 md:pt-24 md:pb-16">
+    <span class="badge">O nas</span>
+    <h1 class="mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+      Tworzymy miejsce, w którym <span class="gradient-text">programowanie spotyka się z rozwojem osobistym</span>.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-ink-200">
+      Od 7 lat publikujemy podcasty, tworzymy kursy i budujemy narzędzia dla programistów, którzy chcą patrzeć na swoją pracę szerzej — łącząc technikę z architekturą, biznesem i świadomym rozwojem kariery.
+    </p>
+
+    <div class="mt-10 grid max-w-3xl grid-cols-2 gap-4 md:grid-cols-4">
+      {[
+        { value: '7+', label: 'lat działalności' },
+        { value: '15k+', label: 'programistów w społeczności' },
+        { value: '1250+', label: 'absolwentów 10xDevs' },
+        { value: '98+', label: 'odcinków podcastu' },
+      ].map((item) => (
+        <div class="card">
+          <div class="text-3xl font-bold gradient-text">{item.value}</div>
+          <div class="mt-1 text-sm text-ink-300">{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="py-16" aria-labelledby="zespol-heading">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Zespół"
+        title="Poznaj founderów"
+        lead="Dwie różne drogi, jeden cel — pomagać programistom rozwijać się mądrze i świadomie."
+      />
+      <h2 id="zespol-heading" class="sr-only">Zespół</h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {founders.map((person) => (
+          <article class="card">
+            <div class="flex items-center gap-4">
+              <div class="grid h-16 w-16 flex-none place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-accent-600 text-xl font-bold text-white">
+                {person.name.split(' ').map((n) => n[0]).join('')}
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-white">{person.name}</h3>
+                <p class="text-sm text-ink-300">{person.role}</p>
+              </div>
+            </div>
+            <p class="mt-5 text-sm leading-relaxed text-ink-200">{person.bio}</p>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {person.stack.map((tech) => (
+                <li class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-ink-200">
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16" aria-labelledby="wartosci-heading">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Wartości"
+        title="Na czym opieramy naszą pracę"
+        lead="Cztery zasady, które stoją za każdym kursem, odcinkiem podcastu i artykułem, jaki publikujemy."
+      />
+      <h2 id="wartosci-heading" class="sr-only">Wartości</h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {values.map((value) => (
+          <div class="card">
+            <div class="flex items-center gap-3">
+              <span aria-hidden="true" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-xl text-brand-300">
+                {value.icon}
+              </span>
+              <h3 class="text-lg font-semibold text-white">{value.title}</h3>
+            </div>
+            <p class="mt-4 text-sm leading-relaxed text-ink-300">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16" aria-labelledby="timeline-heading">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Historia"
+        title="Jak się rozwijaliśmy"
+      />
+      <h2 id="timeline-heading" class="sr-only">Historia</h2>
+
+      <ol class="mt-12 relative border-l border-white/10 pl-6">
+        {milestones.map((milestone) => (
+          <li class="mb-8 last:mb-0">
+            <span aria-hidden="true" class="absolute -left-[9px] grid h-4 w-4 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-accent-600 ring-4 ring-ink-950"></span>
+            <div class="flex flex-wrap items-baseline gap-4">
+              <span class="font-mono text-sm text-brand-300">{milestone.year}</span>
+              <p class="text-base text-ink-100">{milestone.label}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-16">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Współpraca"
+        title="Zaufali nam"
+        lead="Pracujemy ze startupami, scale-upami i dużymi firmami produktowymi."
+      />
+      <div class="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 text-ink-300">
+        {['Autodesk', 'Huuuge Games', 'SmartRecruiters', 'Callstack', 'DAZN', 'Cabify'].map((logo) => (
+          <span class="text-lg font-semibold opacity-70 transition-opacity hover:opacity-100">
+            {logo}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="container-x">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/20 via-accent-600/10 to-transparent p-10 md:p-14">
+        <h2 class="text-3xl font-bold text-white md:text-4xl">Chcesz być z nami w kontakcie?</h2>
+        <p class="mt-4 max-w-xl text-ink-200">
+          Dołącz do newslettera lub odwiedź nasz podcast i kanał YouTube. Co tydzień dostarczamy solidną dawkę wiedzy.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="btn-primary">Newsletter</a>
+          <a href="/podcast" class="btn-secondary">Podcast</a>
+          <a href="/youtube" class="btn-secondary">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
