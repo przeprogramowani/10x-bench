@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { team, partners } from '../data/team';
+import { site } from '../data/site';
+---
+
+<Layout title="O nas — Przeprogramowani" description="Poznaj zespół Przeprogramowani i naszą misję w edukacji technologicznej epoki AI.">
+  <section class="relative overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0 -z-10 bg-hero-glow opacity-80"></div>
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <span class="chip">O nas</span>
+        <h1 class="mt-5 font-display text-4xl font-bold tracking-tight md:text-6xl">
+          Szersze spojrzenie na <span class="text-gradient">programowanie</span>.
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300 md:text-xl">
+          Od 7+ lat wspieramy polską społeczność programistów w rozwoju kariery.
+          Prowadzimy podcast, kanał YouTube, newsletter i flagowe programy kursów.
+          Każdego roku uczymy setki osób, jak budować produkty w nowej rzeczywistości
+          narzędzi AI.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {site.stats.map((s) => (
+          <div class="card">
+            <div class="font-display text-4xl font-bold text-white">{s.value}</div>
+            <div class="mt-1 text-sm text-slate-400">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container-page grid gap-12 lg:grid-cols-2">
+      <div>
+        <span class="chip">Misja</span>
+        <h2 class="section-heading mt-4">
+          Edukacja, która <span class="text-gradient">nadąża za rzeczywistością</span>.
+        </h2>
+      </div>
+      <div class="space-y-6 text-base leading-relaxed text-slate-300">
+        <p>
+          Świat programowania zmienia się szybciej niż kiedykolwiek. Claude Code, Cursor,
+          Copilot, agenci autonomiczni — narzędzia, które jeszcze rok temu były
+          eksperymentem, dziś są codziennością w produkcji.
+        </p>
+        <p>
+          W Przeprogramowanych wierzymy, że najlepszą odpowiedzią nie jest strach ani
+          ignorowanie zmian. Jest świadome, krytyczne wykorzystanie nowych narzędzi —
+          tak, żeby dawały Ci przewagę zamiast zastępować Twoje rzemiosło.
+        </p>
+        <p>
+          Dlatego każdy nasz program zaczyna się od fundamentów, a kończy na realnych
+          projektach, które można pokazać na rozmowie, wypuścić na produkcję albo
+          zbudować na nich własny biznes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container-page">
+      <span class="chip">Zespół</span>
+      <h2 class="section-heading mt-4">Założyciele</h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Programiści, edukatorzy, twórcy podcastu — i przede wszystkim praktycy.
+      </p>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {team.map((m) => (
+          <article class="card flex flex-col gap-5 sm:flex-row sm:items-start">
+            <span
+              class="flex h-24 w-24 flex-none items-center justify-center rounded-2xl font-display text-3xl font-bold text-white shadow-glow"
+              style={`background: linear-gradient(135deg, ${m.gradient[0]}, ${m.gradient[1]});`}
+              aria-hidden="true"
+            >
+              {m.initials}
+            </span>
+            <div class="flex-1">
+              <h3 class="font-display text-2xl font-semibold text-white">{m.name}</h3>
+              <p class="mt-1 text-sm font-medium text-brand-300">{m.role}</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-300">{m.bio}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {m.socials.twitter && (
+                  <a href={m.socials.twitter} target="_blank" rel="noreferrer" class="chip hover:border-white/30 hover:text-white">
+                    Twitter / X
+                  </a>
+                )}
+                {m.socials.linkedin && (
+                  <a href={m.socials.linkedin} target="_blank" rel="noreferrer" class="chip hover:border-white/30 hover:text-white">
+                    LinkedIn
+                  </a>
+                )}
+                {m.socials.github && (
+                  <a href={m.socials.github} target="_blank" rel="noreferrer" class="chip hover:border-white/30 hover:text-white">
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container-page">
+      <span class="chip">Współpraca</span>
+      <h2 class="section-heading mt-4">
+        Firmy, z którymi <span class="text-gradient">współpracowaliśmy</span>
+      </h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Szkolenia wewnętrzne, warsztaty, wystąpienia konferencyjne i wdrożenia
+        kultury AI w zespołach produktowych.
+      </p>
+
+      <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
+        {partners.map((p) => (
+          <div class="card flex items-center justify-center p-6 text-center">
+            <span class="font-display text-sm font-semibold text-slate-300">{p}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="container-page">
+      <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-brand-600/20 via-ink-800 to-accent-600/15 p-10 md:p-14">
+        <div class="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand-500/30 blur-3xl"></div>
+
+        <div class="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <h2 class="section-heading">
+              Chcesz zrobić coś razem?
+            </h2>
+            <p class="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
+              Szkolenia w Twojej firmie, keynote na konferencji, warsztat dla zespołu —
+              napisz do nas na {site.email}.
+            </p>
+          </div>
+          <a href={`mailto:${site.email}`} class="btn-primary">
+            Napisz do nas
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

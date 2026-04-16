@@ -1,0 +1,30 @@
+{
+  "name": "przeprogramowani-site",
+  "version": "1.0.0",
+  "description": "Przeprogramowani.pl — szersze spojrzenie na programowanie",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port ${PORT:-4321}",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=przeprogramowani"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "typescript": "^5.3.0",
+    "wrangler": "^4.63.0"
+  }
+}

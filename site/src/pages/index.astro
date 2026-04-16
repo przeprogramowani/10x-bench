@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CourseCard from '../components/CourseCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import NewsletterForm from '../components/NewsletterForm.tsx';
+import { courses } from '../data/courses';
+import { podcasts } from '../data/podcasts';
+import { videos } from '../data/videos';
+
+const latestPodcasts = podcasts.slice(0, 3);
+const latestVideos = videos.slice(0, 3);
+---
+
+<Layout>
+  <Hero />
+
+  <section id="kursy" class="relative py-20 md:py-28">
+    <div class="container-page">
+      <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <span class="chip">Kursy</span>
+          <h2 class="section-heading mt-4">
+            Nasze programy — <span class="text-gradient">od fundamentów do produkcji</span>
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-400">
+            Każdy z kursów prowadzi Cię przez realne scenariusze, z naciskiem na to, jak
+            pracować w świecie narzędzi AI, nie tracąc inżynierskiej jakości.
+          </p>
+        </div>
+        <a href="https://przeprogramowani.pl" target="_blank" rel="noreferrer" class="btn-secondary shrink-0">
+          Zobacz wszystkie ścieżki
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 md:py-28">
+    <div class="absolute inset-0 -z-10 bg-grid-fade opacity-40"></div>
+    <div class="container-page">
+      <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <span class="chip">Podcast</span>
+          <h2 class="section-heading mt-4">
+            Opanuj.AI i rozmowy z <span class="text-gradient">gośćmi</span>
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-400">
+            Dwa cykle, tysiące słuchaczy. Cotygodniowe spojrzenie na technologię
+            i najważniejsze wydarzenia ze świata AI.
+          </p>
+        </div>
+        <a href="/podcast" class="btn-secondary shrink-0">
+          Wszystkie odcinki
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestPodcasts.map((ep) => <PodcastCard episode={ep} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 md:py-28">
+    <div class="container-page">
+      <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <span class="chip">YouTube</span>
+          <h2 class="section-heading mt-4">
+            Tutoriale, case studies i <span class="text-gradient">live coding</span>
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-400">
+            Pokazujemy, jak dziś wygląda praca z Claude Code, Cursorem, TypeScript
+            i React w prawdziwych projektach.
+          </p>
+        </div>
+        <a href="/youtube" class="btn-secondary shrink-0">
+          Wszystkie filmy
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((v) => <VideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20 md:py-28">
+    <div class="container-page">
+      <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-ink-800/80 to-ink-900/80 p-10 md:p-14">
+        <div class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent-500/25 blur-3xl"></div>
+
+        <div class="relative grid gap-10 md:grid-cols-[1.15fr_1fr] md:gap-16">
+          <div>
+            <span class="chip border-accent-400/40 bg-accent-500/10 text-accent-200">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16v2.5H4zm0 4.5h16V11H4zm0 4.5h16v8l-8-4.5-8 4.5z" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Newsletter
+            </span>
+            <h2 class="section-heading mt-4">
+              Piątkowe <span class="text-gradient">3-2-1</span> prosto do Twojej skrzynki.
+            </h2>
+            <p class="mt-4 max-w-xl text-lg leading-relaxed text-slate-300">
+              3 techniczne rekomendacje, 2 developerskie tipy, 1 bonus. Żadnego
+              spamu — tylko to, co naprawdę przyda Ci się w pracy.
+            </p>
+            <ul class="mt-6 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span> Co piątek rano</li>
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span> Ponad 10 000 czytelników</li>
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-400"></span> Zero reklam zewnętrznych</li>
+              <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent-400"></span> Wypisz się jednym kliknięciem</li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <NewsletterForm client:load />
+            <p class="mt-4 text-xs text-slate-500">
+              Zapisując się, akceptujesz naszą politykę prywatności. Używamy Twojego
+              adresu wyłącznie do wysyłki newslettera.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

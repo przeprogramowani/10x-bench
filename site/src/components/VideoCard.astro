@@ -1,0 +1,60 @@
+---
+import type { YouTubeVideo } from '../data/videos';
+
+interface Props {
+  video: YouTubeVideo;
+}
+
+const { video } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(video.date));
+---
+
+<article class="group card flex h-full flex-col overflow-hidden p-0">
+  <div
+    class="relative aspect-video overflow-hidden"
+    style={`background: linear-gradient(135deg, ${video.thumbnailGradient[0]}, ${video.thumbnailGradient[1]});`}
+  >
+    <div class="absolute inset-0 bg-noise opacity-[0.04]"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <span class="grid h-16 w-16 place-items-center rounded-full bg-black/50 backdrop-blur-sm transition-transform group-hover:scale-110">
+        <svg class="h-7 w-7 translate-x-0.5 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </span>
+    </div>
+    <div class="absolute left-3 top-3">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
+        {video.category}
+      </span>
+    </div>
+    <div class="absolute bottom-3 right-3">
+      <span class="inline-flex items-center rounded-md bg-black/70 px-2 py-0.5 text-xs font-mono font-semibold text-white">
+        {video.duration}
+      </span>
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="font-display text-base font-semibold leading-snug text-white">
+      {video.title}
+    </h3>
+    <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-400">
+      {video.description}
+    </p>
+    <div class="mt-auto flex items-center justify-between gap-2 pt-4 text-xs text-slate-500">
+      <span>{formattedDate}</span>
+      <span class="inline-flex items-center gap-1.5">
+        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        {video.views} wyświetleń
+      </span>
+    </div>
+  </div>
+</article>

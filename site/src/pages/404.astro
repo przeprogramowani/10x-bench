@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Nie znaleziono | Przeprogramowani" description="Ta strona nie istnieje lub została przeniesiona.">
+  <section class="relative overflow-hidden py-24 md:py-32">
+    <div class="absolute inset-0 -z-10 bg-hero-glow opacity-70"></div>
+    <div class="container-page text-center">
+      <span class="chip mx-auto">Błąd 404</span>
+      <h1 class="mt-6 font-display text-6xl font-bold tracking-tight md:text-8xl">
+        404
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-slate-300">
+        Nie ma tutaj tego, czego szukasz. Ale mamy mnóstwo innych rzeczy.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-primary">Wróć na stronę główną</a>
+        <a href="/podcast" class="btn-secondary">Posłuchaj podcastu</a>
+      </div>
+    </div>
+  </section>
+</Layout>
