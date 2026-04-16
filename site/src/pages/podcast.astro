@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastFilter from '../components/PodcastFilter.tsx';
+import { podcasts } from '../data/podcasts';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Podcast — Przeprogramowani"
+  description="Opanuj.AI oraz Przeprogramowani ft. Gość — dwa cykle dla głodnych wiedzy programistów."
+>
+  <section class="relative overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0 -z-10 bg-hero-glow opacity-60"></div>
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <span class="chip">Podcast</span>
+        <h1 class="mt-5 font-display text-4xl font-bold tracking-tight md:text-6xl">
+          Dwa cykle, jedno <span class="text-gradient">szersze spojrzenie</span>.
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300 md:text-xl">
+          Opanuj.AI to comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI
+          (ponad 4000 słuchaczy). Przeprogramowani ft. Gość to rozmowy z praktykami
+          branży (3800+ słuchaczy). Słuchaj tam, gdzie Ci wygodnie.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.spotify} target="_blank" rel="noreferrer" class="btn-primary">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.9.2c-2.4-1.5-5.5-1.8-9.1-1a.6.6 0 11-.3-1.2c4-.9 7.4-.5 10.1 1.1.3.2.4.6.2.9zm1.2-2.7a.8.8 0 01-1 .3c-2.7-1.7-6.9-2.2-10.2-1.2a.8.8 0 11-.4-1.5c3.7-1.1 8.3-.6 11.4 1.3.3.2.4.7.2 1.1zm.1-2.8c-3.3-1.9-8.6-2.1-11.7-1.2a.9.9 0 11-.5-1.8c3.6-1.1 9.4-.9 13.2 1.4a.9.9 0 11-1 1.6z"/>
+            </svg>
+            Spotify
+          </a>
+          <a href={site.social.apple} target="_blank" rel="noreferrer" class="btn-secondary">
+            Apple Podcasts
+          </a>
+          <a href={site.social.youtube} target="_blank" rel="noreferrer" class="btn-secondary">
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20 md:pb-28">
+    <div class="container-page">
+      <PodcastFilter client:load episodes={podcasts} />
+    </div>
+  </section>
+</Layout>

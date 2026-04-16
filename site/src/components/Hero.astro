@@ -1,0 +1,139 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute inset-0 bg-hero-glow"></div>
+    <div class="absolute inset-0 bg-noise opacity-[0.015]"></div>
+    <div
+      class="absolute inset-0"
+      style="background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 80%);"
+    ></div>
+  </div>
+
+  <div class="container-page relative grid gap-14 pb-20 pt-20 md:pb-28 md:pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:pb-32 lg:pt-32">
+    <div class="flex flex-col justify-center">
+      <a
+        href="#10xdevs"
+        class="group inline-flex w-fit items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/10 px-3 py-1.5 text-xs font-medium text-brand-200"
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-400"></span>
+        </span>
+        Zapisy do 10xDevs — nowa edycja
+        <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+
+      <h1 class="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        Programuj w epoce <span class="text-gradient">AI</span> — szybciej, mądrzej, skuteczniej.
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
+        {site.tagline}. Od 7+ lat uczymy ambitnych programistów budować produkty,
+        które działają. Claude Code, Cursor, TypeScript, React — z praktyki prosto do Twojego workflow.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-3">
+        <a href="#10xdevs" class="btn-primary">
+          Dołącz do 10xDevs
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#kursy" class="btn-secondary">
+          Zobacz wszystkie kursy
+        </a>
+      </div>
+
+      <dl class="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-8 sm:grid-cols-4">
+        {site.stats.map((s) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500">{s.label}</dt>
+            <dd class="mt-1 font-display text-2xl font-semibold text-white md:text-3xl">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div id="10xdevs" class="relative flex items-center">
+      <div class="relative w-full">
+        <div
+          class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-brand-500/30 via-brand-600/10 to-accent-500/30 blur-2xl"
+          aria-hidden="true"
+        ></div>
+
+        <article class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-ink-800/80 to-ink-900/80 p-8 shadow-glow backdrop-blur">
+          <div class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-accent-500/25 blur-3xl"></div>
+
+          <div class="relative flex items-center justify-between">
+            <span class="chip border-accent-400/40 bg-accent-500/10 text-accent-200">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent-400"></span>
+              Flagowy program
+            </span>
+            <span class="font-mono text-xs text-slate-400">10-tygodniowa edycja</span>
+          </div>
+
+          <h2 class="relative mt-5 font-display text-5xl font-bold leading-tight tracking-tight text-white md:text-6xl">
+            10x<span class="text-gradient">Devs</span>
+          </h2>
+
+          <p class="relative mt-4 max-w-md text-base leading-relaxed text-slate-300">
+            Zostań inżynierem, który z Claude Code, Cursorem i nowoczesnym stackiem
+            buduje całe produkty w tempie nieosiągalnym rok temu.
+          </p>
+
+          <ul class="relative mt-6 space-y-2.5">
+            {[
+              'Workflow Product Buildera — od specki do deploymentu',
+              'Meta-prompting, subagenci, spec-driven development',
+              'Realne projekty, realna społeczność, realne efekty',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-slate-200">
+                <span class="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-brand-500/20 text-brand-300">
+                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div class="relative mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink-900 transition-transform hover:scale-[1.02]"
+            >
+              Sprawdź program
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#kursy" class="btn-ghost text-slate-200 hover:bg-white/10">
+              Porównaj z innymi kursami
+            </a>
+          </div>
+
+          <div class="relative mt-8 flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] p-3 font-mono text-xs text-slate-300">
+            <span class="grid h-8 w-8 flex-none place-items-center rounded-lg bg-brand-500/20 text-brand-300">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="min-w-0 flex-1 truncate">
+              <span class="text-slate-500">$</span> claude &nbsp;<span class="text-brand-300">build</span>&nbsp;--from-spec
+            </div>
+            <span class="chip">Live</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

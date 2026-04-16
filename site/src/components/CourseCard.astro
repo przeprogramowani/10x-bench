@@ -1,0 +1,96 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+
+const accentClasses = {
+  brand: {
+    ring: 'border-brand-400/40',
+    badge: 'bg-brand-500/15 text-brand-200 border-brand-400/30',
+    glow: 'from-brand-500/25 to-brand-400/5',
+    check: 'bg-brand-500/20 text-brand-300',
+    btn: 'from-brand-500 to-brand-400',
+  },
+  accent: {
+    ring: 'border-accent-400/40',
+    badge: 'bg-accent-500/15 text-accent-200 border-accent-400/30',
+    glow: 'from-accent-500/25 to-accent-400/5',
+    check: 'bg-accent-500/20 text-accent-300',
+    btn: 'from-accent-500 to-accent-400',
+  },
+  cyan: {
+    ring: 'border-cyan-400/40',
+    badge: 'bg-cyan-500/15 text-cyan-200 border-cyan-400/30',
+    glow: 'from-cyan-500/25 to-cyan-400/5',
+    check: 'bg-cyan-500/20 text-cyan-300',
+    btn: 'from-cyan-500 to-cyan-400',
+  },
+}[course.accent];
+---
+
+<article
+  class:list={[
+    'group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white/[0.03] p-7 backdrop-blur-sm transition-all hover:-translate-y-0.5',
+    accentClasses.ring,
+  ]}
+>
+  <div
+    class:list={[
+      'pointer-events-none absolute -right-24 -top-24 h-48 w-48 rounded-full bg-gradient-to-br blur-3xl opacity-60 transition-opacity group-hover:opacity-100',
+      accentClasses.glow,
+    ]}
+  ></div>
+
+  <div class="relative flex items-center justify-between">
+    <span class:list={['inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium', accentClasses.badge]}>
+      {course.status}
+    </span>
+    {course.duration && (
+      <span class="font-mono text-xs text-slate-400">{course.duration}</span>
+    )}
+  </div>
+
+  <h3 class="relative mt-5 font-display text-3xl font-bold tracking-tight text-white">
+    {course.name}
+  </h3>
+  <p class="relative mt-2 text-sm font-medium text-slate-300">{course.tagline}</p>
+
+  <p class="relative mt-5 text-sm leading-relaxed text-slate-400">
+    {course.description}
+  </p>
+
+  <ul class="relative mt-6 space-y-2.5">
+    {course.highlights.map((h) => (
+      <li class="flex items-start gap-3 text-sm text-slate-300">
+        <span class:list={['mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full', accentClasses.check]}>
+          <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M5 12l5 5 9-11" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        {h}
+      </li>
+    ))}
+  </ul>
+
+  <div class="relative mt-8 flex items-center justify-between gap-3 border-t border-white/5 pt-5">
+    <span class="text-xs uppercase tracking-wider text-slate-500">{course.level}</span>
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noreferrer"
+      class:list={[
+        'inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-4 py-2 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-[1.02]',
+        accentClasses.btn,
+      ]}
+    >
+      Zobacz kurs
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 17 17 7M8 7h9v9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</article>

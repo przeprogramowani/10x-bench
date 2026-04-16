@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos } from '../data/videos';
+import { site } from '../data/site';
+
+const categories = Array.from(new Set(videos.map((v) => v.category)));
+---
+
+<Layout
+  title="YouTube — Przeprogramowani"
+  description="Tutoriale, case studies i live coding o Claude Code, Cursor, TypeScript i React w prawdziwej pracy programisty."
+>
+  <section class="relative overflow-hidden py-20 md:py-28">
+    <div class="absolute inset-0 -z-10 bg-hero-glow opacity-60"></div>
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div>
+          <span class="chip">YouTube</span>
+          <h1 class="mt-5 font-display text-4xl font-bold tracking-tight md:text-6xl">
+            Programowanie w AI, <span class="text-gradient">pokazane od kuchni</span>.
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-300 md:text-xl">
+            Tutoriale, case studies, live coding. Pokazujemy jak naprawdę wygląda
+            praca z Claude Code, Cursorem, React 19 i TypeScript w produkcyjnych
+            projektach.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href={site.social.youtube} target="_blank" rel="noreferrer" class="btn-primary">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 7.5c-.3-1.1-1.1-1.9-2.2-2.2C18.7 4.8 12 4.8 12 4.8s-6.7 0-8.8.5C2.1 5.6 1.3 6.4 1 7.5.5 9.6.5 12 .5 12s0 2.4.5 4.5c.3 1.1 1.1 1.9 2.2 2.2 2.1.5 8.8.5 8.8.5s6.7 0 8.8-.5c1.1-.3 1.9-1.1 2.2-2.2.5-2.1.5-4.5.5-4.5s0-2.4-.5-4.5zM9.8 15.5V8.5l5.8 3.5-5.8 3.5z"/>
+              </svg>
+              Subskrybuj kanał
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-2">
+            {categories.map((c) => (
+              <a href={`#${c.toLowerCase().replace(/\s+/g, '-')}`} class="chip hover:border-white/30 hover:text-white">
+                {c}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-brand-500/20 to-accent-500/20 blur-3xl"></div>
+          <div class="relative grid gap-4 sm:grid-cols-2">
+            {videos.slice(0, 2).map((v) => <VideoCard video={v} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-20 md:pb-28">
+    <div class="container-page">
+      <div class="flex items-end justify-between">
+        <h2 class="section-heading">Najnowsze filmy</h2>
+        <span class="text-sm text-slate-500">Aktualizowane co tydzień</span>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {videos.map((v) => <VideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+</Layout>
