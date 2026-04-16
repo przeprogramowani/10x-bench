@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import YouTubeVideoCard from '../components/YouTubeVideoCard.astro';
+import { Icon } from '../components/Icon';
+import { youTubeVideos } from '../data/youtube';
+import { site } from '../data/site';
+
+const [featured, ...rest] = youTubeVideos;
+
+const totalViews = youTubeVideos.reduce((sum, v) => {
+  const numeric = parseFloat(v.views);
+  return sum + (isNaN(numeric) ? 0 : numeric);
+}, 0);
+---
+
+<BaseLayout title="YouTube" description="Kanał YouTube Przeprogramowani — praktyczne filmy o AI, TypeScripcie, Reakcie i nowoczesnym frontendzie.">
+  <section class="relative overflow-hidden pt-14 md:pt-20 pb-10">
+    <div class="absolute inset-0 bg-hero-radial pointer-events-none" aria-hidden="true"></div>
+    <div class="container-base relative">
+      <div class="max-w-3xl">
+        <span class="section-eyebrow">
+          <Icon name="youtube" width={12} height={12} />
+          YouTube
+        </span>
+        <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+          <span class="gradient-text">Filmy</span> o nowoczesnym programowaniu
+        </h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Praktyczne materiały o AI, agentach, architekturze i nowoczesnym frontendzie.
+          Nowe filmy regularnie — subskrybuj, aby niczego nie przegapić.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.youtube} target="_blank" rel="noreferrer" class="btn-primary">
+            <Icon name="youtube" width={16} height={16} />
+            Subskrybuj kanał
+          </a>
+        </div>
+
+        <dl class="mt-10 grid grid-cols-3 gap-6 max-w-md">
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500">Filmów</dt>
+            <dd class="mt-1 text-2xl font-bold text-white">200+</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500">Subskrybentów</dt>
+            <dd class="mt-1 text-2xl font-bold text-white">60 tys.</dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-slate-500">Wyświetleń (top 6)</dt>
+            <dd class="mt-1 text-2xl font-bold text-white">{Math.round(totalViews)} tys.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="py-10 md:py-12">
+    <div class="container-base">
+      <div class="mb-6">
+        <span class="section-eyebrow">Polecany</span>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <YouTubeVideoCard video={featured} featured />
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7 flex flex-col">
+          <h3 class="text-lg font-bold text-white">Nie przegap premier</h3>
+          <p class="mt-3 text-sm text-slate-400 leading-relaxed">
+            Co tydzień nowy materiał: deep dive'y techniczne, rozmowy z praktykami, AI w akcji.
+          </p>
+          <div class="mt-6 space-y-3 text-sm text-slate-300">
+            <p class="flex items-center gap-2">
+              <Icon name="check" width={14} height={14} className="text-brand-300" />
+              Bez click-baitu
+            </p>
+            <p class="flex items-center gap-2">
+              <Icon name="check" width={14} height={14} className="text-brand-300" />
+              Konkretny kod i realne przykłady
+            </p>
+            <p class="flex items-center gap-2">
+              <Icon name="check" width={14} height={14} className="text-brand-300" />
+              Polski język, światowy poziom
+            </p>
+          </div>
+          <a href={site.social.youtube} target="_blank" rel="noreferrer" class="mt-auto btn-accent w-full justify-center">
+            <Icon name="youtube" width={16} height={16} />
+            Subskrybuj teraz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="py-12 md:py-16">
+    <div class="container-base">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Ostatnie filmy</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {rest.map((v) => <YouTubeVideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

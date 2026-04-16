@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import { Icon } from '../../components/Icon';
+import { courses } from '../../data/courses';
+---
+
+<BaseLayout title="Kursy" description="Kursy Przeprogramowani: 10xDevs, Opanuj Frontend, Opanuj TypeScript. Wybierz ścieżkę i rozwiń się jako programista.">
+  <section class="relative overflow-hidden pt-14 md:pt-20 pb-12">
+    <div class="absolute inset-0 bg-hero-radial pointer-events-none" aria-hidden="true"></div>
+    <div class="container-base relative">
+      <div class="max-w-3xl">
+        <span class="section-eyebrow">Kursy</span>
+        <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+          <span class="gradient-text">Wybierz</span> swoją <br class="hidden md:block" />
+          <span class="gradient-text-accent">ścieżkę rozwoju</span>
+        </h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Trzy kursy, trzy różne cele — od wejścia w IT, przez mistrzostwo TypeScript,
+          po świadome wykorzystanie AI w produkcji.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-16">
+    <div class="container-base">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <div class="container-base">
+      <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12">
+        <div class="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
+          <div>
+            <span class="section-eyebrow">Dla firm</span>
+            <h2 class="mt-4 text-3xl md:text-4xl font-bold tracking-tight gradient-text">Szkolenia zamknięte</h2>
+            <p class="mt-4 text-slate-300">
+              Prowadzimy dedykowane szkolenia i warsztaty dla zespołów — z TypeScript, React, architektury
+              i świadomego wykorzystania AI. Program dopasowujemy do realiów Twojego produktu.
+            </p>
+          </div>
+          <div>
+            <a href="mailto:kontakt@przeprogramowani.pl?subject=Szkolenie%20zamkniete" class="btn-primary w-full justify-center">
+              <Icon name="mail" width={16} height={16} />
+              Porozmawiajmy o szkoleniu
+            </a>
+            <ul class="mt-5 space-y-2 text-sm text-slate-400">
+              <li class="flex items-center gap-2"><Icon name="check" width={14} height={14} className="text-brand-300" /> Indywidualny program</li>
+              <li class="flex items-center gap-2"><Icon name="check" width={14} height={14} className="text-brand-300" /> Warsztatowa formuła</li>
+              <li class="flex items-center gap-2"><Icon name="check" width={14} height={14} className="text-brand-300" /> Realne case studies zespołu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

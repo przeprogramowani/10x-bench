@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Icon } from '../../components/Icon';
+import { courses } from '../../data/courses';
+
+export function getStaticPaths() {
+  return courses
+    .filter((c) => !c.external)
+    .map((course) => ({
+      params: { slug: course.slug },
+      props: { course },
+    }));
+}
+
+const { course } = Astro.props;
+
+const accentMap = {
+  blue: {
+    from: 'from-brand-500/20',
+    to: 'to-brand-500/5',
+    shadow: 'shadow-brand-500/30',
+    gradient: 'from-brand-500 to-brand-700',
+    text: 'text-brand-300',
+    btn: 'btn-primary',
+  },
+  violet: {
+    from: 'from-purple-500/20',
+    to: 'to-brand-500/5',
+    shadow: 'shadow-purple-500/30',
+    gradient: 'from-purple-500 to-brand-600',
+    text: 'text-purple-300',
+    btn: 'btn-accent',
+  },
+  orange: {
+    from: 'from-accent-500/20',
+    to: 'to-accent-500/5',
+    shadow: 'shadow-accent-500/30',
+    gradient: 'from-accent-500 to-accent-600',
+    text: 'text-accent-400',
+    btn: 'btn-accent',
+  },
+};
+
+const a = accentMap[course.accent];
+---
+
+<BaseLayout title={course.name} description={course.description}>
+  <section class="relative overflow-hidden pt-14 md:pt-20 pb-10">
+    <div class={`absolute inset-0 bg-gradient-to-b ${a.from} ${a.to} pointer-events-none`} aria-hidden="true"></div>
+    <div class="container-base relative">
+      <a href="/kursy" class="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition">
+        <Icon name="arrow-right" width={14} height={14} className="rotate-180" />
+        Wszystkie kursy
+      </a>
+
+      <div class="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+        <div>
+          <span class={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider ${a.text}`}>
+            <Icon name="sparkle" width={12} height={12} />
+            {course.badge}
+          </span>
+          <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+            {course.name}
+          </h1>
+          <p class="mt-4 text-xl text-slate-300">{course.tagline}</p>
+          <p class="mt-6 text-base text-slate-300 leading-relaxed max-w-2xl">{course.description}</p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href={course.href} class={`${a.btn}`}>
+              Zapisz się
+              <Icon name="arrow-right" width={16} height={16} />
+            </a>
+            <a href="mailto:kontakt@przeprogramowani.pl" class="btn-ghost">
+              Masz pytanie? Napisz
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class={`rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl ${a.shadow}`}>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Informacje</h3>
+            <dl class="mt-5 space-y-4 text-sm">
+              <div>
+                <dt class="text-slate-500 text-xs uppercase tracking-wider">Czas trwania</dt>
+                <dd class="mt-1 text-white font-semibold">{course.duration}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 text-xs uppercase tracking-wider">Poziom</dt>
+                <dd class="mt-1 text-white font-semibold">{course.level}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 text-xs uppercase tracking-wider">Format</dt>
+                <dd class="mt-1 text-white font-semibold">{course.format}</dd>
+              </div>
+              <div>
+                <dt class="text-slate-500 text-xs uppercase tracking-wider">Dla kogo</dt>
+                <dd class="mt-1 text-white">{course.audience}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="grid gap-10 md:grid-cols-2">
+        <div>
+          <span class="section-eyebrow">Co zyskujesz</span>
+          <h2 class="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">Kluczowe korzyści</h2>
+          <ul class="mt-8 space-y-4">
+            {
+              course.highlights.map((h) => (
+                <li class="flex gap-3">
+                  <span class={`flex-shrink-0 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br ${a.gradient} text-white`}>
+                    <Icon name="check" width={14} height={14} />
+                  </span>
+                  <span class="text-base text-slate-200">{h}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <span class="section-eyebrow">Program</span>
+          <h2 class="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">Moduły kursu</h2>
+          <ol class="mt-8 space-y-3">
+            {
+              course.modules.map((m, i) => (
+                <li class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <span class={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${a.gradient} text-white font-bold`}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p class="self-center text-slate-200">{m}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class={`rounded-3xl border border-white/10 bg-gradient-to-br ${a.from} ${a.to} p-8 md:p-12 text-center`}>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white">
+          Gotowy, by <span class={a.text}>{course.name.split(':')[0]}</span>?
+        </h2>
+        <p class="mt-4 text-slate-300 max-w-xl mx-auto">
+          Dołącz do społeczności programistów, którzy myślą szerzej o swoim rozwoju.
+        </p>
+        <a href={course.href} class={`mt-8 ${a.btn}`}>
+          Zapisz się na {course.shortName}
+          <Icon name="arrow-right" width={16} height={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

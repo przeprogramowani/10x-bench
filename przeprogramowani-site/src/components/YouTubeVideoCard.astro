@@ -1,0 +1,71 @@
+---
+import { Icon } from './Icon';
+import type { YouTubeVideo } from '../data/youtube';
+
+interface Props {
+  video: YouTubeVideo & { url: string };
+  featured?: boolean;
+}
+
+const { video, featured = false } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(video.publishedAt));
+
+// Generate a visually distinct gradient for each thumbnail
+const thumbGradients: Record<string, string> = {
+  'claude-code': 'from-purple-500/30 via-brand-500/20 to-brand-700/40',
+  'mvp-weekend': 'from-accent-500/30 via-pink-500/20 to-brand-600/40',
+  typescript: 'from-brand-500/40 via-brand-600/30 to-indigo-900/50',
+  'context-engineering': 'from-emerald-500/30 via-brand-500/20 to-purple-700/40',
+  'react-19': 'from-cyan-500/30 via-brand-500/20 to-brand-900/40',
+  'pair-programming': 'from-accent-400/30 via-purple-500/20 to-brand-700/40',
+};
+
+const gradient = thumbGradients[video.thumbnail] ?? 'from-brand-500/30 to-brand-900/40';
+---
+
+<a
+  href={video.url}
+  target="_blank"
+  rel="noreferrer"
+  class={`group block rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:-translate-y-1 ${
+    featured ? 'md:col-span-2' : ''
+  }`}
+>
+  <!-- Thumbnail -->
+  <div
+    class={`relative aspect-video overflow-hidden bg-gradient-to-br ${gradient}`}
+  >
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.5)_90%)]"></div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/90 text-white shadow-xl group-hover:scale-110 group-hover:bg-red-500 transition-all">
+        <Icon name="play" width={24} height={24} />
+      </div>
+    </div>
+    <span class="absolute bottom-3 right-3 rounded-md bg-black/70 px-2 py-0.5 text-xs font-mono font-semibold text-white backdrop-blur-sm">
+      {video.duration}
+    </span>
+    <span class="absolute top-3 left-3 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white uppercase tracking-wider backdrop-blur-sm">
+      {video.tag}
+    </span>
+  </div>
+
+  <!-- Meta -->
+  <div class="p-5">
+    <h3 class={`font-semibold tracking-tight text-white leading-snug group-hover:text-brand-200 transition ${featured ? 'text-xl' : 'text-base'}`}>
+      {video.title}
+    </h3>
+    <p class="mt-2 text-sm text-slate-400 leading-relaxed line-clamp-2">
+      {video.description}
+    </p>
+    <div class="mt-4 flex items-center gap-3 text-xs text-slate-500">
+      <span>{formattedDate}</span>
+      <span>·</span>
+      <span>{video.views} wyświetleń</span>
+    </div>
+  </div>
+</a>

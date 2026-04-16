@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from '../components/Icon';
+import { team, values, timeline, partners } from '../data/team';
+import { site } from '../data/site';
+
+const iconMap: Record<string, 'eye' | 'layers' | 'brain' | 'spark'> = {
+  eye: 'eye',
+  layers: 'layers',
+  brain: 'brain',
+  spark: 'spark',
+};
+---
+
+<BaseLayout title="O nas" description="Poznaj zespół Przeprogramowani — Przemek Smyrdek i Marcin Czarkowski. Nasza misja, wartości i 7 lat w edukacji technologicznej.">
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-14 md:pt-20 pb-16">
+    <div class="absolute inset-0 bg-hero-radial pointer-events-none" aria-hidden="true"></div>
+    <div class="container-base relative">
+      <div class="max-w-3xl animate-fade-in">
+        <span class="section-eyebrow">O nas</span>
+        <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+          <span class="gradient-text">Od 7 lat</span> uczymy,<br class="hidden md:block" />
+          jak być <em class="not-italic gradient-text-accent">lepszym</em> programistą
+        </h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Wierzymy, że najlepsi programiści myślą szerzej — o architekturze, biznesie, ludziach i sobie samym.
+          Dzielimy się tym spojrzeniem przez kursy, podcast, YouTube i newsletter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="mb-12">
+        <span class="section-eyebrow">Zespół</span>
+        <h2 class="mt-4 section-heading">Poznaj założycieli</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          team.map((member) => (
+            <article class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent p-7 md:p-9">
+              <div class="flex items-start gap-5">
+                <div
+                  class={`flex-shrink-0 flex h-20 w-20 md:h-24 md:w-24 items-center justify-center rounded-2xl text-white text-2xl md:text-3xl font-bold shadow-xl ${
+                    member.accent === 'blue'
+                      ? 'bg-gradient-to-br from-brand-500 to-brand-700 shadow-brand-500/30'
+                      : 'bg-gradient-to-br from-accent-500 to-accent-600 shadow-accent-500/30'
+                  }`}
+                >
+                  {member.initials}
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-white">{member.name}</h3>
+                  <p class="mt-1 text-sm text-slate-400">{member.role}</p>
+                </div>
+              </div>
+
+              <p class="mt-6 text-sm md:text-base text-slate-300 leading-relaxed">{member.bio}</p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                {member.expertise.map((e) => (
+                  <span class="chip">{e}</span>
+                ))}
+              </div>
+
+              <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap gap-4">
+                {member.socials.map((s) => (
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-white transition"
+                  >
+                    {s.label}
+                    <Icon name="arrow-up-right" width={12} height={12} />
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="mb-12 max-w-2xl">
+        <span class="section-eyebrow">Wartości</span>
+        <h2 class="mt-4 section-heading">W co wierzymy</h2>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {
+          values.map((v) => (
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7">
+              <div class="flex items-center gap-4">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/30 to-accent-500/20 text-brand-200">
+                  <Icon name={iconMap[v.icon]} width={22} height={22} />
+                </div>
+                <h3 class="text-xl font-bold text-white">{v.title}</h3>
+              </div>
+              <p class="mt-4 text-sm text-slate-300 leading-relaxed">{v.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="mb-12 max-w-2xl">
+        <span class="section-eyebrow">Historia</span>
+        <h2 class="mt-4 section-heading">Nasza droga</h2>
+      </div>
+
+      <ol class="relative border-l border-white/10 ml-3 space-y-8">
+        {
+          timeline.map((item, i) => (
+            <li class="pl-8 relative">
+              <div class={`absolute -left-[9px] top-1 flex h-4 w-4 items-center justify-center rounded-full ${
+                i === timeline.length - 1
+                  ? 'bg-gradient-to-br from-brand-400 to-accent-500 shadow-[0_0_18px_rgba(54,167,246,0.55)]'
+                  : 'bg-brand-500/80'
+              }`}>
+                <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
+                <span class="text-sm font-mono font-semibold text-brand-300 w-16 flex-shrink-0">{item.year}</span>
+                <div>
+                  <h3 class="font-semibold text-white">{item.label}</h3>
+                  <p class="mt-1 text-sm text-slate-400">{item.description}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-12 text-center">
+        <span class="section-eyebrow">Zaufali nam</span>
+        <h2 class="mt-4 text-2xl md:text-3xl font-bold tracking-tight text-white">
+          Pracowaliśmy z zespołami z:
+        </h2>
+        <div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3">
+          {partners.map((p) => (
+            <span class="text-base font-semibold text-slate-400 hover:text-slate-200 transition">{p}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-14 md:py-20">
+    <div class="container-base">
+      <div class="rounded-3xl border border-brand-400/20 bg-gradient-to-br from-brand-950 to-[#0a0f1e] p-8 md:p-12 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight gradient-text">Masz pytanie?</h2>
+        <p class="mt-4 text-slate-300 max-w-xl mx-auto">
+          Napisz do nas — chętnie porozmawiamy o kursach, szkoleniach firmowych albo współpracy.
+        </p>
+        <a href={`mailto:${site.email}`} class="btn-primary mt-8">
+          <Icon name="mail" width={16} height={16} />
+          {site.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

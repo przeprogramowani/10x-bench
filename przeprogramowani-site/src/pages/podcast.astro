@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard.astro';
+import { Icon } from '../components/Icon';
+import { podcastEpisodes } from '../data/podcast';
+import { site } from '../data/site';
+
+const [latest, ...rest] = podcastEpisodes;
+---
+
+<BaseLayout title="Podcast" description="Podcast Przeprogramowani — rozmowy o programowaniu, karierze i mądrym wykorzystywaniu AI. Posłuchaj najnowszych odcinków.">
+  <section class="relative overflow-hidden pt-14 md:pt-20 pb-12">
+    <div class="absolute inset-0 bg-hero-radial pointer-events-none" aria-hidden="true"></div>
+    <div class="container-base relative">
+      <div class="max-w-3xl">
+        <span class="section-eyebrow">
+          <Icon name="mic" width={12} height={12} />
+          Podcast
+        </span>
+        <h1 class="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]">
+          <span class="gradient-text">Rozmowy</span> o programowaniu
+        </h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
+          Marcin Czarkowski i Przemek Smyrdek rozmawiają o technologii, karierze i mądrym używaniu AI.
+          Gośćmi są praktykujący inżynierowie i liderzy polskiej sceny IT.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.spotify} target="_blank" rel="noreferrer" class="btn-primary">
+            <Icon name="spotify" width={16} height={16} />
+            Słuchaj na Spotify
+          </a>
+          <a href={site.social.applePodcasts} target="_blank" rel="noreferrer" class="btn-ghost">
+            <Icon name="apple" width={16} height={16} />
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured latest episode -->
+  <section class="py-10">
+    <div class="container-base">
+      <div class="mb-6">
+        <span class="section-eyebrow">Najnowszy odcinek</span>
+      </div>
+      <PodcastEpisodeCard episode={latest} featured />
+    </div>
+  </section>
+
+  <!-- All episodes -->
+  <section class="py-12 md:py-16">
+    <div class="container-base">
+      <div class="mb-8 flex items-end justify-between">
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-white">
+          Wcześniejsze odcinki
+        </h2>
+        <p class="text-sm text-slate-400">
+          {podcastEpisodes.length - 1} odcinków
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {rest.map((ep) => <PodcastEpisodeCard episode={ep} />)}
+      </div>
+
+      <div class="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center">
+        <p class="text-slate-400">
+          Łącznie mamy już <span class="text-white font-semibold">97+ odcinków</span> w archiwum.
+          Pełna lista dostępna na platformach streamingowych.
+        </p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href={site.social.spotify} target="_blank" rel="noreferrer" class="btn-outline">
+            <Icon name="spotify" width={14} height={14} />
+            Cała biblioteka
+          </a>
+          <a href={site.social.applePodcasts} target="_blank" rel="noreferrer" class="btn-ghost">
+            <Icon name="apple" width={14} height={14} />
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
