@@ -1,0 +1,67 @@
+---
+import { site } from '~/data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-ink-900/60">
+  <div class="container-p py-14">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3">
+          <span
+            class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 text-white shadow-glow"
+          >
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M5 8 L10 12 L5 16" stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="12" y1="17" x2="19" y2="17" stroke-linecap="round" />
+            </svg>
+          </span>
+          <div>
+            <p class="font-display text-lg font-bold text-white">{site.name}</p>
+            <p class="text-sm text-slate-400">{site.tagline}</p>
+          </div>
+        </div>
+        <p class="mt-5 max-w-md text-sm leading-relaxed text-slate-400">
+          {site.description}
+        </p>
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-brand-300 hover:text-brand-200"
+        >
+          {site.email}
+          <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path d="M7.5 4.5a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V6.9L5.7 14.7a1 1 0 01-1.4-1.4L12.1 5.5H8.5a1 1 0 01-1-1z"/></svg>
+        </a>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Kursy</h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">10xDevs</a></li>
+          <li><a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Opanuj Frontend</a></li>
+          <li><a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Opanuj TypeScript</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Znajdź nas</h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href={site.social.youtube} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">YouTube</a></li>
+          <li><a href={site.social.spotify} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Spotify</a></li>
+          <li><a href={site.social.applePodcasts} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Apple Podcasts</a></li>
+          <li><a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Newsletter</a></li>
+          <li><a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">LinkedIn</a></li>
+          <li><a href={site.social.instagram} target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 border-t border-white/5 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Przeprogramowani. Wszystkie prawa zastrzeżone.</p>
+      <p>
+        Wdrożone na <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white">Cloudflare Pages</a>
+        • Zbudowane z Astro, React i Tailwind
+      </p>
+    </div>
+  </div>
+</footer>

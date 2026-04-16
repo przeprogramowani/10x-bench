@@ -1,0 +1,114 @@
+---
+import { courses } from '~/data/courses';
+const tenXDevs = courses.find((c) => c.id === '10xdevs')!;
+---
+
+<section class="relative overflow-hidden">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 grid-bg"></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand-500/30 blur-[140px]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-20 right-0 h-[500px] w-[700px] rounded-full bg-accent-500/20 blur-[140px]"
+  >
+  </div>
+
+  <div class="container-p relative pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-32">
+    <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="max-w-2xl">
+        <span class="chip border-brand-400/30 bg-brand-500/10 text-brand-200">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-300 animate-pulse-slow"></span>
+          {tenXDevs.badge}
+        </span>
+
+        <h1 class="mt-6 text-4xl font-display font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Szersze spojrzenie
+          <br class="hidden sm:block" />
+          na <span class="gradient-text">programowanie w erze AI</span>.
+        </h1>
+
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Tworzymy kursy, podcasty i narzędzia dla programistów, którzy nie chcą zostać w tyle.
+          Pomagamy świadomie wykorzystywać <strong class="font-semibold text-white">Generative AI</strong>
+          w codziennej pracy, od researchu po produkcję.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Dołącz do 10xDevs 3.0
+            <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path d="M7.5 4.5a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V6.9L5.7 14.7a1 1 0 01-1.4-1.4L12.1 5.5H8.5a1 1 0 01-1-1z"/></svg>
+          </a>
+          <a href="#kursy" class="btn-secondary">Poznaj wszystkie kursy</a>
+        </div>
+
+        <dl class="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 text-left">
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-widest text-slate-500">Absolwenci</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-white">400+</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-widest text-slate-500">Lat edukacji</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-white">7+</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-semibold uppercase tracking-widest text-slate-500">Społeczność</dt>
+            <dd class="mt-1 font-display text-2xl font-bold text-white">25k+</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-px rounded-3xl bg-gradient-to-br from-brand-500/60 to-accent-500/40 opacity-60 blur-2xl"></div>
+        <div class="relative rounded-3xl border border-white/10 bg-ink-800/70 p-6 backdrop-blur-xl sm:p-8">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-brand-300">Flagowy program</p>
+              <p class="mt-1 font-display text-2xl font-bold text-white">{tenXDevs.name}</p>
+              <p class="text-sm text-slate-400">{tenXDevs.subtitle}</p>
+            </div>
+            <div class="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 text-white">
+              <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2 L4 14 h7 l-2 8 9-12 h-7 z" stroke-linejoin="round" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+
+          <p class="mt-5 text-sm leading-relaxed text-slate-300">{tenXDevs.description}</p>
+
+          <ul class="mt-6 space-y-3">
+            {
+              tenXDevs.features.map((feature) => (
+                <li class="flex items-start gap-3 text-sm text-slate-200">
+                  <svg viewBox="0 0 20 20" class="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-400" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd" />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-6 flex items-center justify-between gap-3 border-t border-white/10 pt-5">
+            <div class="flex -space-x-2">
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-ink-800 bg-gradient-to-br from-brand-500 to-accent-500 text-[10px] font-bold text-white">PS</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-ink-800 bg-gradient-to-br from-accent-500 to-brand-500 text-[10px] font-bold text-white">MC</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-ink-800 bg-white/10 text-[10px] font-bold text-slate-200">+</span>
+            </div>
+            <a
+              href={tenXDevs.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-200 hover:text-white"
+            >
+              Zobacz program
+              <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path d="M7.5 4.5a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V6.9L5.7 14.7a1 1 0 01-1.4-1.4L12.1 5.5H8.5a1 1 0 01-1-1z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

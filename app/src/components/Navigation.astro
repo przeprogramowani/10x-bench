@@ -1,0 +1,119 @@
+---
+import { navigation, site } from '~/data/site';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-white/5 bg-ink-900/70 backdrop-blur-xl"
+  data-nav
+>
+  <div class="container-p flex h-16 items-center justify-between gap-6">
+    <a href="/" class="group flex items-center gap-3" aria-label="Przeprogramowani — strona główna">
+      <span
+        class="relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 text-white shadow-glow"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M5 8 L10 12 L5 16" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="12" y1="17" x2="19" y2="17" stroke-linecap="round" />
+        </svg>
+      </span>
+      <span class="flex flex-col leading-tight">
+        <span class="font-display text-base font-bold tracking-tight text-white">
+          {site.name}
+        </span>
+        <span class="hidden sm:block text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
+          Szersze spojrzenie na programowanie
+        </span>
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Menu główne">
+      {
+        navigation.map((item) => {
+          const isActive =
+            item.href === currentPath ||
+            (item.href !== '/' && currentPath.startsWith(item.href.split('#')[0]) && item.href.startsWith('/'));
+          const isExternal = item.href.startsWith('http');
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                'relative rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                isActive ? 'text-white' : 'text-slate-300 hover:text-white',
+              ]}
+              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {item.label}
+              {isActive && (
+                <span class="absolute inset-x-3 -bottom-px h-px bg-gradient-to-r from-brand-400 to-accent-400" />
+              )}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-secondary">
+        Newsletter
+      </a>
+      <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <span>10xDevs</span>
+        <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path d="M7.5 4.5a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V6.9L5.7 14.7a1 1 0 01-1.4-1.4L12.1 5.5H8.5a1 1 0 01-1-1z"/></svg>
+      </a>
+
+      <button
+        type="button"
+        class="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-slate-200 hover:bg-white/5"
+        aria-label="Otwórz menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-white/5 bg-ink-900/95 backdrop-blur-xl"
+    data-mobile-menu
+  >
+    <nav class="container-p flex flex-col py-3" aria-label="Menu mobilne">
+      {
+        navigation.map((item) => {
+          const isExternal = item.href.startsWith('http');
+          return (
+            <a
+              href={item.href}
+              class="rounded-lg px-3 py-3 text-base font-medium text-slate-200 hover:bg-white/5 hover:text-white"
+              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      <a
+        href={site.social.newsletter}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 btn-secondary justify-center"
+      >
+        Newsletter
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLDivElement>('[data-mobile-menu]');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

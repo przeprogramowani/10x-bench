@@ -1,0 +1,181 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Hero from '~/components/Hero.astro';
+import SectionHeading from '~/components/SectionHeading.astro';
+import PodcastCard from '~/components/PodcastCard.astro';
+import VideoCard from '~/components/VideoCard.astro';
+import CoursesGrid from '~/components/CoursesGrid.tsx';
+import { podcastEpisodes } from '~/data/podcast';
+import { youtubeVideos } from '~/data/youtube';
+import { partners, stats } from '~/data/team';
+import { site } from '~/data/site';
+
+const latestEpisodes = podcastEpisodes.slice(0, 3);
+const latestVideos = youtubeVideos.slice(0, 3);
+---
+
+<Layout
+  description="Przeprogramowani — kursy, podcasty i narzędzia dla programistów ery AI. 10xDevs 3.0, Opanuj Frontend, Opanuj TypeScript."
+>
+  <Hero />
+
+  <!-- Trust bar -->
+  <section class="border-y border-white/5 bg-white/[0.02]">
+    <div class="container-p py-10">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+        Zaufali nam inżynierowie z
+      </p>
+      <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        {
+          partners.map((p) => (
+            <li class="font-display text-lg font-medium tracking-wide text-slate-400/80 transition-colors hover:text-slate-200">
+              {p}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="kursy" class="section scroll-mt-24">
+    <div class="container-p">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <SectionHeading
+          eyebrow="Kursy"
+          title="Trzy programy. Jedna misja."
+          description="Naucz się pracować ze świadomym AI — od fundamentów TypeScripta po pełny workflow 10x dewelopera."
+        />
+        <div class="hidden md:flex items-center gap-2 text-sm text-slate-400">
+          <span class="h-px w-10 bg-brand-500/60"></span>
+          <span>Kohortowo • Społeczność • Gwarancja satysfakcji</span>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <CoursesGrid client:idle />
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats / value -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-800 to-ink-700 p-10 sm:p-14">
+        <div aria-hidden class="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand-500/30 blur-3xl"></div>
+        <div aria-hidden class="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-accent-500/20 blur-3xl"></div>
+
+        <div class="relative grid gap-10 lg:grid-cols-[1fr_1px_1fr]">
+          <div>
+            <span class="heading-eyebrow">Dlaczego my</span>
+            <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">
+              Programowanie spotyka rozwój osobisty.
+            </h2>
+            <p class="mt-4 text-slate-300">
+              Wierzymy, że wybitni deweloperzy patrzą szerzej — na architekturę, biznes, ludzi i samorozwój.
+              Od 7+ lat budujemy społeczność i materiały, które pomagają patrzeć dalej niż jeden framework.
+            </p>
+
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              {
+                stats.map((s) => (
+                  <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                    <p class="font-display text-3xl font-bold text-white">{s.value}</p>
+                    <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">{s.label}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="hidden lg:block bg-white/10" aria-hidden></div>
+
+          <div class="flex flex-col justify-center">
+            <blockquote class="relative rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <svg viewBox="0 0 32 32" class="h-8 w-8 text-brand-400/60" fill="currentColor"><path d="M10 8H4v10h6V8zm14 0h-6v10h6V8z"/></svg>
+              <p class="mt-3 text-lg italic leading-relaxed text-slate-200">
+                Przeprogramowani to nie kolejne kursy. To powtarzalne procesy i mentalne modele,
+                które sprawdzają się w produkcyjnych zespołach, gdy AI staje się częścią workflow.
+              </p>
+              <footer class="mt-4 text-sm">
+                <p class="font-semibold text-white">Marcin & Przemek</p>
+                <p class="text-slate-400">Współzałożyciele Przeprogramowani</p>
+              </footer>
+            </blockquote>
+
+            <a href="/o-nas" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-200 hover:text-white">
+              Poznaj naszą historię
+              <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path fill-rule="evenodd" d="M4 10a1 1 0 011-1h8.6l-2.3-2.3a1 1 0 111.4-1.4l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4-1.4l2.3-2.3H5a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast preview -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Ostatnie odcinki"
+          description="Co tydzień: świadome AI, inżynieria oprogramowania, kariera i rozmowy z ludźmi, którzy robią dobrą robotę."
+        />
+        <a href="/podcast" class="btn-ghost self-start sm:self-end">
+          Wszystkie odcinki
+          <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path fill-rule="evenodd" d="M4 10a1 1 0 011-1h8.6l-2.3-2.3a1 1 0 111.4-1.4l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4-1.4l2.3-2.3H5a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestEpisodes.map((ep) => <PodcastCard episode={ep} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube preview -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Ostatnie filmy"
+          description="Praktyczne lekcje, demo-sesje i deep-dive w architekturę, AI tooling i rozwój kariery."
+        />
+        <a href="/youtube" class="btn-ghost self-start sm:self-end">
+          Przejdź do YouTube
+          <svg viewBox="0 0 20 20" class="h-4 w-4" fill="currentColor"><path fill-rule="evenodd" d="M4 10a1 1 0 011-1h8.6l-2.3-2.3a1 1 0 111.4-1.4l4 4a1 1 0 010 1.4l-4 4a1 1 0 01-1.4-1.4l2.3-2.3H5a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((v) => <VideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/30 via-ink-800 to-accent-500/20 p-10 text-center sm:p-16">
+        <div aria-hidden class="pointer-events-none absolute inset-0 grid-bg opacity-50"></div>
+        <div class="relative mx-auto max-w-2xl">
+          <span class="heading-eyebrow">Przeprogramowany Newsletter</span>
+          <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">
+            3 linki, 2 przemyślenia, 1 pytanie — w każdy piątek.
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Dołącz do tysięcy programistów, którzy zaczynają weekend z porządną dawką wiedzy o AI i inżynierii.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="btn-primary">
+              Zapisz się za darmo
+            </a>
+            <a href="/o-nas" class="btn-secondary">O projekcie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

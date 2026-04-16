@@ -1,0 +1,47 @@
+---
+import type { YouTubeVideo } from '~/data/youtube';
+type Props = { video: YouTubeVideo };
+const { video } = Astro.props;
+const date = new Date(video.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<a
+  href={video.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-400/40 hover:bg-white/[0.06]"
+>
+  <div class:list={[
+    'relative aspect-video overflow-hidden bg-gradient-to-br',
+    video.thumbnailGradient,
+  ]}>
+    <div class="absolute inset-0 grid-bg opacity-60"></div>
+    <div class="absolute inset-0 grid place-items-center">
+      <div
+        class="grid h-16 w-16 place-items-center rounded-full bg-white/15 text-white backdrop-blur transition-transform group-hover:scale-110"
+      >
+        <svg viewBox="0 0 24 24" class="ml-1 h-7 w-7" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+    <span class="absolute bottom-3 right-3 rounded-md bg-black/60 px-2 py-1 text-xs font-medium text-white">
+      {video.duration}
+    </span>
+    <span class="absolute top-3 left-3 chip border-white/20 bg-black/40 text-white">
+      {video.category}
+    </span>
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <p class="text-xs text-slate-400">{date}</p>
+    <h3 class="mt-2 font-display text-lg font-bold leading-snug text-white line-clamp-2 group-hover:text-brand-200">
+      {video.title}
+    </h3>
+    <p class="mt-2 text-sm leading-relaxed text-slate-400 line-clamp-3">
+      {video.description}
+    </p>
+  </div>
+</a>

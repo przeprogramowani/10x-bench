@@ -1,0 +1,88 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import SectionHeading from '~/components/SectionHeading.astro';
+import VideoCard from '~/components/VideoCard.astro';
+import { youtubeVideos } from '~/data/youtube';
+import { site } from '~/data/site';
+
+const categories = Array.from(new Set(youtubeVideos.map((v) => v.category)));
+---
+
+<Layout
+  title="YouTube"
+  description="Najnowsze filmy z kanału Przeprogramowani na YouTube — AI tooling, architektura, refactoring i rozwój kariery."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden class="pointer-events-none absolute inset-0 grid-bg"></div>
+    <div
+      aria-hidden
+      class="pointer-events-none absolute top-0 left-1/4 h-[500px] w-[700px] rounded-full bg-red-500/15 blur-[140px]"
+    >
+    </div>
+
+    <div class="container-p relative pt-20 pb-10 sm:pt-28">
+      <div class="max-w-3xl">
+        <span class="heading-eyebrow">YouTube</span>
+        <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Deep-dive, demo i szczere <span class="gradient-text">rozmowy o kodzie</span>.
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Pokazujemy workflow z Claude Code, Cursorem i Copilotem, refaktoring legacy w locie,
+          wzorce architektoniczne i szczere rozmowy o karierze. Bez przemilczeń i bez „shorts-baitu”.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M23 7.5a3 3 0 00-2.1-2.1C19 5 12 5 12 5s-7 0-8.9.4A3 3 0 001 7.5v9a3 3 0 002.1 2.1C5 19 12 19 12 19s7 0 8.9-.4A3 3 0 0023 16.5v-9zM10 15V9l5 3-5 3z"/></svg>
+            Subskrybuj kanał
+          </a>
+          <a href="#filmy" class="btn-secondary">Przeglądaj filmy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters + videos -->
+  <section id="filmy" class="section scroll-mt-24">
+    <div class="container-p">
+      <SectionHeading
+        eyebrow={`${youtubeVideos.length} ostatnich filmów`}
+        title="Najnowsze publikacje"
+        description="Przeglądaj całą bibliotekę materiałów — od filmów dla seniorów po onboarding w AI-native workflow."
+      />
+
+      <ul class="mt-8 flex flex-wrap gap-2">
+        <li><span class="chip border-brand-400/40 bg-brand-500/15 text-white">Wszystkie</span></li>
+        {categories.map((c) => <li><span class="chip">{c}</span></li>)}
+      </ul>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((v) => <VideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Channel CTA -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/20 to-accent-500/10 p-10 sm:p-14">
+        <div class="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
+          <div>
+            <h2 class="font-display text-3xl font-bold text-white sm:text-4xl">
+              Nie chcesz przegapić kolejnego filmu?
+            </h2>
+            <p class="mt-4 text-slate-300">
+              Na naszym kanale publikujemy regularnie — deep-dive, streamy, rozmowy i praktyczne demo.
+              Włącz powiadomienia, żeby trafiło do Ciebie tylko to, co warte czasu.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 lg:justify-end">
+            <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" class="btn-primary">Subskrybuj</a>
+            <a href="/podcast" class="btn-secondary">Słuchaj podcastu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
