@@ -1,0 +1,15 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import CourseCard from './CourseCard.astro';
+import { courses } from '../data/courses';
+---
+<section id="kursy" class="container-page mt-24 scroll-mt-24 sm:mt-32">
+  <SectionHeader
+    eyebrow="Kursy"
+    title="Trzy programy. Jedna filozofia: świadome wykorzystanie AI."
+    description="Od frontendowych fundamentów, przez zaawansowany TypeScript, po kompletny AI-native workflow. Wybierz program dopasowany do swojego etapu kariery."
+  />
+  <div class="mt-12 grid gap-6 lg:grid-cols-3">
+    {courses.map((course) => <CourseCard course={course} />)}
+  </div>
+</section>

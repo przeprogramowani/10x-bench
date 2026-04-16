@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { team } from '../data/team';
+import { site } from '../data/site';
+
+const values = [
+  {
+    title: 'Praktyka ponad teorię',
+    body: 'Uczymy tego, co sami robimy w pracy każdego dnia. Nasze materiały powstają na żywych projektach — nie w laboratoriach.',
+  },
+  {
+    title: 'Edukacja oparta na nauce',
+    body: 'Korzystamy z badań nad neurobiologią uczenia, aby każdy moduł kursu utrwalał wiedzę i rozwijał nawyki, nie tylko dostarczał informacji.',
+  },
+  {
+    title: 'Szersze spojrzenie',
+    body: 'Wierzymy, że świetni programiści rozumieją architekturę, biznes, ludzi i samych siebie — a nie tylko kod.',
+  },
+  {
+    title: 'AI jako standard pracy',
+    body: 'Generatywna AI to nie gadżet, tylko fundament nowego sposobu wytwarzania oprogramowania. Uczymy, jak z niej mądrze korzystać.',
+  },
+];
+
+const timeline = [
+  { year: '2019', text: 'Start podcastu Przeprogramowani. Pierwsze odcinki o inżynierii, karierze i dobrych praktykach.' },
+  { year: '2021', text: 'Premiera kursu Opanuj Frontend. Pierwsza kohorta ponad 100 osób.' },
+  { year: '2023', text: 'Opanuj TypeScript + Opanuj.AI Podcast — najpopularniejszy polski podcast o LLM.' },
+  { year: '2024', text: '10xDevs 1.0 — pionierski program o AI-native engineering w Polsce.' },
+  { year: '2026', text: 'Startuje 10xDevs 3.0, uruchamiamy 10xRules.ai — platformę do zarządzania regułami AI w zespole.' },
+];
+---
+<BaseLayout
+  title="O nas"
+  description="Przeprogramowani — kim jesteśmy, jak pracujemy i dlaczego uczymy programowania w erze AI. Poznaj Przemka Smyrdka i Marcina Czarkowskiego."
+>
+  <section class="container-page pt-14 sm:pt-20">
+    <span class="eyebrow">O nas</span>
+    <h1 class="mt-5 max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+      Uczymy, jak <span class="gradient-text">programować świadomie</span> w erze AI.
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
+      Jesteśmy zespołem praktyków — inżynierów, edukatorów i twórców treści — skupionych wokół jednego pytania: jak wytwarzać oprogramowanie wyższej jakości, szybciej i z większą satysfakcją, korzystając z dzisiejszych narzędzi AI.
+    </p>
+  </section>
+
+  <section class="container-page mt-20">
+    <SectionHeader
+      eyebrow="Zespół"
+      title="Dwie głowy, jedna filozofia"
+      description="Ponad 20 lat łącznego doświadczenia w produktach webowych, tysiące absolwentów i setki godzin nagrań."
+    />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {team.map((member) => (
+        <article class="card p-8 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-300 dark:hover:border-brand-400/40">
+          <div class="flex items-start gap-5">
+            <div class:list={[
+              'flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl font-display text-2xl font-extrabold text-white shadow-lg',
+              member.accent === 'brand' ? 'bg-gradient-to-br from-brand-500 to-brand-700' : 'bg-gradient-to-br from-accent-400 to-accent-600',
+            ]}>
+              {member.initials}
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-display text-2xl font-extrabold tracking-tight text-ink-900 dark:text-white">{member.name}</h3>
+              <p class="mt-0.5 text-sm font-medium text-brand-700 dark:text-brand-300">{member.role}</p>
+            </div>
+          </div>
+          <p class="mt-5 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{member.bio}</p>
+          <ul class="mt-5 space-y-2 border-t border-ink-200/60 pt-4 text-sm dark:border-white/5">
+            {member.highlights.map((h) => (
+              <li class="flex items-start gap-2 text-ink-700 dark:text-ink-300">
+                <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {member.social.map((s) => (
+              <a href={s.href} target="_blank" rel="noreferrer" class="inline-flex items-center gap-1 rounded-full border border-ink-200/60 bg-white/60 px-3 py-1 text-xs font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:text-brand-700 dark:border-white/10 dark:bg-white/5 dark:text-ink-200 dark:hover:border-brand-400/40 dark:hover:text-brand-200">
+                {s.label}
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page mt-24">
+    <SectionHeader
+      eyebrow="Wartości"
+      title="W co wierzymy, gdy tworzymy edukację"
+    />
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      {values.map((v, i) => (
+        <div class="card">
+          <div class="flex items-center gap-3">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 font-mono text-sm font-bold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="font-display text-lg font-bold tracking-tight">{v.title}</h3>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{v.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page mt-24">
+    <SectionHeader
+      eyebrow="Nasza droga"
+      title="7 lat budowania społeczności"
+    />
+    <ol class="mt-10 space-y-4">
+      {timeline.map((t) => (
+        <li class="flex gap-6 rounded-2xl border border-ink-200/60 bg-white/70 p-5 backdrop-blur dark:border-white/10 dark:bg-white/[0.03]">
+          <div class="flex-shrink-0">
+            <span class="inline-flex items-center rounded-lg bg-brand-50 px-3 py-1 font-mono text-sm font-bold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
+              {t.year}
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed text-ink-700 dark:text-ink-200">{t.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container-page mt-24">
+    <div class="rounded-3xl border border-ink-200/60 bg-white/60 p-8 backdrop-blur dark:border-white/10 dark:bg-white/[0.03] sm:p-12">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">Chcesz porozmawiać o współpracy?</h2>
+          <p class="mt-2 max-w-xl text-ink-600 dark:text-ink-300">
+            Prowadzimy szkolenia zamknięte, warsztaty AI-native engineering i konsultacje architektoniczne. Napisz, a odezwiemy się z propozycją.
+          </p>
+        </div>
+        <a href={`mailto:${site.contactEmail}`} class="btn-primary whitespace-nowrap">
+          {site.contactEmail}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

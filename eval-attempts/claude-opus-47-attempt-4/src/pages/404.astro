@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Strona nie znaleziona">
+  <section class="container-page flex min-h-[60vh] flex-col items-center justify-center py-24 text-center">
+    <span class="eyebrow">Error 404</span>
+    <h1 class="mt-5 font-display text-6xl font-extrabold tracking-tight sm:text-7xl">
+      <span class="gradient-text">Ups.</span>
+    </h1>
+    <p class="mt-4 max-w-md text-lg text-ink-600 dark:text-ink-300">
+      Tej strony tu nie ma — być może została przeniesiona, a może właśnie powstaje nowy kurs w jej miejsce.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/" class="btn-primary">Wróć na stronę główną</a>
+      <a href="/#kursy" class="btn-ghost">Zobacz kursy</a>
+    </div>
+  </section>
+</BaseLayout>

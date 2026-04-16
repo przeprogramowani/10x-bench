@@ -1,0 +1,56 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { videos, channel } from '../data/youtube';
+
+const latest = videos.slice(0, 3);
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<section class="container-page mt-24 sm:mt-32">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <SectionHeader
+      eyebrow="YouTube"
+      title="Najnowsze materiały wideo"
+      description={channel.description}
+    />
+    <a href="/youtube" class="link-arrow whitespace-nowrap text-sm">
+      Wszystkie filmy
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+  <div class="mt-10 grid gap-6 lg:grid-cols-3">
+    {latest.map((v) => (
+      <a href={v.url} target="_blank" rel="noreferrer" class="group block">
+        <div class:list={[
+          'relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br',
+          v.thumbnailGradient,
+        ]}>
+          <div class="absolute inset-0 bg-ink-950/10 transition-opacity group-hover:bg-ink-950/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-md ring-1 ring-white/30 transition-transform group-hover:scale-110">
+              <svg viewBox="0 0 24 24" class="ml-1 h-6 w-6 text-white" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </div>
+          <span class="absolute bottom-3 right-3 rounded-md bg-ink-950/80 px-2 py-0.5 font-mono text-xs text-white">
+            {v.duration}
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="flex items-center gap-2 text-xs text-ink-500 dark:text-ink-400">
+            <span class="capitalize">{v.category === 'live' ? 'Live' : v.category === 'vlog' ? 'Vlog' : 'Tutorial'}</span>
+            <span aria-hidden="true">·</span>
+            <span>{formatDate(v.date)}</span>
+            {v.views ? (
+              <><span aria-hidden="true">·</span><span>{v.views} wyświetleń</span></>
+            ) : null}
+          </div>
+          <h3 class="mt-2 font-display text-lg font-bold leading-snug text-ink-900 group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-300">
+            {v.title}
+          </h3>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

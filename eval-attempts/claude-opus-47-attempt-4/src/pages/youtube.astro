@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { videos, channel } from '../data/youtube';
+
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const categoryLabel = (c: string) => (c === 'live' ? 'Live' : c === 'vlog' ? 'Vlog' : c === 'review' ? 'Review' : 'Tutorial');
+---
+<BaseLayout
+  title="YouTube"
+  description="Najnowsze filmy z kanału Przeprogramowani na YouTube — tutoriale, live, analizy narzędzi AI i materiały o architekturze oprogramowania."
+>
+  <section class="container-page pt-14 sm:pt-20">
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <span class="eyebrow">
+          <svg viewBox="0 0 24 24" class="h-3 w-3" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2C0 8 0 12 0 12s0 4 .5 5.8a3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 16 24 12 24 12s0-4-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          YouTube · {channel.handle}
+        </span>
+        <h1 class="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+          Kanał YouTube <span class="gradient-text">Przeprogramowani</span>
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
+          {channel.description}
+        </p>
+      </div>
+      <a href={channel.url} target="_blank" rel="noreferrer" class="btn-primary whitespace-nowrap">
+        Zasubskrybuj kanał
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="container-page mt-16">
+    <SectionHeader eyebrow="Najnowsze" title="Ostatnie filmy" />
+    <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((v) => (
+        <a href={v.url} target="_blank" rel="noreferrer" class="group block">
+          <div class:list={[
+            'relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-glow',
+            v.thumbnailGradient,
+          ]}>
+            <div class="absolute inset-0 bg-ink-950/10 transition-opacity group-hover:bg-ink-950/30"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-md ring-1 ring-white/30 transition-transform group-hover:scale-110">
+                <svg viewBox="0 0 24 24" class="ml-1 h-6 w-6 text-white" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </div>
+            <span class="absolute left-3 top-3 rounded-md bg-ink-950/60 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur">
+              {categoryLabel(v.category)}
+            </span>
+            <span class="absolute bottom-3 right-3 rounded-md bg-ink-950/80 px-2 py-0.5 font-mono text-xs text-white">
+              {v.duration}
+            </span>
+          </div>
+          <div class="mt-4">
+            <div class="flex items-center gap-2 text-xs text-ink-500 dark:text-ink-400">
+              <span>{formatDate(v.date)}</span>
+              {v.views ? <><span aria-hidden="true">·</span><span>{v.views} wyświetleń</span></> : null}
+            </div>
+            <h3 class="mt-2 font-display text-lg font-bold leading-snug text-ink-900 group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-300">
+              {v.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{v.summary}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page mt-24">
+    <div class="rounded-3xl border border-ink-200/60 bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-10 text-white shadow-glow">
+      <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="font-display text-3xl font-extrabold tracking-tight">Nie przegap nowych filmów</h2>
+          <p class="mt-2 max-w-xl text-red-100/90">
+            Zasubskrybuj kanał i włącz dzwoneczek — publikujemy nowe materiały o AI, TypeScript, architekturze i codziennej pracy seniora.
+          </p>
+        </div>
+        <a href={channel.url} target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-red-700 transition-transform hover:-translate-y-0.5">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2C0 8 0 12 0 12s0 4 .5 5.8a3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 16 24 12 24 12s0-4-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          Subskrybuj na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsStrip from '../components/StatsStrip.astro';
+import CoursesSection from '../components/CoursesSection.astro';
+import PodcastPreview from '../components/PodcastPreview.astro';
+import YouTubePreview from '../components/YouTubePreview.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+---
+<BaseLayout
+  title="Programowanie w erze AI"
+  description="Przeprogramowani.pl — edukacja techniczna w erze AI. 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast Opanuj.AI i tysiące twórców oprogramowania."
+>
+  <Hero />
+  <StatsStrip />
+  <CoursesSection />
+  <PodcastPreview />
+  <YouTubePreview />
+  <NewsletterCTA />
+</BaseLayout>

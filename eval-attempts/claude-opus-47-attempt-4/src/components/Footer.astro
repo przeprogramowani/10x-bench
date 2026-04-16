@@ -1,0 +1,53 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-ink-200/60 bg-white/60 backdrop-blur dark:border-white/5 dark:bg-ink-950/60">
+  <div class="container-page py-14">
+    <div class="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+      <div>
+        <Logo />
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+          {site.description}
+        </p>
+        <a href={`mailto:${site.contactEmail}`} class="link-arrow mt-4 inline-flex text-sm">
+          {site.contactEmail}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Kursy</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">10xDevs 3.0</a></li>
+          <li><a href="https://opanujfrontend.pl" target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Opanuj Frontend</a></li>
+          <li><a href="https://opanujtypescript.pl" target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Opanuj TypeScript</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Treści</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="/podcast" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Podcast</a></li>
+          <li><a href="/youtube" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">YouTube</a></li>
+          <li><a href={site.social.newsletter} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Newsletter</a></li>
+          <li><a href="/o-nas" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">O nas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-400 dark:text-ink-500">Społeczność</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href={site.social.youtube} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">YouTube</a></li>
+          <li><a href={site.social.podcastSpotify} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Spotify</a></li>
+          <li><a href={site.social.podcastApple} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Apple Podcasts</a></li>
+          <li><a href={site.social.instagram} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Instagram</a></li>
+          <li><a href={site.social.facebook} target="_blank" rel="noreferrer" class="text-ink-700 hover:text-brand-700 dark:text-ink-200 dark:hover:text-brand-300">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col items-start justify-between gap-3 border-t border-ink-200/60 pt-6 text-xs text-ink-500 dark:border-white/5 dark:text-ink-400 sm:flex-row sm:items-center">
+      <p>© {year} Przeprogramowani. Wszystkie prawa zastrzeżone.</p>
+      <p>Zbudowane na Astro · React · Tailwind · Cloudflare Pages</p>
+    </div>
+  </div>
+</footer>
