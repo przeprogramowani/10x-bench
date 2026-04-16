@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+import ThemeToggle from './ThemeToggle.tsx';
+import MobileMenu from './MobileMenu.tsx';
+import { mainNav } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  if (href.startsWith('/#')) return false;
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+---
+<header class="sticky top-0 z-40 border-b border-ink-200/50 bg-white/80 backdrop-blur-md dark:border-white/5 dark:bg-ink-950/70">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <Logo />
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Menu główne">
+      {mainNav.map((item) => (
+        <a
+          href={item.href}
+          target={item.external ? '_blank' : undefined}
+          rel={item.external ? 'noreferrer' : undefined}
+          class:list={[
+            'whitespace-nowrap rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors',
+            isActive(item.href)
+              ? 'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-200'
+              : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900 dark:text-ink-300 dark:hover:bg-white/5 dark:hover:text-white',
+          ]}
+        >
+          {item.label}
+          {item.external ? <span class="ml-0.5 text-xs opacity-60">↗</span> : null}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="btn-primary hidden whitespace-nowrap lg:inline-flex">
+        Dołącz do 10xDevs
+      </a>
+      <ThemeToggle client:load />
+      <MobileMenu client:load items={mainNav} currentPath={currentPath} />
+    </div>
+  </div>
+</header>

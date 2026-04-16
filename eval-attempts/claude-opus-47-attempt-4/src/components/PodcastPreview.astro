@@ -1,0 +1,45 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { episodes, podcastShow } from '../data/podcast';
+
+const latest = episodes.slice(0, 3);
+const formatDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<section class="container-page mt-24 sm:mt-32">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <SectionHeader
+      eyebrow={podcastShow.name}
+      title="Podcast o AI, którego słuchają twórcy oprogramowania"
+      description={podcastShow.description}
+    />
+    <a href="/podcast" class="link-arrow whitespace-nowrap text-sm">
+      Wszystkie odcinki
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+  <div class="mt-10 grid gap-6 lg:grid-cols-3">
+    {latest.map((ep, idx) => (
+      <article class="card card-hover group flex flex-col">
+        <div class="flex items-center gap-2 text-xs text-ink-500 dark:text-ink-400">
+          <span class="rounded-full bg-brand-500/10 px-2 py-0.5 font-mono font-semibold text-brand-700 dark:text-brand-300">#{String(episodes.length - idx).padStart(2, '0')}</span>
+          <span>{formatDate(ep.date)}</span>
+          <span aria-hidden="true">·</span>
+          <span>{ep.duration}</span>
+        </div>
+        <h3 class="mt-3 font-display text-lg font-bold leading-snug text-ink-900 group-hover:text-brand-700 dark:text-white dark:group-hover:text-brand-300">
+          {ep.title}
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{ep.summary}</p>
+        <div class="mt-4 flex flex-wrap gap-1.5">
+          {ep.tags.map((t) => (
+            <span class="rounded-full border border-ink-200/60 bg-ink-50/50 px-2 py-0.5 text-[11px] font-medium text-ink-600 dark:border-white/10 dark:bg-white/5 dark:text-ink-300">#{t}</span>
+          ))}
+        </div>
+        <a href={ep.url} target="_blank" rel="noreferrer" class="link-arrow mt-5 text-sm">
+          Słuchaj <span aria-hidden="true">→</span>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>

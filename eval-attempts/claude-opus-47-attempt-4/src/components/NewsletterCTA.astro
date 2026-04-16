@@ -1,0 +1,37 @@
+---
+import { site } from '../data/site';
+---
+<section class="container-page mt-24 sm:mt-32">
+  <div class="relative overflow-hidden rounded-3xl border border-ink-200/60 bg-gradient-to-br from-brand-600 via-brand-700 to-ink-900 p-8 text-white shadow-glow sm:p-12">
+    <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent-500/30 blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-brand-400/30 blur-3xl"></div>
+    <div class="relative grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+      <div>
+        <span class="eyebrow border-white/20 bg-white/10 text-white">Newsletter</span>
+        <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+          W każdy piątek: 3 rekomendacje, 2 tipy, 1 bonus.
+        </h2>
+        <p class="mt-3 max-w-xl text-brand-100/90">
+          Przeprogramowany Newsletter to cotygodniowa porcja konkretów o AI, inżynierii i nowościach ze świata technologii. Krótko, praktycznie, bez clickbaitów.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+        <a
+          href={site.social.newsletter}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-700 transition-transform hover:-translate-y-0.5"
+        >
+          Zapisz się za darmo
+          <svg viewBox="0 0 24 24" class="ml-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+        </a>
+        <a
+          href={`mailto:${site.contactEmail}`}
+          class="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
+        >
+          Napisz do nas
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+---
+<section class="container-page mt-20">
+  <div class="rounded-3xl border border-ink-200/60 bg-gradient-to-br from-white/80 to-brand-50/40 p-8 backdrop-blur dark:border-white/10 dark:from-white/[0.04] dark:to-brand-950/30 sm:p-10">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {site.stats.map((s) => (
+        <div>
+          <p class="font-display text-3xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-4xl">{s.value}</p>
+          <p class="mt-2 text-sm text-ink-600 dark:text-ink-300">{s.label}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink-200/60 pt-6 text-sm text-ink-500 dark:border-white/5 dark:text-ink-400">
+      <span class="text-xs font-semibold uppercase tracking-wider">Zaufali nam</span>
+      {site.partners.map((p) => (
+        <span class="font-medium">{p}</span>
+      ))}
+    </div>
+  </div>
+</section>

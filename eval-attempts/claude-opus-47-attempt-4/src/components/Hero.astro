@@ -1,0 +1,72 @@
+---
+import { courses } from '../data/courses';
+const tenX = courses.find((c) => c.id === '10xdevs')!;
+---
+<section class="relative overflow-hidden pt-12 sm:pt-16 lg:pt-24">
+  <div class="container-page">
+    <div class="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+      <div class="animate-fade-in-up">
+        <span class="eyebrow">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-500 opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-500"></span>
+          </span>
+          Nowa kohorta · Start {tenX.startDate}
+        </span>
+        <h1 class="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+          AI-Native <span class="gradient-text">Software Engineering</span> od praktyków.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-600 dark:text-ink-300 sm:text-xl">
+          Dołącz do <strong class="font-semibold text-ink-900 dark:text-white">10xDevs 3.0</strong> — pięciotygodniowego, kohortowego programu, w którym uczymy świadomego wykorzystania generatywnej AI w całym cyklu wytwarzania oprogramowania.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href={tenX.url} target="_blank" rel="noreferrer" class="btn-primary text-base">
+            Zapisz się na 10xDevs 3.0
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+          </a>
+          <a href="#kursy" class="btn-ghost text-base">Zobacz wszystkie kursy</a>
+        </div>
+        <dl class="mt-10 grid grid-cols-3 gap-4 border-t border-ink-200/60 pt-6 dark:border-white/5">
+          <div>
+            <dt class="text-xs font-medium uppercase tracking-wider text-ink-500 dark:text-ink-400">Start</dt>
+            <dd class="mt-1 font-display text-lg font-bold text-ink-900 dark:text-white">{tenX.startDate}</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-medium uppercase tracking-wider text-ink-500 dark:text-ink-400">Format</dt>
+            <dd class="mt-1 font-display text-lg font-bold text-ink-900 dark:text-white">{tenX.duration}</dd>
+          </div>
+          <div>
+            <dt class="text-xs font-medium uppercase tracking-wider text-ink-500 dark:text-ink-400">Gwarancja</dt>
+            <dd class="mt-1 font-display text-lg font-bold text-ink-900 dark:text-white">14 dni</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="relative animate-fade-in-up" style="animation-delay: 0.15s">
+        <div class="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-brand-500/30 via-brand-400/10 to-accent-500/30 blur-3xl"></div>
+        <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-ink-950 p-6 shadow-glow sm:p-8">
+          <div class="flex items-center gap-2 border-b border-white/5 pb-4">
+            <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-3 font-mono text-xs text-ink-400">~/projects/10xdevs</span>
+          </div>
+          <pre class="mt-4 font-mono text-sm leading-relaxed text-ink-100"><span class="text-brand-300">const</span> <span class="text-white">developer</span> <span class="text-ink-500">=</span> <span class="text-brand-400">new</span> <span class="text-accent-400">TenXEngineer</span>(&#123;
+  <span class="text-white">tools</span><span class="text-ink-500">:</span> [<span class="text-emerald-300">'Claude Code'</span>, <span class="text-emerald-300">'Cursor'</span>, <span class="text-emerald-300">'Copilot'</span>],
+  <span class="text-white">skills</span><span class="text-ink-500">:</span> [<span class="text-emerald-300">'agentic-workflow'</span>, <span class="text-emerald-300">'mcp'</span>],
+  <span class="text-white">workflow</span><span class="text-ink-500">:</span> <span class="text-emerald-300">'AI-Native'</span>,
+&#125;);
+
+<span class="text-ink-400">// Shipping 10x szybciej, z lepszą jakością</span>
+<span class="text-white">developer</span>.<span class="text-accent-300">ship</span>(<span class="text-emerald-300">'production'</span>);</pre>
+          <div class="mt-6 grid grid-cols-2 gap-3 text-xs">
+            {tenX.modules.slice(0, 4).map((m) => (
+              <div class="rounded-lg border border-white/5 bg-white/5 px-3 py-2 text-ink-200">
+                <span class="font-semibold text-white">{m.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

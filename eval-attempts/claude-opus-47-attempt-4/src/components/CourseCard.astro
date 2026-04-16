@@ -1,0 +1,72 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+  featured?: boolean;
+}
+
+const { course, featured = false } = Astro.props as Props;
+
+const accentMap: Record<Course['accent'], { ring: string; pill: string; dot: string; button: string }> = {
+  brand: {
+    ring: 'from-brand-500/40 to-brand-700/10',
+    pill: 'bg-brand-50 text-brand-700 dark:bg-brand-500/10 dark:text-brand-200',
+    dot: 'bg-brand-500',
+    button: 'btn-primary',
+  },
+  accent: {
+    ring: 'from-accent-500/40 to-accent-400/10',
+    pill: 'bg-orange-50 text-accent-600 dark:bg-accent-500/10 dark:text-accent-400',
+    dot: 'bg-accent-500',
+    button: 'btn-accent',
+  },
+  emerald: {
+    ring: 'from-emerald-500/30 to-emerald-400/10',
+    pill: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300',
+    dot: 'bg-emerald-500',
+    button: 'btn bg-emerald-600 text-white hover:bg-emerald-700 hover:-translate-y-0.5 shadow-[0_10px_40px_-10px_rgba(16,185,129,0.5)]',
+  },
+};
+
+const a = accentMap[course.accent];
+---
+<article class:list={[
+  'group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink-200/60 bg-white/80 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-white/[0.03]',
+  featured ? 'lg:p-8' : '',
+]}>
+  <div class:list={['absolute inset-x-0 -top-px h-px bg-gradient-to-r opacity-60', a.ring]}></div>
+  <div class="flex items-center justify-between">
+    <span class:list={['inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider', a.pill]}>
+      <span class:list={['h-1.5 w-1.5 rounded-full', a.dot]}></span>
+      Kurs
+    </span>
+    {course.badge ? (
+      <span class="rounded-full bg-accent-500/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-accent-600 dark:text-accent-400">
+        {course.badge}
+      </span>
+    ) : null}
+  </div>
+  <h3 class="mt-4 font-display text-2xl font-extrabold tracking-tight text-ink-900 dark:text-white sm:text-3xl">
+    {course.name}
+  </h3>
+  <p class="mt-1 text-sm font-medium text-brand-700 dark:text-brand-300">{course.tagline}</p>
+  <p class="mt-4 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{course.description}</p>
+  <ul class="mt-5 grid grid-cols-2 gap-2 text-xs text-ink-700 dark:text-ink-300">
+    {course.highlights.map((h) => (
+      <li class="flex items-center gap-1.5">
+        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 flex-shrink-0 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        <span>{h}</span>
+      </li>
+    ))}
+  </ul>
+  <div class="mt-6 flex items-center gap-3 border-t border-ink-200/60 pt-5 dark:border-white/5">
+    <a href={course.url} target="_blank" rel="noreferrer" class:list={[a.button, 'text-sm']}>
+      Zobacz kurs
+      <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+    </a>
+    {course.duration ? <span class="text-xs text-ink-500 dark:text-ink-400">{course.duration}</span> : null}
+  </div>
+</article>

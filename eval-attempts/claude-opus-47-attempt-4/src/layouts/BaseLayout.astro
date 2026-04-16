@@ -1,0 +1,72 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props as Props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`;
+const metaDescription = description ?? site.description;
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+const ogImageUrl = ogImage ?? `${site.url}/og-default.png`;
+---
+<!doctype html>
+<html lang="pl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#5f5def" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09091a" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored === 'light' || stored === 'dark' ? stored : prefers ? 'dark' : 'light';
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+        } catch (e) {
+          /* noop */
+        }
+      })();
+    </script>
+  </head>
+  <body class="relative min-h-screen overflow-x-hidden">
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 left-1/2 h-[480px] w-[960px] -translate-x-1/2 rounded-full bg-hero-glow opacity-70 blur-3xl"></div>
+      <div class="absolute inset-0 bg-grid-pattern bg-[length:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"></div>
+    </div>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">
+      Przejdź do treści
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
