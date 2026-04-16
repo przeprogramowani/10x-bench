@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink-900 text-slate-100 font-sans antialiased;
+    background-image: radial-gradient(
+        1400px 700px at 10% -10%,
+        rgba(124, 58, 237, 0.18),
+        transparent 60%
+      ),
+      radial-gradient(1000px 500px at 90% 0%, rgba(34, 211, 238, 0.12), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-brand-500/40 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-ink-900 rounded-md;
+  }
+}
+
+@layer components {
+  .container-p {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-brand-500 to-accent-500 text-white shadow-glow hover:shadow-lg hover:scale-[1.02] active:scale-[0.99];
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/15 bg-white/5 text-white hover:bg-white/10;
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-300 hover:text-white hover:bg-white/5;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 hover:border-brand-400/40 hover:bg-white/[0.06];
+  }
+
+  .section {
+    @apply py-16 sm:py-24 lg:py-28;
+  }
+
+  .heading-eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.2em] text-brand-300;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-300 via-white to-accent-400 bg-clip-text text-transparent;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+}

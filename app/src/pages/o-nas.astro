@@ -1,0 +1,195 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import SectionHeading from '~/components/SectionHeading.astro';
+import { team, stats, partners } from '~/data/team';
+import { site } from '~/data/site';
+---
+
+<Layout
+  title="O nas"
+  description="Przeprogramowani to Przemek Smyrdek i Marcin Czarkowski — dwóch programistów z 10+ latami doświadczenia, którzy uczą świadomego kodowania w erze AI."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div aria-hidden class="pointer-events-none absolute inset-0 grid-bg"></div>
+    <div
+      aria-hidden
+      class="pointer-events-none absolute top-0 right-1/4 h-[500px] w-[700px] rounded-full bg-brand-500/25 blur-[140px]"
+    >
+    </div>
+
+    <div class="container-p relative pt-20 pb-12 sm:pt-28">
+      <div class="max-w-3xl">
+        <span class="heading-eyebrow">O nas</span>
+        <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          Miejsce, w którym programowanie spotyka <span class="gradient-text">rozwój osobisty</span>.
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Wierzymy, że wybitni programiści patrzą szerzej — na architekturę, biznes, ludzi i samorozwój.
+          Od siedmiu lat tworzymy materiały, które pomagają inżynierom tak właśnie patrzeć na swój zawód.
+        </p>
+      </div>
+
+      <dl class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <dd class="font-display text-4xl font-bold text-white">{stat.value}</dd>
+              <dt class="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                {stat.label}
+              </dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section">
+    <div class="container-p grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <div>
+        <span class="heading-eyebrow">Nasza historia</span>
+        <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">
+          Zaczęło się jako projekt weekendowy.
+        </h2>
+      </div>
+      <div class="space-y-5 text-slate-300 leading-relaxed">
+        <p>
+          Sześć lat temu Marcin Czarkowski, Przemek Smyrdek i Adam Gospodarczyk odpalili kanał na YouTube jako hobby —
+          obok pełnoetatowej pracy w międzynarodowych firmach. Nagrywali o kulisach pracy, nauce, architekturze i
+          rozwoju kariery.
+        </p>
+        <p>
+          W 2024 roku Przemek i Marcin postawili wszystko na Przeprogramowani. Dziś prowadzimy kursy w formacie
+          kohortowym, podcast regularnie w topie polskich produkcji technicznych, cotygodniowy newsletter 3-2-1 oraz
+          narzędzia takie jak <strong class="text-white">10xRules.ai</strong>.
+        </p>
+        <p>
+          Łączy nas jedno pytanie: jak uczyć programistów tak, żeby ich wiedza nie wyparowała wraz z kolejnym modelem
+          LLM. Odpowiedzią jest nasze podejście <strong class="text-white">AI-Native Software Engineering</strong> —
+          powtarzalne procesy, nie ad-hoc „vibe coding”.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section pt-0">
+    <div class="container-p">
+      <SectionHeading
+        eyebrow="Zespół"
+        title="Kto za tym stoi"
+        description="Dwóch inżynierów z 20+ latami łącznego doświadczenia, budujących Przeprogramowani w pełnym wymiarze godzin."
+      />
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          team.map((member) => (
+            <article class="card">
+              <div class="flex items-center gap-4">
+                <div
+                  class={`grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br ${member.gradient} font-display text-xl font-bold text-white shadow-glow`}
+                >
+                  {member.initials}
+                </div>
+                <div>
+                  <h3 class="font-display text-xl font-bold text-white">{member.name}</h3>
+                  <p class="text-sm text-brand-300">{member.role}</p>
+                </div>
+              </div>
+              <p class="mt-5 text-sm leading-relaxed text-slate-300">{member.bio}</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                {member.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="chip hover:border-brand-400/40 hover:bg-brand-500/10 hover:text-brand-200"
+                  >
+                    {link.label}
+                    <svg viewBox="0 0 20 20" class="h-3 w-3" fill="currentColor"><path d="M7.5 4.5a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 11-2 0V6.9L5.7 14.7a1 1 0 01-1.4-1.4L12.1 5.5H8.5a1 1 0 01-1-1z"/></svg>
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners / values -->
+  <section class="section pt-0">
+    <div class="container-p grid gap-12 lg:grid-cols-[1fr_1fr]">
+      <div>
+        <span class="heading-eyebrow">Wartości</span>
+        <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Jak pracujemy</h2>
+
+        <ul class="mt-8 space-y-5">
+          <li class="flex gap-4">
+            <span class="mt-1 grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-brand-500/15 text-brand-300">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20" stroke-linecap="round" /></svg>
+            </span>
+            <div>
+              <h3 class="font-semibold text-white">Praktyka nad teorią</h3>
+              <p class="mt-1 text-sm text-slate-300">
+                Materiały powstają z realnych problemów produkcyjnych. Jeśli nie działa u nas w pracy — nie trafia do kursu.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-1 grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-accent-500/15 text-accent-400">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+            <div>
+              <h3 class="font-semibold text-white">Jakość ponad hype</h3>
+              <p class="mt-1 text-sm text-slate-300">
+                Nie sprzedajemy złotych dróg. Pokazujemy wzorce, procesy i testy, które przetrwają następną zmianę modelu.
+              </p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="mt-1 grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-brand-500/15 text-brand-300">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+            </span>
+            <div>
+              <h3 class="font-semibold text-white">Społeczność zamiast nagrań</h3>
+              <p class="mt-1 text-sm text-slate-300">
+                Kursy prowadzimy kohortowo, z Q&A, mentoringiem i dyskusją. To ludzie robią różnicę, nie playlista.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="heading-eyebrow">Partnerzy i pracodawcy uczestników</span>
+        <h2 class="mt-3 font-display text-3xl font-bold text-white sm:text-4xl">Byliśmy (i jesteśmy) tu</h2>
+
+        <ul class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {
+            partners.map((p) => (
+              <li class="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-5 text-center font-display font-medium text-slate-200">
+                {p}
+              </li>
+            ))
+          }
+        </ul>
+
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-10 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-slate-200 hover:border-brand-400/40 hover:bg-white/[0.06]"
+        >
+          <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white">
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>
+          </span>
+          <span>
+            <span class="block text-xs text-slate-400">Masz pytanie lub propozycję współpracy?</span>
+            <span class="font-semibold text-white">{site.email}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
