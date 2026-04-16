@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CourseCard from '../components/CourseCard.astro';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard.astro';
+import YouTubeVideoCard from '../components/YouTubeVideoCard.astro';
+import { Icon } from '../components/Icon';
+import { courses } from '../data/courses';
+import { podcastEpisodes } from '../data/podcast';
+import { youTubeVideos } from '../data/youtube';
+import { values } from '../data/team';
+import { site } from '../data/site';
+
+const nonHeroCourses = courses.filter((c) => c.slug !== '10xdevs');
+const recentPodcasts = podcastEpisodes.slice(0, 3);
+const recentVideos = youTubeVideos.slice(0, 3);
+
+const iconMap: Record<string, 'eye' | 'layers' | 'brain' | 'spark'> = {
+  eye: 'eye',
+  layers: 'layers',
+  brain: 'brain',
+  spark: 'spark',
+};
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- Values -->
+  <section class="py-20 md:py-28">
+    <div class="container-base">
+      <div class="max-w-3xl">
+        <span class="section-eyebrow">Co nas wyróżnia</span>
+        <h2 class="mt-4 section-heading">
+          Programowanie spotyka się <br class="hidden md:block" />z rozwojem osobistym
+        </h2>
+        <p class="section-subheading">
+          Najlepsi programiści myślą szerzej — o architekturze, biznesie, ludziach i własnym rozwoju.
+          Nasze materiały łączą rzemiosło z mądrym użyciem AI.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          values.map((v) => (
+            <div class="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:border-white/20 hover:bg-white/[0.06] hover:-translate-y-1">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/30 to-accent-500/20 text-brand-200">
+                <Icon name={iconMap[v.icon]} width={20} height={20} />
+              </div>
+              <h3 class="mt-5 font-semibold text-white text-lg">{v.title}</h3>
+              <p class="mt-2 text-sm text-slate-400 leading-relaxed">{v.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="py-20 md:py-24 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-950/10 to-transparent pointer-events-none"></div>
+    <div class="container-base relative">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="section-eyebrow">Nasze kursy</span>
+          <h2 class="mt-4 section-heading">Konkretna wiedza, a nie teoria</h2>
+          <p class="section-subheading">
+            Od fundamentów frontendu, przez mistrzostwo TypeScript, po świadome AI w produkcji.
+            Wybierz swoją ścieżkę.
+          </p>
+        </div>
+        <a href="/kursy" class="btn-ghost self-start md:self-auto">
+          Zobacz wszystkie
+          <Icon name="arrow-right" width={16} height={16} />
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {nonHeroCourses.map((course) => <CourseCard course={course} compact />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast -->
+  <section class="py-20 md:py-24">
+    <div class="container-base">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="section-eyebrow">Podcast</span>
+          <h2 class="mt-4 section-heading">Rozmowy o programowaniu i rozwoju</h2>
+          <p class="section-subheading">
+            97 odcinków o technologii, karierze i mądrym wykorzystywaniu AI w codziennej pracy.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={site.social.spotify} target="_blank" rel="noreferrer" class="btn-ghost">
+            <Icon name="spotify" width={16} height={16} />
+            Spotify
+          </a>
+          <a href="/podcast" class="btn-outline">
+            Wszystkie odcinki
+            <Icon name="arrow-right" width={16} height={16} />
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {recentPodcasts.map((ep) => <PodcastEpisodeCard episode={ep} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube -->
+  <section class="py-20 md:py-24 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-accent-500/[0.03] to-transparent pointer-events-none"></div>
+    <div class="container-base relative">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <span class="section-eyebrow">YouTube</span>
+          <h2 class="mt-4 section-heading">Najnowsze filmy na kanale</h2>
+          <p class="section-subheading">
+            Praktyczne materiały o AI, TypeScripcie, Reakcie i architekturze — nowe odcinki regularnie.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={site.social.youtube} target="_blank" rel="noreferrer" class="btn-ghost">
+            <Icon name="youtube" width={16} height={16} />
+            Subskrybuj
+          </a>
+          <a href="/youtube" class="btn-outline">
+            Wszystkie filmy
+            <Icon name="arrow-right" width={16} height={16} />
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {recentVideos.map((v) => <YouTubeVideoCard video={v} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 md:py-24">
+    <div class="container-base">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-950 via-[#0a0f1e] to-[#120a1e] p-8 md:p-14">
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-accent-500/15 rounded-full blur-3xl" aria-hidden="true"></div>
+
+        <div class="relative grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
+          <div>
+            <span class="section-eyebrow">Newsletter</span>
+            <h2 class="mt-4 text-3xl md:text-4xl font-bold tracking-tight">
+              <span class="gradient-text">Przeprogramowany Newsletter</span>
+            </h2>
+            <p class="mt-4 text-slate-300 max-w-xl">
+              Co piątek w formacie 3-2-1: <span class="text-white font-semibold">3 rekomendacje techniczne</span>,
+              <span class="text-white font-semibold"> 2 refleksje o rozwoju</span> i
+              <span class="text-white font-semibold"> 1 bonus</span>. Bez spamu.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href={site.social.substack} target="_blank" rel="noreferrer" class="btn-primary">
+                Zapisz się do newslettera
+                <Icon name="arrow-up-right" width={16} height={16} />
+              </a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-xl">
+              <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="h-2 w-2 rounded-full bg-red-400"></span>
+                <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span class="ml-2 font-mono">przeprogramowani.substack.com</span>
+              </div>
+              <div class="mt-4 space-y-3 text-sm">
+                <p class="text-slate-300">
+                  <span class="font-semibold text-white">3 ·</span> Co zmienia Claude Code 4.1 w codziennej pracy
+                </p>
+                <p class="text-slate-300">
+                  <span class="font-semibold text-white">2 ·</span> Dlaczego small wins ratują długie projekty
+                </p>
+                <p class="text-slate-300">
+                  <span class="font-semibold text-white">1 ·</span> Bonus: szablon promptu do review kodu
+                </p>
+              </div>
+              <div class="mt-4 border-t border-white/10 pt-3 text-[11px] text-slate-500 font-mono">
+                // wydanie #212 · 16.04.2026
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

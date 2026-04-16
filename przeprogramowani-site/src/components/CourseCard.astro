@@ -1,0 +1,97 @@
+---
+import { Icon } from './Icon';
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+  compact?: boolean;
+}
+
+const { course, compact = false } = Astro.props;
+
+const accentClasses = {
+  blue: {
+    border: 'from-brand-500/40 to-brand-500/0',
+    badge: 'bg-brand-500/10 text-brand-200 border-brand-400/30',
+    icon: 'bg-brand-500/20 text-brand-300',
+    btn: 'btn-primary',
+  },
+  violet: {
+    border: 'from-purple-500/40 to-brand-500/0',
+    badge: 'bg-purple-500/10 text-purple-200 border-purple-400/30',
+    icon: 'bg-purple-500/20 text-purple-300',
+    btn: 'btn-accent',
+  },
+  orange: {
+    border: 'from-accent-500/40 to-accent-500/0',
+    badge: 'bg-accent-500/10 text-accent-400 border-accent-400/30',
+    icon: 'bg-accent-500/20 text-accent-400',
+    btn: 'btn-accent',
+  },
+};
+
+const a = accentClasses[course.accent];
+---
+
+<article
+  class={`group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] p-7 md:p-8 transition-all duration-300 hover:border-white/20 hover:-translate-y-1 ${
+    compact ? '' : 'h-full flex flex-col'
+  }`}
+>
+  <div class={`absolute inset-x-0 -top-px h-px bg-gradient-to-r ${a.border}`} aria-hidden="true"></div>
+
+  <div class="flex items-center justify-between gap-3">
+    <span class={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold ${a.badge}`}>
+      <Icon name="sparkle" width={12} height={12} />
+      {course.badge}
+    </span>
+    <span class={`flex h-10 w-10 items-center justify-center rounded-xl ${a.icon}`}>
+      <Icon name="graduate" width={18} height={18} />
+    </span>
+  </div>
+
+  <h3 class="mt-5 text-2xl md:text-[1.6rem] font-bold tracking-tight text-white">
+    {course.name}
+  </h3>
+  <p class="mt-2 text-sm md:text-base text-slate-300">{course.tagline}</p>
+
+  {
+    !compact && (
+      <p class="mt-4 text-sm text-slate-400 leading-relaxed">{course.description}</p>
+    )
+  }
+
+  <ul class="mt-6 space-y-2">
+    {
+      course.highlights.slice(0, compact ? 3 : 4).map((h) => (
+        <li class="flex gap-2.5 text-sm text-slate-300">
+          <Icon name="check" width={16} height={16} className="flex-shrink-0 mt-0.5 text-brand-300" />
+          <span>{h}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class={`${compact ? 'mt-6' : 'mt-6 flex-grow'}`}></div>
+
+  <div class="mt-4 pt-5 border-t border-white/10 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
+    <span class="inline-flex items-center gap-1.5">
+      <Icon name="calendar" width={12} height={12} />
+      {course.duration}
+    </span>
+    <span class="inline-flex items-center gap-1.5">
+      <Icon name="graduate" width={12} height={12} />
+      {course.level}
+    </span>
+  </div>
+
+  <a
+    href={course.href}
+    target={course.external ? '_blank' : undefined}
+    rel={course.external ? 'noreferrer' : undefined}
+    class={`mt-5 ${a.btn} w-full justify-center`}
+  >
+    Dowiedz się więcej
+    <Icon name={course.external ? 'arrow-up-right' : 'arrow-right'} width={16} height={16} />
+  </a>
+</article>
