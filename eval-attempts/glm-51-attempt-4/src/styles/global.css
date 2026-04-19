@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-violet-400;
+  }
+  .glass-card {
+    @apply bg-gray-900/60 backdrop-blur-xl border border-gray-800/50 rounded-2xl;
+  }
+  .glow {
+    box-shadow: 0 0 60px -15px rgba(92, 124, 250, 0.3);
+  }
+}

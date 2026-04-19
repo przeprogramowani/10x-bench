@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PodcastCard from '../components/PodcastCard';
+import { opanujAiPodcast, przeprogramowaniFtGosc } from '../data/podcasts';
+---
+
+<Layout title="Podcast — Przeprogramowani">
+  <Header client:load />
+
+  <main class="pt-16">
+    <section class="relative overflow-hidden py-16 sm:py-24">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute right-1/4 top-0 h-[400px] w-[400px] rounded-full bg-brand-600/15 blur-[120px]" />
+      </div>
+
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <span class="gradient-text">Podcasty</span>
+        </h1>
+        <p class="mt-4 text-xl text-gray-300">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-16 sm:pb-24">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/20 text-xl">🤖</div>
+          <div>
+            <h2 class="text-2xl font-bold">Opanuj.AI Podcast</h2>
+            <p class="text-sm text-gray-400">Ponad 4000 słuchaczy · Comiesięczne podsumowanie świata AI</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          {opanujAiPodcast.map((p) => (
+            <PodcastCard client:load podcast={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-800/60 py-16 sm:py-24">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/20 text-xl">🎙️</div>
+          <div>
+            <h2 class="text-2xl font-bold">Przeprogramowani ft. Gość</h2>
+            <p class="text-sm text-gray-400">Ponad 3800 słuchaczy · Rozmowy dla głodnych wiedzy</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          {przeprogramowaniFtGosc.map((p) => (
+            <PodcastCard client:load podcast={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-800/60 py-16 sm:py-24">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl font-bold">Jesteśmy na twojej ulubionej platformie</h2>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card px-6 py-3 text-sm font-medium text-gray-300 hover:text-white"
+          >
+            Apple Podcasts
+          </a>
+          <a
+            href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card px-6 py-3 text-sm font-medium text-gray-300 hover:text-white"
+          >
+            Spotify
+          </a>
+          <a
+            href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card px-6 py-3 text-sm font-medium text-gray-300 hover:text-white"
+          >
+            Google Podcasts
+          </a>
+          <a
+            href="https://anchor.fm/s/22544b7c/podcast/rss"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card px-6 py-3 text-sm font-medium text-gray-300 hover:text-white"
+          >
+            RSS
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:load />
+</Layout>

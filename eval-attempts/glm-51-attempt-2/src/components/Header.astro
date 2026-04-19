@@ -1,0 +1,87 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-gray-950/80 backdrop-blur-xl">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold tracking-tight">
+      <span class="font-mono text-brand-400">&lt;/&gt;</span>
+      <span>Przeprogramowani</span>
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+            currentPath === link.href
+              ? 'bg-brand-600/20 text-brand-300'
+              : 'text-gray-400 hover:bg-white/5 hover:text-gray-200',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+      >
+        10xDevs
+      </a>
+    </div>
+
+    <button
+      id="mobile-menu-btn"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-gray-400 hover:bg-white/5 hover:text-gray-200 md:hidden"
+      aria-label="Menu"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="hidden border-t border-white/5 md:hidden">
+    <div class="space-y-1 px-4 py-3">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'block rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+            currentPath === link.href
+              ? 'bg-brand-600/20 text-brand-300'
+              : 'text-gray-400 hover:bg-white/5 hover:text-gray-200',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block rounded-lg bg-brand-600 px-3 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+      >
+        10xDevs
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CourseCard from '../components/CourseCard';
+import YouTubeCard from '../components/YouTubeCard';
+import { siteConfig } from '../data/config';
+---
+
+<Layout title="Strona główna">
+  <Header />
+
+  <main class="pt-16">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-950/50 via-gray-950 to-gray-950"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-600/10 via-transparent to-transparent"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pb-24 sm:pt-28 lg:px-8 lg:pt-36">
+        <div class="mx-auto max-w-3xl text-center">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-600/10 px-4 py-1.5 text-sm font-medium text-brand-300">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-500"></span>
+            </span>
+            Nowość - Maj 2026
+          </div>
+
+          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <span class="block">10xDevs 3.0</span>
+            <span class="mt-2 block bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">
+              Czas na AI-Native Software Engineering
+            </span>
+          </h1>
+
+          <p class="mt-6 text-lg leading-relaxed text-gray-400 sm:text-xl">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+
+          <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:bg-brand-500 hover:shadow-brand-500/30"
+            >
+              Sprawdź 10xDevs
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a
+              href="#courses"
+              class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-8 py-3.5 text-base font-semibold text-gray-300 transition-all hover:bg-white/10 hover:text-white"
+            >
+              Zobacz kursy
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">Edukacja technologiczna w epoce AI</h2>
+        <p class="mt-4 text-gray-400">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <CourseCard client:load id="10xdevs" />
+        <CourseCard client:load id="opanujFrontend" />
+        <CourseCard client:load id="opanujTypeScript" />
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="border-y border-white/5 bg-gradient-to-r from-brand-950/30 via-gray-900 to-purple-950/30">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">Przeprogramowany Newsletter</h2>
+          <p class="mt-4 text-gray-400">
+            Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li>3 rekomendacje techniczne</li>
+            <li>2 rekomendacje rozwojowe</li>
+            <li>1 bonus niespodzianka</li>
+          </ul>
+          <a
+            href="https://przeprogramowani.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex items-center gap-2 rounded-xl bg-accent-500 px-8 py-3.5 text-base font-semibold text-gray-900 shadow-lg transition-all hover:bg-accent-400"
+          >
+            Zapisz się za darmo
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Preview -->
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">Filmy i podcasty</h2>
+        <p class="mt-4 text-gray-400">Rozwój nowoczesnego programisty</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {siteConfig.youtubeVideos.slice(0, 3).map((video) => (
+          <YouTubeCard client:load title={video.title} videoId={video.videoId} thumbnail={video.thumbnail} />
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a
+          href="/youtube"
+          class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-gray-300 transition-all hover:bg-white/10 hover:text-white"
+        >
+          Zobacz wszystkie filmy
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="border-t border-white/5 bg-white/[0.01]">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-white">7 lat na rynku edukacji technologicznej</h2>
+          <p class="mt-2 text-sm text-gray-500">Współpracujemy z najlepszymi</p>
+        </div>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-8">
+          {siteConfig.partners.map((partner) => (
+            <span class="rounded-lg border border-white/5 bg-white/[0.02] px-5 py-3 text-sm font-medium text-gray-500">
+              {partner}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro'
+import YouTubeCard from '../components/YouTubeCard'
+import { videos } from '../data/videos'
+---
+
+<Layout title="YouTube — Przeprogramowani" description="Filmy o programowaniu, AI i nowoczesnym developmentie">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center px-3 py-1 rounded-full bg-red-600/10 border border-red-500/20 text-red-300 text-xs font-semibold mb-6">
+        YouTube
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Rozwój nowoczesnego programisty
+      </h1>
+      <p class="mt-4 text-lg text-surface-300 leading-relaxed">
+        Filmy o programowaniu, AI i nowoczesnym developmentie — na kanale Przeprogramowani na YouTube
+      </p>
+      <a
+        href="https://youtube.com/c/przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl transition-colors text-sm"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-2xl font-bold text-white mb-8">Najnowsze filmy</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((v) => (
+          <YouTubeCard {...v} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-surface-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-2xl font-bold text-white mb-6">Czego nas możesz się spodziewać?</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'AI i programowanie', desc: 'Praktyczne zastosowania AI w codziennej pracy developera — Claude Code, Cursor, Copilot i więcej.' },
+          { title: 'TypeScript i React', desc: 'Wzorce, najlepsze praktyki i zaawansowane techniki typowania z TypeScript 5 i React 19.' },
+          { title: 'Architektura frontendu', desc: 'Decyzje architektoniczne, mikrofrontendy, design systemy i skalowanie aplikacji.' },
+          { title: 'LIVE sesje kodowania', desc: 'Programowanie na żywo z AI — od pomysłu do działającego MVP w jednym streamie.' },
+          { title: 'Podcasty i rozmowy', desc: 'Rozmowy z ekspertami branży IT o karierze, rozwoju i nowoczesnych technologiach.' },
+          { title: 'Produktywność deva', desc: 'Narzędzia, workflow i procesy, które przyspieszają pracę programisty.' },
+        ].map((item) => (
+          <div class="bg-surface-900/50 border border-surface-800/50 rounded-xl p-6">
+            <h3 class="text-white font-bold mb-2">{item.title}</h3>
+            <p class="text-surface-400 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,51 @@
+---
+import { siteConfig } from '../data/config';
+---
+
+<footer class="border-t border-white/5 bg-gray-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <a href="/" class="flex items-center gap-2 text-lg font-bold">
+          <span class="font-mono text-brand-400">&lt;/&gt;</span>
+          <span>Przeprogramowani</span>
+        </a>
+        <p class="mt-3 text-sm text-gray-500">
+          {siteConfig.tagline}
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">Strony</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/o-nas" class="text-sm text-gray-500 hover:text-gray-300">O nas</a></li>
+          <li><a href="/podcast" class="text-sm text-gray-500 hover:text-gray-300">Podcast</a></li>
+          <li><a href="/youtube" class="text-sm text-gray-500 hover:text-gray-300">YouTube</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">Kursy</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="https://10xdevs.pl" target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">10xDevs</a></li>
+          <li><a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">Opanuj Frontend</a></li>
+          <li><a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">Opanuj TypeScript</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">Social</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href={siteConfig.socials.youtube} target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">YouTube</a></li>
+          <li><a href={siteConfig.socials.facebook} target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">Facebook</a></li>
+          <li><a href={siteConfig.socials.instagram} target="_blank" rel="noopener" class="text-sm text-gray-500 hover:text-gray-300">Instagram</a></li>
+          <li><a href={`mailto:${siteConfig.socials.email}`} class="text-sm text-gray-500 hover:text-gray-300">{siteConfig.socials.email}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-white/5 pt-6 text-center text-sm text-gray-600">
+      &copy; {new Date().getFullYear()} Przeprogramowani.pl — {siteConfig.tagline}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Courses from '../components/Courses';
+import Podcast from '../components/Podcast';
+import YouTube from '../components/YouTube';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
+---
+
+<Layout>
+  <Navbar client:load />
+  <Hero client:load />
+  <About client:load />
+  <Courses client:load />
+  <Podcast client:load />
+  <YouTube client:load />
+  <Newsletter client:load />
+  <Footer client:load />
+</Layout>
