@@ -1,0 +1,49 @@
+name: Deploy slides to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'slides/**'
+      - '.github/workflows/slides-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-slides
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Stage deck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy runtime files
+        run: |
+          mkdir -p _site
+          cp slides/index.html _site/
+          cp slides/styles.css _site/
+          cp -R slides/assets _site/assets
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

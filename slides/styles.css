@@ -784,3 +784,204 @@ body.cursor-visible .counter { opacity: 1; }
   .slide { break-after: page; position: relative; opacity: 1; transform: none; height: 100vh; }
   .progress, .counter, .hint { display: none; }
 }
+
+/* ════════════════════════════════════════════
+   Quality polish + extracted primitives
+   (appended; additive only)
+   ════════════════════════════════════════════ */
+
+/* Background: softer image + darker radial vignette for readability */
+body::before { opacity: 0.35; }
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 15, 0.55) 75%, rgba(10, 10, 15, 0.85) 100%),
+    linear-gradient(180deg, rgba(10, 10, 15, 0.15) 0%, transparent 25%, transparent 75%, rgba(10, 10, 15, 0.35) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ── Unified label (extracted from repeated insight-tag hacks) ── */
+.slide-label {
+  display: inline-block;
+  font-size: clamp(1.2rem, 1.9vw, 1.65rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(167, 139, 250, 0.28);
+}
+
+.slide-label--warm { background: rgba(251, 146, 60, 0.12); color: var(--warm); border-color: rgba(251, 146, 60, 0.28); }
+.slide-label--negative { background: rgba(248, 113, 113, 0.12); color: var(--negative); border-color: rgba(248, 113, 113, 0.28); }
+.slide-label--accent2 { background: rgba(56, 189, 248, 0.12); color: var(--accent2); border-color: rgba(56, 189, 248, 0.28); }
+.slide-label--positive { background: rgba(74, 222, 128, 0.12); color: var(--positive); border-color: rgba(74, 222, 128, 0.28); }
+
+/* Insight-tag color variants (removes inline styles on every insight slide) */
+.insight-tag--accent { background: rgba(167, 139, 250, 0.15); color: var(--accent); }
+.insight-tag--warm { background: rgba(251, 146, 60, 0.15); color: var(--warm); }
+.insight-tag--negative { background: rgba(248, 113, 113, 0.15); color: var(--negative); }
+.insight-tag--accent2 { background: rgba(56, 189, 248, 0.15); color: var(--accent2); }
+.insight-tag--positive { background: rgba(74, 222, 128, 0.15); color: var(--positive); }
+
+/* Insight numbers: gradient fill for more impact (keeps color classes working) */
+.slide--insight .insight-num {
+  background: linear-gradient(135deg, var(--accent), #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.4;
+}
+.slide--insight .insight-num.negative { background: linear-gradient(135deg, var(--warm), var(--negative)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.slide--insight .insight-num.warm { background: linear-gradient(135deg, var(--warm), #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.slide--insight .insight-num.accent2 { background: linear-gradient(135deg, var(--accent2), #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.slide--insight .insight-num.positive { background: linear-gradient(135deg, var(--positive), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.slide--insight .insight-num.accent { background: linear-gradient(135deg, var(--accent), #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── Typography helpers (replace repeated inline clamp/size/color) ── */
+.display-xl { font-size: clamp(4rem, 10vw, 10.5rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; }
+.display-lg { font-size: clamp(3.5rem, 8.5vw, 9.5rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; }
+.lede { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--text); line-height: 1.35; }
+.lede--lg { font-size: clamp(2.2rem, 4.5vw, 4rem); color: var(--text); line-height: 1.25; }
+.punch { font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 600; line-height: 1.2; color: var(--warm); }
+.punch--accent { color: var(--accent); }
+.caption { font-size: clamp(1.2rem, 1.8vw, 1.6rem); text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-dim); font-weight: 500; }
+.footnote { font-size: clamp(1.4rem, 2.2vw, 2rem); color: var(--text-dim); line-height: 1.4; }
+.small { font-size: 0.7em; }
+
+/* ── Stat: big value with uppercase caption ── */
+.stat {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.stat__value {
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.stat__label {
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ── Compare: richer two-column layout + "vs" pill ── */
+.compare-col {
+  padding: 0 1vw;
+  display: flex;
+  flex-direction: column;
+}
+.compare-col h3 { border-bottom-color: rgba(90, 90, 130, 0.5); }
+
+.compare--vs { position: relative; }
+.compare--vs::before {
+  content: 'vs';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--mono);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  padding: 0.55em 1.1em;
+  background: var(--surface);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.compare--centered,
+.compare--centered .compare-col { text-align: center; }
+.compare--centered .compare-col { align-items: center; }
+.compare--centered .stat { align-items: center; }
+
+/* ── Surface card polish (cards across the deck) ── */
+.steps-cell,
+.isolation-cell,
+.model-card,
+.scorecard-col,
+.stack-chip {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 60%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Big-number: radial glow ── */
+.slide--number .big-number {
+  text-shadow: 0 0 80px rgba(167, 139, 250, 0.28);
+}
+
+/* ── Progress bar: thicker + glowing ── */
+.progress {
+  height: 4px;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.5);
+}
+
+/* ── Code block: nicer surface + inner highlight ── */
+.code-block {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.code-block--narrow { max-width: 55ch; }
+.code-block--mid { max-width: 65ch; }
+.code-block--wide { max-width: 70ch; }
+
+/* ── Section slide: brighter hairline on label ── */
+.slide--section .section-label { display: inline-block; padding: 0.4em 1.1em; border-radius: 999px; background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.28); }
+
+/* ── CTA row helper (replaces inline flex) ── */
+.cta-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Entrance micro-animations ── */
+.slide.active .big-number,
+.slide.active .stat__value {
+  animation: pop-in 0.55s cubic-bezier(0.34, 1.3, 0.64, 1) both;
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: translateY(12px) scale(0.94); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.slide--list.active li { animation: list-fade-in 0.45s ease both; opacity: 0; }
+.slide--list.active li:nth-child(1) { animation-delay: 0.08s; }
+.slide--list.active li:nth-child(2) { animation-delay: 0.16s; }
+.slide--list.active li:nth-child(3) { animation-delay: 0.24s; }
+.slide--list.active li:nth-child(4) { animation-delay: 0.32s; }
+.slide--list.active li:nth-child(5) { animation-delay: 0.40s; }
+.slide--list.active li:nth-child(6) { animation-delay: 0.48s; }
+@keyframes list-fade-in {
+  0% { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide.active .big-number, .slide.active .stat__value, .slide--list.active li {
+    animation: none !important;
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
+  }
+}
