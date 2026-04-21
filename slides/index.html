@@ -491,23 +491,151 @@
   <h1>Dlaczego benchmarki z&nbsp;internetu<br><span class="gradient-warm">nie wystarczą</span>?</h1>
 </div>
 
-<!-- 40 ─ TODO placeholder -->
+<!-- 40 ─ Hook: rankings lie -->
 <div class="slide slide--statement" data-act="6">
-  <h2 class="dim">[ TODO ]</h2>
-  <p class="mt-3">Sekcja do uzupełnienia</p>
+  <h1>Rankingi AI <span class="gradient-warm">kłamią</span>.</h1>
+  <p class="mt-3">Nie dlatego, że chcą &mdash; dlatego, że <span class="bright">muszą</span>.</p>
+  <p class="mt-2 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">5 strukturalnych problemów każdego publicznego benchmarku</p>
+</div>
+
+<!-- 41 ─ Flaw 1: Goodhart -->
+<div class="slide slide--insight" data-act="6">
+  <div class="insight-header">
+    <span class="insight-num negative">01</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(248,113,113,0.15);color:var(--negative);">Prawo Goodharta</div>
+  <h2>Cel &ne; miara</h2>
+  <p class="white">&bdquo;Gdy miara staje się celem, przestaje być dobrą miarą.&rdquo;</p>
+  <p class="mt-2 white">SWE-bench Verified &mdash; <span class="negative">wycofany przez OpenAI w lutym 2026</span>. Modele frontier potrafiły odtwarzać &bdquo;gold patche&rdquo; z pamięci.</p>
+</div>
+
+<!-- 42 ─ Flaw 2: Construct validity -->
+<div class="slide slide--insight" data-act="6">
+  <div class="insight-header">
+    <span class="insight-num warm">02</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(251,146,60,0.15);color:var(--warm);">Trafność konstruktu</div>
+  <h2>Mierzy co innego niż myślisz</h2>
+  <div class="compare mt-3">
+    <div class="compare-col">
+      <h3 class="dim">SWE-bench<br><span style="font-size:0.7em;">(naprawa bug&oacute;w)</span></h3>
+      <p><span class="positive">74%</span></p>
+    </div>
+    <div class="compare-col">
+      <h3 class="dim">FeatureBench<br><span style="font-size:0.7em;">(nowe funkcje)</span></h3>
+      <p><span class="negative">11%</span></p>
+    </div>
+  </div>
+  <p class="mt-4 white">Ten sam model (Claude 4.5 Opus). <span class="warm">63 punkty r&oacute;żnicy.</span></p>
+</div>
+
+<!-- 43 ─ Flaw 3: Data contamination -->
+<div class="slide slide--list" data-act="6">
+  <h2 class="mb-4"><span class="insight-tag" style="background:rgba(248,113,113,0.15);color:var(--negative);display:inline-block;margin-bottom:0.5rem;">03 &middot; Kontaminacja danych</span><br>Testy trafiły do treningu</h2>
+  <ul>
+    <li><span class="bright">HumanEval</span> &mdash; spadki 19&ndash;48 pp na mutacjach</li>
+    <li><span class="bright">QuixBugs</span> &mdash; 100% wyciek</li>
+    <li><span class="bright">MBPP</span> &mdash; ~65% instancji w publicznym internecie</li>
+    <li><span class="bright">SWE-bench Verified</span> &mdash; dosłowne odtwarzanie patchy</li>
+  </ul>
+  <p class="mt-4 warm">Pytanie brzmi kiedy, nie czy.</p>
+</div>
+
+<!-- 44 ─ Flaw 4: Ecological validity -->
+<div class="slide slide--list" data-act="6">
+  <h2 class="mb-4"><span class="insight-tag" style="background:rgba(251,146,60,0.15);color:var(--warm);display:inline-block;margin-bottom:0.5rem;">04 &middot; Trafność ekologiczna</span><br>Benchmark &ne; praca</h2>
+  <ul>
+    <li>Niejednoznaczne wymagania</li>
+    <li>Istniejący dług techniczny</li>
+    <li>Koordynacja wieloosobowa</li>
+    <li>Presja czasu i przerywana praca</li>
+    <li>Zmieniające się wymagania w locie</li>
+  </ul>
+  <p class="mt-4 white">Tw&oacute;j ticket na Jirze nie wygląda jak zadanie benchmarkowe.</p>
+</div>
+
+<!-- 45 ─ Flaw 5: Metric reductionism -->
+<div class="slide slide--number" data-act="6">
+  <div class="insight-tag" style="background:rgba(167,139,250,0.15);color:var(--accent);display:inline-block;margin-bottom:1rem;">05 &middot; Redukcjonizm metryczny</div>
+  <div class="big-number gradient-warm">0.9<sup>5</sup> = 0.59</div>
+  <p>90% pass@1 &times; 5 krok&oacute;w = <span class="warm">59% ukończonych workflow</span></p>
+  <p class="mt-2 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">Jedna liczba ukrywa niezawodność, koszt i rozkład błęd&oacute;w.</p>
+</div>
+
+<!-- 46 ─ Benchmark lifecycle -->
+<div class="slide slide--number" data-act="6">
+  <div class="big-number gradient-text">12&ndash;18</div>
+  <p>miesięcy życia benchmarku</p>
+  <p class="mt-2 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">start &rarr; saturacja &rarr; kontaminacja &rarr; wycofanie</p>
+  <p class="mt-4 white" style="font-size:clamp(1.4rem,2.2vw,2rem);">HumanEval (2021&rarr;2024). SWE-bench Verified (2024&rarr;2026). I kolejne.</p>
+</div>
+
+<!-- 47 ─ Language gap -->
+<div class="slide slide--insight slide--centered" data-act="6">
+  <div class="insight-header">
+    <span class="insight-num accent2">06</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(56,189,248,0.15);color:var(--accent2);">Luka w stacku</div>
+  <h2>Python-only</h2>
+  <p class="white">Większość rygorystycznych benchmark&oacute;w to <span class="accent2">wyłącznie Python</span>.</p>
+  <p class="mt-2 white">Piszesz w <span class="bright">TypeScript</span>, <span class="bright">Kotlinie</span>, <span class="bright">Swift</span>, <span class="bright">Ruście</span>? Zostaje Ci szczątkowy sygnał.</p>
+</div>
+
+<!-- 48 ─ Harness matters -->
+<div class="slide slide--insight" data-act="6">
+  <div class="insight-header">
+    <span class="insight-num accent">07</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(167,139,250,0.15);color:var(--accent);">Harness</div>
+  <h2>Ten sam model, inne wyniki</h2>
+  <div class="compare mt-3">
+    <div class="compare-col">
+      <h3 class="dim">Standard scaffold</h3>
+      <p><span class="warm">45.9%</span></p>
+    </div>
+    <div class="compare-col">
+      <h3 class="dim">Claude Code</h3>
+      <p><span class="positive">55.4%</span></p>
+    </div>
+  </div>
+  <p class="mt-4 white">Claude Opus 4.5 na SWE-bench Pro. <span class="accent">~10 pp r&oacute;żnicy tylko od harnessu.</span></p>
+</div>
+
+<!-- 49 ─ What actually works -->
+<div class="slide slide--list" data-act="6">
+  <h2 class="mb-4">Co faktycznie działa</h2>
+  <ul>
+    <li class="check">Trianguluj <span class="bright">3+ benchmark&oacute;w</span> mierzących r&oacute;żne konstrukty</li>
+    <li class="check">Sprawdzaj <span class="bright">datę ostatniej aktualizacji</span> i status kontaminacji</li>
+    <li class="check">Patrz na <span class="bright">koszt za zadanie</span>, nie tylko jakość</li>
+    <li class="check">Preferuj <span class="bright">pass^k</span> nad pass@1, gdy potrzeba niezawodności</li>
+    <li class="check">Uruchom <span class="bright">własną ewaluację</span> na własnych zadaniach</li>
+  </ul>
 </div>
 
 <!-- ════════════════════════════════════════════
      CLOSING
      ════════════════════════════════════════════ -->
 
-<!-- 41 ─ Closing statement -->
+<!-- 50 ─ Deck summary -->
+<div class="slide slide--list" data-act="closing">
+  <h2 class="mb-4">Co wynieść z tej rozmowy</h2>
+  <ul>
+    <li class="check">Jeden prompt potrafi <span class="bright">bardzo wiele</span> &mdash; i wciąż nie wystarczy do produkcji</li>
+    <li class="check">Każdy model ma <span class="accent">DNA</span> &mdash; powtarzalne mocne i słabe strony</li>
+    <li class="check">Publiczne rankingi mierzą og&oacute;lne możliwości, <span class="warm">nie Twoją pracę</span></li>
+    <li class="check">Własny benchmark w <span class="bright">5 krokach</span> daje realne decyzje</li>
+    <li class="check">Nie vibe coding &mdash; <span class="gradient-text">zrozumienie AI</span> jest zawodem przyszłości</li>
+  </ul>
+</div>
+
+<!-- 51 ─ Closing statement -->
 <div class="slide slide--statement" data-act="closing">
   <h1>Vibe coding<br><span class="dim">nie działa.</span></h1>
   <p class="mt-4" style="font-size:clamp(2.2rem,4.5vw,4rem);color:var(--text);">Ale zrozumienie AI &mdash; to <span class="gradient-text">supermoc</span>.</p>
 </div>
 
-<!-- 42 ─ CTA -->
+<!-- 52 ─ CTA -->
 <div class="slide" data-act="closing">
   <h1 class="gradient-text" style="font-size:clamp(3.5rem,9vw,10rem);">10xbench.ai</h1>
   <p class="mt-4" style="font-size:clamp(1.8rem,3vw,2.8rem);color:var(--text);">Sprawdź wyniki. Zbuduj własny benchmark.</p>

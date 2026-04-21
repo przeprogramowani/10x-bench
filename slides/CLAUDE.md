@@ -68,5 +68,4 @@ Several slides contain `<div class="placeholder">` elements marking spots for sc
 ## Known TODOs
 
 - Slide 1: Conference name (`[nazwa konferencji]`)
-- Slide 42: Social links (`<!-- TODO: social -->`)
-- Act VI (slides 39–40): "Dlaczego benchmarki z internetu nie wystarczą" — section stub with `[ TODO ]` placeholder
+- Slide 52: Social links (`<!-- TODO: social -->`)
