@@ -19,6 +19,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -70,6 +72,7 @@ h1 {
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 h2 {
@@ -77,18 +80,21 @@ h2 {
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 h3 {
   font-size: clamp(1.8rem, 3.5vw, 3.5rem);
   font-weight: 500;
   line-height: 1.25;
+  text-wrap: balance;
 }
 
 p, li {
   font-size: clamp(1.5rem, 2.8vw, 2.5rem);
   line-height: 1.5;
   color: var(--text-dim);
+  text-wrap: pretty;
 }
 
 .accent { color: var(--accent); }
@@ -378,7 +384,8 @@ p, li {
   max-height: 45vh;
   object-fit: contain;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
@@ -398,7 +405,8 @@ p, li {
   max-height: 70vh;
   object-fit: contain;
   border-radius: 12px;
-  border: 1px solid var(--border);
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+  outline-offset: -1px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
@@ -747,6 +755,7 @@ p, li {
   font-weight: 500;
   color: var(--text-dim);
   font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
   z-index: 100;
   opacity: 0;
   transition: opacity 0.3s;
@@ -869,6 +878,7 @@ body::after {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 .stat__label {
   font-size: clamp(1.2rem, 1.8vw, 1.6rem);
@@ -976,6 +986,12 @@ body::after {
 @keyframes list-fade-in {
   0% { opacity: 0; transform: translateX(-10px); }
   100% { opacity: 1; transform: translateX(0); }
+}
+
+.qrcode {
+  width: 360px;
+  height: 360px;
+  border-radius: 12px;
 }
 
 @media (prefers-reduced-motion: reduce) {
