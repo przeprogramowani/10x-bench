@@ -92,7 +92,7 @@
 
 <div class="slide slide--statement" data-act="2">
   <img class="hero-screenshot hero-screenshot--xl mb-3" src="assets/rankingi-metr.png" alt="Rankingi AI">
-  <h1>Rankingi i social media</h1>
+  <h1>Social media</h1>
   <p class="warm mt-3">już dawno wydały wyrok - nadchodzi nasz koniec.</p>
 </div>
 
@@ -147,9 +147,9 @@
     <li class="check">Bootstrap projektu od zera</li>
     <li class="check">Działający dev server</li>
     <li class="check">Rzeczywiste dane (nie lorem ipsum)</li>
-    <li class="check">Integracje z zewnętrznymi feedami</li>
-    <li class="check">Responsywność</li>
-    <li class="check">Deploy na Cloudflare</li>
+    <li class="check">Integracje z feedami YouTube / Spotify</li>
+    <li class="check">Responsywność i nawigację</li>
+    <li class="check">Adapter deploymentu na Cloudflare</li>
   </ul>
 </div>
 
@@ -157,7 +157,7 @@
 <div class="slide" data-act="3">
   <img class="hero-screenshot hero-screenshot--xl" src="assets/gpt-53-codex-attempt-4.png" alt="GPT-5.3 Codex — wynik">
   <p class="mt-3 caption">Pierwszy wynik &middot; GPT-5.3 Codex</p>
-  <p class="mt-2 punch">Szczęka. Na. Podłodze.</p>
+  <p class="mt-2 punch">Lepiej niż oczekiwałem. Znacznie lepiej.</p>
 </div>
 
 <!-- 17 ─ Marcin's quote -->
@@ -257,10 +257,10 @@
   <div class="code-block code-block--mid">
     <span class="hl">$</span> /eval-model <span class="hl2">GLM-5.1 via opencode</span><br><br>
     <span class="cm"># 1. Sprawdza metadata.ts &mdash; czy model już istnieje?</span><br>
-    <span class="cm"># 2. Szuka cennika API w sieci (input/output per 1M tokens)</span><br>
-    <span class="cm"># 3. Aktualizuje metadata: ID, nazwa, harness, pricing</span><br>
+    <span class="cm"># 2. Szuka cennika modelu w sieci</span><br>
+    <span class="cm"># 3. Aktualizuje metadane: nazwa, harness, pricing</span><br>
     <span class="cm"># 4. Tworzy 5 katalogów prób: model-attempt-{1..5}/</span><br>
-    <span class="cm"># 5. Uruchamia 5 równoległych agentów z prompt.md</span>
+    <span class="cm"># 5. Uruchamia 5 równoległych subagentów z prompt.md</span>
   </div>
   <p class="mt-3">Jeden skill &rarr; <span class="bright">pełny pipeline od zera do ewaluacji</span></p>
 </div>
@@ -279,9 +279,9 @@
   <div class="insight-header">
     <span class="insight-num accent">01</span>
   </div>
-  <div class="insight-tag insight-tag--accent">Frontier vs Open Source</div>
+  <div class="insight-tag insight-tag--accent">Prev-Gen VS Current-Gen</div>
   <h2>Przepaść</h2>
-  <p>Różnica między <span class="positive">"za darmo"</span> a <span class="negative">"za dolary"</span> jest brutalna.</p>
+  <p>Różnica między <span class="positive">Chatbotami</span> a <span class="negative">Agentami</span> jest gigantyczna.</p>
   <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/qwen-3-max_filmstrip.png" alt="Qwen 3 Max — filmstrip wyników">
 </div>
 
@@ -305,10 +305,10 @@
     <span class="insight-num warm">03</span>
   </div>
   <div class="insight-tag insight-tag--warm">Komfort pracy</div>
-  <h2>Komfort = 0</h2>
-  <p>Niektóre modele <span class="negative">nie są w stanie postawić działającej strony</span>.</p>
-  <p class="mt-2">Nawet nie chodzi o jakość &mdash; chodzi o to, że nic nie działa.</p>
-  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/gemini-3-pro-attempt-3.png" alt="Gemini 3 Pro — zepsuta strona">
+  <h2>Wokół modelu</h2>
+  <p>OpenCode kilkukrotnie <span class="negative">wpadał w pętlę bez wyjścia</span>.</p>
+  <p class="mt-2">Nie powielały tego Codex ani Claude Code.</p>
+  <img class="hero-screenshot hero-screenshot mt-4" src="assets/gemini-3-pro-attempt-3.png" alt="Gemini 3 Pro — zepsuta strona">
 </div>
 
 <!-- 29 ─ Insight 4: Stary stack -->
@@ -319,7 +319,6 @@
   <div class="insight-tag insight-tag--accent2">Dane treningowe</div>
   <h2>Stary stack</h2>
   <p class="white">Niektóre modele robią bootstrap z <span class="accent2">danych treningowych</span> zamiast odpytywać live&nbsp;CLI.</p>
-  <p class="mt-2 white">Efekt? Stare wersje frameworków, deprecated&nbsp;API, nieaktualne&nbsp;zależności.</p>
   <div class="code-block code-block--narrow mt-4">
     <span class="cm">&gt;</span> Wykorzystam <span class="negative">Astro 4</span>, <span class="negative">Reacta 18</span> i <span class="negative">Tailwind 3</span>
   </div>
@@ -343,19 +342,19 @@
     <span class="insight-num positive">06</span>
   </div>
   <div class="insight-tag insight-tag--positive">Kreatywność</div>
-  <h2>Gdzie tu kreatywność?</h2>
+  <h2>GPT-5.* robi to dobrze</h2>
   <div class="compare mt-3">
     <div class="compare-col">
       <h3 class="dim">Model A</h3>
-      <p>5/5 prób &rarr; <span class="warm">identyczny layout</span></p>
+      <p>5/5 prób &rarr; <span class="warm">podobny layout</span></p>
     </div>
     <div class="compare-col">
-      <h3 class="dim">GPT</h3>
-      <p>Co próba &rarr; <span class="positive">inna strona</span></p>
+      <h3 class="dim">GPT-5.4</h3>
+      <p>Co próba &rarr; <span class="positive">inny pomysł</span></p>
     </div>
   </div>
   <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/gpt-54_filmstrip.png" alt="GPT-5.4 — filmstrip wyników">
-  <p class="mt-2 white">GPT-5.4</p>
+  <p class="mt-2 white">OpenAI > Reszta</p>
 </div>
 
 <!-- 32 ─ Insight 7: DNA -->
@@ -378,6 +377,7 @@
   <h2>Ściąganie na egzaminie</h2>
   <p class="white">Scorecard i prompt w jednym repo (mój bład)?</p>
   <p class="mt-2 white"><span class="negative">Chińskie modele lubią z tego korzystać.</span></p>
+  <p class="mt-2 white">Teraz: <span class="accent">10x-bench</span> & <span class="accent">10x-bench-eval</span></p>
 </div>
 
 <!-- 34 ─ Insight 9: Vibe coding -->
@@ -539,16 +539,16 @@
   <h2 class="mb-4">Testy trafiły do treningu</h2>
   <ul>
     <li><span class="bright">HumanEval</span> &mdash; spadki 19&ndash;48 pp na mutacjach</li>
-    <li><span class="bright">QuixBugs</span> &mdash; 100% wyciek</li>
-    <li><span class="bright">MBPP</span> &mdash; ~65% instancji w publicznym internecie</li>
+    <li><span class="bright">QuixBugs</span> &mdash; ok. 100% wycieku</li>
+    <li><span class="bright">Mostly Basic Python Problems</span> &mdash; ok. 65% wycieku</li>
     <li><span class="bright">SWE-bench Verified</span> &mdash; dosłowne odtwarzanie patchy</li>
   </ul>
-  <p class="mt-4 warm">Pytanie brzmi kiedy, nie czy.</p>
+  <p class="mt-4 warm">Jeśli twój projekt wygląda jak benchmark - gratulacje. Jeśli nie - masz problem.</p>
 </div>
 
 <!-- 44 ─ Flaw 4: Ecological validity -->
 <div class="slide slide--list" data-act="6">
-  <span class="slide-label slide-label--warm">04 &middot; Trafność ekologiczna</span>
+  <span class="slide-label slide-label--warm">04 &middot; Warunki rzeczywiste</span>
   <h2 class="mb-4">Benchmark &ne; praca</h2>
   <ul>
     <li>Niejednoznaczne wymagania</li>
@@ -562,27 +562,14 @@
 
 <!-- 45 ─ Flaw 5: Metric reductionism -->
 <div class="slide slide--number" data-act="6">
-  <span class="slide-label">05 &middot; Redukcjonizm metryczny</span>
-  <div class="big-number gradient-warm">0.9<sup>5</sup> = 0.59</div>
-  <p>90% pass@1 &times; 5 krok&oacute;w = <span class="warm">59% ukończonych workflow</span></p>
-  <p class="mt-2 footnote">Jedna liczba ukrywa niezawodność, koszt i rozkład błęd&oacute;w.</p>
-</div>
-
-<!-- 46 ─ Benchmark lifecycle -->
-<div class="slide slide--number" data-act="6">
-  <span class="caption">Cykl życia</span>
-  <div class="big-number gradient-text mt-3">12&ndash;18</div>
-  <p>miesięcy życia benchmarku</p>
-  <p class="mt-2 footnote">start &rarr; saturacja &rarr; kontaminacja &rarr; wycofanie</p>
-  <p class="mt-4 footnote"><span class="bright">HumanEval</span> (2021&rarr;2024). <span class="bright">SWE-bench Verified</span> (2024&rarr;2026). I kolejne.</p>
+  <span class="slide-label">05 &middot; Matematyka</span>
+  <p class="white">90% pass@1 &times; 5 krok&oacute;w = <span class="warm">59% ukończonych workflow</span></p>
+  <p class="mt-2  white">Jedna liczba ukrywa niezawodność, koszt i rozkład błęd&oacute;w.</p>
 </div>
 
 <!-- 47 ─ Language gap -->
 <div class="slide slide--insight slide--centered" data-act="6">
-  <div class="insight-header">
-    <span class="insight-num accent2">06</span>
-  </div>
-  <div class="insight-tag insight-tag--accent2">Luka w stacku</div>
+  <span class="slide-label">06 &middot; Dopasowanie stacku</span>
   <h2>Python-only</h2>
   <p class="white">Większość rygorystycznych benchmark&oacute;w to <span class="accent2">wyłącznie Python</span>.</p>
   <p class="mt-2 white">Piszesz w <span class="bright">TypeScript</span>, <span class="bright">Kotlinie</span>, <span class="bright">Swift</span>, <span class="bright">Ruście</span>? Zostaje Ci szczątkowy sygnał.</p>
@@ -590,10 +577,7 @@
 
 <!-- 48 ─ Harness matters -->
 <div class="slide slide--insight slide--centered" data-act="6">
-  <div class="insight-header">
-    <span class="insight-num accent">07</span>
-  </div>
-  <div class="insight-tag insight-tag--accent">Harness</div>
+  <span class="slide-label">07 &middot; Harness</span>
   <h2>Ten sam model, inne wyniki</h2>
   <div class="compare compare--vs compare--centered mt-4">
     <div class="compare-col">
@@ -614,13 +598,13 @@
 
 <!-- 49 ─ What actually works -->
 <div class="slide slide--list" data-act="6">
-  <h2 class="mb-4">Co faktycznie działa</h2>
+  <h2 class="mb-4">Jak czytać benchmarki?</h2>
   <ul>
-    <li class="check">Trianguluj <span class="bright">3+ benchmark&oacute;w</span> mierzących r&oacute;żne konstrukty</li>
-    <li class="check">Sprawdzaj <span class="bright">datę ostatniej aktualizacji</span> i status kontaminacji</li>
-    <li class="check">Patrz na <span class="bright">koszt za zadanie</span>, nie tylko jakość</li>
-    <li class="check">Preferuj <span class="bright">pass^k</span> nad pass@1, gdy potrzeba niezawodności</li>
-    <li class="check">Uruchom <span class="bright">własną ewaluację</span> na własnych zadaniach</li>
+    <li class="check">Analizuj wyniki <span class="bright">2-3 różnych benchmark&oacute;w</span></li>
+    <li class="check">Patrz na <span class="bright">datę ostatniej aktualizacji</span></li>
+    <li class="check">Patrz na <span class="bright">koszt za zadanie</span>, nie sam wynik</li>
+    <li class="check">Sprawdzaj metodę - <span class="bright">pass^k</span> czy pass@1?</li>
+    <li class="check">Zbuduj <span class="bright">własną ewaluację</span> ✅</li>
   </ul>
 </div>
 
@@ -628,32 +612,18 @@
      CLOSING
      ════════════════════════════════════════════ -->
 
-<!-- 50 ─ Deck summary -->
-<div class="slide slide--list" data-act="closing">
-  <h2 class="mb-4">Co wynieść z tej rozmowy</h2>
-  <ul>
-    <li class="check">Jeden prompt potrafi <span class="bright">bardzo wiele</span> &mdash; i wciąż nie wystarczy do produkcji</li>
-    <li class="check">Każdy model ma <span class="accent">DNA</span> &mdash; powtarzalne mocne i słabe strony</li>
-    <li class="check">Publiczne rankingi mierzą og&oacute;lne możliwości, <span class="warm">nie Twoją pracę</span></li>
-    <li class="check">Własny benchmark w <span class="bright">5 krokach</span> daje realne decyzje</li>
-    <li class="check">Nie vibe coding &mdash; <span class="gradient-text">zrozumienie AI</span> jest zawodem przyszłości</li>
-  </ul>
-</div>
 
 <!-- 51 ─ Closing statement -->
 <div class="slide slide--statement" data-act="closing">
-  <h1>Vibe coding<br><span class="dim">nie działa.</span></h1>
-  <p class="mt-4 lede--lg">Ale zrozumienie AI &mdash; to <span class="gradient-text">supermoc</span>.</p>
+  <h1>Najlepszy agent<br><span class="dim">do programowania</span>?</h1>
+  <p class="mt-4 lede--lg">Najlepszy w jakim <span class="gradient-text"> kontekście</span>?</p>
 </div>
 
 <!-- 52 ─ CTA -->
 <div class="slide" data-act="closing">
   <h1 class="gradient-text display-lg">10xbench.ai</h1>
   <p class="mt-4 lede">Sprawdź wyniki. Zbuduj własny benchmark.</p>
-  <div class="cta-row mt-6">
-    <span class="tag"><!-- TODO: social --></span>
-  </div>
-  <p class="mt-6 footnote">Przemek Smyrdek &middot; Dziękuję!</p>
+  <p class="mt-6 footnote">Więcej w trakcie 10xdevs.pl</p>
 </div>
 
 </div><!-- /.deck -->
