@@ -138,32 +138,6 @@ layout: section
 ---
 
 # Część II
-## 10xbench — co wyszło z benchmarku?
-
-<!-- TODO: wprowadzenie do benchmarku (4 modele, ten sam prompt, ocena) -->
-
----
-
-# 10xbench — szczegóły benchmarku
-
-<!-- TODO: treść
-  - prompt (migracja/stworzenie strony Przeprogramowani.pl, stack Astro+React+Tailwind)
-  - 4 modele: Claude Opus 4.6, GPT-5.3-Codex, Kimi K2.5, GLM-4.7
-  - 3 próby na model
-  - kryteria oceny: Technical Stack, Pages, Content, SEO, Responsive, Code Quality, Functionality
--->
-
----
-
-# 10xbench — wyniki
-
-<!-- TODO: wykres / tabela wyników + kluczowe obserwacje per model -->
-
----
-layout: section
----
-
-# Część III
 ## Bóle benchmarków AI do kodowania
 
 <!-- Dlaczego publiczne rankingi modeli kodujących nie są wiarygodnym sygnałem wyboru. -->
@@ -485,7 +459,7 @@ class: text-center
 layout: section
 ---
 
-# Część IV
+# Część III
 ## One-shot to nie wszystko
 
 <!-- TODO: pomost — jednorazowy prompt ≠ realna praca z kodem -->
@@ -503,7 +477,7 @@ layout: section
 layout: section
 ---
 
-# Część V
+# Część IV
 ## Jak wybrać (własnego) agenta AI
 
 <!-- TODO: meritum prezentacji — framework wyboru -->
@@ -525,6 +499,32 @@ layout: section
 # Checklista: mój agent-starter
 
 <!-- TODO: praktyczna checklista do zabrania ze sobą -->
+
+---
+layout: section
+---
+
+# Część V
+## 10xbench — co wyszło z benchmarku?
+
+<!-- TODO: wprowadzenie do benchmarku (4 modele, ten sam prompt, ocena) -->
+
+---
+
+# 10xbench — szczegóły benchmarku
+
+<!-- TODO: treść
+  - prompt (migracja/stworzenie strony Przeprogramowani.pl, stack Astro+React+Tailwind)
+  - 4 modele: Claude Opus 4.6, GPT-5.3-Codex, Kimi K2.5, GLM-4.7
+  - 3 próby na model
+  - kryteria oceny: Technical Stack, Pages, Content, SEO, Responsive, Code Quality, Functionality
+-->
+
+---
+
+# 10xbench — wyniki
+
+<!-- TODO: wykres / tabela wyników + kluczowe obserwacje per model -->
 
 ---
 layout: section
