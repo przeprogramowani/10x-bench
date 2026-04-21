@@ -40,6 +40,28 @@ Combine `slide` with a layout modifier:
 | `slide--number` | Large number callout (`big-number` + caption) |
 | `slide--insight` | Numbered insight card (header number + tag + text) |
 | `slide--list` | Left-aligned bullet or checklist |
+| `slide--centered` | Modifier for `slide--insight` to center-align content |
+
+### Reusable Primitives
+
+Use these instead of inline styles:
+
+| Class | Purpose |
+|---|---|
+| `slide-label` (`--accent`/`--warm`/`--negative`/`--positive`/`--accent2`) | Pill label above an `h2` headline |
+| `insight-tag` (`--accent`/`--warm`/`--negative`/`--positive`/`--accent2`) | Color variant of the tag inside `slide--insight` |
+| `stat` (`stat__value`, `stat__label`) | Big value + uppercase caption; used in `compare-col` |
+| `compare--vs` | Adds a `vs` pill between compare columns |
+| `compare--centered` | Center-aligns content inside compare columns |
+| `code-block--narrow` / `--mid` / `--wide` | Width variants (55 / 65 / 70 ch) |
+| `display-xl` / `display-lg` | Oversized headline sizes |
+| `lede` / `lede--lg` | Subtitle paragraph sizes |
+| `punch` (`--accent`) | Bold colored emphasis line |
+| `caption` | Small uppercase label (no pill background) |
+| `footnote` | Small dim supporting text |
+| `cta-row` | Centered flex row helper |
+
+Insight numbers (`insight-num`) auto-render with a gradient fill matching their color class (`accent`, `warm`, `negative`, `accent2`, `positive`).
 
 ### Styling Rules
 
