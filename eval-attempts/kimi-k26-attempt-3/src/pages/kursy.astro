@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import CoursesSection from '../components/CoursesSection';
+---
+
+<Layout title="Kursy | Przeprogramowani.pl">
+  <Navigation client:load />
+  <main class="pt-16">
+    <div class="pt-20 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+          Nasze <span class="text-gradient">kursy</span>
+        </h1>
+        <p class="text-lg text-slate-400 max-w-2xl">
+          Topowe programy edukacyjne dla ambitnych programistów.
+          Świadome korzystanie z potencjału Generative AI w codziennej pracy.
+        </p>
+      </div>
+    </div>
+    <CoursesSection />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const podcasts = [
+  {
+    name: 'Opanuj.AI Podcast',
+    listeners: 'Ponad 4000 słuchaczy',
+    description: 'Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI',
+    episodes: [
+      {
+        title: 'TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS | Opanuj.AI',
+        duration: '01:39:33',
+        description: 'Czy AI naprawdę rozumie świat, skoro oblewa testy, które człowiek rozwiązuje bez większego problemu? I czy jednocześnie właśnie na naszych oczach kończy się era klasycznych SaaS-ów?',
+      },
+      {
+        title: 'Programowanie w epoce AI z Claude Code, Cursorem i Copilotem - Gość: Dawid Sibiński',
+        duration: '01:28:30',
+        description: 'Dawid Sibiński to programista full-stack, cyfrowy nomad i entuzjasta programowania wspieranego AI. W naszej rozmowie dzieli się swoimi doświadczeniami w pracy z Copilotem, Cursorem oraz Claude Code.',
+      },
+      {
+        title: 'OpenClaw, SWE-AGI i zmierzch chatbotów - Opus 4.6 i GPT-5.3 Codex to Agenci z przyszłości!',
+        duration: '01:43:15',
+        description: 'Bierzemy na warsztat jedną z najbardziej absurdalnych i jednocześnie najciekawszych historii AI ostatnich miesięcy: viralowy projekt ClawdBot, później MoltBot, a dziś OpenClaw.',
+      },
+      {
+        title: 'Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin',
+        duration: '01:23:04',
+        description: 'ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia?',
+      },
+      {
+        title: 'Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów',
+        duration: '01:47:28',
+        description: 'OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Bielik czy PLLuM? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach.',
+      },
+      {
+        title: 'GPT-5.2 to GEMINI KILLER? Google VS OpenAI, MCP w Linux Foundation i wątpliwości wokół benchmarków METR',
+        duration: '00:58:41',
+        description: 'Gorące premiery grudnia – czy GPT-5.2 i GPT-Image 1.5 wystarczą OpenAI, by odzyskać koronę w starciu z rodziną Google Gemini 3?',
+      },
+    ],
+  },
+  {
+    name: 'Przeprogramowani ft. Gość',
+    listeners: 'Ponad 3800 słuchaczy',
+    description: 'Rozmowy dla głodnych wiedzy',
+    episodes: [
+      {
+        title: 'Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Przeprogramowani ft. Gość',
+        duration: '00:33:45',
+        description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT.',
+      },
+      {
+        title: 'O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramowani ft. Gość',
+        duration: '00:45:56',
+        description: 'Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.',
+      },
+      {
+        title: 'Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przeprogramowani ft. Gość',
+        duration: '01:16:44',
+        description: 'W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia, koncentrując się zamiast tego na kluczowych decyzjach, które kształtują charakterystykę systemu.',
+      },
+      {
+        title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne (LIVE YT)',
+        duration: '01:36:34',
+        description: 'Zapraszamy na kolejne LIVE Q&A - w najbliższy wtorek o 19 porozmawiamy o nadchodzącym szkoleniu OpanujTypeScript, a także opowiemy, gdzie będzie można przybić piątkę w trakcie nadchodzących eventów.',
+      },
+      {
+        title: 'No-code i Low-code - przyszłość tworzenia aplikacji? | Kamil Tarczyński - Przeprogramowani ft. Gość',
+        duration: '00:36:31',
+        description: 'Kamil Tarczyński, Co-founder oraz CTO agencji havenocode, która specjalizuje się w tworzeniu aplikacji za pomocą platform i narzędzi no-code i low-code.',
+      },
+      {
+        title: 'Nauka nowoczesnego frontendu | Paweł Gnat - Przeprogramowani ft. Gość',
+        duration: '00:42:11',
+        description: 'Paweł Gnat to frontend developer, który przebranżowił się do IT z budownictwa. W tym podcaście dzieli się swoimi wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend: AI Edition.',
+      },
+    ],
+  },
+];
+
+const platforms = [
+  { name: 'Spotify', href: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo' },
+  { name: 'Apple Podcasts', href: '#' },
+  { name: 'YouTube', href: 'https://youtube.com/c/przeprogramowani' },
+  { name: 'Google Podcasts', href: '#' },
+];
+---
+
+<Layout title="Podcast — Przeprogramowani">
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative bg-gray-950 py-16 sm:py-24">
+      <div class="absolute inset-0 bg-gradient-to-b from-orange-900/10 to-transparent"></div>
+      <div class="relative max-w-screen-xl mx-auto px-4 text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+          Podcasty
+        </h1>
+        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu
+        </p>
+      </div>
+    </section>
+
+    <!-- Platforms -->
+    <section class="py-8">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4">
+          {platforms.map(platform => (
+            <a href={platform.href} target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:border-gray-700 transition-colors font-medium">
+              {platform.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Podcasts -->
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4 space-y-20">
+        {podcasts.map(podcast => (
+          <div>
+            <div class="mb-8">
+              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">{podcast.name}</h2>
+              <p class="mt-1 text-main font-medium">{podcast.listeners}</p>
+              <p class="mt-2 text-gray-400">{podcast.description}</p>
+            </div>
+            <div class="space-y-4">
+              {podcast.episodes.map(episode => (
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-gray-700 transition-colors">
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div class="flex-1">
+                      <h3 class="text-lg font-semibold text-white">{episode.title}</h3>
+                      <p class="mt-2 text-gray-400 text-sm leading-relaxed">{episode.description}</p>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                      <span class="text-sm text-gray-500 font-mono">{episode.duration}</span>
+                      <button class="w-10 h-10 rounded-full bg-main flex items-center justify-center text-white hover:bg-main-hover transition-colors" aria-label="Odtwórz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 ml-0.5"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

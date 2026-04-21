@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import AboutSection from '../components/AboutSection';
+---
+
+<Layout title="O nas | Przeprogramowani.pl">
+  <Navigation client:load />
+  <main class="pt-16">
+    <AboutSection />
+  </main>
+  <Footer />
+</Layout>

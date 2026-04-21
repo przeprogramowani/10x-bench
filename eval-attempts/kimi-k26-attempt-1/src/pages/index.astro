@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    title: '10xDevs 3.0',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    link: 'https://10xdevs.pl',
+    tag: 'Nowość - Maj 2026',
+    tagColor: 'bg-amber-100 text-amber-800',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=340&fit=crop',
+    featured: true
+  },
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!',
+    link: 'https://www.opanujfrontend.pl',
+    tag: 'Kurs',
+    tagColor: 'bg-brand-100 text-brand-800',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=340&fit=crop',
+    featured: false
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!',
+    link: 'https://www.opanujtypescript.pl',
+    tag: 'Kurs',
+    tagColor: 'bg-brand-100 text-brand-800',
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&h=340&fit=crop',
+    featured: false
+  }
+];
+
+const latestVideos = [
+  {
+    title: '5 Agent Skills do jakościowego programowania z AI - Claude Code LIVE DEMO',
+    thumbnail: 'https://i3.ytimg.com/vi/S-iNbyLSisE/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=S-iNbyLSisE'
+  },
+  {
+    title: 'Product Builders Day | LIVE AI Product Heroes i 10xDevs',
+    thumbnail: 'https://i3.ytimg.com/vi/aRkECt7derY/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=aRkECt7derY'
+  },
+  {
+    title: 'Wybierasz model AI do kodowania? Nie ufaj benchmarkom',
+    thumbnail: 'https://i3.ytimg.com/vi/vH1T5qB4dBQ/maxresdefault.jpg',
+    link: 'https://www.youtube.com/watch?v=vH1T5qB4dBQ'
+  }
+];
+
+const latestPodcasts = [
+  {
+    title: 'Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko',
+    date: '25 września 2025',
+    duration: '33:45',
+    description: 'W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów i jak skutecznie uczyć się angielskiego w IT.',
+    link: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo'
+  },
+  {
+    title: 'O dojrzewaniu zawodowym programisty, Wojciech Trawiński',
+    date: '10 września 2025',
+    duration: '45:57',
+    description: 'Wojciech Trawiński, Senior Software Engineer w XTB opowiada o drodze od młodego entuzjasty do doświadczonego profesjonalisty.',
+    link: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo'
+  },
+  {
+    title: 'Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin',
+    date: '10 października 2024',
+    duration: '1:16:44',
+    description: 'W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia.',
+    link: 'https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo'
+  }
+];
+
+const partners = [
+  'Huuuge Games', 'Nutridome', 'SmartRecruiters', 'Future Processing', 
+  'Callstack', 'edrone', 'Xfive', 'Euvic', 'Strabag', 'Autodesk'
+];
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-sm font-medium mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
+          Nowość - Maj 2026
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+          10xDevs <span class="text-brand-400">3.0</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+          Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg transition-colors">
+            Zobacz teraz
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a href="/o-nas" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors backdrop-blur-sm">
+            Poznaj nas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Edukacja technologiczna w epoce AI</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <a href={course.link} target="_blank" rel="noopener noreferrer" class={`group block rounded-2xl overflow-hidden border border-gray-200 hover:border-brand-300 hover:shadow-xl transition-all duration-300 ${course.featured ? 'md:col-span-2 lg:col-span-1 ring-2 ring-amber-200' : ''}`}>
+            <div class="aspect-video overflow-hidden bg-gray-100">
+              <img src={course.image} alt={course.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <span class={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold mb-3 ${course.tagColor}`}>{course.tag}</span>
+              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">{course.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{course.description}</p>
+              <div class="mt-4 flex items-center text-brand-600 font-medium text-sm">
+                Szczegóły
+                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Videos Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Filmy i podcasty</h2>
+          <p class="text-gray-600">Rozwój nowoczesnego programisty</p>
+        </div>
+        <a href="/youtube" class="hidden sm:inline-flex items-center gap-1 text-brand-600 font-medium hover:text-brand-700 transition-colors">
+          Zobacz wszystkie
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {latestVideos.map((video) => (
+          <a href={video.link} target="_blank" rel="noopener noreferrer" class="group block rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow">
+            <div class="aspect-video relative overflow-hidden bg-gray-900">
+              <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                <div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <svg class="w-6 h-6 text-red-600 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 line-clamp-2 group-hover:text-brand-600 transition-colors">{video.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-6 text-center sm:hidden">
+        <a href="/youtube" class="inline-flex items-center gap-1 text-brand-600 font-medium">Zobacz wszystkie <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Podcasts Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Najnowsze odcinki podcastu</h2>
+          <p class="text-gray-600">Przeprogramowani - szersze spojrzenie na programowanie</p>
+        </div>
+        <a href="/podcast" class="hidden sm:inline-flex items-center gap-1 text-brand-600 font-medium hover:text-brand-700 transition-colors">
+          Wszystkie odcinki
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="space-y-4">
+        {latestPodcasts.map((podcast) => (
+          <a href={podcast.link} target="_blank" rel="noopener noreferrer" class="group flex flex-col sm:flex-row gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl border border-gray-200 hover:border-brand-300 hover:shadow-md transition-all bg-gray-50/50 hover:bg-white">
+            <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+              <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-1">{podcast.title}</h3>
+              <p class="text-sm text-gray-600 mb-2 line-clamp-2">{podcast.description}</p>
+              <div class="flex items-center gap-3 text-xs text-gray-500">
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  {podcast.date}
+                </span>
+                <span class="flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  {podcast.duration}
+                </span>
+              </div>
+            </div>
+            <div class="flex-shrink-0 self-center">
+              <svg class="w-5 h-5 text-gray-400 group-hover:text-brand-600 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-6 text-center sm:hidden">
+        <a href="/podcast" class="inline-flex items-center gap-1 text-brand-600 font-medium">Wszystkie odcinki <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="py-16 bg-gray-50 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">7 lat na rynku edukacji technologicznej — Współpracujemy z najlepszymi</p>
+      <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+        {partners.map((partner) => (
+          <span class="px-4 py-2 bg-white rounded-lg border border-gray-200 text-sm font-medium text-gray-600 shadow-sm">{partner}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 lg:py-20 bg-gradient-to-r from-brand-600 to-brand-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Przeprogramowany Newsletter</h2>
+      <p class="text-lg text-brand-100 mb-8 max-w-2xl mx-auto">Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1: 3 rekomendacje techniczne, 2 rekomendacje rozwojowe, 1 bonus niespodzianka.</p>
+      <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 font-bold rounded-lg hover:bg-brand-50 transition-colors shadow-lg">
+        Zapisz się za darmo
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

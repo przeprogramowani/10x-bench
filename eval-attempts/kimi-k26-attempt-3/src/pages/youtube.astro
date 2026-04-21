@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import YouTubeSection from '../components/YouTubeSection';
+---
+
+<Layout title="YouTube | Przeprogramowani.pl">
+  <Navigation client:load />
+  <main class="pt-16">
+    <div class="pt-20 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+          Kanał <span class="text-gradient">YouTube</span>
+        </h1>
+        <p class="text-lg text-slate-400 max-w-2xl">
+          Filmy o programowaniu, nowych technologiach, AI i rozwoju kariery w IT.
+          Subskrybuj, aby być na bieżąco!
+        </p>
+      </div>
+    </div>
+    <YouTubeSection />
+  </main>
+  <Footer />
+</Layout>

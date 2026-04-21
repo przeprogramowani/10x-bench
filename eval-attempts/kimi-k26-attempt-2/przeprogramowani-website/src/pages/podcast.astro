@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+
+const episodes = [
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko",
+    date: "25 września 2025",
+    duration: "33:45",
+    description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT.",
+    spotifyUrl: "https://open.spotify.com/episode/example1",
+    featured: true,
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński",
+    date: "10 września 2025",
+    duration: "45:57",
+    description: "Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.",
+    spotifyUrl: "https://open.spotify.com/episode/example2",
+    featured: true,
+  },
+  {
+    title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin",
+    date: "10 października 2024",
+    duration: "1:16:44",
+    description: "W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia, koncentrując się na kluczowych decyzjach.",
+    spotifyUrl: "https://open.spotify.com/episode/example3",
+    featured: false,
+  },
+  {
+    title: "No-code i Low-code - przyszłość tworzenia aplikacji? Kamil Tarczyński",
+    date: "13 czerwca 2024",
+    duration: "36:32",
+    description: "Kamil Tarczyński, Co-founder oraz CTO agencji havenocode. Rozmowa o potencjale, wyzwaniach oraz przyszłości narzędzi no-code i low-code.",
+    spotifyUrl: "https://open.spotify.com/episode/example4",
+    featured: false,
+  },
+  {
+    title: "Nauka nowoczesnego frontendu | Paweł Gnat",
+    date: "6 czerwca 2024",
+    duration: "42:12",
+    description: "Paweł Gnat to frontend developer, który przebranżowił się do IT z budownictwa. Dzieli się swoimi wrażeniami z udziału w programie Opanuj Frontend: AI Edition.",
+    spotifyUrl: "https://open.spotify.com/episode/example5",
+    featured: false,
+  },
+  {
+    title: "Techniczny Product Management: Jira, MongoDB | Jakub Łaziński",
+    date: "24 kwietnia 2024",
+    duration: "1:08:27",
+    description: "Jakub Łazinski to Technical Product Manager, który pracował nad rozwojem produktów MongoDB, Atlassian (Jira) oraz SmartRecruiters.",
+    spotifyUrl: "https://open.spotify.com/episode/example6",
+    featured: false,
+  },
+];
+
+const platforms = [
+  { name: 'Spotify', url: 'https://open.spotify.com/show/6rIFl8BB9aK367EhfGeRfN', icon: '🎧' },
+  { name: 'YouTube', url: 'https://www.youtube.com/@przeprogramowani', icon: '📺' },
+  { name: 'Apple Podcasts', url: '#', icon: '🍎' },
+  { name: 'Google Podcasts', url: '#', icon: '🔊' },
+];
+---
+
+<Layout title="Podcast - Przeprogramowani.pl">
+  <Navigation client:load />
+  
+  <main class="pt-16">
+    <!-- Hero -->
+    <section class="relative py-24 overflow-hidden">
+      <div class="absolute inset-0 bg-slate-950">
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-8">
+          <span class="text-cyan-400 text-sm font-medium">🎙️ Podcast</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6">
+          <span class="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+            Przeprogramowani{' '}
+          </span>
+          <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            Podcast
+          </span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+          Szersze spojrzenie na programowanie. Rozmowy z najciekawszymi osobami z branży IT, praktyczne porady i techniczne deep dives.
+        </p>
+
+        {/* Platforms */}
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          {platforms.map((platform) => (
+            <a
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white rounded-lg border border-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium"
+            >
+              <span class="mr-2">{platform.icon}</span>
+              {platform.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Featured Episodes */}
+    <section class="py-16 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-8">
+          <span class="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+            Najnowsze odcinki
+          </span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+          {episodes.filter(e => e.featured).map((episode) => (
+            <div class="relative p-6 bg-gradient-to-br from-slate-900/80 to-slate-900/40 border border-cyan-500/20 rounded-2xl hover:border-cyan-500/40 transition-all duration-300 group">
+              <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-semibold rounded-full border border-cyan-500/30">
+                  Nowość
+                </span>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                  </svg>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="text-lg font-semibold text-white mb-2 pr-20">{episode.title}</h3>
+                  <p class="text-slate-400 text-sm mb-3">{episode.description}</p>
+                  <div class="flex items-center gap-4 text-sm text-slate-500">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {episode.date}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {episode.duration}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <a
+                href={episode.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors"
+              >
+                Słuchaj na Spotify
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* All Episodes */}
+        <h2 class="text-2xl font-bold mb-8">
+          <span class="bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+            Wszystkie odcinki
+          </span>
+        </h2>
+
+        <div class="space-y-4">
+          {episodes.map((episode, index) => (
+            <div class="p-6 bg-slate-900/50 border border-slate-800/50 rounded-2xl hover:border-slate-700 transition-all duration-300 group">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/20 transition-colors">
+                  <span class="text-slate-400 group-hover:text-cyan-400 font-bold text-sm">{String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <div class="flex-grow">
+                  <h3 class="text-lg font-semibold text-white mb-1">{episode.title}</h3>
+                  <p class="text-slate-400 text-sm mb-2">{episode.description}</p>
+                  <div class="flex items-center gap-4 text-sm text-slate-500">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {episode.date}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {episode.duration}
+                    </span>
+                  </div>
+                </div>
+                <a
+                  href={episode.spotifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2 bg-slate-800 hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-400 rounded-lg border border-slate-700 hover:border-cyan-500/30 transition-all duration-200 text-sm font-medium flex items-center gap-2 flex-shrink-0"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                  </svg>
+                  Odtwórz
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

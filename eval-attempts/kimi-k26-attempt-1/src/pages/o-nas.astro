@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Współzałożyciel',
+    bio: 'Entuzjasta nowoczesnego frontendu i edukacji technologicznej. Współtwórca kursów Opanuj Frontend i Opanuj TypeScript. Pasjonat AI i jej wpływu na przyszłość programowania.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
+  },
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Współzałożyciel',
+    bio: 'Doświadczony programista i mentor. Współtwórca społeczności 10xDevs oraz programów edukacyjnych dla developerów. Ekspert w zakresie architektury aplikacji webowych.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
+  }
+];
+
+const stats = [
+  { value: '7+', label: 'lat na rynku' },
+  { value: '400+', label: 'absolwentów kursów' },
+  { value: '100+', label: 'odcinków podcastu' },
+  { value: '50+', label: 'filmów na YouTube' }
+];
+
+const values = [
+  {
+    title: 'Praktyka ponad teorię',
+    description: 'Wierzymy, że najlepszym sposobem nauki programowania jest praktyka. Nasze kursy i materiały są oparte na realnych projektach i scenariuszach z branży.',
+    icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
+  },
+  {
+    title: 'Społeczność',
+    description: 'Budujemy społeczność ambitnych programistów, którzy wspierają się nawzajem w rozwoju. Wierzymy w siłę wspólnej nauki i wymiany doświadczeń.',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+  },
+  {
+    title: 'AI-First',
+    description: 'Świadomie wykorzystujemy potencjał sztucznej inteligencji w edukacji i rozwoju oprogramowania. Uczymy jak efektywnie pracować z AI, a nie jak się jej bać.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z'
+  }
+];
+---
+
+<Layout title="O nas - Przeprogramowani.pl" description="Poznaj zespół Przeprogramowanych i naszą misję edukacji technologicznej.">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+          Szersze spojrzenie na <span class="text-brand-400">programowanie</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed">
+          Przeprogramowani to projekt edukacyjny stworzony przez Marcina Czarkowskiego i Przemka Smyrdeka. Od 7 lat pomagamy programistom rozwijać się w świecie technologii webowych i sztucznej inteligencji.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-12 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-extrabold text-brand-600 mb-1">{stat.value}</div>
+            <div class="text-sm text-gray-600 font-medium">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Nasze wartości</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">To, co nas wyróżnia i napędza każdego dnia</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {values.map((value) => (
+          <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={value.icon}/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Zespół</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Poznaj ludzi stojących za Przeprogramowanymi</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        {team.map((member) => (
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200 text-center">
+            <img src={member.image} alt={member.name} class="w-24 h-24 rounded-full mx-auto mb-5 object-cover border-4 border-white shadow-md" loading="lazy" />
+            <h3 class="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+            <p class="text-brand-600 font-medium text-sm mb-4">{member.role}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-16 lg:py-20 bg-gradient-to-r from-brand-600 to-brand-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Chcesz nawiązać współpracę?</h2>
+      <p class="text-lg text-brand-100 mb-8">Jesteśmy otwarci na nowe projekty, współpracę i ciekawe inicjatywy w świecie edukacji technologicznej.</p>
+      <a href="mailto:kontakt@przeprogramowani.pl" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-brand-700 font-bold rounded-lg hover:bg-brand-50 transition-colors shadow-lg">
+        Napisz do nas
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

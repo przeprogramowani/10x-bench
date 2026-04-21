@@ -1,0 +1,67 @@
+---
+import { Menu, X, Code2 } from 'lucide-react';
+
+const navLinks = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-md border-b border-slate-800/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-brand-400 hover:text-brand-300 transition-colors">
+        <Code2 className="w-7 h-7" />
+        <span class="font-bold text-lg tracking-tight">Przeprogramowani</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors"
+        aria-label="Otwórz menu"
+      >
+        <Menu id="menu-icon" className="w-6 h-6" />
+        <X id="close-icon" className="w-6 h-6 hidden" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/50 bg-dark-900/95 backdrop-blur-md">
+    <div class="px-4 py-3 space-y-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-all"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

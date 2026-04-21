@@ -1,0 +1,100 @@
+---
+import { ExternalLink, Code2, FileType, Zap, BookOpen } from 'lucide-react';
+
+const courses = [
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!',
+    icon: Code2,
+    href: 'https://opanujfrontend.pl',
+    features: ['5 modułów', '25 lekcji', '5 spotkań LIVE', 'Certyfikat'],
+    color: 'brand',
+    badge: 'Najpopularniejszy'
+  },
+  {
+    title: 'Opanuj TypeScript',
+    description: 'Szkolenie, które podniesie jakość Twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!',
+    icon: FileType,
+    href: 'https://opanujtypescript.pl',
+    features: ['TypeScript 5', 'React 19', 'Praktyka', 'Produkcja'],
+    color: 'blue',
+    badge: null
+  },
+  {
+    title: '10xDevs',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania.',
+    icon: Zap,
+    href: 'https://10xdevs.pl',
+    features: ['AI Edition', 'Generative AI', 'Agent Skills', 'LIVE Demo'],
+    color: 'purple',
+    badge: 'Nowość'
+  }
+];
+---
+
+<section class="py-20 lg:py-28 bg-dark-800/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 animate-fade-in-up">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+        <BookOpen className="w-4 h-4" />
+        <span>Edukacja technologiczna</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+        Topowe programy{' '}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">
+          edukacyjne
+        </span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        Dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {courses.map((course, index) => (
+        <div
+          class={`group relative bg-dark-800 border border-slate-700/50 rounded-2xl p-6 sm:p-8 hover:border-brand-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/5 animate-fade-in-up animation-delay-${(index + 1) * 100}`}
+        >
+          {course.badge && (
+            <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-semibold shadow-lg">
+              {course.badge}
+            </div>
+          )}
+
+          <div class={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+            course.color === 'brand' ? 'bg-brand-500/10 text-brand-400' :
+            course.color === 'blue' ? 'bg-blue-500/10 text-blue-400' :
+            'bg-purple-500/10 text-purple-400'
+          }`}>
+            <course.icon className="w-7 h-7" />
+          </div>
+
+          <h3 class="text-xl font-bold text-white mb-3">{course.title}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">{course.description}</p>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            {course.features.map(feature => (
+              <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-medium border border-slate-700/50">
+                {feature}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-flex items-center gap-2 font-semibold transition-colors ${
+              course.color === 'brand' ? 'text-brand-400 hover:text-brand-300' :
+              course.color === 'blue' ? 'text-blue-400 hover:text-blue-300' :
+              'text-purple-400 hover:text-purple-300'
+            }`}
+          >
+            Szczegóły
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

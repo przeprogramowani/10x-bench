@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak znaleźć najlepszego Agenta AI do programowania?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="deck">
+
+<!-- ════════════════════════════════════════════
+     ACT I — HISTORIA MIGRACJI
+     ════════════════════════════════════════════ -->
+
+<!-- 1 ─ Title -->
+<div class="slide active" data-act="1">
+  <h1>Jak znaleźć <span class="accent">(własnego)</span> najlepszego<br><span class="gradient-text">Agenta AI</span> do programowania?</h1>
+  <p class="mt-6 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">
+    <!-- TODO: imię, nazwisko, event -->
+    Przemek Smyrdek &middot; 21.04.2026
+  </p>
+</div>
+
+<!-- 2 ─ Hook -->
+<div class="slide slide--statement" data-act="1">
+  <h1>...i dlaczego nie możesz wierzyć<br> <span class="accent">benchmarkom AI</span>.</h1>
+</div>
+
+<!-- 3 ─ Old stack -->
+<div class="slide slide--split slide--stack-showcase" data-act="1">
+  <div class="split-left">
+    <div class="version-badge version-badge--old">stara wersja</div>
+    <h2 class="stack-title">Przeprogramowani.pl</h2>
+    <div class="stack-chips mt-4">
+      <span class="stack-chip">Nest.js</span>
+      <span class="stack-chip">Pug</span>
+      <span class="stack-chip">Netlify</span>
+    </div>
+    <p class="mt-4 max-w-mid">Jeśli działa&nbsp;&mdash; po&nbsp;co&nbsp;ruszać?</p>
+  </div>
+  <div class="split-right">
+    <img class="slide-screenshot" src="assets/stara.png" alt="Stara wersja przeprogramowani.pl">
+  </div>
+</div>
+
+<!-- 4 ─ Pivot -->
+<div class="slide" data-act="1">
+  <img class="hero-screenshot hero-screenshot--xl" src="assets/claude-code.png" alt="Claude Code">
+  <h1 style="font-size:clamp(3.5rem,8.5vw,9.5rem);" class="mt-3">Claude Code...<br><span class="gradient-warm">i po sprawie</span></h1>
+</div>
+
+<!-- 5 ─ New stack -->
+<div class="slide slide--split slide--stack-showcase" data-act="1">
+  <div class="split-left">
+    <div class="version-badge version-badge--new">nowa wersja</div>
+    <h2 class="stack-title">Przeprogramowani.pl</h2>
+    <div class="stack-chips mt-4">
+      <span class="stack-chip stack-chip--accent">Astro</span>
+      <span class="stack-chip stack-chip--accent">Svelte</span>
+      <span class="stack-chip stack-chip--accent">Cloudflare</span>
+    </div>
+    <div class="tags mt-4">
+      <span class="tag tag--accent">Spec-driven development</span>
+      <span class="tag tag--accent">Zarządzanie kontekstem</span>
+      <span class="tag tag--accent">Claude Code</span>
+    </div>
+  </div>
+  <div class="split-right">
+    <img class="slide-screenshot" src="assets/nowa.png" alt="Nowa wersja przeprogramowani.pl">
+  </div>
+</div>
+
+<!-- 6 ─ Transition beat -->
+<div class="slide slide--statement" data-act="1">
+  <h1>Migracja poszła gładko...</h1>
+  <p class="mt-3" style="font-size:clamp(2.5rem,5vw,4.5rem);color:var(--text);">...ale pojawiły się <em>pytania</em>.</p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ACT II — NIEPOKOJĄCE PYTANIE
+     ════════════════════════════════════════════ -->
+
+<!-- 8 ─ The Question -->
+<div class="slide slide--statement" data-act="2">
+  <h1 style="font-size:clamp(3.5rem,8.5vw,9.5rem);">Czy ja jeszcze jestem<br><span class="gradient-warm">potrzebny</span>?</h1>
+</div>
+
+<div class="slide slide--statement" data-act="2">
+  <img class="hero-screenshot hero-screenshot--xl mb-3" src="assets/rankingi-metr.png" alt="Rankingi AI">
+  <h1>Rankingi i social media</h1>
+  <p class="warm mt-3">już dawno wydały wyrok - nadchodzi nasz koniec.</p>
+</div>
+
+
+<!-- 9 ─ Context -->
+<div class="slide slide--list" data-act="2">
+  <h2 class="max-w-mid">Sprawdźmy, jak daleko jesteśmy <br /> od tego etapu:</h2>
+  <ul>
+    <li>Strona za jeden prompt</li>
+    <li>Niemal za darmo</li>
+    <li>W terminalu lub IDE</li>
+  </ul>
+  <p class="bright mt-4">Czas to sprawdzić 🔥</p>
+</div>
+
+<!-- 10 ─ Safety -->
+
+<!-- 11 ─ Reveal -->
+<div class="slide" data-act="2">
+  <h1 style="font-size:clamp(4rem,10vw,11rem);font-weight:700;" class="gradient-text">10xbench.ai</h1>
+  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/10xbench.png" alt="10xbench.ai">
+</div>
+
+<!-- ════════════════════════════════════════════
+     ACT III — ANATOMIA BENCHMARKU
+     ════════════════════════════════════════════ -->
+
+<!-- 12 ─ Section break -->
+<div class="slide slide--section" data-act="3">
+  <h1>Anatomia<br>benchmarku</h1>
+</div>
+
+<!-- 13 ─ Core idea -->
+<div class="slide slide--statement" data-act="3">
+  <h1>Jeden prompt.<br><span class="accent2">Zero asysty dla AI.</span></h1>
+  <p class="mt-3 white">Agent musi dowieźć kompletną stronę. W końcu AI nie potrzebuje już programisty (?)</p>
+</div>
+
+<!-- 14 ─ The prompt (real) -->
+<div class="slide" data-act="3">
+  <h3 class="dim mb-3">@prompt.md</h3>
+  <div class="code-block" style="max-width:70ch;">
+    Utwórz nowoczesną i responsywną stronę projektu <span class="hl">Przeprogramowani.pl</span>. Pobierz niezbędne informacje o naszej działalności w sieci. Powinna zawierać strony <span class="hl2">O nas</span>, <span class="hl2">Podcast</span> (z ostatnimi odcinkami), <span class="hl2">YouTube</span> (z ostatnimi filmami), sekcję na kursy <span class="hl2">Opanuj Frontend</span>, <span class="hl2">Opanuj TypeScript</span> oraz <span class="hl2">10xDevs</span> (w hero). Stack to <span class="hl">Astro</span>, <span class="hl">React</span> i <span class="hl">Tailwind</span>. Gotowe do wdrożenia na <span class="hl">Cloudflare</span>.
+  </div>
+  <p class="mt-4">Jeden prompt. Bez iteracji. <span class="bright">To cały input.</span></p>
+</div>
+
+<!-- 15 ─ What it tests -->
+<div class="slide slide--list" data-act="3">
+  <h2 class="mb-4">Co tak naprawdę testujemy?</h2>
+  <ul>
+    <li class="check">Bootstrap projektu od zera</li>
+    <li class="check">Działający dev server</li>
+    <li class="check">Rzeczywiste dane (nie lorem ipsum)</li>
+    <li class="check">Integracje z zewnętrznymi feedami</li>
+    <li class="check">Responsywność</li>
+    <li class="check">Deploy na Cloudflare</li>
+  </ul>
+</div>
+
+<!-- 16 ─ First result -->
+<div class="slide" data-act="3">
+  <img class="hero-screenshot hero-screenshot--xl" src="assets/gpt-53-codex-attempt-4.png" alt="GPT-5.3 Codex — wynik">
+  <p class="mt-3 dim" style="font-size:clamp(1.2rem,1.8vw,1.6rem);text-transform:uppercase;letter-spacing:0.15em;">Pierwszy wynik &middot; GPT-5.3 Codex</p>
+  <p class="mt-2" style="font-size:clamp(2.5rem,4.5vw,4rem);color:var(--warm);font-weight:600;">Szczęka. Na. Podłodze.</p>
+</div>
+
+<!-- 17 ─ Marcin's quote -->
+<div class="slide slide--quote" data-act="3">
+  <blockquote>
+    Naprawdę wystarczył jeden prompt?
+  </blockquote>
+  <cite>&mdash; Marcin, 3 lata współpracy nad AI w&nbsp;programowaniu</cite>
+</div>
+
+<!-- 18 ─ Beat -->
+<div class="slide slide--statement" data-act="3">
+  <h1 class="" style="font-size:clamp(4rem,10vw,10rem);">Wystarczył jeden prompt.</h1>
+</div>
+
+<!-- 19 ─ Transition -->
+<div class="slide slide--statement" data-act="3">
+  <h1>OK, mamy prompt.<br><span class="dim">Co dalej?</span></h1>
+</div>
+
+<!-- 20 ─ Runs -->
+<div class="slide slide--number" data-act="3">
+  <img class="hero-screenshot hero-screenshot--xl mb-3" src="assets/claude-opus-47_filmstrip.png" alt="Filmstrip — wiele prób jednego modelu">
+  <div class="big-number gradient-text">5&ndash;10</div>
+  <p>uruchomień na model</p>
+  <p class="mt-2 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">żeby uśrednić niedeterministyczny charakter AI</p>
+</div>
+
+<!-- 21 ─ Scorecard (real criteria) -->
+<div class="slide" data-act="3">
+  <h2 class="mb-4">10-punktowy scorecard</h2>
+  <div class="scorecard">
+    <div class="scorecard-col">
+      <div class="scorecard-header scorecard-header--auto">
+        <span class="scorecard-icon">&#9881;</span>
+        <div>
+          <h3>LLM-as-a-Judge</h3>
+          <span class="scorecard-subtitle">Agent weryfikuje automatycznie</span>
+        </div>
+      </div>
+      <ol class="scorecard-list">
+        <li><span class="scorecard-num accent2">01</span> Local build</li>
+        <li><span class="scorecard-num accent2">02</span> Tech stack</li>
+        <li><span class="scorecard-num accent2">03</span> Strona &bdquo;O nas&rdquo;</li>
+        <li><span class="scorecard-num accent2">04</span> Strona &bdquo;Podcast&rdquo;</li>
+        <li><span class="scorecard-num accent2">05</span> Strona &bdquo;YouTube&rdquo;</li>
+        <li><span class="scorecard-num accent2">06</span> Sekcja &bdquo;Kursy&rdquo; + 10xDevs</li>
+        <li><span class="scorecard-num accent2">07</span> SEO Tags</li>
+      </ol>
+    </div>
+    <div class="scorecard-col">
+      <div class="scorecard-header scorecard-header--manual">
+        <span class="scorecard-icon">&#128065;</span>
+        <div>
+          <h3>Manual review</h3>
+          <span class="scorecard-subtitle">Człowiek ocenia subiektywnie</span>
+        </div>
+      </div>
+      <ol class="scorecard-list" start="8">
+        <li><span class="scorecard-num warm">08</span> Nawigacja *</li>
+        <li><span class="scorecard-num warm">09</span> Spójny UI</li>
+        <li><span class="scorecard-num warm">10</span> Responsive design</li>
+      </ol>
+      <div class="scorecard-meta">
+        <p class="mt-2">Scoring: <span class="bright">1</span> &sol; <span class="warm">0.5</span> &sol; <span class="negative">0</span> per criterion</p>
+        <p>+ punkty ujemne za asystę</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 23 ─ Models -->
+<div class="slide" data-act="3">
+  <h2 class="mb-4">Przekrojowy zestaw modeli</h2>
+  <div class="model-grid">
+    <div class="model-card">Claude Opus 4.7</div>
+    <div class="model-card">GPT-5.3 Codex</div>
+    <div class="model-card">GPT-5.4</div>
+    <div class="model-card">Kimi K2.6</div>
+    <div class="model-card">Grok 4</div>
+    <div class="model-card">Devstral</div>
+    <div class="model-card">Qwen 3.5</div>
+    <div class="model-card">Gemini 3.1 Pro</div>
+  </div>
+  <p class="mt-4">Od <span class="positive">open source</span> po <span class="accent">frontier models</span></p>
+</div>
+
+<!-- 23b ─ Ranking Top 5 -->
+<div class="slide" data-act="3">
+  <h2 class="mb-4">Ranking Top 5 na kwiecień 2026</h2>
+  <img class="hero-screenshot hero-screenshot--xl" src="assets/10xbench-results.png" alt="10xBench — ranking Top 5">
+</div>
+
+<!-- 24 ─ Eval skill -->
+<div class="slide" data-act="3">
+  <h3 class="dim mb-3">Case study: skill <span class="accent">/eval-model</span></h3>
+  <div class="code-block" style="max-width:65ch;">
+    <span class="hl">$</span> /eval-model <span class="hl2">GLM-5.1 via opencode</span><br><br>
+    <span class="cm"># 1. Sprawdza metadata.ts &mdash; czy model już istnieje?</span><br>
+    <span class="cm"># 2. Szuka cennika API w sieci (input/output per 1M tokens)</span><br>
+    <span class="cm"># 3. Aktualizuje metadata: ID, nazwa, harness, pricing</span><br>
+    <span class="cm"># 4. Tworzy 5 katalogów prób: model-attempt-{1..5}/</span><br>
+    <span class="cm"># 5. Uruchamia 5 równoległych agentów z prompt.md</span>
+  </div>
+  <p class="mt-3">Jeden skill &rarr; <span class="bright">pełny pipeline od zera do ewaluacji</span></p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ACT IV — INSIGHTS
+     ════════════════════════════════════════════ -->
+
+<!-- 25 ─ Section break -->
+<div class="slide slide--section" data-act="4">
+  <h1><span class="gradient-text">To mnie</span><br>zaskoczyło</h1>
+</div>
+
+<!-- 26 ─ Insight 1: Przepaść -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num accent">01</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(167,139,250,0.15);color:var(--accent);">Frontier vs Open Source</div>
+  <h2>Przepaść</h2>
+  <p>Różnica między <span class="positive">"za darmo"</span> a <span class="negative">"za dolary"</span> jest brutalna.</p>
+  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/qwen-3-max_filmstrip.png" alt="Qwen 3 Max — filmstrip wyników">
+</div>
+
+<!-- 27 ─ Insight 2: Bezpieczeństwo -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num negative">02</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(248,113,113,0.15);color:var(--negative);">Bezpieczeństwo</div>
+  <h2>Ucieczka z folderu</h2>
+  <p>Niektórzy agenci pracujący w OpenCode<br /> <span class="negative">wychodzili poza mój folder roboczy</span>.</p>
+  <div class="code-block mt-4" style="max-width:55ch;">
+    <span class="cm">$</span> <span class="hl2">opencode</span><br><br>
+    <span class="cm">&gt; Tworzę stronę w folderze</span> <span class="negative">~/przeprogramowani</span>
+  </div>
+</div>
+
+<!-- 28 ─ Insight 3: Komfort -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num warm">03</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(251,146,60,0.15);color:var(--warm);">Komfort pracy</div>
+  <h2>Komfort = 0</h2>
+  <p>Niektóre modele <span class="negative">nie są w stanie postawić działającej strony</span>.</p>
+  <p class="mt-2">Nawet nie chodzi o jakość &mdash; chodzi o to, że nic nie działa.</p>
+  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/gemini-3-pro-attempt-3.png" alt="Gemini 3 Pro — zepsuta strona">
+</div>
+
+<!-- 29 ─ Insight 4: Stary stack -->
+<div class="slide slide--insight slide--centered" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num accent2">04</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(56,189,248,0.15);color:var(--accent2);">Dane treningowe</div>
+  <h2>Stary stack</h2>
+  <p class="white">Niektóre modele robią bootstrap z <span class="accent2">danych treningowych</span> zamiast odpytywać live&nbsp;CLI.</p>
+  <p class="mt-2 white">Efekt? Stare wersje frameworków, deprecated&nbsp;API, nieaktualne&nbsp;zależności.</p>
+  <div class="code-block mt-4" style="max-width:55ch;">
+    <span class="cm">&gt;</span> Wykorzystam <span class="negative">Astro 4</span>, <span class="negative">Reacta 18</span> i <span class="negative">Tailwind 3</span>
+  </div>
+</div>
+
+<!-- 30 ─ Insight 5: Scraping -->
+<div class="slide slide--insight slide--centered" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num negative">05</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(248,113,113,0.15);color:var(--negative);">Wątpliwe inspiracje</div>
+  <h2>Ctrl+C, Ctrl+V</h2>
+  <p class="white">Niektóre modele robiły <span class="negative">scraping żywej strony</span> przeprogramowani.pl.</p>
+  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/minimax-m21_filmstrip.png" alt="MiniMax M21 — filmstrip wyników">
+  <p class="mt-2 white">MiniMax M2.1</p>
+</div>
+
+<!-- 31 ─ Insight 6: Kreatywność -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num positive">06</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(74,222,128,0.15);color:var(--positive);">Kreatywność</div>
+  <h2>Gdzie tu kreatywność?</h2>
+  <div class="compare mt-3">
+    <div class="compare-col">
+      <h3 class="dim">Model A</h3>
+      <p>5/5 prób &rarr; <span class="warm">identyczny layout</span></p>
+    </div>
+    <div class="compare-col">
+      <h3 class="dim">GPT</h3>
+      <p>Co próba &rarr; <span class="positive">inna strona</span></p>
+    </div>
+  </div>
+  <img class="hero-screenshot hero-screenshot--xl mt-4" src="assets/gpt-54_filmstrip.png" alt="GPT-5.4 — filmstrip wyników">
+  <p class="mt-2 white">GPT-5.4</p>
+</div>
+
+<!-- 32 ─ Insight 7: DNA -->
+<div class="slide slide--insight slide--centered" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num accent">07</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(167,139,250,0.15);color:var(--accent);">Powtarzalność</div>
+  <h2>DNA modelu</h2>
+  <p class="white">Każdy model ma <span class="accent">powtarzalne mocne i&nbsp;słabe strony</span>.</p>
+  <p class="mt-2 white">Jak odcisk palca &mdash; jedne dają responsywne strony, inne realne dane, jeszcze inne halucynują.</p>
+</div>
+
+<!-- 33 ─ Insight 8: Oszustwo -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num negative">08</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(248,113,113,0.15);color:var(--negative);">Oszustwo</div>
+  <h2>Ściąganie na egzaminie</h2>
+  <p class="white">Scorecard i prompt w jednym repo (mój bład)?</p>
+  <p class="mt-2 white"><span class="negative">Chińskie modele lubią z tego korzystać.</span></p>
+</div>
+
+<!-- 34 ─ Insight 9: Vibe coding -->
+<div class="slide slide--insight" data-act="4">
+  <div class="insight-header">
+    <span class="insight-num warm">09</span>
+  </div>
+  <div class="insight-tag" style="background:rgba(251,146,60,0.15);color:var(--warm);">Werdykt</div>
+  <h2>Vibe coding &ne; produkcja</h2>
+  <p class="white"><span class="negative">Żadna</span> ze stron nie była gotowa na produkcję.</p>
+  <p class="mt-2 white">Ale rezultaty to <span class="positive">ogromna lekcja</span>.</p>
+</div>
+
+<!-- 35 ─ Future: isolation -->
+<div class="slide" data-act="4">
+  <h2 class="mb-4">Na przyszłość: izolacja</h2>
+  <div class="isolation-grid">
+    <div class="isolation-cell">
+      <span class="isolation-emoji">📦</span>
+      <span class="isolation-label">Kontener</span>
+    </div>
+    <div class="isolation-cell">
+      <span class="isolation-emoji">📂</span>
+      <span class="isolation-label">Pusty folder</span>
+    </div>
+    <div class="isolation-cell">
+      <span class="isolation-emoji">🌐</span>
+      <span class="isolation-label">Dostęp do sieci</span>
+    </div>
+    <div class="isolation-cell">
+      <span class="isolation-emoji">🚫</span>
+      <span class="isolation-label">Zero kontekstu repo</span>
+    </div>
+  </div>
+  <p class="mt-4 white">Każdy agent w izolowanym środowisku. Nie wie o reszcie projektu.</p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ACT V — TWÓJ BENCHMARK
+     ════════════════════════════════════════════ -->
+
+<!-- 36 ─ Section break -->
+<div class="slide slide--section" data-act="5">
+  <h1>Twój własny<br><span class="gradient-text">benchmark</span></h1>
+</div>
+
+<!-- 37 ─ 5 steps number -->
+<div class="slide slide--number" data-act="5">
+  <div class="big-number accent">5</div>
+  <p>kroków do własnego benchmarku</p>
+</div>
+
+<!-- 38 ─ Steps grid (gradually revealed) -->
+<div class="slide" data-act="5" data-step="1">
+  <h2 class="mb-4">5 kroków w Twoim stacku</h2>
+  <div class="steps-grid">
+    <div class="steps-cell"><span class="steps-emoji">🛠️</span><span class="steps-title">Wybierz stack</span><span class="steps-desc">Pracuj z technologią, którą znasz i&nbsp;umiesz ocenić</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🎯</span><span class="steps-title">Zdefiniuj zadanie</span><span class="steps-desc">Stan początkowy + prompt &rarr; oczekiwany stan końcowy</span></div>
+    <div class="steps-cell"><span class="steps-emoji">📋</span><span class="steps-title">Zbuduj scorecard</span><span class="steps-desc">Co testujesz automatem? Co manualnie? Czy pomagasz modelowi?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🔢</span><span class="steps-title">Ustal liczbę prób</span><span class="steps-desc">best-of-n &middot; average-of-n &middot; ile uruchomień wystarczy?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">⚡</span><span class="steps-title">Automatyzuj</span><span class="steps-desc">CI/CD, powtarzalne procesy, opakuj w&nbsp;skilla</span></div>
+  </div>
+</div>
+<div class="slide" data-act="5" data-step="2">
+  <h2 class="mb-4">5 kroków w Twoim stacku</h2>
+  <div class="steps-grid">
+    <div class="steps-cell"><span class="steps-emoji">🛠️</span><span class="steps-title">Wybierz stack</span><span class="steps-desc">Pracuj z technologią, którą znasz i&nbsp;umiesz ocenić</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🎯</span><span class="steps-title">Zdefiniuj zadanie</span><span class="steps-desc">Stan początkowy + prompt &rarr; oczekiwany stan końcowy</span></div>
+    <div class="steps-cell"><span class="steps-emoji">📋</span><span class="steps-title">Zbuduj scorecard</span><span class="steps-desc">Co testujesz automatem? Co manualnie? Czy pomagasz modelowi?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🔢</span><span class="steps-title">Ustal liczbę prób</span><span class="steps-desc">best-of-n &middot; average-of-n &middot; ile uruchomień wystarczy?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">⚡</span><span class="steps-title">Automatyzuj</span><span class="steps-desc">CI/CD, powtarzalne procesy, opakuj w&nbsp;skilla</span></div>
+  </div>
+</div>
+<div class="slide" data-act="5" data-step="3">
+  <h2 class="mb-4">5 kroków w Twoim stacku</h2>
+  <div class="steps-grid">
+    <div class="steps-cell"><span class="steps-emoji">🛠️</span><span class="steps-title">Wybierz stack</span><span class="steps-desc">Pracuj z technologią, którą znasz i&nbsp;umiesz ocenić</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🎯</span><span class="steps-title">Zdefiniuj zadanie</span><span class="steps-desc">Stan początkowy + prompt &rarr; oczekiwany stan końcowy</span></div>
+    <div class="steps-cell"><span class="steps-emoji">📋</span><span class="steps-title">Zbuduj scorecard</span><span class="steps-desc">Co testujesz automatem? Co manualnie? Czy pomagasz modelowi?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🔢</span><span class="steps-title">Ustal liczbę prób</span><span class="steps-desc">best-of-n &middot; average-of-n &middot; ile uruchomień wystarczy?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">⚡</span><span class="steps-title">Automatyzuj</span><span class="steps-desc">CI/CD, powtarzalne procesy, opakuj w&nbsp;skilla</span></div>
+  </div>
+</div>
+<div class="slide" data-act="5" data-step="4">
+  <h2 class="mb-4">5 kroków w Twoim stacku</h2>
+  <div class="steps-grid">
+    <div class="steps-cell"><span class="steps-emoji">🛠️</span><span class="steps-title">Wybierz stack</span><span class="steps-desc">Pracuj z technologią, którą znasz i&nbsp;umiesz ocenić</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🎯</span><span class="steps-title">Zdefiniuj zadanie</span><span class="steps-desc">Stan początkowy + prompt &rarr; oczekiwany stan końcowy</span></div>
+    <div class="steps-cell"><span class="steps-emoji">📋</span><span class="steps-title">Zbuduj scorecard</span><span class="steps-desc">Co testujesz automatem? Co manualnie? Czy pomagasz modelowi?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🔢</span><span class="steps-title">Ustal liczbę prób</span><span class="steps-desc">best-of-n &middot; average-of-n &middot; ile uruchomień wystarczy?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">⚡</span><span class="steps-title">Automatyzuj</span><span class="steps-desc">CI/CD, powtarzalne procesy, opakuj w&nbsp;skilla</span></div>
+  </div>
+</div>
+<div class="slide" data-act="5" data-step="5">
+  <h2 class="mb-4">5 kroków w Twoim stacku</h2>
+  <div class="steps-grid">
+    <div class="steps-cell"><span class="steps-emoji">🛠️</span><span class="steps-title">Wybierz stack</span><span class="steps-desc">Pracuj z technologią, którą znasz i&nbsp;umiesz ocenić</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🎯</span><span class="steps-title">Zdefiniuj zadanie</span><span class="steps-desc">Stan początkowy + prompt &rarr; oczekiwany stan końcowy</span></div>
+    <div class="steps-cell"><span class="steps-emoji">📋</span><span class="steps-title">Zbuduj scorecard</span><span class="steps-desc">Co testujesz automatem? Co manualnie? Czy pomagasz modelowi?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">🔢</span><span class="steps-title">Ustal liczbę prób</span><span class="steps-desc">best-of-n &middot; average-of-n &middot; ile uruchomień wystarczy?</span></div>
+    <div class="steps-cell"><span class="steps-emoji">⚡</span><span class="steps-title">Automatyzuj</span><span class="steps-desc">CI/CD, powtarzalne procesy, opakuj w&nbsp;skilla</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     ACT VI — DLACZEGO BENCHMARKI Z INTERNETU NIE WYSTARCZĄ
+     ════════════════════════════════════════════ -->
+
+<!-- 39 ─ Section break -->
+<div class="slide slide--section" data-act="6">
+  <h1>Dlaczego benchmarki z&nbsp;internetu<br><span class="gradient-warm">nie wystarczą</span>?</h1>
+</div>
+
+<!-- 40 ─ TODO placeholder -->
+<div class="slide slide--statement" data-act="6">
+  <h2 class="dim">[ TODO ]</h2>
+  <p class="mt-3">Sekcja do uzupełnienia</p>
+</div>
+
+<!-- ════════════════════════════════════════════
+     CLOSING
+     ════════════════════════════════════════════ -->
+
+<!-- 41 ─ Closing statement -->
+<div class="slide slide--statement" data-act="closing">
+  <h1>Vibe coding<br><span class="dim">nie działa.</span></h1>
+  <p class="mt-4" style="font-size:clamp(2.2rem,4.5vw,4rem);color:var(--text);">Ale zrozumienie AI &mdash; to <span class="gradient-text">supermoc</span>.</p>
+</div>
+
+<!-- 42 ─ CTA -->
+<div class="slide" data-act="closing">
+  <h1 class="gradient-text" style="font-size:clamp(3.5rem,9vw,10rem);">10xbench.ai</h1>
+  <p class="mt-4" style="font-size:clamp(1.8rem,3vw,2.8rem);color:var(--text);">Sprawdź wyniki. Zbuduj własny benchmark.</p>
+  <div class="mt-6" style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;">
+    <span class="tag" style="font-size:clamp(1.4rem,2.2vw,2rem);"><!-- TODO: social --></span>
+  </div>
+  <p class="mt-6 dim" style="font-size:clamp(1.4rem,2.2vw,2rem);">Przemek Smyrdek &middot; Dziękuję!</p>
+</div>
+
+</div><!-- /.deck -->
+
+<!-- ── Progress bar ── -->
+<div class="progress" id="progress"></div>
+
+<!-- ── Slide counter ── -->
+<div class="counter" id="counter"></div>
+
+<!-- ── Keyboard hint ── -->
+<div class="hint" id="hint">
+  <kbd>&larr;</kbd> <kbd>&rarr;</kbd> nawigacja &middot; <kbd>F</kbd> fullscreen
+</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const hint = document.getElementById('hint');
+  const total = slides.length;
+  let current = 0;
+
+  // ── Show / hide ──
+  function go(index) {
+    if (index < 0 || index >= total) return;
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + total;
+    history.replaceState(null, '', '#' + (current + 1));
+  }
+
+  function next() { go(current + 1); }
+  function prev() { go(current - 1); }
+
+  // ── Keyboard ──
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'Backspace') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(total - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    }
+  });
+
+  // ── Touch swipe ──
+  let touchX = 0;
+  document.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].screenX; });
+  document.addEventListener('touchend', function (e) {
+    const dx = e.changedTouches[0].screenX - touchX;
+    if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+  });
+
+  // ── Click sides ──
+  document.addEventListener('click', function (e) {
+    if (e.clientX > window.innerWidth * 0.65) next();
+    else if (e.clientX < window.innerWidth * 0.35) prev();
+  });
+
+  // ── Mouse cursor auto-hide ──
+  let cursorTimer;
+  document.addEventListener('mousemove', function () {
+    document.body.classList.add('cursor-visible');
+    clearTimeout(cursorTimer);
+    cursorTimer = setTimeout(function () { document.body.classList.remove('cursor-visible'); }, 2000);
+  });
+
+  // ── Init from hash ──
+  var start = parseInt(location.hash.replace('#', ''), 10) - 1 || 0;
+  go(Math.max(0, Math.min(start, total - 1)));
+
+  // ── Show hint briefly ──
+  setTimeout(function () { hint.classList.add('visible'); }, 800);
+  setTimeout(function () { hint.classList.remove('visible'); }, 5000);
+})();
+</script>
+
+</body>
+</html>

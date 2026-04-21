@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import HeroSection from '../components/HeroSection';
+import CoursesSection from '../components/CoursesSection';
+import YouTubeSection from '../components/YouTubeSection';
+import PodcastSection from '../components/PodcastSection';
+---
+
+<Layout title="Przeprogramowani.pl - Szersze spojrzenie na programowanie">
+  <Navigation client:load />
+  <main>
+    <HeroSection />
+    <CoursesSection />
+    <YouTubeSection />
+    <PodcastSection />
+  </main>
+  <Footer />
+</Layout>

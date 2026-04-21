@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const videos = [
+  {
+    title: '5 Agent Skills do jakościowego programowania z AI - Claude Code LIVE DEMO',
+    href: 'https://www.youtube.com/watch?v=S-iNbyLSisE',
+    thumbnail: 'https://i3.ytimg.com/vi/S-iNbyLSisE/maxresdefault.jpg',
+    category: 'AI & Programowanie',
+  },
+  {
+    title: 'Product Builders Day | LIVE AI Product Heroes i 10xDevs',
+    href: 'https://www.youtube.com/watch?v=aRkECt7derY',
+    thumbnail: 'https://i3.ytimg.com/vi/aRkECt7derY/maxresdefault.jpg',
+    category: 'Live',
+  },
+  {
+    title: 'Wybierasz model AI do kodowania? Nie ufaj benchmarkom',
+    href: 'https://www.youtube.com/watch?v=vH1T5qB4dBQ',
+    thumbnail: 'https://i3.ytimg.com/vi/vH1T5qB4dBQ/maxresdefault.jpg',
+    category: 'AI & Programowanie',
+  },
+  {
+    title: 'Claude Code w rękach Product Buildera | LIVE AI Product Heroes x 10xDevs',
+    href: 'https://www.youtube.com/watch?v=bcs8WS4A5Zg',
+    thumbnail: 'https://i3.ytimg.com/vi/bcs8WS4A5Zg/maxresdefault.jpg',
+    category: 'Live',
+  },
+  {
+    title: 'MVP w Claude Code - Context Engineering, kontrola Agenta i refaktoryzacja',
+    href: 'https://www.youtube.com/watch?v=Vce4cD_5XW0',
+    thumbnail: 'https://i3.ytimg.com/vi/Vce4cD_5XW0/maxresdefault.jpg',
+    category: 'AI & Programowanie',
+  },
+  {
+    title: 'Od chaosu do AI-Native Infrastructure - budujemy platformę dla zespołu, który programuje z Agentami',
+    href: 'https://www.youtube.com/watch?v=hbuCLvwbMVg',
+    thumbnail: 'https://i3.ytimg.com/vi/hbuCLvwbMVg/maxresdefault.jpg',
+    category: 'AI & Programowanie',
+  },
+  {
+    title: 'TypeScript 5.8 - Co nowego? Najważniejsze zmiany i aktualizacje',
+    href: 'https://www.youtube.com/watch?v=example1',
+    thumbnail: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80',
+    category: 'TypeScript',
+  },
+  {
+    title: 'Frontend w 2026 - Trendy, narzędzia i przyszłość',
+    href: 'https://www.youtube.com/watch?v=example2',
+    thumbnail: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80',
+    category: 'Frontend',
+  },
+  {
+    title: 'GitHub Actions - Od podstaw do zaawansowanych workflow',
+    href: 'https://www.youtube.com/watch?v=example3',
+    thumbnail: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80',
+    category: 'DevOps',
+  },
+];
+
+const categories = ['Wszystkie', 'AI & Programowanie', 'Live', 'TypeScript', 'Frontend', 'DevOps'];
+---
+
+<Layout title="YouTube — Przeprogramowani">
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative bg-gray-950 py-16 sm:py-24">
+      <div class="absolute inset-0 bg-gradient-to-b from-red-900/10 to-transparent"></div>
+      <div class="relative max-w-screen-xl mx-auto px-4 text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+          YouTube
+        </h1>
+        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
+          Najnowsze filmy o programowaniu, AI i rozwoju technologicznym
+        </p>
+        <div class="mt-8">
+          <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3 text-base font-semibold bg-red-600 text-white rounded-lg shadow transition hover:bg-red-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Grid -->
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="mb-8 flex flex-wrap gap-2">
+          {categories.map(cat => (
+            <button class="px-4 py-2 rounded-full text-sm font-medium bg-gray-900 border border-gray-800 text-gray-300 hover:text-white hover:border-gray-700 transition-colors">
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {videos.map(video => (
+            <a href={video.href} target="_blank" rel="noopener noreferrer" class="group block rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all bg-gray-900">
+              <div class="relative aspect-video">
+                <img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                  <div class="w-14 h-14 rounded-full bg-red-600/90 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white ml-1"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg>
+                  </div>
+                </div>
+                <div class="absolute top-3 left-3">
+                  <span class="px-2 py-1 rounded bg-black/70 text-xs text-white font-medium">{video.category}</span>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-base font-medium text-gray-200 line-clamp-2 group-hover:text-white transition-colors">{video.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

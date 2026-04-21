@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Kursy i szkolenia dla programistow - JavaScript, TypeScript, AI, GitHub Actions. Blog techniczny, podcast i newsletter dla ambitnych developerow." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="generator" content={Astro.generator}>
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="Przeprogramowani">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="pl">
+  <link rel="canonical" href="https://przeprogramowani.pl/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://przeprogramowani.pl/">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:site_name" content="Przeprogramowani">
+  <meta property="og:locale" content="pl_PL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://przeprogramowani.pl/">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:site" content="@przeprogramowani">
+  <meta name="twitter:creator" content="@przeprogramowani">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-950 text-gray-100 antialiased font-sans">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-main focus:px-4 focus:py-2 focus:text-white">
+    Przejdź do treści
+  </a>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,26 @@
+---
+import { Users, BookOpen, Award, Radio } from 'lucide-react';
+
+const stats = [
+  { icon: Users, value: '15 000+', label: 'Programistów w społeczności' },
+  { icon: BookOpen, value: '400+', label: 'Absolwentów kursów' },
+  { icon: Award, value: '7 lat', label: 'Na rynku edukacji' },
+  { icon: Radio, value: '200+', label: 'Odcinków podcastu' }
+];
+---
+
+<section class="py-20 lg:py-28 bg-dark-800/50 border-y border-slate-800/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {stats.map((stat, index) => (
+        <div class="text-center animate-fade-in-up" style={`animation-delay: ${index * 100}ms`}>
+          <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center mx-auto mb-4">
+            <stat.icon className="w-6 h-6 text-brand-400" />
+          </div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-white mb-2">{stat.value}</div>
+          <div class="text-sm text-slate-400">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

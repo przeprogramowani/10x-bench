@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const courses = [
+  {
+    title: '10xDevs',
+    subtitle: 'Programuj z AI',
+    description: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania. Naucz się pracować z agentami AI, Claude Code, Cursor i innymi narzędziami, które zmieniają sposób, w jaki tworzymy oprogramowanie.',
+    href: 'https://10xdevs.pl',
+    textClass: 'text-orange-400',
+    bgClass: 'bg-orange-500',
+    hoverClass: 'hover:bg-orange-400',
+    iconClass: 'text-orange-500',
+    features: ['Praca z Claude Code i Cursor', 'Agent Skills i Context Engineering', 'AI-Native Infrastructure', 'Automatyzacja workflow'],
+    badge: 'Nowość!',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
+  },
+  {
+    title: 'Opanuj Frontend: AI Edition',
+    subtitle: 'Kompletny kurs frontendu',
+    description: 'Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów! Teraz z elementami AI wspomagającymi naukę i pracę.',
+    href: 'https://www.opanujfrontend.pl',
+    textClass: 'text-pink-400',
+    bgClass: 'bg-pink-500',
+    hoverClass: 'hover:bg-pink-400',
+    iconClass: 'text-pink-500',
+    features: ['HTML, CSS, JavaScript', 'React i TypeScript', 'Testowanie i CI/CD', 'Architektura aplikacji'],
+    badge: null,
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80',
+  },
+  {
+    title: 'Opanuj TypeScript',
+    subtitle: 'TypeScript 5 i React 19',
+    description: 'Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19! Naucz się typowania, generics, conditional types i zaawansowanych wzorców.',
+    href: 'https://www.opanujtypescript.pl',
+    textClass: 'text-sky-400',
+    bgClass: 'bg-sky-500',
+    hoverClass: 'hover:bg-sky-400',
+    iconClass: 'text-sky-500',
+    features: ['TypeScript od podstaw', 'Zaawansowane typy', 'Integracja z React', 'Praktyczne projekty'],
+    badge: null,
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&q=80',
+  },
+  {
+    title: 'Opanuj AI',
+    subtitle: 'Sztuczna inteligencja w praktyce',
+    description: 'Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy. Naucz się korzystać z LLM, budować aplikacje AI i rozumieć możliwości oraz ograniczenia generatywnej AI.',
+    href: 'https://opanuj.ai/',
+    textClass: 'text-cyan-400',
+    bgClass: 'bg-cyan-500',
+    hoverClass: 'hover:bg-cyan-400',
+    iconClass: 'text-cyan-500',
+    features: ['Warsztaty praktyczne', 'Podcast o AI', 'Darmowe ebooki', 'Społeczność'],
+    badge: null,
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
+  },
+];
+---
+
+<Layout title="Kursy — Przeprogramowani">
+  <Header />
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative bg-gray-950 py-16 sm:py-24">
+      <div class="absolute inset-0 bg-gradient-to-b from-orange-900/10 to-transparent"></div>
+      <div class="relative max-w-screen-xl mx-auto px-4 text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight font-heading">
+          Kursy i programy edukacyjne
+        </h1>
+        <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
+          Rozwijaj swoje umiejętności z najlepszymi programami edukacyjnymi w Polsce
+        </p>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="space-y-12">
+          {courses.map((course, index) => (
+            <div class={`bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-700 transition-colors ${index === 0 ? 'ring-2 ring-orange-500/30' : ''}`}>
+              <div class="lg:grid lg:grid-cols-2">
+                <div class={`h-64 lg:h-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <img src={course.image} alt={course.title} class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="p-6 sm:p-10 flex flex-col justify-center">
+                  <div class="flex items-center gap-3 mb-4">
+                    {course.badge && (
+                      <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                        {course.badge}
+                      </span>
+                    )}
+                    <span class={`text-xs font-bold uppercase tracking-wider ${course.textClass}`}>{course.subtitle}</span>
+                  </div>
+                  <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">{course.title}</h2>
+                  <p class="mt-4 text-gray-300 leading-relaxed">{course.description}</p>
+                  <ul class="mt-6 space-y-2">
+                    {course.features.map(feature => (
+                      <li class="flex items-center gap-2 text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={`w-4 h-4 ${course.iconClass}`}><path d="M20 6 9 17l-5-5"/></svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="mt-8">
+                    <a href={course.href} target="_blank" rel="noopener noreferrer" class={`inline-flex items-center gap-2 px-8 py-3 font-semibold text-white rounded-lg shadow transition hover:shadow-lg ${course.bgClass} ${course.hoverClass}`}>
+                      Dowiedz się więcej
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 sm:py-20">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <div class="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-8 sm:p-12 text-center">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">Nie wiesz, od czego zacząć?</h2>
+          <p class="mt-4 text-gray-400 max-w-xl mx-auto">
+            Skontaktuj się z nami, a pomożemy dobrać odpowiedni program edukacyjny do Twoich potrzeb i poziomu zaawansowania.
+          </p>
+          <div class="mt-8">
+            <a href="mailto:kontakt@przeprogramowani.pl" class="inline-flex items-center gap-2 px-8 py-3 font-semibold text-white rounded-lg border border-gray-700 hover:bg-gray-800 transition-colors">
+              Napisz do nas
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
