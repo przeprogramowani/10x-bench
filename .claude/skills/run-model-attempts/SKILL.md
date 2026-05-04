@@ -13,11 +13,12 @@ Required:
 
 - `benchmark/prompt.md`
 - `benchmark/context.md` if present
-- `benchmark/bootstrap.md` if present
+- `benchmark/baseline-manifest.md` if present
 - model or harness list
 
 Optional:
 
+- `benchmark/bootstrap.md` if intentionally model-visible
 - number of attempts per model
 - starter scaffold path
 - output run ID
@@ -39,8 +40,8 @@ Allowed files copied into each isolated attempt:
 
 - `prompt.md`
 - `context.md`
-- `bootstrap.md`
-- explicitly selected starter scaffold, if any
+- `bootstrap.md` only if the benchmark intentionally provides it as model-visible input
+- baseline repo, scaffold, fixture files, or starter scaffold explicitly allowed by `baseline-manifest.md`
 
 Forbidden inputs:
 
@@ -61,20 +62,27 @@ Read the benchmark inputs and confirm:
 
 - `prompt.md` exists
 - `scorecard.md` is not included in the model-visible input set
+- state mode is known:
+  - `greenfield`: start from an empty isolated workspace unless an explicitly allowed starter is provided
+  - `brownfield`: start from a fresh copy of the baseline defined in `baseline-manifest.md`
 - model/harness list is known
 - attempt count is known, defaulting to 3 per model if not specified
 - output directories will not overwrite existing attempts without explicit user approval
 
 If `scorecard.md` is referenced inside `prompt.md`, `context.md`, or `bootstrap.md`, stop and ask the user to fix the benchmark package before running attempts.
 
+If the benchmark is brownfield and no baseline source is defined, stop before running attempts.
+
 ### 2. Create Isolated Workspaces
 
 For each `{model-id}-attempt-{n}`:
 
 1. Create an empty temp workspace.
-2. Copy only allowlisted benchmark files.
-3. Copy starter scaffold only if explicitly selected.
-4. Record workspace path and start timestamp in a run log outside the model-visible prompt.
+2. For greenfield, leave it empty unless an explicitly allowed starter is part of the benchmark.
+3. For brownfield, copy a fresh baseline from `baseline-manifest.md`.
+4. Copy only allowlisted benchmark files.
+5. Copy `bootstrap.md` only if it is intentionally model-visible.
+6. Record workspace path and start timestamp in a run log outside the model-visible prompt.
 
 The implementation model should see only the benchmark files it is allowed to use.
 
@@ -83,7 +91,8 @@ The implementation model should see only the benchmark files it is allowed to us
 For each model and attempt:
 
 - launch the chosen harness with the contents of `prompt.md`
-- include `context.md` and `bootstrap.md` as allowed task context
+- include `context.md` and model-visible `bootstrap.md` only when allowed by the benchmark state contract
+- run in the prepared workspace: empty for greenfield, fresh baseline copy for brownfield
 - run as one-shot with no iterative feedback
 - do not show scoring criteria or evaluator notes
 - do not repair generated code after completion
@@ -109,6 +118,7 @@ eval-attempts/{model-id}-attempt-{n}/
    - start and end timestamp
    - exit status
    - visible benchmark inputs copied
+   - state mode and baseline source, if any
 
 Do not include scorecard contents in `run-log.md`.
 
@@ -131,6 +141,8 @@ Use the repo's existing model-running conventions where available. If a harness 
 - Do not pass `scorecard.md` to implementation models.
 - Do not run attempts inside the benchmark repository root.
 - Do not let one attempt read another attempt.
+- Do not pass `bootstrap.md` when bootstrapping is an evaluated part of a greenfield task.
+- Do not reuse a mutated baseline between models; every brownfield attempt gets a fresh copy.
 - Do not score or critique attempts during generation.
 - Do not overwrite existing attempt directories without explicit approval.
 - Do not silently switch from isolated temp folders to in-repo execution.

@@ -18,6 +18,7 @@ Optional:
 
 - `benchmark/context.md`
 - `benchmark/bootstrap.md`
+- `benchmark/baseline-manifest.md`
 - user-provided manual feedback for manual criteria
 
 ## Output
@@ -48,6 +49,7 @@ Read `benchmark/scorecard.md` and extract:
 - evidence requirements
 - failure rules
 - expected commands
+- state mode and baseline comparison rules, if present
 - partial-credit rules
 
 If the scorecard is ambiguous, ask the user for clarification before scoring.
@@ -63,6 +65,8 @@ Read the attempt directory structure and identify:
 - README or run instructions, if present
 
 Prefer project-declared commands from `package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, `Makefile`, or equivalent files. Use `bootstrap.md` as a fallback for expected setup commands.
+
+If `baseline-manifest.md` exists, use it to understand whether the attempt should be evaluated as a greenfield final repo or as a brownfield change from an initial baseline. Compare against the baseline only when the scorecard asks for patch, migration, preservation, or regression evidence.
 
 ### 3. Run Automatic Checks
 

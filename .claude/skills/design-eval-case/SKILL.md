@@ -1,6 +1,6 @@
 ---
 name: design-eval-case
-description: Design a stack-agnostic programming evaluation case for live AI coding evals. Use when the user wants to create a benchmark prompt, context, bootstrap instructions, and scorecard for any programming task, especially during webinars or workshops where participants choose the stack, task, constraints, and scoring criteria. Triggers on phrases like "design eval case", "zaprojektuj eval", "stworz benchmark case", "live eval design", "scorecard dla zadania", "programming eval", or requests to define an AI coding benchmark from scratch.
+description: Design a stack-agnostic programming evaluation case for live AI coding evals. Use when the user wants to create a benchmark prompt, context, optional bootstrap or baseline instructions, and scorecard for any programming task, especially during webinars or workshops where participants choose the stack, task, constraints, and scoring criteria. Triggers on phrases like "design eval case", "zaprojektuj eval", "stworz benchmark case", "live eval design", "scorecard dla zadania", "programming eval", or requests to define an AI coding benchmark from scratch.
 ---
 
 # design-eval-case
@@ -14,9 +14,10 @@ Create or update these files:
 ```text
 benchmark/prompt.md
 benchmark/context.md
-benchmark/bootstrap.md
 benchmark/scorecard.md
 ```
+
+Create `benchmark/bootstrap.md` only when the benchmark intentionally provides model-visible bootstrap instructions. Create `benchmark/baseline-manifest.md` when the task starts from an existing repo, scaffold, fixture, or seed state.
 
 If the benchmark directory does not exist, create it. Do not create unrelated documentation files.
 
@@ -46,13 +47,45 @@ Collect these decisions through structured questions:
 - programming task type: frontend app, backend API, CLI, library, refactor, bugfix, data pipeline, mobile view, full-stack slice
 - target audience and difficulty: beginner, intermediate, senior, production-like
 - stack preference: exact stack, stack family, or participant-selected stack
+- benchmark state mode:
+  - `greenfield`: `prompt.md` asks the model to create the repo/project from scratch, including bootstrap decisions
+  - `brownfield`: `prompt.md` asks the model to modify an existing repo, scaffold, fixture, or seed state
 - expected artifact: running app, test-passing repo, CLI command, API endpoint, library function, migration, documentation plus code
 - timebox and model constraints: one-shot only, no follow-up questions, allowed network usage, allowed package installation
 - what must be objectively measurable vs manually judged
 
 Summarize the chosen shape before writing files.
 
-### 2. Discover the Official Bootstrap
+### 2. Define the State Contract
+
+Every benchmark must define the initial state and final state.
+
+For `greenfield` benchmarks:
+
+- initial state is an empty isolated workspace
+- `prompt.md` must explicitly ask the model to create the project/repo
+- bootstrapping can be part of the evaluated task
+- do not create `bootstrap.md` if discovering and choosing the bootstrap is something the model should be scored on
+- if the webinar host wants all models to use the same starter command, create `bootstrap.md` and mark bootstrapping as provided rather than scored
+
+For `brownfield` benchmarks:
+
+- initial state is a frozen baseline repo, scaffold, fixture set, or git ref
+- create `benchmark/baseline-manifest.md`
+- `prompt.md` must describe the requested change from baseline to final state
+- the runner must give each model a fresh copy of the baseline
+- `bootstrap.md` is optional and should only describe how to install, run, or verify the existing baseline
+
+`benchmark/baseline-manifest.md` must include:
+
+- state mode: `greenfield` or `brownfield`
+- baseline source: empty workspace, local path, archive, git URL/ref, generated scaffold, or fixture directory
+- files visible to implementation models
+- files forbidden to implementation models
+- reset procedure for creating a fresh attempt workspace
+- final artifact expectation: full repo copy, patch, both, or another format
+
+### 3. Discover the Official Bootstrap When Needed
 
 Use current documentation whenever possible. Prefer official sources over memory:
 
@@ -76,7 +109,15 @@ uv init
 
 For unstable or recently changing toolchains, verify with web search or official docs before writing `bootstrap.md`. If network access is unavailable, write the bootstrap as a fallback and mark it `Source confidence: unverified fallback`.
 
-`benchmark/bootstrap.md` must include:
+Only write model-visible `benchmark/bootstrap.md` when one of these is true:
+
+- the benchmark intentionally standardizes the starter for all models
+- the task starts from a brownfield baseline and models need run/install instructions
+- the bootstrap itself is not part of what the scorecard evaluates
+
+If bootstrapping is part of the evaluated task, put the requirement in `prompt.md` instead and do not provide `bootstrap.md` to model attempts.
+
+When created, `benchmark/bootstrap.md` must include:
 
 - selected stack and versions, if known
 - official bootstrap command
@@ -85,14 +126,16 @@ For unstable or recently changing toolchains, verify with web search or official
 - minimal post-bootstrap check, such as build, test, dev server, or CLI smoke test
 - any allowed modifications to the generated starter
 
-### 3. Write the Model Prompt
+### 4. Write the Model Prompt
 
-`benchmark/prompt.md` is the only task instruction the implementing model must need, together with `context.md` and `bootstrap.md`.
+`benchmark/prompt.md` is the only task instruction the implementing model must need, together with `context.md`, model-visible baseline files, and optionally `bootstrap.md`.
 
 It must include:
 
 - exact task
-- stack and bootstrap instruction reference
+- benchmark state mode: create a new repo/project or modify the provided existing repo
+- stack and bootstrap requirement, if bootstrapping is part of the task
+- bootstrap instruction reference only if `bootstrap.md` is intentionally model-visible
 - required features
 - deliverables
 - constraints
@@ -101,7 +144,7 @@ It must include:
 
 Do not include scoring criteria, point values, evaluator traps, or hidden test details in `prompt.md`.
 
-### 4. Write the Context
+### 5. Write the Context
 
 `benchmark/context.md` contains information models are allowed to use while building:
 
@@ -113,7 +156,7 @@ Do not include scoring criteria, point values, evaluator traps, or hidden test d
 
 Do not include scorecard-only evaluation notes here unless they are fair requirements the model should see.
 
-### 5. Write the Scorecard
+### 6. Write the Scorecard
 
 `benchmark/scorecard.md` is for humans and evaluator agents only. It must not be passed to implementation models.
 
@@ -124,6 +167,8 @@ Include:
 - clear scoring guidance for full, partial, and zero credit
 - failure rules, especially build/test/dev-server hard stops
 - known hallucination or shortcut traps
+- whether bootstrap/project creation is scored
+- whether the evaluator should compare against a baseline manifest or patch
 - expected CSV output format:
 
 ```csv
@@ -132,19 +177,21 @@ Criterion,Score,Max,Notes,Evidence
 
 Prefer 8-12 criteria for live demos. Keep criteria objective where possible, but preserve manual criteria for UX, design quality, product fit, or maintainability when needed.
 
-### 6. Final Review
+### 7. Final Review
 
 Before finishing:
 
-- verify that `prompt.md`, `context.md`, and `bootstrap.md` are safe to pass to implementation models
+- verify that `prompt.md`, `context.md`, model-visible baseline files, and optional `bootstrap.md` are safe to pass to implementation models
+- verify that `baseline-manifest.md` correctly defines how fresh attempts are created
 - verify that `scorecard.md` is not referenced as an input for implementation attempts
-- verify that bootstrap instructions are sourced or explicitly marked as fallback
+- verify that bootstrap instructions are sourced, explicitly marked as fallback, or intentionally left for the model to discover
 - summarize the benchmark package and any assumptions
 
 ## Guardrails
 
 - Do not leak scoring rubrics into the model prompt.
-- Do not invent a framework bootstrap when an official generator exists.
+- Do not create model-visible `bootstrap.md` when project creation is supposed to be part of the evaluated task.
+- Do not invent a framework bootstrap when an official generator exists and bootstrap instructions are provided.
 - Do not make the benchmark depend on cloud deployment unless the user explicitly chooses it.
 - Do not overfit the scorecard to one model's expected behavior.
 - Do not create broad, subjective criteria without evidence requirements.
