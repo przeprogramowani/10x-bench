@@ -1,93 +1,110 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file guides agents working in the `slides/` package.
 
 ## What This Is
 
-A single-file HTML slide deck for a Polish-language conference talk titled "Kiedy AI buduje Twoją stronę" (When AI builds your website). The talk walks through the creation of the 10xBench.ai benchmark — testing whether LLMs can vibe-code a complete website in one shot.
+A React + Tailwind slide deck for a Polish-language talk about 10xBench.ai and evaluating AI coding agents. The goal is not to hand-author one-off HTML slides. The goal is a reusable slide design system that can support dozens of consistent presentation slides assembled from data and shared components.
 
 ## Development
 
-No build system, no dependencies. Open `index.html` directly in a browser:
+Run commands from `slides/`:
 
 ```bash
-open index.html
+npm run dev
+npm run build
 ```
 
-Navigate to a specific slide via URL hash (e.g., `index.html#15`).
+The Vite dev server serves the deck locally. Navigate to a slide with the URL hash, for example `/#15`.
 
 ## Architecture
 
-- **`index.html`** — The entire presentation: markup and navigation JS in one file
-- **`styles.css`** - Styles of the slide deck
-- **`scenario.md`** — Talk outline/speaker notes (raw notes, not rendered anywhere)
-- **`./assets`** - static assets, images for slides
+- `index.html` - minimal Vite host only. Do not put slide markup or navigation logic here.
+- `src/main.jsx` - React entrypoint.
+- `src/App.jsx` - deck runtime: keyboard navigation, touch/click navigation, fullscreen, hash tracking, progress, counter, cursor visibility.
+- `src/deck/system.jsx` - reusable slide components and primitives. Add new slide templates here when a pattern will be reused.
+- `src/deck/slides.jsx` - presentation content assembled from reusable components. Add or reorder slides here.
+- `styles.css` - Tailwind entrypoint plus `@layer base/components/utilities` definitions for the presentation design system.
+- `tailwind.config.js` - design tokens: colors, fonts, type scale, shadows.
+- `assets/` - static images used by slides.
 
-### Slide Structure
+## Design System Rules
 
-Slides are `<div class="slide">` elements inside `<div class="deck">`. The first slide has class `active`; JS manages transitions. Each slide has a `data-act` attribute grouping it into a narrative act (`1`–`6` plus `closing`).
+Prefer existing slide components before creating new ones:
 
-### Slide Layout Classes
-
-Combine `slide` with a layout modifier:
-
-| Class | Purpose |
+| Component | Purpose |
 |---|---|
-| `slide--statement` | Single big headline |
-| `slide--section` | Act/section break with label |
-| `slide--split` | Two-column layout (`split-left` / `split-right`) |
-| `slide--quote` | Blockquote with attribution |
-| `slide--number` | Large number callout (`big-number` + caption) |
-| `slide--insight` | Numbered insight card (header number + tag + text) |
-| `slide--list` | Left-aligned bullet or checklist |
-| `slide--centered` | Modifier for `slide--insight` to center-align content |
+| `TitleSlide` | Opening/CTA slides with large title and optional meta |
+| `StatementSlide` | One big idea, centered |
+| `SectionSlide` | Act or chapter break |
+| `SplitShowcaseSlide` | Two-column text + screenshot stack comparison |
+| `ImageSlide` | Screenshot/image-led slide with optional title/caption |
+| `CodeSlide` | Prompt, terminal, or code-like block |
+| `ListSlide` | Bullets and checklists |
+| `QuoteSlide` | Large quote with attribution |
+| `NumberSlide` | Large numeric callout |
+| `InsightSlide` | Numbered insight with tag, headline, body, optional image |
+| `Compare`, `CompareCol`, `Stat` | Reusable comparison/stat primitives |
 
-### Reusable Primitives
+When a new layout is needed:
 
-Use these instead of inline styles:
+1. Add a generic component to `src/deck/system.jsx` if it can be reused.
+2. Add only the slide data/composition to `src/deck/slides.jsx`.
+3. Add styling through Tailwind component classes in `styles.css` or tokens in `tailwind.config.js`.
+4. Avoid one-off inline styles and avoid embedding CSS in JSX.
 
-| Class | Purpose |
-|---|---|
-| `slide-label` (`--accent`/`--warm`/`--negative`/`--positive`/`--accent2`) | Pill label above an `h2` headline |
-| `insight-tag` (`--accent`/`--warm`/`--negative`/`--positive`/`--accent2`) | Color variant of the tag inside `slide--insight` |
-| `stat` (`stat__value`, `stat__label`) | Big value + uppercase caption; used in `compare-col` |
-| `compare--vs` | Adds a `vs` pill between compare columns |
-| `compare--centered` | Center-aligns content inside compare columns |
-| `code-block--narrow` / `--mid` / `--wide` | Width variants (55 / 65 / 70 ch) |
-| `display-xl` / `display-lg` | Oversized headline sizes |
-| `lede` / `lede--lg` | Subtitle paragraph sizes |
-| `punch` (`--accent`) | Bold colored emphasis line |
-| `caption` | Small uppercase label (no pill background) |
-| `footnote` | Small dim supporting text |
-| `cta-row` | Centered flex row helper |
+## Styling Rules
 
-Insight numbers (`insight-num`) auto-render with a gradient fill matching their color class (`accent`, `warm`, `negative`, `accent2`, `positive`).
+- Use Tailwind utilities and the existing component classes from `styles.css`.
+- Keep colors and typography driven by tokens in `tailwind.config.js` and CSS variables in `styles.css`.
+- Preserve the dark editorial presentation style: large balanced type, restrained cards, strong screenshots, minimal chrome.
+- Keep cards at `rounded-lg` / 8px radius unless there is a clear established reason.
+- Do not use negative letter spacing; this deck uses `letter-spacing: 0`.
+- Do not add decorative gradient orbs, bokeh, or unrelated background effects.
+- Avoid visible explanatory UI text about how the deck works. Controls are already implicit via keyboard/click/touch.
 
-### Styling Rules
+## Slide Content Rules
 
-All new or updated styles **must** go in `styles.css`. Never add inline `<style>` blocks or inline `style` attributes in `index.html`.
+- Slide content is in Polish. Continue in Polish when adding or editing slides.
+- Prefer concise headlines and short supporting text; these slides are meant to be spoken over.
+- Use real screenshots/assets from `assets/` when a slide refers to a product, ranking, model output, or benchmark result.
+- Add images as `/assets/name.png` or through the existing `assets(name)` helper in `slides.jsx`.
+- Keep `act` values meaningful: `"1"` through `"6"` and `"closing"` are currently used for narrative grouping.
 
-### Design Tokens
+## Navigation Behavior
 
-All colors and fonts are in CSS `:root` custom properties. Key color utility classes: `.accent`, `.accent2`, `.warm`, `.positive`, `.negative`, `.dim`, `.bright`, `.gradient-text`, `.gradient-warm`.
+Navigation lives in `src/App.jsx`:
 
-### Navigation (JS at bottom of file)
+- ArrowRight, Space, Enter: next slide
+- ArrowLeft, Backspace: previous slide
+- Home / End: first / last slide
+- `F`: fullscreen
+- click left/right third of screen: previous/next
+- touch swipe: previous/next
+- URL hash tracks slide number
+- cursor auto-hides after inactivity
 
-- Arrow keys, Space/Enter, click on left/right third of screen, touch swipe
-- `F` toggles fullscreen
-- `Home`/`End` jump to first/last slide
-- Hash-based URL tracking (`#slideNumber`)
-- Cursor auto-hides after 2 seconds of inactivity
+Do not duplicate navigation behavior inside slide components.
 
-## Content Language
+## Verification
 
-All slide content and speaker notes are in **Polish**. Continue in Polish when adding or editing slide content.
+Before handing off changes, run:
 
-## Placeholders
+```bash
+npm run build
+```
 
-Several slides contain `<div class="placeholder">` elements marking spots for screenshots, charts, and visuals to be inserted later. These are styled dashed-border boxes with icon + description text.
+For layout-heavy changes, also run `npm run dev` and inspect representative slides in the browser, especially:
 
-## Known TODOs
+- title / statement slides
+- split screenshot slides
+- image-heavy slides
+- scorecard/model grids
+- insight slides with embedded code or comparisons
+- final CTA
 
-- Slide 1: Conference name (`[nazwa konferencji]`)
-- Slide 52: Social links (`<!-- TODO: social -->`)
+## Known Notes
+
+- `dist/` is generated by Vite build.
+- `node_modules/` is local dependency output.
+- The root repo may contain unrelated dirty files outside `slides/`; do not touch or revert them while working on this deck.

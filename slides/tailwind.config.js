@@ -1,0 +1,55 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  theme: {
+    extend: {
+      colors: {
+        deck: "var(--bg)",
+        surface: "var(--surface)",
+        deckBorder: "var(--border)",
+        deckText: "var(--text)",
+        deckMuted: "var(--text-dim)",
+        accent: "var(--accent)",
+        accent2: "var(--accent2)",
+        warm: "var(--warm)",
+        positive: "var(--positive)",
+        negative: "var(--negative)",
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
+      },
+      fontSize: {
+        h1: "clamp(3.5rem, 8vw, 9rem)",
+        h2: "clamp(2.4rem, 5.5vw, 6rem)",
+        display: "clamp(4rem, 10vw, 10.5rem)",
+        body: "clamp(1.5rem, 2.8vw, 2.5rem)",
+        lede: "clamp(1.8rem, 3vw, 2.8rem)",
+        ledeLg: "clamp(2.2rem, 4.5vw, 4rem)",
+        list: "clamp(1.8rem, 3vw, 2.8rem)",
+        quote: "clamp(3rem, 6.5vw, 6.5rem)",
+        number: "clamp(8rem, 25vw, 22rem)",
+        insightNum: "clamp(5rem, 12vw, 10rem)",
+        stackTitle: "clamp(2.8rem, 5vw, 5rem)",
+        chip: "clamp(1.6rem, 2.8vw, 2.6rem)",
+        tag: "clamp(1.1rem, 1.6vw, 1.5rem)",
+        label: "clamp(1.2rem, 1.9vw, 1.65rem)",
+        code: "clamp(1.5rem, 2.4vw, 2.2rem)",
+        cardTitle: "clamp(1.6rem, 2.5vw, 2.4rem)",
+        score: "clamp(1.4rem, 2.5vw, 2.2rem)",
+        stat: "clamp(4rem, 9vw, 8rem)",
+        stepIcon: "clamp(2.5rem, 4vw, 4rem)",
+        stepTitle: "clamp(1.4rem, 2.2vw, 2rem)",
+        stepDesc: "clamp(1rem, 1.5vw, 1.4rem)",
+        footnote: "clamp(1.4rem, 2.2vw, 2rem)",
+        punch: "clamp(2.5rem, 4.5vw, 4rem)",
+      },
+      boxShadow: {
+        surface:
+          "inset 0 1px 0 rgba(255,255,255,0.05), 0 12px 32px rgba(0,0,0,0.35)",
+        image: "0 8px 32px rgba(0,0,0,0.4)",
+      },
+    },
+  },
+  plugins: [],
+};
