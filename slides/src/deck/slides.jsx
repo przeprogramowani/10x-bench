@@ -297,48 +297,85 @@ function ScorecardV5Slide({ active }) {
 }
 
 function PlanComparisonSlide({ active }) {
-  const models = [
-    { name: "Sonnet 4.6", gpt: 51.4, hitl: 67.9, delta: "+16.5", verdict: "FAIL → PASS" },
-    { name: "MiniMax M2.7", gpt: 48.8, hitl: 62.2, delta: "+13.4", verdict: "FAIL → PASS" },
-    { name: "Opus 4.7", gpt: 62.0, hitl: 68.0, delta: "+6.0", verdict: "PASS → PASS" },
-    { name: "MiniMax M2.5", gpt: 57.1, hitl: 63.5, delta: "+6.4", verdict: "PASS → PASS" },
-    { name: "Opus 4.6", gpt: 64.2, hitl: 61.6, delta: "−2.6", verdict: "PASS → PASS" },
-    { name: "GPT-4-1", gpt: 41.5, hitl: 36.5, delta: "−5.0", verdict: "FAIL → FAIL" },
+  const archetypes = [
+    {
+      name: "Self-sufficient",
+      description: "Zdaje wszędzie, plany pomagają ale nie są konieczne",
+      models: [
+        { name: "V4 Flash",   noPlan: 74.1, gpt: 82.5, hitl: 80.7, best: 82.5 },
+        { name: "Step Flash",  noPlan: 70.3, gpt: 64.9, hitl: 71.8, best: 71.8 },
+      ],
+    },
+    {
+      name: "Follower",
+      description: "Najlepszy z HITL, bez planu traci",
+      models: [
+        { name: "Sonnet 4.6", noPlan: 76.6, gpt: 59.1, hitl: 76.9, best: 76.9 },
+        { name: "Opus 4.7",   noPlan: 47.3, gpt: 70.1, hitl: 76.8, best: 76.8 },
+        { name: "Hy3",        noPlan: 62.4, gpt: 57.2, hitl: 72.9, best: 72.9 },
+      ],
+    },
+    {
+      name: "Explorer",
+      description: "Najlepszy z GPT-5.4 lub bez planu, HITL przeszkadza",
+      models: [
+        { name: "Gemini 3.1 Pro", noPlan: 65.9, gpt: 81.0, hitl: 62.4, best: 81.0 },
+        { name: "DeepSeek V3.2",  noPlan: 65.6, gpt: 72.2, hitl: 52.7, best: 72.2 },
+        { name: "Qwen 3.6 27B",  noPlan: 63.2, gpt: 50.7, hitl: 51.5, best: 63.2 },
+      ],
+    },
+    {
+      name: "Versatile",
+      description: "Stabilny niezależnie od planu",
+      models: [
+        { name: "MiniMax M2.7", noPlan: 76.0, gpt: 55.7, hitl: 73.4, best: 76.0 },
+      ],
+    },
   ];
+
+  const scoreClass = (v) => v >= 55 ? "positive" : "negative";
 
   return (
     <section className={`slide ${active ? "active" : ""}`} data-act="9">
-      <h2 className="slide-subheading mb-6">GPT plan vs HITL plan</h2>
+      <h2 className="slide-subheading mb-6">4 archetypy — 9 modeli × 3 plany</h2>
       <div style={{ overflowX: "auto", width: "100%" }}>
         <table className="leaderboard-table">
           <thead>
             <tr>
               <th>Model</th>
-              <th>GPT plan</th>
-              <th>HITL</th>
               <th>Bez planu</th>
-              <th>Delta</th>
-              <th>Werdykt</th>
+              <th>GPT-5.4</th>
+              <th>HITL</th>
+              <th>Best</th>
             </tr>
           </thead>
           <tbody>
-            {models.map((m) => (
-              <tr key={m.name}>
-                <td><strong>{m.name}</strong></td>
-                <td className={m.gpt >= 55 ? "positive" : "negative"}>{m.gpt}</td>
-                <td className={m.hitl >= 55 ? "positive" : "negative"}>{m.hitl}</td>
-                <td className="dim">—</td>
-                <td className={m.delta.startsWith("+") ? "positive" : "warm"}>{m.delta}</td>
-                <td className={m.verdict.includes("FAIL → PASS") ? "accent" : m.verdict.includes("FAIL → FAIL") ? "negative" : "dim"}>
-                  {m.verdict}
-                </td>
-              </tr>
+            {archetypes.map((arch) => (
+              <>
+                <tr key={arch.name} className="archetype-header">
+                  <td colSpan={5}>
+                    <strong>{arch.name}</strong> <span className="dim">— {arch.description}</span>
+                  </td>
+                </tr>
+                {arch.models.map((m) => {
+                  const isBest = (v) => v === m.best;
+                  return (
+                    <tr key={m.name}>
+                      <td><strong>{m.name}</strong></td>
+                      <td className={scoreClass(m.noPlan)}>{isBest(m.noPlan) ? <strong>{m.noPlan}</strong> : m.noPlan}</td>
+                      <td className={scoreClass(m.gpt)}>{isBest(m.gpt) ? <strong>{m.gpt}</strong> : m.gpt}</td>
+                      <td className={scoreClass(m.hitl)}>{isBest(m.hitl) ? <strong>{m.hitl}</strong> : m.hitl}</td>
+                      <td className="accent2"><strong>{m.best}</strong></td>
+                    </tr>
+                  );
+                })}
+              </>
             ))}
           </tbody>
         </table>
       </div>
       <p className="footnote mt-4">
-        Pass threshold: 55/100. Kolumna &quot;Bez planu&quot; — wkrótce.
+        Archetyp modelu przewiduje wrażliwość na plan lepiej niż tier czy cena.
       </p>
     </section>
   );
@@ -1389,10 +1426,10 @@ export const slides = [
             <Em tone="positive">HITL plan</Em> — Opus 4.6 + ręczna korekta człowieka
           </>,
           <>
-            <Em tone="warm">Bez planu</Em> — model dostaje tylko task.md (wkrótce)
+            <Em tone="warm">Bez planu</Em> — model dostaje tylko task.md
           </>,
         ]}
-        footer="Czy lepszy plan = lepszy kod? A może niektóre modele radzą sobie same?"
+        footer="9 modeli przetestowanych we wszystkich 3 warunkach."
       />
     ),
   },
@@ -1400,17 +1437,21 @@ export const slides = [
   {
     id: "insight-sonnet-swing",
     render: (active) => (
-      <InsightSlide active={active} act="9" number="03" tone="accent" tag="Sonnet 4.6" title="+16.5 punktów" centered>
-        <Compare vs centered>
-          <CompareCol title="GPT plan">
-            <Stat value="51.4" label="FAIL" tone="negative" />
+      <InsightSlide active={active} act="9" number="03" tone="accent" tag="Sonnet vs Opus" title="Kontrastowe archetypy" centered>
+        <Compare centered>
+          <CompareCol title="Sonnet 4.6 (Follower)">
+            <Stat value="76.6" label="bez planu" tone="positive" />
+            <Stat value="59.1" label="GPT-5.4" tone="positive" />
+            <Stat value="76.9" label="HITL" tone="positive" />
           </CompareCol>
-          <CompareCol title="HITL plan">
-            <Stat value="67.9" label="PASS" tone="positive" />
+          <CompareCol title="Opus 4.7 (Follower)">
+            <Stat value="47.3" label="bez planu" tone="negative" />
+            <Stat value="70.1" label="GPT-5.4" tone="positive" />
+            <Stat value="76.8" label="HITL" tone="positive" />
           </CompareCol>
         </Compare>
         <span className="mt-8 block">
-          Ten sam model. Ta sama ewaluacja. <Em tone="accent">Tylko plan się zmienił.</Em>
+          Oba Followers, ale Sonnet radzi sobie solo. Opus bez planu — <Em tone="negative">FAIL</Em>.
         </span>
       </InsightSlide>
     ),
@@ -1418,19 +1459,29 @@ export const slides = [
   {
     id: "insight-plan-types",
     render: (active) => (
-      <InsightSlide active={active} act="9" number="04" tone="accent2" tag="Zależność od planu" title="Dwa typy modeli" centered>
+      <InsightSlide active={active} act="9" number="04" tone="accent2" tag="Zależność od planu" title="Cztery archetypy" centered>
         <Compare centered>
-          <CompareCol title="Plan followers">
-            <p><Em tone="accent">Sonnet</Em>, <Em tone="accent">MiniMax</Em></p>
-            <p className="mt-2">Plan robi ogromną różnicę.</p>
+          <CompareCol title="Self-sufficient">
+            <p><Em tone="positive">V4 Flash</Em>, <Em tone="positive">Step Flash</Em></p>
+            <p className="mt-2">Zdaje wszędzie</p>
           </CompareCol>
-          <CompareCol title="Self-directed">
-            <p><Em tone="accent2">Opus</Em>, <Em tone="accent2">GPT-4-1</Em></p>
-            <p className="mt-2">Radzą sobie (lub nie) niezależnie od planu.</p>
+          <CompareCol title="Follower">
+            <p><Em tone="accent">Sonnet</Em>, <Em tone="accent">Opus</Em>, <Em tone="accent">Hy3</Em></p>
+            <p className="mt-2">Najlepszy z HITL</p>
+          </CompareCol>
+        </Compare>
+        <Compare centered>
+          <CompareCol title="Explorer">
+            <p><Em tone="accent2">Gemini 3.1 Pro</Em>, <Em tone="accent2">V3.2</Em>, <Em tone="accent2">Qwen 27B</Em></p>
+            <p className="mt-2">HITL przeszkadza</p>
+          </CompareCol>
+          <CompareCol title="Versatile">
+            <p><Em tone="warm">MiniMax M2.7</Em></p>
+            <p className="mt-2">Stabilny</p>
           </CompareCol>
         </Compare>
         <span className="mt-8 block">
-          Warto wiedzieć, z jakim typem modelu pracujesz.
+          Archetyp modelu mówi ci, jak z nim pracować.
         </span>
       </InsightSlide>
     ),
