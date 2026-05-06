@@ -58,10 +58,15 @@ The Docker container is the isolation unit. The entire harness session — every
 The skill resolves the benchmark image once, then runs N attempts against it. The image already has the three CLIs and the `run-attempt` orchestrator baked in — there is no per-attempt install step.
 
 ```bash
-# Resolve image once per run
+# Resolve image once per run. Tolerant of local-only tags so a demo build
+# (`docker build -t 10xbench/przeprogramowani:demo benchmark`) works without
+# a registry; remote tags still pull as normal.
 IMAGE=$(yq -r '.image' benchmark/runner.yaml)
-docker pull "$IMAGE"
-IMAGE_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' "$IMAGE")
+docker pull "$IMAGE" 2>/dev/null \
+  || docker image inspect "$IMAGE" >/dev/null \
+  || { echo "image not pullable and not present locally: $IMAGE" >&2; exit 1; }
+IMAGE_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' "$IMAGE" 2>/dev/null \
+               || docker inspect --format='{{.Id}}' "$IMAGE")
 
 # Per attempt
 WORKSPACE=$(mktemp -d /private/tmp/10x-eval-runs/XXXXXX)
@@ -134,10 +139,12 @@ Before running any attempt, verify:
 # Docker available
 docker info > /dev/null 2>&1 || { echo "Docker unavailable — cannot run isolated attempts"; exit 1; }
 
-# runner.yaml parses and names a pullable image
+# runner.yaml parses and names an image that is either pullable or already local
 test -r benchmark/runner.yaml || { echo "benchmark/runner.yaml missing"; exit 1; }
 IMAGE=$(yq -r '.image' benchmark/runner.yaml)
-docker pull "$IMAGE"
+docker pull "$IMAGE" 2>/dev/null \
+  || docker image inspect "$IMAGE" >/dev/null \
+  || { echo "image not pullable and not present locally: $IMAGE" >&2; exit 1; }
 
 # Token env var for the chosen harness is set
 case "$HARNESS" in
@@ -175,7 +182,7 @@ Read the benchmark inputs and confirm:
   - `brownfield`: workspace starts with a fresh copy of the baseline from `baseline-manifest.md`
 - model/harness list is known and each harness is in `runner.yaml -> allowed_harnesses`
 - attempt count is known, defaulting to `runner.yaml -> attempts_default` (or 3 if absent)
-- Docker is available and `docker pull "$IMAGE"` succeeds
+- Docker is available and `$IMAGE` is either pullable or already present locally (`docker pull` then fallback to `docker image inspect`)
 - the host env var matching each chosen harness is set (see Token resolution)
 - output directories will not overwrite existing attempts without explicit user approval
 
