@@ -1214,7 +1214,7 @@ export const slides = [
         act="7"
         title={
           <>
-            <Em gradient>10x-evals</Em>
+            <Em gradient>10x-evals-py</Em>
             <br />
             Open-source benchmark
           </>
@@ -1518,20 +1518,28 @@ export const slides = [
   {
     id: "chinese-pricing",
     render: (active) => (
-      <InsightSlide active={active} act="10" tone="positive" tag="Koszt za task" title="A może bez subskrypcji?" centered>
+      <InsightSlide active={active} act="10" tone="positive" tag="Koszt za task" title="Pełny gradient cenowy" centered>
         <Compare centered>
-          <CompareCol title="Premium">
-            <Stat value="$5.67" label="Opus 4.7" tone="warm" />
+          <CompareCol title="Opus 4.7">
+            <Stat value="$8.69" label="76.8 pkt · premium" tone="warm" />
           </CompareCol>
-          <CompareCol title="Budget">
-            <Stat value="$0.62" label="GLM 5.1" tone="positive" />
+          <CompareCol title="GLM 5.1">
+            <Stat value="$0.62" label="74.0 pkt · budget" tone="positive" />
           </CompareCol>
-          <CompareCol title="Flash">
-            <Stat value="$0.03" label="Step 3.5 Flash" tone="positive" />
+          <CompareCol title="V4 Pro">
+            <Stat value="$0.47" label="74.8 pkt · budget" tone="positive" />
+          </CompareCol>
+        </Compare>
+        <Compare centered>
+          <CompareCol title="Step Flash">
+            <Stat value="$0.06" label="71.8 pkt · budget" tone="positive" />
+          </CompareCol>
+          <CompareCol title="V4 Flash">
+            <Stat value="$0.02" label="82.5 pkt · #2 overall" tone="positive" />
           </CompareCol>
         </Compare>
         <span className="mt-8 block">
-          Za $20 miesięcznie: <Em tone="warm">3.5 tasków</Em> Opusa albo <Em tone="positive">667 tasków</Em> Step Flash.
+          Od $8.69 do $0.02 za task. Za <Em tone="positive">$20 miesięcznie</Em> — 1 000 tasków V4 Flash.
         </span>
       </InsightSlide>
     ),
@@ -1539,27 +1547,41 @@ export const slides = [
   {
     id: "local-models",
     render: (active) => (
-      <ListSlide
+      <InsightSlide active={active} act="10" tone="accent2" tag="Lokalnie" title="Prywatność, suwerenność, offline" centered>
+        <Compare vs centered>
+          <CompareCol title="Consumer (dowolny GPU)">
+            <Stat value="63.2" label="Qwen 3.6 27B · PASS" tone="positive" />
+            <p className="mt-2">16-32 GB VRAM · od ~$500</p>
+          </CompareCol>
+          <CompareCol title="Prosumer (Mac Studio)">
+            <Stat value="82.5" label="V4 Flash · #2 overall" tone="positive" />
+            <p className="mt-2">M4 Ultra 192 GB · ~$5 500</p>
+          </CompareCol>
+        </Compare>
+        <span className="mt-8 block">
+          19.3 pkt różnicy między tierami. API prawie zawsze wygrywa kosztowo — lokalnie to kwestia <Em tone="accent2">kontroli</Em>, nie oszczędności.
+        </span>
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "one-task",
+    render: (active) => (
+      <StatementSlide
         active={active}
         act="10"
-        label="Lokalnie"
-        labelTone="accent2"
-        title="Zero marginal cost"
-        items={[
+        title={
           <>
-            <Em tone="accent2">Mac Mini M4 Pro</Em> (48 GB) — ~$2 000, Q4 modeli 27B
-          </>,
+            To wyniki dla
+            <br />
+            <Em gradient="warm">JEDNEGO zadania</Em>.
+          </>
+        }
+        subtitle={
           <>
-            <Em tone="accent2">RTX 4090</Em> — ~$2 500, Q4 modeli 27B
-          </>,
-          <>
-            Break-even vs Opus API: <Em tone="positive">~556 tasków</Em> (~3 miesiące po 10/dzień)
-          </>,
-          <>
-            Po zakupie hardware: koszt per task → <Em tone="positive">$0</Em>
-          </>,
-        ]}
-        footer="Qwen 3.6 27B, DeepSeek V3 — da się uruchomić na biurku."
+            Twoje wyniki będą inne. Forkuj <Em>10x-evals-py</Em> i testuj <Em gradient>swój stack</Em>.
+          </>
+        }
       />
     ),
   },
@@ -1571,11 +1593,11 @@ export const slides = [
         act="10"
         title="Co z tego wynika?"
         items={[
-          { check: true, content: <>Chińskie modele budget <Em tone="positive">dominują</Em> stosunek jakość/cena</> },
-          { check: true, content: <>Jakość planu to <Em tone="accent">ogromna dźwignia</Em> — nawet +16 punktów</> },
-          { check: true, content: <>Subskrypcje dają <Em tone="positive">25× wartość</Em>, ale przy chińskich cenach API... warto liczyć</> },
-          { check: true, content: <>Lokalnie = <Em tone="accent2">zero kosztu krańcowego</Em> po inwestycji w hardware</> },
-          { check: true, content: <>Zbuduj <Em gradient>własny benchmark</Em> — publiczne rankingi nie wystarczą</> },
+          { check: true, content: <>4 z 5 najlepszych to <Em tone="positive">budget-tier</Em> — cena nie przewiduje jakości</> },
+          { check: true, content: <>Archetyp modelu <Em tone="accent">ważniejszy niż tier czy cena</Em> — dopasuj plan do modelu</> },
+          { check: true, content: <>V4 Flash: <Em tone="positive">#2 za $0.02</Em> — 180× taniej od lidera, 1 punkt różnicy</> },
+          { check: true, content: <>Subskrypcje dają <Em tone="positive">25× wartość</Em>, ale chińskie API zmieniają matematykę</> },
+          { check: true, content: <>Metodologia <Em gradient>ważniejsza od rankingu</Em> — forkuj i testuj swój stack</> },
         ]}
       />
     ),
@@ -1590,10 +1612,10 @@ export const slides = [
           <>
             <Em gradient>10xbench.ai</Em>
             {" + "}
-            <Em gradient="warm">10x-evals</Em>
+            <Em gradient="warm">10x-evals-py</Em>
           </>
         }
-        meta="Sprawdź wyniki · Open-source benchmark · github.com/10x-evals · 10xdevs.pl"
+        meta="Sprawdź wyniki · Open-source benchmark · github.com/przeprogramowani/10x-evals-py · 10xdevs.pl"
       />
     ),
   },
