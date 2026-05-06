@@ -9,17 +9,21 @@ Facilitates the creation of a complete, stack-agnostic programming benchmark cas
 
 ## Outputs
 
-Create or update these files:
+This skill operates exclusively under `benchmarks/<benchmark-name>/`. Each benchmark is a self-contained directory. Create or update these files inside it:
 
 ```text
-benchmark/prompt.md
-benchmark/context.md
-benchmark/scorecard.md
+benchmarks/<benchmark-name>/
+├── runner.yaml              # required — manifest consumed by run-model-attempts
+├── prompt.md                # required — model-visible task spec
+├── context.md               # required — model-visible domain data
+└── scorecard.md             # required — evaluator-only, NEVER passed to attempts
 ```
 
-Create `benchmark/bootstrap.md` only when the benchmark intentionally provides model-visible bootstrap instructions. Create `benchmark/baseline-manifest.md` when the task starts from an existing repo, scaffold, fixture, or seed state.
+Create `bootstrap.md` only when the benchmark intentionally provides model-visible bootstrap instructions. Create `baseline-manifest.md` (and a `baseline/` directory or files) when the task starts from an existing repo, scaffold, fixture, or seed state.
 
-If the benchmark directory does not exist, create it. Do not create unrelated documentation files.
+If `benchmarks/` does not exist, create it. If `benchmarks/<name>/` does not exist, create it. Do not create unrelated documentation files. Do not write outside `benchmarks/<name>/`.
+
+> **Note on the Dockerfile.** Each benchmark also needs a `benchmarks/<name>/Dockerfile` for the per-benchmark image declared in `runner.yaml`. This skill does not generate it (the stack runtime varies too much). After running this skill, point the user at an existing benchmark's Dockerfile as a template and instruct them to build and tag the image referenced in `runner.yaml -> image`.
 
 ## Interaction Rules
 
@@ -44,6 +48,7 @@ Each structured question should:
 
 Collect these decisions through structured questions:
 
+- **benchmark slug**: short kebab-case identifier used for the directory name (e.g. `dotnet-blog`, `astro-marketing`, `go-cli-todo`); also collect a human-readable display name
 - programming task type: frontend app, backend API, CLI, library, refactor, bugfix, data pipeline, mobile view, full-stack slice
 - target audience and difficulty: beginner, intermediate, senior, production-like
 - stack preference: exact stack, stack family, or participant-selected stack
@@ -53,8 +58,11 @@ Collect these decisions through structured questions:
 - expected artifact: running app, test-passing repo, CLI command, API endpoint, library function, migration, documentation plus code
 - timebox and model constraints: one-shot only, no follow-up questions, allowed network usage, allowed package installation
 - what must be objectively measurable vs manually judged
+- harnesses to support (subset of `opencode`, `claude-code`, `codex`) and a default opencode model id, since `run-model-attempts` requires one
 
-Summarize the chosen shape before writing files.
+The slug must be a valid directory name (lowercase letters, digits, hyphens) and must not already exist under `benchmarks/`. If it does, ask the user whether to pick a new slug or replace the existing benchmark.
+
+Summarize the chosen shape — including the resolved benchmark path `benchmarks/<slug>/` — before writing files.
 
 ### 2. Define the State Contract
 
@@ -71,16 +79,17 @@ For `greenfield` benchmarks:
 For `brownfield` benchmarks:
 
 - initial state is a frozen baseline repo, scaffold, fixture set, or git ref
-- create `benchmark/baseline-manifest.md`
+- create `benchmarks/<slug>/baseline-manifest.md`
+- if the baseline is a small set of files, place them under `benchmarks/<slug>/baseline/` so they can be listed in `runner.yaml -> model_visible_files`
 - `prompt.md` must describe the requested change from baseline to final state
 - the runner must give each model a fresh copy of the baseline
 - `bootstrap.md` is optional and should only describe how to install, run, or verify the existing baseline
 
-`benchmark/baseline-manifest.md` must include:
+`benchmarks/<slug>/baseline-manifest.md` must include:
 
 - state mode: `greenfield` or `brownfield`
-- baseline source: empty workspace, local path, archive, git URL/ref, generated scaffold, or fixture directory
-- files visible to implementation models
+- baseline source: empty workspace, local path under `benchmarks/<slug>/baseline/`, archive, git URL/ref, generated scaffold, or fixture directory
+- files visible to implementation models (mirrored in `runner.yaml -> model_visible_files`)
 - files forbidden to implementation models
 - reset procedure for creating a fresh attempt workspace
 - final artifact expectation: full repo copy, patch, both, or another format
@@ -109,7 +118,7 @@ uv init
 
 For unstable or recently changing toolchains, verify with web search or official docs before writing `bootstrap.md`. If network access is unavailable, write the bootstrap as a fallback and mark it `Source confidence: unverified fallback`.
 
-Only write model-visible `benchmark/bootstrap.md` when one of these is true:
+Only write model-visible `benchmarks/<slug>/bootstrap.md` when one of these is true:
 
 - the benchmark intentionally standardizes the starter for all models
 - the task starts from a brownfield baseline and models need run/install instructions
@@ -117,7 +126,7 @@ Only write model-visible `benchmark/bootstrap.md` when one of these is true:
 
 If bootstrapping is part of the evaluated task, put the requirement in `prompt.md` instead and do not provide `bootstrap.md` to model attempts.
 
-When created, `benchmark/bootstrap.md` must include:
+When created, `benchmarks/<slug>/bootstrap.md` must include:
 
 - selected stack and versions, if known
 - official bootstrap command
@@ -128,7 +137,7 @@ When created, `benchmark/bootstrap.md` must include:
 
 ### 4. Write the Model Prompt
 
-`benchmark/prompt.md` is the only task instruction the implementing model must need, together with `context.md`, model-visible baseline files, and optionally `bootstrap.md`.
+`benchmarks/<slug>/prompt.md` is the only task instruction the implementing model must need, together with `context.md`, model-visible baseline files, and optionally `bootstrap.md`.
 
 It must include:
 
@@ -146,7 +155,7 @@ Do not include scoring criteria, point values, evaluator traps, or hidden test d
 
 ### 5. Write the Context
 
-`benchmark/context.md` contains information models are allowed to use while building:
+`benchmarks/<slug>/context.md` contains information models are allowed to use while building:
 
 - domain data
 - sample inputs and outputs
@@ -158,7 +167,7 @@ Do not include scorecard-only evaluation notes here unless they are fair require
 
 ### 6. Write the Scorecard
 
-`benchmark/scorecard.md` is for humans and evaluator agents only. It must not be passed to implementation models.
+`benchmarks/<slug>/scorecard.md` is for humans and evaluator agents only. It must not be passed to implementation models, and it must not be listed in `runner.yaml -> model_visible_files`.
 
 Include:
 
@@ -177,21 +186,84 @@ Criterion,Score,Max,Notes,Evidence
 
 Prefer 8-12 criteria for live demos. Keep criteria objective where possible, but preserve manual criteria for UX, design quality, product fit, or maintainability when needed.
 
-### 7. Final Review
+### 7. Write the Runner Manifest
+
+`benchmarks/<slug>/runner.yaml` is consumed by the `run-model-attempts` skill. It is **not** model-visible. Generate it from the decisions captured in step 1 and the file set produced by steps 2–6.
+
+Use this exact schema:
+
+```yaml
+# Identity
+name: <slug>                                  # must match the directory name
+display_name: <human-readable name>
+
+# State contract
+state_mode: greenfield                        # greenfield | brownfield
+
+# Image — built from benchmarks/<slug>/Dockerfile
+image: ghcr.io/10xbench/<slug>:<tag>
+
+# Default attempts per model
+attempts_default: 3
+
+# Prompt path, relative to this runner.yaml
+prompt_file: prompt.md
+
+# Files copied into the container workspace (relative to this runner.yaml).
+# Order matters; later entries can overlay earlier ones.
+# NEVER include scorecard.md.
+model_visible_files:
+  - prompt.md
+  - context.md
+  # - bootstrap.md      # only when bootstrap is intentionally model-visible
+  # - baseline/         # brownfield baseline tree
+
+# Harnesses allowed for this benchmark
+allowed_harnesses:
+  - opencode
+  - claude-code
+  - codex
+
+# Per-harness model defaults. opencode REQUIRES one (no vendor default).
+defaults:
+  opencode:
+    model: openrouter/<provider>/<model-id>
+  # claude-code:
+  #   model: claude-opus-4-7
+  # codex:
+  #   model: gpt-5-codex
+```
+
+Rules when generating it:
+
+- `name` MUST equal the directory slug.
+- `state_mode` matches the choice from step 1.
+- `image` defaults to `ghcr.io/10xbench/<slug>:<today-yyyy-mm-dd>` unless the user supplied another tag. Tell the user they still need to build and tag this image from `benchmarks/<slug>/Dockerfile`.
+- `prompt_file` is always `prompt.md` (relative to runner.yaml).
+- `model_visible_files` MUST include `prompt.md` and `context.md`. Add `bootstrap.md` only if it was intentionally created as model-visible. Add the baseline path only for brownfield. NEVER add `scorecard.md`, `runner.yaml`, `baseline-manifest.md`, `eval-attempts/`, or `eval-results/`.
+- `allowed_harnesses` reflects the user's choice; default to all three if unspecified.
+- `defaults.opencode.model` must be set if `opencode` is in `allowed_harnesses`. Ask the user for the OpenRouter id if it was not captured earlier.
+
+### 8. Final Review
 
 Before finishing:
 
 - verify that `prompt.md`, `context.md`, model-visible baseline files, and optional `bootstrap.md` are safe to pass to implementation models
-- verify that `baseline-manifest.md` correctly defines how fresh attempts are created
+- verify that `runner.yaml` parses, references files that exist, and does not list `scorecard.md` in `model_visible_files`
+- verify that `baseline-manifest.md` (if present) correctly defines how fresh attempts are created and matches `runner.yaml -> model_visible_files`
 - verify that `scorecard.md` is not referenced as an input for implementation attempts
 - verify that bootstrap instructions are sourced, explicitly marked as fallback, or intentionally left for the model to discover
-- summarize the benchmark package and any assumptions
+- summarize the benchmark package, list every created file under `benchmarks/<slug>/`, and remind the user to author `benchmarks/<slug>/Dockerfile` plus build/tag the image declared in `runner.yaml`
+- mention that `run-model-attempts` can now be invoked with this benchmark slug
 
 ## Guardrails
 
+- Write only inside `benchmarks/<slug>/`. Do not touch the legacy top-level `benchmark/`, `eval-attempts/`, or `eval-results/` directories.
 - Do not leak scoring rubrics into the model prompt.
+- Do not list `scorecard.md` in `runner.yaml -> model_visible_files`.
 - Do not create model-visible `bootstrap.md` when project creation is supposed to be part of the evaluated task.
 - Do not invent a framework bootstrap when an official generator exists and bootstrap instructions are provided.
 - Do not make the benchmark depend on cloud deployment unless the user explicitly chooses it.
 - Do not overfit the scorecard to one model's expected behavior.
 - Do not create broad, subjective criteria without evidence requirements.
+- Do not generate or edit `Dockerfile` automatically — flag it as a follow-up for the user.

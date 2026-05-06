@@ -9,6 +9,7 @@ import {
   NumberSlide,
   QuoteSlide,
   SectionSlide,
+  SkillTheorySlide,
   SplitShowcaseSlide,
   StatementSlide,
   Stat,
@@ -40,15 +41,15 @@ const steps = [
   },
   {
     icon: "⚡",
-    title: "Automatyzuj",
-    desc: "CI/CD, powtarzalne procesy, opakuj w skilla",
+    title: "Optymalizuj",
+    desc: "CI/CD, Agent Skills, Izolacja",
   },
 ];
 
 function StepsSlide({ active, step }) {
   return (
     <section className={`slide ${active ? "active" : ""}`} data-act="5" data-step={step}>
-      <h2 className="slide-subheading mb-8">5 kroków w Twoim stacku</h2>
+      <h2 className="slide-subheading mb-8">5 kroków do własnego benchmarku</h2>
       <div className="steps-grid">
         {steps.map((item) => (
           <div className="steps-cell" key={item.title}>
@@ -164,7 +165,7 @@ function IsolationSlide({ active }) {
 
   return (
     <section className={`slide ${active ? "active" : ""}`} data-act="4">
-      <h2 className="slide-subheading mb-8">Na przyszłość: izolacja</h2>
+      <h2 className="slide-subheading mb-8">Sandbox dla Agenta</h2>
       <div className="isolation-grid">
         {cells.map(([icon, label]) => (
           <div className="isolation-cell" key={label}>
@@ -192,7 +193,30 @@ export const slides = [
             <Em gradient>Agenta AI</Em> do programowania?
           </>
         }
-        meta="Przemek Smyrdek · 21.04.2026"
+        meta="Przemek Smyrdek & Marcin Czarkowski · 06.05.2026"
+      />
+    ),
+  },
+  {
+    id: "ai-fomo",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="1"
+        label="AI FOMO"
+        title={
+          <>
+            Modele, agenci, IDE, CLI.
+            <br />
+            Łatwo zwariować.
+          </>
+        }
+        items={[
+          "Codex, Claude Code, Cursor, OpenCode",
+          "rankingi zmieniające się co tydzień",
+          "obietnica: szybciej, taniej, bez programisty",
+        ]}
+        footer={<Em>Potrzebujemy własnego sposobu mierzenia jakości.</Em>}
       />
     ),
   },
@@ -204,9 +228,9 @@ export const slides = [
         act="1"
         title={
           <>
-            ...i dlaczego nie możesz wierzyć
+            Kilka lekcji z migracji
             <br />
-            <Em tone="accent">benchmarkom AI</Em>.
+            <Em tone="accent">Przeprogramowani.pl</Em>
           </>
         }
       />
@@ -477,43 +501,237 @@ export const slides = [
       <ImageSlide
         active={active}
         act="3"
-        title="Ranking Top 5 na kwiecień 2026"
+        title="TOP 5 - Maj 2026"
         image={assets("10xbench-results.png")}
         alt="10xBench - ranking Top 5"
       />
     ),
   },
   {
-    id: "eval-skill",
+    id: "your-benchmark",
     render: (active) => (
-      <CodeSlide
+      <SectionSlide
         active={active}
-        act="3"
-        label={
+        act="5"
+        title={
           <>
-            Case study: skill <Em tone="accent">/eval-model</Em>
+            Twój własny
+            <br />
+            <Em gradient>benchmark</Em>
           </>
         }
-        width="mid"
-        footer={
+      />
+    ),
+  },
+  ...[1, 2, 3, 4, 5].map((step) => ({
+    id: `steps-${step}`,
+    render: (active) => <StepsSlide active={active} step={step} />,
+  })),
+  { id: "isolation", render: (active) => <IsolationSlide active={active} /> },
+
+  {
+    id: "demo-design-eval-case",
+    render: (active) => (
+      <SkillTheorySlide
+        active={active}
+        act="5"
+        demo="Twój własny benchmark AI"
+        command="/design-eval-case"
+        title="Zacznij od wymagań"
+        points={[
+          "Zakres - stan repo przed/po",
+          "Zadanie - jak AI ma osiągnąć cel?",
+          "Ocena - kryteria, dowody i zasady porażki",
+        ]}
+        launch="Zbudujemy pakiet benchmarku, który można bezpiecznie oddać agentom."
+      />
+    ),
+  },
+  
+  {
+    id: "public-benchmarks",
+    render: (active) => (
+      <SectionSlide
+        active={active}
+        act="6"
+        title={
           <>
-            Jeden skill → <Em>pełny pipeline od zera do ewaluacji</Em>
+            Dlaczego benchmarki z internetu
+            <br />
+            <Em gradient="warm">nie wystarczą</Em>?
           </>
         }
-      >
-        <span className="hl">$</span> /eval-model <span className="hl2">GLM-5.1 via opencode</span>
+      />
+    ),
+  },
+  {
+    id: "rankings-lie",
+    render: (active) => (
+      <StatementSlide
+        active={active}
+        act="6"
+        title={
+          <>
+            Rankingi AI <Em gradient="warm">kłamią</Em>.
+          </>
+        }
+        subtitle={
+          <>
+            Nie dlatego, że chcą - dlatego, że <Em>muszą</Em>.
+            <br />
+            <span className="footnote mt-4 block">5 strukturalnych problemów każdego publicznego benchmarku</span>
+          </>
+        }
+      />
+    ),
+  },
+  {
+    id: "goodhart",
+    render: (active) => (
+      <InsightSlide active={active} act="6" number="01" tone="negative" tag="Prawo Goodharta" title="Cel ≠ miara">
+        "Gdy miara staje się celem, przestaje być dobrą miarą."
         <br />
+        SWE-bench Verified - <Em tone="negative">wycofany przez OpenAI w lutym 2026</Em>.
+        Modele frontier potrafiły odtwarzać "gold patche" z pamięci.
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "construct-validity",
+    render: (active) => (
+      <InsightSlide active={active} act="6" number="02" tone="warm" tag="Trafność konstruktu" title="Mierzy co innego niż myślisz" centered>
+        <Compare vs centered>
+          <CompareCol>
+            <Stat value="74%" label="SWE-bench · naprawa bugów" tone="positive" />
+          </CompareCol>
+          <CompareCol>
+            <Stat value="11%" label="FeatureBench · nowe funkcje" tone="negative" />
+          </CompareCol>
+        </Compare>
+        <span className="mt-8 block">
+          Ten sam model (Claude 4.5 Opus). <Em tone="warm">63 punkty różnicy.</Em>
+        </span>
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "contamination",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="6"
+        label="03 · Kontaminacja danych"
+        labelTone="negative"
+        title="Testy trafiły do treningu"
+        items={[
+          <><Em>HumanEval</Em> - spadki 19-48 pp na mutacjach</>,
+          <><Em>QuixBugs</Em> - ok. 100% wycieku</>,
+          <><Em>Mostly Basic Python Problems</Em> - ok. 65% wycieku</>,
+          <><Em>SWE-bench Verified</Em> - dosłowne odtwarzanie patchy</>,
+        ]}
+        footer={<Em tone="warm">Jeśli twój projekt wygląda jak benchmark - gratulacje. Jeśli nie - masz problem.</Em>}
+      />
+    ),
+  },
+  {
+    id: "ecological-validity",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="6"
+        label="04 · Warunki rzeczywiste"
+        labelTone="warm"
+        title="Benchmark ≠ praca"
+        items={[
+          "Niejednoznaczne wymagania",
+          "Istniejący dług techniczny",
+          "Koordynacja wieloosobowa",
+          "Presja czasu i przerywana praca",
+          "Zmieniające się wymagania w locie",
+        ]}
+        footer="Twój ticket na Jirze nie wygląda jak zadanie benchmarkowe."
+      />
+    ),
+  },
+  {
+    id: "metric-reductionism",
+    render: (active) => (
+      <section className={`slide slide--number ${active ? "active" : ""}`} data-act="6">
+        <span className="slide-label">05 · Matematyka</span>
+        <p className="lede">
+          90% pass@1 × 5 kroków = <Em tone="warm">59% ukończonych workflow</Em>
+        </p>
+        <p className="lede mt-4">Jedna liczba ukrywa niezawodność, koszt i rozkład błędów.</p>
+      </section>
+    ),
+  },
+  {
+    id: "language-gap",
+    render: (active) => (
+      <InsightSlide active={active} act="6" title="Python-only" centered>
+        <span className="slide-label">06 · Dopasowanie stacku</span>
         <br />
-        <span className="cm"># 1. Sprawdza metadata.ts - czy model już istnieje?</span>
+        Większość rygorystycznych benchmarków to <Em tone="accent2">wyłącznie Python</Em>.
         <br />
-        <span className="cm"># 2. Szuka cennika modelu w sieci</span>
-        <br />
-        <span className="cm"># 3. Aktualizuje metadane: nazwa, harness, pricing</span>
-        <br />
-        <span className="cm"># 4. Tworzy 5 katalogów prób: model-attempt-{"{1..5}"}/</span>
-        <br />
-        <span className="cm"># 5. Uruchamia 5 równoległych subagentów z prompt.md</span>
-      </CodeSlide>
+        Piszesz w <Em>TypeScript</Em>, <Em>Kotlinie</Em>, <Em>Swift</Em>, <Em>Ruście</Em>?
+        Zostaje Ci szczątkowy sygnał.
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "harness",
+    render: (active) => (
+      <InsightSlide active={active} act="6" title="Ten sam model, inne wyniki" centered>
+        <span className="slide-label">07 · Harness</span>
+        <Compare vs centered>
+          <CompareCol>
+            <Stat value="45.9%" label="Standard scaffold" tone="warm" />
+          </CompareCol>
+          <CompareCol>
+            <Stat value="55.4%" label="Claude Code" tone="positive" />
+          </CompareCol>
+        </Compare>
+        <span className="mt-8 block">
+          Claude Opus 4.5 na SWE-bench Pro.{" "}
+          <Em tone="accent">~10 pp różnicy tylko od harnessu.</Em>
+        </span>
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "reading-benchmarks",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="6"
+        title="Jak czytać benchmarki?"
+        items={[
+          { check: true, content: <>Analizuj wyniki <Em>2-3 różnych benchmarków</Em></> },
+          { check: true, content: <>Patrz na <Em>datę ostatniej aktualizacji</Em></> },
+          { check: true, content: <>Patrz na <Em>koszt za zadanie</Em>, nie sam wynik</> },
+          { check: true, content: <>Sprawdzaj metodę - <Em>pass^k</Em> czy pass@1?</> },
+          { check: true, content: <>Zbuduj <Em>własną ewaluację</Em> ✅</> },
+        ]}
+      />
+    ),
+  },
+  {
+    id: "demo-run-model-attempts",
+    render: (active) => (
+      <SkillTheorySlide
+        active={active}
+        act="6"
+        demo="Twój własny benchmark AI"
+        command="/run-model-attempts"
+        tone="accent2"
+        title="Zadanie dla AI"
+        points={[
+          "Agent powinien pracować w izolacji",
+          "Każda próba to nowy, czysty start",
+          "Uruchom >1 prób dla każdego modelu",
+        ]}
+        launch="Odpalamy próby i wracamy do teorii, kiedy modele liczą wynik."
+      />
     ),
   },
   {
@@ -684,195 +902,39 @@ export const slides = [
       </InsightSlide>
     ),
   },
-  { id: "isolation", render: (active) => <IsolationSlide active={active} /> },
   {
-    id: "your-benchmark",
-    render: (active) => (
-      <SectionSlide
-        active={active}
-        act="5"
-        title={
-          <>
-            Twój własny
-            <br />
-            <Em gradient>benchmark</Em>
-          </>
-        }
-      />
-    ),
-  },
-  {
-    id: "five-steps",
-    render: (active) => <NumberSlide active={active} act="5" value="5" label="kroków do własnego benchmarku" />,
-  },
-  ...[1, 2, 3, 4, 5].map((step) => ({
-    id: `steps-${step}`,
-    render: (active) => <StepsSlide active={active} step={step} />,
-  })),
-  {
-    id: "public-benchmarks",
-    render: (active) => (
-      <SectionSlide
-        active={active}
-        act="6"
-        title={
-          <>
-            Dlaczego benchmarki z internetu
-            <br />
-            <Em gradient="warm">nie wystarczą</Em>?
-          </>
-        }
-      />
-    ),
-  },
-  {
-    id: "rankings-lie",
+    id: "10xdevs-demo",
     render: (active) => (
       <StatementSlide
         active={active}
         act="6"
         title={
           <>
-            Rankingi AI <Em gradient="warm">kłamią</Em>.
-          </>
-        }
-        subtitle={
-          <>
-            Nie dlatego, że chcą - dlatego, że <Em>muszą</Em>.
+            10xDevs 3.0
             <br />
-            <span className="footnote mt-4 block">5 strukturalnych problemów każdego publicznego benchmarku</span>
+            <Em gradient>Startujemy już 18 maja!</Em>
           </>
         }
+        subtitle="Zbuduj firmowy benchmark i stań się liderem AI"
       />
     ),
   },
   {
-    id: "goodhart",
+    id: "demo-score-eval-attempt",
     render: (active) => (
-      <InsightSlide active={active} act="6" number="01" tone="negative" tag="Prawo Goodharta" title="Cel ≠ miara">
-        "Gdy miara staje się celem, przestaje być dobrą miarą."
-        <br />
-        SWE-bench Verified - <Em tone="negative">wycofany przez OpenAI w lutym 2026</Em>.
-        Modele frontier potrafiły odtwarzać "gold patche" z pamięci.
-      </InsightSlide>
-    ),
-  },
-  {
-    id: "construct-validity",
-    render: (active) => (
-      <InsightSlide active={active} act="6" number="02" tone="warm" tag="Trafność konstruktu" title="Mierzy co innego niż myślisz" centered>
-        <Compare vs centered>
-          <CompareCol>
-            <Stat value="74%" label="SWE-bench · naprawa bugów" tone="positive" />
-          </CompareCol>
-          <CompareCol>
-            <Stat value="11%" label="FeatureBench · nowe funkcje" tone="negative" />
-          </CompareCol>
-        </Compare>
-        <span className="mt-8 block">
-          Ten sam model (Claude 4.5 Opus). <Em tone="warm">63 punkty różnicy.</Em>
-        </span>
-      </InsightSlide>
-    ),
-  },
-  {
-    id: "contamination",
-    render: (active) => (
-      <ListSlide
+      <SkillTheorySlide
         active={active}
-        act="6"
-        label="03 · Kontaminacja danych"
-        labelTone="negative"
-        title="Testy trafiły do treningu"
-        items={[
-          <><Em>HumanEval</Em> - spadki 19-48 pp na mutacjach</>,
-          <><Em>QuixBugs</Em> - ok. 100% wycieku</>,
-          <><Em>Mostly Basic Python Problems</Em> - ok. 65% wycieku</>,
-          <><Em>SWE-bench Verified</Em> - dosłowne odtwarzanie patchy</>,
+        act="closing"
+        demo="Twój własny benchmark AI"
+        command="/score-eval-attempt"
+        tone="warm"
+        title="Na końcu oceniamy próbę"
+        points={[
+          "auto-checki: build, testy, runtime i inspekcja plików",
+          "manualne kryteria tylko tam, gdzie trzeba oceny człowieka",
+          "wynik kończy jako eval-results.csv z dowodami",
         ]}
-        footer={<Em tone="warm">Jeśli twój projekt wygląda jak benchmark - gratulacje. Jeśli nie - masz problem.</Em>}
-      />
-    ),
-  },
-  {
-    id: "ecological-validity",
-    render: (active) => (
-      <ListSlide
-        active={active}
-        act="6"
-        label="04 · Warunki rzeczywiste"
-        labelTone="warm"
-        title="Benchmark ≠ praca"
-        items={[
-          "Niejednoznaczne wymagania",
-          "Istniejący dług techniczny",
-          "Koordynacja wieloosobowa",
-          "Presja czasu i przerywana praca",
-          "Zmieniające się wymagania w locie",
-        ]}
-        footer="Twój ticket na Jirze nie wygląda jak zadanie benchmarkowe."
-      />
-    ),
-  },
-  {
-    id: "metric-reductionism",
-    render: (active) => (
-      <section className={`slide slide--number ${active ? "active" : ""}`} data-act="6">
-        <span className="slide-label">05 · Matematyka</span>
-        <p className="lede">
-          90% pass@1 × 5 kroków = <Em tone="warm">59% ukończonych workflow</Em>
-        </p>
-        <p className="lede mt-4">Jedna liczba ukrywa niezawodność, koszt i rozkład błędów.</p>
-      </section>
-    ),
-  },
-  {
-    id: "language-gap",
-    render: (active) => (
-      <InsightSlide active={active} act="6" title="Python-only" centered>
-        <span className="slide-label">06 · Dopasowanie stacku</span>
-        <br />
-        Większość rygorystycznych benchmarków to <Em tone="accent2">wyłącznie Python</Em>.
-        <br />
-        Piszesz w <Em>TypeScript</Em>, <Em>Kotlinie</Em>, <Em>Swift</Em>, <Em>Ruście</Em>?
-        Zostaje Ci szczątkowy sygnał.
-      </InsightSlide>
-    ),
-  },
-  {
-    id: "harness",
-    render: (active) => (
-      <InsightSlide active={active} act="6" title="Ten sam model, inne wyniki" centered>
-        <span className="slide-label">07 · Harness</span>
-        <Compare vs centered>
-          <CompareCol>
-            <Stat value="45.9%" label="Standard scaffold" tone="warm" />
-          </CompareCol>
-          <CompareCol>
-            <Stat value="55.4%" label="Claude Code" tone="positive" />
-          </CompareCol>
-        </Compare>
-        <span className="mt-8 block">
-          Claude Opus 4.5 na SWE-bench Pro.{" "}
-          <Em tone="accent">~10 pp różnicy tylko od harnessu.</Em>
-        </span>
-      </InsightSlide>
-    ),
-  },
-  {
-    id: "reading-benchmarks",
-    render: (active) => (
-      <ListSlide
-        active={active}
-        act="6"
-        title="Jak czytać benchmarki?"
-        items={[
-          { check: true, content: <>Analizuj wyniki <Em>2-3 różnych benchmarków</Em></> },
-          { check: true, content: <>Patrz na <Em>datę ostatniej aktualizacji</Em></> },
-          { check: true, content: <>Patrz na <Em>koszt za zadanie</Em>, nie sam wynik</> },
-          { check: true, content: <>Sprawdzaj metodę - <Em>pass^k</Em> czy pass@1?</> },
-          { check: true, content: <>Zbuduj <Em>własną ewaluację</Em> ✅</> },
-        ]}
+        launch="Finalizujemy benchmark z webinaru i porównujemy wynik z naszym scorecardem."
       />
     ),
   },

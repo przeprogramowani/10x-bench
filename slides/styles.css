@@ -551,6 +551,35 @@
     @apply text-cardTitle font-semibold text-deckText;
   }
 
+  .slide--skill {
+    @apply flex-row justify-between gap-[5vw] px-[7vw] text-left;
+  }
+
+  .skill-theory-copy {
+    @apply flex max-w-[52vw] flex-1 flex-col;
+  }
+
+  .skill-theory-list {
+    @apply mt-8 flex list-none flex-col gap-5 p-0;
+  }
+
+  .skill-theory-list li {
+    @apply relative pl-10 text-body leading-snug text-deckMuted;
+  }
+
+  .skill-theory-list li::before {
+    @apply absolute left-0 top-[0.48em] h-3 w-3 rounded-full bg-accent2;
+    content: "";
+  }
+
+  .skill-launch {
+    @apply surface-card flex w-[34vw] flex-col justify-center px-10 py-10;
+  }
+
+  .skill-launch-command {
+    @apply mt-6 font-mono text-cardTitle font-bold leading-tight text-deckText;
+  }
+
   .progress {
     @apply fixed bottom-0 left-0 z-50 h-1 transition-[width] duration-300;
     background: linear-gradient(90deg, var(--accent), var(--accent2));

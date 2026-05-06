@@ -166,6 +166,38 @@ export function CodeSlide({ active, act, label, children, footer, width = "wide"
   );
 }
 
+export function SkillTheorySlide({
+  active,
+  act,
+  demo,
+  command,
+  title,
+  points,
+  launch,
+  tone = "accent",
+}) {
+  return (
+    <SlideShell active={active} act={act} variant="slide--skill">
+      <div className="skill-theory-copy">
+        <span className={labelToneClasses[tone] || labelToneClasses.accent}>
+          {demo}
+        </span>
+        <h2 className="slide-subheading mt-5">{title}</h2>
+        <ul className="skill-theory-list">
+          {points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="skill-launch">
+        <span className="caption">Uruchamiamy skill</span>
+        <div className="skill-launch-command">{command}</div>
+        {launch ? <p className="body-copy mt-5">{launch}</p> : null}
+      </div>
+    </SlideShell>
+  );
+}
+
 export function ListSlide({ active, act, label, labelTone = "accent", title, items, footer }) {
   return (
     <SlideShell active={active} act={act} variant="slide--list">
