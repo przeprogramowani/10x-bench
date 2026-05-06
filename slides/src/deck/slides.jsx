@@ -221,6 +221,23 @@ export const slides = [
     ),
   },
   {
+    id: "teaser",
+    render: (active) => (
+      <StatementSlide
+        active={active}
+        act="1"
+        title={<>Zaczniemy od tego, co znacie...</>}
+        subtitle={
+          <>
+            ...ale pod koniec pokażemy <Em gradient>twarde dane</Em>.
+            <br />
+            19 modeli. 3 eksperymenty. Ekonomia agentów.
+          </>
+        }
+      />
+    ),
+  },
+  {
     id: "benchmark-doubt",
     render: (active) => (
       <StatementSlide
@@ -967,6 +984,23 @@ export const slides = [
         act="closing"
         title={<Em gradient>10xbench.ai</Em>}
         meta="Sprawdź wyniki. Zbuduj własny benchmark. · Więcej w trakcie 10xdevs.pl"
+      />
+    ),
+  },
+  {
+    id: "transition-10xevals",
+    render: (active) => (
+      <StatementSlide
+        active={active}
+        act="7"
+        title={
+          <>
+            A co jeśli
+            <br />
+            <Em gradient>podniesiemy poprzeczkę</Em>?
+          </>
+        }
+        subtitle="Jedna strona za jeden prompt to dopiero początek."
       />
     ),
   },
