@@ -23,7 +23,12 @@ Create `bootstrap.md` only when the benchmark intentionally provides model-visib
 
 If `benchmarks/` does not exist, create it. If `benchmarks/<name>/` does not exist, create it. Do not create unrelated documentation files. Do not write outside `benchmarks/<name>/`.
 
-> **Note on the Dockerfile.** Each benchmark also needs a `benchmarks/<name>/Dockerfile` for the per-benchmark image declared in `runner.yaml`. This skill does not generate it (the stack runtime varies too much). After running this skill, point the user at an existing benchmark's Dockerfile as a template and instruct them to build and tag the image referenced in `runner.yaml -> image`.
+> **Note on execution paths.** A benchmark designed by this skill can be executed via either of two runner skills:
+>
+> - **`run-model-attempts`** (Docker) — full container isolation. Requires a `benchmarks/<name>/Dockerfile` and a built/tagged image referenced by `runner.yaml -> image`.
+> - **`run-model-attempts-lite`** (no Docker) — runs harness CLIs directly on the host inside a `/tmp` workspace. Faster and cheaper, no Dockerfile or image needed; `runner.yaml -> image` is ignored.
+>
+> Ask the user which path(s) they want to support. This skill does NOT generate a Dockerfile (the stack runtime varies too much). When the user opts into the Docker path, point them at an existing benchmark's Dockerfile as a template and instruct them to build/tag the image referenced in `runner.yaml -> image`. When the user opts into the lite path only, omit (or comment out) the `image` field in `runner.yaml` and skip the Dockerfile reminder.
 
 ## Interaction Rules
 
@@ -58,7 +63,8 @@ Collect these decisions through structured questions:
 - expected artifact: running app, test-passing repo, CLI command, API endpoint, library function, migration, documentation plus code
 - timebox and model constraints: one-shot only, no follow-up questions, allowed network usage, allowed package installation
 - what must be objectively measurable vs manually judged
-- harnesses to support (subset of `opencode`, `claude-code`, `codex`) and a default opencode model id, since `run-model-attempts` requires one
+- harnesses to support (subset of `opencode`, `claude-code`, `codex`) and a default opencode model id, since the runner requires one
+- execution path: `docker` (`run-model-attempts`), `lite` (`run-model-attempts-lite`), or `both`. This determines whether `runner.yaml` needs an `image` field and whether the user has to author a `Dockerfile`
 
 The slug must be a valid directory name (lowercase letters, digits, hyphens) and must not already exist under `benchmarks/`. If it does, ask the user whether to pick a new slug or replace the existing benchmark.
 
@@ -200,7 +206,9 @@ display_name: <human-readable name>
 # State contract
 state_mode: greenfield                        # greenfield | brownfield
 
-# Image — built from benchmarks/<slug>/Dockerfile
+# Image — built from benchmarks/<slug>/Dockerfile.
+# Required for run-model-attempts (Docker). Ignored by run-model-attempts-lite.
+# Omit or comment out when the benchmark targets the lite runner only.
 image: ghcr.io/10xbench/<slug>:<tag>
 
 # Default attempts per model
@@ -238,7 +246,7 @@ Rules when generating it:
 
 - `name` MUST equal the directory slug.
 - `state_mode` matches the choice from step 1.
-- `image` defaults to `ghcr.io/10xbench/<slug>:<today-yyyy-mm-dd>` unless the user supplied another tag. Tell the user they still need to build and tag this image from `benchmarks/<slug>/Dockerfile`.
+- `image`: include only when the benchmark supports the Docker runner. Default tag `ghcr.io/10xbench/<slug>:<today-yyyy-mm-dd>` unless the user supplied another. If the user opted into the lite runner only, omit the field (or comment it out with a note that it is unused). When the field is included, tell the user they still need to build and tag this image from `benchmarks/<slug>/Dockerfile`.
 - `prompt_file` is always `prompt.md` (relative to runner.yaml).
 - `model_visible_files` MUST include `prompt.md` and `context.md`. Add `bootstrap.md` only if it was intentionally created as model-visible. Add the baseline path only for brownfield. NEVER add `scorecard.md`, `runner.yaml`, `baseline-manifest.md`, `eval-attempts/`, or `eval-results/`.
 - `allowed_harnesses` reflects the user's choice; default to all three if unspecified.
@@ -253,8 +261,10 @@ Before finishing:
 - verify that `baseline-manifest.md` (if present) correctly defines how fresh attempts are created and matches `runner.yaml -> model_visible_files`
 - verify that `scorecard.md` is not referenced as an input for implementation attempts
 - verify that bootstrap instructions are sourced, explicitly marked as fallback, or intentionally left for the model to discover
-- summarize the benchmark package, list every created file under `benchmarks/<slug>/`, and remind the user to author `benchmarks/<slug>/Dockerfile` plus build/tag the image declared in `runner.yaml`
-- mention that `run-model-attempts` can now be invoked with this benchmark slug
+- summarize the benchmark package and list every created file under `benchmarks/<slug>/`
+- if the user chose the Docker path, remind them to author `benchmarks/<slug>/Dockerfile` and build/tag the image declared in `runner.yaml -> image`; mention that `run-model-attempts` can then be invoked with this slug
+- if the user chose the lite path, confirm no Dockerfile is needed and mention that `run-model-attempts-lite` can now be invoked with this slug
+- if the user chose both paths, give both reminders
 
 ## Guardrails
 
@@ -266,4 +276,4 @@ Before finishing:
 - Do not make the benchmark depend on cloud deployment unless the user explicitly chooses it.
 - Do not overfit the scorecard to one model's expected behavior.
 - Do not create broad, subjective criteria without evidence requirements.
-- Do not generate or edit `Dockerfile` automatically — flag it as a follow-up for the user.
+- Do not generate or edit `Dockerfile` automatically — flag it as a follow-up for the user when they chose the Docker path; skip the flag entirely when they chose the lite path only.
