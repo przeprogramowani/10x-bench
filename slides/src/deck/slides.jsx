@@ -1417,4 +1417,115 @@ export const slides = [
       </InsightSlide>
     ),
   },
+  {
+    id: "economics-intro",
+    render: (active) => (
+      <SectionSlide
+        active={active}
+        act="10"
+        title={
+          <>
+            Ekonomia
+            <br />
+            <Em gradient>agentów AI</Em>
+          </>
+        }
+      />
+    ),
+  },
+  {
+    id: "subscription-value",
+    render: (active) => (
+      <NumberSlide
+        active={active}
+        act="10"
+        value="25×"
+        label="Anthropic Max 20× — $200/mies. ≈ $5 000 API"
+        tone="gradient"
+        note={<>Pro ($20) → Max 5× ($100) → Max 20× ($200). Im wyżej, tym <Em tone="positive">lepszy mnożnik</Em>.</>}
+      />
+    ),
+  },
+  {
+    id: "chinese-pricing",
+    render: (active) => (
+      <InsightSlide active={active} act="10" tone="positive" tag="Koszt za task" title="A może bez subskrypcji?" centered>
+        <Compare centered>
+          <CompareCol title="Premium">
+            <Stat value="$5.67" label="Opus 4.7" tone="warm" />
+          </CompareCol>
+          <CompareCol title="Budget">
+            <Stat value="$0.62" label="GLM 5.1" tone="positive" />
+          </CompareCol>
+          <CompareCol title="Flash">
+            <Stat value="$0.03" label="Step 3.5 Flash" tone="positive" />
+          </CompareCol>
+        </Compare>
+        <span className="mt-8 block">
+          Za $20 miesięcznie: <Em tone="warm">3.5 tasków</Em> Opusa albo <Em tone="positive">667 tasków</Em> Step Flash.
+        </span>
+      </InsightSlide>
+    ),
+  },
+  {
+    id: "local-models",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="10"
+        label="Lokalnie"
+        labelTone="accent2"
+        title="Zero marginal cost"
+        items={[
+          <>
+            <Em tone="accent2">Mac Mini M4 Pro</Em> (48 GB) — ~$2 000, Q4 modeli 27B
+          </>,
+          <>
+            <Em tone="accent2">RTX 4090</Em> — ~$2 500, Q4 modeli 27B
+          </>,
+          <>
+            Break-even vs Opus API: <Em tone="positive">~556 tasków</Em> (~3 miesiące po 10/dzień)
+          </>,
+          <>
+            Po zakupie hardware: koszt per task → <Em tone="positive">$0</Em>
+          </>,
+        ]}
+        footer="Qwen 3.6 27B, DeepSeek V3 — da się uruchomić na biurku."
+      />
+    ),
+  },
+  {
+    id: "takeaways",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="10"
+        title="Co z tego wynika?"
+        items={[
+          { check: true, content: <>Chińskie modele budget <Em tone="positive">dominują</Em> stosunek jakość/cena</> },
+          { check: true, content: <>Jakość planu to <Em tone="accent">ogromna dźwignia</Em> — nawet +16 punktów</> },
+          { check: true, content: <>Subskrypcje dają <Em tone="positive">25× wartość</Em>, ale przy chińskich cenach API... warto liczyć</> },
+          { check: true, content: <>Lokalnie = <Em tone="accent2">zero kosztu krańcowego</Em> po inwestycji w hardware</> },
+          { check: true, content: <>Zbuduj <Em gradient>własny benchmark</Em> — publiczne rankingi nie wystarczą</> },
+        ]}
+      />
+    ),
+  },
+  {
+    id: "cta-new",
+    render: (active) => (
+      <TitleSlide
+        active={active}
+        act="10"
+        title={
+          <>
+            <Em gradient>10xbench.ai</Em>
+            {" + "}
+            <Em gradient="warm">10x-evals</Em>
+          </>
+        }
+        meta="Sprawdź wyniki · Open-source benchmark · github.com/10x-evals · 10xdevs.pl"
+      />
+    ),
+  },
 ];
