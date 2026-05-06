@@ -179,6 +179,71 @@ function IsolationSlide({ active }) {
   );
 }
 
+function ScorecardV5Slide({ active }) {
+  const autoStages = [
+    { name: "Build", points: 20 },
+    { name: "Tests", points: 10 },
+    { name: "Lint", points: 5 },
+    { name: "Security", points: 5 },
+    { name: "Runtime (Playwright)", points: 15 },
+  ];
+
+  const judgeStages = [
+    { name: "Correctness", points: 15 },
+    { name: "Quality", points: 10 },
+    { name: "Testability", points: 5 },
+    { name: "Efficiency", points: 5 },
+  ];
+
+  return (
+    <section className={`slide ${active ? "active" : ""}`} data-act="7">
+      <h2 className="slide-subheading mb-8">Scorecard v5 — 9 wymiarów</h2>
+      <div className="scorecard">
+        <div className="scorecard-col">
+          <div className="scorecard-header scorecard-header--auto">
+            <span className="scorecard-icon">⚙</span>
+            <div>
+              <h3 className="scorecard-title">Automated</h3>
+              <span className="scorecard-subtitle">CI/CD + Playwright e2e</span>
+            </div>
+          </div>
+          <ol className="scorecard-list">
+            {autoStages.map((stage, i) => (
+              <li key={stage.name}>
+                <span className="scorecard-num accent2">{stage.points} pkt</span>
+                {stage.name}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div className="scorecard-col">
+          <div className="scorecard-header scorecard-header--manual">
+            <span className="scorecard-icon">◎</span>
+            <div>
+              <h3 className="scorecard-title">LLM-as-a-Judge</h3>
+              <span className="scorecard-subtitle">Dual-order, cancellation bias</span>
+            </div>
+          </div>
+          <ol className="scorecard-list" start="6">
+            {judgeStages.map((stage) => (
+              <li key={stage.name}>
+                <span className="scorecard-num warm">{stage.points} pkt</span>
+                {stage.name}
+              </li>
+            ))}
+          </ol>
+          <div className="scorecard-meta">
+            <p>
+              Pass threshold: <Em tone="positive">55</Em> / 100
+            </p>
+            <p className="mt-2">+ 6 diagnostyk non-scoring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export const slides = [
   {
     id: "title",
@@ -1002,6 +1067,97 @@ export const slides = [
         }
         subtitle="Jedna strona za jeden prompt to dopiero początek."
       />
+    ),
+  },
+  {
+    id: "10xevals-intro",
+    render: (active) => (
+      <SectionSlide
+        active={active}
+        act="7"
+        title={
+          <>
+            <Em gradient>10x-evals</Em>
+            <br />
+            Open-source benchmark
+          </>
+        }
+        label="19 modeli · 9 wymiarów · automatyczny grading"
+      />
+    ),
+  },
+  {
+    id: "pipeline",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="7"
+        label="Pipeline"
+        title="3 fazy, 7 etapów oceny"
+        items={[
+          <>
+            <Em tone="accent2">Plany</Em> — model generuje plan implementacji
+          </>,
+          <>
+            <Em tone="accent2">Implementacje</Em> — agent koduje w izolowanym workspace
+          </>,
+          <>
+            <Em tone="accent2">Agregacja</Em> — percentyle, Pareto, CSV
+          </>,
+          <>
+            Grading: build → tests → lint → security → <Em>runtime (Playwright)</Em> → correctness → quality
+          </>,
+        ]}
+        footer={<Em>Wszystko automatyczne. Powtarzalne. Bez ludzkiej interwencji.</Em>}
+      />
+    ),
+  },
+  {
+    id: "task-001",
+    render: (active) => (
+      <ListSlide
+        active={active}
+        act="7"
+        label="Task 001"
+        title="Prawdziwa funkcjonalność, nie toy problem"
+        items={[
+          { content: "Astro 5 + React 19 + Supabase", check: true },
+          { content: "Postgres full-text search (migracja SQL + RPC)", check: true },
+          { content: "Dwujęzyczność: polski + angielski", check: true },
+          { content: "Filtry, podświetlenia, nawigacja", check: true },
+          { content: "5 asercji Playwright e2e", check: true },
+          { content: "Reference diff: 980 linii w 9 plikach", check: true },
+        ]}
+        footer="Nie da się tego rozwiązać jednym promptem."
+      />
+    ),
+  },
+  { id: "scorecard-v5", render: (active) => <ScorecardV5Slide active={active} /> },
+  {
+    id: "opencode",
+    render: (active) => (
+      <CodeSlide
+        active={active}
+        act="7"
+        label="Runtime: OpenCode"
+        footer={
+          <>
+            Jeden interfejs. <Em>19 modeli.</Em> Izolowane sesje. Zero interakcji z człowiekiem.
+          </>
+        }
+      >
+        <span className="cm">$</span> <span className="hl2">opencode</span> run{" "}
+        <span className="hl">--model</span> anthropic/claude-sonnet-4-6{" "}
+        <span className="hl">--print-logs</span>{" "}
+        <span className="cm">\</span>
+        <br />
+        {"    "}<span className="hl2">"Zaimplementuj wyszukiwarkę wg planu..."</span>
+        <br />
+        <br />
+        <span className="cm"># Każda próba = izolowany workspace (git worktree)</span>
+        <br />
+        <span className="cm"># OPENCODE_DATA per run → brak wycieku kontekstu</span>
+      </CodeSlide>
     ),
   },
 ];
