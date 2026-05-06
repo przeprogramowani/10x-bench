@@ -1,0 +1,22 @@
+# run-model-attempts consumes this file.
+#
+# `image` names the per-benchmark Docker image (built from benchmark/Dockerfile)
+# that already contains the harness CLIs and the stack runtime the agent needs.
+# The skill pulls this image, pins its digest, and runs each attempt against it.
+#
+# This file is NOT model-visible. It must not leak scoring details.
+
+image: ghcr.io/10xbench/przeprogramowani:2026-05-06
+attempts_default: 3
+prompt_file: benchmark/prompt.md
+allowed_harnesses:
+  - opencode
+  - claude-code
+  - codex
+
+# Optional per-harness defaults the skill can fall back on when --model isn't
+# specified explicitly. Required for opencode (model is orthogonal to the
+# OpenRouter token); ignored for claude-code and codex.
+defaults:
+  opencode:
+    model: openrouter/z-ai/glm-4.7
