@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# run-attempt — dispatcher baked into the harness image.
+#
+# Single entry point for an evaluation attempt. The skill calls:
+#   docker run --rm -v "$WORKSPACE":/workspace <benchmark-image> \
+#     --harness <opencode|claude-code|codex> \
+#     --token   <api-key> \
+#     [--model  <id>] \
+#     [--prompt-file /workspace/prompt.md]
+#
+# Token semantics by harness:
+#   claude-code  Anthropic API key  -> ANTHROPIC_API_KEY
+#   codex        OpenAI API key     -> OPENAI_API_KEY
+#   opencode     OpenRouter API key -> ~/.local/share/opencode/auth.json
+#
+# --model is required for opencode (the model id is orthogonal to the token).
+# It is optional for claude-code and codex; when omitted, the CLI's vendor
+# default is used. When provided, it's forwarded as --model to the CLI so
+# you can pin e.g. claude-opus-4-7 vs claude-sonnet-4-6.
+
+set -euo pipefail
+
+usage() {
+  cat >&2 <<'EOF'
+Usage: run-attempt --harness <claude-code|codex|opencode> \
+                   --token   <api-key> \
+                   [--model  <id>] \
+                   [--prompt-file /workspace/prompt.md]
+EOF
+  exit 2
+}
+
+HARNESS=""
+TOKEN=""
+MODEL=""
+PROMPT_FILE="/workspace/prompt.md"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --harness)     HARNESS="$2"; shift 2 ;;
+    --token)       TOKEN="$2"; shift 2 ;;
+    --model)       MODEL="$2"; shift 2 ;;
+    --prompt-file) PROMPT_FILE="$2"; shift 2 ;;
+    -h|--help)     usage ;;
+    *) echo "unknown arg: $1" >&2; usage ;;
+  esac
+done
+
+[[ -n "$HARNESS" && -n "$TOKEN" ]] || usage
+[[ -r "$PROMPT_FILE" ]] || { echo "prompt not readable: $PROMPT_FILE" >&2; exit 3; }
+
+PROMPT="$(cat "$PROMPT_FILE")"
+
+case "$HARNESS" in
+  claude-code)
+    ARGS=(--dangerously-skip-permissions)
+    [[ -n "$MODEL" ]] && ARGS+=(--model "$MODEL")
+    ANTHROPIC_API_KEY="$TOKEN" claude "${ARGS[@]}" -p "$PROMPT"
+    ;;
+  codex)
+    ARGS=(exec --dangerously-bypass-approvals-and-sandbox)
+    [[ -n "$MODEL" ]] && ARGS+=(--model "$MODEL")
+    OPENAI_API_KEY="$TOKEN" codex "${ARGS[@]}" "$PROMPT"
+    ;;
+  opencode)
+    [[ -n "$MODEL" ]] || { echo "--model required for opencode" >&2; exit 4; }
+    mkdir -p /root/.local/share/opencode
+    jq -n --arg key "$TOKEN" \
+      '{openrouter: {type: "api", key: $key}}' \
+      > /root/.local/share/opencode/auth.json
+    opencode run -m "$MODEL" --dangerously-skip-permissions "$PROMPT"
+    ;;
+  *)
+    echo "unknown --harness: $HARNESS" >&2
+    exit 5
+    ;;
+esac

@@ -1,9 +1,9 @@
 ---
-name: eval-model
+name: 10x-eval-model
 description: Set up and run benchmark evaluations for new LLM models in the 10xBench project. Use when the user wants to add a new model to the benchmark, prepare evaluation directories, update metadata, or launch evaluation runs. Triggers on phrases like "eval model", "add model to benchmark", "run benchmark for [model]", "evaluate [model-name]", "set up [model] for eval", or any request involving adding a new model to the Przeprogramowani.pl benchmark pipeline.
 ---
 
-# eval-model
+# 10x-eval-model
 
 Orchestrates the full setup and execution pipeline for evaluating a new LLM model in the 10xBench benchmark. This includes updating metadata, verifying pricing, preparing attempt directories, and launching evaluation runs via the appropriate harness.
 

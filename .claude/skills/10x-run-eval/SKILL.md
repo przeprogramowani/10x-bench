@@ -1,9 +1,9 @@
 ---
-name: run-eval
+name: 10x-run-eval
 description: Evaluate Przeprogramowani website implementations against benchmark criteria. Analyzes tech stack, pages, content accuracy, SEO, and responsiveness. Use when evaluating LLM-generated website attempts in the Przeprogramowani benchmark repository. IMPORTANT: Do not use this skill during the task of creating the website. Use it only to evaluate the website based on a direct request from the user.
 ---
 
-# Run Evaluation
+# 10x Run Evaluation
 
 Evaluate a Przeprogramowani website implementation against benchmark criteria.
 
@@ -24,7 +24,7 @@ Systematically evaluates website implementations by:
 
 Invoke with the directory path to evaluate:
 ```
-/run-eval /path/to/implementation
+/10x-run-eval /path/to/implementation
 ```
 
 Or provide the path when prompted if not specified.

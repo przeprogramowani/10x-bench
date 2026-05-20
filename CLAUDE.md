@@ -31,10 +31,10 @@ cd website && npm run build
 
 ```bash
 # Run the evaluation skill to assess an implementation
-/run-eval against <attempt-directory>
+/10x-run-eval against <attempt-directory>
 
 # Example:
-/run-eval against claude opus attempt 1
+/10x-run-eval against claude opus attempt 1
 ```
 
 ## Project Structure
