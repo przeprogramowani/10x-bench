@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import {
   AGENT_ENV,
   AGENT_NAMES,
@@ -60,7 +61,12 @@ function extractModelInfo(dirname: string): {
 
   const attemptNumber = parseInt(match[2], 10);
   const baseId = getModelBaseId(dirname);
-  const modelName = isModelId(baseId) ? AGENT_NAMES[baseId] : match[1];
+  
+  const MAPPINGS: Record<string, string> = {
+    "qwen-3.6": "Qwen 3.6",
+  };
+
+  const modelName = MAPPINGS[baseId] || (isModelId(baseId) ? AGENT_NAMES[baseId] : match[1]);
   return {modelName, attemptNumber};
 }
 
@@ -108,10 +114,9 @@ function parseCSV(csvContent: string): CriterionResult[] {
 
 // Main processing function
 async function processResults(): Promise<void> {
-  const projectRoot = path.resolve(
-    path.dirname(new URL(import.meta.url).pathname),
-    "..",
-  );
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const projectRoot = path.resolve(__dirname, "..");
   const evalResultsDir = path.resolve(projectRoot, "eval-results");
   const outputDir = path.join(projectRoot, "website", "src", "data");
 

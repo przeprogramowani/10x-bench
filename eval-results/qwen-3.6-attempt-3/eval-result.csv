@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,20m,N/A,N/A
+Test run,26.04.2026 11:05,N/A,26.04.2026 11:05
+Local build,1,1,Build successful - Astro build completed without errors in 3.23s
+Manual testing,1,1,Dev server running on localhost:4321 - all pages (Home, O nas, Podcast) accessible and returning 200 status codes
+Tech stack,0.5,1,Astro 5.1.0 and React 19.0.0 correct; Cloudflare Adapter 12.1.0 installed and configured; Tailwind CSS 3.4.0 instead of required 4.x (0.5 points for version mismatch)
+O nas page,1,1,Dedicated page found at /o-nas - returns 200 status code - content matches expected team/about information
+Podcast page,0.5,1,Dedicated page found at /podcast - returns 200 status code - page exists and displays episodes but uses mocked data instead of real API data (0.5 points due to mock data)
+YouTube page,0,1,No dedicated page found - /youtube returns 404 status code (0 points)
+Kursy section,1,1,Dedicated Courses component implemented - features Opanuj Frontend, Opanuj TypeScript, and 10xDevs courses on main page; content matches requirements
+Consistent UI,1,1,UI is consistent across all pages - same design system, colors, typography, and component styles throughout
+Responsive design,1,1,Design is fully responsive - layout adapts properly to mobile, tablet, and desktop viewports
+SEO Tags,1,1,Meta tags (description, keywords, og:title, og:description, og:type, og:url) present in head on main pages
+Penalty,0,N/A,No penalty applied - implementation completed cleanly

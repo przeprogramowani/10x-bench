@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const videos = (await getCollection('youtube')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+---
+
+<BaseLayout currentPage="/youtube" title="YouTube – Przeprogramowani.pl" description="Filmy technologiczne, wywiady i poradniki na kanale YouTube Przeprogramowani.">
+
+<!-- Hero -->
+<section class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-hero"></div>
+  <div class="glow-orb top-10 left-[-100px] bg-red-500 opacity-10"></div>
+  <div class="glow-orb bottom-10 right-[-100px] bg-brand-blue opacity-10"></div>
+  <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  <div class="container-fluid relative z-10 text-center">
+    <div class="inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 backdrop-blur-sm mb-6">
+      <svg class="h-4 w-4 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+      <span class="text-sm text-text-secondary">kanał dla developerów</span>
+    </div>
+    <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+      <span class="text-text-primary">Nasz kanał</span>
+      <br />
+      <span class="gradient-text">YouTube</span>
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary lg:text-xl">
+      Filmy o IT, newsy technologiczne, techniki efektywnego nauki i porady kariery. Tworzymy content dla programistów, którzy stawiają na własny rozwój.
+    </p>
+    <a href="https://youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" class="btn-primary mt-8">
+      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+      Subskrybuj na YouTube
+    </a>
+  </div>
+</section>
+
+<!-- Video Grid -->
+<section class="section">
+  <div class="container-fluid">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {videos.map(video => (
+        <a href="https://youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" class="card card-glow group block overflow-hidden">
+          <!-- Thumbnail -->
+          <div class="relative aspect-video mb-4 overflow-hidden rounded-xl bg-brand-surface">
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-accent/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="flex h-full items-center justify-center">
+              <svg class="h-12 w-12 text-white/60 group-hover:text-white group-hover:scale-110 transition-all" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg>
+            </div>
+            <div class="absolute bottom-2 right-2 rounded bg-black/80 px-2 py-0.5 text-xs font-medium text-white">
+              {video.data.duration}
+            </div>
+          </div>
+          <!-- Info -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-text-muted">{video.data.date}</span>
+              <span class="text-xs text-text-muted">&middot;</span>
+              <span class="text-xs text-text-muted">{video.data.views} wyświetleń</span>
+            </div>
+            <h3 class="text-base font-semibold text-text-primary group-hover:text-brand-lightblue transition-colors leading-snug">
+              {video.data.title}
+            </h3>
+            <p class="text-sm text-text-secondary line-clamp-2">
+              {video.data.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

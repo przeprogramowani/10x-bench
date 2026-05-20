@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const courses = (await getCollection('courses')).sort((a, b) => {
+  const order: Record<string, number> = { '10xdevs-3': 0, 'opanuj-frontend': 1, 'opanuj-typescript': 2 };
+  return (order[a.id] ?? 3) - (order[b.id] ?? 3);
+});
+
+const gradientMap: Record<string, string> = {
+  '10xdevs-3': 'from-brand-blue to-brand-glow',
+  'opanuj-frontend': 'from-brand-accent to-brand-blue',
+  'opanuj-typescript': 'from-brand-glow to-brand-accent',
+};
+
+const iconPaths = [
+  'M13 10V3L4 14h7v7l9-11h-7z',
+  'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+  'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+];
+---
+
+<BaseLayout currentPage="/" title="Przeprogramowani.pl – Szersze spojrzenie na programowanie" description="Edukacja technologiczna w epoce AI. Kursy, podcast, YouTube, newsletter.">
+
+<section class="relative min-h-[95vh] flex items-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-hero"></div>
+  <div class="glow-orb top-20 -left-40 bg-brand-blue animate-pulse-slow"></div>
+  <div class="glow-orb bottom-20 right-0 bg-brand-accent opacity-10"></div>
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="container-fluid relative z-10 py-20">
+    <div class="mb-16 max-w-3xl animate-fade-in">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface/50 px-4 py-2 backdrop-blur-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-blue opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-blue"></span>
+        </span>
+        <span class="text-sm text-text-secondary">Nowa edycja 10xDevs 3.0 ju&#772; wkr&#243;tko!</span>
+      </div>
+      <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+        <span class="text-text-primary">Szersze spojrzenie na</span>
+        <br />
+        <span class="gradient-text">programowanie</span>
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-text-secondary lg:text-xl">
+        Edukacja technologiczna w epoce AI.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="#courses" class="btn-primary">Poznaj nasze kursy</a>
+        <a href="/podcast" class="btn-secondary">Posłuchaj podcastu</a>
+      </div>
+    </div>
+
+    <div id="courses" class="grid gap-6 lg:grid-cols-3">
+      {courses.map((course, index) => {
+        const gc = gradientMap[course.id] || 'from-brand-blue to-brand-accent';
+        const d = iconPaths[index] || iconPaths[0];
+        return (
+          <div class="card card-glow group cursor-pointer transition-all duration-500 hover:-translate-y-2" style={`animation-delay:${index * 150}ms`}>
+            <div class="mb-4 flex items-center gap-4">
+              <div class={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${gc} transition-transform duration-300 group-hover:scale-110`}>
+                <svg class="h-6 w-6 text-white fill-none stroke-current" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d={d}/></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-text-primary group-hover:text-brand-lightblue transition-colors">{course.data.title}</h3>
+                <p class="text-sm text-brand-lightblue">{course.data.subtitle}</p>
+              </div>
+            </div>
+            <p class="mb-4 text-sm leading-relaxed text-text-secondary">{course.data.description}</p>
+            <ul class="mb-6 space-y-2">
+              {course.data.features.slice(0, 3).map(f => (
+                <li class="flex items-start gap-2 text-sm text-text-secondary">
+                  <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-blue fill-none stroke-current" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href={course.data.ctaLink} class="inline-flex items-center gap-1 text-sm font-semibold text-brand-lightblue group-hover:text-brand-blue transition-colors">
+              {course.data.cta}
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <div class={`absolute -right-px top-0 bottom-0 w-1 rounded-r-xl bg-gradient-to-b ${gc} opacity-0 transition-opacity group-hover:opacity-100`}></div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<section class="relative border-y border-white/5 bg-brand-darker/50">
+  <div class="container-fluid">
+    <div class="grid gap-8 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="text-center"><div class="text-4xl font-extrabold gradient-text">7+</div><div class="mt-1 text-sm text-text-secondary">lat na rynku edukacji</div></div>
+      <div class="text-center"><div class="text-4xl font-extrabold gradient-text">7800+</div><div class="mt-1 text-sm text-text-secondary">subskrybent&#243;w podcastu</div></div>
+      <div class="text-center"><div class="text-4xl font-extrabold gradient-text">400+</div><div class="mt-1 text-sm text-text-secondary">absolwent&#243;w Opanuj Frontend</div></div>
+      <div class="text-center"><div class="text-4xl font-extrabold gradient-text">10+</div><div class="mt-1 text-sm text-text-secondary">firm partnerskich</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-fluid">
+    <div class="mb-12 text-center">
+      <h2 class="section-title">Ostatni odcinek <span class="gradient-text">podcastu</span></h2>
+      <p class="section-subtitle text-text-secondary">Posłuchaj najnowszego odcinka naszego podcastu technologicznego</p>
+    </div>
+    <div class="mx-auto max-w-4xl">
+      <a href="/podcast" class="card card-glow group block transition-all duration-300 hover:-translate-y-1">
+        <div class="flex flex-col md:flex-row md:items-center gap-6">
+          <div class="shrink-0 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-accent">
+            <svg class="h-8 w-8 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="rounded-full bg-brand-blue/10 px-2.5 py-0.5 text-xs font-medium text-brand-lightblue">Opanuj.AI Podcast</span>
+              <span class="text-xs text-text-muted">2026-02-15</span>
+            </div>
+            <h3 class="text-xl font-bold text-text-primary group-hover:text-brand-lightblue transition-colors">TEGO AI NIE POTRAFI &#8212; ARC-AGI-3 i koniec epoki SaaS</h3>
+            <p class="mt-1 text-sm text-text-secondary">ARC-AGI-3 to nowy benchmark dla AI.</p>
+          </div>
+          <div class="shrink-0 flex items-center gap-2">
+            <span class="rounded-full border border-white/10 px-3 py-1.5 text-sm text-text-secondary">58:30</span>
+            <svg class="h-5 w-5 text-text-muted group-hover:text-brand-lightblue transition-colors fill-none stroke-current" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="relative border-t border-white/5 bg-brand-darker">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-brand-blue/10 blur-3xl"></div>
+  </div>
+  <div class="container-fluid relative z-10">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="section-title">Bądź na bieżąco z <span class="gradient-text">newsletterem</span></h2>
+      <p class="section-subtitle text-text-secondary">Cotygodniowa dawka wiedzy prosto na Twoją skrzynkę.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://przeprogramowani.pl/newsletter" target="_blank" class="btn-primary">Zasubskrybuj newsletter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

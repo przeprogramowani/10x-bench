@@ -1,0 +1,47 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  currentPage: string;
+  title?: string;
+  description?: string;
+}
+
+const { currentPage, title = 'Przeprogramowani.pl', description = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://przeprogramowani.pl" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="noise-bg">
+    <Header currentPage={currentPage} />
+    <main class="pt-16 lg:pt-18">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.getElementById('mobile-menu')?.classList.add('hidden');
+          document.getElementById('mobile-menu-overlay')?.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

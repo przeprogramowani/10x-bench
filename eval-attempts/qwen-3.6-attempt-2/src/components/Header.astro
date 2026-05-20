@@ -1,0 +1,65 @@
+---
+interface Props {
+  currentPage: string;
+}
+const { currentPage } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-brand-dark/80 backdrop-blur-xl">
+  <div class="container-fluid">
+    <div class="flex h-16 items-center justify-between lg:h-18">
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-blue to-brand-accent transition-transform duration-300 group-hover:scale-110">
+          <span class="text-lg font-bold text-white">P</span>
+        </div>
+        <span class="text-lg font-bold text-text-primary">
+          przeprogramowani<span class="text-brand-blue">.pl</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden items-center gap-8 lg:flex">
+        <a href="/" class={`nav-link ${currentPage === '/' ? 'active text-text-primary' : ''}`}>Strona główna</a>
+        <a href="/o-nas" class={`nav-link ${currentPage === '/o-nas' ? 'active text-text-primary' : ''}`}>O nas</a>
+        <a href="/podcast" class={`nav-link ${currentPage === '/podcast' ? 'active text-text-primary' : ''}`}>Podcast</a>
+        <a href="/youtube" class={`nav-link ${currentPage === '/youtube' ? 'active text-text-primary' : ''}`}>YouTube</a>
+        <a href="#courses" class="btn-primary text-sm">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          Kursy
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="flex h-10 w-10 items-center justify-center rounded-lg lg:hidden"
+        onclick="document.getElementById('mobile-menu').classList.toggle('hidden'); document.getElementById('mobile-menu-overlay').classList.toggle('hidden')"
+      >
+        <svg id="menu-icon-open" class="h-6 w-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-brand-dark/80 backdrop-blur-sm z-40 lg:hidden" onclick="this.classList.add('hidden'); document.getElementById('mobile-menu').classList.add('hidden')"></div>
+  <div id="mobile-menu" class="hidden absolute left-0 right-0 top-16 z-50 border-t border-white/5 bg-brand-darker/95 backdrop-blur-xl lg:hidden">
+    <nav class="container-fluid flex flex-col gap-1 p-4">
+      <a href="/" class={`nav-link px-4 py-3 rounded-lg ${currentPage === '/' ? 'active text-text-primary bg-white/5' : ''}`}>Strona główna</a>
+      <a href="/o-nas" class={`nav-link px-4 py-3 rounded-lg ${currentPage === '/o-nas' ? 'active text-text-primary bg-white/5' : ''}`}>O nas</a>
+      <a href="/podcast" class={`nav-link px-4 py-3 rounded-lg ${currentPage === '/podcast' ? 'active text-text-primary bg-white/5' : ''}`}>Podcast</a>
+      <a href="/youtube" class={`nav-link px-4 py-3 rounded-lg ${currentPage === '/youtube' ? 'active text-text-primary bg-white/5' : ''}`}>YouTube</a>
+      <a href="#courses" class="btn-primary mt-2 text-center text-sm">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        Kursy
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  :global(#menu-icon-close) { display: none; }
+  :global(#mobile-menu-btn[aria-expanded="true"]) #menu-icon-open { display: none; }
+  :global(#mobile-menu-btn[aria-expanded="true"]) #menu-icon-close { display: block; }
+</style>

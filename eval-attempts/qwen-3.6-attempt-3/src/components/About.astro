@@ -1,0 +1,62 @@
+---
+import { UsersIcon, BookIcon, GlobeIcon, HeartIcon } from './Icons';
+---
+
+<section id="o-nas" class="relative py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950" />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+        O nas
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">
+        <span class="text-white">Dlaczego </span>
+        <span class="gradient-text">Przeprogramowani</span>
+        <span class="text-white">?</span>
+      </h2>
+      <p class="text-dark-300 text-lg max-w-2xl mx-auto">
+        Od 7 lat budujemy społeczność programistów. Nasze materiały pomagają tysiącom osób rozwijać umiejętności i budować karierę.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="glass-card glass-card-hover p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mx-auto mb-5">
+          <UsersIcon className="w-7 h-7 text-brand-400" />
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Społeczność</h3>
+        <p class="text-dark-400 text-sm leading-relaxed">
+          Budujemy jedną z największych społeczności programistów w Polsce. Razem uczymy się i rozwijamy.
+        </p>
+      </div>
+      <div class="glass-card glass-card-hover p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center mx-auto mb-5">
+          <BookIcon className="w-7 h-7 text-accent-400" />
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">140+ frameworków</h3>
+        <p class="text-dark-400 text-sm leading-relaxed">
+          Nasza platforma do prompt management obsługuje ponad 140 frameworków i bibliotek. Znajdziesz tu wszystko.
+        </p>
+      </div>
+      <div class="glass-card glass-card-hover p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-5">
+          <GlobeIcon className="w-7 h-7 text-green-400" />
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Generatywne AI</h3>
+        <p class="text-dark-400 text-sm leading-relaxed">
+          Wprowadzamy AI do programowania. Nasze kursy i materiała pokazują jak używać AI efektywnie.
+        </p>
+      </div>
+      <div class="glass-card glass-card-hover p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-5">
+          <HeartIcon className="w-7 h-7 text-purple-400" />
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Pasja do dzielenia się wiedzą</h3>
+        <p class="text-dark-400 text-sm leading-relaxed">
+          Wierzymy, że dobra edukacja może zmienić życie. Stawiamy na jakość, praktyczne podejście i zaangażowanie.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

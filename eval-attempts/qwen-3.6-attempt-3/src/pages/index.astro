@@ -1,0 +1,42 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Courses from '../components/Courses.astro';
+import Podcast from '../components/Podcast.astro';
+import YouTube from '../components/YouTube.astro';
+import Newsletter from '../components/Newsletter.astro';
+import '@/css/main.css';
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Przeprogramowani.pl - Edukacja technologiczna nowej generacji. Kursy, podcast, YouTube i newsletter dla programistów." />
+    <meta name="keywords" content="programowanie, kursy, podcast, frontend, typescript, react, astro, ai" />
+    <meta property="og:title" content="Przeprogramowani.pl - Edukacja technologiczna nowej generacji" />
+    <meta property="og:description" content="Kursy, podcast i YouTube dla programistów. Opanuj Frontend, Opanuj TypeScript, 10xDevs." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://przeprogramowani.pl" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <title>Przeprogramowani.pl - Edukacja technologiczna nowej generacji</title>
+  </head>
+  <body class="bg-dark-950 text-white min-h-screen">
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Courses />
+      <Podcast />
+      <YouTube />
+      <Newsletter />
+    </main>
+    <Footer />
+  </body>
+</html>

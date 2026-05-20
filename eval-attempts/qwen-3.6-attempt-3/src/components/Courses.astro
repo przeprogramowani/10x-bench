@@ -1,0 +1,66 @@
+---
+import { courses } from '../lib/data';
+---
+
+<section id="kursy" class="relative py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 to-dark-900" />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-sm font-medium mb-6">
+        Kursy online
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">
+        <span class="text-white">Opanuj </span>
+        <span class="gradient-text-alt">nowoczesne </span>
+        <span class="text-white">technologie</span>
+      </h2>
+      <p class="text-dark-300 text-lg max-w-2xl mx-auto">
+        Kompleksowe kursy programistyczne, które pomogą Ci osiągnąć cel. Od podstaw po zaawansowane techniki.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {courses.map(c => (
+        <a href={c.url} target="_blank" rel="noopener"
+          class="glass-card glass-card-hover p-8 flex flex-col group relative overflow-hidden">
+          <!-- Gradient accent -->
+          <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${c.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+
+          <!-- Icon -->
+          <div class={`w-14 h-14 rounded-2xl bg-gradient-to-br ${c.color} flex items-center justify-center mb-6 transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+            {c.id === 'frontend' && (
+              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            )}
+            {c.id === 'typescript' && (
+              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            )}
+            {c.id === '10xdevs' && (
+              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="flex-1">
+            <h3 class="text-white font-display font-bold text-xl mb-1">{c.title}</h3>
+            {c.subtitle && <p class="text-brand-400 text-sm font-medium mb-3">{c.subtitle}</p>}
+            <p class="text-dark-400 text-sm leading-relaxed mb-6">{c.description}</p>
+          </div>
+
+          <!-- Features -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            {c.features.map(f => (
+              <span class="px-3 py-1 rounded-lg bg-white/5 text-dark-300 text-xs">{f}</span>
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div class="flex items-center gap-2 text-brand-400 font-semibold text-sm group-hover:text-brand-300 transition-colors">
+            Odkryj więcej
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

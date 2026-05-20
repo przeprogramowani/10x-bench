@@ -1,0 +1,60 @@
+---
+import { youtubeVideos } from '../lib/data';
+---
+
+<section id="youtube" class="relative py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-950 to-dark-900" />
+
+  <!-- Background glow -->
+  <div class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium mb-6">
+          YouTube
+        </span>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">
+          <span class="text-white">Ostatnie </span>
+          <span class="gradient-text">filmy</span>
+        </h2>
+        <p class="text-dark-300 text-lg max-w-xl">
+          Tutorial, demo i omówienia nowości ze świata IT. Praktyczna wiedza, którą od razu możesz zastosować.
+        </p>
+      </div>
+      <a href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-white font-semibold text-sm transition-all shadow-lg shadow-red-500/20 self-start md:self-auto">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Subskrybuj
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {youtubeVideos.map(v => (
+        <a href={v.url} target="_blank" rel="noopener"
+          class="glass-card glass-card-hover overflow-hidden group">
+          <!-- Thumbnail -->
+          <div class="relative w-full aspect-video bg-gradient-to-br from-red-500/10 to-red-900/10 border-b border-white/5 flex items-center justify-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-950/60 to-transparent z-10" />
+            <div class="w-16 h-16 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center z-20 group-hover:bg-red-500/30 group-hover:scale-110 transition-all">
+              <svg class="w-7 h-7 text-red-400 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="absolute bottom-3 right-3 z-20 px-2 py-1 rounded-md bg-black/70 text-dark-300 text-xs font-medium">
+              {v.date}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="text-white font-semibold mb-2 group-hover:text-red-400 transition-colors leading-snug">
+              {v.title}
+            </h3>
+            <p class="text-dark-400 text-sm leading-relaxed">
+              {v.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

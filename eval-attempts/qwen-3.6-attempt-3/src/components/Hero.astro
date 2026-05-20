@@ -1,0 +1,89 @@
+---
+import { courses, site } from '../lib/data';
+---
+
+<section class="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 -left-32 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl" />
+    <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl" />
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-500/5 rounded-full blur-3xl" />
+  </div>
+
+  <!-- Grid pattern -->
+  <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;" />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 animate-fade-in">
+        <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse" />
+        <span class="text-dark-300 text-sm">Edukacja technologiczna nowej generacji</span>
+      </div>
+
+      <!-- Main heading -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
+        <span class="text-white">Ucz się od</span>
+        <br />
+        <span class="gradient-text">najlepszych</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Od <span class="text-white font-medium">7 lat</span> tworzymy materiały edukacyjne, podcast i filmy na YouTube.
+        Pomagamy programistom rozwijać skills i rosnąć w karierze.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#kursy" class="w-full sm:w-auto px-8 py-4 rounded-2xl text-base font-semibold bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white transition-all shadow-2xl shadow-brand-500/25 hover:shadow-brand-500/40">
+          Poznaj nasze kursy
+        </a>
+        <a href="https://podcasters.spotify.com/pod/show/przeprogramowani" target="_blank" rel="noopener"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold glass-card-hover text-white">
+          <svg class="w-5 h-5 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.343c-.261.387-.744.521-1.131.26-1.902-1.167-4.312-1.428-7.134-.784-.411.105-.848-.131-.953-.542-.104-.411.131-.848.542-.952 3.192-.716 5.92-.414 8.148.952.387.261.521.743.26 1.132z"/></svg>
+          Posłuchaj podcastu
+        </a>
+      </div>
+
+      <!-- Course cards in hero -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        {courses.map(c => (
+          <a href={c.url} target="_blank" rel="noopener"
+            class="glass-card glass-card-hover p-6 text-left group">
+            <div class={`w-10 h-10 rounded-xl bg-gradient-to-br ${c.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-110`}>
+              {c.id === 'frontend' && (
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              )}
+              {c.id === 'typescript' && (
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              )}
+              {c.id === '10xdevs' && (
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>
+              )}
+            </div>
+            <h3 class="text-white font-semibold mb-1">{c.title}</h3>
+            {c.subtitle && <p class="text-brand-400 text-xs mb-2">{c.subtitle}</p>}
+            <p class="text-dark-400 text-sm leading-relaxed">{c.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-dark-500 text-xs">Przewiń w dół</span>
+    <div class="w-px h-8 bg-gradient-to-b from-dark-500 to-transparent" />
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+</style>

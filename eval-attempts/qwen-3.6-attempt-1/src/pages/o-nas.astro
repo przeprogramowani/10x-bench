@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { aboutData } from '../data/content';
+---
+
+<Layout title="O nas" description="Poznaj zespół Przeprogramowani.pl - edukacja technologiczna w epoce AI.">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative pt-16 pb-16 lg:pt-24 lg:pb-20 overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-50/50 via-white to-white" />
+      <div class="absolute top-10 right-1/4 w-96 h-96 bg-brand-200/20 rounded-full blur-3xl" />
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-gray-900 mb-6">
+        {aboutData.tagline}
+      </h1>
+      <p class="text-xl text-gray-600 leading-relaxed">
+        {aboutData.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== STORY ==================== -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-lg text-gray-600 leading-relaxed mb-16">
+        {aboutData.longDescription}
+      </p>
+
+      <!-- Values -->
+      <h2 class="text-2xl font-display font-bold text-gray-900 mb-10">
+        Nasze wartości
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        {aboutData.values.map((value) => (
+          <div class="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white mx-auto mb-5 shadow-lg">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-gray-900 mb-2">{value.title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="py-16 lg:py-20 bg-gradient-to-br from-gray-950 via-gray-900 to-brand-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {aboutData.stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-4xl sm:text-5xl font-display font-extrabold text-white mb-2">{stat.value}</div>
+            <div class="text-sm text-gray-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TEAM ==================== -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-display font-bold text-gray-900 mb-4">
+        Zespół
+      </h2>
+      <p class="text-gray-600 mb-12">
+        Grupa praktyków, którzy na co dzień pracują z nowoczesnymi technologiami i AI.
+      </p>
+
+      <div class="inline-flex items-center gap-4 p-8 rounded-2xl bg-gray-50 border border-gray-100">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center text-white font-bold text-xl">
+          PP
+        </div>
+        <div class="text-left">
+          <div class="font-display font-bold text-lg text-gray-900">Przeprogramowani.pl</div>
+          <div class="text-sm text-gray-500">{aboutData.team[0].description}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-display font-bold text-gray-900 mb-4">
+        Bądź na bieżąco
+      </h2>
+      <p class="text-gray-600 mb-8">
+        Śledź nas na YouTube, słuchaj podcastu i dołącz do społeczności.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://youtube.com/c/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186c0 1.57 0 4.638.503 6.213a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136c.503-1.576.503-4.643.503-6.213zM9.64 15.198V8.802l5.77 3.199-5.77 3.197z"/></svg>
+          YouTube
+        </a>
+        <a
+          href="https://linktr.ee/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl hover:border-brand-300 hover:text-brand-600 transition-all"
+        >
+          Wszystkie linki
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

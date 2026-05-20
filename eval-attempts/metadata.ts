@@ -26,6 +26,7 @@ export type ModelId =
   // | "minimax-m27"
   // | "qwen-36-plus"
   | "kimi-k26"
+  | "qwen-3.6"
   | "gpt-54";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
@@ -49,6 +50,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "kimi-k26": "Kimi K2.6",
   // "minimax-m27": "Minimax M2.7",
   // "qwen-36-plus": "Qwen 3.6 Plus",
+  "qwen-3.6": "Qwen 3.6",
   "gpt-54": "GPT-5.4",
 };
 
@@ -72,6 +74,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "kimi-k26": AGENT_ENVIRONMENT.OpenCode,
   // "minimax-m27": AGENT_ENVIRONMENT.OpenCode,
   // "qwen-36-plus": AGENT_ENVIRONMENT.OpenCode,
+  "qwen-3.6": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
 };
 
@@ -118,6 +121,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "kimi-k26": {input: 0.6, output: 2.8},
   // "minimax-m27": {input: 0.3, output: 1.2},
   // "qwen-36-plus": {input: 0.5, output: 3.0},
+  "qwen-3.6": {input: 0.0, output: 0.0},
   "gpt-54": {input: 1.75, output: 14.0},
 };
 

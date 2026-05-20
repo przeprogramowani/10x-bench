@@ -1,0 +1,143 @@
+---
+import { PodcastIcon, YoutubeIcon, MenuIcon, CloseIcon, ChevronUpIcon } from './Icons';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center transition-transform group-hover:scale-110">
+          <PodcastIcon className="w-5 h-5 text-white" />
+        </div>
+        <span class="text-white font-display font-bold text-lg hidden sm:block">
+          Przeprogramowani<span class="text-accent-400">.pl</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#o-nas" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+          O nas
+        </a>
+        <a href="#kursy" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+          Kursy
+        </a>
+        <a href="#podcast" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+          Podcast
+        </a>
+        <a href="#youtube" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+          YouTube
+        </a>
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener"
+          class="ml-3 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white transition-all shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40">
+          Newsletter
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-dark-300 hover:text-white transition-colors" id="menu-btn" aria-label="Menu">
+        <MenuIcon className="w-6 h-6" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden glass-card mx-4 mt-2 p-4" id="mobile-menu">
+    <nav class="flex flex-col gap-1">
+      <a href="#o-nas" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+        O nas
+      </a>
+      <a href="#kursy" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+        Kursy
+      </a>
+      <a href="#podcast" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+        Podcast
+      </a>
+      <a href="#youtube" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-medium text-dark-300 hover:text-white hover:bg-white/5 transition-all">
+        YouTube
+      </a>
+      <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener"
+        class="mt-2 px-4 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-brand-600 to-brand-500 text-white text-center">
+        Newsletter
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--tw-gradient-from, #2b92f0), var(--tw-gradient-to, #ee7415));
+    border-radius: 1px;
+    transition: transform 0.2s;
+  }
+  .nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+</style>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    if (!header) return;
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 50) {
+      header.style.background = 'rgba(15, 15, 24, 0.8)';
+      header.style.backdropFilter = 'blur(20px)';
+    } else {
+      header.style.background = 'transparent';
+      header.style.backdropFilter = 'blur(0)';
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Back to top button
+  const backToTop = document.createElement('button');
+  backToTop.className = 'fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 text-white hover:bg-white/20 transition-all opacity-0 translate-y-4 pointer-events-none';
+  backToTop.innerHTML = '<svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  document.body.appendChild(backToTop);
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTop.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      backToTop.classList.add('opacity-100', 'translate-y-0');
+    } else {
+      backToTop.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+      backToTop.classList.remove('opacity-100', 'translate-y-0');
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

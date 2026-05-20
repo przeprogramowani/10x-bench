@@ -161,9 +161,11 @@ async function ensureNodeModules(projectRoot: string): Promise<void> {
 
   console.log("  Installing dependencies...");
   return new Promise((resolve, reject) => {
-    const proc = spawn("npm", ["install"], {
+    const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
+    const proc = spawn(npmCmd, ["install"], {
       cwd: projectRoot,
       stdio: ["ignore", "pipe", "pipe"],
+      shell: true,
     });
 
     let stderr = "";
@@ -187,10 +189,11 @@ interface DevServer {
 }
 
 async function startDevServer(projectRoot: string, port: number): Promise<DevServer> {
-  const proc = spawn("npx", ["astro", "dev", "--port", String(port)], {
+  const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
+  const proc = spawn(npxCmd, ["astro", "dev", "--port", String(port)], {
     cwd: projectRoot,
     stdio: ["ignore", "pipe", "pipe"],
-    detached: true,
+    shell: true,
   });
 
   activeProcesses.add(proc);

@@ -1,0 +1,203 @@
+---
+import '../styles/global.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Edukacja technologiczna w epoce AI. Kursy, podcast, YouTube - Przeprogramowani.pl',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth font-sans">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1647b6" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://przeprogramowani.pl" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <title>{title} | Przeprogramowani.pl</title>
+  </head>
+
+  <body class="bg-white text-gray-900 antialiased">
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[600px] opacity-20 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(59,153,246,0.25) 0%, transparent 70%);" />
+    </div>
+
+    <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center">
+              <span class="text-white font-bold text-sm">PP</span>
+            </div>
+            <span class="font-display font-bold text-lg text-gray-900 group-hover:text-brand-600 transition-colors">
+              Przeprogramowani<span class="text-brand-600">.pl</span>
+            </span>
+          </a>
+
+          <div class="hidden md:flex items-center gap-1">
+            <a href="/" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+              Strona główna
+            </a>
+            <a href="/o-nas" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+              O nas
+            </a>
+            <a href="/podcast" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+              Podcast
+            </a>
+            <a href="/youtube" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+              YouTube
+            </a>
+            <a
+              href="https://opanujfrontend.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ml-3 px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-brand-700 rounded-xl hover:from-brand-700 hover:to-brand-800 shadow-md shadow-brand-500/20 transition-all hover:shadow-lg hover:shadow-brand-500/30"
+            >
+              Kursy
+            </a>
+          </div>
+
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label="Menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden border-t border-gray-100 bg-white"
+      >
+        <div class="px-4 py-3 space-y-1">
+          <a href="/" class="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+            Strona główna
+          </a>
+          <a href="/o-nas" class="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+            O nas
+          </a>
+          <a href="/podcast" class="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+            Podcast
+          </a>
+          <a href="/youtube" class="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-brand-600 rounded-lg hover:bg-brand-50 transition-all">
+            YouTube
+          </a>
+          <a
+            href="https://opanujfrontend.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block px-4 py-3 text-sm font-semibold text-center text-white bg-gradient-to-r from-brand-600 to-brand-700 rounded-xl"
+          >
+            Kursy
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-950 text-gray-400 mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
+                <span class="text-white font-bold text-sm">PP</span>
+              </div>
+              <span class="font-display font-bold text-lg text-white">
+                Przeprogramowani<span class="text-brand-400">.pl</span>
+              </span>
+            </div>
+            <p class="text-sm leading-relaxed max-w-sm">
+              Edukacja technologiczna w epoce AI. Pomagamy developerom rozwijać
+              się w kierunku AI-Native Software Engineering.
+            </p>
+            <div class="flex items-center gap-4 mt-6">
+              <a
+                href="https://youtube.com/c/przeprogramowani"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-red-600/20 hover:text-red-400 flex items-center justify-center transition-all"
+                aria-label="YouTube"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186c0 1.57 0 4.638.503 6.213a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136c.503-1.576.503-4.643.503-6.213zM9.64 15.198V8.802l5.77 3.199-5.77 3.197z"/></svg>
+              </a>
+              <a
+                href="https://linktr.ee/przeprogramowani"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-brand-600/20 hover:text-brand-400 flex items-center justify-center transition-all"
+                aria-label="Linktree"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.395 15.045a9.76 9.76 0 0 0-1.184-1.052 8.793 8.793 0 0 0-1.017-.872l1.59-6.203-1.017-.262-1.384 5.398a8.905 8.905 0 0 0-2.356-.366c-.743 0-1.482.1-2.18.3l-1.186-5.06-.997.262 1.452 5.666a9.38 9.38 0 0 0-1.337 1.04 8.625 8.625 0 0 0-1.225-1.12l1.382-5.396-1.017-.262-1.59 6.203a8.77 8.77 0 0 0-1.052 1.052 8.416 8.416 0 0 0-1.184 1.052l-2.128-8.289-.997.262 2.47 9.63a.587.587 0 0 0 .376.376l1.04-.262a.602.602 0 0 0 .376-.376l.724-2.826c.338.296.698.566 1.077.808.068.838.22 1.666.454 2.472l-.724 2.826.376.094a.587.587 0 0 0 .376-.376l2.47-9.63-.997-.262-2.128 8.29c.384-.072.774-.11 1.165-.115.696-.005 1.39-.1 2.066-.274.296-.078.582-.176.858-.292l1.384-5.398 1.017.262-1.452 5.666.376.094a.587.587 0 0 0 .376-.376l.724-2.826c.379.242.779.426 1.198.548.7.196 1.422.296 2.152.297.73 0 1.452-.1 2.148-.297a5.3 5.3 0 0 0 1.198-.548l.724 2.826.376-.094-1.452-5.666 1.017-.262 1.384 5.398c.38-.242.74-.512 1.078-.808l.724 2.826a.587.587 0 0 0 .376.376l1.04-.262a.587.587 0 0 0 .376-.376l2.47-9.63-.997-.262-2.128 8.29a8.416 8.416 0 0 0-1.184-1.052z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm mb-4">
+              Oferta
+            </h4>
+            <ul class="space-y-3">
+              <li><a href="https://opanujfrontend.pl" class="text-sm hover:text-brand-400 transition-colors">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl" class="text-sm hover:text-brand-400 transition-colors">Opanuj TypeScript</a></li>
+              <li><a href="https://10xdevs.pl" class="text-sm hover:text-brand-400 transition-colors">10xDevs</a></li>
+              <li><a href="https://opanuj.ai" class="text-sm hover:text-brand-400 transition-colors">Opanuj AI</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm mb-4">
+              Treści
+            </h4>
+            <ul class="space-y-3">
+              <li><a href="/podcast" class="text-sm hover:text-brand-400 transition-colors">Podcast</a></li>
+              <li><a href="/youtube" class="text-sm hover:text-brand-400 transition-colors">YouTube</a></li>
+              <li><a href="https://blog.przeprogramowani.pl" class="text-sm hover:text-brand-400 transition-colors">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs">&copy; {new Date().getFullYear()} Przeprogramowani.pl &middot; Wszystkie prawa zastrzeżone</p>
+          <p class="text-xs">kontakt@przeprogramowani.pl</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

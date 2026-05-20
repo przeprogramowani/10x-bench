@@ -1,0 +1,35 @@
+---
+import { MailIcon } from './Icons';
+---
+
+<section class="relative py-24 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-dark-900 to-dark-950" />
+
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="glass-card p-10 md:p-16 text-center relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+      <div class="relative">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center mx-auto mb-8">
+          <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
+          <span class="text-white">Newsletter </span>
+          <span class="gradient-text">3-2-1</span>
+        </h2>
+        <p class="text-dark-300 text-lg max-w-xl mx-auto mb-8">
+          Cotygodniowy newsletter: 3 artykuły, 2 narzędzia, 1 pytanie do Ciebie. Dołącz do tysięcy subskrybentów!
+        </p>
+
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold bg-gradient-to-r from-brand-600 to-accent-500 hover:from-brand-500 hover:to-accent-400 text-white transition-all shadow-2xl shadow-brand-500/25 hover:shadow-brand-500/40">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Dołącz do newslettera
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

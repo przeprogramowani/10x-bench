@@ -1,0 +1,88 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '@/css/main.css';
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="O nas - Zespół Przeprogramowani.pl. 7 lat edukacji technologicznej, kursy online, podcast i filmy na YouTube." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <title>O nas - Przeprogramowani.pl</title>
+  </head>
+  <body class="bg-dark-950 text-white min-h-screen">
+    <Header />
+    <main class="pt-20">
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+        <div class="text-center mb-16">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
+            Od 7 lat w branży
+          </span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+            Kim jesteśmy?
+          </h1>
+          <p class="text-xl text-dark-300 max-w-2xl mx-auto leading-relaxed">
+            Jesteśmy zespołem pasjonatów technologii, który od <span class="gradient-text font-semibold">7 lat</span> tworzy materiały edukacyjne dla programistów.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div class="glass-card glass-card-hover p-8">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18.5a6.5 6.5 0 100-13 6.5 6.5 0 000 13z"/><path d="M7 18.5a11 11 0 100-13"/><path d="M12 4.5V1"/><path d="M12 1v3.5"/></svg>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-3">Podcast</h3>
+            <p class="text-dark-400 text-sm leading-relaxed">
+              Jeden z największych polskich podcastów o technologiach. Co tydzień rozmawiamy o nowościach ze świata IT, karierze i nowych trendach.
+            </p>
+          </div>
+          <div class="glass-card glass-card-hover p-8">
+            <div class="w-12 h-12 rounded-xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-3">Kursy online</h3>
+            <p class="text-dark-400 text-sm leading-relaxed">
+              Tworzymy kompleksowe kursy programistyczne — od podstaw po zaawansowane tematy. Opanuj Frontend, Opanuj TypeScript, 10xDevs i wiele więcej.
+            </p>
+          </div>
+          <div class="glass-card glass-card-hover p-8">
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-3">YouTube</h3>
+            <p class="text-dark-400 text-sm leading-relaxed">
+              Filmy tutorial, demo i omówienia nowych technologii. Praktyczna wiedza, którą możesz od razu zastosować w swoim kodzie.
+            </p>
+          </div>
+          <div class="glass-card glass-card-hover p-8">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-3">Newsletter</h3>
+            <p class="text-dark-400 text-sm leading-relaxed">
+              Cotygodniowy newsletter w formacie 3-2-1 — 3 artykuły, 2 narzędzia, 1 pytanie do Ciebie. Prosto na Twoją skrzynkę pocztową.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <h3 class="text-white font-semibold text-lg mb-4">Nasze projekty</h3>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="https://www.opanujfrontend.pl?utm_source=przeprogramowani_website" class="glass-card glass-card-hover px-6 py-3 text-sm font-medium">Opanuj Frontend</a>
+            <a href="https://www.opanujtypescript.pl?utm_source=przeprogramowani_website" class="glass-card glass-card-hover px-6 py-3 text-sm font-medium">Opanuj TypeScript</a>
+            <a href="https://10xdevs.pl" class="glass-card glass-card-hover px-6 py-3 text-sm font-medium">10xDevs</a>
+            <a href="https://opanuj.ai" class="glass-card glass-card-hover px-6 py-3 text-sm font-medium">Opanuj AI</a>
+            <a href="https://10xrules.ai" class="glass-card glass-card-hover px-6 py-3 text-sm font-medium">10xRules AI</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
