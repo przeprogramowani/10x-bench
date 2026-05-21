@@ -28,7 +28,8 @@ export type ModelId =
   // | "qwen-36-plus"
   | "kimi-k26"
   | "qwen-3.6"
-  | "gpt-54";
+  | "gpt-54"
+  | "gpt-55";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
 export const AGENT_NAMES: Record<ModelId, string> = {
@@ -54,6 +55,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   // "qwen-36-plus": "Qwen 3.6 Plus",
   "qwen-3.6": "Qwen 3.6",
   "gpt-54": "GPT-5.4",
+  "gpt-55": "GPT-5.5",
 };
 
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
@@ -79,6 +81,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   // "qwen-36-plus": AGENT_ENVIRONMENT.OpenCode,
   "qwen-3.6": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
+  "gpt-55": AGENT_ENVIRONMENT.CodexDesktopHigh,
 };
 
 /** Models superseded by newer versions (old → new) */
@@ -92,6 +95,7 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "kimi-k25": "kimi-k26",
   // "minimax-m25": "minimax-m27",
   // "qwen-3-max": "qwen-36-plus",
+  // "gpt-54": "gpt-55",
 };
 
 /** Base model IDs to exclude from processed results (all attempts are skipped) */
@@ -127,6 +131,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   // "qwen-36-plus": {input: 0.5, output: 3.0},
   "qwen-3.6": { input: 0.15, output: 1.0 },
   "gpt-54": { input: 1.75, output: 14.0 },
+  "gpt-55": { input: 5.0, output: 30.0 },
 };
 
 /** Type guard: check whether a runtime string is a known ModelId */

@@ -1,0 +1,115 @@
+---
+import CourseCard from '../components/CourseCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import SectionLead from '../components/SectionLead.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { aboutFacts, aboutSummary, courses, heroProgram } from '../data/site';
+import { getLatestPodcastEpisodes, getLatestYouTubeVideos } from '../lib/feeds';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+
+const [videos, podcastEpisodes] = await Promise.all([
+  getLatestYouTubeVideos(3),
+  getLatestPodcastEpisodes(3)
+]);
+
+const pageDescription =
+  'Nowoczesna platforma edukacyjna Przeprogramowani.pl: kursy, podcast i YouTube dla developerów budujących software w epoce AI.';
+---
+
+<Layout title="Przeprogramowani.pl - Start" description={pageDescription}>
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">Projekt edukacyjny</p>
+        <h1 class="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">{heroProgram.title}</h1>
+        <p class="mt-4 text-lg font-semibold text-amber-200">{heroProgram.kicker}</p>
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">{heroProgram.description}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={heroProgram.ctaHref}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="rounded-full bg-cyan-300 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200"
+          >
+            {heroProgram.ctaLabel}
+          </a>
+          <a href="/o-nas" class="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/60 hover:text-cyan-200">
+            Poznaj nas
+          </a>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          aboutFacts.map((fact) => (
+            <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-slate-400">{fact.label}</p>
+              <p class="mt-3 text-xl font-semibold text-white">{fact.value}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+    <SectionLead
+      eyebrow="Programy"
+      title="Rozwijaj kompetencje z kursami Przeprogramowanych"
+      description="Sekcja kursów obejmuje program 10xDevs oraz szkolenia Opanuj Frontend i Opanuj TypeScript."
+    />
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {courses.map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 pb-6 sm:px-6">
+    <SectionLead
+      eyebrow="O nas"
+      title="Szersze spojrzenie na programowanie"
+      description="Łączymy edukację techniczną, praktykę projektową i nowoczesne narzędzia AI, żeby przyspieszyć rozwój developerów."
+    />
+
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        aboutSummary.map((paragraph) => (
+          <article class="rounded-2xl border border-white/10 bg-slate-900/70 p-5 text-sm leading-relaxed text-slate-300">
+            {paragraph}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div>
+        <SectionLead
+          eyebrow="Podcast"
+          title="Najnowsze odcinki"
+          description="Aktualne publikacje z oficjalnego feedu podcastu Przeprogramowanych."
+        />
+        <div class="space-y-4">
+          {podcastEpisodes.map((episode) => <PodcastCard episode={episode} />)}
+        </div>
+        <a href="/podcast" class="mt-6 inline-block text-sm font-semibold text-cyan-300 hover:text-cyan-200">Zobacz wszystkie odcinki -></a>
+      </div>
+
+      <div>
+        <SectionLead
+          eyebrow="YouTube"
+          title="Najnowsze filmy"
+          description="Materiały video z kanału Przeprogramowani, pobierane z kanału YouTube."
+        />
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          {videos.map((video) => <VideoCard video={video} />)}
+        </div>
+        <a href="/youtube" class="mt-6 inline-block text-sm font-semibold text-cyan-300 hover:text-cyan-200">Przejdź do strony YouTube -></a>
+      </div>
+    </div>
+  </section>
+</Layout>

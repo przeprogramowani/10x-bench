@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { externalLinks, partners, team } from "../data/site";
+---
+
+<BaseLayout title="O nas - Przeprogramowani" description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego, twórców Przeprogramowanych.">
+  <section class="bg-ink py-20 text-paper">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <p class="eyebrow text-citron">O nas</p>
+        <h1 class="mt-4 font-display text-5xl font-extrabold tracking-normal sm:text-6xl">Łączymy świat programowania, biznesu i rozwoju.</h1>
+      </div>
+      <div class="grid content-end gap-6">
+        <p class="text-xl leading-8 text-paper/78">
+          Przeprogramowani to miejsce, w którym techniczne deep-dive'y spotykają się z karierą, architekturą, pracą zespołową i praktycznym podejściem do AI.
+        </p>
+        <div class="grid gap-3 sm:grid-cols-3">
+          {[
+            ["7 lat", "na rynku edukacji"],
+            ["3700+", "absolwentów 10xDevs"],
+            ["98", "odcinków podcastu"]
+          ].map(([value, label]) => (
+            <div class="rounded-lg border border-white/12 bg-white/6 p-4">
+              <div class="font-display text-3xl font-bold text-citron">{value}</div>
+              <div class="mt-1 text-sm text-paper/62">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20">
+    <div class="container-page">
+      <div class="max-w-2xl">
+        <p class="eyebrow">Twórcy</p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-normal">Doświadczenie z globalnych produktów, przekładane na praktyczną edukację.</h2>
+      </div>
+      <div class="mt-10 grid gap-5 lg:grid-cols-2">
+        {team.map((person) => (
+          <article class="rounded-lg border border-ink/10 bg-white p-6 shadow-soft">
+            <div class="flex items-start gap-5">
+              <div class="grid size-16 shrink-0 place-items-center rounded-lg bg-ink font-display text-xl font-extrabold text-citron">
+                {person.name.split(" ").map((part) => part[0]).join("")}
+              </div>
+              <div>
+                <h3 class="font-display text-2xl font-bold">{person.name}</h3>
+                <p class="mt-1 text-sm font-bold text-ember">{person.role}</p>
+              </div>
+            </div>
+            <p class="mt-6 leading-7 text-graphite/74">{person.bio}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {person.tags.map((tag) => <span class="rounded-md bg-paper px-3 py-1 text-xs font-bold text-graphite">{tag}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="eyebrow">Współpracujemy z najlepszymi</p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-normal">Marka edukacyjna, której ufają zespoły produktowe i technologiczne.</h2>
+        <a href={externalLinks.email} class="focus-ring mt-7 inline-flex rounded-md bg-ink px-5 py-3 font-bold text-paper">Nawiąż współpracę</a>
+      </div>
+      <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {partners.map((partner) => (
+          <div class="grid min-h-24 place-items-center rounded-lg border border-ink/10 bg-paper p-4 text-center font-display text-sm font-bold text-graphite">
+            {partner}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

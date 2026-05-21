@@ -1,0 +1,39 @@
+---
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<html lang="pl">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>YouTube - Przeprogramowani.pl</title>
+	</head>
+	<body class="bg-gray-100">
+		<Navbar client:load />
+		<main class="py-12">
+			<div class="max-w-7xl mx-auto px-4">
+				<h1 class="text-4xl font-bold mb-8">YouTube</h1>
+				<p class="text-gray-700 mb-8">Najnowsze filmy z naszego kanału YouTube.</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div class="bg-white rounded-lg shadow-md p-4">
+						<img src="https://i3.ytimg.com/vi/_kQHwE6zAbM/maxresdefault.jpg" alt="Skills vs AgentsMD" class="w-full mb-4" />
+						<h3 class="text-xl font-bold mb-2">Skills vs AgentsMD: 53% vs 100%. Co poszło nie tak?</h3>
+						<a href="https://www.youtube.com/watch?v=_kQHwE6zAbM" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Obejrzyj</a>
+					</div>
+					<div class="bg-white rounded-lg shadow-md p-4">
+						<img src="https://i3.ytimg.com/vi/KAJTsQbqBow/maxresdefault.jpg" alt="Claude Code + GLM-4.7" class="w-full mb-4" />
+						<h3 class="text-xl font-bold mb-2">Claude Code + GLM-4.7 - Programowanie z darmowym AI wreszcie możliwe?</h3>
+						<a href="https://www.youtube.com/watch?v=KAJTsQbqBow" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Obejrzyj</a>
+					</div>
+					<div class="bg-white rounded-lg shadow-md p-4">
+						<img src="https://i3.ytimg.com/vi/uwi39C2O8NI/maxresdefault.jpg" alt="5 TECHNIK" class="w-full mb-4" />
+						<h3 class="text-xl font-bold mb-2">5 TECHNIK, KTÓRE NAPRAWIŁY MÓJ WORKFLOW PROGRAMOWANIA Z AI</h3>
+						<a href="https://www.youtube.com/watch?v=uwi39C2O8NI" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Obejrzyj</a>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer client:load />
+	</body>
+</html>

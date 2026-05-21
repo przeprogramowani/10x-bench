@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowRight, Code, Terminal, Zap, BookOpen } from 'lucide-react';
+---
+
+<Layout title="Strona Główna">
+	<!-- Hero Section - 10xDevs -->
+	<section class="relative bg-slate-900 overflow-hidden text-white min-h-[85vh] flex items-center">
+		<!-- Background pattern -->
+		<div class="absolute inset-0 opacity-10">
+			<svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+				<defs>
+					<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+						<path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="none" stroke="currentColor" stroke-width="2"/>
+					</pattern>
+				</defs>
+				<rect width="100%" height="100%" fill="url(#grid)" />
+			</svg>
+		</div>
+
+		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 z-10 w-full flex flex-col md:flex-row items-center gap-12">
+			<div class="md:w-1/2">
+				<div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-semibold text-sm mb-6 border border-blue-500/20">
+					<span class="flex h-2 w-2 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
+					Nowość w ofercie
+				</div>
+				<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+					Zostań programistą <br/>
+					<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+						10xDevs
+					</span>
+				</h1>
+				<p class="text-xl text-slate-300 mb-8 max-w-lg leading-relaxed">
+					Poznaj programowanie z wykorzystaniem generatywnego AI. Opanuj techniki i narzędzia do świadomego stosowania AI w całym cyklu wytwarzania oprogramowania.
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<a href="https://10xdevs.pl" class="inline-flex justify-center items-center px-6 py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1">
+						Dołącz do edycji <ArrowRight className="ml-2 h-5 w-5" />
+					</a>
+					<a href="#kursy" class="inline-flex justify-center items-center px-6 py-4 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-all">
+						Poznaj inne kursy
+					</a>
+				</div>
+			</div>
+			
+			<div class="md:w-1/2 flex justify-center w-full">
+				<div class="relative w-full max-w-md">
+					<!-- Terminal decorative element -->
+					<div class="rounded-xl bg-slate-900/80 backdrop-blur border border-slate-700 p-6 shadow-2xl">
+						<div class="flex items-center gap-2 mb-4">
+							<div class="w-3 h-3 rounded-full bg-red-500"></div>
+							<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+							<div class="w-3 h-3 rounded-full bg-green-500"></div>
+							<div class="text-xs text-slate-400 font-mono ml-2">10xdevs.sh</div>
+						</div>
+						<div class="font-mono text-sm text-green-400">
+							<p class="mb-2"><span class="text-slate-500">$</span> npm init 10xdevs-journey</p>
+							<p class="text-slate-300 mb-2">> Generowanie programu szkoleniowego...</p>
+							<p class="text-slate-300 mb-2">> Konfiguracja AI asystenta...</p>
+							<p class="text-blue-400 mb-2">✔ Gotowe! Jesteś 10x szybszy.</p>
+							<p class="mt-4"><span class="text-slate-500">$</span> cursor .</p>
+							<span class="inline-block w-2 h-4 bg-slate-300 animate-pulse mt-2"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- O nas - Skrót -->
+	<section class="py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto mb-16">
+				<h2 class="text-base text-blue-600 font-semibold tracking-wide uppercase mb-2">Kim jesteśmy?</h2>
+				<p class="text-3xl font-extrabold text-slate-900 sm:text-4xl mb-4">Polska platforma edukacyjna</p>
+				<p class="text-xl text-slate-500">
+					Od 5 lat tworzymy materiały szkoleniowe, dzielimy się wiedzą w podcastach i nagrywamy na YouTube. Naszym celem jest podnoszenie kompetencji polskich programistów.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+				<div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-lg">
+					<div class="mx-auto w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6">
+						<Terminal className="w-8 h-8" />
+					</div>
+					<h3 class="text-xl font-bold text-slate-900 mb-3">Praktyka</h3>
+					<p class="text-slate-600">Skupiamy się na umiejętnościach, które wykorzystasz w codziennej pracy. Mniej teorii, więcej kodu.</p>
+				</div>
+				<div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-lg">
+					<div class="mx-auto w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-6">
+						<Zap className="w-8 h-8" />
+					</div>
+					<h3 class="text-xl font-bold text-slate-900 mb-3">Rozwój</h3>
+					<p class="text-slate-600">Śledzimy trendy i dostarczamy aktualną wiedzę z ekosystemu JavaScript, TypeScript i narzędzi AI.</p>
+				</div>
+				<div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition-all hover:shadow-lg">
+					<div class="mx-auto w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-6">
+						<BookOpen className="w-8 h-8" />
+					</div>
+					<h3 class="text-xl font-bold text-slate-900 mb-3">Społeczność</h3>
+					<p class="text-slate-600">Dołącz do tysięcy osób na naszej platformie, bierz udział w webinarach i rozwijaj się z innymi.</p>
+				</div>
+			</div>
+			
+			<div class="mt-12 text-center">
+				<a href="/o-nas" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 text-lg">
+					Więcej o Przeprogramowanych <ArrowRight className="ml-2 w-5 h-5" />
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Kursy Section -->
+	<section id="kursy" class="py-24 bg-slate-50 border-t border-slate-200">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Nasze Najpopularniejsze Kursy</h2>
+				<p class="mt-4 text-xl text-slate-500 max-w-2xl mx-auto">
+					Kompleksowe programy szkoleniowe od podstaw do poziomu zaawansowanego.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+				<!-- Opanuj Frontend -->
+				<div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
+					<div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-500 p-8 flex items-end">
+						<h3 class="text-3xl font-bold text-white shadow-sm">Opanuj Frontend</h3>
+					</div>
+					<div class="p-8 flex-1 flex flex-col">
+						<div class="flex items-center gap-2 mb-4">
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">HTML/CSS</span>
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">React</span>
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Architektura</span>
+						</div>
+						<p class="text-slate-600 mb-6 flex-1">
+							Kompleksowy kurs dla frontend developerów obejmujący 5 modułów dotyczących frontendu, testowania, CI/CD, open source i architektury aplikacji webowych. Ukończyło go już prawie 400 osób!
+						</p>
+						<ul class="space-y-3 mb-8 text-sm text-slate-600">
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Architektura aplikacji webowych</li>
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Testowanie automatyczne</li>
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Narzędzia i CI/CD</li>
+						</ul>
+						<a href="https://opanujfrontend.pl" class="block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-slate-800 transition-colors">
+							Zobacz szczegóły
+						</a>
+					</div>
+				</div>
+
+				<!-- Opanuj TypeScript -->
+				<div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
+					<div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 p-8 flex items-end relative overflow-hidden">
+						<div class="absolute -right-4 -top-10 text-9xl font-bold text-white/10 select-none">TS</div>
+						<h3 class="text-3xl font-bold text-white relative z-10">Opanuj TypeScript</h3>
+					</div>
+					<div class="p-8 flex-1 flex flex-col">
+						<div class="flex items-center gap-2 mb-4">
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">TypeScript 5</span>
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">React 19</span>
+							<span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">Core Pro</span>
+						</div>
+						<p class="text-slate-600 mb-6 flex-1">
+							Praktyczne szkolenie działające z TypeScriptem 5 i React 19, zawierające ponad 40 ćwiczeń. Wejdź na wyższy poziom typowania i twórz niezawodne aplikacje.
+						</p>
+						<ul class="space-y-3 mb-8 text-sm text-slate-600">
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Typy generyczne i zaawansowane</li>
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Wzorce projektowe dla Reacta</li>
+							<li class="flex items-center"><Code className="w-5 h-5 mr-3 text-slate-400" /> Ponad 40 praktycznych ćwiczeń</li>
+						</ul>
+						<a href="https://opanujtypescript.pl" class="block w-full text-center px-4 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+							Zobacz szczegóły
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

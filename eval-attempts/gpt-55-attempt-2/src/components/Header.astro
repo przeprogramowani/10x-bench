@@ -1,0 +1,34 @@
+---
+import { navItems } from "../data/site";
+---
+
+<header class="sticky top-0 z-50 border-b border-neutral-200/80 bg-[#f8f7f3]/88 backdrop-blur-xl">
+  <div class="section-shell flex min-h-16 items-center justify-between gap-4">
+    <a href="/" class="focus-ring flex items-center gap-3 rounded-sm" aria-label="Przeprogramowani - strona główna">
+      <span class="grid size-10 place-items-center rounded-sm bg-neutral-950 text-sm font-black text-white">
+        &lt;/&gt;
+      </span>
+      <span class="hidden text-sm font-semibold tracking-wide text-neutral-950 sm:inline">
+        Przeprogramowani
+      </span>
+    </a>
+    <nav aria-label="Główna nawigacja" class="hidden items-center gap-1 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="focus-ring rounded-sm px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-white hover:text-neutral-950"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a
+      href="https://www.10xdevs.pl/"
+      class="focus-ring rounded-sm bg-neutral-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+    >
+      10xDevs
+    </a>
+  </div>
+</header>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import VideoCard from "../components/VideoCard.astro";
+import { videos } from "../lib/content";
+---
+
+<BaseLayout
+  title="YouTube - Przeprogramowani"
+  description="Ostatnie filmy z kanału YouTube Przeprogramowani: agentic coding, AI, benchmarki i praktyczne workflow programistyczne."
+>
+  <section class="surface-grid border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeader
+        eyebrow="YouTube"
+        title="Najnowsze filmy z kanału Przeprogramowani"
+        copy="Materiały wideo o agentach AI, jakości programowania z narzędziami generatywnymi i realnym workflow developera."
+      />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => <VideoCard video={video} />)}
+    </div>
+    <a href="https://youtube.com/c/przeprogramowani/videos" class="focus-ring mt-10 inline-flex rounded-md bg-rosebrand px-4 py-2 text-sm font-extrabold text-white hover:bg-rose-500">
+      Przejdź na kanał
+    </a>
+  </section>
+</BaseLayout>

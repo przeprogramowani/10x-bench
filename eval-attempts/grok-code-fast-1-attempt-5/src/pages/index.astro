@@ -1,0 +1,26 @@
+---
+import Navbar from '../components/Navbar.jsx';
+import Hero from '../components/Hero.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<html lang="pl">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Przeprogramowani.pl - Edukacja technologiczna w epoce AI</title>
+	</head>
+	<body class="bg-gray-100">
+		<Navbar client:load />
+		<Hero client:load />
+		<main class="py-12">
+			<div class="max-w-7xl mx-auto px-4">
+				<h2 class="text-3xl font-bold mb-8">Co nowego?</h2>
+				<p class="text-gray-700">Sprawdź nasze najnowsze treści na YouTube i w podcastach.</p>
+			</div>
+		</main>
+		<Footer client:load />
+	</body>
+</html>

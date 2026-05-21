@@ -1,0 +1,42 @@
+---
+import SectionLead from '../components/SectionLead.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { getLatestYouTubeVideos } from '../lib/feeds';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+
+const videos = await getLatestYouTubeVideos(12);
+
+const pageDescription =
+  'Najnowsze filmy z kanału YouTube Przeprogramowani, pobierane automatycznie z feedu kanału.';
+---
+
+<Layout title="Przeprogramowani.pl - YouTube" description={pageDescription}>
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+    <SectionLead
+      eyebrow="YouTube"
+      title="Ostatnie filmy z kanału Przeprogramowani"
+      description="Aktualna lista publikacji z oficjalnego kanału YouTube."
+    />
+
+    <div class="mb-8 rounded-2xl border border-red-200/20 bg-red-300/10 p-5 text-sm text-slate-100">
+      <p>
+        Przejdź bezpośrednio do
+        <a
+          href="https://youtube.com/c/przeprogramowani/videos"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="font-semibold text-red-200 hover:text-red-100"
+        >
+          kanału YouTube
+        </a>
+        .
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => <VideoCard video={video} />)}
+    </div>
+  </section>
+</Layout>

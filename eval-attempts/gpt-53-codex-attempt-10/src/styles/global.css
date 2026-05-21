@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #070f18;
+  --bg-soft: #0f1b2d;
+  --surface: #111f35;
+  --surface-strong: #152841;
+  --text: #e4ecf8;
+  --text-soft: #a8bdd9;
+  --accent: #ff6a00;
+  --accent-2: #00d2c6;
+  --border: rgba(181, 206, 239, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(0, 210, 198, 0.15), transparent 35%),
+    radial-gradient(circle at 90% 10%, rgba(255, 106, 0, 0.17), transparent 30%),
+    linear-gradient(170deg, var(--bg) 0%, #050a11 45%, #0a1424 100%);
+  color: var(--text);
+  font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(17, 31, 53, 0.9), rgba(10, 20, 36, 0.92));
+  box-shadow: 0 14px 32px rgba(4, 10, 20, 0.4);
+}
+
+.soft-label {
+  color: var(--text-soft);
+  font-size: 0.77rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.main-gradient {
+  background: linear-gradient(120deg, var(--accent) 0%, #ff9a47 35%, #ffd06c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cta-button {
+  border: 1px solid rgba(255, 165, 89, 0.5);
+  background: linear-gradient(130deg, rgba(255, 106, 0, 1), rgba(255, 150, 51, 1));
+  color: #0c0f14;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(255, 126, 19, 0.45);
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+  background: rgba(17, 31, 53, 0.6);
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.secondary-button:hover {
+  border-color: rgba(0, 210, 198, 0.7);
+  background: rgba(19, 37, 63, 0.9);
+}

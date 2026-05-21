@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaHighlights from '../components/MediaHighlights';
+import { courses, founders, sourceLinks, stats } from '../data/site';
+---
+
+<BaseLayout
+  title="Przeprogramowani.pl - kursy, podcast i YouTube dla programistów"
+  description="Nowoczesna strona projektu Przeprogramowani.pl: 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast i YouTube."
+>
+  <section class="noise relative overflow-hidden border-b border-ink/10 px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase text-ink/62">Przeprogramowani.pl</p>
+        <h1 class="mt-5 max-w-4xl text-5xl font-black leading-[0.95] sm:text-7xl lg:text-8xl">
+          Szersze spojrzenie na programowanie.
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-ink/70 sm:text-xl">
+          Łączymy inżynierię, AI, biznes i rozwój zawodowy. Tworzymy kursy, podcasty i materiały dla developerów, którzy chcą pracować świadomie w realnych systemach.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="focus-ring inline-flex justify-center rounded-full bg-ink px-6 py-3 font-semibold text-white hover:bg-coral" href="https://www.10xdevs.pl/" rel="noreferrer" target="_blank">
+            Zobacz 10xDevs
+          </a>
+          <a class="focus-ring inline-flex justify-center rounded-full border border-ink/20 px-6 py-3 font-semibold hover:border-ink" href="#media">
+            Ostatnie materiały
+          </a>
+        </div>
+      </div>
+
+      <a class="focus-ring group block rounded-lg bg-ink p-5 text-white shadow-2xl shadow-ink/15" href="https://www.10xdevs.pl/" rel="noreferrer" target="_blank">
+        <div class="flex items-center justify-between gap-4">
+          <span class="rounded-full bg-lime px-3 py-1 text-xs font-black uppercase text-ink">Hero programu</span>
+          <span class="text-sm text-white/65">Start 3 edycji: 18.05</span>
+        </div>
+        <div class="mt-10 grid min-h-[360px] content-between rounded-md border border-white/12 p-6">
+          <div>
+            <p class="text-cyan">10xDevs 3.0</p>
+            <h2 class="mt-3 text-4xl font-black leading-none sm:text-6xl">AI-Native Software Engineering</h2>
+          </div>
+          <div>
+            <p class="max-w-lg text-lg leading-8 text-white/72">
+              Praktyczne workflow pracy z AI: od researchu i planowania po implementację, review i utrzymanie produkcji.
+            </p>
+            <div class="mt-6 grid grid-cols-3 gap-3 text-center text-sm">
+              <span class="rounded-md bg-white/8 px-3 py-4"><strong class="block text-xl text-lime">5+1</strong>tygodni</span>
+              <span class="rounded-md bg-white/8 px-3 py-4"><strong class="block text-xl text-lime">3700+</strong>absolwentów</span>
+              <span class="rounded-md bg-white/8 px-3 py-4"><strong class="block text-xl text-lime">AI</strong>w praktyce</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="rounded-lg border border-ink/10 bg-white p-6">
+          <p class="text-3xl font-black">{stat.value}</p>
+          <p class="mt-2 text-sm leading-6 text-ink/62">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="px-4 py-16 sm:px-6 lg:px-8" id="o-nas">
+    <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="text-sm font-semibold uppercase text-coral">O nas</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-5xl">Programowanie spotyka rozwój, produkt i ludzi.</h2>
+        <p class="mt-5 leading-8 text-ink/70">
+          Przeprogramowani to miejsce dla programistów, którzy patrzą szerzej: na architekturę, biznes, zespoły i własną karierę. Projekt prowadzą Przemek Smyrdek i Marcin Czarkowski.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        {founders.map((founder) => (
+          <a class="focus-ring rounded-lg border border-ink/10 bg-white p-6 transition hover:-translate-y-1 hover:border-ink/30" href={founder.href} rel="noreferrer" target="_blank">
+            <div class={`grid size-14 place-items-center rounded-md ${founder.accent} font-black text-ink`}>{founder.initials}</div>
+            <h3 class="mt-5 text-xl font-semibold">{founder.name}</h3>
+            <p class="mt-1 text-sm text-ink/55">{founder.role}</p>
+            <p class="mt-4 leading-7 text-ink/70">{founder.body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4 py-20 sm:px-6 lg:px-8" id="kursy">
+    <div class="mx-auto max-w-7xl">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase text-coral">Kursy i programy</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-5xl">Od frontendu po pracę z agentami AI.</h2>
+      </div>
+      <div class="mt-10 grid gap-5 lg:grid-cols-3">
+        {courses.map((course) => (
+          <a class={`focus-ring flex min-h-[360px] flex-col rounded-lg border border-ink/10 p-7 transition hover:-translate-y-1 ${course.accent}`} href={course.href} rel="noreferrer" target="_blank">
+            <p class="text-sm font-bold uppercase opacity-70">{course.label}</p>
+            <h3 class="mt-5 text-3xl font-black">{course.name}</h3>
+            <p class="mt-1 font-semibold opacity-70">{course.kicker}</p>
+            <p class="mt-6 leading-8 opacity-75">{course.body}</p>
+            <div class="mt-auto flex flex-wrap gap-2 pt-8">
+              {course.facts.map((fact) => <span class="rounded-full border border-current/20 px-3 py-1 text-sm">{fact}</span>)}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <MediaHighlights client:load />
+
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl rounded-lg border border-ink/10 bg-white p-8">
+      <p class="text-sm font-semibold uppercase text-ink/55">Źródła danych</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {sourceLinks.map((source) => (
+          <a class="rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold hover:border-ink" href={source.href} rel="noreferrer" target="_blank">{source.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

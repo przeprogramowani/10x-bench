@@ -1,0 +1,89 @@
+---
+const { title = "Przeprogramowani", description = "Szersze spojrzenie na programowanie" } = Astro.props;
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    <meta name="generator" content={Astro.generator}>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <div class="flex-shrink-0 flex items-center">
+              <a href="/" class="text-2xl font-bold text-blue-600">Przeprogramowani</a>
+            </div>
+            <div class="hidden md:ml-6 md:flex md:space-x-8">
+              <a href="/o-nas" class="hover:bg-gray-50 hover:text-gray-700 text-gray-500 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">O Nas</a>
+              <a href="/podcast" class="hover:bg-gray-50 hover:text-gray-700 text-gray-500 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Podcast</a>
+              <a href="https://youtube.com/c/przeprogramowani/videos" class="hover:bg-gray-50 hover:text-gray-700 text-gray-500 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">YouTube</a>
+              <a href="/newsletter" class="hover:bg-gray-50 hover:text-gray-700 text-gray-500 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-transparent">Newsletter</a>
+            </div>
+          </div>
+          <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+            <a href="https://10xdevs.pl" class="text-blue-600 hover:text-blue-800 text-sm font-medium">10xDevs</a>
+            <a href="https://opanujfrontend.pl" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Opanuj Frontend</a>
+            <a href="https://opanujtypescript.pl" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Opanuj TypeScript</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Przeprogramowani</h3>
+            <p class="text-gray-400">Szersze spojrzenie na programowanie</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Eduakacja</h3>
+            <ul class="space-y-2">
+              <li><a href="https://10xdevs.pl" class="text-gray-400 hover:text-white">10xDevs</a></li>
+              <li><a href="https://opanujfrontend.pl" class="text-gray-400 hover:text-white">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl" class="text-gray-400 hover:text-white">Opanuj TypeScript</a></li>
+              <li><a href="https://opanuj.ai" class="text-gray-400 hover:text-white">Opanuj AI</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Treści</h3>
+            <ul class="space-y-2">
+              <li><a href="/podcast" class="text-gray-400 hover:text-white">Podcast</a></li>
+              <li><a href="https://youtube.com/c/przeprogramowani/videos" class="text-gray-400 hover:text-white">YouTube</a></li>
+              <li><a href="/artykuly" class="text-gray-400 hover:text-white">Blog</a></li>
+              <li><a href="/newsletter" class="text-gray-400 hover:text-white">Newsletter</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+            <p class="text-gray-400">kontakt@przeprogramowani.pl</p>
+            <div class="mt-4 flex space-x-4">
+              <a href="https://facebook.com/przeprogramowani" class="text-gray-400 hover:text-white">Facebook</a>
+              <a href="https://instagram.com/przeprogramowani" class="text-gray-400 hover:text-white">Instagram</a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+          <p class="text-gray-400">&copy; 2026 Przeprogramowani. Wszystkie prawa zastrzeżone.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+  }
+</style>

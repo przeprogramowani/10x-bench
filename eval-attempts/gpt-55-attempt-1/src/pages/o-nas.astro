@@ -1,0 +1,88 @@
+---
+import { Mail } from "lucide-react";
+import SectionTitle from "../components/SectionTitle.astro";
+import { founders } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="O nas - Przeprogramowani"
+  description="Poznaj Przeprogramowanych: Przemka Smyrdka i Marcina Czarkowskiego oraz ich podejście do edukacji technologicznej."
+>
+  <section class="bg-ink py-16 text-white sm:py-20">
+    <div class="page-shell grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <p class="text-sm font-bold uppercase text-lime">O nas</p>
+        <h1 class="mt-4 font-display text-5xl font-black leading-tight sm:text-6xl">
+          Łączymy świat programowania, biznesu i rozwoju
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-white/72">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Najlepsi programiści patrzą szerzej: na architekturę, biznes, ludzi i siebie.
+        </p>
+      </div>
+      <img
+        src="https://przeprogramowani.pl/img/page-cover.jpg"
+        alt="Przeprogramowani"
+        class="aspect-[4/3] w-full rounded-md object-cover shadow-soft"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="page-shell">
+      <SectionTitle
+        eyebrow="Zespół"
+        title="Za projektem stoją praktycy edukacji i inżynierii"
+        text="Przemek i Marcin tworzą kursy, podcasty, materiały wideo i społeczność Przeprogramowanych."
+      />
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {founders.map((person) => (
+          <article class="rounded-md border border-line bg-white p-7 shadow-soft">
+            <div class={`h-2 w-24 rounded-sm ${person.accent}`}></div>
+            <h2 class="mt-6 font-display text-3xl font-extrabold">{person.name}</h2>
+            <p class="mt-2 text-sm font-black uppercase text-fern">{person.role}</p>
+            <p class="mt-5 text-base leading-8 text-ink/68">{person.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-20">
+    <div class="page-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <SectionTitle
+        eyebrow="Działalność"
+        title="Edukacja technologiczna w epoce AI"
+        text="Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju. Przeprogramowani budują programy edukacyjne dla ambitnych programistów i zespołów."
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {[
+          "10xDevs i AI-native software engineering",
+          "Opanuj Frontend: AI Edition",
+          "Opanuj TypeScript",
+          "Podcast Przeprogramowani",
+          "Kanał YouTube",
+          "Newsletter i społeczność"
+        ].map((item) => (
+          <div class="rounded-md border border-line bg-paper p-5 font-bold">{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="page-shell rounded-md bg-fern p-8 text-white sm:p-10">
+      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="font-display text-3xl font-extrabold">Chcesz nawiązać współpracę?</h2>
+          <p class="mt-3 max-w-2xl text-white/74">Porozmawiajmy o szkoleniach, partnerstwie lub materiałach dla Twojego zespołu.</p>
+        </div>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="focus-ring inline-flex items-center justify-center gap-2 rounded-md bg-white px-5 py-3 text-sm font-black text-ink">
+          <Mail size={18} aria-hidden="true" />
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

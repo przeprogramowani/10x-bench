@@ -1,0 +1,78 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import VideoCard from '../components/VideoCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteData } from '../lib/site-data';
+
+const site = await getSiteData();
+const latestVideo = site.youtube.videos[0];
+---
+
+<BaseLayout
+  title="YouTube | Przeprogramowani.pl"
+  description="Strona YouTube z najnowszymi filmami oficjalnego kanału Przeprogramowani."
+  currentPath="/youtube"
+>
+  <section class="section-wrap pt-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="surface-dark rounded-[2.3rem] px-6 py-8 md:px-10 md:py-12">
+          <p class="eyebrow text-white/70">YouTube</p>
+          <h1 class="mt-5 max-w-3xl font-display text-4xl leading-[0.98] text-white md:text-6xl">
+            Oficjalny kanał {site.youtube.channelName}
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-white/78">
+            Lista filmów pobierana jest z oficjalnego feedu YouTube kanału Przeprogramowani. Dzięki temu
+            strona pokazuje najświeższe publikacje bez ręcznej aktualizacji.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href={site.youtube.channelUrl} target="_blank" rel="noreferrer" class="btn-primary">
+              Otwórz kanał
+            </a>
+            <a href="/" class="btn-secondary border-white/20 text-white hover:bg-white/10">
+              Wróć na start
+            </a>
+          </div>
+        </div>
+
+        {latestVideo ? (
+          <div class="surface overflow-hidden rounded-[2.3rem]">
+            <img src={latestVideo.thumbnail} alt={latestVideo.title} class="aspect-video w-full object-cover" />
+            <div class="p-6 md:p-8">
+              <p class="eyebrow">Najnowsza publikacja</p>
+              <h2 class="mt-4 font-display text-3xl text-[var(--color-ink)]">{latestVideo.title}</h2>
+              <p class="mt-4 text-base leading-7 text-[var(--color-muted)]">{latestVideo.description}</p>
+              <a href={latestVideo.url} target="_blank" rel="noreferrer" class="btn-primary mt-8">
+                Obejrzyj teraz
+              </a>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap pb-20">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeading
+        eyebrow="Ostatnie filmy"
+        title="Aktualne publikacje z kanału"
+        description="Poniższe karty korzystają z dat publikacji i metadanych zwracanych przez YouTube."
+      />
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        {site.youtube.videos.map((video) => (
+          <VideoCard
+            title={video.title}
+            description={video.description}
+            url={video.url}
+            thumbnail={video.thumbnail}
+            publishedAt={video.publishedAt}
+            views={video.views}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getLatestYouTubeVideos } from '../lib/content';
+import { formatPolishDate, trimDescription } from '../lib/format';
+
+const videos = await getLatestYouTubeVideos(12);
+---
+
+<MainLayout
+  title="YouTube | Przeprogramowani.pl"
+  description="Ostatnie filmy z kanału Przeprogramowani na YouTube pobierane automatycznie z RSS kanału."
+  currentPath="/youtube"
+>
+  <section class="rounded-3xl border border-[var(--border)] bg-[#0d1a2d] p-7 sm:p-10">
+    <p class="soft-label">YouTube</p>
+    <h1 class="mt-2 text-4xl font-bold">Ostatnie filmy</h1>
+    <p class="mt-4 max-w-3xl text-[var(--text-soft)]">
+      Sekcja synchronizuje się z RSS kanału Przeprogramowani, więc nowe materiały pojawiają się automatycznie.
+    </p>
+  </section>
+
+  <section class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      videos.map((video) => (
+        <article class="card overflow-hidden rounded-2xl">
+          <a href={video.link} target="_blank" rel="noreferrer">
+            <img src={video.thumbnail} alt={video.title} class="aspect-video w-full object-cover" loading="lazy" />
+          </a>
+          <div class="p-5">
+            <p class="text-xs text-[var(--text-soft)]">{formatPolishDate(video.publishedAt)}</p>
+            <h2 class="mt-2 text-lg font-semibold">{video.title}</h2>
+            <p class="mt-3 text-sm leading-relaxed text-[var(--text-soft)]">{trimDescription(video.description, 170)}</p>
+            <a href={video.link} target="_blank" rel="noreferrer" class="mt-4 inline-block text-sm font-semibold text-[var(--accent-2)]">
+              Otwórz film
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</MainLayout>

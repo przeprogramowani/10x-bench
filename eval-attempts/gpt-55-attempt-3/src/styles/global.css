@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-ink: #09111f;
+  --color-panel: #0f1b2e;
+  --color-paper: #f8fafc;
+  --color-mint: #1ff1af;
+  --color-coral: #ff6b35;
+  --color-rosebrand: #e30f55;
+  --color-skybrand: #2dd4bf;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: var(--font-sans);
+  background: #09111f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, rgba(9, 17, 31, 0.92), rgba(9, 17, 31, 0.98)),
+    radial-gradient(circle at 20% 0%, rgba(31, 241, 175, 0.14), transparent 28rem),
+    #09111f;
+  color: #f8fafc;
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+.surface-grid {
+  background-image:
+    linear-gradient(rgba(248, 250, 252, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(248, 250, 252, 0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.noise-mask {
+  position: relative;
+}
+
+.noise-mask::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  opacity: 0.22;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint;
+}

@@ -1,0 +1,18 @@
+---
+import { founders } from "../data/site";
+---
+
+<div class="section-shell grid gap-4 md:grid-cols-2">
+  {
+    founders.map((founder) => (
+      <article class="grid overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm md:grid-cols-[220px_1fr]">
+        <img class="h-full min-h-[280px] w-full object-cover" src={founder.image} alt={founder.name} loading="lazy" />
+        <div class="p-6">
+          <p class="text-sm font-semibold uppercase tracking-[0.16em] text-orange-600">{founder.role}</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight">{founder.name}</h2>
+          <p class="mt-5 text-base leading-7 text-neutral-600">{founder.bio}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>

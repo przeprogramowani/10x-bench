@@ -1,0 +1,17 @@
+---
+import { youtubeVideos } from "../data/site";
+---
+
+<div class="section-shell grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {
+    youtubeVideos.map((video) => (
+      <a class="focus-ring group overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" href={video.href}>
+        <img class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105" src={video.thumbnail} alt="" loading="lazy" />
+        <div class="p-5">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-orange-600">{video.tag}</p>
+          <h2 class="text-lg font-black leading-tight">{video.title}</h2>
+        </div>
+      </a>
+    ))
+  }
+</div>

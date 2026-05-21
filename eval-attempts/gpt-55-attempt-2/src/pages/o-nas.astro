@@ -1,0 +1,48 @@
+---
+import FounderCards from "../components/FounderCards.astro";
+import Partners from "../components/Partners.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="O nas - Przeprogramowani.pl"
+  description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego oraz misję Przeprogramowanych."
+>
+  <section class="border-b border-neutral-200 bg-white py-20 md:py-28">
+    <div class="section-shell">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-orange-600">O nas</p>
+      <h1 class="max-w-4xl text-balance text-4xl font-black tracking-tight md:text-6xl">
+        Miejsce, w którym programowanie spotyka się z rozwojem osobistym i biznesem.
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">
+        Przeprogramowani pomagają developerom rozwijać się na wielu płaszczyznach: od technicznych deep dive'ów, przez architekturę i produktywność, po świadome korzystanie z AI.
+      </p>
+    </div>
+  </section>
+  <section class="py-20">
+    <SectionHeading
+      eyebrow="Założyciele"
+      title="Praktycy, którzy uczą przez realne doświadczenie."
+      description="Programy edukacyjne, podcasty i materiały wideo prowadzone są przez osoby pracujące z produkcyjnymi systemami, frontendem, TypeScriptem i narzędziami AI."
+    />
+    <FounderCards />
+  </section>
+  <section class="bg-neutral-950 py-20 text-white">
+    <div class="section-shell grid gap-8 md:grid-cols-3">
+      <div>
+        <p class="text-5xl font-black">7 lat</p>
+        <p class="mt-3 text-sm leading-6 text-neutral-300">budowania edukacji technologicznej dla ambitnych programistów.</p>
+      </div>
+      <div>
+        <p class="text-5xl font-black">TOP5</p>
+        <p class="mt-3 text-sm leading-6 text-neutral-300">technologicznych podcastów w Polsce według historii opisanej przez Easytools.</p>
+      </div>
+      <div>
+        <p class="text-5xl font-black">20k+</p>
+        <p class="mt-3 text-sm leading-6 text-neutral-300">subskrybentów na kanale YouTube Przeprogramowanych.</p>
+      </div>
+    </div>
+  </section>
+  <Partners />
+</BaseLayout>

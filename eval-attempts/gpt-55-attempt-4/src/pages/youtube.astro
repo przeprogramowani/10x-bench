@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { externalLinks, youtubeVideos } from "../data/site";
+---
+
+<BaseLayout title="YouTube - Przeprogramowani" description="Najnowsze filmy Przeprogramowanych z YouTube: AI, frontend, workflow i 10xDevs.">
+  <section class="bg-ink py-20 text-paper">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <div>
+        <p class="eyebrow text-citron">YouTube</p>
+        <h1 class="mt-4 font-display text-5xl font-extrabold tracking-normal sm:text-6xl">Praktyczne wideo o AI, frontendzie i pracy developera.</h1>
+      </div>
+      <div class="self-end">
+        <p class="text-xl leading-8 text-paper/78">
+          Najnowsze filmy promowane na Przeprogramowani.pl skupiają się na agentach AI do kodowania, jakości pracy z Claude Code, modelach, benchmarkach i budowaniu MVP.
+        </p>
+        <a href={externalLinks.youtube} class="focus-ring mt-7 inline-flex rounded-md bg-citron px-5 py-3 font-bold text-ink">Przejdź na kanał</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20">
+    <div class="container-page">
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <article class="group overflow-hidden rounded-lg border border-ink/10 bg-white shadow-soft transition hover:-translate-y-1">
+            <a href={`https://www.youtube.com/watch?v=${video.id}`} aria-label={`Otwórz film: ${video.title}`} class="block">
+              <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt={video.title} class="aspect-video w-full object-cover" loading="lazy" />
+            </a>
+            <div class="p-5">
+              <p class="font-mono text-xs font-bold uppercase tracking-[0.16em] text-ember">{video.tag}</p>
+              <h2 class="mt-3 min-h-20 font-display text-xl font-bold leading-7">{video.title}</h2>
+              <a href={`https://www.youtube.com/watch?v=${video.id}`} class="focus-ring mt-5 inline-flex rounded-md bg-ink px-4 py-3 text-sm font-bold text-paper transition group-hover:bg-ember">Obejrzyj</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

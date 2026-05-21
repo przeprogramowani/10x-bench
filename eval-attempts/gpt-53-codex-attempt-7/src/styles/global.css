@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #05070f;
+  --bg-soft: #0c1324;
+  --text: #ecf5ff;
+  --muted: #9eb6d6;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% -5%, rgba(59, 130, 246, 0.35), transparent 35%),
+    radial-gradient(circle at 80% -10%, rgba(236, 72, 153, 0.3), transparent 30%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 45%);
+  color: var(--text);
+  font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  text-wrap: pretty;
+}
+
+.site-shell {
+  position: relative;
+}
+
+.site-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: -1;
+  mask-image: radial-gradient(circle at top, black 0%, transparent 75%);
+}
+
+.font-display {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+.card-surface {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(160deg, rgba(14, 25, 45, 0.95), rgba(8, 13, 24, 0.95));
+  box-shadow: 0 22px 60px rgba(3, 8, 22, 0.45);
+}
+
+.enter-up {
+  animation: enter-up 700ms both;
+}
+
+.enter-up-delay-1 {
+  animation: enter-up 700ms 120ms both;
+}
+
+.enter-up-delay-2 {
+  animation: enter-up 700ms 240ms both;
+}
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

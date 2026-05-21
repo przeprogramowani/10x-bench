@@ -1,0 +1,37 @@
+---
+import LatestPodcasts from "../components/LatestPodcasts.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Podcast - Przeprogramowani.pl"
+  description="Najnowsze odcinki podcastów Opanuj.AI oraz Przeprogramowani ft. Gość."
+>
+  <section class="border-b border-neutral-200 bg-white py-20 md:py-28">
+    <div class="section-shell grid gap-10 md:grid-cols-[1fr_360px] md:items-end">
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-orange-600">Podcast</p>
+        <h1 class="max-w-4xl text-balance text-4xl font-black tracking-tight md:text-6xl">
+          Rozmowy o technologii, AI, programowaniu i karierze.
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">
+          Opanuj.AI Podcast podsumowuje najważniejsze wydarzenia ze świata sztucznej inteligencji, a Przeprogramowani ft. Gość to rozmowy dla głodnych wiedzy developerów.
+        </p>
+      </div>
+      <div class="rounded-sm border border-neutral-200 bg-[#f8f7f3] p-6">
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-neutral-500">Słuchacze</p>
+        <p class="mt-4 text-4xl font-black">7800+</p>
+        <p class="mt-2 text-sm leading-6 text-neutral-600">łączna liczba słuchaczy pokazana przy podcastach na stronie Przeprogramowanych.</p>
+      </div>
+    </div>
+  </section>
+  <section class="py-20">
+    <SectionHeading
+      eyebrow="Ostatnie odcinki"
+      title="Najnowsze materiały audio."
+      description="Lista bazuje na oficjalnej stronie podcastów Przeprogramowanych."
+    />
+    <LatestPodcasts />
+  </section>
+</BaseLayout>

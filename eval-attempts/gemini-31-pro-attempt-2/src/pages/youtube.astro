@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Youtube, MonitorPlay, Star, ExternalLink, Play } from 'lucide-react';
+
+const videos = [
+  {
+    title: 'Dlaczego wracamy na YouTube w 2026?',
+    views: '15 tys. wyświetleń',
+    date: '2 dni temu',
+    duration: '12:45',
+    thumbnail: 'bg-gradient-to-tr from-red-500 to-orange-400'
+  },
+  {
+    title: 'Recenzja Sony a7c II do nagrywania kodu',
+    views: '8.5 tys. wyświetleń',
+    date: '1 tydzień temu',
+    duration: '18:20',
+    thumbnail: 'bg-gradient-to-tr from-gray-800 to-slate-600'
+  },
+  {
+    title: 'Jak uczymy w 10xDevs? Pod maską',
+    views: '22 tys. wyświetleń',
+    date: '2 tygodnie temu',
+    duration: '25:10',
+    thumbnail: 'bg-gradient-to-tr from-blue-600 to-indigo-500'
+  },
+  {
+    title: 'React 19 vs. Vue - Pojedynek w 2026',
+    views: '45 tys. wyświetleń',
+    date: '3 tygodnie temu',
+    duration: '32:15',
+    thumbnail: 'bg-gradient-to-tr from-sky-400 to-blue-500'
+  }
+];
+---
+
+<Layout title="YouTube" description="Najnowsze filmy na kanale Przeprogramowani">
+  <div class="bg-slate-50 min-h-screen py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- YouTube Hero -->
+      <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 mb-16">
+        <div class="p-10 md:p-16 flex flex-col md:flex-row items-center gap-10">
+          <div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-50 text-red-600 font-semibold text-sm mb-6 border border-red-100">
+              <Star className="w-4 h-4 mr-2 text-red-500" />
+              Nowa jakość 4K
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Kanał YouTube</h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              Wróciliśmy po przerwie! Nowe studio, rozdzielczość 4K i jeszcze lepsze materiały edukacyjne. Subskrybuj, aby nie przegapić nowości ze świata frontendu i AI.
+            </p>
+            <a href="https://youtube.com/@przeprogramowani" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center px-6 py-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold shadow-lg shadow-red-500/30 transition-transform transform hover:-translate-y-1">
+              <Youtube className="mr-2 h-6 w-6" />
+              Subskrybuj kanał
+            </a>
+          </div>
+          <div class="w-full md:w-1/2">
+            <div class="aspect-video bg-slate-900 rounded-2xl shadow-2xl relative overflow-hidden flex items-center justify-center group cursor-pointer border-4 border-slate-800">
+              <div class="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-transparent"></div>
+              <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-xl">
+                <Play className="w-10 h-10 text-white ml-2" />
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between text-white text-sm font-medium">
+                <span class="bg-black/60 px-2 py-1 rounded backdrop-blur-sm">Oglądaj najnowszy film</span>
+                <span class="bg-black/60 px-2 py-1 rounded backdrop-blur-sm">4K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div>
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center">
+            <MonitorPlay className="w-6 h-6 mr-3 text-red-500" />
+            Ostatnie filmy
+          </h2>
+          <a href="#" class="text-sm font-semibold text-red-600 hover:text-red-700 hidden sm:flex items-center">
+            Zobacz wszystkie <ExternalLink className="w-4 h-4 ml-1" />
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {videos.map((video) => (
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow group cursor-pointer flex flex-col">
+              <div class={`aspect-video w-full relative ${video.thumbnail} flex items-center justify-center`}>
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Play className="w-6 h-6 text-white ml-1" />
+                </div>
+                <div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-semibold px-1.5 py-0.5 rounded">
+                  {video.duration}
+                </div>
+              </div>
+              <div class="p-4 flex-grow flex flex-col">
+                <h3 class="font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                  {video.title}
+                </h3>
+                <div class="mt-auto pt-2 flex items-center text-xs text-slate-500 space-x-2">
+                  <span>{video.views}</span>
+                  <span>•</span>
+                  <span>{video.date}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center sm:hidden">
+          <a href="#" class="inline-flex items-center text-sm font-semibold text-red-600 hover:text-red-700">
+            Zobacz wszystkie filmy na YouTube <ExternalLink className="w-4 h-4 ml-1" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

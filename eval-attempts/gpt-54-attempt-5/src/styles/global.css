@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+:root {
+  --color-ink: #111827;
+  --color-panel: #10131a;
+  --color-muted: #4b5563;
+  --color-paper: #fffaf4;
+  --color-cream: #fffdf8;
+  --color-accent: #ff7a00;
+  --color-teal: #0f9f8f;
+  --color-signal: #e54634;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--color-ink);
+    background:
+      radial-gradient(circle at top left, rgba(255, 122, 0, 0.14), transparent 28%),
+      radial-gradient(circle at top right, rgba(15, 159, 143, 0.1), transparent 24%),
+      linear-gradient(180deg, var(--color-paper) 0%, var(--color-cream) 100%);
+  }
+}
+
+@layer components {
+  .page-grid {
+    background-image:
+      linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .section-wrap {
+    @apply px-4 py-16 md:px-8 md:py-20;
+  }
+
+  .surface {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    box-shadow: 0 30px 80px rgba(17, 24, 39, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .surface-dark {
+    position: relative;
+    background:
+      radial-gradient(circle at top right, rgba(255, 122, 0, 0.18), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(15, 159, 143, 0.16), transparent 26%),
+      linear-gradient(180deg, rgba(22, 28, 39, 0.98) 0%, rgba(12, 15, 24, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 80px rgba(17, 24, 39, 0.2);
+  }
+
+  .eyebrow {
+    @apply mt-0 inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.2em];
+    color: var(--color-accent);
+    background: rgba(255, 122, 0, 0.12);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5;
+    background: var(--color-panel);
+    color: white;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold transition-colors;
+    border-color: rgba(17, 24, 39, 0.12);
+    color: var(--color-ink);
+    background: rgba(255, 255, 255, 0.65);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(17, 24, 39, 0.04);
+  }
+
+  .mesh-orb {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+  }
+
+  .hero-noise {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px),
+      radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px);
+    background-size: 26px 26px, 34px 34px;
+  }
+}

@@ -1,0 +1,39 @@
+---
+const { course } = Astro.props;
+---
+
+<a
+  href={course.href}
+  target="_blank"
+  rel="noreferrer"
+  class:list={[
+    "group grid overflow-hidden rounded-lg border bg-white/[0.045] transition duration-200 hover:-translate-y-1 hover:bg-white/[0.07]",
+    course.featured ? "border-coral/45 lg:grid-cols-[1.1fr_0.9fr]" : "border-white/10",
+  ]}
+>
+  <div class="relative min-h-60 overflow-hidden">
+    <img
+      src={course.image}
+      alt=""
+      loading="lazy"
+      class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent"></div>
+    <span class="absolute left-4 top-4 rounded-md border border-white/20 bg-black/45 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white backdrop-blur">
+      {course.kicker}
+    </span>
+  </div>
+  <div class="flex flex-col p-6 sm:p-7">
+    <h3 class="font-display text-2xl font-extrabold text-white">{course.title}</h3>
+    <p class="mt-4 flex-1 text-sm leading-6 text-slate-300">{course.summary}</p>
+    <ul class="mt-6 grid gap-2">
+      {course.points.map((point: string) => (
+        <li class="flex items-center gap-2 text-sm font-semibold text-slate-100">
+          <span class="h-1.5 w-1.5 rounded-full bg-mint"></span>
+          {point}
+        </li>
+      ))}
+    </ul>
+    <span class="mt-6 text-sm font-bold text-coral">Zobacz program -></span>
+  </div>
+</a>

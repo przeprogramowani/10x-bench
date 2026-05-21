@@ -1,0 +1,20 @@
+---
+import { partners } from "../data/site";
+---
+
+<section class="bg-white py-16">
+  <div class="section-shell">
+    <p class="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+      Współpracujemy z najlepszymi
+    </p>
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-5">
+      {
+        partners.map((partner) => (
+          <div class="grid min-h-20 place-items-center rounded-sm border border-neutral-200 bg-[#f8f7f3] px-4 text-center text-sm font-bold text-neutral-700">
+            {partner}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

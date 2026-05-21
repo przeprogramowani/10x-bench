@@ -1,0 +1,55 @@
+---
+import { MonitorPlay, Play } from "lucide-react";
+import SectionTitle from "../components/SectionTitle.astro";
+import { youtubeVideos } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="YouTube - Przeprogramowani"
+  description="Ostatnie filmy z kanału Przeprogramowani: AI, Claude Code, 10xDevs i praktyczne workflow programistyczne."
+>
+  <section class="bg-white py-16 sm:py-20">
+    <div class="page-shell grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <div class="grid h-28 w-28 place-items-center rounded-md bg-rose text-white">
+        <MonitorPlay size={56} aria-hidden="true" />
+      </div>
+      <div>
+        <p class="text-sm font-bold uppercase text-fern">YouTube</p>
+        <h1 class="mt-4 font-display text-5xl font-black leading-tight sm:text-6xl">
+          Najnowsze filmy z kanału Przeprogramowani
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-ink/70">
+          Materiały o AI w programowaniu, agentach, Claude Code, modelach i praktycznej pracy product builderów.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink py-16 text-white sm:py-20">
+    <div class="page-shell">
+      <SectionTitle
+        eyebrow="Ostatnio na kanale"
+        title="AI i software engineering w praktyce"
+        text="Lista pochodzi z publicznej sekcji filmów na stronie Przeprogramowanych."
+        light
+      />
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <a href={video.href} class="focus-ring group overflow-hidden rounded-md border border-white/10 bg-white/[0.04]">
+            <div class="relative aspect-video overflow-hidden bg-white/5">
+              <img src={video.image} alt="" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+              <span class="absolute left-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white text-ink">
+                <Play size={18} fill="currentColor" aria-hidden="true" />
+              </span>
+            </div>
+            <div class="p-5">
+              <p class="text-xs font-black uppercase text-lime">YouTube</p>
+              <h2 class="mt-2 text-lg font-extrabold leading-snug">{video.title}</h2>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

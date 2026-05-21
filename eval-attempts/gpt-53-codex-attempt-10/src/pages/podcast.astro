@@ -1,0 +1,45 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getLatestPodcastEpisodes } from '../lib/content';
+import { formatPolishDate, trimDescription } from '../lib/format';
+
+const episodes = await getLatestPodcastEpisodes(12);
+---
+
+<MainLayout
+  title="Podcast | Przeprogramowani.pl"
+  description="Ostatnie odcinki podcastu Przeprogramowani pobierane automatycznie z RSS."
+  currentPath="/podcast"
+>
+  <section class="rounded-3xl border border-[var(--border)] bg-[#0d1a2d] p-7 sm:p-10">
+    <p class="soft-label">Podcast</p>
+    <h1 class="mt-2 text-4xl font-bold">Ostatnie odcinki</h1>
+    <p class="mt-4 max-w-3xl text-[var(--text-soft)]">
+      Lista jest pobierana dynamicznie z oficjalnego RSS, dzięki czemu po wdrożeniu na Cloudflare widzisz aktualne publikacje.
+    </p>
+  </section>
+
+  <section class="mt-8 grid gap-4">
+    {
+      episodes.map((episode, index) => (
+        <article class="card rounded-2xl p-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--text-soft)]">
+            <span>#{index + 1}</span>
+            <span>{formatPolishDate(episode.publishedAt)}</span>
+            {episode.duration ? <span>Czas: {episode.duration}</span> : null}
+          </div>
+          <h2 class="mt-3 text-xl font-semibold">{episode.title}</h2>
+          <p class="mt-3 text-sm leading-relaxed text-[var(--text-soft)]">{trimDescription(episode.description, 320)}</p>
+          <a
+            href={episode.link}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-4 inline-block text-sm font-semibold text-[var(--accent-2)]"
+          >
+            Otwórz odcinek
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</MainLayout>

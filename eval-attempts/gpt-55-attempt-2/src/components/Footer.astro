@@ -1,0 +1,35 @@
+---
+import { navItems } from "../data/site";
+---
+
+<footer class="border-t border-neutral-200 bg-neutral-950 text-white">
+  <div class="section-shell grid gap-10 py-12 md:grid-cols-[1.3fr_1fr_1fr]">
+    <div>
+      <div class="mb-4 flex items-center gap-3">
+        <span class="grid size-10 place-items-center rounded-sm bg-white text-sm font-black text-neutral-950">
+          &lt;/&gt;
+        </span>
+        <span class="font-semibold">Przeprogramowani.pl</span>
+      </div>
+      <p class="max-w-md text-sm leading-6 text-neutral-300">
+        Szersze spojrzenie na programowanie: kursy, podcasty, YouTube i narzędzia dla programistów, którzy chcą świadomie rozwijać swój warsztat w epoce AI.
+      </p>
+    </div>
+    <div>
+      <h2 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-400">Nawigacja</h2>
+      <div class="grid gap-3">
+        {navItems.map((item) => <a class="text-sm text-neutral-300 hover:text-white" href={item.href}>{item.label}</a>)}
+      </div>
+    </div>
+    <div>
+      <h2 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-400">Kontakt</h2>
+      <a class="text-sm text-neutral-300 hover:text-white" href="mailto:kontakt@przeprogramowani.pl">
+        kontakt@przeprogramowani.pl
+      </a>
+      <div class="mt-5 flex gap-3 text-sm">
+        <a class="text-neutral-300 hover:text-white" href="https://www.youtube.com/@Przeprogramowani">YouTube</a>
+        <a class="text-neutral-300 hover:text-white" href="https://przeprogramowani.substack.com/">Newsletter</a>
+      </div>
+    </div>
+  </div>
+</footer>

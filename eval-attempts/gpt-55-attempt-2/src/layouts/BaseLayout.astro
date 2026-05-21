@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://przeprogramowani.pl");
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://cdn.prod.website-files.com" />
+    <link rel="preconnect" href="https://i3.ytimg.com" />
+    <link rel="icon" href="https://przeprogramowani.pl/img/logo.png" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen text-neutral-950 antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

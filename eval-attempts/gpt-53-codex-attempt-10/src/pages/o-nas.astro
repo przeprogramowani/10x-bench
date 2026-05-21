@@ -1,0 +1,60 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { aboutData } from '../lib/content';
+---
+
+<MainLayout
+  title="O nas | Przeprogramowani.pl"
+  description="Poznaj Przeprogramowanych: misję projektu, założycieli i kierunki rozwoju społeczności developerów."
+  currentPath="/o-nas"
+>
+  <section class="rounded-3xl border border-[var(--border)] bg-[#0d1a2d] p-7 sm:p-10">
+    <p class="soft-label">O nas</p>
+    <h1 class="mt-2 text-4xl font-bold">{aboutData.tagline}</h1>
+    <p class="mt-5 max-w-3xl text-base leading-relaxed text-[var(--text-soft)] sm:text-lg">
+      {aboutData.mission}
+    </p>
+    <div class="mt-7 flex flex-wrap gap-4 text-sm text-[var(--text-soft)]">
+      <span class="rounded-xl border border-[var(--border)] px-4 py-2">Start projektu: {aboutData.founded}</span>
+      <span class="rounded-xl border border-[var(--border)] px-4 py-2">Fokus: edukacja technologiczna i AI</span>
+      <span class="rounded-xl border border-[var(--border)] px-4 py-2">Forma: kursy, podcast, YouTube</span>
+    </div>
+  </section>
+
+  <section class="mt-10">
+    <p class="soft-label">Założyciele</p>
+    <div class="mt-4 grid gap-5 md:grid-cols-2">
+      {
+        aboutData.founders.map((founder) => (
+          <article class="card rounded-2xl p-6">
+            <h2 class="text-2xl font-bold">{founder.name}</h2>
+            <p class="mt-1 text-sm font-semibold text-[var(--accent-2)]">{founder.role}</p>
+            <p class="mt-4 text-sm leading-relaxed text-[var(--text-soft)]">{founder.bio}</p>
+            <a
+              href={founder.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-5 inline-block text-sm font-semibold text-[var(--accent)]"
+            >
+              Profil LinkedIn
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-10 rounded-3xl border border-[var(--border)] bg-[#0d1a2d] p-7 sm:p-10">
+    <p class="soft-label">Co robimy</p>
+    <ul class="mt-4 grid gap-3 pl-5 text-[var(--text-soft)] sm:grid-cols-2">
+      {
+        aboutData.highlights.map((item) => (
+          <li class="marker:text-[var(--accent)]">{item}</li>
+        ))
+      }
+    </ul>
+    <p class="mt-7 text-sm text-[var(--text-soft)]">
+      Kontakt: <a class="font-semibold text-white" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+    </p>
+  </section>
+</MainLayout>

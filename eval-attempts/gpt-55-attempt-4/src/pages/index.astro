@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroShowcase from "../components/HeroShowcase";
+import { courses, externalLinks, podcastEpisodes, sourceNotes, youtubeVideos } from "../data/site";
+---
+
+<BaseLayout title="Przeprogramowani - edukacja technologiczna w epoce AI" description="Nowoczesna strona projektu Przeprogramowani.pl: kursy, podcast, YouTube i program 10xDevs.">
+  <HeroShowcase client:load />
+
+  <section id="kursy" class="bg-paper py-20">
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Programy edukacyjne</p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-normal sm:text-5xl">Kursy dla programistów, którzy chcą pracować świadomie.</h2>
+        <p class="mt-5 text-lg leading-8 text-graphite/78">
+          Przeprogramowani łączą techniczny konkret, praktykę projektową i coraz większy nacisk na rozsądne użycie generatywnej AI w pracy developera.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-5 lg:grid-cols-3">
+        {courses.map((course) => (
+          <article class="group flex min-h-[420px] flex-col rounded-lg border border-ink/10 bg-white p-6 shadow-soft transition hover:-translate-y-1">
+            <div class:list={["mb-6 h-2 w-20 rounded-full", course.accent]}></div>
+            <p class="font-mono text-xs font-bold uppercase tracking-[0.16em] text-graphite/56">{course.label}</p>
+            <h3 class="mt-3 font-display text-3xl font-extrabold">{course.title}</h3>
+            <p class="mt-4 leading-7 text-graphite/74">{course.summary}</p>
+            <ul class="mt-6 grid gap-2 text-sm font-semibold text-graphite">
+              {course.details.map((detail) => (
+                <li class="flex items-center gap-2">
+                  <span class:list={["size-2 rounded-full", course.accent]}></span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+            <a href={course.href} class="focus-ring mt-auto inline-flex items-center justify-between rounded-md bg-ink px-4 py-3 font-bold text-paper transition group-hover:bg-ember">
+              Szczegóły
+              <span aria-hidden="true">-&gt;</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+      <div>
+        <p class="eyebrow">Media</p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-normal">Oglądaj i słuchaj najnowszych materiałów.</h2>
+        <p class="mt-5 leading-7 text-graphite/74">
+          Strona zbiera najnowsze odcinki podcastu i filmy promowane na Przeprogramowani.pl, żeby szybciej wejść w aktualne tematy: AI w kodowaniu, architektura, frontend i rozwój zawodowy.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/podcast" class="focus-ring rounded-md bg-ink px-4 py-3 text-sm font-bold text-paper">Podcast</a>
+          <a href="/youtube" class="focus-ring rounded-md border border-ink/12 px-4 py-3 text-sm font-bold">YouTube</a>
+        </div>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="rounded-lg border border-ink/10 bg-paper p-5">
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.16em] text-ember">Ostatni podcast</p>
+          <h3 class="mt-3 font-display text-2xl font-bold">{podcastEpisodes[0].title}</h3>
+          <p class="mt-2 text-sm font-semibold text-graphite/56">{podcastEpisodes[0].date} / {podcastEpisodes[0].duration}</p>
+          <p class="mt-4 leading-7 text-graphite/74">{podcastEpisodes[0].summary}</p>
+          <a href={externalLinks.podcast} class="focus-ring mt-5 inline-flex rounded-md bg-white px-4 py-3 text-sm font-bold">Posłuchaj</a>
+        </article>
+        <article class="overflow-hidden rounded-lg border border-ink/10 bg-ink text-paper">
+          <img src={`https://i.ytimg.com/vi/${youtubeVideos[0].id}/hqdefault.jpg`} alt={youtubeVideos[0].title} class="h-48 w-full object-cover" loading="lazy" />
+          <div class="p-5">
+            <p class="font-mono text-xs font-bold uppercase tracking-[0.16em] text-citron">Najnowsze YouTube</p>
+            <h3 class="mt-3 font-display text-2xl font-bold">{youtubeVideos[0].title}</h3>
+            <a href={`https://www.youtube.com/watch?v=${youtubeVideos[0].id}`} class="focus-ring mt-5 inline-flex rounded-md bg-citron px-4 py-3 text-sm font-bold text-ink">Obejrzyj</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-pine py-20 text-paper">
+    <div class="container-page grid gap-10 md:grid-cols-[1fr_0.8fr]">
+      <div>
+        <p class="eyebrow text-citron">Newsletter</p>
+        <h2 class="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-normal">Co tydzień 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus.</h2>
+      </div>
+      <div class="rounded-lg border border-white/14 bg-white/8 p-6">
+        <p class="leading-7 text-paper/76">
+          Format 3-2-1 jest stałym rytmem Przeprogramowanych: krótka, selektywna porcja linków, tematów i inspiracji na dobry start weekendu.
+        </p>
+        <a href={externalLinks.newsletter} class="focus-ring mt-6 inline-flex rounded-md bg-citron px-5 py-3 font-bold text-ink">Zapisz się za darmo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-ink/10 bg-paper py-8">
+    <div class="container-page flex flex-wrap gap-2 text-xs text-graphite/58">
+      <span class="font-bold text-graphite">Źródła treści:</span>
+      {sourceNotes.map((source) => <span>{source}</span>)}
+    </div>
+  </section>
+</BaseLayout>

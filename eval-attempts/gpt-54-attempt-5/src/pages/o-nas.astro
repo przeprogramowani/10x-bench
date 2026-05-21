@@ -1,0 +1,117 @@
+---
+import FounderCard from '../components/FounderCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteData } from '../lib/site-data';
+
+const site = await getSiteData();
+const values = [
+  {
+    title: 'Technika z kontekstem biznesowym',
+    text: 'Przeprogramowani podkreślają, że programista powinien rozumieć nie tylko kod, ale też architekturę, produkt i wpływ decyzji technicznych na biznes.',
+  },
+  {
+    title: 'Rozwój oparty o praktykę',
+    text: 'Kursy i materiały są osadzone w realnych scenariuszach produkcyjnych: quality engineering, CI/CD, utrzymanie aplikacji, TypeScript i AI workflows.',
+  },
+  {
+    title: 'Komunikacja i dojrzałość zawodowa',
+    text: 'Obok deep-dive’ów technicznych pojawiają się rozmowy o karierze, rozwoju, nauce i świadomym podejmowaniu decyzji inżynierskich.',
+  },
+];
+---
+
+<BaseLayout
+  title="O nas | Przeprogramowani.pl"
+  description="Strona O nas projektu Przeprogramowani.pl z aktualnym opisem działalności, sylwetkami założycieli i partnerami."
+  currentPath="/o-nas"
+>
+  <section class="section-wrap pt-8">
+    <div class="mx-auto max-w-7xl">
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="surface-dark rounded-[2.3rem] px-6 py-8 md:px-10 md:py-12">
+          <p class="eyebrow text-white/70">O nas</p>
+          <h1 class="mt-5 max-w-3xl font-display text-4xl leading-[0.98] text-white md:text-6xl">
+            {site.about.title}
+          </h1>
+          <div class="mt-6 space-y-5 text-lg leading-8 text-white/78">
+            {site.about.description.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div class="surface rounded-[2rem] p-6">
+            <p class="eyebrow">Historia</p>
+            <p class="mt-4 font-display text-4xl text-[var(--color-ink)]">7 lat</p>
+            <p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">na rynku edukacji technologicznej.</p>
+          </div>
+          <div class="surface rounded-[2rem] p-6">
+            <p class="eyebrow">Oferta</p>
+            <p class="mt-4 font-display text-4xl text-[var(--color-ink)]">3 obszary</p>
+            <p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+              kursy premium, treści media i programy rozwojowe.
+            </p>
+          </div>
+          <div class="surface rounded-[2rem] p-6">
+            <p class="eyebrow">Kontakt</p>
+            <p class="mt-4 font-display text-2xl text-[var(--color-ink)]">kontakt@przeprogramowani.pl</p>
+            <p class="mt-3 text-sm leading-6 text-[var(--color-muted)]">adres wskazany na oficjalnej stronie O nas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeading
+        eyebrow="Założyciele"
+        title="Ludzie stojący za Przeprogramowani.pl"
+        description="Aktualny opis działalności założycieli został zebrany z oficjalnej strony O nas projektu."
+      />
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {site.about.founders.map((founder) => <FounderCard founder={founder} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeading
+        eyebrow="Jak pracują"
+        title="Edukacja, która nie zatrzymuje się na tutorialach."
+        description="Projekt łączy techniczne deep-dive’y z tematami kariery, rozwoju i odpowiedzialnego budowania oprogramowania."
+      />
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {values.map((value) => (
+          <article class="surface rounded-[2rem] p-6 md:p-8">
+            <h3 class="font-display text-2xl text-[var(--color-ink)]">{value.title}</h3>
+            <p class="mt-4 text-base leading-7 text-[var(--color-muted)]">{value.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap pb-20">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeading
+        eyebrow="Partnerzy"
+        title="Współpraca z firmami, które budują nowoczesne produkty."
+        description="Na oficjalnej stronie projektu widoczna jest lista partnerów z obszaru software development, platform engineeringu i consultingu."
+      />
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        {site.about.partners.map((partner) => (
+          <span class="rounded-full border border-black/10 bg-white/80 px-4 py-3 text-sm font-semibold text-[var(--color-ink)] shadow-[0_10px_24px_rgba(15,23,32,0.06)]">
+            {partner}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

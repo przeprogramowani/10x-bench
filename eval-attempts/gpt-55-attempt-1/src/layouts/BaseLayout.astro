@@ -1,0 +1,51 @@
+---
+import Header from "../components/Header";
+import { navigation } from "../data/site";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://przeprogramowani-modern.pages.dev");
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-paper font-sans antialiased">
+    <Header currentPath={Astro.url.pathname} client:load />
+    <main>
+      <slot />
+    </main>
+    <footer class="border-t border-ink/10 bg-white py-10">
+      <div class="page-shell grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-start">
+        <div>
+          <a href="/" class="focus-ring inline-flex items-center gap-3 rounded-sm">
+            <span class="grid h-9 w-9 place-items-center rounded-md bg-ink text-sm font-black text-lime">&lt;/&gt;</span>
+            <span class="font-display text-base font-extrabold">Przeprogramowani</span>
+          </a>
+          <p class="mt-4 max-w-lg text-sm leading-6 text-ink/65">
+            Szersze spojrzenie na programowanie: technologia, biznes, rozwój i praktyczne wykorzystanie AI w pracy programisty.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 md:justify-end">
+          {navigation.map((item) => (
+            <a href={item.href} class="focus-ring rounded-md px-3 py-2 text-sm font-semibold text-ink/70 hover:bg-ink/5 hover:text-ink">
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+---
+import LatestVideos from "../components/LatestVideos.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="YouTube - Przeprogramowani.pl"
+  description="Najnowsze filmy Przeprogramowanych o AI, agentach, Claude Code i produkcyjnym programowaniu."
+>
+  <section class="border-b border-neutral-200 bg-white py-20 md:py-28">
+    <div class="section-shell grid gap-10 md:grid-cols-[1fr_360px] md:items-end">
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-orange-600">YouTube</p>
+        <h1 class="max-w-4xl text-balance text-4xl font-black tracking-tight md:text-6xl">
+          Praktyczne wideo o AI, narzędziach i współczesnym developmencie.
+        </h1>
+        <p class="mt-6 max-w-3xl text-lg leading-8 text-neutral-700">
+          Kanał Przeprogramowanych pokazuje realne workflow z agentami AI, Claude Code, doborem modeli oraz budowaniem MVP z kontrolą nad jakością.
+        </p>
+      </div>
+      <a
+        href="https://www.youtube.com/@Przeprogramowani"
+        class="focus-ring rounded-sm bg-neutral-950 p-6 text-white transition hover:bg-orange-600"
+      >
+        <p class="text-sm font-semibold uppercase tracking-[0.16em] text-white/70">Kanał</p>
+        <p class="mt-4 text-4xl font-black">20k+</p>
+        <p class="mt-2 text-sm leading-6 text-white/80">subskrybentów według publicznego profilu LinkedIn Przeprogramowanych.</p>
+      </a>
+    </div>
+  </section>
+  <section class="py-20">
+    <SectionHeading
+      eyebrow="Ostatnie filmy"
+      title="Aktualne publikacje z kanału."
+      description="Te tytuły i miniatury pochodzą z sekcji filmów i podcastów na stronie Przeprogramowani.pl."
+    />
+    <LatestVideos />
+  </section>
+</BaseLayout>

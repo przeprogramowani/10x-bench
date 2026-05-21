@@ -1,0 +1,65 @@
+---
+import { stats } from "../data/site";
+---
+
+<section class="overflow-hidden border-b border-neutral-200 bg-[#f8f7f3]">
+  <div class="section-shell grid min-h-[calc(88svh-64px)] items-center gap-8 py-9 lg:grid-cols-[0.92fr_1.08fr] lg:py-10">
+    <div>
+      <p class="mb-5 inline-flex rounded-sm bg-orange-100 px-3 py-1 text-sm font-semibold text-orange-800">
+        Nowość - maj 2026
+      </p>
+      <h1 class="text-balance text-5xl font-black tracking-tight text-neutral-950 md:text-6xl">
+        10xDevs 3.0
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-8 text-neutral-700 md:text-xl">
+        Nowe oblicze programowania z wykorzystaniem Generative AI. Praktyczne workflow dla developerów, którzy chcą świadomie używać agentów AI w całym cyklu tworzenia oprogramowania.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="https://www.10xdevs.pl/"
+          class="focus-ring inline-flex justify-center rounded-sm bg-neutral-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+        >
+          Zobacz program
+        </a>
+        <a
+          href="#kursy"
+          class="focus-ring inline-flex justify-center rounded-sm border border-neutral-300 bg-white px-5 py-3 text-sm font-bold text-neutral-950 transition hover:border-neutral-950"
+        >
+          Porównaj kursy
+        </a>
+      </div>
+      <div class="mt-8 hidden grid-cols-4 gap-2 sm:grid">
+        {
+          stats.map((stat) => (
+            <div class="rounded-sm border border-neutral-200 bg-white p-3 shadow-sm">
+              <div class="text-xl font-black text-neutral-950">{stat.value}</div>
+              <div class="mt-1 text-xs leading-4 text-neutral-600">{stat.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="relative">
+      <img
+        class="aspect-[21/9] w-full rounded-sm object-cover object-top shadow-2xl ring-1 ring-neutral-950/10 md:aspect-[16/10] lg:aspect-[4/3]"
+        src="https://cdn.prod.website-files.com/698b104fda97d1c7b03d1f59/698eee61bd0cba7404e03d70_hero-image-webp.webp"
+        alt="Wizualizacja programu 10xDevs"
+        loading="eager"
+      />
+      <div class="absolute bottom-5 left-5 right-5 hidden gap-3 rounded-sm bg-white/90 p-4 backdrop-blur md:grid md:grid-cols-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Start</p>
+          <p class="mt-1 font-black">18.05</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Format</p>
+          <p class="mt-1 font-black">5+1 tygodni</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">Cel</p>
+          <p class="mt-1 font-black">AI-native workflow</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

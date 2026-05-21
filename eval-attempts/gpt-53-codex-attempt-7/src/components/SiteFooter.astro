@@ -1,0 +1,24 @@
+---
+import { site } from '../lib/site';
+---
+
+<footer class="border-t border-white/10 bg-slate-950/80">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 text-sm text-white/70 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="font-display text-base font-semibold text-white">{site.name}</p>
+      <p>{site.slogan}</p>
+    </div>
+
+    <nav class="flex flex-wrap gap-x-4 gap-y-2">
+      <a href="/o-nas" class="transition hover:text-white">O nas</a>
+      <a href="/podcast" class="transition hover:text-white">Podcast</a>
+      <a href="/youtube" class="transition hover:text-white">YouTube</a>
+      <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="transition hover:text-white">
+        10xDevs
+      </a>
+      <a href={`mailto:${site.contactEmail}`} class="transition hover:text-white">
+        {site.contactEmail}
+      </a>
+    </nav>
+  </div>
+</footer>

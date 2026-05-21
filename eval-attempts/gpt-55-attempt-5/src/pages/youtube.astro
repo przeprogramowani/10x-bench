@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { youtubeVideos } from '../data/site';
+---
+
+<BaseLayout title="YouTube - Przeprogramowani.pl">
+  <section class="noise px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <p class="text-sm font-semibold uppercase text-coral">YouTube</p>
+      <h1 class="mt-4 text-5xl font-black leading-none sm:text-7xl">Live coding, AI i decyzje techniczne w praktyce.</h1>
+      <p class="mt-7 max-w-3xl text-lg leading-8 text-ink/70">
+        Najnowsze nagrania z kanału Przeprogramowani: agenci AI, benchmarki, product building i inżynieryjna praca z narzędziami nowej generacji.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
+      {youtubeVideos.map((video) => (
+        <a class="focus-ring overflow-hidden rounded-lg border border-ink/10 bg-white transition hover:-translate-y-1 hover:border-ink/30" href={video.href} rel="noreferrer" target="_blank">
+          <img alt="" class="aspect-video w-full object-cover" loading="lazy" src={video.image} />
+          <div class="p-6">
+            <p class="text-sm text-ink/55">{video.date} · {video.views} wyświetleń</p>
+            <h2 class="mt-2 text-2xl font-black leading-tight">{video.title}</h2>
+            <span class="mt-6 inline-flex font-semibold text-coral">Otwórz na YouTube</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

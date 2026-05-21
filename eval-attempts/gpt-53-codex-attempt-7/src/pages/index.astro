@@ -1,0 +1,133 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { courses, heroCourse, proofPoints, site, sourceFootnote } from '../lib/site';
+import { getPodcastEpisodes, getYouTubeVideos } from '../lib/feeds';
+import { formatDate } from '../lib/format';
+
+const [episodes, videos] = await Promise.all([getPodcastEpisodes(3), getYouTubeVideos(3)]);
+---
+
+<MainLayout title="Przeprogramowani.pl | Edukacja technologiczna" description={site.description} currentPath={Astro.url.pathname}>
+  <section class="enter-up relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-fuchsia-950/40 p-8 md:p-12">
+    <div class="absolute -right-8 -top-10 h-40 w-40 rounded-full bg-cyan-400/25 blur-3xl"></div>
+    <div class="absolute -bottom-10 left-12 h-32 w-32 rounded-full bg-orange-400/25 blur-3xl"></div>
+
+    <p class="font-display text-xs uppercase tracking-[0.3em] text-cyan-200/90">Hero Program</p>
+    <h1 class="font-display mt-4 max-w-3xl text-4xl font-bold leading-tight text-white md:text-6xl">
+      {heroCourse.name}
+      <span class="block bg-gradient-to-r from-orange-300 via-fuchsia-300 to-cyan-200 bg-clip-text text-transparent">
+        {heroCourse.tagline}
+      </span>
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-white/85">{heroCourse.description}</p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href={heroCourse.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 transition hover:translate-y-[-1px]"
+      >
+        Zobacz 10xDevs
+      </a>
+      <a href="/o-nas" class="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+        Poznaj nas
+      </a>
+    </div>
+  </section>
+
+  <section class="enter-up-delay-1 mt-8 grid gap-3 md:grid-cols-3">
+    {
+      proofPoints.map((item) => (
+        <div class="card-surface rounded-2xl p-4 text-sm font-semibold text-white/90">{item}</div>
+      ))
+    }
+  </section>
+
+  <section class="enter-up-delay-1 mt-14">
+    <div class="mb-6 flex items-end justify-between gap-3">
+      <h2 class="font-display text-3xl font-bold text-white">Programy edukacyjne</h2>
+      <p class="text-sm text-white/60">Praktyka i rozwój kompetencji</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        courses.map((course) => (
+          <article class="card-surface group rounded-3xl p-6">
+            <div class={`h-1.5 w-24 rounded-full bg-gradient-to-r ${course.accentClass}`}></div>
+            <p class="mt-4 text-xs uppercase tracking-[0.24em] text-cyan-200/80">{course.tagline}</p>
+            <h3 class="font-display mt-3 text-2xl font-bold text-white">{course.name}</h3>
+            <p class="mt-4 text-white/75">{course.description}</p>
+            <a
+              href={course.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Szczegóły
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="enter-up-delay-2 mt-14 grid gap-8 lg:grid-cols-2">
+    <article class="card-surface rounded-3xl p-6">
+      <div class="mb-5 flex items-center justify-between">
+        <h2 class="font-display text-2xl font-bold text-white">Podcast</h2>
+        <a href="/podcast" class="text-sm font-semibold text-cyan-200 hover:text-cyan-100">Wszystkie odcinki</a>
+      </div>
+      <ul class="space-y-4">
+        {
+          episodes.map((episode) => (
+            <li class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <p class="text-xs uppercase tracking-wide text-white/60">{formatDate(episode.publishedAt)}</p>
+              <a href={episode.url} target="_blank" rel="noopener noreferrer" class="mt-2 block font-semibold text-white hover:text-cyan-100">
+                {episode.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+
+    <article class="card-surface rounded-3xl p-6">
+      <div class="mb-5 flex items-center justify-between">
+        <h2 class="font-display text-2xl font-bold text-white">YouTube</h2>
+        <a href="/youtube" class="text-sm font-semibold text-cyan-200 hover:text-cyan-100">Wszystkie filmy</a>
+      </div>
+      <ul class="space-y-4">
+        {
+          videos.map((video) => (
+            <li class="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+              <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+                <img src={video.thumbnail} alt={video.title} loading="lazy" class="aspect-video w-full object-cover" />
+                <div class="p-4">
+                  <p class="text-xs uppercase tracking-wide text-white/60">{formatDate(video.publishedAt)}</p>
+                  <p class="mt-2 font-semibold text-white hover:text-cyan-100">{video.title}</p>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </article>
+  </section>
+
+  <section class="mt-14 rounded-3xl border border-white/20 bg-slate-900/80 p-6 md:p-8">
+    <h2 class="font-display text-2xl font-bold text-white">O nas</h2>
+    <p class="mt-4 max-w-3xl text-white/80">
+      Tworzymy nowoczesne programy edukacyjne dla programistów. Łączymy praktykę inżynierską, aktualne trendy AI i
+      doświadczenie zdobywane podczas pracy nad realnymi produktami.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="/o-nas" class="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-slate-900">Przejdź do strony O nas</a>
+      <a href={site.social.newsletter} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white">
+        Newsletter
+      </a>
+    </div>
+    <p class="mt-5 text-xs text-white/55">{sourceFootnote}</p>
+  </section>
+</MainLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PodcastCard from "../components/PodcastCard.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import { podcasts } from "../lib/content";
+---
+
+<BaseLayout
+  title="Podcast - Przeprogramowani"
+  description="Ostatnie odcinki podcastów Przeprogramowani i Opanuj.AI: rozmowy o AI, programowaniu, frontendzie i karierze developera."
+>
+  <section class="surface-grid border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeader
+        eyebrow="Podcast"
+        title="Rozmowy o programowaniu, AI i dojrzewaniu w IT"
+        copy="Na jednej stronie zbieramy najnowsze odcinki Opanuj.AI Podcast oraz rozmowy Przeprogramowani ft. Gość."
+      />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {podcasts.map((episode) => <PodcastCard episode={episode} />)}
+    </div>
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="focus-ring rounded-md bg-mint px-4 py-2 text-sm font-extrabold text-ink hover:bg-white">
+        Spotify: Przeprogramowani
+      </a>
+      <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" class="focus-ring rounded-md border border-white/15 px-4 py-2 text-sm font-extrabold text-white hover:bg-white/10">
+        Spotify: Opanuj.AI
+      </a>
+    </div>
+  </section>
+</BaseLayout>

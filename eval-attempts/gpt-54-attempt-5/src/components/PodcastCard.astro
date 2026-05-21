@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  duration: string;
+  url: string;
+  series?: string;
+}
+
+const { title, description, duration, url, series } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noreferrer"
+  class="surface group flex h-full flex-col rounded-[2rem] p-6 transition-transform duration-200 hover:-translate-y-1"
+>
+  <div class="flex items-center justify-between gap-4">
+    <span class="eyebrow !mt-0">{series ?? 'Podcast'}</span>
+    {duration ? (
+      <span class="rounded-full bg-[rgba(16,19,26,0.06)] px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-muted)]">
+        {duration}
+      </span>
+    ) : null}
+  </div>
+
+  <h3 class="mt-5 font-display text-2xl leading-snug text-[var(--color-ink)]">{title}</h3>
+  <p class="mt-4 text-base leading-7 text-[var(--color-muted)]">{description}</p>
+
+  <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
+    Otwórz odcinek
+    <span aria-hidden="true">-></span>
+  </span>
+</a>

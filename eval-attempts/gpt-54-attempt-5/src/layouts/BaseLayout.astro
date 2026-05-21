@@ -1,0 +1,113 @@
+---
+import MobileNav from '../components/MobileNav';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath: string;
+}
+
+const { title, description, currentPath } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Start' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#10131a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-grid min-h-screen">
+      <header class="sticky top-0 z-40">
+        <div class="mx-auto max-w-7xl px-4 py-4 md:px-8">
+          <div class="surface flex items-center justify-between rounded-[1.7rem] px-4 py-3 md:px-6">
+            <a href="/" class="inline-flex items-center gap-3 text-[var(--color-ink)]">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-panel)] text-sm font-extrabold text-white">
+                &lt;/&gt;
+              </span>
+              <span>
+                <span class="block font-display text-xl leading-none">Przeprogramowani.pl</span>
+                <span class="mt-1 block text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                  Szersze spojrzenie na programowanie
+                </span>
+              </span>
+            </a>
+
+            <nav class="hidden items-center gap-2 md:flex" aria-label="Główna nawigacja">
+              {navLinks.map((link) => {
+                const active = currentPath === link.href;
+
+                return (
+                  <a
+                    href={link.href}
+                    class:list={[
+                      'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+                      active
+                        ? 'bg-[var(--color-panel)] text-white'
+                        : 'text-[var(--color-ink)] hover:bg-black/5',
+                    ]}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+              <a href="/#kursy" class="btn-primary ml-2 text-sm">
+                Kursy
+              </a>
+            </nav>
+
+            <div class="md:hidden">
+              <MobileNav client:load currentPath={currentPath} links={navLinks} />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="pb-10 pt-6">
+        <div class="mx-auto max-w-7xl px-4 md:px-8">
+          <div class="surface rounded-[2rem] px-6 py-8 md:px-8">
+            <div class="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+              <div>
+                <p class="eyebrow">Przeprogramowani.pl</p>
+                <h2 class="mt-4 font-display text-3xl text-[var(--color-ink)] md:text-4xl">
+                  Kursy, podcast i YouTube dla ambitnych developerów.
+                </h2>
+                <p class="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)]">
+                  Strona opiera się na aktualnych informacjach z oficjalnych serwisów Przeprogramowanych,
+                  10xDevs, Opanuj Frontend, Opanuj TypeScript oraz oficjalnego feedu YouTube kanału
+                  Przeprogramowani.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-3 md:justify-end">
+                <a class="btn-secondary text-sm" href="/podcast">Podcast</a>
+                <a class="btn-secondary text-sm" href="/youtube">YouTube</a>
+                <a class="btn-primary text-sm" href="https://www.10xdevs.pl/" target="_blank" rel="noreferrer">
+                  10xDevs
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

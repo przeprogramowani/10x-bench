@@ -1,0 +1,20 @@
+---
+type Props = {
+  eyebrow?: string;
+  title: string;
+  text?: string;
+  light?: boolean;
+};
+
+const { eyebrow, title, text, light = false } = Astro.props;
+---
+
+<div class="max-w-3xl">
+  {eyebrow && (
+    <p class={`text-sm font-bold uppercase ${light ? "text-lime" : "text-fern"}`}>{eyebrow}</p>
+  )}
+  <h2 class={`mt-3 font-display text-3xl font-extrabold sm:text-4xl ${light ? "text-white" : "text-ink"}`}>
+    {title}
+  </h2>
+  {text && <p class={`mt-4 text-lg leading-8 ${light ? "text-white/70" : "text-ink/70"}`}>{text}</p>}
+</div>

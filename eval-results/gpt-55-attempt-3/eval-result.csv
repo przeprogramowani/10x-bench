@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,10min 28s,N/A,10min 28s
+Test run,21.05.2026 10:40,N/A,21.05.2026 10:40
+Local build,1,1,Build successful — astro build completed in ~5s with no errors
+Manual testing,1,1,Dev server running at localhost:4321; all pages (/ /o-nas /podcast /youtube) return 200 with working navigation/styles/content
+Tech stack,1,1,Astro 6.1.7 + React 19.2.5 + Tailwind CSS 4.2.2 + @astrojs/cloudflare configured in astro.config.mjs — exact match
+O nas page,0.5,1,Page exists and returns 200; Przemek includes DAZN/Cabify and Marcin includes SmartRecruiters; bios are simplified — missing course assignments (Opanuj JavaScript / 10xDevs), Open Source contributions, publications, and conference speaking details
+Podcast page,0.5,1,Both Przeprogramowani and Opanuj.AI podcasts displayed with real-looking episode data; Spotify show link buttons have wrong IDs — Przeprogramowani button uses 4qHUZJpeBK8Ij9e2wTVm2o (should be 3yVvOAXSYq6sQB02w4A4wo), Opanuj.AI button uses 3yVvOAXSYq6sQB02w4A4wo (should be 3D6LmchBdoqL2sWkQjvWOy)
+YouTube page,1,1,6 real Przeprogramowani videos with unique IDs; titles match expected channel content (AI/coding topics); no rick-roll or placeholder IDs detected
+Kursy section,1,1,Dedicated #kursy section on index; 10xDevs 3.0 prominently featured in hero with correct 10xdevs.pl URL; Opanuj Frontend and Opanuj TypeScript also listed with correct URLs
+Consistent UI,1,1,UI consistent across all pages — confirmed by user
+Responsive design,1,1,Fully responsive across screen sizes — confirmed by user
+SEO Tags,1,1,BaseLayout includes title/description/og:title/og:description/og:type/og:image meta tags; connected to all pages via layout; default title matches brand tagline
+Penalty,0,N/A,No penalty applied

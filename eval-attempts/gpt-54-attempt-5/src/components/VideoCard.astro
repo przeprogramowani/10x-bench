@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  thumbnail: string;
+  publishedAt: string;
+  views: number;
+}
+
+const { title, description, url, thumbnail, publishedAt, views } = Astro.props;
+
+const formatter = new Intl.DateTimeFormat('pl-PL', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+
+const viewFormatter = new Intl.NumberFormat('pl-PL');
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noreferrer"
+  class="surface group flex h-full flex-col overflow-hidden rounded-[2rem] transition-transform duration-200 hover:-translate-y-1"
+>
+  <div class="relative aspect-video overflow-hidden">
+    <img
+      src={thumbnail}
+      alt={title}
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+    />
+    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-5 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white">
+      YouTube
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col p-6">
+    <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-muted)]">
+      <span>{formatter.format(new Date(publishedAt))}</span>
+      <span>/</span>
+      <span>{viewFormatter.format(views)} wyświetleń</span>
+    </div>
+
+    <h3 class="mt-4 font-display text-2xl leading-snug text-[var(--color-ink)]">{title}</h3>
+    <p class="mt-4 text-base leading-7 text-[var(--color-muted)]">{description}</p>
+
+    <span class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
+      Obejrzyj film
+      <span aria-hidden="true">-></span>
+    </span>
+  </div>
+</a>

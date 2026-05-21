@@ -1,0 +1,33 @@
+---
+import type { Founder } from '../lib/site-data';
+
+interface Props {
+  founder: Founder;
+}
+
+const { founder } = Astro.props;
+---
+
+<article class="surface flex h-full flex-col rounded-[2rem] p-6 md:p-8">
+  <p class="eyebrow">{founder.role}</p>
+  <h3 class="mt-4 font-display text-2xl text-[var(--color-ink)]">{founder.name}</h3>
+  <p class="mt-4 text-base leading-7 text-[var(--color-muted)]">{founder.bio}</p>
+
+  <ul class="mt-6 flex flex-wrap gap-2">
+    {founder.focus.map((item) => (
+      <li class="rounded-full bg-[rgba(16,19,26,0.06)] px-3 py-2 text-sm font-semibold text-[var(--color-ink)]">
+        {item}
+      </li>
+    ))}
+  </ul>
+
+  <a
+    href={founder.link}
+    target="_blank"
+    rel="noreferrer"
+    class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-[var(--color-ink)] transition-colors hover:bg-black/5"
+  >
+    Profil LinkedIn
+    <span aria-hidden="true">-></span>
+  </a>
+</article>

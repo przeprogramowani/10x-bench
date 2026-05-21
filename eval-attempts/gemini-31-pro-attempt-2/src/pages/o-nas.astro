@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, BookOpen, Target, ArrowRight } from 'lucide-react';
+---
+
+<Layout title="O nas" description="Dowiedz się więcej o twórcach Przeprogramowani.pl">
+  <div class="bg-slate-50 min-h-screen py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h1 class="text-4xl font-extrabold text-slate-900 sm:text-5xl mb-4">
+          Cześć, tu <span class="text-blue-600">Przeprogramowani</span>
+        </h1>
+        <p class="text-xl text-slate-600">
+          Od 5 lat wspieramy polskich programistów w ciągłym rozwoju. Tworzymy miejsce, w którym praktyka spotyka się z najnowszymi trendami technologicznymi.
+        </p>
+      </div>
+
+      <!-- Nasza misja -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div class="p-10 md:p-12 flex flex-col justify-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold text-sm mb-6 w-max">
+              Nasza misja
+            </div>
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Praktyczna wiedza bez zbędnego owijania w bawełnę</h2>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+              Zauważyliśmy, że w polskim internecie brakuje zaawansowanych, praktycznych materiałów dla programistów, którzy chcą wejść na poziom "Senior". Naszą misją jest wypełnienie tej luki.
+            </p>
+            <p class="text-slate-600 leading-relaxed">
+              Tworzymy kursy (Opanuj Frontend, Opanuj TypeScript, 10xDevs), dzielimy się wiedzą w podcaście Opanuj.AI oraz publikujemy materiały wideo na YouTube. Wszystko po to, aby pomóc Ci stać się lepszym inżynierem.
+            </p>
+          </div>
+          <div class="bg-slate-100 p-10 flex items-center justify-center border-l border-slate-200">
+            <div class="grid grid-cols-2 gap-6 w-full">
+              <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">5+</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Lat na rynku</div>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">400+</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Kursantów OF</div>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">4k+</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Słuchaczy podcastu</div>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">10x</div>
+                <div class="text-sm font-medium text-slate-500 uppercase tracking-wide">Szybszy rozwój</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Co robimy -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Co u nas znajdziesz?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
+            <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mb-6">
+              <BookOpen className="w-7 h-7" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Kursy Premium</h3>
+            <p class="text-slate-600 mb-6 flex-grow">
+              Praktyczne szkolenia, takie jak Opanuj Frontend, Opanuj TypeScript czy nowość - 10xDevs. Autorskie programy nauczania i dziesiątki ćwiczeń.
+            </p>
+            <a href="/#kursy" class="text-indigo-600 font-semibold hover:text-indigo-800 flex items-center">
+              Sprawdź ofertę <ArrowRight className="ml-1 w-4 h-4" />
+            </a>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
+            <div class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+              <Users className="w-7 h-7" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Podcast Opanuj.AI</h3>
+            <p class="text-slate-600 mb-6 flex-grow">
+              Rozmawiamy o technologii, narzędziach sztucznej inteligencji i o tym, jak AI zmienia pracę programisty. Regularne dawki inspiracji.
+            </p>
+            <a href="/podcast" class="text-green-600 font-semibold hover:text-green-800 flex items-center">
+              Posłuchaj odcinków <ArrowRight className="ml-1 w-4 h-4" />
+            </a>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
+            <div class="w-14 h-14 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-6">
+              <Target className="w-7 h-7" />
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Kanał YouTube</h3>
+            <p class="text-slate-600 mb-6 flex-grow">
+              Wracamy z nową jakością! Nowe studio, rozdzielczość 4K i jeszcze lepsze materiały techniczne dla polskiej społeczności IT.
+            </p>
+            <a href="/youtube" class="text-red-600 font-semibold hover:text-red-800 flex items-center">
+              Odwiedź kanał <ArrowRight className="ml-1 w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

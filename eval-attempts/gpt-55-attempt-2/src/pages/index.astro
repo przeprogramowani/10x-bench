@@ -1,0 +1,27 @@
+---
+import CourseShowcase from "../components/CourseShowcase.astro";
+import FounderCards from "../components/FounderCards.astro";
+import Hero10x from "../components/Hero10x.astro";
+import MediaSwitcher from "../components/MediaSwitcher";
+import Partners from "../components/Partners.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Przeprogramowani.pl - nowoczesna edukacja technologiczna"
+  description="Kursy, podcasty i materiały Przeprogramowanych dla developerów pracujących z frontendem, TypeScriptem i AI."
+>
+  <Hero10x />
+  <CourseShowcase />
+  <section class="bg-white py-20">
+    <SectionHeading
+      eyebrow="O nas"
+      title="Łączymy świat programowania, biznesu i rozwoju."
+      description="Tworzymy treści, kursy i narzędzia, które pomagają programistom patrzeć szerzej: na architekturę, ludzi, produkt i własny rozwój."
+    />
+    <FounderCards />
+  </section>
+  <MediaSwitcher client:load />
+  <Partners />
+</BaseLayout>

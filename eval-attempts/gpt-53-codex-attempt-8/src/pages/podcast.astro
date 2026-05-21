@@ -1,0 +1,42 @@
+---
+import PodcastCard from '../components/PodcastCard.astro';
+import SectionLead from '../components/SectionLead.astro';
+import { getLatestPodcastEpisodes } from '../lib/feeds';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+
+const episodes = await getLatestPodcastEpisodes(9);
+
+const pageDescription =
+  'Podcast Przeprogramowanych z najnowszymi odcinkami pobieranymi z oficjalnego RSS.';
+---
+
+<Layout title="Przeprogramowani.pl - Podcast" description={pageDescription}>
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+    <SectionLead
+      eyebrow="Podcast"
+      title="Najnowsze odcinki Przeprogramowanych"
+      description="Lista jest aktualizowana na podstawie oficjalnego feedu RSS podcastu."
+    />
+
+    <div class="mb-8 rounded-2xl border border-cyan-200/20 bg-cyan-300/10 p-5 text-sm text-slate-100">
+      <p>
+        Słuchaj także bezpośrednio na
+        <a
+          href="https://podcasters.spotify.com/pod/show/opanujai"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="font-semibold text-cyan-200 hover:text-cyan-100"
+        >
+          Spotify for Creators
+        </a>
+        .
+      </p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {episodes.map((episode) => <PodcastCard episode={episode} />)}
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,118 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  aboutData,
+  courses,
+  getLatestPodcastEpisodes,
+  getLatestYouTubeVideos,
+  heroData,
+} from '../lib/content';
+import { formatPolishDate, trimDescription } from '../lib/format';
+
+const [episodes, videos] = await Promise.all([
+  getLatestPodcastEpisodes(3),
+  getLatestYouTubeVideos(3),
+]);
+---
+
+<MainLayout
+  title="Przeprogramowani.pl | Nowoczesna edukacja programistów"
+  description="Nowoczesny serwis projektu Przeprogramowani: O nas, Podcast, YouTube i kursy Opanuj Frontend, Opanuj TypeScript oraz 10xDevs."
+  currentPath="/"
+>
+  <section class="relative overflow-hidden rounded-3xl border border-[var(--border)] px-6 py-10 sm:px-9 sm:py-14">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_10%,rgba(0,210,198,0.24),transparent_38%),radial-gradient(circle_at_82%_28%,rgba(255,106,0,0.24),transparent_36%),linear-gradient(160deg,#101f36_0%,#0a1525_65%,#0a1220_100%)]"></div>
+    <p class="soft-label">{heroData.badge}</p>
+    <h1 class="mt-3 max-w-3xl text-4xl font-extrabold leading-tight sm:text-6xl">
+      {heroData.title} <span class="main-gradient">dla ambitnych developerów</span>
+    </h1>
+    <p class="mt-6 max-w-2xl text-base leading-relaxed text-[var(--text-soft)] sm:text-lg">
+      {heroData.subtitle}
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href={heroData.primaryCta.href} class="cta-button rounded-xl px-5 py-3" target="_blank" rel="noreferrer">
+        {heroData.primaryCta.label}
+      </a>
+      <a href={heroData.secondaryCta.href} class="secondary-button rounded-xl px-5 py-3 font-semibold">
+        {heroData.secondaryCta.label}
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="mb-6 flex items-end justify-between gap-4">
+      <div>
+        <p class="soft-label">Kursy</p>
+        <h2 class="mt-2 text-3xl font-bold">Programy edukacyjne</h2>
+      </div>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        courses.map((course) => (
+          <a href={course.href} target="_blank" rel="noreferrer" class="card block rounded-2xl p-6 transition hover:-translate-y-1">
+            <p class="soft-label">{course.label}</p>
+            <h3 class="mt-2 text-2xl font-bold">{course.name}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-[var(--text-soft)]">{course.description}</p>
+            <span class="mt-6 inline-block text-sm font-semibold text-[var(--accent-2)]">Przejdź do strony kursu</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-12 grid gap-8 lg:grid-cols-2">
+    <article>
+      <div class="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <p class="soft-label">Podcast</p>
+          <h2 class="mt-2 text-2xl font-bold">Ostatnie odcinki</h2>
+        </div>
+        <a href="/podcast" class="text-sm font-semibold text-[var(--accent-2)]">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-4">
+        {
+          episodes.map((episode) => (
+            <a href={episode.link} target="_blank" rel="noreferrer" class="card block rounded-2xl p-5 transition hover:border-[#35ddd4]">
+              <p class="text-xs text-[var(--text-soft)]">{formatPolishDate(episode.publishedAt)}</p>
+              <h3 class="mt-2 text-lg font-semibold">{episode.title}</h3>
+              <p class="mt-2 text-sm text-[var(--text-soft)]">{trimDescription(episode.description, 140)}</p>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article>
+      <div class="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <p class="soft-label">YouTube</p>
+          <h2 class="mt-2 text-2xl font-bold">Ostatnie filmy</h2>
+        </div>
+        <a href="/youtube" class="text-sm font-semibold text-[var(--accent-2)]">Zobacz wszystkie</a>
+      </div>
+      <div class="space-y-4">
+        {
+          videos.map((video) => (
+            <a href={video.link} target="_blank" rel="noreferrer" class="card block overflow-hidden rounded-2xl transition hover:border-[#35ddd4]">
+              <img src={video.thumbnail} alt={video.title} class="aspect-video w-full object-cover" loading="lazy" />
+              <div class="p-5">
+                <p class="text-xs text-[var(--text-soft)]">{formatPolishDate(video.publishedAt)}</p>
+                <h3 class="mt-2 text-lg font-semibold">{video.title}</h3>
+                <p class="mt-2 text-sm text-[var(--text-soft)]">{trimDescription(video.description, 120)}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+
+  <section class="mt-12 rounded-3xl border border-[var(--border)] bg-[#0d1a2d] p-7 sm:p-10">
+    <p class="soft-label">O projekcie</p>
+    <h2 class="mt-2 text-3xl font-bold">{aboutData.companyName}</h2>
+    <p class="mt-4 max-w-3xl leading-relaxed text-[var(--text-soft)]">{aboutData.mission}</p>
+    <a href="/o-nas" class="mt-6 inline-block text-sm font-semibold text-[var(--accent-2)]">
+      Poznaj zespół i kontekst projektu
+    </a>
+  </section>
+</MainLayout>

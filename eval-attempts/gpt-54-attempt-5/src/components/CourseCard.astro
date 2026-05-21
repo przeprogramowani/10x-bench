@@ -1,0 +1,70 @@
+---
+import type { Course } from '../lib/site-data';
+
+interface Props {
+  course: Course;
+  featured?: boolean;
+}
+
+const { course, featured = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    featured ? 'surface-dark text-white' : 'surface',
+    'group flex h-full flex-col rounded-[2rem] p-6 md:p-8',
+  ]}
+>
+  <div class="flex items-center justify-between gap-3">
+    <span
+      class="inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.18em]"
+      style={`background:${featured ? 'rgba(255,255,255,0.12)' : 'rgba(15,23,32,0.06)'}; color:${featured ? 'white' : 'var(--color-muted)'}`}
+    >
+      {course.tag}
+    </span>
+    <span
+      class="h-3 w-3 rounded-full"
+      style={`background:${course.accent}; box-shadow:0 0 0 10px color-mix(in srgb, ${course.accent} 18%, transparent);`}
+    />
+  </div>
+
+  <h3 class="mt-5 font-display text-2xl md:text-3xl">{course.name}</h3>
+  <p class:list={['mt-4 text-base leading-7', featured ? 'text-white/78' : 'text-[var(--color-muted)]']}>
+    {course.description}
+  </p>
+
+  <div class="mt-6 flex flex-wrap gap-2">
+    {course.stats.map((stat) => (
+      <span
+        class:list={[
+          'rounded-full px-3 py-2 text-sm font-semibold',
+          featured ? 'bg-[rgba(255,255,255,0.12)] text-white' : 'bg-[rgba(16,19,26,0.06)] text-[var(--color-ink)]',
+        ]}
+      >
+        {stat}
+      </span>
+    ))}
+  </div>
+
+  <ul class:list={['mt-8 space-y-3 text-sm leading-6', featured ? 'text-white/80' : 'text-[var(--color-muted)]']}>
+    {course.highlights.map((highlight) => (
+      <li class="flex gap-3">
+        <span class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full" style={`background:${course.accent}`} />
+        <span>{highlight}</span>
+      </li>
+    ))}
+  </ul>
+
+  <a
+    href={course.href}
+    target="_blank"
+    rel="noreferrer"
+    class:list={[
+      'mt-8 inline-flex w-fit items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform duration-200 group-hover:-translate-y-0.5',
+      featured ? 'bg-white text-[var(--color-panel)]' : 'bg-[var(--color-panel)] text-white',
+    ]}
+  >
+    Zobacz szczegóły
+    <span aria-hidden="true">-></span>
+  </a>
+</article>

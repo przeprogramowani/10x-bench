@@ -1,0 +1,89 @@
+---
+import SectionLead from '../components/SectionLead.astro';
+import { aboutFacts, aboutSummary, siteMeta } from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  {
+    title: 'Praktyka ponad teorię',
+    description:
+      'Materiały tworzymy z perspektywy codziennej pracy inżynierskiej: kod, architektura, wdrożenia i komunikacja w zespole.'
+  },
+  {
+    title: 'AI jako narzędzie, nie slogan',
+    description:
+      'Uczymy jak wykorzystywać generative AI tam, gdzie realnie poprawia tempo i jakość dostarczania oprogramowania.'
+  },
+  {
+    title: 'Długoterminowy rozwój',
+    description:
+      'Stawiamy na konsekwencję, proces i skalowalne nawyki zamiast krótkotrwałych trików.'
+  }
+];
+
+const pageDescription =
+  'O nas: Przeprogramowani to platforma edukacyjna założona przez Przemka Smyrdka i Marcina Czarkowskiego.';
+---
+
+<Layout title="Przeprogramowani.pl - O nas" description={pageDescription}>
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+    <SectionLead
+      eyebrow="O nas"
+      title="Budujemy edukację technologiczną dla ambitnych programistów"
+      description="Od lat pomagamy developerom przechodzić od dobrego kodu do dojrzałego software engineeringu - z nowoczesnym wsparciem AI."
+    />
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        aboutSummary.map((paragraph) => (
+          <article class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 text-sm leading-relaxed text-slate-200">
+            {paragraph}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        aboutFacts.map((fact) => (
+          <article class="rounded-2xl border border-cyan-200/20 bg-cyan-300/5 p-5">
+            <p class="text-xs uppercase tracking-[0.24em] text-cyan-200">{fact.label}</p>
+            <p class="mt-2 text-xl font-semibold text-white">{fact.value}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+    <SectionLead
+      eyebrow="Jak pracujemy"
+      title="Jasne standardy i wysoka jakość materiałów"
+      description="Programy i materiały projektujemy tak, żeby można je było od razu wykorzystać w realnej pracy developerskiej."
+    />
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {
+        values.map((value) => (
+          <article class="rounded-3xl border border-white/12 bg-slate-900/70 p-6">
+            <h3 class="text-xl font-semibold text-white">{value.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">{value.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-6xl px-4 pb-6 sm:px-6">
+    <div class="rounded-3xl border border-white/12 bg-gradient-to-r from-cyan-300/20 to-orange-300/20 p-8">
+      <h3 class="text-2xl font-bold text-white">Porozmawiajmy o współpracy</h3>
+      <p class="mt-3 max-w-2xl text-sm text-slate-100">
+        Pisz na
+        <a href={`mailto:${siteMeta.contactEmail}`} class="font-semibold text-cyan-200 hover:text-cyan-100"> {siteMeta.contactEmail} </a>
+        jeśli chcesz rozwijać zespół, produkt albo własne kompetencje.
+      </p>
+    </div>
+  </section>
+</Layout>

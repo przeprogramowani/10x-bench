@@ -1,0 +1,67 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { proofPoints, site, sourceFootnote } from '../lib/site';
+---
+
+<MainLayout title="O nas | Przeprogramowani" description={site.description} currentPath={Astro.url.pathname}>
+  <section class="enter-up rounded-3xl border border-white/20 bg-slate-900/80 p-8 md:p-10">
+    <p class="font-display text-xs uppercase tracking-[0.3em] text-cyan-200/90">O nas</p>
+    <h1 class="font-display mt-4 text-4xl font-bold text-white md:text-5xl">Przeprogramowani</h1>
+    <p class="mt-5 max-w-3xl text-lg text-white/80">{site.slogan}</p>
+    <p class="mt-4 max-w-3xl text-white/75">
+      Od 2017 roku rozwijamy edukację technologiczną dla developerów. Tworzymy kursy, podcast i materiały, które
+      pomagają budować praktyczne umiejętności w JavaScript, TypeScript i AI.
+    </p>
+  </section>
+
+  <section class="enter-up-delay-1 mt-10 grid gap-4 md:grid-cols-3">
+    {
+      proofPoints.map((item) => (
+        <div class="card-surface rounded-2xl p-5 text-sm font-semibold text-white/90">{item}</div>
+      ))
+    }
+  </section>
+
+  <section class="enter-up-delay-2 mt-10 grid gap-6 md:grid-cols-2">
+    {
+      site.founders.map((founder) => (
+        <article class="card-surface rounded-3xl p-6">
+          <p class="text-xs uppercase tracking-[0.22em] text-cyan-200/90">{founder.role}</p>
+          <h2 class="font-display mt-3 text-2xl font-bold text-white">{founder.name}</h2>
+          <p class="mt-3 text-white/75">
+            Współtwórca projektu edukacyjnego Przeprogramowani i autor materiałów technicznych dla społeczności IT.
+          </p>
+          <a
+            href={founder.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            LinkedIn
+          </a>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="mt-10 rounded-3xl border border-white/20 bg-slate-900/80 p-6 md:p-8">
+    <h2 class="font-display text-2xl font-bold text-white">Co robimy</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-white/80">
+        <h3 class="font-display text-lg font-semibold text-white">Programy edukacyjne</h3>
+        <p class="mt-2">Intensywne kursy online: Opanuj Frontend, Opanuj TypeScript oraz 10xDevs.</p>
+      </div>
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-white/80">
+        <h3 class="font-display text-lg font-semibold text-white">Treści społecznościowe</h3>
+        <p class="mt-2">Podcast, YouTube i newsletter z regularnymi materiałami o nowoczesnym developmentcie.</p>
+      </div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="/podcast" class="rounded-full bg-white px-5 py-2.5 text-sm font-bold text-slate-900">Podcast</a>
+      <a href="/youtube" class="rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white">YouTube</a>
+    </div>
+
+    <p class="mt-6 text-xs text-white/55">{sourceFootnote}</p>
+  </section>
+</MainLayout>

@@ -1,0 +1,32 @@
+---
+import { formatDate } from "../lib/format";
+
+const { video, compact = false } = Astro.props;
+const thumbnail = `https://i3.ytimg.com/vi/${video.videoId}/maxresdefault.jpg`;
+---
+
+<a
+  href={video.href}
+  target="_blank"
+  rel="noreferrer"
+  class="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.045] transition duration-200 hover:-translate-y-1 hover:border-rosebrand/50 hover:bg-white/[0.07]"
+>
+  <div class="relative aspect-video overflow-hidden bg-panel">
+    <img
+      src={thumbnail}
+      alt={video.title}
+      loading="lazy"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+    <span class="absolute bottom-3 left-3 rounded-md bg-rosebrand px-2.5 py-1 text-xs font-bold text-white">
+      YouTube
+    </span>
+  </div>
+  <div class:list={["p-5", compact && "p-4"]}>
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{formatDate(video.date)}</p>
+    <h3 class="mt-2 line-clamp-2 font-display text-lg font-bold leading-snug text-white group-hover:text-mint">
+      {video.title}
+    </h3>
+  </div>
+</a>

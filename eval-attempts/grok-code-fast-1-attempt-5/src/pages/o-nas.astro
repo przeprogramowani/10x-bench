@@ -1,0 +1,32 @@
+---
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+---
+
+<html lang="pl">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>O nas - Przeprogramowani.pl</title>
+	</head>
+	<body class="bg-gray-100">
+		<Navbar client:load />
+		<main class="py-12">
+			<div class="max-w-4xl mx-auto px-4">
+				<h1 class="text-4xl font-bold mb-8">O nas</h1>
+				<p class="text-gray-700 mb-4">
+					Przeprogramowani to zespół pasjonatów technologii i edukacji, którzy od 7 lat pomagają programistom rozwijać się w dynamicznym świecie tech.
+				</p>
+				<p class="text-gray-700 mb-4">
+					Specjalizujemy się w edukacji technologicznej w epoce AI, oferując wysokiej jakości kursy takie jak Opanuj Frontend, Opanuj TypeScript i 10xDevs.
+				</p>
+				<p class="text-gray-700 mb-8">
+					Współpracujemy z najlepszymi firmami, takimi jak Huuuge Games, Nutridome, SmartRecruiters i wieloma innymi.
+				</p>
+				<h2 class="text-2xl font-bold mb-4">Kontakt</h2>
+				<p class="text-gray-700">kontakt@przeprogramowani.pl</p>
+			</div>
+		</main>
+		<Footer client:load />
+	</body>
+</html>

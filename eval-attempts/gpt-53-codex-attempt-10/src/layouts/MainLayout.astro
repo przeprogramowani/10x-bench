@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import MobileMenu from '../components/MobileMenu';
+import { navItems } from '../lib/content';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath: string;
+}
+
+const { title, description, currentPath } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="relative min-h-screen overflow-x-hidden">
+      <div class="mx-auto flex w-full max-w-6xl flex-col px-4 pb-16 pt-5 sm:px-6 lg:px-8">
+        <header class="mb-10 rounded-3xl border border-[var(--border)] bg-[#0e192b]/80 p-4 backdrop-blur">
+          <div class="flex items-center justify-between gap-6">
+            <a href="/" class="inline-flex items-center gap-2 text-lg font-extrabold sm:text-xl">
+              <span class="main-gradient">Przeprogramowani</span>
+            </a>
+            <nav class="hidden items-center gap-2 md:flex" aria-label="Nawigacja główna">
+              {
+                navItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class={`rounded-xl px-3 py-2 text-sm font-medium transition ${
+                      currentPath === item.href
+                        ? 'bg-[#1f3559] text-white'
+                        : 'text-[var(--text-soft)] hover:bg-[#1c2f4d] hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ))
+              }
+            </nav>
+            <MobileMenu currentPath={currentPath} navItems={navItems} client:load />
+          </div>
+        </header>
+
+        <main>
+          <slot />
+        </main>
+
+        <footer class="mt-14 border-t border-[var(--border)] pt-8 text-sm text-[var(--text-soft)]">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p>Przeprogramowani.pl • Szersze spojrzenie na programowanie</p>
+            <div class="flex flex-wrap gap-4">
+              <a class="hover:text-white" href="https://10xdevs.pl" target="_blank" rel="noreferrer">10xDevs</a>
+              <a class="hover:text-white" href="https://opanujfrontend.pl" target="_blank" rel="noreferrer"
+                >Opanuj Frontend</a
+              >
+              <a class="hover:text-white" href="https://opanujtypescript.pl" target="_blank" rel="noreferrer"
+                >Opanuj TypeScript</a
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

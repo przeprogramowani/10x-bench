@@ -1,0 +1,97 @@
+---
+import "../styles/global.css";
+import { externalLinks, navItems } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://przeprogramowani.pl/img/page-cover.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2" href="#main">
+      Przejdź do treści
+    </a>
+    <header class="sticky top-0 z-50 border-b border-ink/10 bg-paper/86 backdrop-blur-xl">
+      <div class="container-page flex min-h-16 items-center justify-between gap-4">
+        <a href="/" class="focus-ring flex items-center gap-3 rounded-md" aria-label="Przeprogramowani, strona główna">
+          <span class="grid size-10 place-items-center rounded-lg bg-ink font-mono text-sm font-bold text-citron">&lt;/&gt;</span>
+          <span class="font-display text-lg font-bold">Przeprogramowani</span>
+        </a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "focus-ring rounded-md px-3 py-2 text-sm font-semibold transition",
+                pathname === item.href ? "bg-ink text-paper" : "text-graphite hover:bg-ink/8"
+              ]}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a href={externalLinks.tenXDevs} class="focus-ring hidden rounded-md bg-ember px-4 py-2 text-sm font-bold text-white shadow-soft transition hover:-translate-y-0.5 sm:inline-flex">
+          10xDevs
+        </a>
+      </div>
+      <nav class="container-page flex gap-2 overflow-x-auto pb-3 md:hidden" aria-label="Nawigacja mobilna">
+        {navItems.map((item) => (
+          <a href={item.href} class="focus-ring whitespace-nowrap rounded-md border border-ink/10 px-3 py-2 text-sm font-semibold">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="border-t border-ink/10 bg-ink text-paper">
+      <div class="container-page grid gap-10 py-12 md:grid-cols-[1.3fr_0.7fr_0.7fr]">
+        <div>
+          <div class="mb-4 flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-lg bg-citron font-mono text-sm font-bold text-ink">&lt;/&gt;</span>
+            <span class="font-display text-xl font-bold">Przeprogramowani</span>
+          </div>
+          <p class="max-w-xl text-sm leading-6 text-paper/72">
+            Szersze spojrzenie na programowanie: kursy, podcasty, filmy, newsletter i praktyczna edukacja technologiczna dla ambitnych programistów.
+          </p>
+        </div>
+        <div>
+          <h2 class="mb-4 font-display text-sm font-bold uppercase tracking-[0.16em] text-citron">Strony</h2>
+          <div class="grid gap-2 text-sm text-paper/74">
+            {navItems.map((item) => <a class="hover:text-white" href={item.href}>{item.label}</a>)}
+          </div>
+        </div>
+        <div>
+          <h2 class="mb-4 font-display text-sm font-bold uppercase tracking-[0.16em] text-citron">Kontakt</h2>
+          <div class="grid gap-2 text-sm text-paper/74">
+            <a class="hover:text-white" href={externalLinks.email}>kontakt@przeprogramowani.pl</a>
+            <a class="hover:text-white" href={externalLinks.newsletter}>Newsletter 3-2-1</a>
+            <a class="hover:text-white" href={externalLinks.youtube}>YouTube</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
