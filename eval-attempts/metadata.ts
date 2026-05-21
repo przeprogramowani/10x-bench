@@ -21,6 +21,7 @@ export type ModelId =
   | "qwen-3-max"
   | "grok-code-fast-1"
   | "gemini-31-pro"
+  | "gemini-35-flash"
   | "glm-5"
   | "glm-51"
   // | "minimax-m27"
@@ -45,6 +46,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "qwen-3-max": "Qwen 3 Max",
   "grok-code-fast-1": "Grok Code Fast 1",
   "gemini-31-pro": "Gemini 3.1 Pro",
+  "gemini-35-flash": "Gemini 3.5 Flash",
   "glm-5": "GLM-5",
   "glm-51": "GLM-5.1",
   "kimi-k26": "Kimi K2.6",
@@ -69,6 +71,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "qwen-3-max": AGENT_ENVIRONMENT.OpenCode,
   "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
   "gemini-31-pro": AGENT_ENVIRONMENT.Cursor,
+  "gemini-35-flash": AGENT_ENVIRONMENT.OpenCode,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
   "glm-51": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k26": AGENT_ENVIRONMENT.OpenCode,
@@ -116,6 +119,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "qwen-3-max": { input: 1.2, output: 6.0 },
   "grok-code-fast-1": { input: 0.2, output: 1.5 },
   "gemini-31-pro": { input: 2.0, output: 12.0 },
+  "gemini-35-flash": { input: 1.5, output: 9.0 },
   "glm-5": { input: 0.3, output: 2.55 },
   "glm-51": { input: 1.4, output: 4.4 },
   "kimi-k26": { input: 0.6, output: 2.8 },
