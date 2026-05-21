@@ -1,0 +1,152 @@
+---
+import Navbar from '../components/Navbar';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Przeprogramowani.pl — Szersze spojrzenie na programowanie. Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z AI." 
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const currentYear = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Przeprogramowani.pl</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={`${title} | Przeprogramowani.pl`} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
+    {/* Glow Effects */}
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none opacity-40 z-0">
+      <div class="absolute top-[-10%] left-[10%] w-[400px] h-[400px] rounded-full bg-violet-600/20 blur-[120px]"></div>
+      <div class="absolute top-[-5%] right-[10%] w-[450px] h-[450px] rounded-full bg-cyan-500/15 blur-[120px]"></div>
+    </div>
+
+    {/* Header Navigation */}
+    <Navbar client:load currentPath={currentPath} />
+
+    {/* Main Content */}
+    <main class="flex-grow pt-24 z-10">
+      <slot />
+    </main>
+
+    {/* Footer */}
+    <footer class="bg-slate-950 border-t border-slate-900 z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+          {/* Column 1: Brand */}
+          <div class="space-y-4">
+            <span className="text-xl font-extrabold tracking-wider bg-gradient-to-r from-violet-500 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+              &lt;/&gt; Przeprogramowani
+            </span>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Uczymy, jak programować wydajniej w dobie AI.
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://facebook.com/przeprogramowani" target="_blank" rel="noreferrer" class="p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-label="Facebook">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+              </a>
+              <a href="https://instagram.com/przeprogramowani" target="_blank" rel="noreferrer" class="p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors" aria-label="Instagram">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer" class="p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-red-500 hover:bg-slate-800 transition-colors" aria-label="YouTube">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.502 9.388.502 9.388.502s7.517 0 9.388-.502a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Programy */}
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200 tracking-wider uppercase mb-4">Programy</h3>
+            <ul class="space-y-2.5">
+              <li>
+                <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors flex items-center gap-1.5">
+                  10xDevs <span class="text-[10px] px-1.5 py-0.5 bg-amber-500/10 text-amber-400 font-bold rounded-full">AI</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.opanujfrontend.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                  Opanuj Frontend
+                </a>
+              </li>
+              <li>
+                <a href="https://www.opanujtypescript.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                  Opanuj TypeScript
+                </a>
+              </li>
+              <li>
+                <a href="https://opanuj.ai" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">
+                  Opanuj AI
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Podstrony */}
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200 tracking-wider uppercase mb-4">Materiały</h3>
+            <ul class="space-y-2.5">
+              <li><a href="/o-nas" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">O Nas</a></li>
+              <li><a href="/podcast" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">Podcast</a></li>
+              <li><a href="/youtube" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">YouTube</a></li>
+              <li><a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-indigo-400 transition-colors">Substack Newsletter</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Kontakt */}
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200 tracking-wider uppercase mb-4">Kontakt</h3>
+            <ul class="space-y-3">
+              <li class="text-sm text-slate-400 leading-relaxed">
+                Napisz do nas w sprawie współpracy lub z pytaniem:
+              </li>
+              <li>
+                <a href="mailto:kontakt@przeprogramowani.pl" class="text-sm text-indigo-400 hover:text-indigo-300 transition-colors font-medium break-all">
+                  kontakt@przeprogramowani.pl
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 md:mt-16 pt-8 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-slate-500">
+            &copy; {currentYear} Przeprogramowani.pl. Wszelkie prawa zastrzeżone.
+          </p>
+          <p class="text-xs text-slate-500">
+            Szerokie spojrzenie na programowanie z AI.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

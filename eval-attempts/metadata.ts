@@ -21,6 +21,7 @@ export type ModelId =
   | "qwen-3-max"
   | "grok-code-fast-1"
   | "gemini-31-pro"
+  | "gemini-35-flash"
   | "glm-5"
   | "glm-51"
   // | "minimax-m27"
@@ -45,6 +46,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "qwen-3-max": "Qwen 3 Max",
   "grok-code-fast-1": "Grok Code Fast 1",
   "gemini-31-pro": "Gemini 3.1 Pro",
+  "gemini-35-flash": "Gemini 3.5 Flash",
   "glm-5": "GLM-5",
   "glm-51": "GLM-5.1",
   "kimi-k26": "Kimi K2.6",
@@ -69,6 +71,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "qwen-3-max": AGENT_ENVIRONMENT.OpenCode,
   "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
   "gemini-31-pro": AGENT_ENVIRONMENT.Cursor,
+  "gemini-35-flash": AGENT_ENVIRONMENT.OpenCode,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
   "glm-51": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k26": AGENT_ENVIRONMENT.OpenCode,
@@ -102,27 +105,28 @@ export interface ModelPricing {
 }
 
 export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
-  "claude-opus-46": {input: 5.0, output: 25.0},
-  "claude-opus-47": {input: 5.0, output: 25.0},
-  "claude-sonnet-45": {input: 3.0, output: 15.0},
-  "claude-sonnet-46": {input: 3.0, output: 15.0},
-  "gpt-53-codex": {input: 1.75, output: 14.0},
-  "glm-47": {input: 0.6, output: 2.2},
-  "kimi-k25": {input: 0.6, output: 3.0},
-  "gemini-3-pro": {input: 2.0, output: 12.0},
-  "minimax-m21": {input: 0.27, output: 0.95},
-  "minimax-m25": {input: 0.3, output: 2.4},
-  "devstral-2": {input: 0.4, output: 2.0},
-  "qwen-3-max": {input: 1.2, output: 6.0},
-  "grok-code-fast-1": {input: 0.2, output: 1.5},
-  "gemini-31-pro": {input: 2.0, output: 12.0},
-  "glm-5": {input: 0.3, output: 2.55},
-  "glm-51": {input: 1.4, output: 4.4},
-  "kimi-k26": {input: 0.6, output: 2.8},
+  "claude-opus-46": { input: 5.0, output: 25.0 },
+  "claude-opus-47": { input: 5.0, output: 25.0 },
+  "claude-sonnet-45": { input: 3.0, output: 15.0 },
+  "claude-sonnet-46": { input: 3.0, output: 15.0 },
+  "gpt-53-codex": { input: 1.75, output: 14.0 },
+  "glm-47": { input: 0.6, output: 2.2 },
+  "kimi-k25": { input: 0.6, output: 3.0 },
+  "gemini-3-pro": { input: 2.0, output: 12.0 },
+  "minimax-m21": { input: 0.27, output: 0.95 },
+  "minimax-m25": { input: 0.3, output: 2.4 },
+  "devstral-2": { input: 0.4, output: 2.0 },
+  "qwen-3-max": { input: 1.2, output: 6.0 },
+  "grok-code-fast-1": { input: 0.2, output: 1.5 },
+  "gemini-31-pro": { input: 2.0, output: 12.0 },
+  "gemini-35-flash": { input: 1.5, output: 9.0 },
+  "glm-5": { input: 0.3, output: 2.55 },
+  "glm-51": { input: 1.4, output: 4.4 },
+  "kimi-k26": { input: 0.6, output: 2.8 },
   // "minimax-m27": {input: 0.3, output: 1.2},
   // "qwen-36-plus": {input: 0.5, output: 3.0},
-  "qwen-3.6": {input: 0.0, output: 0.0},
-  "gpt-54": {input: 1.75, output: 14.0},
+  "qwen-3.6": { input: 0.15, output: 1.0 },
+  "gpt-54": { input: 1.75, output: 14.0 },
 };
 
 /** Type guard: check whether a runtime string is a known ModelId */

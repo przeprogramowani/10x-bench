@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastList from '../components/PodcastList.tsx';
+import { Sparkles, Play, ArrowUpRight } from 'lucide-react';
+---
+
+<Layout title="Podcasty — Przeprogramowani | Przeprogramowani" description="Słuchaj naszych słuchowisk i podcastów o technologii, inżynierii wstecznej, sztucznej inteligencji, karierze i programowaniu w epoce AI.">
+  <!-- HEADER -->
+  <section class="relative pt-12 pb-16 overflow-hidden border-b border-slate-900/40">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-purple-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <nav class="flex text-xs text-slate-500 font-semibold space-x-2 mb-6 uppercase tracking-wider">
+        <a href="/" class="hover:text-orange-500 transition-colors">Strona Główna</a>
+        <span>/</span>
+        <span class="text-slate-300">Podcasty</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-8 space-y-4">
+          <span class="text-orange-500 text-xs font-bold uppercase tracking-widest block">Inżynieria audio i wiedza</span>
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Słuchaj naszych podcastów o technologii, AI i programowaniu
+          </h1>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Prowadzimy dwa kluczowe pasma podcastów: <strong class="text-white">Opanuj.AI Podcast</strong> (prowadzony przez Marcina, gromadzący ponad 4000 stałych słuchaczy wokół rewolucji AI) oraz <strong class="text-white">Przeprogramowani ft. Gość</strong> (rozmowy z praktykami i liderami branży o inżynierii, architekturze, karierze i dojrzałości zawodowej).
+          </p>
+        </div>
+
+        {/* Listening Platforms Column */}
+        <div class="lg:col-span-4 bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+          <h2 class="text-white font-bold text-sm tracking-wide">Jesteśmy na Twojej ulubionej platformie:</h2>
+          <div class="grid grid-cols-2 gap-2.5">
+            <a
+              href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:border-green-500/30 hover:bg-green-500/5 transition-all"
+            >
+              <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              Spotify
+            </a>
+            <a
+              href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+            >
+              <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+              Apple Podcasts
+            </a>
+            <a
+              href="https://podcasts.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:border-yellow-500/30 hover:bg-yellow-500/5 transition-all"
+            >
+              <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+              Google Podcasts
+            </a>
+            <a
+              href="https://anchor.fm/s/22544b7c/podcast/rss"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:border-orange-500/30 hover:bg-orange-500/5 transition-all"
+            >
+              <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+              Kanał RSS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE LIST SECTION -->
+  <section class="py-16 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Search, Filters, and List rendered dynamically via React -->
+      <PodcastList client:load />
+    </div>
+  </section>
+</Layout>

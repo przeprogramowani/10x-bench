@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, Calendar, Target, Heart, Award, ArrowRight } from 'lucide-react';
+
+const team = [
+  {
+    name: "Przemek Smyrdek",
+    role: "Co-founder, Przeprogramowani",
+    description: "Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Doświadczony Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na prestiżowych konferencjach branżowych takich jak 4Developers, ReactiveConf i InfoShare. Aktywny kontrybutor projektów Open Source (m.in. CursorLens, openapi-typescript).",
+    linkedin: "https://www.linkedin.com/in/psmyrdek/",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=250&auto=format&fit=crop" // Beautiful placeholder avatar
+  },
+  {
+    name: "Marcin Czarkowski",
+    role: "Co-founder, Przeprogramowani",
+    description: "Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem produkcyjnym. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o najnowsze badania nad mechanizmami uczenia się człowieka. Twórca 'Opanuj AI Podcast' — najpopularniejszego technicznego podcastu o LLM w Polsce. Ekspert w dziedzinach: TypeScript, React, Node.js.",
+    linkedin: "https://www.linkedin.com/in/mkczarkowski/",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=250&auto=format&fit=crop" // Beautiful placeholder avatar
+  }
+];
+
+const values = [
+  {
+    icon: Target,
+    title: "Szersze spojrzenie",
+    description: "Wykraczamy poza suchą składnię języków programowania. Łączymy kod z architekturą, procesami biznesowymi, biologią uczenia się i współpracą z ludźmi."
+  },
+  {
+    icon: Heart,
+    title: "Edukacja oparta na faktach",
+    description: "Nasze kursy projektujemy na bazie wiedzy o neurobiologii. Uczymy tak, by wiedza zostawała w głowie na lata, a nie tylko do momentu zdania testu."
+  },
+  {
+    icon: Award,
+    title: "Praktyka i aktualność",
+    description: "Uczymy technologii, które sami stosujemy na produkcji. Nasze programy są stale aktualizowane pod kątem najnowszych wersji (jak React 19 i TypeScript 5) oraz AI."
+  }
+];
+---
+
+<Layout title="O nas — Nasza Misja i Twórcy" description="Dowiedz się więcej o Przeprogramowanych. Poznaj Przemka Smyrdka i Marcina Czarkowskiego, współtwórców nowoczesnej edukacji technologicznej w Polsce.">
+  {/* Hero Section */}
+  <section class="py-16 md:py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+      <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 text-xs font-semibold uppercase tracking-wider border border-indigo-500/20 mb-4">
+        Kim Jesteśmy
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-6 leading-tight">
+        Łączymy świat programowania, <br />
+        <span class="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">biznesu i ludzkiego rozwoju</span>
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+        Przeprogramowani to nie tylko kursy wideo. To filozofia świadomego budowania kariery w branży IT. Wierzymy, że w dobie generatywnego AI najlepszymi programistami są ci, którzy patrzą szerzej.
+      </p>
+    </div>
+  </section>
+
+  {/* Co-founders Grid */}
+  <section class="py-16 bg-slate-950/40 border-y border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Poznaj Założycieli</h2>
+        <p class="text-slate-400 text-sm mt-2">Doświadczeni praktycy, którzy od lat dzielą się wiedzą w sieci i na scenach konferencji.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        {team.map((member) => (
+          <div class="bg-slate-900/30 border border-slate-800 rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row gap-6 hover:border-slate-700 transition-all duration-300">
+            {/* Avatar block with modern initial representation if images block */}
+            <div class="flex-shrink-0 flex items-center justify-center">
+              <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-inner flex items-center justify-center">
+                <span class="text-3xl font-extrabold text-slate-700">{member.name.split(' ').map(n => n[0]).join('')}</span>
+              </div>
+            </div>
+
+            {/* Member Details */}
+            <div class="flex-grow space-y-3">
+              <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">{member.role}</span>
+              <h3 class="text-xl font-bold text-white">{member.name}</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">{member.description}</p>
+              
+              <div class="pt-3">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex items-center text-xs font-bold text-slate-400 hover:text-indigo-400 transition-colors"
+                >
+                  <svg class="h-4 w-4 mr-1.5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  Profil LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Our Philosophy & Values */}
+  <section class="py-20 md:py-28 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <h2 class="text-3xl font-bold text-white">Nasza Filozofia</h2>
+        <p class="text-slate-400 text-sm md:text-base">Zasady, którymi kierujemy się, projektując każdy materiał edukacyjny, film i linijkę kodu.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {values.map((val) => {
+          const Icon = val.icon;
+          return (
+            <div class="bg-slate-900/10 border border-slate-800/60 p-6 md:p-8 rounded-2xl space-y-4 hover:-translate-y-1 transition-all duration-300">
+              <div class="inline-flex p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                <Icon class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-slate-100">{val.title}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">{val.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* Call to action & Contact */}
+  <section class="py-16 md:py-24 bg-slate-950 border-t border-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <h2 class="text-3xl font-bold text-white">Chcesz nawiązać współpracę?</h2>
+      <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+        Jesteśmy otwarci na partnerstwa komercyjne, występy na wydarzeniach, prelekcje deweloperskie oraz dedykowane programy szkoleniowe dla zespołów programistycznych.
+      </p>
+
+      <div class="inline-flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a
+          href="mailto:kontakt@przeprogramowani.pl"
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-slate-950 bg-indigo-400 hover:bg-indigo-300 transition-colors shadow-lg shadow-indigo-400/10"
+        >
+          <Mail class="h-4 w-4 mr-2" />
+          Napisz: kontakt@przeprogramowani.pl
+        </a>
+        <a
+          href="/#kursy"
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-slate-300 hover:text-white bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors"
+        >
+          Przeglądaj ofertę szkoleniową
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

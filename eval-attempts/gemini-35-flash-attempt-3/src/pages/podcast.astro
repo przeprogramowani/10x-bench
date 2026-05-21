@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastList from '../components/PodcastList';
+import { Headset, Disc, Rss, ArrowUpRight } from 'lucide-react';
+---
+
+<Layout 
+  title="Podcasty — Przeprogramowani.pl" 
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu. Opanuj.AI Podcast oraz Przeprogramowani ft. Gość."
+>
+  <section class="relative py-16 md:py-24 bg-slate-950 overflow-hidden">
+    {/* Background Glows */}
+    <div class="absolute top-1/3 left-10 w-96 h-96 bg-brand-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      {/* Page Header */}
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 border-b border-slate-800 pb-12">
+        <div class="space-y-4 max-w-2xl">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-semibold text-brand-accent">
+            <Headset class="h-4 w-4" />
+            <span>Audycje technologiczne</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">
+            Nasz <span class="bg-gradient-to-r from-brand-accent to-brand-purple bg-clip-text text-transparent">Podcast</span>
+          </h1>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Słuchaj comiesięcznych podsumowań nowości ze świata AI, dogłębnych dyskusji technicznych o architekturze, karierze programistycznej oraz wywiadów z czołowymi gośćmi z branży IT.
+          </p>
+        </div>
+
+        {/* Streaming links badges */}
+        <div class="flex flex-wrap gap-2.5">
+          <a 
+            href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" 
+            target="_blank" 
+            rel="noreferrer" 
+            class="flex items-center gap-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/30 hover:border-emerald-500/50 px-3 py-2 text-xs font-semibold text-emerald-400 transition-all"
+          >
+            <Disc class="h-4 w-4 animate-spin-slow" />
+            Spotify
+          </a>
+          <a 
+            href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" 
+            target="_blank" 
+            rel="noreferrer" 
+            class="flex items-center gap-1.5 rounded-lg bg-pink-950/40 border border-pink-800/30 hover:border-pink-500/50 px-3 py-2 text-xs font-semibold text-pink-400 transition-all"
+          >
+            Apple Podcasts
+          </a>
+          <a 
+            href="https://anchor.fm/s/22544b7c/podcast/rss" 
+            target="_blank" 
+            rel="noreferrer" 
+            class="flex items-center gap-1.5 rounded-lg bg-amber-950/40 border border-amber-800/30 hover:border-amber-500/50 px-3 py-2 text-xs font-semibold text-amber-400 transition-all"
+          >
+            <Rss class="h-4 w-4" />
+            RSS Feed
+          </a>
+        </div>
+      </div>
+
+      {/* Interactive podcast client-side component */}
+      <div class="pb-12">
+        <PodcastList client:load />
+      </div>
+
+      {/* Subscription banner */}
+      <div class="mt-16 bg-brand-card/20 border border-slate-800 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <h3 class="text-lg font-bold text-white">Chcesz dostawać notatki do odcinków?</h3>
+          <p class="text-sm text-slate-400 max-w-xl">
+            Zapisz się na nasz cotygodniowy newsletter, w którym oprócz formatu 3-2-1 podsumowujemy polecane w podcaście źródła, repozytoria i narzędzia AI.
+          </p>
+        </div>
+        <a 
+          href="https://przeprogramowani.substack.com" 
+          target="_blank" 
+          rel="noreferrer" 
+          class="inline-flex items-center gap-1.5 rounded-xl bg-brand-yellow hover:bg-white text-brand-dark px-6 py-3 text-sm font-bold transition-all duration-200 shrink-0"
+        >
+          Dołącz do Newslettera
+          <ArrowUpRight class="h-4 w-4" />
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

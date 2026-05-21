@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowLeft, CheckCircle2, GraduationCap, ShieldCheck, Terminal, Cpu, Sparkles, Code } from 'lucide-react';
+
+const tsModules = [
+  {
+    num: "01",
+    title: "Solidne fundamenty & Zaawansowane Typowanie",
+    desc: "Zrozumienie działania kompilatora TS, unikanie typów 'any', poprawne stosowanie generics, unii dyskryminowanych (discriminated unions) oraz tworzenie zaawansowanych typów mapowanych (mapped types) i warunkowych (conditional types)."
+  },
+  {
+    num: "02",
+    title: "TypeScript 5 w ekosystemie React 19 & Next.js",
+    desc: "Poprawne otypowanie nowoczesnych wzorców React 19. Typowanie komponentów (Props), stanów (Hooks), asynchronicznych akcji, nowych Server Components oraz bezpiecznego przesyłania danych przez granice sieciowe."
+  },
+  {
+    num: "03",
+    title: "Wzorce projektowe & Architektura zorientowana na typy",
+    desc: "Jak pisać kod, który sam dokumentuje się na poziomie systemu typów. Stosowanie wzorców projektowych, rygorystyczne zawężanie typów (type narrowing), asercje oraz techniki takie jak nominal typing (branding) dla eliminacji błędów."
+  },
+  {
+    num: "04",
+    title: "Konfiguracja, Kompilator, Monorepo i Tooling",
+    desc: "Praca z tsconfig.json na poziomie profesjonalnym, optymalizacja prędkości działania IDE i kompilacji. Składanie projektów monorepo, konfiguracja ESLint, modern TS i integracja z nowoczesnymi bundlerami."
+  }
+];
+
+const tsBenefits = [
+  "Pełne wsparcie dla najnowszej wersji TypeScript 5 oraz React 19",
+  "Praktyczne zadania i warsztaty z prawdziwych komercyjnych repozytoriów",
+  "Dostęp do elitarnej społeczności Discord dla inżynierów TypeScript",
+  "Materiały pomocnicze, szablony konfiguracji kompilatora",
+  "Weryfikacja kodu (Code Review) kluczowych zadań domowych"
+];
+---
+
+<Layout title="Opanuj TypeScript — Przeprogramowani" description="Zwiększ stabilność i bezpieczeństwo swoich aplikacji. Szkolenie Opanuj TypeScript podniesie jakość Twoich projektów i ułatwi ich rozwój. Pracuj z TS 5 i React 19!">
+  <!-- HERO HEADER -->
+  <section class="relative pt-12 pb-20 md:py-28 overflow-hidden">
+    <!-- Ambient colors -->
+    <div class="absolute top-1/4 right-0 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <nav class="flex text-xs text-slate-500 font-semibold space-x-2 mb-8 uppercase tracking-wider">
+        <a href="/" class="hover:text-orange-500 transition-colors">Strona Główna</a>
+        <span>/</span>
+        <span class="text-slate-300">Opanuj TypeScript</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text Left -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-bold text-blue-400">
+            <Terminal class="w-3.5 h-3.5 text-blue-500" />
+            <span>Szkolenie Online — TypeScript 5 & React 19</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Opanuj TypeScript:<br />
+            <span class="bg-gradient-to-r from-blue-500 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
+              Koduj z pełnym bezpieczeństwem typów
+            </span>
+          </h1>
+
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Eliminuj błędy runtime zanim Twoi użytkownicy je zobaczą. Podnieś jakość kodu, przyspiesz pracę z IDE i spraw, by refaktoryzacja bazy kodu stała się przyjemnością, a nie horrorem. Zdobądź zaawansowane umiejętności, które wyróżnią Cię na rynku pracy.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a
+              href="https://www.opanujtypescript.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-extrabold text-sm text-white bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-950/20 transition-all duration-300"
+            >
+              Dołącz do programu TS →
+            </a>
+            <a
+              href="#program"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-all duration-300"
+            >
+              Zobacz program szkolenia
+            </a>
+          </div>
+
+          <!-- Quick statistics -->
+          <div class="flex flex-wrap gap-8 pt-6 border-t border-slate-900/80">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl font-extrabold text-white">1000+</span>
+              <span class="text-xs text-slate-500">Zadowolonych uczestników</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl font-extrabold text-white">TS 5</span>
+              <span class="text-xs text-slate-500">Praca z najnowszą specyfikacją</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo card right -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-2xl">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <span class="bg-blue-500/15 text-blue-400 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-widest block mb-4 w-fit">Inżynieria Typów</span>
+          <h3 class="text-xl font-extrabold text-white mb-2">Dlaczego warto opanować TS?</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">Większość programistów używa TypeScriptu jako uproszczonego lintera. Naucz się wykorzystywać pełne spektrum meta-programowania typów.</p>
+
+          <div class="space-y-3.5 mb-8">
+            {tsBenefits.slice(0, 4).map((b) => (
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                <span class="text-slate-300 text-xs font-semibold leading-snug">{b}</span>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="https://www.opanujtypescript.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-extrabold text-white bg-slate-950 border border-slate-800 hover:border-blue-500 hover:bg-slate-900/50 transition-all duration-300"
+          >
+            Sprawdź warunki dołączenia
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM OF THE COURSE -->
+  <section id="program" class="py-20 bg-slate-900/10 border-y border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <span class="text-blue-400 text-xs font-bold uppercase tracking-widest block mb-3">Agenda Szkolenia</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Drobiazgowy program nauczania</h2>
+        <p class="text-slate-400 text-sm mt-2">Kompleksowe omówienie od podstaw po meta-programowanie.</p>
+      </div>
+
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {tsModules.map((mod) => (
+          <div class="bg-slate-900/60 border border-slate-900 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row gap-6 hover:border-blue-500/20 transition-all duration-300">
+            <div class="flex-shrink-0">
+              <span class="text-4xl font-black font-mono text-blue-500/30 tracking-tight block">
+                {mod.num}
+              </span>
+            </div>
+            <div class="space-y-2 flex-grow">
+              <h3 class="text-white font-extrabold text-lg leading-snug">{mod.title}</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">{mod.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / BENEFITS -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text left -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-blue-500 text-xs font-bold uppercase tracking-widest block">Metodologia Przeprogramowanych</span>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Co zyskujesz w programie?</h2>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Dostarczamy nie tylko unikalną wiedzę, ale cały ekosystem, który dba o to, byś przetestował nowe mechanizmy w bezpiecznym środowisku warsztatowym z natychmiastowym feedbackiem.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-300">
+            {tsBenefits.map((b) => (
+              <div class="flex items-start gap-2.5">
+                <CheckCircle2 class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                <span class="leading-relaxed">{b}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Info Box Right */}
+        <div class="lg:col-span-6 bg-gradient-to-r from-blue-500/10 via-indigo-600/5 to-slate-900 p-8 rounded-3xl border border-slate-800/80 space-y-4">
+          <h3 class="text-white font-extrabold text-xl">Szkolenie w pigułce:</h3>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-blue-500">25h+</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Materiału wideo</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-blue-500">100%</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Zadań praktycznych</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-blue-500">TypeScript 5</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Pełen standard</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-blue-500">Discord</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Pomoc techniczna</span>
+            </div>
+          </div>
+
+          <div class="pt-4 text-center">
+            <p class="text-xs text-slate-400">Podnieś wartość swoich kompetencji inżynierskich już dzisiaj.</p>
+            <a
+              href="https://www.opanujtypescript.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-500 hover:underline mt-2"
+            >
+              Przejdź do oficjalnej platformy TS →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

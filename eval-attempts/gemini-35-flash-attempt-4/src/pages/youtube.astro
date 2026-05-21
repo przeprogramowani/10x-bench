@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YouTubeList from '../components/YouTubeList';
+import { Users, Tv, Sparkles, Star } from 'lucide-react';
+---
+
+<Layout title="YouTube | Filmy i Live Streamy" description="Przeprogramowani na YouTube - darmowe poradniki, programowanie na żywo, vlagi i dyskusje technologiczne. Oglądaj najnowsze produkcje!">
+  {/* Header Section */}
+  <section class="relative overflow-hidden py-20 lg:py-28 bg-brand-dark">
+    {/* Glow Background */}
+    <div class="absolute top-1/4 left-1/2 -z-10 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-red-500/5 blur-[130px]" />
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-6 max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-xs font-semibold text-red-400">
+          <svg class="h-4 w-4 animate-pulse" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Baza Wiedzy Video na YouTube
+        </div>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white">
+          Wiedza, która <br />
+          <span class="gradient-text-orange font-black">nie bije po kieszeni</span>
+        </h1>
+        <p class="text-lg text-gray-400 leading-relaxed">
+          Nasz kanał to setki merytorycznych poradników wideo, analiz kodu, wyzwań programistycznych i transmisji live. Uczymy dobrych praktyk we frontendzie, backendzie, chmurze i pracy z AI całkowicie za darmo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* YouTube Searchable/Filterable Database */}
+  <section class="py-12 pb-32 bg-brand-dark/95 border-t border-gray-800/60 relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <YouTubeList client:load />
+
+    </div>
+  </section>
+
+  {/* Channel achievements/stats banner */}
+  <section class="py-20 bg-brand-dark border-t border-gray-800/80">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl border border-gray-800 bg-brand-dark-card/20 p-8 sm:p-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center items-center divide-y md:divide-y-0 md:divide-x divide-gray-800">
+          
+          <div class="space-y-2 p-4">
+            <h3 class="text-4xl font-black text-white">65 000+</h3>
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Subskrybentów kanału</p>
+            <p class="text-sm text-gray-400">Dołącz do społeczności uczącej się rzemiosła</p>
+          </div>
+
+          <div class="space-y-2 p-4 pt-8 md:pt-4">
+            <h3 class="text-4xl font-black text-white">5 000 000+</h3>
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Obejrzanych minut</p>
+            <p class="text-sm text-gray-400">Materiały, które realnie zmieniają kariery deweloperów</p>
+          </div>
+
+          <div class="space-y-2 p-4 pt-8 md:pt-4">
+            <h3 class="text-4xl font-black text-white">350+</h3>
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Darmowych filmów</p>
+            <p class="text-sm text-gray-400">Największa, merytoryczna biblioteka frontendu w Polsce</p>
+          </div>
+
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="https://youtube.com/@Przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-2xl bg-red-600 hover:bg-red-500 px-8 py-4 text-base font-bold text-white shadow-xl shadow-red-600/10 hover:shadow-red-600/20 transition-all cursor-pointer hover:-translate-y-0.5"
+          >
+            <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Zasubskrybuj nasz kanał na YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

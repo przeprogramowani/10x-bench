@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowLeft, CheckCircle2, GraduationCap, ShieldAlert, Cpu, Sparkles, Code, Play } from 'lucide-react';
+
+const modules = [
+  {
+    num: "01",
+    title: "Fundamenty nowoczesnego frontendu & React 19 Deep Dive",
+    desc: "Zrozumienie działania silnika przeglądarki, renderowania stron, asynchroniczności, zaawansowane hooki w React 19, obsługa transakcji, 'use' hook, refactoring przestarzałych mechanizmów."
+  },
+  {
+    num: "02",
+    title: "Zaawansowana architektura aplikacji webowych",
+    desc: "Jak planować i układać kod w dużej aplikacji frontendowej. Wybór architektury stanowej (Zustand, Redux Toolkit, Context), separacja logiki, optymalizacja komponentów, integracje z zewnętrznym API."
+  },
+  {
+    num: "03",
+    title: "Profesjonalne testowanie aplikacji",
+    desc: "Testy jednostkowe, integracyjne oraz E2E przy użyciu Playwright oraz Cypress. Dowiesz się, jak pisać stabilne testy, które chronią aplikację przed błędami regresyjnymi na produkcji."
+  },
+  {
+    num: "04",
+    title: "Automatyzacja pracy, CI/CD & Devops we frontendzie",
+    desc: "Docker w świecie frontendu, budowanie potoków wdrożeniowych (pipelines) w GitHub Actions, automatyzacja testów i audytów wydajnościowych. Przygotowanie do profesjonalnego deploymentu."
+  },
+  {
+    num: "05",
+    title: "AI Edition — Rewolucja w pracy inżyniera",
+    desc: "Świadome korzystanie z potencjału asystentów AI (Claude Code, Cursor, Copilot). Tworzenie customowych instrukcji, automatyzacja powtarzalnych zadań oraz inżynieria kontekstu (Context Engineering)."
+  }
+];
+
+const benefits = [
+  "Dostęp do autorskiej platformy edukacyjnej z nagraniami HD",
+  "Praktyczne zadania domowe sprawdzane przez mentorów",
+  "Dostęp do zamkniętej, wspierającej społeczności Discord",
+  "Imienny, certyfikowany dokument ukończenia szkolenia",
+  "Gotowe szablony architektoniczne i pliki konfiguracyjne do wdrożenia na produkcji"
+];
+---
+
+<Layout title="Opanuj Frontend: AI Edition — Przeprogramowani" description="Zostań nowoczesnym frontend developerem. 5 obszernych modułów o architekturze, testowaniu, nowoczesnym React 19, CI/CD oraz pracy z asystentami AI. Dołącz do nas!">
+  <!-- HEADER HERO -->
+  <section class="relative pt-12 pb-20 md:py-28 overflow-hidden">
+    <!-- Ambient color -->
+    <div class="absolute top-1/4 right-0 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <nav class="flex text-xs text-slate-500 font-semibold space-x-2 mb-8 uppercase tracking-wider">
+        <a href="/" class="hover:text-orange-500 transition-colors">Strona Główna</a>
+        <span>/</span>
+        <span class="text-slate-300">Opanuj Frontend</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text Left -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-bold text-orange-400">
+            <Sparkles class="w-3.5 h-3.5" />
+            <span>AI Edition — Najnowszy standard</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Opanuj Frontend:<br />
+            <span class="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+              Zostań inżynierem nowej ery
+            </span>
+          </h1>
+
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Przestań być rzemieślnikiem sklejającym biblioteki na oślep. Weź udział w 5-modułowym, elitarnym programie, który uczy inżynierskiego, szerokiego myślenia o frontendzie. Twórz super-wydajne, przetestowane i zautomatyzowane aplikacje, wykorzystując pełną moc AI jako osobistego partnera.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a
+              href="https://www.opanujfrontend.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-extrabold text-sm text-white bg-orange-500 hover:bg-orange-600 shadow-xl shadow-orange-950/20 transition-all duration-300"
+            >
+              Przejdź do oficjalnej platformy →
+            </a>
+            <a
+              href="#program"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-slate-300 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-all duration-300"
+            >
+              Zobacz program szkolenia
+            </a>
+          </div>
+
+          <!-- Quick trust numbers -->
+          <div class="flex flex-wrap gap-8 pt-6 border-t border-slate-900/80">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl font-extrabold text-white">4 edycje</span>
+              <span class="text-xs text-slate-500">I rzesza zadowolonych</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl font-extrabold text-white">400+</span>
+              <span class="text-xs text-slate-500">Absolwentów programu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Promo Right -->
+        <div class="lg:col-span-5 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-2xl">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <span class="bg-orange-500/15 text-orange-400 text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-widest block mb-4 w-fit">Dołącz do absolwentów</span>
+          <h3 class="text-xl font-extrabold text-white mb-2">Czego nauczysz się w programie?</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-6">Skompletuj pełen warsztat techniczny i przejdź drogę od samodzielnego pisania pojedynczych funkcji do projektowania stabilnych architektur.</p>
+
+          <div class="space-y-3.5 mb-8">
+            {benefits.slice(0, 4).map((b) => (
+              <div class="flex items-start gap-3">
+                <CheckCircle2 class="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                <span class="text-slate-300 text-xs font-semibold leading-snug">{b}</span>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="https://www.opanujfrontend.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs font-extrabold text-white bg-slate-950 border border-slate-800 hover:border-orange-500 hover:bg-slate-900/50 transition-all duration-300"
+          >
+            Aplikuj teraz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROGRAM SECTION -->
+  <section id="program" class="py-20 bg-slate-900/10 border-y border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <span class="text-orange-500 text-xs font-bold uppercase tracking-widest block mb-3">Agenda Szkolenia</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">5 obszernych modułów wiedzy</h2>
+        <p class="text-slate-400 text-sm mt-2">Drobiazgowo przemyślany i stale aktualizowany materiał.</p>
+      </div>
+
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {modules.map((mod) => (
+          <div class="bg-slate-900/60 border border-slate-900 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row gap-6 hover:border-orange-500/20 transition-all duration-300">
+            <div class="flex-shrink-0">
+              <span class="text-4xl font-black font-mono text-orange-500/30 tracking-tight block">
+                {mod.num}
+              </span>
+            </div>
+            <div class="space-y-2 flex-grow">
+              <h3 class="text-white font-extrabold text-lg leading-snug">{mod.title}</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">{mod.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS & SOCIAL PROOF -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text left -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-orange-500 text-xs font-bold uppercase tracking-widest block">Standard Przeprogramowanych</span>
+          <h2 class="text-3xl font-extrabold text-white tracking-tight">Co otrzymujesz w ramach uczestnictwa?</h2>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Nie zostawiamy Cię z samymi nagraniami. Dbamy o to, aby proces edukacji był wspierany przez bezpośredni kontakt z mentorami, współpracę z innymi uczestnikami i rzetelną weryfikację Twoich umiejętności w praktyce.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold text-slate-300">
+            {benefits.map((b) => (
+              <div class="flex items-start gap-2.5">
+                <CheckCircle2 class="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                <span class="leading-relaxed">{b}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Promo box right */}
+        <div class="lg:col-span-6 bg-gradient-to-r from-orange-500/10 via-purple-600/5 to-slate-900 p-8 rounded-3xl border border-slate-800/80 space-y-4">
+          <h3 class="text-white font-extrabold text-xl">Szkolenie Opanuj Frontend w liczbach:</h3>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-orange-500">40h+</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Nagrań wideo HD</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-orange-500">20+</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Praktycznych zadań</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-orange-500">Discord</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Stały kontakt</span>
+            </div>
+            <div class="p-4 bg-slate-950 border border-slate-900 rounded-xl">
+              <span class="block text-2xl font-black text-orange-500">Certyfikat</span>
+              <span class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">O ukończeniu</span>
+            </div>
+          </div>
+
+          <div class="pt-4 text-center">
+            <p class="text-xs text-slate-400">Dołącz do grona zadowolonych i profesjonalnych inżynierów frontendu.</p>
+            <a
+              href="https://www.opanujfrontend.pl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-orange-500 hover:underline mt-2"
+            >
+              Aplikuj na oficjalnej stronie szkolenia →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

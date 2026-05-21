@@ -1,0 +1,414 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  ArrowRight, 
+  Sparkles, 
+  Code, 
+  Cpu, 
+  Layers, 
+  Terminal, 
+  Mail, 
+  Compass, 
+  ExternalLink,
+  BookOpen,
+  Zap,
+  Users,
+  CheckCircle,
+  TrendingUp,
+  BrainCircuit,
+  Settings,
+  FolderSync,
+  Download
+} from 'lucide-react';
+
+const courses = [
+  {
+    title: "Opanuj Frontend: AI Edition",
+    description: "Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów!",
+    badge: "Kurs flagowy",
+    color: "from-cyan-500 to-blue-600",
+    link: "https://www.opanujfrontend.pl?utm_source=przeprogramowani_website",
+    tech: ["Astro", "React 19", "CI/CD", "Testing"]
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19!",
+    badge: "Nowość",
+    color: "from-blue-600 to-indigo-700",
+    link: "https://www.opanujtypescript.pl?utm_source=przeprogramowani_website",
+    tech: ["TypeScript 5", "React 19", "Architecture"]
+  },
+  {
+    title: "Opanuj AI",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy programisty.",
+    badge: "Bestseller",
+    color: "from-purple-600 to-pink-600",
+    link: "https://opanuj.ai/",
+    tech: ["LLMs", "Prompting", "Agents", "APIs"]
+  }
+];
+
+const featuresRulesBuilder = [
+  {
+    title: "Visual Rule Builder",
+    description: "Intuicyjny interfejs do tworzenia reguł AI bez konieczności pisania kodu.",
+    icon: Compass
+  },
+  {
+    title: "140+ Frameworków i bibliotek",
+    description: "Kompleksowe wsparcie dla 6 warstw technologicznych: frontend, backend, bazy, DevOps i testy.",
+    icon: Layers
+  },
+  {
+    title: "Smart Import",
+    description: "Automatycznie wykrywaj stack przez upload pliku package.json lub requirements.txt.",
+    icon: FolderSync
+  },
+  {
+    title: "Elastyczny eksport",
+    description: "Eksportuj jako pliki markdown zoptymalizowane dla różnych edytorów i asystentów AI.",
+    icon: Download
+  }
+];
+
+const featuresPromptLibrary = [
+  {
+    title: "Zarządzanie organizacją",
+    description: "Wsparcie dla wielu organizacji z zaawansowaną kontrolą dostępu (RBAC).",
+    icon: Users
+  },
+  {
+    title: "Kuracja treści",
+    description: "Dopracowany workflow draft/publish zapewnia najwyższą jakość promptów w zespole.",
+    icon: CheckCircle
+  },
+  {
+    title: "Doświadczenie użytkownika",
+    description: "Przeglądaj, filtruj i kopiuj gotowe prompty bezpośrednio z centralnej biblioteki.",
+    icon: Sparkles
+  },
+  {
+    title: "Narzędzia współpracy",
+    description: "Centralne repozytorium do dzielenia się wiedzą zespołową i standaryzacji procesów.",
+    icon: TrendingUp
+  }
+];
+
+const partners = [
+  "SmartRecruiters", "Callstack", "Future Processing", "edrone", 
+  "Xfive", "Euvic", "Huuuge Games", "Nutridome", "Strabag", "Autodesk"
+];
+---
+
+<Layout>
+  <!-- Hero Section with 10xDevs 3.0 Highlight -->
+  <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-32 bg-slate-950">
+    <!-- Glowing background effects -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text Column -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-accent/10 border border-brand-accent/20 px-3.5 py-1.5 text-xs font-semibold text-brand-accent">
+            <Sparkles class="h-3.5 w-3.5 animate-pulse" />
+            <span>NOWOŚĆ: 10xDevs 3.0 — Programuj z AI</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.1]">
+            Programuj z AI na poziomie <span class="bg-gradient-to-r from-brand-accent via-blue-400 to-brand-purple bg-clip-text text-transparent">10xDevs</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Odkryj techniki, wzorce i asystentów AI, pozwalające świadomie przyspieszyć cały cykl wytwarzania oprogramowania.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a 
+              href="https://10xdevs.pl?utm_source=przeprogramowani_website" 
+              target="_blank" 
+              rel="noreferrer" 
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-accent text-brand-dark hover:bg-white px-8 py-4 text-base font-bold transition-all duration-300 shadow-[0_0_30px_rgba(0,242,254,0.3)] hover:shadow-[0_0_35px_rgba(0,242,254,0.5)]"
+            >
+              Dowiedz się więcej o 10xDevs
+              <ArrowRight class="h-4 w-4" />
+            </a>
+            <a 
+              href="#courses" 
+              class="inline-flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 px-8 py-4 text-base font-semibold transition-colors"
+            >
+              Przeglądaj programy
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal Widget (Interactive-looking premium asset representation) -->
+        <div class="lg:col-span-5">
+          <div class="relative group">
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-accent to-brand-purple rounded-2xl blur-xl opacity-30 group-hover:opacity-40 transition-all duration-300"></div>
+            <div class="relative bg-brand-card/95 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden font-mono text-xs text-slate-300">
+              {/* Terminal header */}
+              <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+                <div class="flex space-x-2">
+                  <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <span class="text-[10px] text-slate-500 tracking-wider">10xdevs_assistant.sh</span>
+                <Terminal class="h-3.5 w-3.5 text-slate-500" />
+              </div>
+              {/* Terminal content */}
+              <div class="p-6 space-y-4">
+                <div>
+                  <span class="text-brand-accent">$</span> <span class="text-white">analyze --agent</span> <span class="text-slate-400">"Claude Code"</span>
+                  <p class="text-slate-400 mt-1"># Analiza wydajności i frameworków...</p>
+                </div>
+                <div class="text-slate-400 space-y-1">
+                  <p class="text-emerald-400 font-semibold">[SUCCESS] Połączono z silnikiem Claude Code & Cursor v3</p>
+                  <p>&gt; Wykryto 140+ frameworków technologicznych</p>
+                  <p>&gt; Zoptymalizowano prompt engineering (Rules Builder)</p>
+                  <p>&gt; Zwiększono produktywność kodu o +320%</p>
+                </div>
+                <div>
+                  <span class="text-brand-accent">$</span> <span class="text-white">run test-suite --ai</span>
+                  <p class="text-slate-500 mt-1">Running CI/CD pipeline verification...</p>
+                </div>
+                <div class="bg-slate-900 p-3 rounded border border-slate-800 text-[11px]">
+                  <span class="text-brand-yellow">Frontend:</span> React 19 + Astro OK<br/>
+                  <span class="text-brand-yellow">TypeScript:</span> Strict Compiler OK<br/>
+                  <span class="text-brand-yellow">Deployment:</span> Cloudflare Pages OK
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="relative bg-brand-card border border-slate-800 rounded-3xl p-8 md:p-12 overflow-hidden shadow-2xl">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 px-3 py-1 text-xs font-semibold text-brand-yellow">
+              <Mail class="h-3.5 w-3.5" />
+              <span>Darmowa subskrypcja</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+              Przeprogramowany Newsletter
+            </h2>
+            <p class="text-slate-300 leading-relaxed max-w-xl">
+              Co tydzień w piątek otrzymasz porcję wartościowych treści w unikalnym formacie <strong class="text-brand-yellow">3-2-1</strong>:
+            </p>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li class="flex items-center gap-2">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-brand-yellow text-brand-dark text-[11px] font-black">3</span>
+                <span>rekomendacje techniczne (narzędzia, artykuły, repozytoria)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-brand-yellow text-brand-dark text-[11px] font-black">2</span>
+                <span>rekomendacje rozwojowe (kariera, produktywność, nauka)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-brand-yellow text-brand-dark text-[11px] font-black">1</span>
+                <span>bonus niespodzianka dla subskrybentów</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col items-center justify-center space-y-6 bg-slate-950/60 p-6 sm:p-8 rounded-2xl border border-slate-800">
+            <div class="text-center">
+              <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold block mb-1">Dołącz do czytelników</span>
+              <p class="text-2xl font-black text-white">Dołącz dzisiaj</p>
+            </div>
+            <a 
+              href="https://przeprogramowani.substack.com" 
+              target="_blank" 
+              rel="noreferrer" 
+              class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-brand-yellow text-brand-dark hover:bg-white px-6 py-3.5 text-sm font-bold transition-all duration-300 shadow-[0_0_20px_rgba(255,208,0,0.2)] hover:shadow-[0_0_25px_rgba(255,208,0,0.4)]"
+            >
+              Zapisz się za darmo na Substack
+              <ExternalLink class="h-4 w-4" />
+            </a>
+            <p class="text-[10px] text-slate-500 text-center">
+              Brak spamu. Możesz wypisać się w dowolnym momencie jednym kliknięciem.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs & Courses Section -->
+  <section id="courses" class="py-20 md:py-28 bg-slate-950 relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-semibold text-brand-accent">
+          <BookOpen class="h-3.5 w-3.5" />
+          <span>Edukacja Technologiczna</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Szkolenia dla ambitnych programistów
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+          Zyskaj praktyczną wiedzę, rozwiń skrzydła w nowoczesnym frontendzie, architekturze TypeScript oraz nowoczesnych narzędziach sztucznej inteligencji.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <div class="flex flex-col h-full bg-brand-card/50 border border-slate-800/80 rounded-2xl overflow-hidden hover:border-slate-700/80 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group">
+            {/* Header pattern with gradient */}
+            <div class={`h-2.5 bg-gradient-to-r ${course.color}`}></div>
+            <div class="p-8 flex flex-col flex-grow space-y-6">
+              <div class="flex justify-between items-center">
+                <span class="inline-flex items-center rounded-md bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-200">
+                  {course.badge}
+                </span>
+                <span class="text-slate-600 group-hover:text-brand-accent transition-colors">
+                  <Zap class="h-5 w-5" />
+                </span>
+              </div>
+
+              <div class="space-y-3">
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-accent transition-colors">
+                  {course.title}
+                </h3>
+                <p class="text-slate-400 text-sm leading-relaxed min-h-[100px]">
+                  {course.description}
+                </p>
+              </div>
+
+              {/* Technologies tag */}
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                {course.tech.map((t) => (
+                  <span class="text-[10px] bg-slate-900 border border-slate-800 text-slate-400 px-2 py-0.5 rounded">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div class="pt-4 mt-auto">
+                <a 
+                  href={course.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  class="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand-accent hover:text-white px-4 py-3 text-sm font-semibold text-slate-300 transition-all duration-300"
+                >
+                  Zobacz szczegóły programu
+                  <ArrowRight class="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 10xRules Product Showcase -->
+  <section class="py-20 md:py-28 bg-slate-900 border-t border-slate-800 relative">
+    <div class="absolute inset-0 bg-brand-purple/5 mix-blend-color-dodge pointer-events-none"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text details -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-purple/10 border border-brand-purple/20 px-3 py-1 text-xs font-semibold text-brand-purple">
+            <BrainCircuit class="h-3.5 w-3.5" />
+            <span>Nasz Produkt AI</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white">
+            10xRules.ai — Reguły AI dla Twojego zespołu
+          </h2>
+          <p class="text-slate-300 leading-relaxed">
+            Buduj precyzyjne osobiste reguły AI i zarządzaj wspólną biblioteką promptów zespołowych na nowoczesnej platformie SaaS. Oszczędzaj setki godzin na konfiguracji kontekstu dla chatbotów.
+          </p>
+          <div class="pt-4">
+            <a 
+              href="https://10xrules.ai" 
+              target="_blank" 
+              rel="noreferrer" 
+              class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-purple to-pink-600 hover:opacity-90 text-white px-6 py-3.5 text-sm font-bold transition-all duration-300 shadow-[0_0_20px_rgba(155,81,224,0.3)]"
+            >
+              Wypróbuj 10xRules.ai
+              <ExternalLink class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Features Showcase Grid -->
+        <div class="lg:col-span-7 space-y-10">
+          <!-- Rules Builder block -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-2">
+              <span class="p-1 rounded bg-slate-800 text-brand-accent">
+                <Settings class="h-4 w-4" />
+              </span>
+              <h3 class="text-md font-bold text-slate-200 uppercase tracking-wide">Rules Builder (Indywidualni Developerzy)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {featuresRulesBuilder.map((f) => (
+                <div class="bg-brand-card/30 border border-slate-800/60 rounded-xl p-5 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-accent">
+                    <f.icon class="h-4 w-4" />
+                    <h4 class="text-sm font-semibold text-white">{f.title}</h4>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-relaxed">{f.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Prompt Library block -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-2">
+              <span class="p-1 rounded bg-slate-800 text-brand-purple">
+                <Users class="h-4 w-4" />
+              </span>
+              <h3 class="text-md font-bold text-slate-200 uppercase tracking-wide">Prompt Library (Zespoły Developerskie)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {featuresPromptLibrary.map((f) => (
+                <div class="bg-brand-card/30 border border-slate-800/60 rounded-xl p-5 space-y-2">
+                  <div class="flex items-center gap-2 text-brand-purple">
+                    <f.icon class="h-4 w-4" />
+                    <h4 class="text-sm font-semibold text-white">{f.title}</h4>
+                  </div>
+                  <p class="text-xs text-slate-400 leading-relaxed">{f.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner/Brands Carousel / Social proof -->
+  <section class="py-16 bg-slate-950 border-t border-slate-800 overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-slate-400">
+          7 lat na rynku edukacji technologicznej
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Zaufali nam liderzy branży i setki zadowolonych absolwentów</p>
+      </div>
+
+      <div class="relative w-full">
+        <!-- We will output beautiful cards representing partners/brands to guarantee clean visual aesthetics -->
+        <div class="flex flex-wrap justify-center items-center gap-4 max-w-5xl mx-auto">
+          {partners.map((p) => (
+            <div class="bg-brand-card/40 border border-slate-800/80 text-slate-400 hover:text-white px-5 py-3 rounded-xl text-xs font-semibold tracking-wider transition-colors duration-300 shadow-sm min-w-[120px] text-center">
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

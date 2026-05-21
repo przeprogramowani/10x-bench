@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-05T11:11:28.236Z",
-  "totalAttempts": 92,
+  "generatedAt": "2026-05-21T06:46:14.535Z",
+  "totalAttempts": 97,
   "results": [
     {
       "id": "gpt-54-attempt-3",
@@ -779,6 +779,96 @@
           "score": 1,
           "max": 1,
           "notes": "Layout.astro has title description canonical OG and Twitter Card meta tags applied to all pages via shared layout"
+        }
+      ]
+    },
+    {
+      "id": "gemini-35-flash-attempt-1",
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 7,
+          "max": 1,
+          "notes": "7min 41s"
+        },
+        {
+          "name": "Test run",
+          "score": 20.05,
+          "max": 1,
+          "notes": "20.05.2026 21:21"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful with Cloudflare adapter; all 6 routes prerendered including /o-nas /podcast /youtube /opanuj-frontend /opanuj-typescript /"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible with 200 status; navigation styles and content working correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 6.3.6 installed instead of required 5.x; React 19.2.6 Tailwind CSS 4.3.0 and @astrojs/cloudflare all correct and configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated page found; Przemek Smyrdek (DAZN Cabify) and Marcin Czarkowski (SmartRecruiters) bios match context"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts shown with real episode data; Spotify show URL uses wrong ID (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 unique real YouTube video IDs with Przeprogramowani-themed titles; no placeholder or rick roll IDs found"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "10xDevs featured prominently in hero CTA; courses section shows only 3 of 6 courses from context (missing Opanuj JavaScript and Cursor: Programuj z AI)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Consistent dark/slate theme with orange accents across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive layout with proper containers navigation and components"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout-based SEO meta tags cover all pages; title and description match context; og and twitter tags implemented"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -1889,6 +1979,96 @@
           "score": 1,
           "max": 1,
           "notes": "Meta tags in Layout cover all pages with per-page titles and descriptions. Default description matches brand tagline. lang=pl set"
+        }
+      ]
+    },
+    {
+      "id": "gemini-35-flash-attempt-5",
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "attemptNumber": 5,
+      "totalScore": 8,
+      "maxScore": 10,
+      "percentage": 80,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 8,
+          "max": 1,
+          "notes": "8min 29s"
+        },
+        {
+          "name": "Test run",
+          "score": 21.05,
+          "max": 1,
+          "notes": "21.05.2026 04:47"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful — all 4 pages generated (index, o-nas, podcast, youtube)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible on localhost:4325, navigation and styles working correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Astro 6.3.6 used instead of required Astro 5; no @astrojs/cloudflare adapter installed or configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists and returns 200; DAZN/Cabify for Przemek and SmartRecruiters for Marcin present; course assignments (Opanuj JavaScript / 10xDevs) and publication credits missing"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Both Opanuj.AI and Przeprogramowani ft. Gość podcasts displayed with real-looking episodes; Spotify show URL in header wrong (4qHUZJpeBK8Ij9e2wTVm2o vs expected 3yVvOAXSYq6sQB02w4A4wo)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 Przeprogramowani videos with unique real IDs; no rick-roll or placeholder IDs; titles match channel content theme"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs featured prominently in hero with link to 10xdevs.pl; dedicated kursy section with Opanuj Frontend/TypeScript/AI courses"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Consistent dark theme with slate palette across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive layout across all screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout-based SEO covering all pages; dynamic title and meta description per page; content matches brand identity"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -4847,6 +5027,276 @@
           "score": 0.5,
           "max": 1,
           "notes": "Basic meta tags in Layout covering all pages; generic description; no OG tags; does not match specific brand content from context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gemini-35-flash-attempt-2",
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "attemptNumber": 2,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 6,
+          "max": 1,
+          "notes": "6min 33s"
+        },
+        {
+          "name": "Test run",
+          "score": 20.05,
+          "max": 1,
+          "notes": "20.05.2026 22:30"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful; all 4 pages (index o-nas podcast youtube) generated with Astro 5.18.1"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages accessible at localhost:4322; navigation styles and content working correctly; all return 200"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Astro 5.18.1 and React 19 correct; Tailwind CSS 3.4.17 (needs v4) and no Cloudflare Adapter installed or configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated page found returns 200; Przemek (DAZN Cabify) and Marcin (SmartRecruiters Opanuj AI Podcast) key details present; course assignments (Opanuj JavaScript / 10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts displayed; episode data partially hallucinated (e.g. GPT-5.5 VS Opus 4.7 April 2026 episode); no main Spotify show links"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "6 unique non-placeholder video IDs with Przeprogramowani-themed titles; correct channel URL; unable to verify IDs against real channel without live YouTube check"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "10xDevs prominently featured in Hero CTA (link to 10xdevs.pl); courses section shows 3 of 6 courses (missing Opanuj JavaScript 10xDevs and Cursor: Programuj z AI)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Consistent dark/slate theme with brand accent colors across all pages confirmed by user"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive layout confirmed by user across all screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro provides title and description meta tags for all pages; default title matches context tagline (Szersze spojrzenie na programowanie)"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gemini-35-flash-attempt-3",
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "attemptNumber": 3,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 5,
+          "max": 1,
+          "notes": "5min 30s"
+        },
+        {
+          "name": "Test run",
+          "score": 21.05,
+          "max": 1,
+          "notes": "21.05.2026 06:52"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful — astro build completed with 4 pages generated"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running on port 4323; all pages (/, /o-nas/, /podcast/, /youtube/) return 200 and load correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "Astro 4.16 (not 5), React 18 (not 19), Tailwind CSS 3 (not 4), no Cloudflare Adapter installed or configured"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /o-nas/ page found, HTTP 200; founder bios for Przemek Smyrdek and Marcin Czarkowski present but missing some details (publications, course attributions, contributors section)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /podcast/ page found, HTTP 200; both Opanuj.AI and Przeprogramowani ft. Gość displayed, but episodes are hardcoded static data — not fetched from real RSS/Spotify API"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /youtube/ page found, HTTP 200; real YouTube video IDs used for thumbnails/embeds, but video data (titles, descriptions, views) is hardcoded static — no YouTube API integration"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Courses section present (id=\"courses\") with Opanuj Frontend, Opanuj TypeScript, Opanuj AI; 10xDevs prominently featured in Hero section; missing some courses from context (Opanuj JavaScript, Cursor)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "Dark slate theme consistent across all pages — same color scheme, typography, and component styles throughout"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Fully responsive — containers, components and navigation adapt correctly across mobile and desktop viewports"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro includes title, meta description, og:type, og:title, og:description, og:site_name; applied to all pages; content matches brand context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gemini-35-flash-attempt-4",
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "attemptNumber": 4,
+      "totalScore": 7,
+      "maxScore": 10,
+      "percentage": 70,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 9,
+          "max": 1,
+          "notes": "9min 53s"
+        },
+        {
+          "name": "Test run",
+          "score": 21.05,
+          "max": 1,
+          "notes": "21.05.2026 07:32"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build succeeded — 4 pages generated (/, /o-nas, /podcast, /youtube) with only unused import warnings"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages return 200 and are accessible with working navigation styles and content"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 6.3.6 (not Astro 5 as required) + React 19 + Tailwind CSS 4 present; Cloudflare Adapter missing from package.json and astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /o-nas page exists and returns 200; content partially matches context — bios hallucinated and Damian Wielgosik incorrectly listed as co-founder (not in context as founder)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /podcast page exists and returns 200; podcast named \"Opanuj Frontend Podcast\" instead of Przeprogramowany Podcast and OpanujAI Podcast; episodes are mock data with soundhelix.com audio URLs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated /youtube page exists and returns 200; videos are hardcoded mock data with Unsplash thumbnails — not real Przeprogramowani channel content"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Dedicated courses section (id=courses) found in index.astro and Hero10x features 10xDevs; courses listed are Opanuj Frontend and Opanuj TypeScript — content partially matches context but misses several courses"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI is consistent across all pages with cohesive dark theme colors typography and components"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation are fully responsive across all pages"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Basic meta tags (title description charset viewport) in Layout.astro connected to all pages; description partially matches context but missing OG tags and Twitter cards"
         },
         {
           "name": "Penalty",
@@ -7959,8 +8409,8 @@
       "attemptCount": 3,
       "agentEnvironment": "Claude Code (High Effort)",
       "pricing": {
-        "input": 0,
-        "output": 0
+        "input": 0.15,
+        "output": 1
       }
     },
     {
@@ -7987,6 +8437,19 @@
       "pricing": {
         "input": 5,
         "output": 25
+      }
+    },
+    {
+      "modelName": "Gemini 3.5 Flash",
+      "modelBaseId": "gemini-35-flash",
+      "averageScore": 7.5,
+      "averageMaxScore": 10,
+      "averagePercentage": 75,
+      "attemptCount": 5,
+      "agentEnvironment": "OpenCode",
+      "pricing": {
+        "input": 1.5,
+        "output": 9
       }
     },
     {

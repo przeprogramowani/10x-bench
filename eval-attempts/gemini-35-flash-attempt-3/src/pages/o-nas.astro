@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, Linkedin, Award, UsersRound, ShieldCheck, HeartHandshake } from 'lucide-react';
+
+const team = [
+  {
+    name: "Przemek Smyrdek",
+    role: "Co-founder, Przeprogramowani",
+    bio: "Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na ogólnokrajowych i międzynarodowych konferencjach 4Developers, ReactiveConf i InfoShare. Aktywny kontrybutor projektów Open Source (m.in. CursorLens, openapi-typescript).",
+    linkedin: "https://www.linkedin.com/in/psmyrdek/",
+    initials: "PS",
+    gradient: "from-cyan-500 to-blue-600"
+  },
+  {
+    name: "Marcin Czarkowski",
+    role: "Co-founder, Przeprogramowani",
+    bio: "Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem komercyjnym. Pasjonat i entuzjasta neurobiologii, tworzący materiały szkoleniowe w oparciu o rzetelne badania nad procesem uczenia się. Twórca i gospodarz 'Opanuj AI Podcast' — najpopularniejszego technicznego podcastu o LLM w Polsce. Ekspert w TypeScript, React i Node.js.",
+    linkedin: "https://www.linkedin.com/in/mkczarkowski/",
+    initials: "MC",
+    gradient: "from-purple-600 to-pink-600"
+  }
+];
+
+const values = [
+  {
+    title: "Szersze spojrzenie",
+    description: "Wykraczamy poza suchą składnię kodu. Uczymy rozumienia biznesu, architektury systemowej, interakcji międzyludzkich i dbania o własny dobrostan psychiczny.",
+    icon: UsersRound
+  },
+  {
+    title: "Najwyższa jakość merytoryczna",
+    description: "Nasze programy i kursy tworzymy bazując na wieloletnim doświadczeniu produkcyjnym w międzynarodowych organizacjach oraz aktualnych badaniach kognitywnych.",
+    icon: ShieldCheck
+  },
+  {
+    title: "Społeczność i wsparcie",
+    description: "Budujemy zintegrowaną społeczność setek ambitnych deweloperów, wspierających się nawzajem na dedykowanych kanałach komunikacji oraz podczas sesji live.",
+    icon: HeartHandshake
+  }
+];
+---
+
+<Layout 
+  title="O nas — Przeprogramowani.pl" 
+  description="Poznaj założycieli Przeprogramowani.pl: Przemka Smyrdka i Marcina Czarkowskiego. Dowiedz się więcej o naszej misji edukacji technologicznej w erze sztucznej inteligencji."
+>
+  <!-- Main Hero section -->
+  <section class="relative py-16 md:py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      {/* Page header */}
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16 md:mb-24">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-brand-accent/10 px-3 py-1 text-xs font-semibold text-brand-accent">
+          <Users class="h-3.5 w-3.5" />
+          <span>Poznaj naszą misję</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">
+          Łączymy <span class="bg-gradient-to-r from-brand-accent via-blue-400 to-brand-purple bg-clip-text text-transparent">programowanie</span>, biznes i rozwój
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          Witaj na Przeprogramowanych! Tworzymy przestrzeń, w której zaawansowane rzemiosło inżynieryjne współgra z rozwojem osobistym. Wierzymy, że najlepsi specjaliści to ci, którzy patrzą szerzej.
+        </p>
+      </div>
+
+      {/* Founders profile section */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 mb-24">
+        {team.map((member) => (
+          <div class="relative bg-brand-card/25 border border-slate-800/80 hover:border-slate-700/80 rounded-3xl p-8 lg:p-10 transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-6">
+              {/* Initials avatar wrapper */}
+              <div class="flex items-center gap-4">
+                <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${member.gradient} flex items-center justify-center text-white font-extrabold text-xl shadow-lg`}>
+                  {member.initials}
+                </div>
+                <div>
+                  <h2 class="text-xl lg:text-2xl font-extrabold text-white group-hover:text-brand-accent transition-colors">
+                    {member.name}
+                  </h2>
+                  <p class="text-sm font-semibold text-slate-400">
+                    {member.role}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bio description */}
+              <p class="text-slate-300 text-sm lg:text-base leading-relaxed">
+                {member.bio}
+              </p>
+            </div>
+
+            {/* Social media footer */}
+            <div class="pt-8 mt-6 border-t border-slate-800/60 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+                <Award class="h-4 w-4 text-brand-accent" />
+                Co-founder
+              </span>
+              <a 
+                href={member.linkedin} 
+                target="_blank" 
+                rel="noreferrer" 
+                class="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white px-4 py-2 text-xs font-semibold transition-all"
+              >
+                LinkedIn
+                <Linkedin class="h-3.5 w-3.5 text-blue-400" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Values section */}
+      <div class="border-t border-slate-800/80 pt-16 md:pt-24 space-y-16">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Nasze Wartości</h2>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Zasady, którymi kierujemy się budując Przeprogramowanych oraz szkoląc tysiące deweloperów w Polsce i na świecie.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {values.map((val) => (
+            <div class="bg-brand-card/15 border border-slate-800/60 rounded-2xl p-6 sm:p-8 space-y-4">
+              <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl text-brand-accent w-fit">
+                <val.icon class="h-6 w-6" />
+              </div>
+              <h3 class="text-lg font-bold text-white">{val.title}</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{val.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

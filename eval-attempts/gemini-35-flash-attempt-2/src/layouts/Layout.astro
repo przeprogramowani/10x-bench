@@ -1,0 +1,75 @@
+---
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'Przeprogramowani.pl — Szersze spojrzenie na programowanie', 
+  description = 'Edukacja technologiczna w epoce AI. Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI.' 
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Preload beautiful font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-brand-dark text-slate-100 min-h-screen flex flex-col justify-between">
+    <div>
+      <Navbar client:load currentPath={currentPath} />
+      <main id="main-content">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --accent: 196, 243, 71;
+    --accent-light: 224, 255, 144;
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', Menlo, Monaco, LucideConsole, Liberation Mono, DejaVu Sans Mono,
+      Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

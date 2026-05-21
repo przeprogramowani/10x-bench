@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero } from '../components/Hero';
+import { BrandPartners } from '../components/BrandPartners';
+import { Courses } from '../components/Courses';
+import { PodcastSection } from '../components/PodcastSection';
+import { YouTubeSection } from '../components/YouTubeSection';
+import { NewsletterBanner } from '../components/NewsletterBanner';
+---
+
+<Layout title="Przeprogramowani.pl — Edukacja technologiczna w epoce AI">
+  <Hero client:load />
+  <BrandPartners client:load />
+  <Courses client:load />
+  <PodcastSection client:load />
+  <YouTubeSection client:load />
+  <NewsletterBanner client:load />
+</Layout>

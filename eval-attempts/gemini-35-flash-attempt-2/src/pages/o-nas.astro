@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { AboutSection } from '../components/AboutSection';
+import { BrandPartners } from '../components/BrandPartners';
+---
+
+<Layout 
+  title="O nas — Przeprogramowani.pl" 
+  description="Poznaj założycieli Przeprogramowani.pl — Przemka Smyrdka i Marcina Czarkowskiego. Łączymy programowanie z rozwojem osobistym."
+>
+  <div class="py-12 bg-slate-950/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
+      <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight">
+        Szerokie spojrzenie <br />
+        <span class="bg-gradient-to-r from-brand-accent to-brand-secondary bg-clip-text text-transparent">
+          na programowanie i karierę
+        </span>
+      </h1>
+      <p class="mt-4 text-slate-400 font-medium text-base sm:text-lg max-w-2xl mx-auto">
+        Nie tylko uczymy pisać kod — pomagamy inżynierom oprogramowania budować kompletną ścieżkę kariery w dynamicznym świecie nowoczesnego AI.
+      </p>
+    </div>
+  </div>
+
+  <AboutSection client:load />
+  
+  <div class="py-12">
+    <BrandPartners client:load />
+  </div>
+</Layout>

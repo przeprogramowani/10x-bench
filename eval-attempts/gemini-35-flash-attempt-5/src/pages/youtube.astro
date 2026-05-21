@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YoutubeFilter from '../components/YoutubeFilter';
+import { ExternalLink, Sparkles } from 'lucide-react';
+
+const videos = [
+  {
+    id: "03y826SVjG0",
+    title: "Jak wybrać najlepszego Agenta AI do programowania?",
+    publishedAt: "Maj 2026",
+    author: "Przeprogramowani"
+  },
+  {
+    id: "S-iNbyLSisE",
+    title: "5 Agent Skills do jakościowego programowania z AI - Claude Code LIVE DEMO",
+    publishedAt: "Kwiecień 2026",
+    author: "Przeprogramowani"
+  },
+  {
+    id: "aRkECt7derY",
+    title: "Product Builders Day | LIVE AI Product Heroes i 10xDevs",
+    publishedAt: "Kwiecień 2026",
+    author: "Przeprogramowani"
+  },
+  {
+    id: "vH1T5qB4dBQ",
+    title: "Wybierasz model AI do kodowania? Nie ufaj benchmarkom",
+    publishedAt: "Marzec 2026",
+    author: "Przeprogramowani"
+  },
+  {
+    id: "bcs8WS4A5Zg",
+    title: "Claude Code w rękach Product Buildera | LIVE AI Product Heroes x 10xDevs",
+    publishedAt: "Luty 2026",
+    author: "Przeprogramowani"
+  },
+  {
+    id: "Vce4cD_5XW0",
+    title: "MVP w Claude Code - Context Engineering, kontrola Agenta i refaktoryzacja",
+    publishedAt: "Styczeń 2026",
+    author: "Przeprogramowani"
+  }
+];
+---
+
+<Layout title="YouTube — Filmy i Praktyczne Warsztaty AI" description="Oglądaj nasze filmy na YouTube. Praktyczne demo z Claude Code, inżynieria promptów, wybór modeli LLM i inżynieria oprogramowania w dobie sztucznej inteligencji.">
+  {/* Header Section */}
+  <section class="py-16 md:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl space-y-6">
+      <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-wider gap-1.5 animate-pulse mx-auto">
+        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.502 9.388.502 9.388.502s7.517 0 9.388-.502a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+        Wideo na Życzenie
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+        Programuj Świadomie z <br />
+        <span class="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">Praktycznymi Materiałami Wideo</span>
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+        Analizy modeli AI, live-demo nowoczesnych edytorów (Cursor, VS Code, Zed), testy agentów AI (Claude Code) oraz najlepsze praktyki inżynierii oprogramowania.
+      </p>
+
+      {/* Subscribe Button */}
+      <div class="pt-4">
+        <a 
+          href="https://youtube.com/c/przeprogramowani?sub_confirmation=1" 
+          target="_blank" 
+          rel="noreferrer"
+          class="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-500 hover:shadow-lg hover:shadow-red-600/20 text-sm font-bold text-white rounded-xl transition-all gap-2"
+        >
+        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.502 9.388.502 9.388.502s7.517 0 9.388-.502a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+          Zasubskrybuj Nasz Kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* YouTube Filter / Grid Area */}
+  <section class="pb-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <YoutubeFilter client:load videos={videos} />
+    </div>
+  </section>
+
+  {/* Promotion Banner */}
+  <section class="py-12 bg-slate-950 border-t border-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <h3 class="text-lg font-bold text-white flex items-center justify-center sm:justify-start gap-2">
+            <Sparkles class="h-4 w-4 text-orange-400" />
+            Szukasz ustrukturyzowanej wiedzy?
+          </h3>
+          <p class="text-sm text-slate-400 max-w-md">
+            Nasze filmy na YT to dopiero wierzchołek góry lodowej. Sprawdź kompleksowy program 10xDevs i opanuj programowanie z AI.
+          </p>
+        </div>
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noreferrer"
+          class="flex-shrink-0 inline-flex items-center justify-center px-5 py-3 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 to-orange-400 hover:brightness-110 transition-all gap-1"
+        >
+          Dołącz do 10xDevs <ExternalLink class="h-3.5 w-3.5" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

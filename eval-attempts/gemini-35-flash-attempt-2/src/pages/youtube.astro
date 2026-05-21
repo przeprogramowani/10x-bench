@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { YouTubeSection } from '../components/YouTubeSection';
+import { BrandPartners } from '../components/BrandPartners';
+---
+
+<Layout 
+  title="Filmy YouTube — Przeprogramowani.pl" 
+  description="Oglądaj nasze materiały wideo na kanale YouTube Przeprogramowani. Praktyczne demo z Claude Code, Cursora, inżynierii promptów i testowania."
+>
+  <div class="py-12 bg-slate-950/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
+      <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight">
+        Najlepsze materiały wideo <br />
+        <span class="bg-gradient-to-r from-red-500 to-amber-500 bg-clip-text text-transparent">
+          o programowaniu z AI
+        </span>
+      </h1>
+      <p class="mt-4 text-slate-400 font-medium text-base sm:text-lg max-w-2xl mx-auto">
+        Przeglądaj najnowsze nagrania live-demo, recenzje narzędzi, analizy frameworków i testy praktyczne nowoczesnych rozwiązań programistycznych.
+      </p>
+    </div>
+  </div>
+
+  <YouTubeSection client:load />
+
+  <div class="py-12">
+    <BrandPartners client:load />
+  </div>
+</Layout>

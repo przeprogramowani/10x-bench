@@ -1,0 +1,212 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, Shield, Award, Users, BookOpen, GraduationCap, MapPin, Briefcase } from 'lucide-react';
+
+const partners = [
+  "Huuuge Games", "Nutridome", "SmartRecruiters", "Future Processing", 
+  "Callstack", "edrone", "Xfive", "Euvic", "Strabag", "Autodesk"
+];
+
+const team = [
+  {
+    name: "Przemek Smyrdek",
+    role: "Co-founder, Przeprogramowani",
+    bio: "Autor programów edukacyjnych, kursów i podcastów. Doświadczony Lead Engineer i Manager w międzynarodowych firmach DAZN oraz Cabify. Specjalista full-stack (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na topowych konferencjach 4Developers, ReactiveConf i InfoShare. Aktywny kontrybutor projektów Open Source (m.in. CursorLens, openapi-typescript).",
+    linkedin: "https://www.linkedin.com/in/psmyrdek/",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", // Fallback professional avatar
+    specialties: ["Full-stack Architecture", "Angular & React", "Open Source", "Tech Leadership"]
+  },
+  {
+    name: "Marcin Czarkowski",
+    role: "Co-founder, Przeprogramowani",
+    bio: "Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem w IT. Entuzjasta neurobiologii, tworzący zaawansowane materiały edukacyjne w oparciu o naukowe badania nad uczeniem się i zapamiętywaniem. Twórca 'Opanuj AI Podcast' — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista w obszarach TypeScript, React oraz Node.js.",
+    linkedin: "https://www.linkedin.com/in/mkczarkowski/",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400", // Fallback professional avatar
+    specialties: ["React & Node.js", "Neuroscience of Learning", "Generative AI Integration", "TypeScript Expert"]
+  }
+];
+
+const values = [
+  {
+    icon: Award,
+    title: "Najwyższa jakość",
+    desc: "Nasze kursy i podcasty nie opierają się na teorii. Dzielimy się tym, co sami wdrażamy w pracy nad systemami dla milionów użytkowników."
+  },
+  {
+    icon: Users,
+    title: "Zorientowanie na ludzi",
+    desc: "Wierzymy, że kod to tylko połowa sukcesu. Prawdziwa siła inżyniera tkwi w komunikacji, zrozumieniu biznesu i pracy zespołowej."
+  },
+  {
+    icon: BookOpen,
+    title: "Szerokie spojrzenie",
+    desc: "Patrzymy poza ramy jednego frameworka. Łączymy architekturę oprogramowania, produktywność wspieraną AI, neurobiologię i rozwój osobisty."
+  }
+];
+---
+
+<Layout title="O nas — Przeprogramowani | Przeprogramowani" description="Poznaj twórców Przeprogramowanych — Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju osobistego.">
+  <!-- BREADCRUMBS & TITLE HEADER -->
+  <section class="relative pt-12 pb-16 overflow-hidden">
+    <!-- Glow behind -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <nav class="flex text-xs text-slate-500 font-semibold space-x-2 mb-6 uppercase tracking-wider">
+        <a href="/" class="hover:text-orange-500 transition-colors">Strona Główna</a>
+        <span>/</span>
+        <span class="text-slate-300">O nas</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="text-orange-500 text-xs font-bold uppercase tracking-widest block mb-3">Edukacja z misją</span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          Łączymy świat programowania, biznesu i rozwoju
+        </h1>
+        <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+          Przeprogramowani to miejsce, w którym kod spotyka się z szerszą perspektywą. Pomagamy ambitnym inżynierom oprogramowania zdobywać unikalne kompetencje techniczne i biznesowe, które pozwalają im stać się liderami w epoce sztucznej inteligencji.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FOUNDERS SECTION -->
+  <section class="py-16 bg-slate-900/10 border-y border-slate-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Założyciele Przeprogramowanych</h2>
+        <p class="text-slate-400 text-sm">Doświadczeni liderzy techniczni, którzy dzielą się swoją wiedzą.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {team.map((member) => (
+          <div class="bg-slate-900 border border-slate-800/80 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row gap-6 relative group hover:border-orange-500/20 transition-all duration-300">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-600/5 rounded-full blur-2xl pointer-events-none group-hover:bg-orange-600/10 transition-all"></div>
+            
+            {/* Avatar Placeholder/Image */}
+            <div class="flex-shrink-0 flex justify-center md:justify-start">
+              <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-slate-800 bg-slate-950 flex items-center justify-center">
+                <span class="absolute text-3xl font-black text-slate-800 group-hover:text-orange-500/20 transition-colors">
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </span>
+                {/* Visual placeholder which looks abstract and high tech */}
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-purple-600/10 group-hover:from-orange-500/25 group-hover:to-purple-600/25 transition-all"></div>
+                <div class="absolute w-4 h-4 rounded-full bg-orange-500/30 blur-sm top-3 right-3 animate-pulse"></div>
+              </div>
+            </div>
+
+            {/* Info Area */}
+            <div class="space-y-4 flex-grow text-center md:text-left">
+              <div>
+                <h3 class="text-lg sm:text-xl font-extrabold text-white group-hover:text-orange-400 transition-colors">
+                  {member.name}
+                </h3>
+                <span class="text-xs font-bold text-orange-500 tracking-wider block mt-1 uppercase">
+                  {member.role}
+                </span>
+              </div>
+
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {member.bio}
+              </p>
+
+              {/* Specialties */}
+              <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-2">
+                {member.specialties.map((spec) => (
+                  <span key={spec} class="text-[10px] font-bold text-slate-500 bg-slate-950 px-2 py-0.5 rounded border border-slate-900">
+                    {spec}
+                  </span>
+                ))}
+              </div>
+
+              {/* Links */}
+              <div class="pt-4 border-t border-slate-950 flex justify-center md:justify-start">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-500">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg> Profil LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES & PHYLOSOPHY SECTION -->
+  <section class="py-20 md:py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Story Left -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-orange-500 text-xs font-bold uppercase tracking-widest block">Nasza Filozofia</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Witaj na Przeprogramowanych!
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Przeprogramowani powstało jako alternatywa dla suchych, czysto akademickich szkoleń. Wierzymy, że najlepsi inżynierowie to ci, którzy potrafią patrzeć szerzej — na architekturę systemów, na cele biznesowe, na relacje międzyludzkie oraz na własny styl nauki i neurobiologię mózgu.
+          </p>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            W świecie pełnym zmieniających się technologii i wszechobecnego Generative AI, naszą misją jest uczyć selekcji tego co ważne, świadomego inżynieringu i krytycznego myślenia. Nie uczymy na pamięć. Uczymy zrozumienia zasad działania i wysokiej sprawności w codziennej pracy z kodem i AI.
+          </p>
+          <div class="pt-2">
+            <span class="font-extrabold text-white text-lg block italic">"Zyskaj szersze spojrzenie na programowanie."</span>
+          </div>
+        </div>
+
+        <!-- Values Right -->
+        <div class="lg:col-span-6 space-y-6">
+          {values.map((val) => {
+            const Icon = val.icon;
+            return (
+              <div class="flex gap-4 p-5 bg-slate-900/40 border border-slate-900 rounded-2xl">
+                <div class="p-3 bg-orange-500/10 border border-orange-500/20 rounded-xl text-orange-500 h-fit">
+                  <Icon class="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 class="text-white font-bold text-base mb-1">{val.title}</h3>
+                  <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">{val.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL TRUST / PARTNERS -->
+  <section class="py-16 border-t border-slate-900 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-3 mb-10">
+        <h3 class="text-xs uppercase tracking-widest text-slate-500 font-extrabold">Zaufali nam najlepsi w branży</h3>
+        <p class="text-sm text-slate-400 max-w-md mx-auto">Przez 7 lat zrealizowaliśmy programy szkoleniowe i doradcze dla kluczowych polskich oraz międzynarodowych przedsiębiorstw.</p>
+      </div>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-center justify-center">
+        {partners.map((partner) => (
+          <div class="p-4 bg-slate-900/30 border border-slate-900/80 rounded-xl text-center font-bold text-sm text-slate-500 hover:text-slate-300 hover:border-slate-800 transition-all cursor-default">
+            {partner}
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 pt-6 border-t border-slate-900/60">
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Chcesz zorganizować dedykowane warsztaty technologiczne lub AI w swojej firmie?
+          <a href="mailto:kontakt@przeprogramowani.pl" class="text-orange-500 hover:underline font-bold ml-1 inline-flex items-center gap-1">
+            Napisz na kontakt@przeprogramowani.pl →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

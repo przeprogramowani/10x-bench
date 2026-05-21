@@ -1,0 +1,441 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard';
+import VideoCard from '../components/VideoCard';
+import EpisodeCard from '../components/EpisodeCard';
+import { Play, Sparkles, Send, ArrowRight, ShieldCheck, Cpu, Code, Users, CheckCircle } from 'lucide-react';
+
+const featuredCourses = [
+  {
+    title: "Opanuj Frontend: AI Edition",
+    description: "Zostań nowoczesnym frontend developerem. Poznaj architekturę aplikacji, nowoczesne wzorce projektowe, testowanie, CI/CD oraz wdrażanie rozwiązań AI w aplikacjach webowych.",
+    features: [
+      "5 obszernych, praktycznych modułów",
+      "Praktyki testowania, CI/CD oraz Open Source",
+      "Architektura zaawansowanych aplikacji webowych",
+      "4 edycje i prawie 400 zadowolonych absolwentów!"
+    ],
+    link: "https://www.opanujfrontend.pl?utm_source=przeprogramowani_website",
+    badge: "KURS FLAGOWY",
+    variant: "blue" as const,
+    stats: "400+ Absolwentów"
+  },
+  {
+    title: "Opanuj TypeScript",
+    description: "Szkolenie, które drastycznie podniesie jakość Twoich projektów na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19, rozwiązując realne problemy.",
+    features: [
+      "Zaawansowane typowanie i architektura kodu",
+      "Praca z TypeScript 5 i nowoczesnym React 19",
+      "Najlepsze praktyki i wzorce produkcyjne",
+      "Materiały oparte na badaniach nad uczeniem się"
+    ],
+    link: "https://www.opanujtypescript.pl?utm_source=przeprogramowani_website",
+    badge: "DLA PRO",
+    variant: "purple" as const,
+    stats: "TS 5 + React 19"
+  },
+  {
+    title: "Opanuj AI",
+    description: "Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o modelach LLM i wdróż zaawansowane techniki prompt engineeringu w swojej codziennej pracy.",
+    features: [
+      "Praktyczne warsztaty z inżynierii promptów",
+      "Darmowe ebooki i materiały edukacyjne",
+      "Automatyzacja pracy programisty z LLM",
+      "Dostęp do elitarnej społeczności AI"
+    ],
+    link: "https://opanuj.ai/",
+    badge: "AI W PRAKTYCE",
+    variant: "cyan" as const,
+    stats: "Darmowe Ebooki"
+  }
+];
+
+const homeVideos = [
+  { id: '03y826SVjG0', title: 'Jak wybrać najlepszego Agenta AI do programowania?' },
+  { id: 'S-iNbyLSisE', title: '5 Agent Skills do jakościowego programowania z AI - Claude Code LIVE DEMO' },
+  { id: 'aRkECt7derY', title: 'Product Builders Day | LIVE AI Product Heroes i 10xDevs' }
+];
+
+const homeEpisodes = [
+  {
+    title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI? (+ Cursor 3.0, DeepSeek V4, Meta Muse)",
+    duration: "00:47:22",
+    description: "W kwietniu 2026 dostaliśmy wysyp dużych premier: GPT-5.5, Claude Opus 4.7, DeepSeek V4, Cursor 3.0, Zed 1.0, Meta Muse Spark. Bierzemy te narzędzia pod lupę i analizujemy najnowszy wyścig zbrojeń AI.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh",
+    series: "Opanuj.AI" as const
+  },
+  {
+    title: "TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS | Opanuj.AI",
+    duration: "01:39:33",
+    description: "Czy AI naprawdę rozumie świat, skoro oblewa testy, które człowiek rozwiązuje bez większego problemu? I czy jednocześnie właśnie na naszych oczach kończy się era klasycznych SaaS-ów? W najnowszym odcinku analizujemy to zjawisko.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/TEGO-AI-NIE-POTRAFI---ARC-AGI-3-i-koniec-epoki-SaaS--Opanuj-AI-e3hc7nk",
+    series: "Opanuj.AI" as const
+  }
+];
+
+const partners = [
+  "SmartRecruiters", "Callstack", "Nutridome", "Huuuge Games", "Future Processing", "edrone", "Xfive", "Euvic", "Strabag", "Autodesk"
+];
+---
+
+<Layout title="Edukacja Technologiczna w Epoce AI">
+  {/* 1. Hero Section (10xDevs focus) */}
+  <section class="relative pt-12 pb-20 md:pt-16 md:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Hero Left Content */}
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Animated Badge */}
+          <div class="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-wider animate-pulse mx-auto lg:mx-0">
+            <Sparkles class="h-3.5 w-3.5" />
+            <span>Premiera: Maj 2026</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight">
+            Programuj z AI na poziomie <br class="hidden sm:inline" />
+            <span class="bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 bg-clip-text text-transparent">
+              10xDevs 3.0
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed mx-auto lg:mx-0">
+            Zupełnie nowe oblicze programowania z wykorzystaniem Generatywnego AI. Odkryj techniki i narzędzia pozwalające świadomie wdrożyć AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a
+              href="https://10xdevs.pl"
+              target="_blank"
+              rel="noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-extrabold text-slate-950 bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 hover:brightness-110 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              Dowiedz się więcej
+              <ArrowRight class="h-5 w-5 ml-2.5" />
+            </a>
+            <a
+              href="#kursy"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all"
+            >
+              Zobacz nasze kursy
+            </a>
+          </div>
+
+          {/* Quick Features */}
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-8 border-t border-slate-900 text-left max-w-md md:max-w-none mx-auto">
+            <div class="flex items-center space-x-2">
+              <Code class="h-4 w-4 text-orange-400 flex-shrink-0" />
+              <span class="text-xs text-slate-400">Context Engineering</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <Cpu class="h-4 w-4 text-orange-400 flex-shrink-0" />
+              <span class="text-xs text-slate-400">Kontrola Agentów AI</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <ShieldCheck class="h-4 w-4 text-orange-400 flex-shrink-0" />
+              <span class="text-xs text-slate-400">Bezpieczne wdrażanie</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Right Visual (Glowing Dashboard/Code Card Mockup) */}
+        <div class="lg:col-span-5 relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-pink-500/10 rounded-3xl blur-3xl -z-10"></div>
+          <div class="bg-slate-950 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl relative">
+            {/* Header bar */}
+            <div class="flex items-center justify-between px-4 py-3 bg-slate-900/60 border-b border-slate-900 text-xs">
+              <div class="flex space-x-1.5">
+                <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+              </div>
+              <span class="text-slate-500 font-mono">10xdevs-agent.py</span>
+              <span class="text-slate-500 text-[10px]">v3.0</span>
+            </div>
+            {/* Body */}
+            <div class="p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-4 leading-relaxed overflow-x-auto">
+              <div class="text-slate-500"># Inicjalizacja Agenta AI w środowisku produkcyjnym</div>
+              <div>
+                <span class="text-indigo-400">from</span> 10xdevs.core <span class="text-indigo-400">import</span> Agent, ContextManager
+              </div>
+              <div>
+                agent = Agent(model=<span class="text-emerald-400">"claude-3-5-sonnet-v2"</span>) <br />
+                context = ContextManager.build_project_context()
+              </div>
+              <div class="text-emerald-500/90 font-semibold">
+                &gt;&gt;&gt; Projekt zoptymalizowany pod AI. Wydajność +1000%
+              </div>
+              {/* Box info inside mockup */}
+              <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl mt-4 font-sans space-y-2">
+                <p class="text-xs font-bold text-white uppercase tracking-wider text-orange-400 flex items-center gap-1.5">
+                  <Sparkles class="h-3.5 w-3.5" /> 10xDevs Programuje z AI
+                </p>
+                <p class="text-xs text-slate-300">
+                  Przejdź od pisania kodu metodą "kopiuj-wklej" do projektowania kompletnych przepływów z autonomicznymi agentami.
+                </p>
+                <div class="flex justify-between items-center pt-2">
+                  <span class="text-[10px] text-slate-500">Materiały wideo, Live, Community</span>
+                  <a href="https://10xdevs.pl" target="_blank" class="text-xs text-orange-400 hover:underline font-bold">Odwiedź platformę →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 2. Brand Trust Section */}
+  <section class="py-12 bg-slate-950/40 border-y border-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs font-semibold text-slate-500 tracking-widest uppercase mb-8">
+        7 lat na rynku edukacji technologicznej • Współpracowaliśmy z liderami branży
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 items-center justify-items-center opacity-60">
+        {partners.map((partner) => (
+          <div key={partner} class="text-slate-400 hover:text-white transition-colors text-sm sm:text-base font-extrabold tracking-wide py-2">
+            {partner}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* 3. Products Highlight: 10xRules.ai */}
+  <section class="py-20 md:py-28 relative">
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="bg-gradient-to-b from-slate-900/60 to-slate-950 border border-slate-800/80 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Text Info */}
+          <div class="lg:col-span-7 space-y-6">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 text-xs font-semibold uppercase tracking-wider border border-indigo-500/20">
+              Nasz Produkt
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              10xRules.ai — Reguły AI <br class="hidden sm:inline" />
+              dla Twojego zespołu deweloperskiego
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+              Buduj i wdrażaj spójne, osobiste oraz zespołowe reguły sztucznej inteligencji. Zarządzaj promptami i predefiniowanymi kontekstami dla Cursor, Windsurf, Claude Code i Github Copilot na jednej, nowoczesnej platformie.
+            </p>
+
+            {/* Features list */}
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-start">
+                <CheckCircle class="h-5 w-5 text-indigo-400 mr-3 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-sm text-slate-100">Visual Rule Builder</h4>
+                  <p class="text-xs text-slate-400">Intuicyjny edytor do tworzenia reguł AI.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <CheckCircle class="h-5 w-5 text-indigo-400 mr-3 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-sm text-slate-100">Smart Import</h4>
+                  <p class="text-xs text-slate-400">Wgraj package.json i automatycznie wykryj stack.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <CheckCircle class="h-5 w-5 text-indigo-400 mr-3 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-sm text-slate-100">140+ Frameworków</h4>
+                  <p class="text-xs text-slate-400">Predefiniowane biblioteki dla programistów.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <CheckCircle class="h-5 w-5 text-indigo-400 mr-3 mt-0.5" />
+                <div>
+                  <h4 class="font-bold text-sm text-slate-100">Zespołowa Prompt Library</h4>
+                  <p class="text-xs text-slate-400">Baza wiedzy z pełnym systemem akceptacji.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <a
+                href="https://10xrules.ai"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 transition-all"
+              >
+                Wypróbuj 10xRules.ai za darmo
+                <ArrowRight class="h-4 w-4 ml-2" />
+              </a>
+            </div>
+          </div>
+
+          {/* Graphical/Demo Part */}
+          <div class="lg:col-span-5 bg-slate-950/60 border border-slate-900 rounded-2xl p-6 relative overflow-hidden flex flex-col justify-center min-h-[300px]">
+            <div class="absolute top-0 right-0 p-3 bg-indigo-500/10 border-b border-l border-slate-800 text-[10px] font-mono text-indigo-400 rounded-bl-xl font-bold uppercase tracking-wider">
+              System Live Demo
+            </div>
+            <div class="space-y-4 font-mono text-xs">
+              <div class="text-slate-500 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Auto-detection in progress...
+              </div>
+              <div class="bg-slate-900 border border-slate-800 p-3.5 rounded-xl space-y-1">
+                <p class="text-white text-xs font-bold">Wykryty plik: package.json</p>
+                <p class="text-slate-400 text-[10px]">"react": "^19.0.0", "typescript": "^5.0.0", "next": "^15.0.0"</p>
+              </div>
+              <div class="text-indigo-400 font-bold">&gt; Wygenerowane reguły dla dewelopera:</div>
+              <ul class="space-y-1 text-slate-300 text-[11px] list-disc pl-4">
+                <li>Stosuj najnowszy Server Actions w Next.js</li>
+                <li>Pisz czysty React 19 z hookiem 'use'</li>
+                <li>Wymuszaj silne typowanie propsów</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 4. Programs / Courses Section */}
+  <section id="kursy" class="py-20 md:py-28 bg-slate-950/30 border-y border-slate-900 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 id="opanuj-frontend" class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
+          Edukacja Technologiczna na Nowym Poziomie
+        </h2>
+        <p class="text-slate-400 text-base md:text-lg">
+          Rozwijaj się w obszarach najbardziej pożądanych na rynku. Nasze kompleksowe programy poprowadzą Cię od podstaw do poziomu eksperckiego.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {featuredCourses.map((course) => (
+          <CourseCard
+            key={course.title}
+            title={course.title}
+            description={course.description}
+            features={course.features}
+            link={course.link}
+            badge={course.badge}
+            variant={course.variant}
+            stats={course.stats}
+          />
+        ))}
+      </div>
+      
+      {/* Target IDs for internal scrolling anchor linking smoothly */}
+      <span id="opanuj-typescript"></span>
+    </div>
+  </section>
+
+  {/* 5. Recent Content Preview (Videos & Podcasts) */}
+  <section class="py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      {/* Youtube Section Grid */}
+      <div class="space-y-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div class="space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Najnowsze Filmy na YouTube</h2>
+            <p class="text-slate-400 text-sm">Codzienna dawka wiedzy z inżynierii oprogramowania oraz technologii AI.</p>
+          </div>
+          <a href="/youtube" class="text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1">
+            Zasubskrybuj i oglądaj wszystkie
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {homeVideos.map((video) => (
+            <VideoCard key={video.id} id={video.id} title={video.title} publishedAt="Ostatnio" />
+          ))}
+        </div>
+      </div>
+
+      {/* Podcast Section Grid */}
+      <div class="space-y-8 pt-12 border-t border-slate-900">
+        <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+          <div class="space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Ostatnie Odcinki Podcastu</h2>
+            <p class="text-slate-400 text-sm">Inspirujące rozmowy ze specjalistami, analizy trendów rynkowych i nowości AI.</p>
+          </div>
+          <a href="/podcast" class="text-sm font-bold text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1">
+            Słuchaj wszystkich odcinków
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {homeEpisodes.map((episode) => (
+            <EpisodeCard
+              key={episode.title}
+              title={episode.title}
+              duration={episode.duration}
+              description={episode.description}
+              link={episode.link}
+              series={episode.series}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 6. Newsletter Subscription Card */}
+  <section class="py-12 md:py-20 bg-slate-950 border-t border-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-indigo-900/20 via-slate-900/40 to-cyan-900/10 border border-slate-800/80 rounded-2xl p-8 md:p-12 text-center space-y-6 relative overflow-hidden">
+        {/* Glow */}
+        <div class="absolute -top-12 -left-12 w-32 h-32 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-12 -right-12 w-32 h-32 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none"></div>
+
+        <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-orange-500/10 text-orange-400 text-xs font-semibold uppercase tracking-wider border border-orange-500/20">
+          Newsletter
+        </span>
+
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          Dołącz do Przeprogramowanego Newslettera
+        </h2>
+
+        <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          Zapisz się za darmo i co piątek otrzymuj wyselekcjonowaną porcję wartościowych treści w unikalnym formacie <span class="font-bold text-orange-400">3-2-1</span>:
+        </p>
+
+        {/* Formatu 3-2-1 Info list */}
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-xl mx-auto py-4">
+          <div class="bg-slate-950/60 p-4 border border-slate-900 rounded-xl">
+            <span class="text-xl font-black text-indigo-400 block mb-1">3</span>
+            <span class="text-xs font-bold text-slate-200 uppercase tracking-wide block">Rekomendacje</span>
+            <span class="text-[11px] text-slate-400">Techniczne i narzędziowe</span>
+          </div>
+          <div class="bg-slate-950/60 p-4 border border-slate-900 rounded-xl">
+            <span class="text-xl font-black text-cyan-400 block mb-1">2</span>
+            <span class="text-xs font-bold text-slate-200 uppercase tracking-wide block">Wskazówki</span>
+            <span class="text-[11px] text-slate-400">Rozwojowe i kariery</span>
+          </div>
+          <div class="bg-slate-950/60 p-4 border border-slate-900 rounded-xl">
+            <span class="text-xl font-black text-pink-500 block mb-1">1</span>
+            <span class="text-xs font-bold text-slate-200 uppercase tracking-wide block">Niespodzianka</span>
+            <span class="text-[11px] text-slate-400">Bonus, ebook lub rabat</span>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <a
+            href="https://przeprogramowani.substack.com"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-extrabold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/20 transition-all gap-2"
+          >
+            <Send class="h-4 w-4" />
+            Zapisz się za darmo na Substack
+          </a>
+        </div>
+        <p class="text-[11px] text-slate-500">
+          Zawsze 100% wartości, zero spamu. Możesz wypisać się w każdej chwili jednym kliknięciem.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+---
+{/* Inline static icons/helpers to keep dependency-free and prevent ESM build issues */}
+---
+<script is:inline>
+  // Simple checkmark svg
+</script>

@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PodcastSection } from '../components/PodcastSection';
+import { NewsletterBanner } from '../components/NewsletterBanner';
+---
+
+<Layout 
+  title="Podcasty — Przeprogramowani.pl" 
+  description="Słuchaj naszych podcastów Opanuj.AI oraz Przeprogramowani ft. Gość o technologiach, AI i rozwoju programisty."
+>
+  <div class="py-12 bg-slate-950/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
+      <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight">
+        Podcasty dla <br />
+        <span class="bg-gradient-to-r from-brand-purple to-pink-500 bg-clip-text text-transparent">
+          głodnych wiedzy programistów
+        </span>
+      </h1>
+      <p class="mt-4 text-slate-400 font-medium text-base sm:text-lg max-w-2xl mx-auto">
+        Rozmowy z ekspertami branżowymi, podsumowania nowości ze świata AI, analizy modeli i szczere dyskusje o codziennej pracy w IT.
+      </p>
+    </div>
+  </div>
+
+  <PodcastSection client:load />
+  
+  <div class="py-12">
+    <NewsletterBanner client:load />
+  </div>
+</Layout>

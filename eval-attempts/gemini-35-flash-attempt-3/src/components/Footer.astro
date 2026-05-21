@@ -1,0 +1,94 @@
+---
+import { Mail, Facebook, Instagram, Youtube, ExternalLink } from 'lucide-react';
+---
+
+<footer class="border-t border-slate-800 bg-slate-950/40 py-12 md:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+      <!-- Info Column -->
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-wider text-white">
+          <span class="flex items-center justify-center rounded bg-brand-yellow px-2 py-1 text-xs font-black text-brand-dark">
+            &lt;/&gt;
+          </span>
+          <span class="font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+            Przeprogramowani
+          </span>
+        </a>
+        <p class="mt-4 text-sm text-slate-400 max-w-md leading-relaxed">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+        </p>
+        <div class="mt-6 flex gap-4">
+          <a href="https://facebook.com/przeprogramowani" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-brand-accent transition-colors">
+            <Facebook class="h-5 w-5" />
+            <span class="sr-only">Facebook</span>
+          </a>
+          <a href="https://instagram.com/przeprogramowani" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-brand-accent transition-colors">
+            <Instagram class="h-5 w-5" />
+            <span class="sr-only">Instagram</span>
+          </a>
+          <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-brand-accent transition-colors">
+            <Youtube class="h-5 w-5" />
+            <span class="sr-only">YouTube</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Column -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-200">Edukacja i Produkty</h3>
+        <ul class="mt-4 space-y-2">
+          <li>
+            <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-brand-accent transition-colors inline-flex items-center gap-1">
+              10xDevs 3.0 <ExternalLink class="h-3 w-3" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.opanujfrontend.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-brand-accent transition-colors inline-flex items-center gap-1">
+              Opanuj Frontend <ExternalLink class="h-3 w-3" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.opanujtypescript.pl" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-brand-accent transition-colors inline-flex items-center gap-1">
+              Opanuj TypeScript <ExternalLink class="h-3 w-3" />
+            </a>
+          </li>
+          <li>
+            <a href="https://opanuj.ai" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-brand-accent transition-colors inline-flex items-center gap-1">
+              Opanuj AI <ExternalLink class="h-3 w-3" />
+            </a>
+          </li>
+          <li>
+            <a href="https://10xrules.ai" target="_blank" rel="noreferrer" class="text-sm text-slate-400 hover:text-brand-accent transition-colors inline-flex items-center gap-1">
+              10xRules.ai <ExternalLink class="h-3 w-3" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-200">Współpraca</h3>
+        <p class="mt-4 text-sm text-slate-400">
+          Chcesz nawiązać współpracę lub masz pytania? Napisz do nas!
+        </p>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-800/80 hover:bg-slate-800 border border-slate-700/50 px-4 py-2 text-sm font-medium text-white transition-all">
+          <Mail class="h-4 w-4 text-brand-accent" />
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-12 border-t border-slate-800/60 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-slate-500">
+        &copy; {new Date().getFullYear()} Przeprogramowani.pl. Wszelkie prawa zastrzeżone.
+      </p>
+      <div class="flex gap-6 text-xs text-slate-500">
+        <a href="/o-nas" class="hover:text-slate-300 transition-colors">O nas</a>
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" class="hover:text-slate-300 transition-colors">Newsletter</a>
+        <a href="/podcast" class="hover:text-slate-300 transition-colors">Podcast</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,6min 33s,N/A,6min 33s
+Test run,20.05.2026 22:30,N/A,20.05.2026 22:30
+Local build,1,1,Build successful; all 4 pages (index o-nas podcast youtube) generated with Astro 5.18.1
+Manual testing,1,1,All pages accessible at localhost:4322; navigation styles and content working correctly; all return 200
+Tech stack,0,1,Astro 5.18.1 and React 19 correct; Tailwind CSS 3.4.17 (needs v4) and no Cloudflare Adapter installed or configured
+O nas page,0.5,1,Dedicated page found returns 200; Przemek (DAZN Cabify) and Marcin (SmartRecruiters Opanuj AI Podcast) key details present; course assignments (Opanuj JavaScript / 10xDevs) missing from bios
+Podcast page,0.5,1,Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts displayed; episode data partially hallucinated (e.g. GPT-5.5 VS Opus 4.7 April 2026 episode); no main Spotify show links
+YouTube page,0.5,1,6 unique non-placeholder video IDs with Przeprogramowani-themed titles; correct channel URL; unable to verify IDs against real channel without live YouTube check
+Kursy section,0.5,1,10xDevs prominently featured in Hero CTA (link to 10xdevs.pl); courses section shows 3 of 6 courses (missing Opanuj JavaScript 10xDevs and Cursor: Programuj z AI)
+Consistent UI,1,1,Consistent dark/slate theme with brand accent colors across all pages confirmed by user
+Responsive design,1,1,Fully responsive layout confirmed by user across all screen sizes
+SEO Tags,1,1,Layout.astro provides title and description meta tags for all pages; default title matches context tagline (Szersze spojrzenie na programowanie)
+Penalty,0,N/A,No penalty applied

@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastFilter from '../components/PodcastFilter';
+import { Radio, Heart, HelpCircle } from 'lucide-react';
+
+const episodes = [
+  // Opanuj.AI Podcast
+  {
+    title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI? (+ Cursor 3.0, DeepSeek V4, Meta Muse)",
+    duration: "00:47:22",
+    description: "W kwietniu 2026 dostaliśmy wysyp dużych premier: GPT-5.5, Claude Opus 4.7, DeepSeek V4, Cursor 3.0, Zed 1.0, Meta Muse Spark i nowe obrazy w ChatGPT. Na pierwszy rzut oka wygląda to jak kolejny wyścig zbrojeń AI. Podsumowujemy najważniejsze zmiany i odpowiadamy, kto dziś przejmuje tron.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS | Opanuj.AI",
+    duration: "01:39:33",
+    description: "Czy AI naprawdę rozumie świat, skoro oblewa testy, które człowiek rozwiązuje bez większego problemu? I czy jednocześnie właśnie na naszych oczach kończy się era klasycznych SaaS-ów? Rozmawiamy o teście ARC-AGI-3 i o tym, co nas czeka w najbliższych miesiącach rozwoju narzędzi LLM.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/TEGO-AI-NIE-POTRAFI---ARC-AGI-3-i-koniec-epoki-SaaS--Opanuj-AI-e3hc7nk",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "Programowanie w epoce AI z Claude Code, Cursorem i Copilotem - Gość: Dawid Sibiński",
+    duration: "01:28:30",
+    description: "Dawid Sibiński to programista full-stack, cyfrowy nomad i entuzjasta programowania wspieranego AI. W naszej rozmowie dzieli się swoimi bogatymi doświadczeniami w pracy z Copilotem, Cursorem oraz Claude Code. Omawiamy realne korzyści i wyzwania codziennej pracy dewelopera z AI.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Programowanie-w-epoce-AI-z-Claude-Code--Cursorem-i-Copilotem---Go-Dawid-Sibiski-e3gmm83",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "OpenClaw, SWE-AGI i zmierzch chatbotów - Opus 4.6 i GPT-5.3 Codex to Agenci z przyszłości!",
+    duration: "01:43:15",
+    description: "Bierzemy na warsztat jedną z najbardziej absurdalnych i jednocześnie najciekawszych historii AI ostatnich miesięcy: viralowy projekt ClawdBot, później MoltBot, a dziś OpenClaw — narzędzie, które miało samodzielnie programować i zrewolucjonizować rynek SWE-AGI.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/OpenClaw--SWE-AGI-i-zmierzch-chatbotw---Opus-4-6-i-GPT-5-3-Codex-to-Agenci-z-przyszoci-e3fu2u2",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5 z Chin",
+    duration: "01:23:04",
+    description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia? Inny z gigantów, Anthropic, próbuje na nowo zdefiniować bezpieczeństwo, a Chiny wypuszczają potężne modele GLM-4.7 i Kimi K2.5.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "Wielkie Podsumowanie AI w 2025 - Modele, Narzędzia, Przełomy, Liderzy, Firmy i Wpadki Influencerów",
+    duration: "01:47:28",
+    description: "OpenAI czy Google? GPT-5.2 czy Gemini 3? Demis Hassabis czy Sam Altman? Bielik czy PLLuM? Ubiegły rok był pełen zaciekłych rywalizacji na wielu polach, a rozwój AI raz jeszcze przebił najśmielsze oczekiwania nas wszystkich.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Wielkie-Podsumowanie-AI-w-2025---Modele--Narzdzia--Przeomy--Liderzy--Firmy-i-Wpadki-Influencerw-e3dcmq5",
+    series: "Opanuj.AI" as const,
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=300&auto=format&fit=crop"
+  },
+  // Przeprogramowani ft. Gość
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Przeprogramowani ft. Gość",
+    duration: "00:33:45",
+    description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą w IT i jak skutecznie uczyć się angielskiego. Praktyczne wskazówki dotyczące przełamywania barier.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo",
+    series: "Przeprogramowani ft. Gość" as const,
+    imageUrl: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramowani ft. Gość",
+    duration: "00:45:56",
+    description: "Wojciech Trawiński, Senior Software Engineer w XTB, opowiada o tym, jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty. Rozprawiamy się z mitem, że wyłącznie ciężka praca bez strategii gwarantuje sukces zawodowy.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn",
+    series: "Przeprogramowani ft. Gość" as const,
+    imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przeprogramowani ft. Gość",
+    duration: "01:16:44",
+    description: "W rozmowie z Tomaszem Ducinem badamy, w jaki sposób architektura aplikacji wykracza poza konkretne biblioteki czy frameworki. Koncentrujemy się na kluczowych decyzjach technicznych, które kształtują długofalowy charakter systemu.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3",
+    series: "Przeprogramowani ft. Gość" as const,
+    imageUrl: "https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=300&auto=format&fit=crop"
+  },
+  {
+    title: "Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne (LIVE YT)",
+    duration: "01:36:34",
+    description: "Przeglądamy najważniejsze aktualizacje i zmiany w kompilatorze TypeScript. Dzielimy się również planami dotyczącymi nadchodzących eventów konferencyjnych deweloperów, na których będzie można się z nami spotkać osobiście.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm",
+    series: "Przeprogramowani ft. Gość" as const,
+    imageUrl: "https://images.unsplash.com/photo-1516116211223-5c359a36298a?q=80&w=300&auto=format&fit=crop"
+  }
+];
+---
+
+<Layout title="Podcast — Opanuj AI i Przeprogramowani ft. Gość" description="Słuchaj naszych podcastów o technologii, programowaniu oraz AI w IT. Odkryj odcinki 'Opanuj.AI Podcast' oraz serii 'Przeprogramowani ft. Gość'.">
+  {/* Header Section */}
+  <section class="py-16 md:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl space-y-6">
+      <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider gap-1.5">
+        <Radio class="h-4 w-4 animate-pulse" />
+        Słuchaj w Ruchu
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+        Słuchaj o Technologii, <br />
+        <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">AI i Programowaniu</span>
+      </h1>
+      <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+        Comiesięczne podsumowania rynku sztucznej inteligencji w ramach <strong>Opanuj.AI</strong> oraz głębokie dyskusje z czołowymi ekspertami IT w serii <strong>Przeprogramowani ft. Gość</strong>.
+      </p>
+
+      {/* Directory Links */}
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a 
+          href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" 
+          target="_blank" 
+          rel="noreferrer"
+          class="flex items-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white rounded-xl transition-all gap-2"
+        >
+          Słuchaj na Spotify
+        </a>
+        <a 
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" 
+          target="_blank" 
+          rel="noreferrer"
+          class="flex items-center px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-bold text-slate-300 hover:text-white rounded-xl transition-all gap-2"
+        >
+          Apple Podcasts
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Podcast Filter / Grid Area */}
+  <section class="pb-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <PodcastFilter client:load episodes={episodes} />
+    </div>
+  </section>
+</Layout>

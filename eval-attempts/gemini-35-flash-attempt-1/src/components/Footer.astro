@@ -1,0 +1,116 @@
+---
+import { Mail, ArrowUpRight, GraduationCap } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 relative overflow-hidden">
+  <!-- Subtle ambient light -->
+  <div class="absolute -bottom-48 left-1/2 -translate-x-1/2 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <!-- Info Column -->
+      <div class="space-y-4">
+        <a href="/" class="flex items-center gap-2">
+          <span class="text-orange-500 font-extrabold text-2xl tracking-wider">&lt;/&gt;</span>
+          <span class="text-white font-extrabold text-xl tracking-tight">
+            Przeprogramowani<span class="text-orange-500">.pl</span>
+          </span>
+        </a>
+        <p class="text-sm leading-relaxed text-slate-400">
+          Szersze spojrzenie na programowanie. Pomagamy programistom rozwijać się na wielu płaszczyznach — technicznej, biznesowej oraz ludzkiej.
+        </p>
+        <div class="flex items-center gap-4 pt-2">
+          <a href="https://facebook.com/przeprogramowani" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-white hover:bg-orange-600 transition-all duration-300" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://instagram.com/przeprogramowani" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-white hover:bg-orange-600 transition-all duration-300" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-white hover:bg-orange-600 transition-all duration-300" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" class="fill-current"></polygon>
+            </svg>
+          </a>
+          <a href="mailto:kontakt@przeprogramowani.pl" class="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-white hover:bg-orange-600 transition-all duration-300" aria-label="Email">
+            <Mail class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Column 1 -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-2 border-orange-500 pl-3">Inicjatywy</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-1 group">
+              10xDevs <ArrowUpRight class="w-3.5 h-3.5 text-slate-600 group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
+          </li>
+          <li>
+            <a href="https://10xrules.ai" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-1 group">
+              10xRules.ai <ArrowUpRight class="w-3.5 h-3.5 text-slate-600 group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
+          </li>
+          <li>
+            <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-1 group">
+              Przeprogramowany Newsletter <ArrowUpRight class="w-3.5 h-3.5 text-slate-600 group-hover:text-orange-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2 -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-2 border-orange-500 pl-3">Szkolenia</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="/opanuj-frontend" class="hover:text-white transition-colors inline-flex items-center gap-1.5">
+              <GraduationCap class="w-4 h-4 text-orange-500" /> Opanuj Frontend: AI Edition
+            </a>
+          </li>
+          <li>
+            <a href="/opanuj-typescript" class="hover:text-white transition-colors inline-flex items-center gap-1.5">
+              <GraduationCap class="w-4 h-4 text-orange-500" /> Opanuj TypeScript
+            </a>
+          </li>
+          <li>
+            <a href="https://opanuj.ai" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors inline-flex items-center gap-1.5">
+              <GraduationCap class="w-4 h-4 text-orange-500" /> Opanuj AI
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Column -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-l-2 border-orange-500 pl-3">Współpraca</h4>
+        <p class="text-sm leading-relaxed text-slate-400 mb-4">
+          Chcesz nawiązać współpracę komercyjną, szkoleniową lub zorganizować dedykowany program? Napisz do nas!
+        </p>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300">
+          <Mail class="w-4 h-4 text-orange-500" /> kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright Area -->
+    <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+      <p>&copy; {currentYear} Przeprogramowani.pl. Wszelkie prawa zastrzeżone.</p>
+      <div class="flex gap-6">
+        <a href="/o-nas" class="hover:text-white transition-colors">O nas</a>
+        <a href="/podcast" class="hover:text-white transition-colors">Podcasty</a>
+        <a href="/youtube" class="hover:text-white transition-colors">YouTube</a>
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">10xDevs</a>
+      </div>
+    </div>
+  </div>
+</footer>

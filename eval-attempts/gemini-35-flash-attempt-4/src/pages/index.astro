@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero10x from '../components/Hero10x';
+import CourseCard from '../components/CourseCard';
+import { ArrowRight, Terminal, Award, HelpCircle, Code, Users2, Sparkles } from 'lucide-react';
+
+const courses = [
+  {
+    id: 'opanuj-frontend',
+    title: 'Opanuj Frontend',
+    subtitle: 'Zostań inżynierem frontendu',
+    tagline: 'Od kodu do architekta frontendu',
+    description: 'Kompleksowy, najbardziej metodyczny program nauki nowoczesnego frontendu w Polsce. Przejdź drogę od znajomości składni do projektowania skalowalnych i wydajnych aplikacji internetowych.',
+    badge: 'Flagowy program',
+    duration: '12 tygodni',
+    level: 'Średniozaawansowany',
+    features: [
+      'Głębokie zrozumienie pod maską (JS, silnik V8, renderowanie)',
+      'Zaawansowany React, architektura stanu i performance',
+      'Praktyczne testowanie (Jest, Vitest, Cypress, Playwright)',
+      '10 zaawansowanych projektów gotowych do portfolio',
+      'Nauka systemów budowania i optymalizacji aplikacji',
+      'Dedykowany kanał Discord i regularne sesje Q&A na żywo'
+    ],
+    ctaText: 'Dołącz do programu',
+    ctaLink: 'https://przeprogramowani.pl/opanuj-frontend',
+    color: 'orange' as const
+  },
+  {
+    id: 'opanuj-typescript',
+    title: 'Opanuj TypeScript',
+    subtitle: 'Napisz bezbłędny kod',
+    tagline: 'Zrozum system typów od podszewki',
+    description: 'Jedyny kurs w Polsce, który tak szczegółowo rozkłada system typów na części pierwsze. Naucz się pisać w pełni bezpieczny kod bez używania types "any" i eliminuj błędy zanim pojawią się na produkcji.',
+    badge: 'Bestseller',
+    duration: '8 tygodni',
+    level: 'Średnio/Zaawansowany',
+    features: [
+      'Zrozumienie systemu typów (generics, conditional, mapped types)',
+      'Praktyczne wzorce projektowe z użyciem TypeScript',
+      'Typowanie Reacta, Express/Fastify i interakcji z bazami danych',
+      'Przeprowadzanie refaktoryzacji dużych projektów JS do TS',
+      'Najlepsze praktyki konfiguracyjne (tsconfig.json)',
+      'Imienne certyfikaty i dostęp do zamkniętej społeczności'
+    ],
+    ctaText: 'Sprawdź szczegóły',
+    ctaLink: 'https://przeprogramowani.pl/opanuj-typescript',
+    color: 'blue' as const
+  }
+];
+
+const faqs = [
+  {
+    q: 'Czy kursy są przeznaczone dla zupełnie początkujących?',
+    a: 'Nasze programy Opanuj Frontend i Opanuj TypeScript są skierowane do osób, które znają już podstawy programowania (np. podstawowy JavaScript i HTML/CSS). Pomagają wejść na wyższy poziom (mid/senior) i opanować inżynierskie rzemiosło.'
+  },
+  {
+    q: 'Czym wyróżnia się społeczność 10xDevs?',
+    a: '10xDevs to nie tylko kurs, to całoroczny klub rozwoju dla programistów. To unikalne miejsce w polskim internecie, gdzie deweloperzy na poziomie Mid, Senior i Lead wymieniają się doświadczeniami, biorą udział w cotygodniowych Masterclassach live i wspólnie uczą się zaawansowanej architektury, automatyzacji oraz pracy ze sztuczną inteligencją.'
+  },
+  {
+    q: 'Czy otrzymam fakturę VAT za zakup programu?',
+    a: 'Tak, oczywiście! Wystawiamy faktury VAT dla firm na każdy zakupiony program lub członkostwo. Możesz z łatwością sfinansować naukę z budżetu szkoleniowego swojego pracodawcy.'
+  },
+  {
+    q: 'Czy materiały w kursach są aktualizowane?',
+    a: 'Tak, branża technologii zmienia się błyskawicznie. Wszyscy kursanci otrzymują dożywotni, bezpłatny dostęp do wszelkich aktualizacji danej edycji kursu, dzięki czemu Twoja wiedza zawsze pozostaje aktualna.'
+  }
+];
+---
+
+<Layout title="Start | Wejdź na wyższy poziom programowania">
+  {/* High Impact 10xDevs Hero Section */}
+  <Hero10x client:load />
+
+  {/* Intro Section / About Preview */}
+  <section class="py-20 bg-brand-dark border-y border-gray-800/40 relative">
+    <div class="absolute top-1/2 left-10 -z-10 h-72 w-72 rounded-full bg-brand-orange/5 blur-[100px]" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-1.5 rounded-lg bg-brand-orange/10 px-3 py-1 text-xs font-bold text-brand-orange">
+            <Award class="h-4 w-4" />
+            O inicjatywie Przeprogramowani.pl
+          </div>
+          <h2 class="text-3xl font-black text-white tracking-tight sm:text-4xl">
+            Od programistów dla programistów. Uczymy rzemiosła.
+          </h2>
+          <p class="text-gray-400 leading-relaxed text-base">
+            Przeprogramowani.pl to nie kolejny nudny bootcamp. To edukacyjny ekosystem stworzony przez trzech doświadczonych praktyków rynkowych – Marcina Czarkowskiego, Przemka Smyrdka i Damiana Wielgosika. 
+          </p>
+          <p class="text-gray-400 leading-relaxed text-base">
+            Naszą misją jest eliminacja "magii" w programowaniu. Pokazujemy, jak działają technologie pod maską, uczymy pisać czysty, testowalny kod i pomagamy deweloperom budować owocne, stabilne kariery na lata.
+          </p>
+          <div>
+            <a
+              href="/o-nas"
+              class="inline-flex items-center gap-2 font-bold text-brand-orange hover:text-brand-orange-light transition-colors"
+            >
+              Dowiedz się więcej o naszej trójce
+              <ArrowRight class="h-4.5 w-4.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* Dynamic features cards */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="rounded-2xl border border-gray-800 bg-brand-dark-card/30 p-6 space-y-3 hover:border-brand-orange/30 transition-all">
+            <div class="inline-flex rounded-xl bg-brand-orange/15 p-2.5 text-brand-orange">
+              <Code class="h-5 w-5" />
+            </div>
+            <h3 class="text-base font-bold text-white">Rzemieślnicze podejście</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Nie uczymy teorii na blachę. Kładziemy nacisk na wzorce projektowe, algorytmikę, architekturę i pragmatyzm.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800 bg-brand-dark-card/30 p-6 space-y-3 hover:border-brand-purple/30 transition-all">
+            <div class="inline-flex rounded-xl bg-brand-purple/15 p-2.5 text-brand-purple">
+              <Users2 class="h-5 w-5" />
+            </div>
+            <h3 class="text-base font-bold text-white">Silna społeczność</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Nasze zamknięte kanały to codzienna wymiana wiedzy, pomoc przy kodzie i cenne oferty pracy z polecenia.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800 bg-brand-dark-card/30 p-6 space-y-3 hover:border-brand-cyan/30 transition-all">
+            <div class="inline-flex rounded-xl bg-brand-cyan/15 p-2.5 text-brand-cyan">
+              <Terminal class="h-5 w-5" />
+            </div>
+            <h3 class="text-base font-bold text-white">Praktyczne zadania</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Prace domowe, pull requesty i code review. Uczysz się pracując na prawdziwych repozytoriach.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800 bg-brand-dark-card/30 p-6 space-y-3 hover:border-brand-green/30 transition-all">
+            <div class="inline-flex rounded-xl bg-brand-green/15 p-2.5 text-brand-green">
+              <Sparkles class="h-5 w-5" />
+            </div>
+            <h3 class="text-base font-bold text-white">Kurs pod rękę z AI</h3>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Wykorzystujemy nowoczesne AI (LLMy, edytory agentowe) w codziennym workflow, ucząc produktywności przyszłości.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Courses Section */}
+  <section id="courses" class="py-24 bg-brand-dark/95 relative">
+    <div class="absolute bottom-1/4 right-1/4 -z-10 h-96 w-96 rounded-full bg-brand-purple/5 blur-[120px]" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      {/* Section Header */}
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold text-brand-orange uppercase tracking-widest">Sztandarowe Programy Edukacyjne</span>
+        <h2 class="text-3xl font-black tracking-tight text-white sm:text-5xl">
+          Kompletne programy online
+        </h2>
+        <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
+          Stworzyliśmy wyczerpujące, metodyczne ścieżki edukacyjne, które krok po kroku przeprowadzą Cię przez kluczowe działy inżynierii oprogramowania.
+        </p>
+      </div>
+
+      {/* Course Cards Grid */}
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {courses.map((course) => (
+          <CourseCard
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            subtitle={course.subtitle}
+            tagline={course.tagline}
+            description={course.description}
+            badge={course.badge}
+            duration={course.duration}
+            level={course.level}
+            features={course.features}
+            ctaText={course.ctaText}
+            ctaLink={course.ctaLink}
+            color={course.color}
+          />
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  {/* Podcast and YouTube mini banners */}
+  <section class="py-20 bg-brand-dark-card/20 border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* Podcast Promo Card */}
+        <div class="relative overflow-hidden rounded-3xl border border-gray-800 bg-gradient-to-br from-brand-dark-card to-brand-dark/40 p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-orange/30 transition-colors">
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-brand-orange uppercase tracking-wider">Odsłuchaj darmowych odcinków</span>
+            <h3 class="text-2xl font-black text-white">Opanuj Frontend Podcast</h3>
+            <p class="text-sm text-gray-400 leading-relaxed max-w-md">
+              Merytoryczne dyskusje o technologii, karierze, architekturze kodu, wyzwaniach programistycznych i realiach pracy w IT. Odtwarzaj bezpośrednio na naszej stronie!
+            </p>
+          </div>
+          <div class="mt-8">
+            <a
+              href="/podcast"
+              class="inline-flex items-center gap-2 rounded-xl bg-gray-900 border border-gray-800 px-5 py-3 text-sm font-bold text-white hover:bg-brand-orange hover:border-brand-orange hover:text-white transition-all duration-300"
+            >
+              Uruchom odtwarzacz podcastów
+              <ArrowRight class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* YouTube Promo Card */}
+        <div class="relative overflow-hidden rounded-3xl border border-gray-800 bg-gradient-to-br from-brand-dark-card to-brand-dark/40 p-8 sm:p-10 flex flex-col justify-between group hover:border-brand-purple/30 transition-colors">
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-brand-purple uppercase tracking-wider">Oglądaj setki nagrań wideo</span>
+            <h3 class="text-2xl font-black text-white">Nasz kanał na YouTube</h3>
+            <p class="text-sm text-gray-400 leading-relaxed max-w-md">
+              Ciekawe tutoriale, vlagi, wyzwania programistyczne, analizy kodu oraz live streamy z udziałem gości ze świata technologii. Zobacz nasze najnowsze publikacje!
+            </p>
+          </div>
+          <div class="mt-8">
+            <a
+              href="/youtube"
+              class="inline-flex items-center gap-2 rounded-xl bg-gray-900 border border-gray-800 px-5 py-3 text-sm font-bold text-white hover:bg-brand-purple hover:border-brand-purple hover:text-white transition-all duration-300"
+            >
+              Zobacz bazę filmów YouTube
+              <ArrowRight class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* FAQ Section */}
+  <section class="py-24 bg-brand-dark relative">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-3 mb-16">
+        <HelpCircle class="h-8 w-8 text-brand-orange mx-auto" />
+        <h2 class="text-3xl font-black tracking-tight text-white sm:text-4xl">Często zadawane pytania (FAQ)</h2>
+        <p class="text-gray-400 text-sm sm:text-base">Masz pytania dotyczące naszych programów szkoleniowych? Znajdź odpowiedź tutaj.</p>
+      </div>
+
+      <div class="space-y-6">
+        {faqs.map((faq, idx) => (
+          <div key={idx} class="rounded-2xl border border-gray-800 bg-brand-dark-card/40 p-6 sm:p-8 space-y-3">
+            <h3 class="text-base sm:text-lg font-bold text-white flex items-start gap-2.5">
+              <span class="text-brand-orange text-sm font-mono mt-0.5">Q:</span>
+              {faq.q}
+            </h3>
+            <p class="text-sm text-gray-400 leading-relaxed pl-6 border-l border-gray-800">
+              {faq.a}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
