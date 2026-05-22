@@ -1,6 +1,7 @@
 import {useState, useMemo} from "react";
 import TableFilters, {type FilterState} from "./TableFilters";
 import ResultsTable from "./ResultsTable";
+import ModelAveragesTable from "./ModelAveragesTable";
 
 export interface CriterionResult {
   name: string;
@@ -37,6 +38,7 @@ function hasMaxScore(attempt: AttemptResult, criterionName: string): boolean {
 }
 
 export default function DetailedComparison({attempts}: Props) {
+  const [viewMode, setViewMode] = useState<"models" | "attempts">("models");
   const [filters, setFilters] = useState<FilterState>({
     localBuild: false,
     manualTesting: false,
@@ -75,7 +77,42 @@ export default function DetailedComparison({attempts}: Props) {
         totalCount={attempts.length}
         filteredCount={filteredAttempts.length}
       />
-      <ResultsTable attempts={filteredAttempts} />
+      <div className='mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
+        <div className='text-sm text-slate-400'>
+          {viewMode === "models"
+            ? "Showing one averaged column per model."
+            : "Showing every individual attempt as its own column."}
+        </div>
+        <div className='inline-flex w-fit rounded-lg border border-slate-700 bg-slate-800 p-1'>
+          <button
+            type='button'
+            onClick={() => setViewMode("models")}
+            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+              viewMode === "models"
+                ? "bg-blue-600 text-white"
+                : "text-slate-300 hover:bg-slate-700"
+            }`}
+          >
+            Model averages
+          </button>
+          <button
+            type='button'
+            onClick={() => setViewMode("attempts")}
+            className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+              viewMode === "attempts"
+                ? "bg-blue-600 text-white"
+                : "text-slate-300 hover:bg-slate-700"
+            }`}
+          >
+            All attempts
+          </button>
+        </div>
+      </div>
+      {viewMode === "models" ? (
+        <ModelAveragesTable attempts={filteredAttempts} />
+      ) : (
+        <ResultsTable attempts={filteredAttempts} />
+      )}
     </div>
   );
 }

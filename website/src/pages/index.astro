@@ -47,23 +47,5 @@ const sortedResults = [...resultsData.results].sort((a, b) => {
       screenshotHashes={screenshotHashes}
     />
 
-    <!-- Legend -->
-    <div class="mt-8 p-4 bg-slate-800 rounded-lg border border-slate-700">
-      <h3 class="font-semibold text-slate-100 mb-3">Score Legend</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-        <div class="flex items-center gap-2">
-          <span class="inline-block px-2 py-1 rounded bg-green-900 text-green-200 text-xs font-semibold">1.0</span>
-          <span class="text-slate-300">Full points - criterion met perfectly</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="inline-block px-2 py-1 rounded bg-yellow-900 text-yellow-200 text-xs font-semibold">0.5</span>
-          <span class="text-slate-300">Partial points - criterion mostly met</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="inline-block px-2 py-1 rounded bg-red-900 text-red-200 text-xs font-semibold">0.0</span>
-          <span class="text-slate-300">No points - criterion not met</span>
-        </div>
-      </div>
-    </div>
   </div>
 </Layout>

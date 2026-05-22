@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, type MouseEvent} from "react";
 
 interface ModelFamilyAverage {
   modelName: string;
@@ -15,12 +15,18 @@ interface Props {
   average: ModelFamilyAverage;
   rank: number;
   screenshotHashes?: Record<string, string>;
+  compareSelected?: boolean;
+  compareDisabled?: boolean;
+  onCompareToggle?: () => void;
 }
 
 export default function ModelAveragesCard({
   average,
   rank,
   screenshotHashes,
+  compareSelected = false,
+  compareDisabled = false,
+  onCompareToggle,
 }: Props) {
   const [hasFilmstrip, setHasFilmstrip] = useState(true);
   const [expanded, setExpanded] = useState(false);
@@ -39,6 +45,33 @@ export default function ModelAveragesCard({
       setExpanded(!expanded);
     }
   };
+
+  const handleCompareClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    if (!compareDisabled || compareSelected) {
+      onCompareToggle?.();
+    }
+  };
+
+  const compareButton = onCompareToggle ? (
+    <button
+      type='button'
+      onClick={handleCompareClick}
+      disabled={compareDisabled && !compareSelected}
+      className={`rounded border px-3 py-1.5 text-xs font-semibold transition-colors ${
+        compareSelected
+          ? "border-blue-500 bg-blue-600 text-white"
+          : "border-slate-600 bg-slate-700 text-slate-200 hover:bg-slate-600"
+      } ${
+        compareDisabled && !compareSelected
+          ? "cursor-not-allowed opacity-50 hover:bg-slate-700"
+          : ""
+      }`}
+    >
+      {compareSelected ? "Selected" : "Compare"}
+    </button>
+  ) : null;
 
   return (
     <div className='bg-slate-800 rounded-lg shadow-sm border border-slate-700 hover:shadow-md transition-shadow'>
@@ -71,6 +104,7 @@ export default function ModelAveragesCard({
                     Cost: ${average.pricing.input} / ${average.pricing.output}
                   </p>
                 )}
+                <div className='mt-2'>{compareButton}</div>
               </div>
             </div>
             <div className='flex items-center gap-2 flex-shrink-0'>
@@ -160,6 +194,7 @@ export default function ModelAveragesCard({
           </div>
 
           <div className='flex items-center gap-3 flex-shrink-0'>
+            {compareButton}
             <div className='text-right'>
               <p className='text-xs text-slate-400'>Average</p>
               <p className='text-lg font-bold text-slate-100'>
