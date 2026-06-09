@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoGrid from '../components/VideoGrid';
+import { videos, channelUrl } from '../data/videos';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani.pl"
+  description="Kanał YouTube Przeprogramowani — praktyczne materiały o programowaniu z AI, Claude Code, agentach AI i nowoczesnym frontendzie. Zobacz ostatnie filmy."
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-32 left-1/2 h-[400px] w-[640px] -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 sm:pt-24">
+      <p class="text-sm font-bold uppercase tracking-widest text-red-400">YouTube</p>
+      <h1 class="mt-2 text-4xl font-black leading-tight text-white sm:text-5xl">
+        Przeprogramowani na <span class="text-red-400">YouTube</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-slate-300">
+        Live demo, benchmarki modeli AI, techniki pracy z agentami i materiały
+        o nowoczesnym programowaniu. Nowe filmy w każdym tygodniu — od Claude Code
+        po architekturę AI-Native.
+      </p>
+      <a
+        href={channelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2.5 rounded-xl bg-red-600 px-6 py-3 text-base font-bold text-white shadow-lg shadow-red-600/25 transition-transform hover:scale-105"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z" />
+        </svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-white/5 bg-ink-900/50 py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-3xl font-black text-white">Ostatnie filmy</h2>
+      <div class="mt-8">
+        <VideoGrid videos={videos} />
+      </div>
+    </div>
+  </section>
+</Layout>

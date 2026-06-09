@@ -1,0 +1,49 @@
+---
+import type { Video } from '../data/videos';
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+const url = `https://www.youtube.com/watch?v=${video.id}`;
+const thumbnail = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/60 transition-colors hover:border-white/20"
+>
+  <div class="relative aspect-video overflow-hidden bg-slate-800">
+    <img
+      src={thumbnail}
+      alt={`Miniatura filmu: ${video.title}`}
+      loading="lazy"
+      decoding="async"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-slate-950/30 opacity-0 transition-opacity group-hover:opacity-100"
+    >
+      <span
+        class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="ml-1 h-6 w-6">
+          <path
+            fill-rule="evenodd"
+            d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <p class="text-xs font-medium text-slate-400">{video.date}</p>
+    <h3 class="mt-2 text-sm font-bold leading-snug text-white group-hover:text-brand-300 sm:text-base">
+      {video.title}
+    </h3>
+  </div>
+</a>

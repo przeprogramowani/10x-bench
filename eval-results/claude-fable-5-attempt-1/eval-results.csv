@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.06.2026 22:49,N/A,9.06.2026 22:49
+Local build,1,1,Build succeeded — Astro 5 static output; 5 pages built; all routes (/, /o-nas, /podcast, /youtube) return 200
+Manual testing,1,1,"Dev server runs on port 4322; navigation, styles and content render correctly; all routes return 200 (user-confirmed)"
+Tech stack,0,1,"Astro 5 (required v6), Tailwind CSS 3.4 via @astrojs/tailwind (required v4), no @astrojs/cloudflare adapter (output: 'static'); only React 19 correct"
+O nas page,1,1,"Page exists and returns 200; founders accurate — Przemek (DAZN/Cabify) and Marcin (SmartRecruiters, Opanuj AI podcast); values & mission match context. Bios condensed and course assignments (Opanuj JavaScript / 10xDevs) not explicitly listed, but key details present"
+Podcast page,0.5,1,"Page exists and returns 200; only the Przeprogramowani podcast is shown — OpanujAI Podcast missing entirely (referenced only in Marcin's bio). Neither Spotify show ID present (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy); uses generic creators.spotify.com profile link. Episodes look realistic but cannot be verified against real feed"
+YouTube page,0.5,1,"Page exists and returns 200; channel link correct (@przeprogramowani); no rick-roll/placeholder IDs. However 3 of 6 entries link to generic /videos and /streams listings rather than real videos (watch?v=...) — partially mocked content"
+Kursy section,1,1,"#kursy section on index; 10xDevs featured (featured: true) in Hero card + courses grid. Course content matches context (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript). Some metrics fabricated (3700+ absolwentów, Builder/Architect/Champion certs); only 3 of 6 context courses shown"
+Consistent UI,1,1,UI consistent across all pages (user-confirmed)
+Responsive design,1,1,"Containers, components and navigation are responsive across screen sizes (user-confirmed)"
+SEO Tags,1,1,"Layout.astro centralizes meta tags (title, description, canonical, og:type/title/description/url/site_name/locale, twitter:card); all pages use Layout; site description & tagline match context ('Szersze spojrzenie na programowanie')"
+Penalty,0,N/A,No penalty applied

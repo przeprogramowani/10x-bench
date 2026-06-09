@@ -1,0 +1,47 @@
+---
+import type { Episode } from '../data/podcast';
+
+interface Props {
+  episode: Episode;
+  number?: number;
+}
+
+const { episode, number } = Astro.props;
+---
+
+<article
+  class="flex gap-5 rounded-2xl border border-white/10 bg-slate-900/60 p-5 transition-colors hover:border-white/20 sm:p-6"
+>
+  <div
+    class="hidden h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/20 to-fuchsia-500/20 text-brand-300 sm:flex"
+  >
+    {
+      number !== undefined ? (
+        <span class="text-lg font-bold">#{number}</span>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+          <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
+          <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
+        </svg>
+      )
+    }
+  </div>
+
+  <div class="min-w-0">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-slate-400">
+      <span>{episode.date}</span>
+      <span aria-hidden="true">·</span>
+      <span>{episode.duration}</span>
+      {
+        episode.guest && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span class="text-brand-300">Gość: {episode.guest}</span>
+          </>
+        )
+      }
+    </div>
+    <h3 class="mt-2 text-base font-bold text-white sm:text-lg">{episode.title}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-slate-400">{episode.description}</p>
+  </div>
+</article>

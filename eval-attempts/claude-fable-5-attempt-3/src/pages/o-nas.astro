@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Współzałożyciel',
+    bio: 'Twórca programów edukacyjnych, kursów i podcastów. Doświadczenie zdobywał jako Lead Engineer i Manager w DAZN oraz Cabify. Full-stack developer — od .NET/C#, przez Javę i Node.js, po Angulara i TypeScript. Prelegent największych konferencji technologicznych i kontrybutor projektów open source.',
+    skills: ['.NET / C#', 'Java', 'Node.js', 'Angular', 'TypeScript'],
+    initials: 'PS',
+    gradient: 'from-brand-400 to-brand-600',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Współzałożyciel',
+    bio: 'Tech Lead zespołu Frontend Platform w SmartRecruiters z ponad dekadą doświadczenia. Specjalizuje się w TypeScript, React i Node.js. Twórca Opanuj.AI Podcast — najpopularniejszego technicznego podcastu o LLM-ach w Polsce. Entuzjasta neurobiologii, tworzy materiały edukacyjne w oparciu o badania nad uczeniem się.',
+    skills: ['TypeScript', 'React', 'Node.js', 'LLM / AI', 'Learning Science'],
+    initials: 'MC',
+    gradient: 'from-violet-400 to-fuchsia-600',
+  },
+];
+
+const values = [
+  {
+    title: 'Szersze spojrzenie',
+    description:
+      'Najlepsi programiści to ci, którzy patrzą szerzej — poza kod, na architekturę, biznes, ludzi i własny rozwój.',
+  },
+  {
+    title: 'Praktyka ponad teorię',
+    description:
+      'Uczymy tego, co działa w produkcji. Nasze kursy powstają na bazie realnych doświadczeń z pracy w międzynarodowych firmach technologicznych.',
+  },
+  {
+    title: 'Nauka oparta na badaniach',
+    description:
+      'Materiały edukacyjne projektujemy w oparciu o badania nad procesem uczenia się — żeby wiedza naprawdę zostawała w głowie.',
+  },
+  {
+    title: 'Edukacja w epoce AI',
+    description:
+      'Generatywne AI zmienia sposób tworzenia oprogramowania. Pomagamy programistom wykorzystać tę zmianę zamiast jej ulegać.',
+  },
+];
+
+const partners = [
+  'Autodesk',
+  'SmartRecruiters',
+  'Future Processing',
+  'Callstack',
+  'Huuuge Games',
+  'edrone',
+  'Xfive',
+  'Euvic',
+  'Strabag',
+];
+---
+
+<Layout
+  title="O nas — Przeprogramowani"
+  description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego — twórców Przeprogramowanych. Od 7 lat łączymy świat programowania, biznesu i rozwoju."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pb-16 pt-32 sm:pt-40">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-40 left-1/2 h-96 w-[50rem] -translate-x-1/2 rounded-full bg-brand-600/15 blur-3xl"></div>
+    </div>
+    <div class="container-page relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-kicker">O nas</span>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl">
+          Łączymy świat programowania,
+          <span class="bg-gradient-to-r from-brand-400 to-violet-400 bg-clip-text text-transparent">
+            biznesu i rozwoju
+          </span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-400">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem.
+          Od 7 lat tworzymy kursy, podcasty i narzędzia wspierające rozwój programistów —
+          bo wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Założyciele -->
+  <section class="py-16 sm:py-20">
+    <div class="container-page">
+      <h2 class="section-title text-center">Poznaj nas</h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {
+          founders.map((founder) => (
+            <article class="card p-8">
+              <div class="flex items-center gap-5">
+                <div
+                  class={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${founder.gradient} text-xl font-extrabold text-white shadow-lg`}
+                >
+                  {founder.initials}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">{founder.name}</h3>
+                  <p class="text-sm font-medium text-brand-300">{founder.role}</p>
+                </div>
+              </div>
+              <p class="mt-6 text-sm leading-relaxed text-slate-400">{founder.bio}</p>
+              <ul class="mt-6 flex flex-wrap gap-2">
+                {founder.skills.map((skill) => (
+                  <li class="rounded-full border border-slate-700 bg-slate-800/80 px-3 py-1 text-xs font-medium text-slate-300">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Wartości -->
+  <section class="border-y border-slate-800 bg-slate-900/40 py-16 sm:py-20">
+    <div class="container-page">
+      <div class="max-w-2xl">
+        <span class="section-kicker">Nasze podejście</span>
+        <h2 class="section-title">W co wierzymy</h2>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+        {
+          values.map((value, index) => (
+            <div class="card p-8">
+              <span class="font-mono text-sm font-bold text-brand-400">
+                0{index + 1}
+              </span>
+              <h3 class="mt-3 text-lg font-bold text-white">{value.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnerzy -->
+  <section class="py-16 sm:py-20">
+    <div class="container-page text-center">
+      <h2 class="text-xl font-bold text-white">7 lat na rynku edukacji technologicznej</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm text-slate-400">
+        Współpracowaliśmy z zespołami inżynierskimi czołowych firm technologicznych:
+      </p>
+      <ul class="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        {
+          partners.map((partner) => (
+            <li class="text-base font-semibold tracking-wide text-slate-500">{partner}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pb-20 sm:pb-28">
+    <div class="container-page">
+      <div class="rounded-3xl border border-slate-800 bg-slate-900/60 px-8 py-12 text-center sm:px-16">
+        <h2 class="text-2xl font-extrabold text-white sm:text-3xl">Chcesz z nami współpracować?</h2>
+        <p class="mx-auto mt-3 max-w-xl text-slate-400">
+          Jeśli reprezentujesz firmę i chcesz porozmawiać o partnerstwie lub szkoleniach — napisz do nas.
+        </p>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="btn-primary mt-8">
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,82 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+  featured?: boolean;
+}
+
+const { course, featured = false } = Astro.props;
+
+const accents = {
+  violet: {
+    ring: 'hover:border-violet-400/50',
+    chip: 'bg-violet-500/15 text-violet-300',
+    dot: 'text-violet-400',
+  },
+  sky: {
+    ring: 'hover:border-sky-400/50',
+    chip: 'bg-sky-500/15 text-sky-300',
+    dot: 'text-sky-400',
+  },
+  amber: {
+    ring: 'hover:border-amber-400/50',
+    chip: 'bg-amber-500/15 text-amber-300',
+    dot: 'text-amber-400',
+  },
+} as const;
+
+const accent = accents[course.accent];
+---
+
+<article
+  class={`flex flex-col rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 ${accent.ring} ${featured ? 'lg:col-span-1' : ''}`}
+>
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="text-xl font-bold text-white">{course.name}</h3>
+    {
+      course.badge && (
+        <span class={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${accent.chip}`}>
+          {course.badge}
+        </span>
+      )
+    }
+  </div>
+  <p class={`mt-1 text-sm font-semibold uppercase tracking-wide ${accent.dot}`}>
+    {course.tagline}
+  </p>
+  <p class="mt-4 text-slate-300">{course.description}</p>
+  <ul class="mt-5 flex flex-col gap-2.5">
+    {
+      course.highlights.map((item) => (
+        <li class="flex items-start gap-2.5 text-sm text-slate-300">
+          <svg
+            class={`mt-0.5 shrink-0 ${accent.dot}`}
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  <a
+    href={course.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="mt-6 inline-flex items-center gap-2 self-start rounded-lg border border-white/15 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+  >
+    Poznaj program
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  </a>
+</article>

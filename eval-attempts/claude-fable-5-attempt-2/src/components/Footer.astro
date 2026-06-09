@@ -1,0 +1,60 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-ink-900">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="flex items-center gap-2 font-bold text-white">
+          <span
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-500 text-sm font-extrabold"
+          >
+            P
+          </span>
+          Przeprogramowani<span class="text-brand-400">.pl</span>
+        </p>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+          {site.tagline}. Treści, kursy i narzędzia, które pomagają programistom rozwijać się na
+          wielu płaszczyznach.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-200">Nawigacja</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="/o-nas" class="text-slate-400 transition-colors hover:text-white">O nas</a></li>
+          <li><a href="/podcast" class="text-slate-400 transition-colors hover:text-white">Podcast</a></li>
+          <li><a href="/youtube" class="text-slate-400 transition-colors hover:text-white">YouTube</a></li>
+          <li><a href="/#kursy" class="text-slate-400 transition-colors hover:text-white">Kursy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-200">
+          Znajdź nas w sieci
+        </h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li>
+            <a href={site.socials.youtube} target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-white">YouTube</a>
+          </li>
+          <li>
+            <a href={site.socials.spotify} target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-white">Spotify</a>
+          </li>
+          <li>
+            <a href={site.socials.newsletter} target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-white">Newsletter</a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="text-slate-400 transition-colors hover:text-white">{site.email}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-12 border-t border-white/5 pt-6 text-center text-xs text-slate-500">
+      © {year} Przeprogramowani. Wszelkie prawa zastrzeżone.
+    </p>
+  </div>
+</footer>

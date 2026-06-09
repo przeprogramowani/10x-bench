@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EpisodeList from '../components/EpisodeList';
+import { episodes, podcastDescription, podcastPlatforms } from '../data/episodes';
+---
+
+<Layout
+  title="Podcast — Przeprogramowani.pl"
+  description="Podcast Przeprogramowani — szersze spojrzenie na programowanie. 98 odcinków o karierze, architekturze, TypeScript i AI. Prowadzą Marcin Czarkowski i Przemek Smyrdek."
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-32 left-1/2 h-[400px] w-[640px] -translate-x-1/2 rounded-full bg-brand-600/15 blur-3xl"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 sm:pt-24">
+      <p class="text-sm font-bold uppercase tracking-widest text-brand-400">Podcast</p>
+      <h1 class="mt-2 text-4xl font-black leading-tight text-white sm:text-5xl">
+        Przeprogramowani <span class="text-brand-400">Podcast</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-slate-300">{podcastDescription}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-400">
+        <span class="rounded-full border border-white/10 bg-ink-800/60 px-4 py-1.5 font-semibold text-slate-200">
+          98 odcinków
+        </span>
+        <span class="rounded-full border border-white/10 bg-ink-800/60 px-4 py-1.5 font-semibold text-slate-200">
+          ⭐ 4.9/5 na Apple Podcasts
+        </span>
+        <span class="rounded-full border border-white/10 bg-ink-800/60 px-4 py-1.5 font-semibold text-slate-200">
+          Od 2019 roku
+        </span>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          podcastPlatforms.map((platform) => (
+            <a
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Słuchaj: {platform.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/5 bg-ink-900/50 py-16">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <h2 class="text-3xl font-black text-white">Ostatnie odcinki</h2>
+      <p class="mt-3 text-slate-300">
+        Kliknij odcinek, aby zobaczyć jego opis. Wszystkie odcinki znajdziesz
+        w swojej ulubionej aplikacji podcastowej.
+      </p>
+      <div class="mt-8">
+        <EpisodeList client:load episodes={episodes} />
+      </div>
+    </div>
+  </section>
+</Layout>

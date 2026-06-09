@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404 — Nie znaleziono strony | Przeprogramowani"
+  description="Strona, której szukasz, nie istnieje."
+>
+  <section class="flex min-h-[70vh] items-center justify-center pt-16">
+    <div class="container-page py-20 text-center">
+      <p class="font-mono text-7xl font-black text-brand-500">404</p>
+      <h1 class="mt-6 text-3xl font-extrabold text-white sm:text-4xl">Ups, ta strona nie istnieje</h1>
+      <p class="mx-auto mt-4 max-w-md text-slate-400">
+        Wygląda na to, że trafiłeś pod adres, którego nie ma. Wróć na stronę główną
+        albo sprawdź nasze kursy i podcasty.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/" class="btn-primary">Strona główna</a>
+        <a href="/podcast" class="btn-secondary">Posłuchaj podcastu</a>
+      </div>
+    </div>
+  </section>
+</Layout>

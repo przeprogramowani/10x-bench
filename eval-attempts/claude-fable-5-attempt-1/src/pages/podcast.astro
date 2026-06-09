@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import NewsletterCta from '../components/NewsletterCta.astro';
+import { site } from '../data/site';
+import { episodes, podcastDescription } from '../data/episodes';
+---
+
+<Layout
+  title="Podcast — Przeprogramowani.pl"
+  description={`Podcast Przeprogramowani: ${podcastDescription}`}
+>
+  <section class="mx-auto max-w-6xl px-4 pb-12 pt-32 sm:px-6 sm:pt-40">
+    <SectionHeading eyebrow="Podcast" title="Przeprogramowani — podcast" subtitle={podcastDescription} />
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href={site.links.spotify}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-ink-800/60 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-green-500/50 hover:bg-green-500/10"
+      >
+        <svg class="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.4-2.1-10.5-1.2a.75.75 0 1 1-.33-1.46c4.5-1 8.4-.55 11.6 1.4.35.21.46.67.24 1.02zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-2-8.1-2.55-12-1.4a.94.94 0 1 1-.54-1.8c4.4-1.3 9.8-.67 13.5 1.6.44.27.58.85.31 1.29zm.13-3.4C15.3 8.35 9 8.13 5.3 9.25a1.13 1.13 0 1 1-.65-2.16c4.3-1.3 11.2-1.05 15.6 1.55a1.13 1.13 0 0 1-1.15 1.94z"/></svg>
+        Słuchaj na Spotify
+      </a>
+      <a
+        href={site.links.applePodcasts}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-ink-800/60 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-purple-500/50 hover:bg-purple-500/10"
+      >
+        <svg class="h-5 w-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.94 4.32 10.88 9.99 11.83.06-.63.18-1.62.33-2.36-2.6-.55-4.07-2.3-4.07-2.3A9.61 9.61 0 0 1 2.4 12 9.6 9.6 0 0 1 12 2.4a9.6 9.6 0 0 1 9.6 9.6c0 3.06-1.43 5.78-3.86 7.17 0 0-1.46 1.75-4.06 2.3.15.74.27 1.73.33 2.36C19.68 22.88 24 17.94 24 12c0-6.63-5.37-12-12-12zm0 5.1A6.9 6.9 0 0 0 5.1 12c0 2.13.97 4.03 2.49 5.3.21-.5.5-.94.84-1.32A5.09 5.09 0 0 1 6.9 12 5.1 5.1 0 0 1 12 6.9a5.1 5.1 0 0 1 5.1 5.1c0 1.59-.73 3-1.87 3.94.34.39.63.84.84 1.33A6.88 6.88 0 0 0 18.9 12 6.9 6.9 0 0 0 12 5.1zm0 3.6a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm0 6.6c-1.5 0-2.6.86-2.6 2.05 0 1.1.66 4.07 1.06 5.65.2.8.4 1 .94 1h1.2c.54 0 .74-.2.94-1 .4-1.58 1.06-4.55 1.06-5.65 0-1.19-1.1-2.05-2.6-2.05z"/></svg>
+        Apple Podcasts
+      </a>
+      <a
+        href={site.links.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2.5 rounded-xl border border-white/15 bg-ink-800/60 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-red-500/50 hover:bg-red-500/10"
+      >
+        <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/></svg>
+        YouTube
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-12 sm:px-6">
+    <h2 class="sr-only">Lista odcinków</h2>
+    <div class="space-y-5">
+      {episodes.map((ep, i) => (
+        <article class="group rounded-2xl border border-white/10 bg-ink-800/60 p-6 transition-colors hover:border-brand-500/40 sm:p-7">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-start">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-500/15 text-sm font-bold text-brand-300">
+              #{episodes.length - i}
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+                <span>{ep.date}</span>
+                <span aria-hidden="true">•</span>
+                <span>{ep.duration}</span>
+                {ep.guest && (
+                  <>
+                    <span aria-hidden="true">•</span>
+                    <span class="font-medium text-brand-300">Gość: {ep.guest}</span>
+                  </>
+                )}
+              </div>
+              <h3 class="mt-2 text-lg font-bold leading-snug text-white sm:text-xl">{ep.title}</h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-slate-400">{ep.description}</p>
+            </div>
+            <a
+              href={site.links.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Słuchaj odcinka: ${ep.title}`}
+              class="flex h-11 w-11 shrink-0 items-center justify-center self-start rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition-transform group-hover:scale-110"
+            >
+              <svg class="ml-0.5 h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-10 text-center text-sm text-slate-500">
+      To tylko wybór ostatnich odcinków — pełne archiwum (blisko 100 rozmów od 2019 roku) znajdziesz na
+      <a href={site.links.spotify} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-400 hover:text-brand-300">Spotify</a>
+      i
+      <a href={site.links.applePodcasts} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-400 hover:text-brand-300">Apple Podcasts</a>.
+    </p>
+  </section>
+
+  <NewsletterCta />
+</Layout>

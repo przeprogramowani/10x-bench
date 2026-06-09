@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { SITE, STATS, PARTNERS } from '../data/site';
+import { FLAGSHIP_COURSE, COURSES } from '../data/courses';
+import { EPISODES } from '../data/podcast';
+import { VIDEOS } from '../data/videos';
+
+const latestEpisodes = EPISODES.slice(0, 2);
+const latestVideos = VIDEOS.slice(0, 3);
+---
+
+<Layout title="Przeprogramowani.pl — Szersze spojrzenie na programowanie">
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-16">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.25),transparent_60%)]"
+    >
+    </div>
+    <div
+      class="pointer-events-none absolute -right-40 top-40 h-96 w-96 rounded-full bg-fuchsia-500/10 blur-3xl"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24">
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold text-brand-300"
+      >
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-400"></span>
+        Edukacja technologiczna w epoce AI — od 7 lat
+      </p>
+
+      <h1 class="mt-6 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+        Szersze spojrzenie na <span
+          class="bg-gradient-to-r from-brand-400 to-fuchsia-400 bg-clip-text text-transparent"
+          >programowanie</span
+        >
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+        {SITE.description}
+      </p>
+
+      <!-- 10xDevs flagship card -->
+      <div
+        class="mt-12 overflow-hidden rounded-3xl border border-violet-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-violet-950/60"
+      >
+        <div class="grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.4fr,1fr]">
+          <div>
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-violet-500/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-violet-300 ring-1 ring-violet-500/30"
+            >
+              🚀 Flagowy program · {FLAGSHIP_COURSE.badge}
+            </span>
+            <h2 class="mt-5 text-3xl font-black text-white sm:text-4xl">
+              {FLAGSHIP_COURSE.name}
+              <span class="mt-1 block text-xl font-bold text-violet-300 sm:text-2xl">
+                {FLAGSHIP_COURSE.tagline}
+              </span>
+            </h2>
+            <p class="mt-4 max-w-xl leading-relaxed text-slate-300">
+              {FLAGSHIP_COURSE.description}
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a
+                href={FLAGSHIP_COURSE.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-xl bg-gradient-to-r from-brand-500 to-fuchsia-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/25 transition-opacity hover:opacity-90"
+              >
+                Dołącz do 10xDevs 3.0
+              </a>
+              <a
+                href="#kursy"
+                class="rounded-xl border border-white/15 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/5"
+              >
+                Zobacz wszystkie kursy
+              </a>
+            </div>
+          </div>
+          <ul class="space-y-3 self-center">
+            {
+              FLAGSHIP_COURSE.highlights.map((item) => (
+                <li class="flex items-start gap-3 rounded-xl bg-white/5 px-4 py-3 text-sm text-slate-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-violet-400"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <dl class="mt-14 grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {
+          STATS.map((stat) => (
+            <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-6 text-center">
+              <dd class="bg-gradient-to-r from-brand-400 to-fuchsia-400 bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+                {stat.value}
+              </dd>
+              <dt class="mt-2 text-xs font-medium text-slate-400 sm:text-sm">{stat.label}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="kursy" class="scroll-mt-20 border-t border-white/5 bg-slate-900/30 py-20 sm:py-28">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-sm font-bold uppercase tracking-wider text-brand-400">Kursy</p>
+      <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">
+        Programy, które zmieniają sposób pracy
+      </h2>
+      <p class="mt-4 max-w-2xl text-slate-400">
+        Praktyczna nauka poprzez pracę nad zadaniami, wsparcie doświadczonych mentorów i społeczność
+        programistów, którzy chcą więcej.
+      </p>
+
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
+        <CourseCard course={COURSES[0]} />
+        <CourseCard course={COURSES[1]} />
+      </div>
+
+      <div
+        class="mt-8 flex flex-col items-start justify-between gap-6 rounded-2xl border border-violet-500/30 bg-gradient-to-r from-violet-950/40 to-fuchsia-950/30 p-6 sm:flex-row sm:items-center sm:p-8"
+      >
+        <div>
+          <h3 class="text-xl font-bold text-white">{FLAGSHIP_COURSE.name} — {FLAGSHIP_COURSE.tagline}</h3>
+          <p class="mt-2 max-w-xl text-sm text-slate-300">
+            Nasz flagowy program o programowaniu z Generatywnym AI. Start kolejnej edycji już 18 maja 2026.
+          </p>
+        </div>
+        <a
+          href={FLAGSHIP_COURSE.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 rounded-xl bg-gradient-to-r from-brand-500 to-fuchsia-500 px-6 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90"
+        >
+          Sprawdź 10xDevs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast teaser -->
+  <section class="border-t border-white/5 py-20 sm:py-28">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-wider text-brand-400">Podcast</p>
+          <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Ostatnie odcinki</h2>
+        </div>
+        <a href="/podcast" class="text-sm font-semibold text-brand-400 hover:text-brand-300">
+          Wszystkie odcinki →
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {latestEpisodes.map((episode) => <EpisodeCard episode={episode} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube teaser -->
+  <section class="border-t border-white/5 bg-slate-900/30 py-20 sm:py-28">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-wider text-red-400">YouTube</p>
+          <h2 class="mt-3 text-3xl font-black text-white sm:text-4xl">Najnowsze filmy</h2>
+        </div>
+        <a href="/youtube" class="text-sm font-semibold text-brand-400 hover:text-brand-300">
+          Wszystkie filmy →
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="border-t border-white/5 py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-center text-sm font-medium text-slate-500">
+        Absolwenci naszych programów pracują m.in. w:
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        {
+          PARTNERS.map((partner) => (
+            <span class="text-base font-bold text-slate-600 transition-colors hover:text-slate-400">
+              {partner}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

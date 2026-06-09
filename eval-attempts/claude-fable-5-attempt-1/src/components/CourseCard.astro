@@ -1,0 +1,52 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<article
+  class={`group relative flex flex-col rounded-2xl border border-white/10 bg-ink-800/60 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-2xl hover:shadow-brand-900/40 ${
+    course.featured ? 'lg:col-span-1 ring-1 ring-brand-500/30' : ''
+  }`}
+>
+  <div class="flex items-center justify-between gap-3">
+    <span
+      class={`inline-flex items-center rounded-full bg-gradient-to-r ${course.accent} px-3 py-1 text-xs font-semibold text-white`}
+    >
+      {course.badge}
+    </span>
+  </div>
+
+  <h3 class="mt-5 text-xl font-bold text-white">{course.name}</h3>
+  <p class="mt-1 text-sm font-medium text-brand-300">{course.tagline}</p>
+  <p class="mt-4 text-sm leading-relaxed text-slate-400">{course.description}</p>
+
+  <ul class="mt-5 space-y-2.5">
+    {course.highlights.map((item) => (
+      <li class="flex items-start gap-2.5 text-sm text-slate-300">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-auto pt-7">
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-sm font-semibold text-white transition-colors group-hover:border-brand-500/50 group-hover:bg-brand-600 group-hover:text-white"
+    >
+      Poznaj szczegóły
+      <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+</article>

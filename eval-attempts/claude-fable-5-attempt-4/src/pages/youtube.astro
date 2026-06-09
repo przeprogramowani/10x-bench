@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { CHANNEL_URL, CHANNEL_DESCRIPTION, VIDEOS } from '../data/videos';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani.pl"
+  description="Kanał YouTube Przeprogramowani: praktyczne programowanie z AI, benchmarki modeli, live demo z Claude Code i techniki efektywnej pracy programisty."
+>
+  <section class="relative overflow-hidden pt-16">
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(239,68,68,0.15),transparent_60%)]"
+    >
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+      <p class="text-sm font-bold uppercase tracking-wider text-red-400">YouTube</p>
+      <h1 class="mt-3 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl">
+        Programowanie z AI w praktyce — na naszym kanale
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+        {CHANNEL_DESCRIPTION}
+      </p>
+      <a
+        href={CHANNEL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-red-500"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+          <path
+            fill-rule="evenodd"
+            d="M19.802 5.378c.844.227 1.51.893 1.736 1.737.412 1.528.412 4.72.412 4.72s0 3.193-.412 4.721a2.466 2.466 0 0 1-1.736 1.737c-1.532.41-7.673.41-7.673.41s-6.14 0-7.672-.41a2.466 2.466 0 0 1-1.736-1.737C2.31 15.028 2.31 11.835 2.31 11.835s0-3.192.411-4.72a2.466 2.466 0 0 1 1.736-1.737c1.532-.41 7.672-.41 7.672-.41s6.141 0 7.673.41ZM10.07 8.59v6.49l5.133-3.245L10.07 8.59Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-white/5 bg-slate-900/30 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-2xl font-black text-white sm:text-3xl">Najnowsze filmy</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {VIDEOS.map((video) => <VideoCard video={video} />)}
+      </div>
+      <div class="mt-10 text-center">
+        <a
+          href={CHANNEL_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block rounded-xl border border-white/15 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/5"
+        >
+          Zobacz więcej na YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

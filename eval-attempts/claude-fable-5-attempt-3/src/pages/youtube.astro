@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoGrid from '../components/VideoGrid';
+import { videos, channelUrl } from '../data/videos';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani"
+  description="Najnowsze filmy z kanału Przeprogramowani — live demo narzędzi AI, relacje z konferencji i praktyczne porady dla programistów."
+>
+  <section class="relative overflow-hidden pb-12 pt-32 sm:pt-40">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-40 left-1/2 h-96 w-[50rem] -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl"></div>
+    </div>
+    <div class="container-page relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="section-kicker">YouTube</span>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl">
+          Najnowsze filmy na
+          <span class="bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
+            naszym kanale
+          </span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-400">
+          Live demo Claude Code, relacje z Google I/O, porównania agentów AI do programowania
+          i szersze spojrzenie na karierę w IT — wszystko w formie wideo.
+        </p>
+        <a
+          href={channelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary mt-8 !bg-red-600 shadow-red-600/25 hover:!bg-red-500"
+        >
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 pb-20 sm:pb-28">
+    <div class="container-page">
+      <VideoGrid client:load videos={videos} />
+    </div>
+  </section>
+</Layout>
