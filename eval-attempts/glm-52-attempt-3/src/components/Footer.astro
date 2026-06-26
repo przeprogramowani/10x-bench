@@ -1,0 +1,83 @@
+---
+import { SITE, NAV_LINKS } from '../data/content';
+
+const year = new Date().getFullYear();
+
+const secondaryLinks = [
+  { label: 'Blog', href: 'https://przeprogramowani.pl/artykuly' },
+  { label: 'Opanuj Frontend', href: 'https://opanujfrontend.pl' },
+  { label: 'Opanuj AI', href: 'https://opanuj.ai' },
+  { label: 'Newsletter', href: 'https://przeprogramowani.substack.com' },
+];
+---
+
+<footer class="border-t border-ink-800 bg-ink-950">
+  <div class="container-page py-12">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-2">
+        <a href="/" class="flex items-center gap-2 font-mono font-bold text-white">
+          <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-sm">
+            &lt;/&gt;
+          </span>
+          <span class="text-lg">{SITE.name}</span>
+        </a>
+        <p class="mt-4 max-w-md text-sm leading-relaxed text-ink-400">
+          {SITE.tagline}. {SITE.description}
+        </p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-full border border-ink-700 text-ink-300 transition hover:border-ink-500 hover:text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.6l.4-4h-4V6.5c0-.6.4-1 1-1H17V2h-3c-2.8 0-5 2.2-5 5v1z"/></svg>
+          </a>
+          <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-full border border-ink-700 text-ink-300 transition hover:border-ink-500 hover:text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href={SITE.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-full border border-ink-700 text-ink-300 transition hover:border-ink-500 hover:text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.2c-.3-1-.9-1.6-1.9-1.9C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.7.4c-1 .3-1.6.9-1.9 1.9C1 8.5 1 12 1 12s0 3.5.4 5.2c.3 1 .9 1.6 1.9 1.9 1.8.4 8.7.4 8.7.4s6.9 0 8.7-.4c1-.3 1.6-.9 1.9-1.9.4-1.7.4-5.2.4-5.2zM9.7 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
+          </a>
+          <a href={`mailto:${SITE.email}`} aria-label="Email" class="grid h-10 w-10 place-items-center rounded-full border border-ink-700 text-ink-300 transition hover:border-ink-500 hover:text-white">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-400">Strony</h3>
+        <ul class="mt-4 space-y-3">
+          {
+            NAV_LINKS.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-ink-300 transition hover:text-white" {...link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-mono font-semibold uppercase tracking-wider text-ink-400">Projekty</h3>
+        <ul class="mt-4 space-y-3">
+          {
+            secondaryLinks.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-sm text-ink-300 transition hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-ink-800 pt-6 sm:flex-row sm:items-center">
+      <p class="text-xs text-ink-500">
+        &copy; {year} {SITE.name}.pl — {SITE.tagline}.
+      </p>
+      <p class="text-xs text-ink-500">
+        Zbudowano z Astro, React i Tailwind. Gotowe na Cloudflare.
+      </p>
+    </div>
+  </div>
+</footer>

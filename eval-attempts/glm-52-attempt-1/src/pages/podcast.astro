@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EpisodeList from "../components/EpisodeList.tsx";
+import { podcastEpisodes, podcastPlatforms } from "../data/content";
+
+const opanujAi = podcastEpisodes.filter((e) => e.show === "Opanuj.AI Podcast");
+const ftGosc = podcastEpisodes.filter((e) => e.show === "Przeprogramowani ft. Gość");
+---
+
+<Layout
+  title="Podcast"
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu — Opanuj.AI Podcast oraz Przeprogramowani ft. Gość."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-900/40 via-slate-950 to-slate-950" aria-hidden="true"></div>
+    <div class="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-slate-300">
+        🎧 Podcast
+      </span>
+      <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+        Słuchaj naszych podcastów
+      </h1>
+      <p class="mt-6 text-lg text-slate-300">
+        O technologii, AI i programowaniu — comiesięczne podsumowania oraz rozmowy z gośćmi.
+      </p>
+    </div>
+  </section>
+
+  <!-- Opanuj.AI Podcast -->
+  <section class="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-white">Opanuj.AI Podcast</h2>
+      <p class="mt-1 text-sm text-slate-400">Ponad 4000 słuchaczy · Comiesięczne podsumowanie ze świata AI</p>
+    </div>
+    <EpisodeList episodes={opanujAi} client:visible />
+  </section>
+
+  <!-- Przeprogramowani ft. Gość -->
+  <section class="border-t border-white/10 bg-slate-900/40">
+    <div class="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white">Przeprogramowani ft. Gość</h2>
+        <p class="mt-1 text-sm text-slate-400">Ponad 3800 słuchaczy · Rozmowy dla głodnych wiedzy</p>
+      </div>
+      <EpisodeList episodes={ftGosc} client:visible />
+    </div>
+  </section>
+
+  <!-- Platforms -->
+  <section class="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-8 text-center">
+      <h2 class="text-xl font-bold text-white">Jesteśmy na twojej ulubionej platformie</h2>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        {
+          podcastPlatforms.map((p) => (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-brand-500/50 hover:bg-white/10"
+            >
+              {p.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

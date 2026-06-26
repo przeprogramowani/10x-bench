@@ -1,0 +1,97 @@
+---
+import { siteConfig } from '../data/content';
+
+const nav = [
+  { label: 'O nas', href: '/o-nas' },
+  { label: 'Podcast', href: '/podcast' },
+  { label: 'YouTube', href: '/youtube' },
+  { label: 'Blog', href: 'https://przeprogramowani.pl/artykuly' },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-xl">
+  <div class="container-pp">
+    <div class="flex h-16 items-center justify-between gap-4">
+      <a href="/" class="group flex items-center gap-2 font-bold">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-purple-600 font-mono text-sm text-white shadow-lg shadow-brand-600/30 transition group-hover:scale-105">
+          &lt;/&gt;
+        </span>
+        <span class="hidden sm:inline text-lg tracking-tight">Przeprogramowani</span>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class={`rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-slate-800/60 hover:text-white ${
+                pathname === item.href ? 'text-white' : 'text-slate-300'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a
+          href={siteConfig.social.newsletter}
+          target="_blank"
+          rel="noopener"
+          class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand-500 hover:text-white"
+        >
+          Newsletter
+        </a>
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-amber-600/20 transition hover:brightness-110"
+        >
+          10xDevs
+        </a>
+        <button
+          id="menu-toggle"
+          class="inline-flex items-center justify-center rounded-lg border border-slate-700 p-2 text-slate-300 md:hidden"
+          aria-label="Menu"
+        >
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/95 md:hidden">
+    <nav class="container-pp flex flex-col py-3">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-lg px-3 py-3 text-sm font-medium text-slate-200 hover:bg-slate-800/60"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={siteConfig.social.newsletter}
+        target="_blank"
+        rel="noopener"
+        class="rounded-lg px-3 py-3 text-sm font-medium text-slate-200 hover:bg-slate-800/60"
+      >
+        Newsletter
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

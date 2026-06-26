@@ -24,6 +24,7 @@ export type ModelId =
   | "gemini-35-flash"
   | "glm-5"
   | "glm-51"
+  | "glm-52"
   // | "minimax-m27"
   // | "qwen-36-plus"
   | "kimi-k26"
@@ -51,6 +52,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "gemini-35-flash": "Gemini 3.5 Flash",
   "glm-5": "GLM-5",
   "glm-51": "GLM-5.1",
+  "glm-52": "GLM-5.2",
   "kimi-k26": "Kimi K2.6",
   // "minimax-m27": "Minimax M2.7",
   // "qwen-36-plus": "Qwen 3.6 Plus",
@@ -78,6 +80,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "gemini-35-flash": AGENT_ENVIRONMENT.OpenCode,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
   "glm-51": AGENT_ENVIRONMENT.OpenCode,
+  "glm-52": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k26": AGENT_ENVIRONMENT.OpenCode,
   // "minimax-m27": AGENT_ENVIRONMENT.OpenCode,
   // "qwen-36-plus": AGENT_ENVIRONMENT.OpenCode,
@@ -95,6 +98,7 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "glm-47": "glm-5",
   "minimax-m21": "minimax-m25",
   "glm-5": "glm-51",
+  "glm-51": "glm-52",
   "kimi-k25": "kimi-k26",
   // "minimax-m25": "minimax-m27",
   // "qwen-3-max": "qwen-36-plus",
@@ -129,6 +133,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "gemini-35-flash": { input: 1.5, output: 9.0 },
   "glm-5": { input: 0.3, output: 2.55 },
   "glm-51": { input: 1.4, output: 4.4 },
+  "glm-52": { input: 1.4, output: 4.4 },
   "kimi-k26": { input: 0.6, output: 2.8 },
   // "minimax-m27": {input: 0.3, output: 1.2},
   // "qwen-36-plus": {input: 0.5, output: 3.0},

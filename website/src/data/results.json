@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-09T21:08:31.704Z",
-  "totalAttempts": 107,
+  "generatedAt": "2026-06-26T21:07:11.425Z",
+  "totalAttempts": 112,
   "results": [
     {
       "id": "gpt-54-attempt-3",
@@ -1493,6 +1493,456 @@
           "score": 0,
           "max": 1,
           "notes": "No penalty applied. Fully autonomous error-free run."
+        }
+      ]
+    },
+    {
+      "id": "glm-52-attempt-1",
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 26.06,
+          "max": 1,
+          "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.18.2 (criterion requires Astro 6); React 19.2.7 + Tailwind 4.3.1 + @astrojs/cloudflare 12.6.13 configured in astro.config.mjs; not exact match due to Astro major version"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "9 unique real Przeprogramowani/Opanuj.AI video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs featured on main page (Hero); CourseCards lists 10xDevs + Opanuj Frontend AI Edition + Opanuj TypeScript matching context (subset of 6 courses)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro applies per-page title/description + og:title/description/type/locale=pl_PL + twitter:card to all pages; lang=pl; content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "glm-52-attempt-2",
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "attemptNumber": 2,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 26.06,
+          "max": 1,
+          "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.18.2 (requires Astro 6) and Tailwind 3.4.19 (requires Tailwind 4); React 19.2.7 + @astrojs/cloudflare 12.6.13 configured; version requirements not met"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 unique real Przeprogramowani video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs featured on main page (Hero badge + CTA); #kursy section lists 10xDevs 3.0 + Opanuj Frontend AI Edition + Opanuj TypeScript matching context (subset of 6 courses)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "BaseLayout.astro applies per-page title/description + og:title/description/type + twitter:card to all pages; lang=pl; content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "glm-52-attempt-3",
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "attemptNumber": 3,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 26.06,
+          "max": 1,
+          "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.18.2 (requires Astro 6) and Tailwind 3.4.19 (requires Tailwind 4); React 19.2.7 + @astrojs/cloudflare 12.6.13 configured; version requirements not met"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 unique real Przeprogramowani video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs featured on main page as featured hero; COURSES section lists 10xDevs + Opanuj Frontend AI Edition + Opanuj TypeScript matching context (subset of 6 courses)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro applies per-page title (Page | Przeprogramowani) + description + og:type/title/description/url + twitter:card to all pages; lang=pl; content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "glm-52-attempt-4",
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "attemptNumber": 4,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 26.06,
+          "max": 1,
+          "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.18.2 (requires Astro 6) and Tailwind 3.4.19 (requires Tailwind 4); React 19.2.7 + @astrojs/cloudflare 12.6.13 configured; version requirements not met"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 unique real Przeprogramowani video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs featured on main page (id=kursy in Hero featured=true); courses 10xDevs + Opanuj Frontend AI Edition + Opanuj TypeScript match context (subset of 6 courses)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Base.astro applies per-page title/description + og:type/title/description/locale=pl_PL + twitter:card + theme-color to all pages; lang=pl; content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "glm-52-attempt-5",
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "attemptNumber": 5,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 26.06,
+          "max": 1,
+          "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build successful (Astro 5.18.2; static output; no Cloudflare adapter)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Astro 5.18.2 (requires Astro 6) and Tailwind 3.4.19 (requires Tailwind 4); React 19.2.7 present but @astrojs/cloudflare adapter NOT installed or configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "6 unique real Przeprogramowani video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "10xDevs strongly featured on main page (hero badge + CTA + card); courses Opanuj Frontend + Opanuj TypeScript + 10xDevs match context (subset of 6 courses)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro applies per-page title/description + og:type/title/description/locale=pl_PL + twitter:card + theme-color to all pages; lang=pl; content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -9301,6 +9751,19 @@
       }
     },
     {
+      "modelName": "GLM-5.2",
+      "modelBaseId": "glm-52",
+      "averageScore": 8.5,
+      "averageMaxScore": 10,
+      "averagePercentage": 85,
+      "attemptCount": 5,
+      "agentEnvironment": "OpenCode",
+      "pricing": {
+        "input": 1.4,
+        "output": 4.4
+      }
+    },
+    {
       "modelName": "Qwen 3.6",
       "modelBaseId": "qwen-3.6",
       "averageScore": 8.333333333333334,
@@ -9555,6 +10018,7 @@
     "glm-47": "glm-5",
     "minimax-m21": "minimax-m25",
     "glm-5": "glm-51",
+    "glm-51": "glm-52",
     "kimi-k25": "kimi-k26"
   }
 }

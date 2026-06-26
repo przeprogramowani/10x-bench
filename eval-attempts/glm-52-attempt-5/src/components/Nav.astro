@@ -1,0 +1,100 @@
+---
+import { site } from '../data/site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<header class="sticky top-0 z-40 border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="group flex items-center gap-2 font-mono text-lg font-bold text-white">
+      <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-400 to-fuchsia-500 text-sm shadow-lg shadow-brand-500/30 transition group-hover:scale-105">
+        &lt;/&gt;
+      </span>
+      <span>Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex">
+      {site.nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-lg px-4 py-2 text-sm font-medium transition',
+            isActive(item.href)
+              ? 'bg-white/10 text-white'
+              : 'text-slate-400 hover:text-white hover:bg-white/5',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={site.social.youtube}
+        target="_blank"
+        rel="noopener"
+        class="rounded-lg px-4 py-2 text-sm font-medium text-slate-400 transition hover:text-white hover:bg-white/5"
+      >
+        YouTube
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+        target="_blank"
+        rel="noopener"
+        class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-fuchsia-500 to-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/20 transition hover:opacity-90"
+      >
+        <span class="h-2 w-2 animate-pulse rounded-full bg-white" />
+        10xDevs
+      </a>
+      <button
+        id="menu-toggle"
+        aria-label="Otwórz menu"
+        class="grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-white md:hidden"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-white/5 bg-ink-950 md:hidden">
+    <nav class="container-page flex flex-col gap-1 py-4">
+      {site.nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'rounded-lg px-4 py-3 text-sm font-medium transition',
+            isActive(item.href) ? 'bg-white/10 text-white' : 'text-slate-400 hover:bg-white/5',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={site.social.youtube}
+        target="_blank"
+        rel="noopener"
+        class="rounded-lg px-4 py-3 text-sm font-medium text-slate-400 hover:bg-white/5"
+      >
+        YouTube
+      </a>
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener"
+        class="mt-2 rounded-lg bg-gradient-to-r from-fuchsia-500 to-brand-500 px-4 py-3 text-center text-sm font-semibold text-white"
+      >
+        10xDevs — Programuj z AI
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

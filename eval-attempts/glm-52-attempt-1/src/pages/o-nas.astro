@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BrandStrip from "../components/BrandStrip.tsx";
+import { founders, site, brands } from "../data/content";
+---
+
+<Layout
+  title="O nas"
+  description="Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-slate-900 to-slate-950" aria-hidden="true"></div>
+    <div class="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-28">
+      <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+        O nas
+      </h1>
+      <p class="mt-6 text-xl text-slate-300">
+        Łączymy świat programowania, biznesu i rozwoju
+      </p>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="grid gap-8 md:grid-cols-2">
+      {
+        founders.map((person) => (
+          <article class="flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-8">
+            <div class="flex items-center gap-4">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-xl font-bold text-white">
+                {person.initials}
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-white">{person.name}</h2>
+                <p class="text-sm text-brand-400">{person.role}</p>
+              </div>
+            </div>
+            <p class="mt-5 text-sm leading-relaxed text-slate-300">{person.bio}</p>
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300"
+            >
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              LinkedIn
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="border-y border-white/10 bg-slate-900/40">
+    <div class="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-white">Witaj na Przeprogramowanych!</h2>
+      <p class="mt-6 text-lg leading-relaxed text-slate-300">
+        Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+        Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes,
+        na ludzi i na siebie.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-slate-300">
+        Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu
+        płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+      </p>
+      <p class="mt-6 text-xl font-semibold text-brand-400">Zyskaj szersze spojrzenie na programowanie.</p>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-bold text-white">7 lat na rynku edukacji technologicznej</h2>
+      <p class="mt-2 text-sm text-slate-400">Współpracujemy z najlepszymi</p>
+    </div>
+    <div class="mt-10">
+      <BrandStrip brands={brands} client:visible />
+    </div>
+    <p class="mt-10 text-center text-sm text-slate-400">
+      Chcesz nawiązać współpracę?{" "}
+      <a href={`mailto:${site.email}`} class="font-semibold text-brand-400 hover:text-brand-300">
+        {site.email}
+      </a>
+    </p>
+  </section>
+</Layout>

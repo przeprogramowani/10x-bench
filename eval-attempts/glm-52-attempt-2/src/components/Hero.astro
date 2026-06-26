@@ -1,0 +1,57 @@
+---
+import { siteConfig } from '../data/content';
+---
+
+<section class="relative overflow-hidden">
+  <div class="container-pp py-20 sm:py-28 lg:py-32">
+    <div class="mx-auto max-w-3xl text-center">
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300 transition hover:bg-amber-500/20"
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-amber-400"></span>
+        </span>
+        Nowość — Maj 2026
+      </a>
+
+      <h1 class="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+        Szersze spojrzenie
+        <span class="block bg-gradient-to-r from-brand-400 via-purple-400 to-accent-400 bg-clip-text text-transparent">
+          na programowanie
+        </span>
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300 sm:text-xl">
+        Łączymy świat programowania, biznesu i rozwoju. Kursy, podcasty i narzędzia dla ambitnych programistów w epoce Generative AI.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener" class="btn-primary">
+          Odkryj 10xDevs 3.0
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        <a href="/podcast" class="btn-ghost">Posłuchaj podcastu</a>
+      </div>
+
+      <dl class="mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4">
+        {[
+          { value: '7+', label: 'lat na rynku' },
+          { value: '4000+', label: 'słuchaczy podcastu' },
+          { value: '400+', label: 'absolwentów kursów' },
+          { value: '2', label: 'podcasty' },
+        ].map((stat) => (
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-5">
+            <dt class="text-2xl font-bold text-white sm:text-3xl">{stat.value}</dt>
+            <dd class="mt-1 text-xs text-slate-400">{stat.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

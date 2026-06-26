@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+
+  ::selection {
+    @apply bg-brand-500/30 text-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/20 transition hover:bg-brand-500 hover:shadow-brand-500/30 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-ink-950;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-semibold text-ink-100 transition hover:border-ink-500 hover:bg-ink-800 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-ink-950;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-800 bg-ink-900/60 backdrop-blur-sm transition hover:border-ink-700 hover:bg-ink-900;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-mono font-semibold uppercase tracking-[0.2em] text-brand-400;
+  }
+
+  .section-title {
+    @apply mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 via-brand-300 to-emerald-300 bg-clip-text text-transparent;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #21232d;
+}
+::-webkit-scrollbar-thumb {
+  background: #414861;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #505978;
+}

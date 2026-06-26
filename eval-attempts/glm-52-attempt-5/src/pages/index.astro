@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import VideoCard from '../components/VideoCard.tsx';
+import CourseCard from '../components/CourseCard.tsx';
+import { courses, youtubeVideos, brands, site } from '../data/site';
+---
+
+<Layout>
+  <Nav />
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute left-1/2 top-0 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[120px] animate-glow"></div>
+        <div class="absolute right-0 top-40 h-[320px] w-[320px] rounded-full bg-fuchsia-500/15 blur-[100px] animate-glow" style="animation-delay:2s"></div>
+      </div>
+
+      <div class="container-page relative py-20 sm:py-28 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 animate-fade-up">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-fuchsia-400"></span>
+            Nowość — Maj 2026 • 10xDevs 3.0
+          </span>
+          <h1 class="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-white animate-fade-up sm:text-6xl lg:text-7xl" style="animation-delay:80ms">
+            Szersze spojrzenie<br class="hidden sm:block" />
+            na <span class="gradient-text">programowanie</span>
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 animate-fade-up sm:text-lg" style="animation-delay:160ms">
+            Edukacja technologiczna w epoce AI. Topowe programy edukacyjne dla
+            ambitnych programistów i świadome korzystanie z potencjału Generative AI.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center justify-center gap-4 animate-fade-up" style="animation-delay:240ms">
+            <a href="https://10xdevs.pl?utm_source=przeprogramowani_website" target="_blank" rel="noopener" class="btn-primary">
+              Zobacz 10xDevs
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" /></svg>
+            </a>
+            <a href="/o-nas" class="btn-ghost">Poznaj nas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses in hero area -->
+    <section class="relative">
+      <div class="container-page pb-8">
+        <div class="mb-10 text-center">
+          <h2 class="text-2xl font-bold text-white sm:text-3xl">Edukacja technologiczna w epoce AI</h2>
+          <p class="mt-3 text-sm text-slate-400 sm:text-base">Topowe programy edukacyjne dla ambitnych programistów</p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {courses.map((course, i) => (
+            <CourseCard course={course} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter strip -->
+    <section class="container-page py-16">
+      <div class="card relative overflow-hidden p-8 sm:p-12">
+        <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-500/20 blur-3xl"></div>
+        <div class="relative grid items-center gap-6 sm:grid-cols-[1fr_auto]">
+          <div>
+            <h2 class="text-xl font-bold text-white sm:text-2xl">Przeprogramowany Newsletter</h2>
+            <p class="mt-2 max-w-xl text-sm text-slate-400">
+              Co tydzień w piątek porcja wartościowych treści w formacie 3-2-1:
+              3 rekomendacje techniczne, 2 rozwojowe i 1 bonus niespodzianka.
+            </p>
+          </div>
+          <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener" class="btn-primary whitespace-nowrap">
+            Zapisz się za darmo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest videos -->
+    <section class="container-page py-12">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-white sm:text-3xl">Filmy i podcasty</h2>
+          <p class="mt-2 text-sm text-slate-400">Rozwój nowoczesnego programisty</p>
+        </div>
+        <a href="/youtube" class="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-brand-200 sm:inline-flex">
+          Wszystkie filmy
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" /></svg>
+        </a>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.slice(0, 3).map((video) => (
+          <VideoCard video={video} />
+        ))}
+      </div>
+
+      <div class="mt-6 sm:hidden">
+        <a href="/youtube" class="btn-ghost w-full">Wszystkie filmy</a>
+      </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="container-page py-16">
+      <div class="text-center">
+        <h2 class="text-xl font-bold text-white sm:text-2xl">7 lat na rynku edukacji technologicznej</h2>
+        <p class="mt-2 text-sm text-slate-400">Współpracujemy z najlepszymi</p>
+      </div>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        {brands.map((b) => (
+          <span class="font-mono text-sm font-semibold uppercase tracking-wider text-slate-600 transition hover:text-slate-300">
+            {b}
+          </span>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href={`mailto:${site.email}`} class="text-sm font-medium text-brand-300 hover:text-brand-200">
+          Chcesz nawiązać współpracę? {site.email}
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,86 @@
+---
+import { NAV_LINKS, SITE } from '../data/content';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-ink-800/80 bg-ink-950/80 backdrop-blur-xl">
+  <div class="container-page">
+    <div class="flex h-16 items-center justify-between gap-4">
+      <a href="/" class="group flex items-center gap-2 font-mono font-bold text-white">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-sm shadow-lg shadow-brand-700/30 transition group-hover:scale-105">
+          &lt;/&gt;
+        </span>
+        <span class="text-lg tracking-tight">{SITE.name}</span>
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex">
+        {
+          NAV_LINKS.map((link) => {
+            const isActive = currentPath === link.href;
+            const isExternal = link.href.startsWith('http');
+            return (
+              <a
+                href={link.href}
+                class:list={[
+                  'rounded-full px-4 py-2 text-sm font-medium transition',
+                  isActive
+                    ? 'bg-ink-800 text-white'
+                    : 'text-ink-300 hover:bg-ink-800/60 hover:text-white',
+                ]}
+                {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+              >
+                {link.label}
+              </a>
+            );
+          })
+        }
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-600/20 transition hover:bg-brand-500 sm:inline-flex"
+        >
+          10xDevs →
+        </a>
+        <button
+          id="menu-toggle"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-ink-700 text-ink-200 md:hidden"
+          aria-label="Menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-ink-800 bg-ink-950 md:hidden">
+    <nav class="container-page flex flex-col gap-1 py-4">
+      {
+        NAV_LINKS.map((link) => {
+          const isExternal = link.href.startsWith('http');
+          return (
+            <a
+              href={link.href}
+              class="rounded-lg px-4 py-3 text-sm font-medium text-ink-200 hover:bg-ink-800 hover:text-white"
+              {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

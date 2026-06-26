@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.tsx';
+import Footer from '../components/Footer.tsx';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? 'Przeprogramowani'}</title>
+    <meta name="description" content={description ?? 'Przeprogramowani — Szersze spojrzenie na programowanie. Kursy, podcasty i materiały dla programistów.'} />
+    <meta name="theme-color" content="#0b0f1a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title ?? 'Przeprogramowani'} />
+    <meta property="og:description" content={description ?? 'Szersze spojrzenie na programowanie'} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <Nav client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

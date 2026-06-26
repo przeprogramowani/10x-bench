@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import VideoCard from '../components/VideoCard.tsx';
+import { youtubeVideos, site } from '../data/site';
+---
+
+<Layout title="YouTube">
+  <Nav />
+
+  <main id="main">
+    <!-- Header -->
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-red-500/15 blur-[120px]"></div>
+      <div class="container-page relative py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="font-mono text-xs uppercase tracking-widest text-red-400">YouTube</span>
+          <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+            Ostatnie filmy
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            Rozwój nowoczesnego programisty. AI, programowanie, narzędzia i rozmowy z ekspertami.
+          </p>
+          <div class="mt-8">
+            <a
+              href={site.social.youtube}
+              target="_blank"
+              rel="noopener"
+              class="btn-primary"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+              Subskrybuj kanał
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos grid -->
+    <section class="container-page py-8">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <VideoCard video={video} />
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container-page py-16">
+      <div class="card relative overflow-hidden p-8 text-center sm:p-12">
+        <div class="pointer-events-none absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-red-500/15 blur-3xl"></div>
+        <h2 class="relative text-xl font-bold text-white sm:text-2xl">
+          Nie przegap nowości
+        </h2>
+        <p class="relative mx-auto mt-3 max-w-xl text-sm text-slate-400">
+          Dołącz do społeczności 15 tysięcy programistów. Zapisz się na newsletter i bądź na bieżąco.
+        </p>
+        <div class="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a href={site.social.youtube} target="_blank" rel="noopener" class="btn-primary">Subskrybuj</a>
+          <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener" class="btn-ghost">Newsletter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

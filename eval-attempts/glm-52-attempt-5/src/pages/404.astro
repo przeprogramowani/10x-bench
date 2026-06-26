@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout title="404">
+  <Nav />
+  <main id="main" class="container-page grid min-h-[60vh] place-items-center py-20 text-center">
+    <div>
+      <p class="font-mono text-7xl font-extrabold gradient-text sm:text-9xl">404</p>
+      <h1 class="mt-4 text-2xl font-bold text-white">Ta strona nie istnieje</h1>
+      <p class="mt-3 text-sm text-slate-400">Wydaje się, że trafiłeś na nieistniejącą ścieżkę.</p>
+      <a href="/" class="btn-primary mt-8">Wróć na stronę główną</a>
+    </div>
+  </main>
+</Layout>

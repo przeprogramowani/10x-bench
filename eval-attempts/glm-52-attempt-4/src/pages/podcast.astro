@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Brands from '../components/Brands.tsx';
+import Reveal from '../components/Reveal.tsx';
+import { PodcastShows, PodcastPlatforms } from '../components/PodcastList.tsx';
+---
+<Base title="Podcast — Przeprogramowani" description="Słuchaj naszych podcastów o technologii, AI i programowaniu. Opanuj.AI Podcast oraz Przeprogramowani ft. Gość.">
+  <section class="container-x pt-28 pb-8 sm:pt-36">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow">Podcasty</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Słuchaj naszych podcastów o <span class="gradient-text">technologii, AI i programowaniu</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+        Comiesięczne podsumowania świata AI oraz rozmowy z gośćmi specjalnymi o architekturze, karierze i rozwoju.
+      </p>
+    </div>
+  </section>
+
+  <Reveal client:visible>
+    <section class="container-x py-10">
+      <PodcastShows client:visible />
+    </section>
+  </Reveal>
+
+  <Reveal client:visible>
+    <section class="container-x py-10">
+      <PodcastPlatforms client:visible />
+    </section>
+  </Reveal>
+
+  <Brands client:visible />
+</Base>

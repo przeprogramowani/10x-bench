@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PodcastCard from '../components/PodcastCard.tsx';
+import { podcastShows, podcastPlatforms } from '../data/site';
+---
+
+<Layout title="Podcast">
+  <Nav />
+
+  <main id="main">
+    <!-- Header -->
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[120px]"></div>
+      <div class="container-page relative py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl text-center">
+          <span class="font-mono text-xs uppercase tracking-widest text-brand-400">Podcast</span>
+          <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+            Słuchaj naszych podcastów
+          </h1>
+          <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+            Podcasty o technologii, AI i programowaniu. Comiesięczne podsumowania świata AI
+            oraz rozmowy z najciekawszymi gośćmi z branży IT.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shows -->
+    {podcastShows.map((show) => (
+      <section class="container-page py-10">
+        <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            <img
+              src={show.cover}
+              alt={show.name}
+              loading="lazy"
+              class="h-16 w-16 rounded-xl object-cover ring-2 ring-white/10"
+            />
+            <div>
+              <h2 class="text-2xl font-bold text-white">{show.name}</h2>
+              <p class="mt-0.5 text-sm text-slate-400">{show.description}</p>
+            </div>
+          </div>
+          <span class="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            {show.listeners}
+          </span>
+        </div>
+
+        <div class="grid gap-4 lg:grid-cols-2">
+          {show.episodes.map((episode) => (
+            <PodcastCard episode={episode} />
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Platforms -->
+    <section class="container-page py-16">
+      <div class="card relative overflow-hidden p-8 text-center sm:p-12">
+        <div class="pointer-events-none absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl"></div>
+        <h2 class="relative text-xl font-bold text-white sm:text-2xl">
+          Jesteśmy na twojej ulubionej platformie
+        </h2>
+        <div class="relative mt-8 flex flex-wrap items-center justify-center gap-3">
+          {podcastPlatforms.map((p) => (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener"
+              class="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
+            >
+              {p.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,83 @@
+---
+import { siteConfig } from '../data/content';
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Projekt',
+    links: [
+      { label: 'O nas', href: '/o-nas' },
+      { label: 'Podcast', href: '/podcast' },
+      { label: 'YouTube', href: '/youtube' },
+      { label: 'Blog', href: 'https://przeprogramowani.pl/artykuly' },
+      { label: 'Newsletter', href: siteConfig.social.newsletter },
+    ],
+  },
+  {
+    title: 'Kursy',
+    links: [
+      { label: 'Opanuj Frontend', href: 'https://www.opanujfrontend.pl' },
+      { label: 'Opanuj TypeScript', href: 'https://www.opanujtypescript.pl' },
+      { label: '10xDevs', href: 'https://10xdevs.pl' },
+      { label: 'Opanuj AI', href: 'https://opanuj.ai' },
+    ],
+  },
+  {
+    title: 'Społeczność',
+    links: [
+      { label: 'YouTube', href: siteConfig.social.youtube },
+      { label: 'Facebook', href: siteConfig.social.facebook },
+      { label: 'Instagram', href: siteConfig.social.instagram },
+      { label: 'LinkedIn', href: siteConfig.social.linkedin },
+    ],
+  },
+];
+---
+
+<footer class="border-t border-slate-800/60 bg-slate-950">
+  <div class="container-px container-pp py-14">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-2 font-bold">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-purple-600 font-mono text-sm text-white">
+            &lt;/&gt;
+          </span>
+          <span class="text-lg">Przeprogramowani</span>
+        </div>
+        <p class="mt-4 text-sm text-slate-400">{siteConfig.tagline}. Edukacja technologiczna w epoce AI.</p>
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="mt-3 inline-block text-sm text-brand-400 hover:text-brand-300"
+        >
+          {siteConfig.email}
+        </a>
+      </div>
+      {
+        columns.map((col) => (
+          <div>
+            <h3 class="text-sm font-semibold text-white">{col.title}</h3>
+            <ul class="mt-3 space-y-2">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-slate-400 transition hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-6 sm:flex-row">
+      <p class="text-sm text-slate-500">
+        © {year} Przeprogramowani.pl — Wszelkie prawa zastrzeżone.
+      </p>
+      <p class="text-xs text-slate-600">Zbudowano z Astro, React i Tailwind.</p>
+    </div>
+  </div>
+</footer>

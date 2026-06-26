@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,26.06.2026 23:05,N/A,26.06.2026 23:05
+Local build,1,1,Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0.5,1,Astro 5.18.2 (criterion requires Astro 6); React 19.2.7 + Tailwind 4.3.1 + @astrojs/cloudflare 12.6.13 configured in astro.config.mjs; not exact match due to Astro major version
+O nas page,0.5,1,Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios
+Podcast page,0.5,1,Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs
+YouTube page,1,1,9 unique real Przeprogramowani/Opanuj.AI video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs
+Kursy section,1,1,10xDevs featured on main page (Hero); CourseCards lists 10xDevs + Opanuj Frontend AI Edition + Opanuj TypeScript matching context (subset of 6 courses)
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,Layout.astro applies per-page title/description + og:title/description/type/locale=pl_PL + twitter:card to all pages; lang=pl; content matches context
+Penalty,0,N/A,No penalty applied
