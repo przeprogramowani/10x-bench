@@ -72,6 +72,53 @@ Read the prompt from `prompt.md` in the project root. Launch 5 parallel subagent
 
 See the **Harnesses** section below for harness-specific launch commands.
 
+### Step 7: Calculate token cost (OpenCode runs)
+
+After OpenCode runs complete, compute each attempt's token usage and USD cost and
+write it into the attempt's `eval-results.csv`.
+
+OpenCode (>= 1.14) stores all session data in a SQLite database at
+`~/.local/share/opencode/opencode.db`. Its `session` table records, per session,
+the working directory the run executed in (`directory`), the token counts
+(`tokens_input/output/reasoning/cache_read/cache_write`), and OpenCode's own
+computed `cost`. Because every attempt runs with its attempt directory as cwd,
+spend is attributed to a specific `{model-id}-attempt-{N}` by matching
+`directory` against `eval-attempts/`.
+
+> Older OpenCode versions stored loose JSON files under
+> `storage/message/<sessionID>/msg_<id>.json` with `cost: 0`. The DB is a superset
+> of that data, so the script reads only the DB.
+
+Run the cost script:
+```bash
+# Report all OpenCode attempts (read-only)
+npm run calculate-cost
+
+# Report just the model you launched
+npm run calculate-cost {model-id}
+
+# Upsert the "API cost" row into each attempt's eval-results.csv
+npm run calculate-cost -- --write {model-id}
+
+# Machine-readable JSON instead of a table
+npm run calculate-cost -- --json {model-id}
+```
+
+`--write` adds (or updates) an `API cost` row in each `eval-results/{model-id}-attempt-{N}/eval-results.csv`,
+placed right after `Test run`, e.g.:
+```csv
+API cost,$0.2897,N/A,$0.2897 (in 67673 / out 17773 / cache 931423 / 1 session)
+```
+After writing, run `npm run process-results` to refresh the dashboard. The
+`API cost` row is excluded from scoring (alongside `Task completion time`,
+`Test run`, and `Penalty`) in `process-results.ts`.
+
+Notes:
+- **Cost uses OpenCode's own `cost` column** — it already accounts for the prompt-cache discount, which the flat input/output pricing in `metadata.ts` cannot. Free-tier runs (e.g. `*-free` model slugs) correctly show `$0.0000`.
+- If an attempt dir has **multiple sessions** (re-runs / manual re-opens), all sessions in that dir are summed; the row's notes show the session count.
+- This step only applies to OpenCode-run models — other harnesses (Cursor, Claude/Codex Desktop) don't write to the OpenCode DB.
+- Override the DB path with `OPENCODE_DB`, or the data dir with `OPENCODE_DATA_DIR`, if OpenCode is installed in a non-default location.
+
 ---
 
 ## Harnesses
@@ -107,6 +154,8 @@ cd /path/to/eval-attempts/{model-id}-attempt-{N} && opencode run -m openrouter/<
 The prompt must be passed as a single string argument, copied verbatim from `prompt.md`.
 
 Use a 600000ms (10 min) timeout for each run. All 5 attempts launch as background subagents in a single turn for maximum parallelism.
+
+**Token cost:** After the runs finish, record token spend and USD cost with `npm run calculate-cost -- --write {model-id}` (see Step 7). This reads OpenCode's SQLite DB (`opencode.db`) and writes an `API cost` row into each attempt's `eval-results.csv`.
 
 **Failure handling:**
 If runs fail due to credit limits ("requires more credits"), inform the user with a link to https://openrouter.ai/settings/credits and offer to re-run after they top up. Clean attempt directories before re-running (`rm -rf` contents, recreate empty dirs).

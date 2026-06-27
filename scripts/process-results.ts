@@ -27,6 +27,7 @@ interface AttemptResult {
   maxScore: number;
   percentage: number;
   agentEnvironment: string;
+  cost: number | null;
   criteria: CriterionResult[];
 }
 
@@ -39,6 +40,8 @@ interface ModelFamilyAverage {
   averageMaxScore: number;
   agentEnvironment: string;
   pricing?: { input: number; output: number };
+  averageCost: number | null;
+  totalCost: number | null;
 }
 
 interface ProcessedResults {
@@ -158,7 +161,7 @@ async function processResults(): Promise<void> {
     let totalScore = 0;
     let maxScore = 0;
 
-    const excludedCriteria = new Set(["Task completion time", "Test run", "Penalty"]);
+    const excludedCriteria = new Set(["Task completion time", "Test run", "Penalty", "API cost"]);
     const scoredCriteria = criteria.filter(
       (c) => !excludedCriteria.has(c.name),
     );
@@ -176,6 +179,11 @@ async function processResults(): Promise<void> {
 
     const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
 
+    // Extract USD cost from the "API cost" row (e.g. "$0.2897 (in ... )").
+    const costRow = criteria.find((c) => c.name === "API cost");
+    const costMatch = costRow?.notes.match(/\$([0-9]+(?:\.[0-9]+)?)/);
+    const cost = costMatch ? parseFloat(costMatch[1]) : null;
+
     results.push({
       id: dir,
       modelName,
@@ -185,6 +193,7 @@ async function processResults(): Promise<void> {
       maxScore,
       percentage,
       agentEnvironment: (() => { const id = getModelBaseId(dir); return isModelId(id) ? AGENT_ENV[id] : "Unknown"; })(),
+      cost,
       criteria,
     });
   }
@@ -200,6 +209,8 @@ async function processResults(): Promise<void> {
       totalMaxScore: number;
       totalPercentage: number;
       count: number;
+      costSum: number;
+      costCount: number;
     }
   >();
 
@@ -210,6 +221,8 @@ async function processResults(): Promise<void> {
         totalMaxScore: 0,
         totalPercentage: 0,
         count: 0,
+        costSum: 0,
+        costCount: 0,
       });
     }
     const stats = modelAveragesMap.get(result.modelName)!;
@@ -217,6 +230,10 @@ async function processResults(): Promise<void> {
     stats.totalMaxScore += result.maxScore;
     stats.totalPercentage += result.percentage;
     stats.count += 1;
+    if (result.cost !== null) {
+      stats.costSum += result.cost;
+      stats.costCount += 1;
+    }
   });
 
   const modelAverages: ModelFamilyAverage[] = Array.from(
@@ -234,6 +251,8 @@ async function processResults(): Promise<void> {
       attemptCount: stats.count,
       agentEnvironment: matchingResult?.agentEnvironment ?? "Unknown",
       pricing: (() => { const id = matchingResult ? getModelBaseId(matchingResult.id) : modelName; return isModelId(id) ? MODEL_PRICING[id] : undefined; })(),
+      averageCost: stats.costCount > 0 ? stats.costSum / stats.costCount : null,
+      totalCost: stats.costCount > 0 ? stats.costSum : null,
     };
   });
 

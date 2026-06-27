@@ -1,0 +1,80 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/kursy", label: "Kursy" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+
+function isActive(path: string) {
+  if (path === "/") return currentPath === "/";
+  return currentPath.startsWith(path);
+}
+---
+
+<header class="fixed top-0 z-50 w-full border-b border-dark-800/50 bg-dark-950/80 backdrop-blur-xl">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold text-white transition-colors hover:text-brand-400">
+      <span class="font-mono text-brand-400">&lt;/&gt;</span>
+      <span>Przeprogramowani</span>
+    </a>
+
+    <input type="checkbox" id="mobile-menu" class="peer hidden" />
+    <label for="mobile-menu" class="cursor-pointer rounded-lg p-2 text-dark-400 hover:bg-dark-800 hover:text-white lg:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+
+    <div class="hidden items-center gap-1 lg:flex">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+            isActive(item.href)
+              ? "bg-dark-800 text-white"
+              : "text-dark-400 hover:bg-dark-800/50 hover:text-white"
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-2 rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:from-brand-500 hover:to-brand-400 hover:shadow-lg hover:shadow-brand-500/20"
+      >
+        10xDevs
+      </a>
+    </div>
+
+    <div class="absolute left-0 right-0 top-full hidden border-b border-dark-800 bg-dark-950/95 backdrop-blur-xl peer-checked:block lg:hidden">
+      <div class="flex flex-col gap-1 px-4 py-3">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+              isActive(item.href)
+                ? "bg-dark-800 text-white"
+                : "text-dark-400 hover:bg-dark-800/50 hover:text-white"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-1 rounded-lg bg-gradient-to-r from-brand-600 to-brand-500 px-4 py-2 text-center text-sm font-semibold text-white transition-all duration-300 hover:from-brand-500 hover:to-brand-400"
+        >
+          10xDevs
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -31,7 +31,8 @@ export type ModelId =
   | "qwen-3.6"
   | "gpt-54"
   | "gpt-55"
-  | "claude-fable-5";
+  | "claude-fable-5"
+  | "deepseek-v4-pro";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
 export const AGENT_NAMES: Record<ModelId, string> = {
@@ -60,6 +61,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "gpt-54": "GPT-5.4",
   "gpt-55": "GPT-5.5",
   "claude-fable-5": "Claude Fable 5",
+  "deepseek-v4-pro": "DeepSeek V4 Pro",
 };
 
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
@@ -88,6 +90,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-55": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "claude-fable-5": AGENT_ENVIRONMENT.ClaudeDesktop,
+  "deepseek-v4-pro": AGENT_ENVIRONMENT.OpenCode,
 };
 
 /** Models superseded by newer versions (old → new) */
@@ -141,6 +144,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "gpt-54": { input: 1.75, output: 14.0 },
   "gpt-55": { input: 5.0, output: 30.0 },
   "claude-fable-5": { input: 10.0, output: 50.0 },
+  "deepseek-v4-pro": { input: 0.435, output: 0.87 },
 };
 
 /** Type guard: check whether a runtime string is a known ModelId */

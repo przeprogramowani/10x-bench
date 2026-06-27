@@ -1,0 +1,208 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const opanujAiEpisodes = [
+  {
+    title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026",
+    duration: "1h 12min",
+    description: "Byliśmy na Google I/O 2026 i opowiemy wam o tym na żywo! W zupełnie nowym formacie podcastu Opanuj.AI zapraszamy na relację z konferencji.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3k9b7u",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI? (+ Cursor 3.0, DeepSeek V4, Meta Muse)",
+    duration: "47min",
+    description: "W kwietniu 2026 dostaliśmy wysyp dużych premier: GPT-5.5, Claude Opus 4.7, DeepSeek V4, Cursor 3.0, Zed 1.0, Meta Muse Spark.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3injdh",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS | Opanuj.AI",
+    duration: "1h 39min",
+    description: "Czy AI naprawdę rozumie świat, skoro oblewa testy, które człowiek rozwiązuje bez większego problemu?",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3hc7nk",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "Programowanie w epoce AI z Claude Code, Cursorem i Copilotem - Gość: Dawid Sibiński",
+    duration: "1h 28min",
+    description: "Dawid Sibiński dzieli się doświadczeniami w pracy z Copilotem, Cursorem oraz Claude Code w codziennej pracy programisty.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3gmm83",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "OpenClaw, SWE-AGI i zmierzch chatbotów - Opus 4.6 i GPT-5.3 Codex",
+    duration: "1h 43min",
+    description: "Bierzemy na warsztat jedną z najbardziej absurdalnych i jednocześnie najciekawszych historii AI ostatnich miesięcy.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3fu2u2",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic",
+    duration: "1h 23min",
+    description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3eg2n4",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+];
+
+const goscEpisodes = [
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko",
+    duration: "33min",
+    description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów i jak skutecznie uczyć się angielskiego w IT.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e38lmlo",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+  {
+    title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński",
+    duration: "45min",
+    description: "Wojciech Trawiński, Senior Software Engineer w XTB opowiada o drodze od młodego entuzjasty do doświadczonego profesjonalisty.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e380adn",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+  {
+    title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin",
+    duration: "1h 16min",
+    description: "W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e2pfjg3",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+  {
+    title: "Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne",
+    duration: "1h 36min",
+    description: "LIVE Q&A o nadchodzącym szkoleniu Opanuj TypeScript i nadchodzących eventach.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e2nepgm",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+  {
+    title: "No-code i Low-code - przyszłość tworzenia aplikacji? Kamil Tarczyński",
+    duration: "36min",
+    description: "Kamil Tarczyński, Co-founder oraz CTO agencji havenocode o potencjale i wyzwaniach no-code.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e2kqhp6",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+  {
+    title: "Nauka nowoczesnego frontendu | Paweł Gnat",
+    duration: "42min",
+    description: "Paweł Gnat dzieli się wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend: AI Edition.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e2kj935",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+];
+
+const platforms = [
+  { name: "Apple Podcasts", link: "https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250", color: "from-purple-500 to-purple-700" },
+  { name: "Spotify", link: "https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o", color: "from-green-500 to-green-700" },
+  { name: "Google Podcasts", link: "https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw", color: "from-yellow-500 to-yellow-700" },
+  { name: "RSS", link: "https://anchor.fm/s/22544b7c/podcast/rss", color: "from-orange-500 to-orange-700" },
+];
+---
+
+<Layout
+  title="Podcast"
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu - Opanuj.AI Podcast i Przeprogramowani ft. Gość."
+>
+  <section class="relative overflow-hidden border-b border-dark-800/50">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-950/30 to-dark-950" />
+    <div class="relative mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-40 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Nasze <span class="gradient-text">podcasty</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-dark-300">
+          Słuchaj naszych podcastów o technologii, AI i programowaniu.
+          Dwa formaty dla głodnych wiedzy programistów.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-purple-500">
+          <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-white">Opanuj.AI Podcast</h2>
+          <p class="text-sm text-dark-400">Ponad 4000 słuchaczy &middot; Comiesięczne podsumowanie wydarzeń ze świata AI</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {opanujAiEpisodes.map((episode) => (
+          <a href={episode.link} target="_blank" rel="noopener noreferrer" class="card group flex flex-col p-0 overflow-hidden">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={episode.image} alt={episode.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              <div class="absolute right-3 top-3 rounded-lg bg-dark-950/80 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                {episode.duration}
+              </div>
+            </div>
+            <div class="flex-1 p-5">
+              <h3 class="font-semibold text-white group-hover:text-brand-400 transition-colors line-clamp-2">{episode.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-dark-400 line-clamp-2">{episode.description}</p>
+            </div>
+            <div class="border-t border-dark-800/50 px-5 py-3">
+              <span class="text-xs font-medium text-brand-400">Słuchaj na Spotify &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500">
+          <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-white">Przeprogramowani ft. Gość</h2>
+          <p class="text-sm text-dark-400">Ponad 3800 słuchaczy &middot; Rozmowy dla głodnych wiedzy</p>
+        </div>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {goscEpisodes.map((episode) => (
+          <a href={episode.link} target="_blank" rel="noopener noreferrer" class="card group flex flex-col p-0 overflow-hidden">
+            <div class="relative aspect-video overflow-hidden">
+              <img src={episode.image} alt={episode.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+              <div class="absolute right-3 top-3 rounded-lg bg-dark-950/80 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                {episode.duration}
+              </div>
+            </div>
+            <div class="flex-1 p-5">
+              <h3 class="font-semibold text-white group-hover:text-brand-400 transition-colors line-clamp-2">{episode.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-dark-400 line-clamp-2">{episode.description}</p>
+            </div>
+            <div class="border-t border-dark-800/50 px-5 py-3">
+              <span class="text-xs font-medium text-emerald-400">Słuchaj na Spotify &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="section-title">Jesteśmy na <span class="gradient-text">Twojej ulubionej platformie</span></h2>
+      </div>
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6">
+        {platforms.map((platform) => (
+          <a
+            href={platform.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`rounded-xl bg-gradient-to-r ${platform.color} px-8 py-5 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl`}
+          >
+            {platform.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

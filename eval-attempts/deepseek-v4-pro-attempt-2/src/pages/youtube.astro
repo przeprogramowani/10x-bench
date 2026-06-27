@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import youtubeVideos from '../data/youtube-videos.json';
+---
+
+<BaseLayout title="YouTube" description="Oglądaj najnowsze filmy Przeprogramowanych na YouTube">
+
+  <section class="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
+    <div class="absolute inset-0 bg-gradient-to-b from-red-600/5 to-transparent" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <span class="gradient-text">YouTube</span>
+        </h1>
+        <p class="mt-4 text-lg text-gray-400">
+          Rozwój nowoczesnego programisty — filmy, tutoriale i transmisje na żywo
+        </p>
+        <div class="mt-6">
+          <a
+            href="https://youtube.com/c/przeprogramowani"
+            class="inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white hover:bg-red-500 transition-all shadow-lg shadow-red-500/20"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            Subskrybuj kanał
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding pt-0 pb-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <a
+            href={video.url}
+            class="group relative overflow-hidden rounded-xl bg-gray-800/30 border border-gray-700/30 card-hover"
+          >
+            <div class="aspect-video overflow-hidden relative">
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent" />
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="rounded-full bg-red-600 p-4 shadow-xl shadow-red-500/30">
+                  <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-sm font-semibold text-gray-200 group-hover:text-white transition-colors line-clamp-2">
+                {video.title}
+              </h3>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-gray-500">
+                <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+                YouTube
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

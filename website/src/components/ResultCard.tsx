@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { formatCost } from './comparisonUtils';
 
 interface CriterionResult {
   name: string;
@@ -15,6 +16,7 @@ interface AttemptResult {
   maxScore: number;
   percentage: number;
   agentEnvironment?: string;
+  cost?: number | null;
   criteria: CriterionResult[];
 }
 
@@ -73,6 +75,9 @@ export default function ResultCard({ attempt, screenshotHashes }: Props) {
         <div className="flex items-center justify-between">
           <p className="text-xs text-slate-400">
             Score: <span className="font-bold text-slate-100">{attempt.totalScore.toFixed(1)}/{attempt.maxScore}</span>
+            {attempt.cost != null && (
+              <span className="ml-2 text-slate-500">· Cost: <span className="font-semibold text-slate-300">{formatCost(attempt.cost)}</span></span>
+            )}
           </p>
           {hasScreenshot && (
             <a
@@ -164,6 +169,9 @@ export default function ResultCard({ attempt, screenshotHashes }: Props) {
             <p className="text-lg font-bold text-slate-100">
               {attempt.totalScore.toFixed(1)}/{attempt.maxScore}
             </p>
+            {attempt.cost != null && (
+              <p className="text-xs text-slate-400">Cost <span className="font-semibold text-slate-300">{formatCost(attempt.cost)}</span></p>
+            )}
           </div>
           <div className={`px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap ${getBadgeColor(attempt.percentage)}`}>
             {attempt.percentage.toFixed(1)}%

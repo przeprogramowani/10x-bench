@@ -1,0 +1,66 @@
+---
+const navLinks = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 glass">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-white hover:text-brand-purple transition-colors">
+        <span class="text-xl font-mono font-bold text-brand-purple">&lt;/&gt;</span>
+        <span class="text-lg font-semibold tracking-tight hidden sm:inline">Przeprogramowani</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm text-brand-gray-400 hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs sm:text-sm px-3 py-1.5 rounded-full bg-brand-purple/80 text-white hover:bg-brand-purple transition-colors font-medium"
+        >
+          10xDevs
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-white p-2"
+          aria-label="Menu"
+          onclick="document.getElementById('mobile-menu')?.classList.toggle('hidden')"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-white/10">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block py-2 text-sm text-brand-gray-400 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</header>

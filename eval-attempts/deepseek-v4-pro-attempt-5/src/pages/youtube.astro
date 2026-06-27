@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { youtubeVideos } from "../data/content";
+---
+
+<BaseLayout>
+  <section class="pt-24 pb-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl">YouTube</h1>
+        <p class="mt-4 text-xl text-gray-400">Rozwój nowoczesnego programisty — filmy i podcasty</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.map((video) => (
+          <a
+            href={`https://www.youtube.com/watch?v=${video.videoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900 transition-all hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/10"
+          >
+            <div class="relative aspect-video overflow-hidden">
+              <img
+                src={video.thumbnail}
+                alt={video.title}
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
+                <div class="rounded-full bg-red-600 p-3 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-white line-clamp-2 group-hover:text-red-400 transition-colors">
+                {video.title}
+              </h3>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a
+          href="https://youtube.com/c/przeprogramowani/videos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-red-500/50 bg-red-500/10 px-6 py-3 text-sm font-semibold text-red-400 transition-all hover:bg-red-500/20"
+        >
+          Zobacz więcej na YouTube
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

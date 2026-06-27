@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { courses } from '../data/content';
+---
+
+<BaseLayout title="Kursy" description="Topowe programy edukacyjne Przeprogramowani: 10xDevs, Opanuj Frontend, Opanuj TypeScript, Opanuj AI.">
+  <section class="pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">Nasze kursy</h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+      </p>
+    </div>
+  </section>
+
+  <section class="py-8 pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          courses.map(course => (
+            <a
+              href={course.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${course.color} p-8 sm:p-12 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${course.featured ? 'md:col-span-2' : ''}`}
+            >
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+              <div class="relative z-10">
+                {course.featured && (
+                  <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold mb-4 backdrop-blur-sm">
+                    Nasz flagowy program
+                  </span>
+                )}
+                <h3 class={`text-white font-bold mb-4 ${course.featured ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-2xl'}`}>
+                  {course.name}
+                </h3>
+                <p class="text-white/80 text-base leading-relaxed max-w-2xl mb-6">
+                  {course.description}
+                </p>
+                <span class="inline-flex items-center gap-2 text-white font-semibold group-hover:underline">
+                  Dowiedz się więcej
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

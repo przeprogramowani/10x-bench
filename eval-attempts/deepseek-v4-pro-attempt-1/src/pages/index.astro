@@ -1,0 +1,244 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+const courses = [
+  {
+    title: "10xDevs 4.0",
+    subtitle: "AI-Native Software Engineering",
+    description: "5-tygodniowy program uczący pracy z AI w całym cyklu tworzenia oprogramowania. Research, planowanie, implementacja i utrzymanie produkcji z wykorzystaniem Generative AI.",
+    features: ["6700+ absolwentów", "5 tygodni intensywnej nauki", "AI-First MVP od zera", "Praca z legacy code", "Zespołowe AI"],
+    link: "https://10xdevs.pl",
+    gradient: "from-brand-500 to-purple-500",
+    badge: "Bestseller",
+  },
+  {
+    title: "Opanuj Frontend",
+    subtitle: "AI Edition",
+    description: "10-tygodniowe szkolenie przygotowujące do tworzenia zaawansowanych aplikacji webowych. Wzorce, testowanie, CI/CD, architektura i open source.",
+    features: ["383 absolwentów", "5 obszernych modułów", "React, Vue, Angular, Svelte", "AI w codziennej pracy", "Certyfikat ukończenia"],
+    link: "https://opanujfrontend.pl",
+    gradient: "from-emerald-500 to-teal-500",
+    badge: "Topowy kurs",
+  },
+  {
+    title: "Opanuj TypeScript",
+    subtitle: "Frontend Pro",
+    description: "Praktyczny kurs TypeScript 5 i React 19. Typy generyczne, zaawansowane techniki typowania, integracja z ekosystemem React i ponad 40 ćwiczeń.",
+    features: ["121 absolwentów", "TypeScript 5.7+", "React 19", "40+ ćwiczeń praktycznych", "Certyfikat ukończenia"],
+    link: "https://opanujtypescript.pl",
+    gradient: "from-blue-500 to-cyan-500",
+    badge: "Nowość",
+  },
+];
+
+const podcastEpisodes = [
+  {
+    title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco!",
+    podcast: "Opanuj AI Podcast",
+    duration: "1h 12min",
+    description: "Relacja z konferencji Google I/O 2026 i najważniejsze ogłoszenia.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3k9b7u",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI?",
+    podcast: "Opanuj AI Podcast",
+    duration: "47min",
+    description: "Analiza największych premier AI: GPT-5.5, Claude Opus 4.7, DeepSeek V4, Cursor 3.0.",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3injdh",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS",
+    podcast: "Opanuj AI Podcast",
+    duration: "1h 39min",
+    description: "Czy AI naprawdę rozumie świat i czy kończy się era klasycznych SaaS-ów?",
+    link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/e3hc7nk",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+  },
+  {
+    title: "Programista vs. Angielski: Od strachu do sukcesu",
+    podcast: "Przeprogramowani ft. Gość",
+    duration: "33min",
+    description: "Wiktoria Sitko o barierach językowych programistów i skutecznej nauce angielskiego.",
+    link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/e38lmlo",
+    image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+  },
+];
+
+const youtubeVideos = [
+  {
+    title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE",
+    duration: "1:12:26",
+    thumbnail: "https://i3.ytimg.com/vi/0JOszZXqKaM/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=0JOszZXqKaM",
+  },
+  {
+    title: "Byłem na Google I/O 2026. Nie tego się spodziewałem.",
+    duration: "15:42",
+    thumbnail: "https://i3.ytimg.com/vi/XgyH-HSzKRQ/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=XgyH-HSzKRQ",
+  },
+  {
+    title: "Jak wybrać najlepszego Agenta AI do programowania?",
+    duration: "22:18",
+    thumbnail: "https://i3.ytimg.com/vi/03y826SVjG0/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=03y826SVjG0",
+  },
+  {
+    title: "5 Agent Skills do jakościowego programowania z AI",
+    duration: "18:55",
+    thumbnail: "https://i3.ytimg.com/vi/S-iNbyLSisE/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=S-iNbyLSisE",
+  },
+  {
+    title: "Product Builders Day | LIVE AI Product Heroes i 10xDevs",
+    duration: "2:04:30",
+    thumbnail: "https://i3.ytimg.com/vi/aRkECt7derY/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=aRkECt7derY",
+  },
+  {
+    title: "Wybierasz model AI do kodowania? Nie ufaj benchmarkom",
+    duration: "12:34",
+    thumbnail: "https://i3.ytimg.com/vi/vH1T5qB4dBQ/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=vH1T5qB4dBQ",
+  },
+];
+
+const partners = [
+  "Huuuge Games", "Nutridome", "SmartRecruiters", "Future Processing",
+  "Callstack", "edrone", "Xfive", "Euvic", "Strabag", "Autodesk",
+];
+---
+
+<Layout
+  title="Strona główna"
+  description="Przeprogramowani - Szersze spojrzenie na programowanie. Edukacja technologiczna w epoce AI."
+>
+  <Hero />
+
+  <section id="programy" class="relative py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="section-title">Nasze <span class="gradient-text">programy edukacyjne</span></h2>
+        <p class="section-subtitle">Topowe szkolenia dla ambitnych programistów</p>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => (
+          <article class="card group flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class={`badge bg-gradient-to-r ${course.gradient} border-transparent bg-clip-text text-transparent`}>{course.badge}</span>
+            </div>
+            <h3 class="mt-4 text-xl font-bold text-white group-hover:text-brand-400 transition-colors">
+              {course.title}
+            </h3>
+            <p class="text-sm font-medium text-dark-400">{course.subtitle}</p>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-dark-400">{course.description}</p>
+            <ul class="mt-4 space-y-1.5">
+              {course.features.map((feature) => (
+                <li class="flex items-center gap-2 text-xs text-dark-500">
+                  <svg class="h-3.5 w-3.5 flex-shrink-0 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href={course.link} target="_blank" rel="noopener noreferrer" class="btn-primary mt-6 w-full justify-center text-sm">
+              Szczegóły
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900/30 to-dark-950" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-14 lg:grid-cols-2">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="badge">Podcast</span>
+            <h2 class="text-2xl font-bold text-white">Ostatnie odcinki</h2>
+          </div>
+          <div class="mt-8 space-y-4">
+            {podcastEpisodes.slice(0, 3).map((episode) => (
+              <a href={episode.link} target="_blank" rel="noopener noreferrer" class="card flex gap-4 p-4 hover:border-brand-500/30 group">
+                <img src={episode.image} alt={episode.title} class="h-16 w-16 flex-shrink-0 rounded-lg object-cover" loading="lazy" />
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-medium text-brand-400">{episode.podcast}</span>
+                    <span class="text-xs text-dark-500">{episode.duration}</span>
+                  </div>
+                  <h3 class="mt-1 text-sm font-semibold text-white line-clamp-2 group-hover:text-brand-400 transition-colors">{episode.title}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-dark-400 line-clamp-2">{episode.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <a href="/podcast" class="btn-secondary mt-6">
+            Wszystkie odcinki
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="badge">YouTube</span>
+            <h2 class="text-2xl font-bold text-white">Ostatnie filmy</h2>
+          </div>
+          <div class="mt-8 grid grid-cols-2 gap-3">
+            {youtubeVideos.slice(0, 4).map((video) => (
+              <a href={video.link} target="_blank" rel="noopener noreferrer" class="card group overflow-hidden p-0 hover:border-brand-500/30">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src={video.thumbnail} alt={video.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
+                  <span class="absolute bottom-2 right-2 rounded bg-dark-950/80 px-1.5 py-0.5 text-xs font-medium text-white">{video.duration}</span>
+                </div>
+                <div class="p-3">
+                  <h3 class="text-xs font-medium text-white line-clamp-2 group-hover:text-brand-400 transition-colors">{video.title}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
+          <a href="/youtube" class="btn-secondary mt-6">
+            Wszystkie filmy
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="section-title">7 lat na rynku <span class="gradient-text">edukacji technologicznej</span></h2>
+        <p class="section-subtitle">Współpracujemy z najlepszymi</p>
+      </div>
+      <div class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
+        {partners.map((partner) => (
+          <div class="flex items-center justify-center rounded-xl border border-dark-800/50 bg-dark-900/50 px-4 py-6 backdrop-blur-sm transition-colors hover:border-dark-700">
+            <span class="text-sm font-semibold text-dark-400">{partner}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-center text-sm text-dark-500">
+        Chcesz nawiązać współpracę?{" "}
+        <a href="mailto:kontakt@przeprogramowani.pl" class="text-brand-400 hover:text-brand-300 transition-colors">
+          kontakt@przeprogramowani.pl
+        </a>
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -15,6 +15,8 @@ interface ModelFamilyAverage {
   averageMaxScore: number;
   agentEnvironment?: string;
   pricing?: {input: number; output: number};
+  averageCost?: number | null;
+  totalCost?: number | null;
 }
 
 interface Props {

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-26T21:07:11.425Z",
-  "totalAttempts": 112,
+  "generatedAt": "2026-06-27T20:31:28.832Z",
+  "totalAttempts": 117,
   "results": [
     {
       "id": "gpt-54-attempt-3",
@@ -11,6 +11,7 @@
       "maxScore": 10,
       "percentage": 100,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -101,6 +102,7 @@
       "maxScore": 10,
       "percentage": 100,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -191,6 +193,7 @@
       "maxScore": 10,
       "percentage": 95,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -275,6 +278,7 @@
       "maxScore": 10,
       "percentage": 90,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -359,6 +363,7 @@
       "maxScore": 10,
       "percentage": 90,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -443,6 +448,7 @@
       "maxScore": 10,
       "percentage": 90,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -533,6 +539,7 @@
       "maxScore": 10,
       "percentage": 90,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -623,6 +630,7 @@
       "maxScore": 10,
       "percentage": 90,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -713,6 +721,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -803,6 +812,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -893,6 +903,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -983,6 +994,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1067,6 +1079,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1143,6 +1156,394 @@
       ]
     },
     {
+      "id": "deepseek-v4-pro-attempt-1",
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.1277,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 7,
+          "max": 1,
+          "notes": "7min 14s"
+        },
+        {
+          "name": "Test run",
+          "score": 27.06,
+          "max": 1,
+          "notes": "27.06.2026 22:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.1277 (in 222706 / out 28868 / cache 1094912 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server starts; /, /o-nas, /podcast, /youtube, /kursy all return 200; nav, styles and content render correctly\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Astro 5 (criterion requires Astro 6); React 19 + @astrojs/react; Tailwind 3.4 via @astrojs/tailwind (requires v4); @astrojs/cloudflare 12 adapter configured. Partial: CF adapter + React 19 present but Astro and Tailwind majors below required\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (DAZN, Cabify, OSS) and Marcin Czarkowski (SmartRecruiters frontend lead, Opanuj.AI podcast)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present, but Spotify show id 4qHUZJpeBK8Ij9e2wTVm2o does not match canonical IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy); episodes link to podcasters.spotify.com (unverified)\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/youtube 200. 6 real unique Przeprogramowani videos (oEmbed 200, author=Przeprogramowani) but list padded with rick-roll placeholder dQw4w9WgXcQ used 3x (author Rick Astley)\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/kursy 200. All three courses present: Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript, 10xDevs (10xdevs.pl). Hero.astro features 10xDevs 4.0 with CTA\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: UI consistent across all pages\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: layout responsive across breakpoints\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Shared Layout.astro injects per-page title, meta description, og:title/og:description/og:type and twitter:card across all pages\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "\"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run\""
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-pro-attempt-3",
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "attemptNumber": 3,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.1864,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 7,
+          "max": 1,
+          "notes": "7min 28s"
+        },
+        {
+          "name": "Test run",
+          "score": 27.06,
+          "max": 1,
+          "notes": "27.06.2026 22:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.1864 (in 364623 / out 23574 / cache 1378048 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server starts; /, /o-nas, /podcast, /youtube all return 200; nav, styles and content render correctly\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Astro 5.7 (criterion requires Astro 6); React 19.1 + @astrojs/react; Tailwind 3.4 via @astrojs/tailwind (requires v4); @astrojs/cloudflare 12.5 adapter configured. Partial: CF adapter + React 19 present but Astro and Tailwind majors below required\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (DAZN, Cabify) and Marcin Czarkowski (SmartRecruiters frontend lead, Opanuj.AI podcast)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present, but Spotify show id 4qHUZJpeBK8Ij9e2wTVm2o does not match canonical IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy); episodes link to podcasters.spotify.com (unverified)\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube 200. 6 unique real Przeprogramowani videos, all oEmbed-verified (author=Przeprogramowani), no placeholders or duplicates\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"No /kursy route; #courses section on index has all three: Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript (opanujtypescript.pl), 10xDevs 4.0 (10xdevs.pl). 10xDevs featured in hero badge + CTA\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: UI consistent across all pages\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: layout responsive across breakpoints\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Shared Layout.astro has title + description meta on all pages (lang=pl, viewport), but values hardcoded (not per-page), no dedicated SEO component, no og/twitter/canonical\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "\"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run\""
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-pro-attempt-4",
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "attemptNumber": 4,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.0713,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 6,
+          "max": 1,
+          "notes": "6min 6s"
+        },
+        {
+          "name": "Test run",
+          "score": 27.06,
+          "max": 1,
+          "notes": "27.06.2026 22:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.0713 (in 116625 / out 20219 / cache 540928 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server starts; /, /o-nas, /podcast, /youtube, /kursy all return 200; nav, styles and content render correctly\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Astro 5 (criterion requires Astro 6); React 19 + @astrojs/react; Tailwind 3.4 via @astrojs/tailwind (requires v4); @astrojs/cloudflare 12 adapter configured. Partial: CF adapter + React 19 present but Astro and Tailwind majors below required\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (DAZN, Cabify) and Marcin Czarkowski (SmartRecruiters lead, Opanuj.AI podcast)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present with real-looking episodes, but Spotify show id 4qHUZJpeBK8Ij9e2wTVm2o does not match canonical IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy)\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube 200. 6 unique real Przeprogramowani videos, all oEmbed-verified (author=Przeprogramowani), no placeholders or duplicates\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/kursy 200. All three courses present: Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript, 10xDevs (10xdevs.pl). 10xDevs featured in index Hero\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: UI consistent across all pages\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: layout responsive across breakpoints\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"BaseLayout has shared title/description meta on all pages, but no dedicated SEO component and no og/twitter tags\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "\"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run\""
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-pro-attempt-5",
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "attemptNumber": 5,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.1425,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 6,
+          "max": 1,
+          "notes": "6min 34s"
+        },
+        {
+          "name": "Test run",
+          "score": 27.06,
+          "max": 1,
+          "notes": "27.06.2026 22:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.1425 (in 274689 / out 20840 / cache 1018624 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server starts; /, /o-nas, /podcast, /youtube, /kursy all return 200; nav, styles and content render correctly\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Astro 5.18 (criterion requires Astro 6); React 19.1 + Tailwind 4.1 via @tailwindcss/vite + @astrojs/cloudflare 12.2 adapter configured. Not exact match due to Astro major version (consistent with glm-52 precedent)\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (DAZN, Cabify, full-stack, OSS) and Marcin Czarkowski (SmartRecruiters Frontend Platform lead, Opanuj.AI podcast)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present with real-looking episodes, but Spotify show id 4qHUZJpeBK8Ij9e2wTVm2o does not match canonical IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy)\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube 200. 6 unique real Przeprogramowani videos, all oEmbed-verified (author=Przeprogramowani), no placeholders or duplicates\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/kursy 200. All three courses present: Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript, 10xDevs (10xdevs.pl). 10xDevs featured in index hero with CTA\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: UI consistent across all pages\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: layout responsive across breakpoints\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"BaseLayout has shared title + meta description on all pages, but values hardcoded site-wide (no per-page props), no og/twitter tags, no dedicated SEO component\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "\"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run\""
+        }
+      ]
+    },
+    {
       "id": "gemini-35-flash-attempt-1",
       "modelName": "Gemini 3.5 Flash",
       "modelBaseId": "gemini-35-flash",
@@ -1151,6 +1552,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1241,6 +1643,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1325,6 +1728,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1415,6 +1819,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1505,6 +1910,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": 0.2897,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1517,6 +1923,12 @@
           "score": 26.06,
           "max": 1,
           "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.2897 (in 67673 / out 17773 / cache 931423 / 1 session)"
         },
         {
           "name": "Local build",
@@ -1595,6 +2007,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": 0.2267,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1607,6 +2020,12 @@
           "score": 26.06,
           "max": 1,
           "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.2267 (in 31648 / out 14896 / cache 828800 / 1 session)"
         },
         {
           "name": "Local build",
@@ -1685,6 +2104,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": 0.5586,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1697,6 +2117,12 @@
           "score": 26.06,
           "max": 1,
           "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.5586 (in 109932 / out 37160 / cache 1892032 / 2 sessions)"
         },
         {
           "name": "Local build",
@@ -1775,6 +2201,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": 0.5767,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1787,6 +2214,12 @@
           "score": 26.06,
           "max": 1,
           "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.5767 (in 258547 / out 17068 / cache 1403868 / 1 session)"
         },
         {
           "name": "Local build",
@@ -1865,6 +2298,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "OpenCode",
+      "cost": 0.514,
       "criteria": [
         {
           "name": "Task completion time",
@@ -1877,6 +2311,12 @@
           "score": 26.06,
           "max": 1,
           "notes": "26.06.2026 23:05"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.5140 (in 278394 / out 20769 / cache 996224 / 1 session)"
         },
         {
           "name": "Local build",
@@ -1955,6 +2395,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2039,6 +2480,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2123,6 +2565,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2207,6 +2650,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2291,6 +2735,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2375,6 +2820,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2465,6 +2911,7 @@
       "maxScore": 10,
       "percentage": 85,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2555,6 +3002,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2645,6 +3093,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2735,6 +3184,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2819,6 +3269,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2903,6 +3354,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -2987,6 +3439,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3063,6 +3516,103 @@
       ]
     },
     {
+      "id": "deepseek-v4-pro-attempt-2",
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "attemptNumber": 2,
+      "totalScore": 8,
+      "maxScore": 10,
+      "percentage": 80,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.089,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 6,
+          "max": 1,
+          "notes": "6min 29s"
+        },
+        {
+          "name": "Test run",
+          "score": 27.06,
+          "max": 1,
+          "notes": "27.06.2026 22:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.0890 (in 155945 / out 21030 / cache 538880 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server starts; /, /o-nas, /podcast, /youtube all return 200; nav, styles and content render correctly\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Astro 5.5, React 19, Tailwind 3.4 (requires v4), and NO @astrojs/cloudflare adapter (output static). Missing required deps and no Cloudflare adapter\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (Lead Eng/Manager DAZN and Cabify) and Marcin Czarkowski (SmartRecruiters frontend platform lead, Opanuj.AI podcast)\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present with real-looking episodes, but only Spotify show id found is 4qHUZJpeBK8Ij9e2wTVm2o which matches neither canonical id (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy)\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube 200. 6 unique real Przeprogramowani videos, all oEmbed-verified (author=Przeprogramowani), no placeholders or duplicates\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Courses in courses.json with all three: 10xDevs (10xdevs.pl), Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript. Index hero features 10xDevs (heroCourse)\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: UI consistent across all pages\""
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed: layout responsive across breakpoints\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"BaseLayout (shared, all pages) has per-page title and meta description, but no og/twitter tags and no dedicated SEO component. Partial\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "\"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run\""
+        }
+      ]
+    },
+    {
       "id": "gemini-35-flash-attempt-5",
       "modelName": "Gemini 3.5 Flash",
       "modelBaseId": "gemini-35-flash",
@@ -3071,6 +3621,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3161,6 +3712,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3245,6 +3797,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3329,6 +3882,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3413,6 +3967,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3497,6 +4052,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3587,6 +4143,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3671,6 +4228,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3761,6 +4319,7 @@
       "maxScore": 10,
       "percentage": 80,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3851,6 +4410,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -3941,6 +4501,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4025,6 +4586,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4115,6 +4677,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4199,6 +4762,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4289,6 +4853,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4379,6 +4944,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4463,6 +5029,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4553,6 +5120,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4643,6 +5211,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4733,6 +5302,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4823,6 +5393,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4913,6 +5484,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -4997,6 +5569,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5081,6 +5654,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5165,6 +5739,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5249,6 +5824,7 @@
       "maxScore": 10,
       "percentage": 75,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5333,6 +5909,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5417,6 +5994,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5501,6 +6079,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5591,6 +6170,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5681,6 +6261,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5771,6 +6352,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5855,6 +6437,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -5945,6 +6528,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6035,6 +6619,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6125,6 +6710,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6215,6 +6801,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6305,6 +6892,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6395,6 +6983,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6485,6 +7074,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6575,6 +7165,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6665,6 +7256,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6755,6 +7347,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6839,6 +7432,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -6923,6 +7517,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7007,6 +7602,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7091,6 +7687,7 @@
       "maxScore": 10,
       "percentage": 70,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7175,6 +7772,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7259,6 +7857,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Claude Desktop",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7349,6 +7948,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7433,6 +8033,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7517,6 +8118,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7601,6 +8203,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7691,6 +8294,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7775,6 +8379,7 @@
       "maxScore": 10,
       "percentage": 65,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7859,6 +8464,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -7943,6 +8549,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8027,6 +8634,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8117,6 +8725,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8207,6 +8816,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8297,6 +8907,7 @@
       "maxScore": 10,
       "percentage": 60,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8381,6 +8992,7 @@
       "maxScore": 10,
       "percentage": 55.00000000000001,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8471,6 +9083,7 @@
       "maxScore": 10,
       "percentage": 55.00000000000001,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8555,6 +9168,7 @@
       "maxScore": 10,
       "percentage": 55.00000000000001,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8639,6 +9253,7 @@
       "maxScore": 10,
       "percentage": 50,
       "agentEnvironment": "Claude Code (High Effort)",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8723,6 +9338,7 @@
       "maxScore": 10,
       "percentage": 50,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8807,6 +9423,7 @@
       "maxScore": 10,
       "percentage": 50,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8891,6 +9508,7 @@
       "maxScore": 10,
       "percentage": 50,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -8975,6 +9593,7 @@
       "maxScore": 10,
       "percentage": 40,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9059,6 +9678,7 @@
       "maxScore": 10,
       "percentage": 40,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9143,6 +9763,7 @@
       "maxScore": 10,
       "percentage": 35,
       "agentEnvironment": "Cursor",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9227,6 +9848,7 @@
       "maxScore": 10,
       "percentage": 25,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9311,6 +9933,7 @@
       "maxScore": 10,
       "percentage": 15,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9395,6 +10018,7 @@
       "maxScore": 10,
       "percentage": 10,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9479,6 +10103,7 @@
       "maxScore": 10,
       "percentage": 0,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9563,6 +10188,7 @@
       "maxScore": 10,
       "percentage": 0,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9647,6 +10273,7 @@
       "maxScore": 10,
       "percentage": 0,
       "agentEnvironment": "OpenCode",
+      "cost": null,
       "criteria": [
         {
           "name": "Task completion time",
@@ -9735,7 +10362,9 @@
       "pricing": {
         "input": 1.75,
         "output": 14
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GPT-5.3-Codex",
@@ -9748,7 +10377,9 @@
       "pricing": {
         "input": 1.75,
         "output": 14
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GLM-5.2",
@@ -9761,7 +10392,24 @@
       "pricing": {
         "input": 1.4,
         "output": 4.4
-      }
+      },
+      "averageCost": 0.43314,
+      "totalCost": 2.1657
+    },
+    {
+      "modelName": "DeepSeek V4 Pro",
+      "modelBaseId": "deepseek-v4-pro",
+      "averageScore": 8.4,
+      "averageMaxScore": 10,
+      "averagePercentage": 84,
+      "attemptCount": 5,
+      "agentEnvironment": "OpenCode",
+      "pricing": {
+        "input": 0.435,
+        "output": 0.87
+      },
+      "averageCost": 0.12338,
+      "totalCost": 0.6169
     },
     {
       "modelName": "Qwen 3.6",
@@ -9774,7 +10422,9 @@
       "pricing": {
         "input": 0.15,
         "output": 1
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Claude Fable 5",
@@ -9787,7 +10437,9 @@
       "pricing": {
         "input": 10,
         "output": 50
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GPT-5.5",
@@ -9800,7 +10452,9 @@
       "pricing": {
         "input": 5,
         "output": 30
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GLM-5.1",
@@ -9813,7 +10467,9 @@
       "pricing": {
         "input": 1.4,
         "output": 4.4
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Claude Opus 4.6",
@@ -9826,7 +10482,9 @@
       "pricing": {
         "input": 5,
         "output": 25
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Gemini 3.5 Flash",
@@ -9839,7 +10497,9 @@
       "pricing": {
         "input": 1.5,
         "output": 9
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Claude Sonnet 4.6",
@@ -9852,7 +10512,9 @@
       "pricing": {
         "input": 3,
         "output": 15
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Claude Sonnet 4.5",
@@ -9865,7 +10527,9 @@
       "pricing": {
         "input": 3,
         "output": 15
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Claude Opus 4.7",
@@ -9878,7 +10542,9 @@
       "pricing": {
         "input": 5,
         "output": 25
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Minimax M2.5",
@@ -9891,7 +10557,9 @@
       "pricing": {
         "input": 0.3,
         "output": 2.4
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GLM-5",
@@ -9904,7 +10572,9 @@
       "pricing": {
         "input": 0.3,
         "output": 2.55
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Gemini 3.1 Pro",
@@ -9917,7 +10587,9 @@
       "pricing": {
         "input": 2,
         "output": 12
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Kimi K2.5",
@@ -9930,7 +10602,9 @@
       "pricing": {
         "input": 0.6,
         "output": 3
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Gemini 3 Pro",
@@ -9943,7 +10617,9 @@
       "pricing": {
         "input": 2,
         "output": 12
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Grok Code Fast 1",
@@ -9956,7 +10632,9 @@
       "pricing": {
         "input": 0.2,
         "output": 1.5
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "GLM-4.7",
@@ -9969,7 +10647,9 @@
       "pricing": {
         "input": 0.6,
         "output": 2.2
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Minimax M2.1",
@@ -9982,7 +10662,9 @@
       "pricing": {
         "input": 0.27,
         "output": 0.95
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Qwen 3 Max",
@@ -9995,7 +10677,9 @@
       "pricing": {
         "input": 1.2,
         "output": 6
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     },
     {
       "modelName": "Devstral 2",
@@ -10008,7 +10692,9 @@
       "pricing": {
         "input": 0.4,
         "output": 2
-      }
+      },
+      "averageCost": null,
+      "totalCost": null
     }
   ],
   "supersededModels": {

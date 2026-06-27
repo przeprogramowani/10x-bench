@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.tsx';
+import CoursesSection from '../components/CoursesSection.tsx';
+import PodcastSection from '../components/PodcastSection.tsx';
+import YoutubeSection from '../components/YoutubeSection.tsx';
+import NewsletterSection from '../components/NewsletterSection.tsx';
+import PartnersSection from '../components/PartnersSection.tsx';
+---
+
+<BaseLayout title="Strona główna" description="Przeprogramowani.pl - Szersze spojrzenie na programowanie. Kursy, podcasty i materiały edukacyjne dla programistów.">
+  <Hero client:load />
+  <CoursesSection client:load />
+  <PodcastSection client:load />
+  <YoutubeSection client:load />
+  <NewsletterSection client:load />
+  <PartnersSection client:load />
+</BaseLayout>

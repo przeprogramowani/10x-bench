@@ -1,4 +1,5 @@
 import {useState, type MouseEvent} from "react";
+import {formatCost} from "./comparisonUtils";
 
 interface ModelFamilyAverage {
   modelName: string;
@@ -9,6 +10,8 @@ interface ModelFamilyAverage {
   averageMaxScore: number;
   agentEnvironment?: string;
   pricing?: {input: number; output: number};
+  averageCost?: number | null;
+  totalCost?: number | null;
 }
 
 interface Props {
@@ -101,7 +104,21 @@ export default function ModelAveragesCard({
                 </p>
                 {average.pricing && (
                   <p className='text-xs text-slate-500 truncate'>
-                    Cost: ${average.pricing.input} / ${average.pricing.output}
+                    Rate: ${average.pricing.input} / ${average.pricing.output} per 1M
+                  </p>
+                )}
+                {average.averageCost != null && (
+                  <p className='text-xs text-slate-500 truncate'>
+                    Avg run:{" "}
+                    <span className='font-semibold text-slate-300'>
+                      {formatCost(average.averageCost)}
+                    </span>
+                    {average.totalCost != null && (
+                      <span className='text-slate-600'>
+                        {" "}
+                        · total {formatCost(average.totalCost)}
+                      </span>
+                    )}
                   </p>
                 )}
                 <div className='mt-2'>{compareButton}</div>
@@ -172,7 +189,21 @@ export default function ModelAveragesCard({
               </p>
               {average.pricing && (
                 <p className='text-xs text-slate-500 truncate'>
-                  Cost: ${average.pricing.input} / ${average.pricing.output}
+                  Rate: ${average.pricing.input} / ${average.pricing.output} per 1M
+                </p>
+              )}
+              {average.averageCost != null && (
+                <p className='text-xs text-slate-500 truncate'>
+                  Avg run:{" "}
+                  <span className='font-semibold text-slate-300'>
+                    {formatCost(average.averageCost)}
+                  </span>
+                  {average.totalCost != null && (
+                    <span className='text-slate-600'>
+                      {" "}
+                      · total {formatCost(average.totalCost)}
+                    </span>
+                  )}
                 </p>
               )}
             </div>

@@ -1,0 +1,226 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const courses = [
+  {
+    title: "10xDevs 4.0",
+    subtitle: "AI-Native Software Engineering",
+    description: "5-tygodniowy, intensywny program, który uczy developerów pracować z AI w całym cyklu tworzenia oprogramowania: od researchu i planowania, przez implementację, aż po utrzymanie produkcji.",
+    features: [
+      "6700+ absolwentów",
+      "5+1 tygodni intensywnej nauki",
+      "AI-First MVP: od pierwszej linijki kodu po produkcję",
+      "Praca z legacy code i dużą skalą",
+      "AI w pracy zespołowej",
+      "Context Engineering i Agent Skills",
+      "Certyfikat 10xBuilder / 10xArchitect / 10xChampion",
+      "Dostępna wersja anglojęzyczna",
+    ],
+    link: "https://10xdevs.pl",
+    gradient: "from-brand-500 to-purple-500",
+    badge: "Bestseller",
+    icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z",
+  },
+  {
+    title: "Opanuj Frontend",
+    subtitle: "AI Edition",
+    description: "10-tygodniowe szkolenie przygotowujące do tworzenia zaawansowanych aplikacji webowych z wykorzystaniem najnowszych technologii i najlepszych praktyk.",
+    features: [
+      "383 absolwentów z 4 edycji",
+      "5 modułów: wzorce, testowanie, CI/CD, open source, architektura",
+      "React, Vue, Angular, Svelte, Astro",
+      "AI w codziennej pracy frontend developera",
+      "25 obszernych lekcji + 5 lekcji o AI",
+      "Spotkania LIVE z ekspertami branży",
+      "Dostęp do społeczności",
+      "Certyfikat ukończenia",
+    ],
+    link: "https://opanujfrontend.pl",
+    gradient: "from-emerald-500 to-teal-500",
+    badge: "Topowy kurs",
+    icon: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5",
+  },
+  {
+    title: "Opanuj TypeScript",
+    subtitle: "Frontend Pro",
+    description: "Praktyczny kurs TypeScript 5 i React 19. Typy generyczne, zaawansowane techniki typowania i integracja z ekosystemem React.",
+    features: [
+      "121 absolwentów",
+      "TypeScript 5.7+",
+      "React 19 i ekosystem",
+      "40+ ćwiczeń praktycznych",
+      "2 moduły: Core Pro + React Pro",
+      "Wzorce typowania dla React",
+      "Generyki, typy mapowane, inferencja",
+      "Certyfikat ukończenia",
+    ],
+    link: "https://opanujtypescript.pl",
+    gradient: "from-blue-500 to-cyan-500",
+    badge: "Nowość",
+    icon: "M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z",
+  },
+];
+---
+
+<Layout
+  title="Kursy"
+  description="Poznaj nasze programy edukacyjne: 10xDevs, Opanuj Frontend i Opanuj TypeScript."
+>
+  <section class="relative overflow-hidden border-b border-dark-800/50">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-950/30 to-dark-950" />
+    <div class="relative mx-auto max-w-7xl px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-40 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Nasze <span class="gradient-text">programy edukacyjne</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-dark-300">
+          Topowe programy edukacyjne dla ambitnych programistów. Od frontendu przez TypeScript po AI-Native Software Engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="space-y-20">
+        {courses.map((course, index) => (
+          <div class={`grid items-center gap-12 lg:grid-cols-2 ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+            <div class={index % 2 === 1 ? "lg:order-2" : ""}>
+              <span class={`badge bg-gradient-to-r ${course.gradient} border-transparent bg-clip-text text-transparent`}>
+                {course.badge}
+              </span>
+              <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white">
+                {course.title}
+              </h2>
+              <p class={`text-lg font-medium bg-gradient-to-r bg-clip-text text-transparent mt-1 ${course.gradient}`}>
+                {course.subtitle}
+              </p>
+              <p class="mt-4 text-base leading-relaxed text-dark-300">
+                {course.description}
+              </p>
+              <ul class="mt-6 space-y-3">
+                {course.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-sm text-dark-400">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a href={course.link} target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  Dowiedz się więcej
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class={index % 2 === 1 ? "lg:order-1" : ""}>
+              <div class={`relative rounded-2xl border border-dark-800 bg-dark-900/80 p-8 backdrop-blur-sm`}>
+                <div class={`mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${course.gradient}`}>
+                  <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={course.icon} />
+                  </svg>
+                </div>
+                <div class="mt-6 space-y-4">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-dark-400">Poziom</span>
+                    <span class="font-medium text-white">
+                      {index === 0 ? "Wszystkie poziomy" : index === 1 ? "Średniozaawansowany" : "Średniozaawansowany"}
+                    </span>
+                  </div>
+                  <div class="h-px bg-dark-800" />
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-dark-400">Czas trwania</span>
+                    <span class="font-medium text-white">
+                      {index === 0 ? "5+1 tygodni" : index === 1 ? "10 tygodni" : "Samodzielne tempo"}
+                    </span>
+                  </div>
+                  <div class="h-px bg-dark-800" />
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-dark-400">Format</span>
+                    <span class="font-medium text-white">Online + LIVE sesje</span>
+                  </div>
+                  <div class="h-px bg-dark-800" />
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="text-dark-400">Certyfikat</span>
+                    <span class="font-medium text-green-400">Tak</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="section-title">Co mówią <span class="gradient-text">absolwenci</span></h2>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {[
+          {
+            quote: "Jestem w stanie w tym momencie zmierzyć się z problemami dużo większymi, niż kiedykolwiek byłem w stanie wcześniej jako programista.",
+            author: "Mateusz Jarzębowski-Bownik",
+            role: "Software Engineer",
+          },
+          {
+            quote: "10xDevs to takie mięcho, które można wziąć i na dzień dobry w pracy rzeczywiście poczujesz różnicę.",
+            author: "Kacper Kustra",
+            role: "Software Engineer",
+          },
+          {
+            quote: "Kurs dał mi szersze spojrzenie na programowanie. Uświadamia, że warto najpierw przemyśleć co jak ma działać.",
+            author: "Paulina K.",
+            role: "Absolwentka Opanuj Frontend",
+          },
+          {
+            quote: "Mam 5 lat stażu jako full stack i to jest kolejny raz gdy Przeprogramowani zaskakują mnie rzeczami, których wcześniej nie znałem.",
+            author: "Paweł",
+            role: "Full-Stack Developer",
+          },
+          {
+            quote: "Z perspektywy doświadczonego programisty bardzo ciekawym doświadczeniem była możliwość sprawdzenia nowych rozwiązań.",
+            author: "Michał Pluta",
+            role: "Angular Developer",
+          },
+          {
+            quote: "Kurs podnosi poziom świadomości w zakresie tworzenia oprogramowania. Dzięki niemu stałem się lepszym programistą.",
+            author: "Paweł Gnat",
+            role: "Frontend Developer",
+          },
+        ].map((testimonial) => (
+          <div class="card flex flex-col">
+            <svg class="h-8 w-8 text-brand-500/30" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" />
+            </svg>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-dark-300">{testimonial.quote}</p>
+            <div class="mt-4 border-t border-dark-800/50 pt-4">
+              <p class="text-sm font-semibold text-white">{testimonial.author}</p>
+              <p class="text-xs text-dark-500">{testimonial.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-dark-800/50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="section-title">Gotowy na <span class="gradient-text">rozwój</span>?</h2>
+      <p class="section-subtitle">Dołącz do tysięcy programistów, którzy przyspieszyli swoją karierę z Przeprogramowanymi.</p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="btn-primary">10xDevs</a>
+        <a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="btn-secondary">Opanuj Frontend</a>
+        <a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="btn-secondary">Opanuj TypeScript</a>
+      </div>
+    </div>
+  </section>
+</Layout>

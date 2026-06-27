@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="pt-24 pb-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl">O nas</h1>
+        <p class="mt-4 text-xl text-gray-400">Łączymy świat programowania, biznesu i rozwoju</p>
+      </div>
+
+      <div class="mb-16 grid gap-12 lg:grid-cols-2">
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 p-8">
+          <div class="mb-6 flex items-center gap-4">
+            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-2xl font-bold text-white">
+              PS
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">Przemek Smyrdek</h3>
+              <p class="text-blue-400">Co-founder, Przeprogramowani</p>
+              <a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-blue-400 transition-colors">LinkedIn →</a>
+            </div>
+          </div>
+          <p class="leading-relaxed text-gray-300">
+            Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. 
+            Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, 
+            ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).
+          </p>
+        </div>
+
+        <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 p-8">
+          <div class="mb-6 flex items-center gap-4">
+            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-2xl font-bold text-white">
+              MC
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">Marcin Czarkowski</h3>
+              <p class="text-blue-400">Co-founder, Przeprogramowani</p>
+              <a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-blue-400 transition-colors">LinkedIn →</a>
+            </div>
+          </div>
+          <p class="leading-relaxed text-gray-300">
+            Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. 
+            Entuzjasta neurobiologii. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu 
+            o LLM w Polsce. Specjalista TypeScript, React, Node.js.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-16">
+        <div class="relative overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 to-blue-950 p-8 md:p-12">
+          <h2 class="mb-6 text-3xl font-bold text-white">Witaj na Przeprogramowanych!</h2>
+          <div class="prose prose-invert max-w-3xl text-gray-300">
+            <p class="text-lg leading-relaxed">
+              Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. 
+              Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, 
+              na biznes, na ludzi i na siebie.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed">
+              Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu 
+              płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+            </p>
+            <p class="mt-4 text-lg font-semibold text-blue-400">
+              Zyskaj szersze spojrzenie na programowanie.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-16">
+        <h2 class="mb-8 text-2xl font-bold text-white">Zaufali nam</h2>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+          {[
+            "Huuuge Games", "Nutridome", "SmartRecruiters", "Future Processing", "Callstack",
+            "edrone", "Xfive", "Euvic", "Strabag", "Autodesk",
+          ].map((brand) => (
+            <div class="flex items-center justify-center rounded-lg border border-gray-800 bg-gray-900/50 px-6 py-4">
+              <span class="text-sm font-medium text-gray-400">{brand}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-white">Chcesz nawiązać współpracę?</h2>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="mt-4 inline-block text-lg text-blue-400 hover:text-blue-300 transition-colors">
+          kontakt@przeprogramowani.pl
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

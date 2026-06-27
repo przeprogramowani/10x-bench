@@ -1,0 +1,175 @@
+export const podcastEpisodes = {
+  opanujAI: [
+    {
+      title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026",
+      duration: "1h 12min",
+      description: "Byliśmy na Google I/O 2026 i opowiemy wam o tym na żywo! W zupełnie nowym formacie podcastu Opanuj.AI zapraszamy na relację z konferencji, która była dla nas jedną wielką niewiadomą, ale też szczególnym wydarzeniem ze świata AI.",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+    {
+      title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI? (+ Cursor 3.0, DeepSeek V4, Meta Muse)",
+      duration: "47min",
+      description: "W kwietniu 2026 dostaliśmy wysyp dużych premier: GPT-5.5, Claude Opus 4.7, DeepSeek V4, Cursor 3.0, Zed 1.0, Meta Muse Spark i nowe obrazy w ChatGPT. Analizujemy kto wygrywa ten wyścig.",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+    {
+      title: "TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS | Opanuj.AI",
+      duration: "1h 39min",
+      description: "Czy AI naprawdę rozumie świat, skoro oblewa testy, które człowiek rozwiązuje bez większego problemu? I czy jednocześnie właśnie na naszych oczach kończy się era klasycznych SaaS-ów?",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/TEGO-AI-NIE-POTRAFI---ARC-AGI-3-i-koniec-epoki-SaaS--Opanuj-AI-e3hc7nk",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+    {
+      title: "Programowanie w epoce AI z Claude Code, Cursorem i Copilotem - Gość: Dawid Sibiński",
+      duration: "1h 28min",
+      description: "Dawid Sibiński to programista full-stack, cyfrowy nomad i entuzjasta programowania wspieranego AI. W naszej rozmowie dzieli się swoimi doświadczeniami w pracy z Copilotem, Cursorem oraz Claude Code.",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Programowanie-w-epoce-AI-z-Claude-Code--Cursorem-i-Copilotem---Go-Dawid-Sibiski-e3gmm83",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+    {
+      title: "OpenClaw, SWE-AGI i zmierzch chatbotów - Opus 4.6 i GPT-5.3 Codex to Agenci z przyszłości!",
+      duration: "1h 43min",
+      description: "Bierzemy na warsztat viralowy projekt ClawdBot/OpenClaw — narzędzie, które miało zmienić sposób pracy programistów. Analizujemy co to oznacza dla przyszłości agentów AI.",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/OpenClaw--SWE-AGI-i-zmierzch-chatbotw---Opus-4-6-i-GPT-5-3-Codex-to-Agenci-z-przyszoci-e3fu2u2",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+    {
+      title: "Doktor AI nadchodzi - ChatGPT Health vs Google MedGemma, konstytucja Anthropic i GLM-4.7 & KIMI K2.5",
+      duration: "1h 23min",
+      description: "ChatGPT Health vs Google MedGemma 1.5 - giganci Generative AI chcą podbić świat medycyny. Czy już wkrótce będzie to realna alternatywa klasycznej służby zdrowia?",
+      link: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Doktor-AI-nadchodzi---ChatGPT-Health-vs-Google-MedGemma--konstytucja-Anthropic-i-GLM-4-7--KIMI-K2-5-z-Chin-e3eg2n4",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg",
+    },
+  ],
+  przeprogramowaniGosc: [
+    {
+      title: "Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Przeprogramowani ft. Gość",
+      duration: "33min",
+      description: "W rozmowie z Wiktorią Sitko omawiamy największe bariery językowe programistów, dlaczego tradycyjne metody nauki zawodzą programistów i jak skutecznie uczyć się angielskiego w IT.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+    {
+      title: "O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramowani ft. Gość",
+      duration: "45min",
+      description: "Wojciech Trawiński, Senior Software Engineer w XTB opowiada, o tym jak przejść drogę od młodego entuzjasty do doświadczonego profesjonalisty.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+    {
+      title: "Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przeprogramowani ft. Gość",
+      duration: "1h 16min",
+      description: "W rozmowie z Tomaszem Ducinem badamy w jaki sposób architektura wykracza poza konkretne narzędzia, koncentrując się zamiast tego na kluczowych decyzjach, które kształtują charakterystykę systemu.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+    {
+      title: "Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne (LIVE YT)",
+      duration: "1h 36min",
+      description: "Rozmawiamy o nadchodzącym szkoleniu Opanuj TypeScript, a także opowiadamy, gdzie będzie można nas spotkać w trakcie nadchodzących eventów i konferencji.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+    {
+      title: "No-code i Low-code - przyszłość tworzenia aplikacji? | Kamil Tarczyński",
+      duration: "36min",
+      description: "Kamil Tarczyński, Co-founder oraz CTO agencji havenocode, która specjalizuje się w tworzeniu aplikacji za pomocą platform i narzędzi no-code i low-code.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/No-code-i-Low-code---przyszo-tworzenia-aplikacji---Kamil-Tarczyski---Przeprogramowani-ft--Go-e2kqhp6",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+    {
+      title: "Nauka nowoczesnego frontendu | Paweł Gnat - Przeprogramowani ft. Gość",
+      duration: "42min",
+      description: "Paweł Gnat to frontend developer, który przebranżowił się do IT z budownictwa. W tym podcaście dzieli się swoimi wrażeniami z udziału w pierwszej edycji programu Opanuj Frontend: AI Edition.",
+      link: "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Nauka-nowoczesnego-frontendu--Pawe-Gnat---Przeprogramowani-ft--Go-e2kj935",
+      image: "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/1988530/1988530-1700599022827-301b808b3e021.jpg",
+    },
+  ],
+};
+
+export const youtubeVideos = [
+  {
+    title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026",
+    videoId: "0JOszZXqKaM",
+    thumbnail: "https://i3.ytimg.com/vi/0JOszZXqKaM/maxresdefault.jpg",
+  },
+  {
+    title: "Byłem na Google I/O 2026. Nie tego się spodziewałem.",
+    videoId: "XgyH-HSzKRQ",
+    thumbnail: "https://i3.ytimg.com/vi/XgyH-HSzKRQ/maxresdefault.jpg",
+  },
+  {
+    title: "Jak wybrać najlepszego Agenta AI do programowania?",
+    videoId: "03y826SVjG0",
+    thumbnail: "https://i3.ytimg.com/vi/03y826SVjG0/maxresdefault.jpg",
+  },
+  {
+    title: "5 Agent Skills do jakościowego programowania z AI - Claude Code LIVE DEMO",
+    videoId: "S-iNbyLSisE",
+    thumbnail: "https://i3.ytimg.com/vi/S-iNbyLSisE/maxresdefault.jpg",
+  },
+  {
+    title: "Product Builders Day | LIVE AI Product Heroes i 10xDevs",
+    videoId: "aRkECt7derY",
+    thumbnail: "https://i3.ytimg.com/vi/aRkECt7derY/maxresdefault.jpg",
+  },
+  {
+    title: "Wybierasz model AI do kodowania? Nie ufaj benchmarkom",
+    videoId: "vH1T5qB4dBQ",
+    thumbnail: "https://i3.ytimg.com/vi/vH1T5qB4dBQ/maxresdefault.jpg",
+  },
+];
+
+export const courses = [
+  {
+    id: "opanuj-frontend",
+    title: "Opanuj Frontend: AI Edition",
+    tagline: "Zostań kompletnym frontend developerem i buduj aplikacje wysokiej jakości",
+    description: "Intensywne 10-tygodniowe szkolenie, które przygotuje Cię do tworzenia zaawansowanych aplikacji webowych z wykorzystaniem najnowszych technologii i najlepszych praktyk. 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze.",
+    stats: "383 absolwentów | 4 edycje",
+    features: [
+      "Codzienne wsparcie senior frontend developerów",
+      "Elastyczny harmonogram dopasowany do Ciebie",
+      "Praktyczna nauka poprzez pracę nad zadaniami",
+      "5 modułów: Wzorce, Jakość, Wdrożenia, Zespół, Architektura",
+    ],
+    techStack: ["React", "Angular", "Vue", "Svelte", "Astro", "TypeScript", "Playwright", "AWS", "GitHub Actions"],
+    url: "https://opanujfrontend.pl",
+    color: "from-blue-600 to-indigo-600",
+  },
+  {
+    id: "opanuj-typescript",
+    title: "Opanuj TypeScript: Frontend Pro",
+    tagline: "Buduj niezawodne aplikacje z TypeScriptem 5 i React 19",
+    description: "Praktyczny kurs, który pomoże Ci pewnie używać typów generycznych, podejmować lepsze decyzje o typowaniu i skutecznie rozwijać projekty na produkcji. Ponad 40 ćwiczeń i wiele porad z ponad 10 lat pracy na frontendzie.",
+    stats: "121 programistów | 2 moduły pro",
+    features: [
+      "Typy generyczne w praktyce",
+      "Wzorce typowania dla React 19",
+      "Zaawansowane techniki: typy warunkowe, mapowane, inferencja",
+      "Narzędzia: Zod, tRPC, SWR, React Query, Astro 5",
+    ],
+    techStack: ["TypeScript 5", "React 19", "Zod", "tRPC", "SWR", "React Query", "Astro 5"],
+    url: "https://opanujtypescript.pl",
+    color: "from-sky-600 to-blue-600",
+  },
+  {
+    id: "10xdevs",
+    title: "10xDevs",
+    tagline: "Czas na AI-Native Software Engineering",
+    description: "5-tygodniowy, intensywny program, który uczy developerów pracować z AI w całym cyklu tworzenia oprogramowania: od researchu i planowania, przez implementację, aż po utrzymanie produkcji.",
+    stats: "6700+ absolwentów | Start: 14.09.2026",
+    features: [
+      "Agentic Environment - konfiguracja i MCP",
+      "10xDevs Workflow: Research → Plan → Implement",
+      "Quality & Maintenance z AI",
+      "Large scale & legacy projects",
+      "AI-Native Teamwork",
+    ],
+    techStack: ["Cursor", "Claude Code", "MCP", "v0.dev", "Bolt.new", "Playwright", "Docker", "Cloudflare"],
+    url: "https://10xdevs.pl",
+    color: "from-cyan-500 to-blue-500",
+  },
+];

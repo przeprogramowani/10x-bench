@@ -1,0 +1,15 @@
+Criterion,Score,Max,Notes
+Task completion time,7min 14s,N/A,7min 14s
+Test run,27.06.2026 22:30,N/A,27.06.2026 22:30
+API cost,$0.1277,N/A,$0.1277 (in 222706 / out 28868 / cache 1094912 / 1 session)
+Local build,1,1,"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200"
+Manual testing,1,1,"Dev server starts; /, /o-nas, /podcast, /youtube, /kursy all return 200; nav, styles and content render correctly"
+Tech stack,0.5,1,"Astro 5 (criterion requires Astro 6); React 19 + @astrojs/react; Tailwind 3.4 via @astrojs/tailwind (requires v4); @astrojs/cloudflare 12 adapter configured. Partial: CF adapter + React 19 present but Astro and Tailwind majors below required"
+O nas page,1,1,"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (DAZN, Cabify, OSS) and Marcin Czarkowski (SmartRecruiters frontend lead, Opanuj.AI podcast)"
+Podcast page,0.5,1,"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present, but Spotify show id 4qHUZJpeBK8Ij9e2wTVm2o does not match canonical IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy); episodes link to podcasters.spotify.com (unverified)"
+YouTube page,0.5,1,"/youtube 200. 6 real unique Przeprogramowani videos (oEmbed 200, author=Przeprogramowani) but list padded with rick-roll placeholder dQw4w9WgXcQ used 3x (author Rick Astley)"
+Kursy section,1,1,"/kursy 200. All three courses present: Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript, 10xDevs (10xdevs.pl). Hero.astro features 10xDevs 4.0 with CTA"
+Consistent UI,1,1,"User-confirmed: UI consistent across all pages"
+Responsive design,1,1,"User-confirmed: layout responsive across breakpoints"
+SEO Tags,1,1,"Shared Layout.astro injects per-page title, meta description, og:title/og:description/og:type and twitter:card across all pages"
+Penalty,0,N/A,"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run"

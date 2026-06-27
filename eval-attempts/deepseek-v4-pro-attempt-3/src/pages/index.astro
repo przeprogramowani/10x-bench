@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.tsx';
+import CourseCard from '../components/CourseCard.tsx';
+import PodcastList from '../components/PodcastList.tsx';
+import VideoGrid from '../components/VideoGrid.tsx';
+---
+
+<Layout>
+  <Hero />
+
+  <section id="courses" class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="section-title mb-4">
+          Edukacja technologiczna <span class="gradient-text">w epoce AI</span>
+        </h2>
+        <p class="section-subtitle mx-auto">
+          Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <CourseCard
+          title="Opanuj Frontend: AI Edition"
+          subtitle="Zostań kompletnym frontend developerem"
+          description="Intensywne 10-tygodniowe szkolenie, które przygotuje Cię do tworzenia zaawansowanych aplikacji webowych z wykorzystaniem najnowszych technologii i najlepszych praktyk. 5 modułów o frontendzie, testowaniu, CI/CD i architekturze."
+          href="https://opanujfrontend.pl"
+          badge="Kurs"
+          stats="383+ absolwentów"
+          gradient="bg-gradient-to-r from-blue-500 to-cyan-500"
+          iconKey="frontend"
+        />
+        <CourseCard
+          title="Opanuj TypeScript"
+          subtitle="TypeScript 5 i React 19 na produkcji"
+          description="Praktyczny kurs, który pomoże Ci pewnie używać typów generycznych, podejmować lepsze decyzje o typowaniu i skutecznie rozwijać projekty na produkcji. Ponad 40 ćwiczeń i porady z 10 lat doświadczenia."
+          href="https://opanujtypescript.pl"
+          badge="Kurs"
+          stats="121+ programistów"
+          gradient="bg-gradient-to-r from-blue-600 to-indigo-600"
+          iconKey="typescript"
+        />
+        <CourseCard
+          title="10xDevs 4.0"
+          subtitle="AI-Native Software Engineering"
+          description="5-tygodniowy program, który uczy developerów pracować z AI w całym cyklu tworzenia oprogramowania: od researchu i planowania, przez implementację, aż po utrzymanie produkcji. Bestsellerowy program Przeprogramowanych."
+          href="https://10xdevs.pl"
+          badge="Nowość"
+          stats="6 700+ absolwentów"
+          gradient="bg-gradient-to-r from-violet-500 to-purple-600"
+          iconKey="tenx"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <h2 class="section-title mb-4">
+            Filmy i <span class="gradient-text">podcasty</span>
+          </h2>
+          <p class="section-subtitle">
+            Rozwój nowoczesnego programisty — oglądaj i słuchaj gdziekolwiek jesteś
+          </p>
+        </div>
+        <div class="flex gap-3">
+          <a href="/podcast" class="btn-secondary text-sm">
+            Wszystkie podcasty
+          </a>
+          <a href="/youtube" class="btn-secondary text-sm">
+            Wszystkie filmy
+          </a>
+        </div>
+      </div>
+
+      <div class="space-y-16">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="w-6 h-6 text-brand-purple" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            <h3 class="text-xl font-bold">Ostatnie podcasty</h3>
+          </div>
+          <PodcastList client:load />
+        </div>
+
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <svg class="w-6 h-6 text-brand-purple" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <h3 class="text-xl font-bold">Ostatnie filmy na YouTube</h3>
+          </div>
+          <VideoGrid client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="section-title mb-4">
+          7 lat na rynku <span class="gradient-text">edukacji technologicznej</span>
+        </h2>
+        <p class="section-subtitle mx-auto">
+          Współpracujemy z najlepszymi
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1">
+        {[
+          'Huuuge Games', 'SmartRecruiters', 'Future Processing', 'Callstack',
+          'edrone', 'Xfive', 'Euvic', 'Strabag', 'Autodesk', 'Nutridome',
+        ].map((partner) => (
+          <div class="glass rounded-lg p-6 flex items-center justify-center h-20">
+            <span class="text-sm font-medium text-brand-gray-400">{partner}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="mailto:kontakt@przeprogramowani.pl" class="btn-secondary">
+          Nawiąż współpracę
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-28 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="section-title mb-4">
+          <span class="gradient-text">Przeprogramowany</span> Newsletter
+        </h2>
+        <p class="section-subtitle mx-auto">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:<br />
+          3 rekomendacje techniczne, 2 rekomendacje rozwojowe, 1 bonus niespodzianka
+        </p>
+      </div>
+
+      <div class="max-w-md mx-auto">
+        <a
+          href="https://przeprogramowani.substack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block btn-primary text-center justify-center"
+        >
+          Zapisz się za darmo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

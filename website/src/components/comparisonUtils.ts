@@ -2,8 +2,16 @@ import type {AttemptResult, CriterionResult} from "./DetailedComparison";
 
 export const isTimeRow = (name: string) => name === "Task completion time";
 export const isTestRunRow = (name: string) => name === "Test run";
+export const isCostRow = (name: string) => name === "API cost";
 export const isPenaltyRow = (name: string) => name === "Penalty";
-export const isInfoRow = (name: string) => isTimeRow(name) || isTestRunRow(name);
+export const isInfoRow = (name: string) =>
+  isTimeRow(name) || isTestRunRow(name) || isCostRow(name);
+
+/** Format a USD cost as a compact "$0.43" string. */
+export function formatCost(cost: number | null | undefined): string {
+  if (cost === null || cost === undefined) return "—";
+  return `$${cost.toFixed(2)}`;
+}
 
 export interface CriterionAggregate {
   name: string;
@@ -130,6 +138,11 @@ export function formatAttemptScore(criterion: CriterionResult): string {
     return criterion.notes && criterion.notes !== "N/A"
       ? criterion.notes
       : "N/A";
+  }
+
+  if (isCostRow(criterion.name)) {
+    const match = criterion.notes.match(/\$[0-9]+(?:\.[0-9]+)?/);
+    return match ? match[0] : "N/A";
   }
 
   return criterion.score.toString();
