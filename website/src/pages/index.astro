@@ -4,8 +4,8 @@ import ResultsDashboard from '../components/ResultsDashboard';
 import resultsData from '../data/results.json';
 import screenshotHashes from '../data/screenshot-hashes.json';
 
-const title = '10x Benchmark - LLM Performance in Astro, React, Tailwind and Cloudflare';
-const description = 'Compare LLM attempts at vibe coding the Przeprogramowani.pl website';
+const title = '10xBench — LLM Coding Benchmark in Astro, React, Tailwind & Cloudflare';
+const description = 'See how leading LLMs perform when each gets a single shot at building a real production website in Astro, React, Tailwind and Cloudflare. Compare scores, screenshots and generated code side by side.';
 
 // Sort results: 1) by model family average (best models first), 2) by attempt number (ascending)
 const modelAverageMap = new Map(
@@ -34,7 +34,7 @@ const sortedResults = [...resultsData.results].sort((a, b) => {
         See how LLMs perform at coding the Przeprogramowani.pl website in Astro + React + Tailwind + Cloudflare stack.
       </p>
       <p class="text-sm text-slate-400">
-        Generated: {new Date(resultsData.generatedAt).toLocaleString()} • Total attempts: {resultsData.totalAttempts}
+        {resultsData.totalAttempts} evaluated attempts • Last updated {new Date(resultsData.generatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
       </p>
     </div>
 

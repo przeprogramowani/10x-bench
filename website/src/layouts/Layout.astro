@@ -4,7 +4,14 @@ interface Props {
   description?: string;
 }
 
-const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props;
+const {
+  title,
+  description = 'See how leading LLMs perform when asked to one-shot a real production website in Astro, React, Tailwind and Cloudflare. Compare scores, screenshots and code across every model.',
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://10xbench.ai');
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL('10xbench.jpeg', siteUrl).href;
 ---
 
 <!doctype html>
@@ -14,16 +21,46 @@ const { title, description = '10x Bench - LLM Benchmark Results' } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={`${Astro.site}10xbench.jpeg`} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="10xBench" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1034" />
+    <meta property="og:image:height" content="575" />
+    <meta property="og:image:alt" content="10xBench - LLM coding benchmark" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${Astro.site}10xbench.jpeg`} />
-    <link rel="icon" href="/favicon.svg" />
-    <link rel="stylesheet" href="/styles/global.css" />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: '10xBench',
+        alternateName: '10xBench — LLM Coding Benchmark',
+        url: siteUrl.href,
+        description:
+          'A reproducible benchmark comparing how leading LLMs one-shot a real production website in Astro, React, Tailwind and Cloudflare.',
+      })}
+    />
   </head>
   <body style="background-color: #0f172a; color: #e2e8f0;">
     <nav class="bg-slate-900 border-b border-slate-700">
