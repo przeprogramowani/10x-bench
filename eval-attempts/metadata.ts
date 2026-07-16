@@ -9,6 +9,7 @@ export enum AGENT_ENVIRONMENT {
 export type ModelId =
   | "claude-opus-46"
   | "claude-opus-47"
+  | "claude-opus-48"
   | "claude-sonnet-45"
   | "claude-sonnet-46"
   | "gpt-53-codex"
@@ -39,6 +40,7 @@ export type ModelId =
 export const AGENT_NAMES: Record<ModelId, string> = {
   "claude-opus-46": "Claude Opus 4.6",
   "claude-opus-47": "Claude Opus 4.7",
+  "claude-opus-48": "Claude Opus 4.8",
   "claude-sonnet-45": "Claude Sonnet 4.5",
   "claude-sonnet-46": "Claude Sonnet 4.6",
   "gpt-53-codex": "GPT-5.3-Codex",
@@ -69,6 +71,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "claude-opus-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "claude-opus-47": AGENT_ENVIRONMENT.ClaudeDesktop,
+  "claude-opus-48": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "claude-sonnet-45": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "claude-sonnet-46": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-53-codex": AGENT_ENVIRONMENT.CodexDesktopHigh,
@@ -99,6 +102,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
 /** Models superseded by newer versions (old → new) */
 export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "claude-opus-46": "claude-opus-47",
+  "claude-opus-47": "claude-opus-48",
   "claude-sonnet-45": "claude-sonnet-46",
   "gemini-3-pro": "gemini-31-pro",
   "glm-47": "glm-5",
@@ -127,6 +131,7 @@ export interface ModelPricing {
 export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "claude-opus-46": { input: 5.0, output: 25.0 },
   "claude-opus-47": { input: 5.0, output: 25.0 },
+  "claude-opus-48": { input: 5.0, output: 25.0 },
   "claude-sonnet-45": { input: 3.0, output: 15.0 },
   "claude-sonnet-46": { input: 3.0, output: 15.0 },
   "gpt-53-codex": { input: 1.75, output: 14.0 },
