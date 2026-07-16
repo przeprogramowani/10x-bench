@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Reveal from '../components/Reveal';
+import { videos, youtubeChannelUrl } from '../data/videos';
+---
+
+<BaseLayout
+  title="YouTube — Przeprogramowani.pl"
+  description="Ostatnie filmy na kanale Przeprogramowani — AI, nowoczesne narzędzia dla programistów, relacje z konferencji i praktyczne demo."
+>
+  {/* Hero */}
+  <section class="relative overflow-hidden">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-96 w-[700px] -translate-x-1/2 rounded-full bg-brand-500/10 blur-[130px]" aria-hidden="true"></div>
+    <div class="container-x relative py-20 sm:py-24">
+      <p class="eyebrow">YouTube</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
+        Filmy o <span class="gradient-text">nowoczesnym programowaniu</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Rozwój nowoczesnego programisty — AI w praktyce, narzędzia developerskie,
+        relacje z największych konferencji i nagrania na żywo.
+      </p>
+      <a href={youtubeChannelUrl} target="_blank" rel="noopener" class="btn-primary mt-8">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"/>
+        </svg>
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  {/* Filmy */}
+  <section class="section-pad border-t border-white/5 bg-ink-soft">
+    <div class="container-x">
+      <Reveal client:load>
+        <h2 class="mb-10 text-2xl font-bold sm:text-3xl">Ostatnie filmy</h2>
+      </Reveal>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          videos.map((video, i) => (
+            <Reveal client:load delay={(i % 3) * 100}>
+              <VideoCard id={video.id} title={video.title} />
+            </Reveal>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="section-pad">
+    <div class="container-x">
+      <Reveal client:load>
+        <div class="card relative overflow-hidden p-10 text-center sm:p-14">
+          <div class="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-brand-500/15 blur-[100px]" aria-hidden="true"></div>
+          <h2 class="relative text-3xl font-bold sm:text-4xl">Nie przegap nowych filmów</h2>
+          <p class="relative mx-auto mt-4 max-w-xl text-slate-400">
+            Subskrybuj kanał Przeprogramowani na YouTube i bądź na bieżąco z AI, narzędziami i programowaniem.
+          </p>
+          <a href={youtubeChannelUrl} target="_blank" rel="noopener" class="btn-primary relative mt-8">
+            youtube.com/c/przeprogramowani
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+</BaseLayout>

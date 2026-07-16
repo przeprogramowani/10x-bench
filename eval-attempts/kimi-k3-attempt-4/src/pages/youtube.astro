@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos, socialLinks } from '../data/content';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani"
+  description="Ostatnie filmy na kanale Przeprogramowani — rozwój nowoczesnego programisty, AI, live'y i demo na żywo."
+>
+  <!-- Page header -->
+  <section class="relative overflow-hidden pb-16 pt-32 sm:pt-40">
+    <div
+      class="pointer-events-none absolute -top-32 left-1/2 h-96 w-[700px] -translate-x-1/2 rounded-full bg-red-500/10 blur-[120px]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-zinc-500" aria-label="Okruszki">
+        <a href="/" class="transition-colors hover:text-amber-400">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-zinc-300">YouTube</span>
+      </nav>
+      <div class="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">YouTube</h1>
+          <p class="mt-4 max-w-2xl text-xl leading-relaxed text-zinc-400">
+            Filmy i podcasty — rozwój nowoczesnego programisty
+          </p>
+        </div>
+        <a
+          href={socialLinks.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex flex-shrink-0 items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-red-500 hover:shadow-xl hover:shadow-red-600/25"
+        >
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"
+            ></path>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured video -->
+  <section class="py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <a
+        href={videos[0].url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group grid overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:border-red-500/40 lg:grid-cols-2"
+      >
+        <div class="relative aspect-video overflow-hidden bg-ink-800 lg:aspect-auto">
+          <img
+            src={`https://i.ytimg.com/vi/${videos[0].id}/maxresdefault.jpg`}
+            alt={videos[0].title}
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 flex items-center justify-center bg-ink-950/30 opacity-0 transition-opacity group-hover:opacity-100">
+            <span class="flex h-16 w-16 items-center justify-center rounded-full bg-red-600 text-white shadow-2xl">
+              <svg class="ml-1 h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5.14v14l11-7-11-7z"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center p-8 sm:p-10">
+          <span class="w-fit rounded-full bg-red-600/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-400">
+            Najnowszy film
+          </span>
+          <h2 class="mt-4 text-2xl font-bold leading-snug text-white transition-colors group-hover:text-red-400 sm:text-3xl">
+            {videos[0].title}
+          </h2>
+          <span class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-red-400 transition-all group-hover:gap-3">
+            Oglądaj na YouTube
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Videos grid -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-white">Ostatnie filmy</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.slice(1).map((video) => <VideoCard video={video} />)}
+      </div>
+      <div class="mt-12 text-center">
+        <a
+          href={socialLinks.youtube + '/videos'}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-8 py-4 text-base font-semibold text-white transition-all hover:border-red-500/50 hover:bg-white/10"
+        >
+          Zobacz wszystkie filmy na kanale
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

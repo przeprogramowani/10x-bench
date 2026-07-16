@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import VideoExplorer from '../components/VideoExplorer';
+import { videos } from '../data/videos';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani"
+  description="Ostatnie filmy na kanale Przeprogramowani — AI, narzędzia agentowe, relacje z konferencji i live demo."
+>
+  <section class="relative overflow-hidden border-b border-zinc-800/60">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="absolute -top-32 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+      <nav class="mb-6 text-sm text-zinc-500" aria-label="Okruszki">
+        <a href="/" class="transition hover:text-yellow-400">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-zinc-300">YouTube</span>
+      </nav>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          align="left"
+          eyebrow="YouTube"
+          title="Filmy i podcasty wideo"
+          description="AI, narzędzia agentowe, relacje z konferencji i live demo — oglądaj najnowsze materiały z naszego kanału."
+        />
+        <a
+          href={site.youtubeChannelUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2.5 rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-500"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+            <path
+              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"
+            ></path>
+          </svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <VideoExplorer client:load videos={videos} />
+  </section>
+
+  <section class="border-t border-zinc-800/60 bg-zinc-900/30">
+    <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Więcej materiałów"
+        title="Nowe filmy regularnie"
+        description="Subskrybuj kanał Przeprogramowani na YouTube, aby nie przegapić kolejnych nagrań o AI, programowaniu i rozwoju zawodowym."
+      />
+      <a
+        href={site.youtubeChannelUrl}
+        target="_blank"
+        rel="noopener"
+        class="mt-8 inline-block rounded-full bg-yellow-400 px-7 py-3.5 font-semibold text-zinc-950 transition hover:bg-yellow-300"
+      >
+        Otwórz kanał na YouTube →
+      </a>
+    </div>
+  </section>
+</Layout>

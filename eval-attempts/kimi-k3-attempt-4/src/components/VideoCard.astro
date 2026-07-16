@@ -1,0 +1,53 @@
+---
+import type { Video } from '../data/content';
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+---
+
+<a
+  href={video.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 hover:border-red-500/40 hover:shadow-2xl hover:shadow-red-500/10"
+>
+  <div class="relative aspect-video overflow-hidden bg-ink-800">
+    <img
+      src={video.thumbnail}
+      alt={video.title}
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-ink-950/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+      <span class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl">
+        <svg class="ml-0.5 h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5.14v14l11-7-11-7z"></path>
+        </svg>
+      </span>
+    </div>
+    <span class="absolute left-3 top-3 rounded-full bg-ink-950/80 px-2.5 py-1 text-xs font-semibold text-zinc-300 backdrop-blur">
+      {video.category}
+    </span>
+  </div>
+  <div class="flex flex-1 items-start gap-3 p-5">
+    <h3 class="flex-1 font-semibold leading-snug text-white transition-colors group-hover:text-red-400 line-clamp-2">
+      {video.title}
+    </h3>
+    <svg
+      class="mt-1 h-4 w-4 flex-shrink-0 text-zinc-600 transition-colors group-hover:text-red-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+      ></path>
+    </svg>
+  </div>
+</a>

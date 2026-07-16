@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import StatsCounter from '../components/StatsCounter';
+import { courses, podcastShows, videos, socialLinks } from '../data/content';
+
+const latestEpisodes = podcastShows[0].episodes.slice(0, 3);
+const latestVideos = videos.slice(0, 3);
+---
+
+<Layout title="Przeprogramowani — Szersze spojrzenie na programowanie">
+  <!-- Hero: 10xDevs -->
+  <Hero client:load />
+
+  <!-- Kursy -->
+  <section id="kursy" class="scroll-mt-20 py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Edukacja technologiczna w epoce AI"
+        title="Topowe programy edukacyjne"
+        subtitle="Dla ambitnych programistów, którzy chcą świadomie korzystać z potencjału Generative AI i rozwijać się na wielu płaszczyznach."
+      />
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Statystyki -->
+  <section class="py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <StatsCounter client:visible />
+    </div>
+  </section>
+
+  <!-- Ostatnie odcinki podcastu -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          align="left"
+          eyebrow="Podcast"
+          title="Ostatnie odcinki"
+          subtitle="Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI."
+        />
+        <a
+          href="/podcast"
+          class="group inline-flex flex-shrink-0 items-center gap-2 text-sm font-bold text-amber-400 transition-colors hover:text-amber-300"
+        >
+          Wszystkie odcinki
+          <svg
+            class="h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="mt-10 grid gap-4 lg:grid-cols-1">
+        {
+          latestEpisodes.map((episode) => (
+            <EpisodeCard episode={episode} coverUrl={podcastShows[0].coverUrl} compact />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Ostatnie filmy YouTube -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          align="left"
+          eyebrow="YouTube"
+          title="Ostatnie filmy"
+          subtitle="Rozwój nowoczesnego programisty — filmy, live'y i demo na żywo."
+        />
+        <a
+          href="/youtube"
+          class="group inline-flex flex-shrink-0 items-center gap-2 text-sm font-bold text-amber-400 transition-colors hover:text-amber-300"
+        >
+          Wszystkie filmy
+          <svg
+            class="h-4 w-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl border border-amber-400/20 bg-gradient-to-br from-amber-400/10 via-white/[0.04] to-transparent p-10 sm:p-16">
+        <div
+          class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-400/15 blur-[80px]"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="relative grid items-center gap-10 lg:grid-cols-2">
+          <div>
+            <p class="font-mono text-sm font-semibold uppercase tracking-widest text-amber-400">
+              Newsletter
+            </p>
+            <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Przeprogramowany Newsletter
+            </h2>
+            <p class="mt-4 text-lg leading-relaxed text-zinc-400">
+              Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1. Nie
+              przegapisz nowości od Przeprogramowanych i ofert specjalnych.
+            </p>
+            <a
+              href={socialLinks.newsletter}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group mt-8 inline-flex items-center gap-2 rounded-xl bg-amber-400 px-8 py-4 text-base font-bold text-ink-950 transition-all hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-400/25"
+            >
+              Zapisz się za darmo
+              <svg
+                class="h-5 w-5 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+              </svg>
+            </a>
+          </div>
+          <ul class="space-y-4">
+            {
+              [
+                { n: '3', text: 'rekomendacje techniczne' },
+                { n: '2', text: 'rekomendacje rozwojowe' },
+                { n: '1', text: 'bonus niespodzianka' },
+              ].map((item) => (
+                <li class="flex items-center gap-5 rounded-2xl border border-white/10 bg-ink-950/60 p-5 backdrop-blur">
+                  <span class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-amber-400 font-mono text-xl font-black text-ink-950">
+                    {item.n}
+                  </span>
+                  <span class="text-lg font-medium text-zinc-200">{item.text}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

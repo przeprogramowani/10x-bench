@@ -1,7 +1,189 @@
 {
-  "generatedAt": "2026-07-16T13:19:20.905Z",
-  "totalAttempts": 112,
+  "generatedAt": "2026-07-16T21:31:18.159Z",
+  "totalAttempts": 122,
   "results": [
+    {
+      "id": "gpt-54-attempt-3",
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "attemptNumber": 3,
+      "totalScore": 10,
+      "maxScore": 10,
+      "percentage": 100,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 10,
+          "max": 1,
+          "notes": "10min 52s"
+        },
+        {
+          "name": "Test run",
+          "score": 16.04,
+          "max": 1,
+          "notes": "16.04.2026 21:25"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build succeeded with @astrojs/cloudflare adapter; server output mode; no errors"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server started on :4322; all 4 pages (/, /o-nas, /podcast, /youtube) returned 200 and rendered correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "/o-nas returns 200; both founders present (Przemek Smyrdek with DAZN/Cabify and Open Source/conferences mentioned; Marcin Czarkowski with SmartRecruiters and Opanuj AI Podcast); correct LinkedIn URLs; bios slightly paraphrased but capture key context details"
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "/podcast returns 200; both Opanuj.AI Podcast and Przeprogramowani ft. Gosc displayed with real episodes fetched live from przeprogramowani.pl/podcast (with realistic fallbacks); Spotify URLs use podcasters.spotify.com episode-level links (valid real URLs differing from open.spotify.com show URLs in context but pointing to real episodes)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "/youtube returns 200; 6 unique videos with valid YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg); titles match real Przeprogramowani channel content (Claude Code, AI agents, 10xDevs, Product Builders Day); no rick rolls or placeholder IDs; data fetched live from przeprogramowani.pl with realistic fallbacks"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "Dedicated courses section on homepage with three programs (10xDevs 3.0, Opanuj Frontend: AI Edition, Opanuj TypeScript); 10xDevs prominently featured as Hero on main page with dedicated panel and CTA; correct course URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI is consistent across all pages (shared header, footer, typography, color scheme)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers, components, and navigation are fully responsive across screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "Layout.astro provides comprehensive meta tags (description, og:type/title/description/url/site_name, twitter:card/title/description, canonical) applied to all pages; each page passes custom title/description through Layout props; content matches brand context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gpt-54-attempt-5",
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "attemptNumber": 5,
+      "totalScore": 10,
+      "maxScore": 10,
+      "percentage": 100,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 12,
+          "max": 1,
+          "notes": "12min 58s"
+        },
+        {
+          "name": "Test run",
+          "score": 16.04,
+          "max": 1,
+          "notes": "16.04.2026 21:27"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build completed successfully with Astro 6.1.7 and Cloudflare adapter"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server running at http://localhost:4321 - all pages (/, /o-nas, /podcast, /youtube) return 200"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Astro ^6.1.7 React ^19.2.5 Tailwind ^4.2.2 @astrojs/cloudflare ^13.1.10 configured in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "Both founders present with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin); conferences and open source mentioned"
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "Live-scraped from przeprogramowani.pl/podcast - both Opanuj.AI and Przeprogramowani ft. Gość series with real episodes and valid podcasters.spotify.com URLs"
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Live-fetched via YouTube RSS feed (channel UCb2Y3vMeD6N4WDt5Acw7Arw) - unique video IDs with real Przeprogramowani titles (Claude Code LIVE DEMO etc.)"
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dedicated section with 10xDevs featured as hero; Opanuj Frontend and Opanuj TypeScript also listed with accurate descriptions and URLs\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages (manual testing)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation fully responsive (manual testing)"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "BaseLayout provides title and description meta tags per-page; no OG/Twitter tags but basic SEO present and content matches context"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
     {
       "id": "gpt-56-sol-attempt-1",
       "modelName": "GPT-5.6 Sol",
@@ -175,6 +357,97 @@
           "score": 1,
           "max": 1,
           "notes": "Layout.astro includes title meta description Open Graph tags (og:title og:description og:type og:locale og:site_name og:url) Twitter Card tags and canonical URL. Applied to all pages via shared layout."
+        }
+      ]
+    },
+    {
+      "id": "gpt-54-attempt-2",
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "attemptNumber": 2,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 14,
+          "max": 1,
+          "notes": "14min 28s"
+        },
+        {
+          "name": "Test run",
+          "score": 16.04,
+          "max": 1,
+          "notes": "16.04.2026 21:15"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build succeeded with @astrojs/cloudflare adapter; static prerender of all 4 routes (/, /o-nas, /podcast, /youtube) completed in ~3.16s"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dev server runs at http://localhost:4322; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation, styles, and content\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dedicated page returns 200; both founders present with key context details: Przemek (DAZN/Cabify, .NET/Java/Node/Angular/TS stack, 4Developers/ReactiveConf/InfoShare prelegent); Marcin (SmartRecruiters Lead Frontend, TypeScript/React/Node.js, neurobiology, Opanuj AI Podcast author). Bios faithful to context though Open Source contributions and per-founder course assignments not inlined. Partner list partially matches (Huuuge Games, Nutridome, SmartRecruiters, Future Processing, Callstack, edrone) with some additions not in context (Xfive, Euvic, Strabag, Autodesk).\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page returns 200; both podcasts (Opanuj.AI Podcast and Przeprogramowani ft. Gość) displayed with realistic-looking episode lists. Przeprogramowani Spotify show URL correct (3yVvOAXSYq6sQB02w4A4wo) but Opanuj.AI main show URL (3D6LmchBdoqL2sWkQjvWOy) missing. Platform links are generic (podcasts.apple.com/, anchor.fm/) rather than show-specific. Individual episode URLs use podcasters.spotify.com/pod/show/... format and likely fabricated (one episode title references 'Opus-4-6-i-GPT-5-3-Codex').\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Page returns 200; 6 unique video entries with distinct YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg). No rick-roll/placeholder IDs detected. Titles and descriptions align with channel topics (AI agents, Claude Code, benchmarks, 10xDevs, Product Builders Day, context engineering).\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Dedicated #kursy section on index.astro with 3 courses (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript) with correct URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl); 10xDevs prominently featured in hero spotlight with description and bullets. Partial match to context which lists 6 courses (missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI).\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User confirmed UI is consistent across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "User confirmed containers components and navigation are fully responsive across screen sizes"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout.astro provides title, description, viewport, charset, favicon, theme-color, og:title, og:description, og:type, og:locale, twitter:card meta tags; layout used by all 4 pages so tags cover full site. Title/description content matches Przeprogramowani branding.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -539,6 +812,279 @@
           "score": 0,
           "max": 1,
           "notes": "User-confirmed: no penalty"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-attempt-1",
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "attemptNumber": 1,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "OpenCode",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 16.07,
+          "max": 1,
+          "notes": "16.07.2026 22:11"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build succeeded; 4 static routes prerendered (/, /o-nas, /podcast, /youtube)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — all nav/links/interactions work correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"React 19 and @astrojs/cloudflare adapter present & configured in astro.config.mjs, but Astro is 5.13 (not 6) and Tailwind is 3.4 via @astrojs/tailwind (not Tailwind 4) — not an exact version match\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200; both founders match context — Przemek Smyrdek (DAZN/Cabify, full-stack, OSS, publications) and Marcin Czarkowski (SmartRecruiters 10+ yrs, neuroscience, Opanuj AI Podcast); detailed bios, not oversimplified\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed — both podcasts (Opanuj.AI + Przeprogramowani) shown with real episodes; podcasters.spotify.com/pod/show/... links redirect to creators.spotify.com and resolve to the correct real episodes (verified). Show-button uses a different ID but episode links are valid and functional\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200; all 6 video IDs verified real via oEmbed, unique, on Przeprogramowani channel (author_name=Przeprogramowani), titles match exactly; no placeholder/rickroll IDs\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200; dedicated Kursy section (id=kursy) on index; 10xDevs featured in Hero and cards with correct URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl); content matches context\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — cohesive design language across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "User-confirmed — partially responsive; some breakpoints imperfect"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout.astro provides title, description, og:title/description/type/locale, lang=pl applied to all pages; content matches brand copy/context\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "User-confirmed — no penalty"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-attempt-3",
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "attemptNumber": 3,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "OpenCode",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 16.07,
+          "max": 1,
+          "notes": "16.07.2026 22:11"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build succeeded; 4 pages generated to dist"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — all nav/links/interactions work correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Astro 5.12 (needs 6), Tailwind 3.4 via @astrojs/tailwind (needs 4), no @astrojs/cloudflare adapter (output static); React 19 OK. Multiple required deps missing\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200. Przemek (DAZN/Cabify) and Marcin (SmartRecruiters, Opanuj AI Podcast) bios detailed and accurate to context; LinkedIn URLs correct; not oversimplified\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed — both podcasts with real episodes; podcasters.spotify.com/pod/show/opanujai & /przeprogramowani links redirect to creators.spotify.com and resolve to correct real episodes (verified). Valid and functional\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200. All 10 video IDs verified real via oEmbed, author_name Przeprogramowani, titles match; no placeholders/duplicates\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200. 10xDevs featured in hero on index.astro; courses (10xDevs, Opanuj Frontend, Opanuj TypeScript) with correct URLs 10xdevs.pl/opanujfrontend.pl/opanujtypescript.pl match context\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — cohesive design language across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — fully responsive on mobile and tablet"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"BaseLayout provides title, description, canonical, og:title/description/type/url/locale, theme-color applied to all pages; content matches brand copy\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "User-confirmed — no penalty"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-attempt-4",
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "attemptNumber": 4,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "OpenCode",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 16.07,
+          "max": 1,
+          "notes": "16.07.2026 22:12"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build succeeded — 4 pages built (index/o-nas/podcast/youtube)"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — all nav/links/interactions work correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Astro ^5.6.0 (not 6), Tailwind ^3.4.17 via @astrojs/tailwind (not v4), React 19 OK; no @astrojs/cloudflare adapter (output static, wrangler used only for pages deploy). Missing required deps + no Cloudflare adapter\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200; both founders match context — Przemek Smyrdek (DAZN/Cabify, full-stack, 4Developers/ReactiveConf/InfoShare, CursorLens/openapi-typescript), Marcin Czarkowski (SmartRecruiters, 10+ yrs, Opanuj AI Podcast); LinkedIn URLs correct; per-founder course assignment not stated but bios detailed and accurate\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed — both podcasts (Opanuj.AI + Przeprogramowani) with specific real episodes; podcasters.spotify.com/pod/show/... episode links redirect to creators.spotify.com and resolve to correct real episodes (verified). Valid and functional\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"200; 6 unique video IDs (B4t6w4QsD24,0JOszZXqKaM,XgyH-HSzKRQ,03y826SVjG0,S-iNbyLSisE,aRkECt7derY) all verified via oEmbed as real uploads on Przeprogramowani channel; no placeholders/rickrolls\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"#kursy section on index + Hero feature 10xDevs 4.0; courses (10xDevs, Opanuj Frontend AI Edition, Opanuj TypeScript) match context; URLs correct (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl)\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — cohesive design language across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — fully responsive on mobile and tablet"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout.astro sets per-page title, meta description, canonical, og:title/og:description/og:type, lang=pl; applied to all pages via shared layout; content matches brand copy\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "User-confirmed — no penalty"
         }
       ]
     },
@@ -2399,6 +2945,97 @@
       ]
     },
     {
+      "id": "gpt-54-attempt-1",
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 9,
+          "max": 1,
+          "notes": "9min 45s"
+        },
+        {
+          "name": "Test run",
+          "score": 16.04,
+          "max": 1,
+          "notes": "16.04.2026 21:16"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "Build succeeded with @astrojs/cloudflare adapter; static prerender of all 4 routes completed in ~2.5s"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server runs at http://localhost:4321; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation styles and content"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dedicated page returns 200; both founders present with key details: Przemek (DAZN, Cabify, .NET/Java/Node/Angular/TS, 4Developers/ReactiveConf/InfoShare prelegent, Open Source contributor); Marcin (SmartRecruiters Lead Frontend, 10+ yrs, Opanuj.AI Podcast author, learning research). Bios faithful to context though course assignments not inlined per founder.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page returns 200 and both podcasts (Opanuj.AI Podcast and Przeprogramowani ft. Gość) are displayed with realistic-looking episode lists. However, the show Spotify URL is wrong (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy from context). Episode URLs use podcasters.spotify.com/pod/show/... format that does not match real Spotify show IDs.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Page returns 200; 6 unique video entries with distinct YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg). No rick-roll/placeholder IDs detected. Titles and descriptions align with channel topics (AI agents, Claude Code, benchmarks, MVP/product builders).\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Dedicated #kursy section on index.astro with 3 courses (Opanuj Frontend: AI Edition, Opanuj TypeScript, 10xDevs); 10xDevs prominently featured in hero spotlight with description and bullets. Partial match to context which lists 6 courses (missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI).\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User confirmed UI is consistent across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Majority of the page is responsive with some minor issues"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"MainLayout.astro provides title, description, viewport, charset meta tags; layout used by all 4 pages so meta tags cover the full site. Title/description content matches Przeprogramowani branding (no OpenGraph/Twitter tags but core meta requirements met).\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
       "id": "gpt-55-attempt-4",
       "modelName": "GPT-5.5",
       "modelBaseId": "gpt-55",
@@ -2486,6 +3123,188 @@
           "score": 0,
           "max": 1,
           "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-attempt-2",
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "attemptNumber": 2,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 16.07,
+          "max": 1,
+          "notes": "16.07.2026 22:11"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build succeeded — 4 static pages generated in dist"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — all nav/links/interactions work correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Astro ^5.7.0 (not 6), Tailwind ^3.4.17 (not 4), no Cloudflare adapter (uses @astrojs/tailwind + output:static). React 19 ok. Required deps not matched and no @astrojs/cloudflare\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dedicated /o-nas 200. Bios match context: Przemek (DAZN/Cabify, OSS CursorLens/openapi-typescript, 4Developers/ReactiveConf/InfoShare), Marcin (SmartRecruiters, 10+ yrs, Opanuj AI Podcast). LinkedIn URLs correct. Course assignments not explicitly listed but not oversimplified\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"User-confirmed — both shows (Opanuj.AI + Przeprogramowani) with real non-mock episodes; podcasters.spotify.com/pod/show/... episode links redirect to creators.spotify.com and resolve to correct real episodes (verified). Valid and functional\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Dedicated /youtube 200. 6 unique video IDs all verified via oEmbed as real and on Przeprogramowani channel (author_name=Przeprogramowani). No placeholders/rick-rolls or repeats\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"CourseCard section + Hero. 10xDevs featured in Hero on index. Course URLs correct: 10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl, opanuj.ai. Content matches context\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — cohesive design language across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "User-confirmed — partially responsive; some breakpoints imperfect"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout.astro provides per-page title/description, canonical, og:type/title/description/locale, lang=pl. Applied to all pages via Layout; content matches brand copy\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "User-confirmed — no penalty"
+        }
+      ]
+    },
+    {
+      "id": "kimi-k3-attempt-5",
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "attemptNumber": 5,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 0,
+          "max": 1,
+          "notes": "N/A"
+        },
+        {
+          "name": "Test run",
+          "score": 16.07,
+          "max": 1,
+          "notes": "16.07.2026 23:20"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build succeeded (Astro 5.1.5); 4 static routes prerendered"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — all nav/links/interactions work correctly"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 1,
+          "notes": "\"Astro ^5.1.5 (not 6), Tailwind ^3.4.17 via @astrojs/tailwind (not 4), no @astrojs/cloudflare adapter (output static); React 19 OK. Multiple required deps missing and no adapter\""
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas 200; both founders with faithful detailed bios — Przemek (DAZN/Cabify, OSS CursorLens/openapi-typescript, 4Developers/ReactiveConf/InfoShare), Marcin (SmartRecruiters, neuroscience, Opanuj AI Podcast); LinkedIn URLs correct; not oversimplified\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast 200; both podcasts with real episodes — podcasters.spotify.com episode links resolve to correct creators.spotify.com profiles (verified). BUT the page's Spotify platform link uses hallucinated show ID 4qHUZJpeBK8Ij9e2wTVm2o (404); correct show IDs 3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy appear nowhere\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube 200; all 6 video IDs verified via oEmbed — real, unique, author_name Przeprogramowani, titles match\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Hero features 10xDevs 4.0 (10xdevs.pl); #kursy section on index; course data matches context (Opanuj Frontend AI Edition ~400 grads/5 modules, Opanuj TypeScript TS5+React19); domains correct\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — cohesive design language across all pages"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "User-confirmed — fully responsive on mobile and tablet"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"BaseLayout provides per-page title/description, canonical, OpenGraph, lang=pl; applied to all 4 pages; copy matches brand\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "User-confirmed — no penalty"
         }
       ]
     },
@@ -3463,6 +4282,97 @@
           "score": 1,
           "max": 1,
           "notes": "Comprehensive SEO in Layout.astro: title meta description OG tags Twitter cards JSON-LD Organization schema with founders and social links. Applied to all pages."
+        }
+      ]
+    },
+    {
+      "id": "gpt-54-attempt-4",
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "attemptNumber": 4,
+      "totalScore": 8,
+      "maxScore": 10,
+      "percentage": 80,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": null,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 24,
+          "max": 1,
+          "notes": "24min 0s"
+        },
+        {
+          "name": "Test run",
+          "score": 16.04,
+          "max": 1,
+          "notes": "16.04.2026 21:19"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "astro build completed successfully with Cloudflare adapter"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "Dev server starts on :4321; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation and styles"
+        },
+        {
+          "name": "Tech stack",
+          "score": 1,
+          "max": 1,
+          "notes": "Astro 6.1.7 + React 19.2.5 + Tailwind CSS 4.2.2 + @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page renders and founders listed (Przemek Smyrdek with DAZN/Cabify, Marcin Czarkowski with SmartRecruiters). Bios are simplified/paraphrased and miss key context details: no mention of Przemek's \"\"Opanuj JavaScript\"\" course, no mention of Marcin's \"\"10xDevs\"\" course assignment or his OpanujAI Podcast authorship. Missing mission/goal statements and brand values from context.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"Page renders with 6 episode cards, but all are labeled as \"\"Opanuj AI / Spotify\"\" series — the Przeprogramowani Podcast is entirely missing. Only OpanujAI podcast represented. Spotify show IDs from context (3yVvOAXSYq6sQB02w4A4wo for Przeprogramowani, 3D6LmchBdoqL2sWkQjvWOy for OpanujAI) are not referenced; URLs use podcasters.spotify.com/anchor format instead.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "Page renders with 6 videos. Unique YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg) — no placeholder/rickroll IDs detected. Titles and descriptions are specific to Przeprogramowani/AI content."
+        },
+        {
+          "name": "Kursy section",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"10xDevs is featured prominently on index.astro as hero card (course #1). However only 3 courses listed (10xDevs, Opanuj Frontend, Opanuj TypeScript) vs 6 in context — missing Opanuj JavaScript, Opanuj AI, and Cursor: Programuj z AI. URLs point to correct domains (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl).\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI is consistent across all pages (user verified)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0.5,
+          "max": 1,
+          "notes": "Majority of the page is responsive with some minor issues (user verified)"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Layout.astro provides shared SEO tags (title, description, viewport, charset, theme-color, generator) connected to all pages. Title format \"\"{page} | Przeprogramowani\"\" and description uses site brand content matching context.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -9957,6 +10867,21 @@
   ],
   "modelAverages": [
     {
+      "modelName": "GPT-5.4",
+      "modelBaseId": "gpt-54",
+      "averageScore": 9.1,
+      "averageMaxScore": 10,
+      "averagePercentage": 91,
+      "attemptCount": 5,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "pricing": {
+        "input": 1.75,
+        "output": 14
+      },
+      "averageCost": null,
+      "totalCost": null
+    },
+    {
       "modelName": "GPT-5.6 Sol",
       "modelBaseId": "gpt-56-sol",
       "averageScore": 9,
@@ -9967,6 +10892,21 @@
       "pricing": {
         "input": 5,
         "output": 30
+      },
+      "averageCost": null,
+      "totalCost": null
+    },
+    {
+      "modelName": "Kimi K3",
+      "modelBaseId": "kimi-k3",
+      "averageScore": 8.8,
+      "averageMaxScore": 10,
+      "averagePercentage": 88,
+      "attemptCount": 5,
+      "agentEnvironment": "OpenCode",
+      "pricing": {
+        "input": 3,
+        "output": 15
       },
       "averageCost": null,
       "totalCost": null
@@ -10311,6 +11251,7 @@
     "minimax-m21": "minimax-m25",
     "glm-5": "glm-51",
     "glm-51": "glm-52",
-    "kimi-k25": "kimi-k26"
+    "kimi-k25": "kimi-k26",
+    "kimi-k26": "kimi-k3"
   }
 }

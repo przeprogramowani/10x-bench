@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import VideoGallery from '../components/react/VideoGallery';
+import { videos, channelUrl } from '../data/videos';
+---
+
+<Layout
+  title="YouTube — Przeprogramowani"
+  description="Ostatnie filmy na kanale Przeprogramowani — AI, programowanie, narzędzia i relacje z konferencji."
+>
+  <PageHero
+    eyebrow="YouTube"
+    title="Ostatnie filmy na naszym kanale"
+    description="Praktyczne materiały o AI i nowoczesnym programowaniu — live demo, relacje z konferencji i przeglądy narzędzi."
+  >
+    <a href={channelUrl} target="_blank" rel="noopener noreferrer" class="btn-primary mt-8">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z" />
+      </svg>
+      Subskrybuj kanał
+    </a>
+  </PageHero>
+
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <VideoGallery client:load videos={videos} />
+    </div>
+  </section>
+</Layout>

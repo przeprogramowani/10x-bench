@@ -1,0 +1,56 @@
+---
+import MobileNav from './react/MobileNav';
+
+const links = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: 'https://przeprogramowani.substack.com', label: 'Newsletter', external: true },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-white/5 bg-night-950/80 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <a href="/" class="group flex items-center gap-2.5 font-bold text-white" aria-label="Przeprogramowani — strona główna">
+      <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-orange-500/30 bg-orange-500/10 font-mono text-sm text-orange-400 transition group-hover:bg-orange-500/20">
+        &lt;/&gt;
+      </span>
+      <span class="text-lg tracking-tight">Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            class:list={[
+              'rounded-lg px-4 py-2 text-sm font-medium transition',
+              currentPath.startsWith(link.href)
+                ? 'bg-white/10 text-white'
+                : 'text-zinc-400 hover:bg-white/5 hover:text-white',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:block">
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-rose-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition hover:from-orange-400 hover:to-rose-400"
+      >
+        10xDevs
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <MobileNav client:load links={links} ctaHref="https://10xdevs.pl" ctaLabel="10xDevs — Programuj z AI" />
+  </div>
+</header>

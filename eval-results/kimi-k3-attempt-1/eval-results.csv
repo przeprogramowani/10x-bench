@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 22:11,N/A,16.07.2026 22:11
+Local build,1,1,astro build succeeded; 4 static routes prerendered (/, /o-nas, /podcast, /youtube)
+Manual testing,1,1,User-confirmed — all nav/links/interactions work correctly
+Tech stack,0.5,1,"React 19 and @astrojs/cloudflare adapter present & configured in astro.config.mjs, but Astro is 5.13 (not 6) and Tailwind is 3.4 via @astrojs/tailwind (not Tailwind 4) — not an exact version match"
+O nas page,1,1,"200; both founders match context — Przemek Smyrdek (DAZN/Cabify, full-stack, OSS, publications) and Marcin Czarkowski (SmartRecruiters 10+ yrs, neuroscience, Opanuj AI Podcast); detailed bios, not oversimplified"
+Podcast page,1,1,"User-confirmed — both podcasts (Opanuj.AI + Przeprogramowani) shown with real episodes; podcasters.spotify.com/pod/show/... links redirect to creators.spotify.com and resolve to the correct real episodes (verified). Show-button uses a different ID but episode links are valid and functional"
+YouTube page,1,1,"200; all 6 video IDs verified real via oEmbed, unique, on Przeprogramowani channel (author_name=Przeprogramowani), titles match exactly; no placeholder/rickroll IDs"
+Kursy section,1,1,"200; dedicated Kursy section (id=kursy) on index; 10xDevs featured in Hero and cards with correct URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl); content matches context"
+Consistent UI,1,1,User-confirmed — cohesive design language across all pages
+Responsive design,0.5,1,User-confirmed — partially responsive; some breakpoints imperfect
+SEO Tags,1,1,"Layout.astro provides title, description, og:title/description/type/locale, lang=pl applied to all pages; content matches brand copy/context"
+Penalty,0,N/A,User-confirmed — no penalty

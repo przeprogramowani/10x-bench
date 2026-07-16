@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import PodcastTabs from '../components/react/PodcastTabs';
+import { shows, podcastPlatforms } from '../data/podcasts';
+---
+
+<Layout
+  title="Podcast — Przeprogramowani"
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu — Opanuj.AI Podcast oraz Przeprogramowani ft. Gość."
+>
+  <PageHero
+    eyebrow="Podcast"
+    title="Podcasty Przeprogramowanych"
+    description="Słuchaj naszych podcastów o technologii, AI i programowaniu. Comiesięczne podsumowania ze świata AI oraz rozmowy z gośćmi dla głodnych wiedzy."
+  />
+
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <PodcastTabs client:load shows={shows} />
+    </div>
+  </section>
+
+  <section class="border-t border-white/5 bg-night-900/30 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+        Jesteśmy na Twojej ulubionej platformie
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl text-zinc-400">
+        Subskrybuj podcast tam, gdzie słuchasz najchętniej — nowe odcinki trafiają na wszystkie platformy.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        {
+          podcastPlatforms.map((platform) => (
+            <a
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-secondary"
+            >
+              {platform.name}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

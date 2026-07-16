@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastTabs from '../components/PodcastTabs';
+import Reveal from '../components/Reveal';
+import { shows, podcastPlatforms } from '../data/podcasts';
+---
+
+<BaseLayout
+  title="Podcast — Przeprogramowani.pl"
+  description="Słuchaj podcastów Przeprogramowanych: Opanuj.AI Podcast — comiesięczne podsumowanie świata AI, oraz Przeprogramowani ft. Gość — rozmowy dla głodnych wiedzy."
+>
+  {/* Hero */}
+  <section class="relative overflow-hidden">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-96 w-[700px] -translate-x-1/2 rounded-full bg-brand-500/10 blur-[130px]" aria-hidden="true"></div>
+    <div class="container-x relative py-20 sm:py-24">
+      <p class="eyebrow">Podcast</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
+        Podcasty o <span class="gradient-text">technologii, AI i programowaniu</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Dwa podcasty, tysiące słuchaczy. Comiesięczne podsumowania najważniejszych wydarzeń
+        ze świata AI oraz rozmowy z gośćmi dla głodnych wiedzy.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-6">
+        <div>
+          <p class="font-display text-3xl font-bold text-white">4000+</p>
+          <p class="mt-1 text-sm text-slate-500">słuchaczy Opanuj.AI Podcast</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-bold text-white">3800+</p>
+          <p class="mt-1 text-sm text-slate-500">słuchaczy Przeprogramowani ft. Gość</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Odcinki */}
+  <section class="section-pad border-t border-white/5 bg-ink-soft">
+    <div class="container-x">
+      <Reveal client:load>
+        <h2 class="mb-8 text-2xl font-bold sm:text-3xl">Ostatnie odcinki</h2>
+      </Reveal>
+      <PodcastTabs client:load shows={shows} />
+    </div>
+  </section>
+
+  {/* Platformy */}
+  <section class="section-pad">
+    <div class="container-x">
+      <Reveal client:load>
+        <div class="card relative overflow-hidden p-10 text-center sm:p-14">
+          <div class="absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-brand-500/15 blur-[100px]" aria-hidden="true"></div>
+          <h2 class="relative text-3xl font-bold sm:text-4xl">Jesteśmy na Twojej ulubionej platformie</h2>
+          <p class="relative mx-auto mt-4 max-w-xl text-slate-400">
+            Subskrybuj, aby nie przegapić nowych odcinków — słuchaj tam, gdzie Ci wygodnie.
+          </p>
+          <div class="relative mt-8 flex flex-wrap justify-center gap-3">
+            {
+              podcastPlatforms.map((platform) => (
+                <a href={platform.url} target="_blank" rel="noopener" class="btn-ghost">
+                  {platform.name}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+</BaseLayout>

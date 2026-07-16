@@ -1,0 +1,146 @@
+---
+import { heroCourse } from '../data/courses';
+---
+
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid mask-fade-b" aria-hidden="true"></div>
+  <div
+    class="absolute -top-48 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-orange-500/15 blur-[130px]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute right-[-120px] top-1/3 h-[360px] w-[360px] rounded-full bg-rose-500/10 blur-[110px]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8 lg:pb-28">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
+      <div class="animate-fade-up">
+        <a
+          href={heroCourse.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-1.5 text-sm font-medium text-orange-300 transition hover:bg-orange-500/20"
+        >
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+          </span>
+          {heroCourse.badge}
+        </a>
+
+        <h1 class="mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.2rem]">
+          <span class="text-gradient">10xDevs</span>
+          <br />
+          Programuj z AI świadomie
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+          {heroCourse.description}
+        </p>
+
+        <ul class="mt-8 space-y-3">
+          {
+            heroCourse.features.map((feature) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-zinc-400">
+                <svg
+                  class="mt-0.5 h-5 w-5 flex-none text-orange-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href={heroCourse.url} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Dołącz do 10xDevs
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#kursy" class="btn-secondary">Poznaj wszystkie kursy</a>
+        </div>
+
+        <dl class="mt-12 grid grid-cols-2 gap-6 border-t border-white/5 pt-8 sm:grid-cols-4">
+          {
+            heroCourse.stats.map((stat) => (
+              <div>
+                <dt class="sr-only">{stat.label}</dt>
+                <dd class="text-2xl font-extrabold text-white sm:text-3xl">{stat.value}</dd>
+                <dd class="mt-1 text-xs uppercase tracking-wide text-zinc-500">{stat.label}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div class="relative animate-fade-up lg:pl-6" style="animation-delay: 150ms;">
+        <div
+          class="absolute -inset-4 rounded-3xl bg-gradient-to-r from-orange-500/20 via-rose-500/10 to-violet-500/20 blur-2xl"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="relative rounded-2xl border border-white/10 bg-night-900/90 shadow-2xl">
+          <div class="flex items-center gap-2 border-b border-white/5 px-5 py-3.5">
+            <span class="h-3 w-3 rounded-full bg-rose-500/70"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-400/70"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-500/70"></span>
+            <span class="ml-3 font-mono text-xs text-zinc-500">agent — 10xworkflow</span>
+          </div>
+          <div class="p-6 font-mono text-sm leading-8 sm:p-8">
+            <p>
+              <span class="text-orange-400">$</span>
+              <span class="text-zinc-100"> 10x run --project mvp</span>
+            </p>
+            <p class="text-zinc-600"># AI-Native Software Engineering</p>
+            <p>
+              <span class="text-emerald-400">✓</span>
+              <span class="text-zinc-300"> Research</span>
+              <span class="text-zinc-600"> — zrozum codebase</span>
+            </p>
+            <p>
+              <span class="text-emerald-400">✓</span>
+              <span class="text-zinc-300"> Plan</span>
+              <span class="text-zinc-600"> — kamienie milowe</span>
+            </p>
+            <p>
+              <span class="text-emerald-400">✓</span>
+              <span class="text-zinc-300"> Implement</span>
+              <span class="text-zinc-600"> — deleguj agentowi</span>
+            </p>
+            <p>
+              <span class="text-emerald-400">✓</span>
+              <span class="text-zinc-300"> Test</span>
+              <span class="text-zinc-600"> — quality gates</span>
+            </p>
+            <p>
+              <span class="text-orange-400">→</span>
+              <span class="text-zinc-300"> Deploy</span>
+              <span class="text-zinc-600"> — Docker + Cloudflare</span>
+            </p>
+            <p class="mt-2 text-zinc-500">
+              <span class="inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-orange-400"></span>
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="absolute -bottom-6 -left-3 rounded-xl border border-white/10 bg-night-800 px-5 py-3 shadow-xl sm:-left-6"
+        >
+          <p class="font-mono text-[11px] uppercase tracking-widest text-zinc-500">certyfikat</p>
+          <p class="font-semibold text-white">10xBuilder ✦ 10xArchitect ✦ 10xChampion</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

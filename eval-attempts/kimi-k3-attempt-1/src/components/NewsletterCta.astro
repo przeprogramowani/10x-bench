@@ -1,0 +1,53 @@
+---
+import { site } from '../data/site';
+
+const items = [
+  { count: '3', label: 'rekomendacje techniczne' },
+  { count: '2', label: 'rekomendacje rozwojowe' },
+  { count: '1', label: 'bonus niespodzianka' },
+];
+---
+
+<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+  <div
+    class="relative overflow-hidden rounded-3xl border border-yellow-400/20 bg-gradient-to-br from-zinc-900 via-zinc-900 to-yellow-400/10 p-8 sm:p-12"
+  >
+    <div
+      class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-yellow-400/10 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
+          Newsletter
+        </p>
+        <h2 class="mt-3 font-display text-3xl font-bold text-zinc-50 sm:text-4xl">
+          Przeprogramowany Newsletter
+        </h2>
+        <p class="mt-4 leading-relaxed text-zinc-400">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1. Nie przegapisz
+          nowości od Przeprogramowanych i ofert specjalnych.
+        </p>
+        <a
+          href={site.newsletterUrl}
+          target="_blank"
+          rel="noopener"
+          class="mt-7 inline-flex items-center gap-2 rounded-full bg-yellow-400 px-7 py-3.5 font-semibold text-zinc-950 transition hover:bg-yellow-300"
+        >
+          Zapisz się za darmo →
+        </a>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+        {
+          items.map((item) => (
+            <div class="flex items-center gap-4 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-5">
+              <span class="font-display text-4xl font-bold text-yellow-400">{item.count}</span>
+              <span class="text-sm text-zinc-300">{item.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

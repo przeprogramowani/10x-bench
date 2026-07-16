@@ -1,0 +1,57 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<article class="card group flex flex-col overflow-hidden">
+  <div class={`h-1.5 bg-gradient-to-r ${course.gradient}`}></div>
+  <div class="flex flex-1 flex-col p-7 sm:p-8">
+    <div class="flex items-center justify-between gap-3">
+      <span
+        class={`rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs uppercase tracking-widest ${course.accentText}`}
+      >
+        {course.badge}
+      </span>
+    </div>
+
+    <h3 class="mt-5 text-2xl font-bold tracking-tight text-white">{course.name}</h3>
+    <p class={`mt-1.5 text-sm font-semibold ${course.accentText}`}>{course.tagline}</p>
+    <p class="mt-4 flex-1 leading-relaxed text-zinc-400">{course.description}</p>
+
+    <ul class="mt-6 flex flex-wrap gap-2" aria-label="Tematy">
+      {
+        course.topics.map((topic) => (
+          <li class="rounded-lg border border-white/10 bg-night-800 px-3 py-1.5 text-xs font-medium text-zinc-300">
+            {topic}
+          </li>
+        ))
+      }
+    </ul>
+
+    <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/5 pt-5" aria-label="Statystyki">
+      {
+        course.stats.map((stat) => (
+          <li class="flex items-center gap-2 text-sm text-zinc-400">
+            <span class={`h-1.5 w-1.5 rounded-full bg-gradient-to-r ${course.gradient}`}></span>
+            {stat}
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-secondary mt-8 w-full group-hover:border-white/30"
+    >
+      Szczegóły programu
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

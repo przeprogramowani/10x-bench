@@ -1,0 +1,102 @@
+---
+const year = new Date().getFullYear();
+
+const pageLinks = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/#kursy', label: 'Kursy' },
+];
+
+const courseLinks = [
+  { href: 'https://10xdevs.pl', label: '10xDevs' },
+  { href: 'https://www.opanujfrontend.pl', label: 'Opanuj Frontend' },
+  { href: 'https://www.opanujtypescript.pl', label: 'Opanuj TypeScript' },
+  { href: 'https://opanuj.ai', label: 'Opanuj AI' },
+];
+
+const communityLinks = [
+  { href: 'https://przeprogramowani.substack.com', label: 'Newsletter' },
+  { href: 'https://www.youtube.com/c/przeprogramowani', label: 'YouTube' },
+  { href: 'https://facebook.com/przeprogramowani', label: 'Facebook' },
+  { href: 'https://instagram.com/przeprogramowani', label: 'Instagram' },
+];
+---
+
+<footer class="border-t border-white/10 bg-night-900/60">
+  <div class="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="/" class="flex items-center gap-2.5">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 font-display text-sm font-bold text-white">
+          {'</>'}
+        </span>
+        <span class="font-display text-lg font-bold tracking-tight text-white">Przeprogramowani</span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+        Szersze spojrzenie na programowanie. Edukacja technologiczna w epoce AI dla ambitnych programistów.
+      </p>
+      <a
+        href="mailto:kontakt@przeprogramowani.pl"
+        class="mt-4 inline-block text-sm font-medium text-indigo-300 transition-colors hover:text-indigo-200"
+      >
+        kontakt@przeprogramowani.pl
+      </a>
+    </div>
+
+    <nav aria-label="Mapa strony">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Strona</h3>
+      <ul class="mt-4 space-y-2.5">
+        {pageLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-sm text-slate-400 transition-colors hover:text-white">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Nasze kursy">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Kursy</h3>
+      <ul class="mt-4 space-y-2.5">
+        {courseLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-slate-400 transition-colors hover:text-white"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Społeczność">
+      <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Społeczność</h3>
+      <ul class="mt-4 space-y-2.5">
+        {communityLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-slate-400 transition-colors hover:text-white"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="border-t border-white/5">
+    <div class="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
+      <p>© {year} Przeprogramowani.pl — Szersze spojrzenie na programowanie</p>
+      <p>Zbudowane z Astro, React i Tailwind CSS</p>
+    </div>
+  </div>
+</footer>

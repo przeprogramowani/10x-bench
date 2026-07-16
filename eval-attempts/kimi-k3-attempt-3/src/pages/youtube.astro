@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoGrid from '../components/VideoGrid';
+---
+
+<BaseLayout
+  title="YouTube — Przeprogramowani"
+  description="Ostatnie filmy na kanale Przeprogramowani: programowanie z AI, Claude Code, agenty, relacje z konferencji i praktyczne materiały dla programistów."
+>
+  <section class="relative overflow-hidden pb-14 pt-36 sm:pt-40">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-32 left-1/2 h-[400px] w-[640px] -translate-x-1/2 rounded-full bg-rose-600/10 blur-[130px]"></div>
+    </div>
+    <div class="container-page relative">
+      <nav class="text-xs text-slate-500" aria-label="Okruszki">
+        <a href="/" class="transition-colors hover:text-slate-300">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">YouTube</span>
+      </nav>
+      <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Ostatnie filmy <span class="text-gradient">na YouTube</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Rozwój nowoczesnego programisty: AI-Native Development, narzędzia agentowe,
+        relacje z konferencji i live'y z ekspertami.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container-page">
+      <VideoGrid client:load />
+    </div>
+  </section>
+</BaseLayout>

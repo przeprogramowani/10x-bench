@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PodcastExplorer from '../components/PodcastExplorer';
+import { episodes, podcastPlatforms, shows } from '../data/episodes';
+---
+
+<Layout
+  title="Podcast — Przeprogramowani"
+  description="Słuchaj podcastów Przeprogramowanych o technologii, AI i programowaniu — Opanuj.AI Podcast i Przeprogramowani ft. Gość."
+>
+  <section class="relative overflow-hidden border-b border-zinc-800/60">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="absolute -top-32 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+      <nav class="mb-6 text-sm text-zinc-500" aria-label="Okruszki">
+        <a href="/" class="transition hover:text-yellow-400">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-zinc-300">Podcast</span>
+      </nav>
+      <SectionHeading
+        align="left"
+        eyebrow="Podcasty"
+        title="Słuchaj naszych podcastów o technologii, AI i programowaniu"
+        description="Dwa cykle: comiesięczne podsumowanie wydarzeń ze świata AI oraz rozmowy z gośćmi dla głodnych wiedzy."
+      />
+    </div>
+  </section>
+
+  {/* Dwa podcasty */}
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        shows.map((show) => (
+          <article class="flex gap-6 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-7 transition hover:border-zinc-600">
+            <img
+              src={show.cover}
+              alt={`Okładka podcastu ${show.name}`}
+              loading="lazy"
+              class="h-24 w-24 shrink-0 rounded-2xl border border-zinc-800 object-cover sm:h-28 sm:w-28"
+            />
+            <div>
+              <h2 class="font-display text-xl font-bold text-zinc-50">{show.name}</h2>
+              <p class="mt-1 text-sm font-semibold text-yellow-400">{show.listeners}</p>
+              <p class="mt-2.5 text-sm leading-relaxed text-zinc-400">{show.description}</p>
+              <a
+                href={show.spotifyUrl}
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-yellow-400 hover:underline"
+              >
+                Otwórz w Spotify →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* Odcinki z filtrowaniem */}
+  <section class="border-t border-zinc-800/60 bg-zinc-900/30">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <SectionHeading
+        align="left"
+        eyebrow="Ostatnie odcinki"
+        title="Najnowsze odcinki"
+        description="Wybierz cykl lub przeglądaj wszystkie odcinki — kliknij, aby odsłuchać na Spotify."
+      />
+      <div class="mt-10">
+        <PodcastExplorer client:load shows={shows} episodes={episodes} />
+      </div>
+    </div>
+  </section>
+
+  {/* Platformy */}
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Platformy"
+      title="Jesteśmy na Twojej ulubionej platformie"
+      description="Subskrybuj podcast tam, gdzie słuchasz najwygodniej."
+    />
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        podcastPlatforms.map((platform) => (
+          <a
+            href={platform.url}
+            target="_blank"
+            rel="noopener"
+            class="group flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-900/60 px-6 py-5 transition hover:border-yellow-400/50"
+          >
+            <span class="font-display font-semibold text-zinc-100 transition group-hover:text-yellow-400">
+              {platform.name}
+            </span>
+            <span class="text-zinc-500 transition group-hover:translate-x-1 group-hover:text-yellow-400">
+              →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

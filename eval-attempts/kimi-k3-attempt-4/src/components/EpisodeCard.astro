@@ -1,0 +1,61 @@
+---
+import type { Episode } from '../data/content';
+
+interface Props {
+  episode: Episode;
+  coverUrl: string;
+  compact?: boolean;
+}
+
+const { episode, coverUrl, compact = false } = Astro.props;
+---
+
+<a
+  href={episode.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-amber-400/40 hover:bg-white/[0.07] sm:gap-5 sm:p-5"
+>
+  <div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg sm:h-20 sm:w-20">
+    <img
+      src={coverUrl}
+      alt=""
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 flex items-center justify-center bg-ink-950/40 opacity-0 transition-opacity group-hover:opacity-100">
+      <svg class="h-7 w-7 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5.14v14l11-7-11-7z"></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="min-w-0 flex-1">
+    <div class="flex items-center gap-3 text-xs text-zinc-500">
+      <span>{episode.date}</span>
+      <span aria-hidden="true">·</span>
+      <span class="inline-flex items-center gap-1">
+        <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        {episode.duration}
+      </span>
+    </div>
+    <h3 class="mt-1.5 font-semibold leading-snug text-white transition-colors group-hover:text-amber-300 line-clamp-2">
+      {episode.title}
+    </h3>
+    {
+      !compact && (
+        <p class="mt-2 text-sm leading-relaxed text-zinc-400 line-clamp-2">{episode.description}</p>
+      )
+    }
+  </div>
+
+  <div class="hidden flex-shrink-0 self-center sm:block">
+    <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-zinc-400 transition-all group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-ink-950">
+      <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5.14v14l11-7-11-7z"></path>
+      </svg>
+    </span>
+  </div>
+</a>

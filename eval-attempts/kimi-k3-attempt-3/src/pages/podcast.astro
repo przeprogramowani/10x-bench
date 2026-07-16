@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastTabs from '../components/PodcastTabs';
+---
+
+<BaseLayout
+  title="Podcast — Przeprogramowani"
+  description="Słuchaj podcastów Przeprogramowanych: Opanuj.AI Podcast — comiesięczne podsumowanie świata AI, oraz Przeprogramowani ft. Gość — rozmowy dla głodnych wiedzy."
+>
+  <section class="relative overflow-hidden pb-14 pt-36 sm:pt-40">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -top-32 left-1/2 h-[400px] w-[640px] -translate-x-1/2 rounded-full bg-violet-600/15 blur-[130px]"></div>
+    </div>
+    <div class="container-page relative">
+      <nav class="text-xs text-slate-500" aria-label="Okruszki">
+        <a href="/" class="transition-colors hover:text-slate-300">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Podcast</span>
+      </nav>
+      <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        Nasze <span class="text-gradient">podcasty</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+        Słuchaj naszych podcastów o technologii, AI i programowaniu. Wybierz audycję
+        i posłuchaj ostatnich odcinków.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container-page">
+      <PodcastTabs client:load />
+    </div>
+  </section>
+</BaseLayout>

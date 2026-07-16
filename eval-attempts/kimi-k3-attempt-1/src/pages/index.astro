@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import BrandsMarquee from '../components/BrandsMarquee.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import NewsletterCta from '../components/NewsletterCta.astro';
+import { courses } from '../data/courses';
+import { episodes, shows } from '../data/episodes';
+import { videos } from '../data/videos';
+import { site } from '../data/site';
+
+const latestEpisodes = episodes.slice(0, 3);
+const latestVideos = videos.slice(0, 3);
+const showName = (id: string) => shows.find((s) => s.id === id)?.name ?? '';
+const showCover = (id: string) => shows.find((s) => s.id === id)?.cover ?? '';
+---
+
+<Layout
+  title="Przeprogramowani — Szersze spojrzenie na programowanie"
+  description="Kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcasty o AI i programowaniu oraz filmy na YouTube. Zyskaj szersze spojrzenie na programowanie."
+>
+  <Hero />
+  <BrandsMarquee />
+
+  {/* Kursy */}
+  <section id="kursy" class="mx-auto max-w-7xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Edukacja technologiczna w epoce AI"
+      title="Topowe programy edukacyjne dla ambitnych programistów"
+      description="Świadome korzystanie z potencjału Generative AI i sprawdzone fundamenty inżynierii oprogramowania — wybierz program dla siebie."
+    />
+    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {courses.map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  {/* Podcast — ostatnie odcinki */}
+  <section class="border-y border-zinc-800/60 bg-zinc-900/30">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          align="left"
+          eyebrow="Podcast"
+          title="Ostatnie odcinki"
+          description="Comiesięczne podsumowania ze świata AI i rozmowy z gośćmi dla głodnych wiedzy."
+        />
+        <a
+          href="/podcast"
+          class="rounded-full border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800/60"
+        >
+          Wszystkie odcinki →
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {
+          latestEpisodes.map((episode) => (
+            <a
+              href={episode.url}
+              target="_blank"
+              rel="noopener"
+              class="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition hover:border-zinc-600"
+            >
+              <div class="flex items-center gap-3">
+                <img
+                  src={showCover(episode.show)}
+                  alt={showName(episode.show)}
+                  loading="lazy"
+                  class="h-12 w-12 rounded-lg object-cover"
+                />
+                <div class="text-xs">
+                  <p class="font-semibold text-zinc-300">{showName(episode.show)}</p>
+                  <p class="mt-0.5 font-mono text-zinc-500">{episode.duration}</p>
+                </div>
+              </div>
+              <h3 class="mt-4 line-clamp-3 flex-1 font-display text-base font-semibold leading-snug text-zinc-100 transition group-hover:text-yellow-400">
+                {episode.title}
+              </h3>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-yellow-400">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                  <path d="M8 5.5v13l11-6.5z" />
+                </svg>
+                Słuchaj odcinka
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* YouTube — ostatnie filmy */}
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <SectionHeading
+        align="left"
+        eyebrow="YouTube"
+        title="Ostatnie filmy"
+        description="AI, narzędzia agentowe, relacje z konferencji i live demo — rozwój nowoczesnego programisty."
+      />
+      <a
+        href="/youtube"
+        class="rounded-full border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800/60"
+      >
+        Więcej filmów →
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {latestVideos.map((video) => <VideoCard video={video} />)}
+    </div>
+  </section>
+
+  {/* O nas — teaser */}
+  <section class="border-t border-zinc-800/60 bg-zinc-900/30">
+    <div class="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="O nas"
+        title="Łączymy świat programowania, biznesu i rozwoju"
+        description="Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie. Poznaj Przeprogramowanych."
+      />
+      <a
+        href="/o-nas"
+        class="mt-8 inline-block rounded-full bg-yellow-400 px-7 py-3.5 font-semibold text-zinc-950 transition hover:bg-yellow-300"
+      >
+        Poznaj nas bliżej →
+      </a>
+      <p class="mt-6 text-sm text-zinc-500">
+        Współpraca: <a href={`mailto:${site.email}`} class="text-yellow-400 hover:underline">{site.email}</a>
+      </p>
+    </div>
+  </section>
+
+  <NewsletterCta />
+</Layout>

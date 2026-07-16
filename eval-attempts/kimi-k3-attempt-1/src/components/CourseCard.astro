@@ -1,0 +1,73 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<article
+  class:list={[
+    'group relative flex flex-col overflow-hidden rounded-2xl border bg-zinc-900/60 p-7 transition duration-300',
+    course.featured
+      ? 'border-yellow-400/40 shadow-xl shadow-yellow-400/5 hover:border-yellow-400/70'
+      : 'border-zinc-800 hover:border-zinc-600',
+  ]}
+>
+  <div
+    class={`pointer-events-none absolute -top-24 right-0 h-48 w-48 rounded-full bg-gradient-to-br ${course.glowClass} to-transparent blur-2xl`}
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative flex items-center justify-between gap-3">
+    <span
+      class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ${course.badgeClass}`}
+    >
+      {course.category}
+    </span>
+    {
+      course.featured && (
+        <span class="rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold uppercase tracking-wide text-zinc-950">
+          Bestseller
+        </span>
+      )
+    }
+  </div>
+
+  <h3 class="relative mt-5 font-display text-2xl font-bold text-zinc-50">{course.name}</h3>
+  <p class={`relative mt-1 text-sm font-semibold ${course.iconColorClass}`}>{course.tagline}</p>
+
+  <p class="relative mt-4 text-sm leading-relaxed text-zinc-400">{course.description}</p>
+
+  <ul class="relative mt-5 flex-1 space-y-2.5">
+    {
+      course.highlights.map((highlight) => (
+        <li class="flex items-start gap-2.5 text-sm text-zinc-300">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            class={`mt-0.5 h-4 w-4 shrink-0 ${course.iconColorClass}`}
+          >
+            <path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {highlight}
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={course.url}
+    target="_blank"
+    rel="noopener"
+    class={`relative mt-7 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ${course.buttonClass}`}
+  >
+    Szczegóły programu
+    <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+  </a>
+</article>

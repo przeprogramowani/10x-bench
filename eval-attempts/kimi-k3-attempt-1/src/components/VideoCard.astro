@@ -1,0 +1,45 @@
+---
+import { videoThumb, videoUrl, type Video } from '../data/videos';
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+---
+
+<a
+  href={videoUrl(video.id)}
+  target="_blank"
+  rel="noopener"
+  class="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/60 transition hover:border-zinc-600"
+>
+  <div class="relative aspect-video overflow-hidden">
+    <img
+      src={videoThumb(video.id)}
+      alt={video.title}
+      loading="lazy"
+      class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+    />
+    <div
+      class="absolute inset-0 flex items-center justify-center bg-zinc-950/30 opacity-0 transition group-hover:opacity-100"
+    >
+      <span class="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-zinc-950">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ml-1 h-6 w-6">
+          <path d="M8 5.5v13l11-6.5z"></path>
+        </svg>
+      </span>
+    </div>
+  </div>
+  <div class="p-5">
+    <span
+      class="inline-block rounded-full bg-zinc-800 px-2.5 py-0.5 text-xs font-medium text-zinc-400"
+      >{video.tag}</span
+    >
+    <h3
+      class="mt-2.5 line-clamp-2 font-display text-base font-semibold leading-snug text-zinc-100 transition group-hover:text-yellow-400"
+    >
+      {video.title}
+    </h3>
+  </div>
+</a>

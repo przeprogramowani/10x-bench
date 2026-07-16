@@ -1,0 +1,126 @@
+---
+import CountdownTimer from './CountdownTimer';
+
+const stats = [
+  { value: '6700+', label: 'absolwentów' },
+  { value: '5+1', label: 'tygodni nauki' },
+  { value: '14.09', label: 'start edycji' },
+  { value: '3', label: 'ścieżki certyfikatu' },
+];
+
+const terminalLines = [
+  { prompt: true, text: 'npx 10x init' },
+  { prompt: false, text: '✓ Research — rozpoznaj codebase' },
+  { prompt: false, text: '✓ Plan — kamienie milowe' },
+  { prompt: false, text: '✓ Implement — feature po feature' },
+  { prompt: false, text: '✓ Review — solo code review z AI' },
+  { prompt: false, text: '✓ Deploy — Docker + Cloudflare' },
+];
+---
+
+<section class="relative overflow-hidden border-b border-zinc-800/60">
+  <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="absolute -top-40 left-1/2 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-1.5 text-sm font-medium text-yellow-300 transition hover:border-yellow-400/60"
+        >
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-yellow-400"></span>
+          </span>
+          Nowość — 10xDevs 4.0 · start 14 września 2026
+        </a>
+
+        <h1
+          class="mt-6 font-display text-4xl font-bold leading-[1.1] tracking-tight text-zinc-50 sm:text-5xl lg:text-6xl"
+        >
+          Era <span class="text-yellow-400">AI-Native</span> Software Engineering
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+          <strong class="font-semibold text-zinc-200">10xDevs</strong> to bestsellerowy program
+          Przeprogramowanych — nowe oblicze programowania z wykorzystaniem Generatywnego AI.
+          Techniki i narzędzia, które pozwolą Ci świadomie stosować AI w całym cyklu wytwarzania
+          oprogramowania.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener"
+            class="rounded-full bg-yellow-400 px-7 py-3.5 font-semibold text-zinc-950 shadow-lg shadow-yellow-400/20 transition hover:bg-yellow-300"
+          >
+            Dołącz do 10xDevs →
+          </a>
+          <a
+            href="#kursy"
+            class="rounded-full border border-zinc-700 px-7 py-3.5 font-semibold text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800/60"
+          >
+            Poznaj wszystkie kursy
+          </a>
+        </div>
+
+        <div class="mt-10">
+          <p class="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Do startu nowej edycji
+          </p>
+          <CountdownTimer client:load targetDate="2026-09-14T09:00:00+02:00" />
+        </div>
+      </div>
+
+      <div class="relative">
+        <div
+          class="absolute -inset-4 rounded-3xl bg-gradient-to-br from-yellow-400/20 via-transparent to-orange-500/10 blur-2xl"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/90 shadow-2xl">
+          <div class="flex items-center gap-2 border-b border-zinc-800 px-5 py-3.5">
+            <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+            <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+            <span class="ml-3 font-mono text-xs text-zinc-500">10xworkflow — zsh</span>
+          </div>
+          <div class="space-y-2.5 p-6 font-mono text-sm sm:text-base">
+            {
+              terminalLines.map((line) => (
+                <p class={line.prompt ? 'text-zinc-100' : 'text-emerald-400'}>
+                  {line.prompt && <span class="mr-2 text-yellow-400">$</span>}
+                  {line.text}
+                </p>
+              ))
+            }
+            <p class="pt-2 text-zinc-500">
+              <span class="mr-2 text-yellow-400">$</span>
+              <span class="animate-pulse">▊</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {
+            stats.map((stat) => (
+              <div class="rounded-xl border border-zinc-800 bg-zinc-900/70 px-4 py-3 text-center">
+                <p class="font-display text-xl font-bold text-yellow-400">{stat.value}</p>
+                <p class="mt-0.5 text-xs text-zinc-500">{stat.label}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

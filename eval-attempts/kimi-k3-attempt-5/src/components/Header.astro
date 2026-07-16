@@ -1,0 +1,54 @@
+---
+import MobileMenu from './MobileMenu';
+
+const links = [
+  { href: '/', label: 'Start' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/#kursy', label: 'Kursy' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => href === pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-white/5 bg-ink/80 backdrop-blur-xl">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 font-display text-lg font-bold text-white">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 font-mono text-sm font-bold text-ink">
+        &lt;/&gt;
+      </span>
+      Przeprogramowani
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              isActive(link.href)
+                ? 'bg-white/10 text-white'
+                : 'text-slate-400 hover:bg-white/5 hover:text-white',
+            ]}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://10xdevs.pl" target="_blank" rel="noopener" class="btn-primary hidden !px-5 !py-2 md:inline-flex">
+        10xDevs
+        <span aria-hidden="true">→</span>
+      </a>
+      <div class="md:hidden">
+        <MobileMenu client:load links={links} />
+      </div>
+    </div>
+  </div>
+</header>

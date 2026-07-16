@@ -1,0 +1,127 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-zinc-800 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2.5 font-display text-lg font-bold text-zinc-50">
+          <span
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-400 font-mono text-sm font-bold text-zinc-950"
+            aria-hidden="true">&lt;/&gt;</span
+          >
+          Przeprogramowani
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-zinc-400">
+          {site.tagline}. Łączymy świat programowania, biznesu i rozwoju — tworzymy treści, kursy i
+          narzędzia dla ambitnych programistów.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a
+            href={site.socials[0].url}
+            target="_blank"
+            rel="noopener"
+            aria-label="YouTube"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-400 transition hover:border-yellow-400/50 hover:text-yellow-400"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"
+              ><path
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href={site.socials[1].url}
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-400 transition hover:border-yellow-400/50 hover:text-yellow-400"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"
+              ><path
+                d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.6c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href={site.socials[2].url}
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-400 transition hover:border-yellow-400/50 hover:text-yellow-400"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"
+              ><path
+                d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.8.1-3.2 1.7-4.8 4.9-4.9 1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href={`mailto:${site.email}`}
+            aria-label="E-mail"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-800 text-zinc-400 transition hover:border-yellow-400/50 hover:text-yellow-400"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"
+              ><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg
+            >
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-zinc-500">
+          Strona
+        </h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="/o-nas" class="text-zinc-400 transition hover:text-yellow-400">O nas</a></li>
+          <li><a href="/podcast" class="text-zinc-400 transition hover:text-yellow-400">Podcast</a></li>
+          <li><a href="/youtube" class="text-zinc-400 transition hover:text-yellow-400">YouTube</a></li>
+          <li>
+            <a href={site.newsletterUrl} target="_blank" rel="noopener" class="text-zinc-400 transition hover:text-yellow-400"
+              >Newsletter</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-zinc-500">
+          Kursy
+        </h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li>
+            <a href="https://10xdevs.pl" target="_blank" rel="noopener" class="text-zinc-400 transition hover:text-yellow-400"
+              >10xDevs</a>
+          </li>
+          <li>
+            <a
+              href="https://www.opanujfrontend.pl"
+              target="_blank"
+              rel="noopener"
+              class="text-zinc-400 transition hover:text-yellow-400">Opanuj Frontend</a>
+          </li>
+          <li>
+            <a
+              href="https://www.opanujtypescript.pl"
+              target="_blank"
+              rel="noopener"
+              class="text-zinc-400 transition hover:text-yellow-400">Opanuj TypeScript</a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`} class="text-zinc-400 transition hover:text-yellow-400"
+              >Współpraca: {site.email}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-zinc-800/80 pt-8 text-sm text-zinc-500 sm:flex-row"
+    >
+      <p>© {year} Przeprogramowani.pl — {site.tagline}</p>
+      <p class="font-mono text-xs">Astro · React · Tailwind · Cloudflare</p>
+    </div>
+  </div>
+</footer>
