@@ -113,7 +113,10 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
 
 /** Base model IDs to exclude from processed results (all attempts are skipped) */
 // Sonnet results are ready but not to publish before YT video release on 16.02.2026.
-export const DISABLED_MODELS: Set<string> = new Set();
+export const DISABLED_MODELS: Set<string> = new Set([
+  "gpt-53-codex", // superseded by GPT-5.6 Sol
+  "gpt-54", // superseded by GPT-5.6 Sol
+]);
 
 /** Token pricing per 1M tokens (USD, no cache) */
 export interface ModelPricing {

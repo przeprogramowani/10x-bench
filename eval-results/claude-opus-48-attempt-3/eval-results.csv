@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 14:30,N/A,16.07.2026 14:30
+Local build,1,1,npm install + astro build succeeded; 5 pages built (index/o-nas/podcast/youtube/404 + sitemap.xml)
+Manual testing,1,1,User-confirmed: site works end-to-end; nav, links, and interactions all functional
+Tech stack,0,1,"Astro ^4.16.10 (need 6), React ^18.3.1 (need 19), Tailwind ^3.4.14 (need 4), no @astrojs/cloudflare adapter (output:'static'). None of the required versions present."
+O nas page,0.5,1,"200. Names Marcin Czarkowski & Przemek Smyrdek match; DAZN/Cabify and SmartRecruiters mentioned. But bios simplified/paraphrased and missing course assignments (Opanuj JavaScript / 10xDevs) and other context details."
+Podcast page,0.5,1,"200. Only Przeprogramowani podcast shown — OpanujAI Podcast entirely missing (criteria requires both). Uses creators.spotify.com/pod/show/przeprogramowani; neither Spotify show ID (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy) present. Episodes appear real."
+YouTube page,1,1,"200. All 6 video IDs (B4t6w4QsD24, 0JOszZXqKaM, XgyH-HSzKRQ, 03y826SVjG0, S-iNbyLSisE, aRkECt7derY) verified via oEmbed as real, unique, author_name=Przeprogramowani."
+Kursy section,1,1,"#kursy section on index.astro featuring 10xDevs (marked featured). Courses 10xDevs/Opanuj Frontend/Opanuj TypeScript with correct URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl)."
+Consistent UI,1,1,User-confirmed: cohesive visual design across pages
+Responsive design,1,1,User-confirmed: fully responsive across mobile/tablet/desktop
+SEO Tags,1,1,"Layout.astro has title/description/canonical, full Open Graph + Twitter cards, theme-color, sitemap link, and JSON-LD Organization schema; applied to all pages via shared Layout. Content matches context (tagline, description, email)."
+Penalty,0,N/A,User-confirmed: no penalty

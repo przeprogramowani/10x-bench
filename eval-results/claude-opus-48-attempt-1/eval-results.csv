@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 14:30,N/A,16.07.2026 14:30
+Local build,1,1,astro build succeeded; 5 static pages generated in dist
+Manual testing,1,1,User-confirmed: site works end-to-end; nav, links, and interactions all functional
+Tech stack,0,1,"Astro 5.18 (not 6), Tailwind 3.4 via @astrojs/tailwind (not 4), React 19 OK. No Cloudflare adapter — output: static; wrangler.jsonc present but no @astrojs/cloudflare in astro.config.mjs"
+O nas page,0.5,1,"Page 200; Przemek (DAZN/Cabify) and Marcin (SmartRecruiters, Opanuj AI Podcast) present. Bios condensed and course assignments (Opanuj JavaScript / 10xDevs) omitted"
+Podcast page,0.5,1,"Page 200 but only ONE podcast (Przeprogramowani) shown — OpanujAI podcast missing. Spotify URL is placeholder slug open.spotify.com/show/przeprogramowani (should be 3yVvOAXSYq6sQB02w4A4wo). Episodes appear mocked"
+YouTube page,1,1,"Page 200; all 9 video IDs unique, verified via oEmbed as real and author_name Przeprogramowani. Titles match channel content"
+Kursy section,1,1,"#kursy section + hero prominently features 10xDevs (10xdevs.pl). Opanuj Frontend (opanujfrontend.pl) and Opanuj TypeScript (opanujtypescript.pl) URLs correct; content matches context"
+Consistent UI,1,1,User-confirmed: cohesive visual design across pages
+Responsive design,0.5,1,User-confirmed: partially responsive; layout breaks at some widths
+SEO Tags,1,1,"Layout.astro has title, description, canonical, full OG + Twitter tags, theme-color, JSON-LD Organization schema; applied to all pages via shared layout; content matches context"
+Penalty,0,N/A,User-confirmed: no penalty

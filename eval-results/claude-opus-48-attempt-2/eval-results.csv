@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 14:30,N/A,16.07.2026 14:30
+Local build,1,1,astro build succeeded — 4 pages built (index/o-nas/podcast/youtube)
+Manual testing,1,1,User-confirmed: site works end-to-end; nav, links, and interactions all functional
+Tech stack,0,1,"Astro ^5.6.0 (not 6), Tailwind ^3.4.17 via @astrojs/tailwind (not 4), React 19 OK; no @astrojs/cloudflare adapter (output: static). Missing multiple required deps + Cloudflare adapter"
+O nas page,0.5,1,"200 OK. Names Przemek Smyrdek (DAZN/Cabify) & Marcin Czarkowski (SmartRecruiters) correct, but bios simplified and course assignments (Opanuj JavaScript / 10xDevs) omitted"
+Podcast page,0.5,1,"200 OK. Only Opanuj.AI has episodes; Przeprogramowani ft. Gość is a stub card with no episodes. No correct Spotify show IDs (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy) — all links point to a creators.spotify profile URL"
+YouTube page,1,1,"200 OK. All 6 unique video IDs verified via oEmbed as real and on the Przeprogramowani channel; titles match"
+Kursy section,1,1,"200 OK. #kursy section + CourseCard; 10xDevs 4.0 featured in index hero. Courses (10xDevs, Opanuj Frontend, Opanuj TypeScript) with correct domains (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl); some stats embellished"
+Consistent UI,1,1,User-confirmed: cohesive visual design across pages
+Responsive design,1,1,User-confirmed: fully responsive across mobile/tablet/desktop
+SEO Tags,1,1,"Layout.astro provides title/description/canonical/OG/Twitter/theme-color applied to all pages; content matches brand name/tagline/description"
+Penalty,0,N/A,User-confirmed: no penalty
