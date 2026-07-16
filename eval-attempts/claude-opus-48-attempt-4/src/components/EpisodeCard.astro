@@ -1,0 +1,51 @@
+---
+import type { Episode } from '../data/site';
+
+interface Props {
+  episode: Episode;
+  index: number;
+}
+
+const { episode, index } = Astro.props;
+const number = String(index + 1).padStart(2, '0');
+---
+
+<article class="card card-hover group flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
+  <div
+    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/20 to-violet-600/20 font-mono text-lg font-bold text-brand-300"
+    aria-hidden="true"
+  >
+    {number}
+  </div>
+
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+      <time>{episode.date}</time>
+      <span class="h-1 w-1 rounded-full bg-slate-600" aria-hidden="true"></span>
+      <span>{episode.duration}</span>
+      {
+        episode.guest && (
+          <>
+            <span class="h-1 w-1 rounded-full bg-slate-600" aria-hidden="true" />
+            <span class="text-brand-300">{episode.guest}</span>
+          </>
+        )
+      }
+    </div>
+    <h3 class="mt-1.5 font-semibold leading-snug text-white group-hover:text-brand-200">
+      {episode.title}
+    </h3>
+    <p class="mt-1.5 line-clamp-2 text-sm text-slate-400">{episode.description}</p>
+  </div>
+
+  <div class="flex-shrink-0 sm:self-center">
+    <span
+      class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-slate-400 transition group-hover:border-brand-400/40 group-hover:bg-brand-500/10 group-hover:text-brand-300"
+      aria-hidden="true"
+    >
+      <svg class="ml-0.5 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"></path>
+      </svg>
+    </span>
+  </div>
+</article>

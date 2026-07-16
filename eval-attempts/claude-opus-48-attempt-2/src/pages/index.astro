@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import { site, courses, clients, podcast, videos } from '../data/site';
+
+const tenx = courses.find((c) => c.id === '10xdevs')!;
+const latestEpisodes = podcast.episodes.slice(0, 3);
+const latestVideos = videos.slice(0, 3);
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute left-1/2 top-[-10%] h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-brand-600/25 blur-[120px]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="container-page relative grid items-center gap-14 pb-16 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-24">
+      <div class="animate-fade-up">
+        <a
+          href={tenx.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/10 py-1.5 pl-2 pr-4 text-sm font-medium text-brand-200 transition-colors hover:border-brand-400/50 hover:bg-brand-500/15"
+        >
+          <span class="rounded-full bg-brand-500 px-2.5 py-0.5 text-xs font-bold text-white">10xDevs 4.0</span>
+          <span>{tenx.badge}</span>
+          <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M7 4l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+          Szersze spojrzenie na
+          <span class="bg-gradient-to-r from-brand-300 via-brand-400 to-accent-400 bg-clip-text text-transparent">
+            programowanie
+          </span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
+          {site.description}
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href={tenx.url} target="_blank" rel="noopener noreferrer" class="btn-primary text-base">
+            Dołącz do 10xDevs
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 10h12M12 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#kursy" class="btn-ghost text-base">Zobacz wszystkie kursy</a>
+        </div>
+
+        <dl class="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-8">
+          <div>
+            <dt class="text-3xl font-bold text-white">{site.yearsActive} lat</dt>
+            <dd class="mt-1 text-sm text-slate-400">na rynku edukacji IT</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-bold text-white">6700+</dt>
+            <dd class="mt-1 text-sm text-slate-400">absolwentów 10xDevs</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-bold text-white">#1</dt>
+            <dd class="mt-1 text-sm text-slate-400">podcast o LLM w PL</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Hero visual: a stylised terminal / code card -->
+      <div class="relative animate-fade-up [animation-delay:120ms]">
+        <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-brand-600/20 to-accent-500/10 blur-2xl" aria-hidden="true"></div>
+        <div class="card relative overflow-hidden p-1.5 shadow-2xl shadow-black/40 lg:animate-float">
+          <div class="flex items-center gap-2 px-4 py-3">
+            <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-400/80"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+            <span class="ml-3 font-mono text-xs text-slate-500">~/przeprogramowani</span>
+          </div>
+          <div class="overflow-x-auto rounded-2xl bg-ink-950/80 p-5 font-mono text-xs leading-relaxed sm:text-[13px]">
+            <p><span class="text-brand-300">const</span> <span class="text-accent-400">developer</span> = <span class="text-slate-400">await</span> przeprogramuj(<span class="text-emerald-300">{'{'}</span></p>
+            <p class="pl-4"><span class="text-slate-400">stack:</span> <span class="text-emerald-300">['Astro', 'React', 'TS']</span>,</p>
+            <p class="pl-4"><span class="text-slate-400">ai:</span> <span class="text-emerald-300">'AI-Native'</span>,</p>
+            <p class="pl-4"><span class="text-slate-400">mindset:</span> <span class="text-emerald-300">'10x'</span>,</p>
+            <p><span class="text-emerald-300">{'}'}</span>);</p>
+            <p class="mt-3 text-slate-500">// → Research · Plan · Implement</p>
+            <p class="mt-1 flex items-center gap-2 text-emerald-300">
+              <span class="text-slate-500">✓</span> gotowe na produkcję
+              <span class="inline-block h-4 w-2 animate-pulse bg-brand-400"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clients -->
+    <div class="border-y border-white/5 bg-white/[0.015]">
+      <div class="container-page flex flex-col items-center gap-6 py-8 sm:flex-row sm:justify-between">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+          Szkoliliśmy zespoły m.in. z
+        </p>
+        <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+          {clients.map((c) => <li class="text-sm font-semibold text-slate-400">{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="kursy" class="scroll-mt-24 py-20 sm:py-28">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Nasze kursy"
+        title="Rozwijaj się z programami, które kończą tysiące developerów"
+        subtitle="Od AI-Native Software Engineering po kompletny frontend i zaawansowany TypeScript — wybierz ścieżkę dopasowaną do Twoich celów."
+      />
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CHANNELS / CONTENT -->
+  <section class="border-t border-white/10 bg-ink-900/40 py-20 sm:py-28">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Treści"
+        title="Uczymy nie tylko na kursach"
+        subtitle="Podcast, YouTube i newsletter — dziesiątki godzin materiałów o AI, frontendzie i rozwoju kariery."
+      />
+
+      <div class="mt-12 grid gap-10 lg:grid-cols-2">
+        <!-- Podcast preview -->
+        <div>
+          <div class="flex items-center justify-between">
+            <h3 class="flex items-center gap-2.5 text-xl">
+              <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-500/15 text-emerald-300">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z"/></svg>
+              </span>
+              {podcast.name}
+            </h3>
+            <a href="/podcast" class="text-sm font-medium text-brand-300 hover:text-brand-200">Wszystkie →</a>
+          </div>
+          <ul class="mt-5 space-y-3">
+            {
+              latestEpisodes.map((ep) => (
+                <li class="card flex items-start gap-3 p-4 transition-colors hover:border-white/20">
+                  <span class="mt-0.5 grid h-8 w-8 flex-none place-items-center rounded-lg bg-white/5 text-emerald-300">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                  <div class="min-w-0">
+                    <p class="line-clamp-2 text-sm font-semibold text-white">{ep.title}</p>
+                    <p class="mt-1 font-mono text-xs text-slate-500">{ep.duration}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- YouTube preview -->
+        <div>
+          <div class="flex items-center justify-between">
+            <h3 class="flex items-center gap-2.5 text-xl">
+              <span class="grid h-9 w-9 place-items-center rounded-lg bg-red-500/15 text-red-400">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.8-.5-5.6a2.9 2.9 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.9 2.9 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.6a2.9 2.9 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.9 2.9 0 0 0 2-2C23 15.8 23 12 23 12ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+              </span>
+              YouTube
+            </h3>
+            <a href="/youtube" class="text-sm font-medium text-brand-300 hover:text-brand-200">Wszystkie →</a>
+          </div>
+          <ul class="mt-5 space-y-3">
+            {
+              latestVideos.map((v) => (
+                <li>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${v.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card flex items-center gap-3 p-3 transition-colors hover:border-white/20"
+                  >
+                    <img
+                      src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`}
+                      alt=""
+                      loading="lazy"
+                      width="120"
+                      height="68"
+                      class="h-[52px] w-[92px] flex-none rounded-lg object-cover"
+                    />
+                    <div class="min-w-0">
+                      <p class="line-clamp-2 text-sm font-semibold text-white">{v.title}</p>
+                      <p class="mt-1 text-xs text-slate-500">{new Date(v.date).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                    </div>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 sm:py-24">
+    <div class="container-page">
+      <div class="card relative overflow-hidden px-8 py-14 text-center sm:px-16">
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-brand-600/20 via-transparent to-accent-500/10" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-2xl">
+          <h2 class="text-3xl sm:text-4xl">Dołącz do społeczności ambitnych programistów</h2>
+          <p class="mt-4 text-slate-300">
+            Zacznij od najbliższej edycji 10xDevs 4.0 i naucz się świadomie programować z agentami AI —
+            od greenfield MVP po modernizację legacy.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href={tenx.url} target="_blank" rel="noopener noreferrer" class="btn-primary text-base">Dołącz do 10xDevs</a>
+            <a href="/o-nas" class="btn-ghost text-base">Poznaj nas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

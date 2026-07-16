@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon';
+import SectionHeading from '../components/SectionHeading.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import { hosts } from '../data/team';
+import { stats, clients, socials } from '../data/site';
+
+const values = [
+  {
+    title: 'Edukacja w epoce AI',
+    body: 'Pokazujemy, jak świadomie wykorzystywać generatywne AI na każdym etapie wytwarzania oprogramowania — bez hype’u, za to z konkretami.',
+  },
+  {
+    title: 'Praktyka ponad teorię',
+    body: 'Materiały tworzymy w oparciu o realne doświadczenie z globalnych firm produktowych i lata pracy z zespołami inżynierskimi.',
+  },
+  {
+    title: 'Szersze spojrzenie',
+    body: 'Łączymy technologię z rozwojem kariery, architekturą i miękkimi kompetencjami, których potrzebuje dojrzały programista.',
+  },
+];
+---
+
+<Layout
+  title="O nas"
+  description="Poznaj Przeprogramowani — Marcina Czarkowskiego i Przemka Smyrdka. Od ponad 7 lat tworzymy edukację technologiczną w epoce AI."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-28 pb-12 sm:pt-36">
+    <div class="glow pointer-events-none absolute inset-x-0 top-0 h-[500px]"></div>
+    <div class="container-x relative">
+      <div class="max-w-3xl">
+        <span class="eyebrow">O nas</span>
+        <h1 class="mt-5 text-4xl font-bold sm:text-5xl">
+          Uczymy programistów świadomie korzystać z&nbsp;technologii
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Przeprogramowani to projekt Marcina Czarkowskiego i Przemka Smyrdka. Od ponad 7 lat pomagamy
+          ambitnym programistom rozwijać się szybciej — przez podcast, filmy, newsletter i autorskie
+          szkolenia. Dziś w centrum uwagi stawiamy generatywne AI i jego praktyczne zastosowanie w pracy inżyniera.
+        </p>
+      </div>
+
+      <dl class="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {
+          stats.map((s) => (
+            <div class="card px-4 py-6 text-center">
+              <dt class="sr-only">{s.label}</dt>
+              <dd class="text-3xl font-bold text-white sm:text-4xl">{s.value}</dd>
+              <p class="mt-1 text-xs leading-snug text-slate-400">{s.label}</p>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="container-x py-16 sm:py-20">
+    <SectionHeading eyebrow="Nasze podejście" title="W co wierzymy" />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        values.map((v) => (
+          <div class="card p-7">
+            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-fuchsia-500 text-white">
+              <Icon name="spark" className="h-6 w-6" />
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-white">{v.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">{v.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Hosts -->
+  <section class="container-x py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="Prowadzący"
+      title="Poznaj twórców"
+      description="Dwóch inżynierów z wieloletnim doświadczeniem w globalnych firmach produktowych."
+    />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        hosts.map((host) => (
+          <article class="card card-hover flex flex-col gap-5 p-7 sm:flex-row">
+            <div class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-fuchsia-500 text-2xl font-black text-white shadow-lg">
+              {host.initials}
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">{host.name}</h3>
+              <p class="text-sm font-medium text-brand-200">{host.role}</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400">{host.bio}</p>
+              <a
+                href={host.twitter}
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-300 hover:text-white"
+              >
+                <Icon name="twitter" className="h-4 w-4" />
+                Obserwuj na X
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="container-x py-8">
+    <div class="card px-6 py-10 text-center">
+      <p class="text-xs font-medium uppercase tracking-widest text-slate-500">
+        Współpracowaliśmy z zespołami m.in. z firm
+      </p>
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-lg font-bold text-slate-300">
+        {clients.map((c) => <span>{c}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Social -->
+  <section class="container-x py-16 text-center">
+    <h2 class="text-2xl font-bold sm:text-3xl">Bądźmy w kontakcie</h2>
+    <p class="mx-auto mt-3 max-w-xl text-slate-400">
+      Znajdziesz nas na wszystkich najważniejszych platformach.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      {
+        socials.map((s) => (
+          <a
+            href={s.href}
+            target={s.href.startsWith('mailto') ? undefined : '_blank'}
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-medium text-slate-200 transition-colors hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white"
+          >
+            <Icon name={s.icon} className="h-5 w-5" />
+            {s.label}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <NewsletterCTA />
+</Layout>

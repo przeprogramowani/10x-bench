@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #090b0f;
+  --color-paper: #f5f2ea;
+  --color-lime: #c8ff4d;
+  --color-violet: #8b5cf6;
+  --color-coral: #ff6b5f;
+}
+
+:root {
+  color-scheme: dark;
+  --header-height: 76px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #090b0f;
+  color: #f5f2ea;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: #c8ff4d; color: #090b0f; }
+
+.font-display { font-family: var(--font-display); }
+
+.grid-noise {
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.section-shell { width: min(calc(100% - 2rem), 1180px); margin-inline: auto; }
+
+.focus-ring:focus-visible {
+  outline: 2px solid #c8ff4d;
+  outline-offset: 4px;
+}
+
+.card-lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.card-lift:hover { transform: translateY(-5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon';
+import VideoGrid from '../components/VideoGrid.tsx';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import { site } from '../data/site';
+import { youtubeChannelUrl } from '../data/videos';
+---
+
+<Layout
+  title="YouTube"
+  description="Kanał YouTube Przeprogramowani — analizy narzędzi AI, relacje z konferencji i praktyczne demo dla programistów."
+>
+  <section class="relative overflow-hidden pt-28 pb-10 sm:pt-36">
+    <div class="glow pointer-events-none absolute inset-x-0 top-0 h-[460px]"></div>
+    <div class="container-x relative">
+      <div class="max-w-3xl">
+        <span class="eyebrow">
+          <Icon name="youtube" className="h-4 w-4" />
+          YouTube
+        </span>
+        <h1 class="mt-5 text-4xl font-bold sm:text-5xl">Najnowsze filmy</h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Praktyczne materiały o programowaniu z AI — analizy modeli i agentów, relacje z konferencji
+          oraz demo prosto z naszego warsztatu. Kliknij dowolny film, aby obejrzeć go bez wychodzenia ze strony.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={site.youtubeSubscribeUrl} target="_blank" rel="noopener" class="btn-primary">
+            <Icon name="youtube" className="h-5 w-5" />
+            Subskrybuj kanał
+          </a>
+          <a href={youtubeChannelUrl} target="_blank" rel="noopener" class="btn-ghost">
+            Przejdź na kanał
+            <Icon name="arrow" className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-12 sm:py-16">
+    <VideoGrid client:load />
+  </section>
+
+  <NewsletterCTA />
+</Layout>

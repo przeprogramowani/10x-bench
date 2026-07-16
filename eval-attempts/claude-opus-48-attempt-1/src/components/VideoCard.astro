@@ -1,0 +1,55 @@
+---
+import type { Video } from '../data/youtube';
+import { videoUrl, thumbnailUrl } from '../data/youtube';
+import Icon from './Icon.astro';
+
+interface Props {
+  video: Video;
+  featured?: boolean;
+}
+const { video, featured = false } = Astro.props;
+
+const formatted = new Date(video.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class:list={['card card-hover group overflow-hidden', featured && 'sm:col-span-2 lg:col-span-2']}>
+  <a href={videoUrl(video.id)} target="_blank" rel="noopener" class="block" aria-label={video.title}>
+    <div class="relative aspect-video overflow-hidden bg-ink-700">
+      <img
+        src={thumbnailUrl(video.id)}
+        alt={`Miniatura filmu: ${video.title}`}
+        loading="lazy"
+        width="480"
+        height="360"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      <div
+        class="absolute inset-0 flex items-center justify-center bg-ink-900/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      >
+        <div
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
+        >
+          <Icon name="play" class="ml-0.5 h-6 w-6" />
+        </div>
+      </div>
+    </div>
+    <div class="p-5">
+      <div class="flex items-center gap-1.5 text-xs text-slate-500">
+        <Icon name="calendar" class="h-3.5 w-3.5" />
+        {formatted}
+      </div>
+      <h3
+        class:list={[
+          'mt-2 font-semibold text-white transition-colors group-hover:text-brand-300',
+          featured ? 'text-lg' : 'line-clamp-2 text-base',
+        ]}
+      >
+        {video.title}
+      </h3>
+    </div>
+  </a>
+</article>

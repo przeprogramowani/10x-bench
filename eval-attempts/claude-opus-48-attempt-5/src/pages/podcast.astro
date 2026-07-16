@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PodcastShow from '../components/PodcastShow.astro';
+import Newsletter from '../components/Newsletter.tsx';
+import { shows } from '../data/podcasts';
+
+const platforms = [
+  { name: 'Spotify', href: shows[0].links.spotify },
+  { name: 'Apple Podcasts', href: shows[1].links.apple },
+];
+---
+
+<Layout
+  title="Podcast"
+  description="Podcasty Przeprogramowani: Opanuj.AI — najpopularniejszy techniczny podcast o LLM-ach w Polsce — oraz Przeprogramowani ft. Gość z rozmowami z ekspertami."
+  path="/podcast"
+>
+  <PageHeader
+    eyebrow="Podcast"
+    title="Dwa podcasty, jedno miejsce"
+    subtitle="Konkretne podsumowania świata AI w Opanuj.AI oraz rozmowy z ekspertami branży w Przeprogramowani ft. Gość. Słuchaj tam, gdzie chcesz."
+  />
+
+  <section class="border-b border-white/5 py-6">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span class="text-sm text-slate-500">Dostępne na:</span>
+        {platforms.map((p) => (
+          <a href={p.href} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-slate-200 transition-colors hover:border-brand-400/40 hover:text-white">
+            {p.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="container-x">
+      <div class="grid gap-6 lg:grid-cols-2">
+        {shows.map((show) => <PodcastShow show={show} limit={6} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-16">
+    <div class="container-x" data-reveal>
+      <Newsletter client:visible />
+    </div>
+  </section>
+</Layout>

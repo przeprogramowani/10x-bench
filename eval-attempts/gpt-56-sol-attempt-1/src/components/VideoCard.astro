@@ -1,0 +1,19 @@
+---
+import type { Video } from '../data/content';
+const { video, featured = false } = Astro.props as { video: Video; featured?: boolean };
+---
+
+<a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer" class:list={["group card-hover overflow-hidden rounded-2xl border border-white/[.09] bg-panel", featured && "md:grid md:grid-cols-[1.4fr_.6fr]"]}>
+  <div class="relative aspect-video overflow-hidden">
+    <img src={`/images/youtube-${video.id}.jpg`} alt="" width="1280" height="720" loading="lazy" class="size-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+    <span class="absolute bottom-3 right-3 rounded-md bg-black/80 px-2 py-1 text-[11px] font-bold">{video.duration}</span>
+    <span class="absolute inset-0 grid place-items-center bg-black/10 opacity-0 transition group-hover:opacity-100">
+      <span class="grid size-14 place-items-center rounded-full bg-electric text-lg text-ink shadow-xl">▶</span>
+    </span>
+  </div>
+  <div class:list={["p-5", featured && "flex flex-col justify-center md:p-8"]}>
+    <p class="text-[11px] font-extrabold uppercase tracking-[.14em] text-coral">{video.category}</p>
+    <h3 class:list={["mt-2 font-display font-bold leading-tight tracking-[-.035em]", featured ? "text-2xl lg:text-3xl" : "text-lg"]}>{video.title}</h3>
+    <p class="mt-4 text-sm font-bold text-white/45 transition group-hover:text-electric">Oglądaj na YouTube ↗</p>
+  </div>
+</a>

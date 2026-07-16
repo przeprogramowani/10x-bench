@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import CourseCard from '../components/CourseCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { videos, podcastEpisodes, courses } from '../data/content';
+---
+
+<BaseLayout title="Przeprogramowani — Szersze spojrzenie na programowanie" description="Technologia, AI i rozwój dla ambitnych programistów. Kursy, podcasty, YouTube i program 10xDevs.">
+  <section class="noise relative overflow-hidden border-b border-white/[.06]">
+    <div class="absolute left-[48%] top-16 h-[28rem] w-[28rem] rounded-full bg-violet/15 blur-[110px]"></div>
+    <div class="container-shell grid min-h-[calc(100svh-4.5rem)] items-center gap-14 py-16 lg:grid-cols-[1.12fr_.88fr] lg:py-24">
+      <div class="relative z-10 reveal">
+        <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="mb-7 inline-flex items-center gap-3 rounded-full border border-electric/25 bg-electric/[.07] py-1.5 pl-1.5 pr-4 text-xs font-bold text-white/75 transition hover:border-electric/50">
+          <span class="rounded-full bg-electric px-3 py-1.5 font-extrabold text-ink">NOWOŚĆ</span>
+          10xDevs 3.0 • Programuj z AI <span class="text-electric">↗</span>
+        </a>
+        <h1 class="display-title max-w-4xl">Programuj szerzej.<br /><span class="text-gradient">Buduj mądrzej.</span></h1>
+        <p class="mt-7 max-w-2xl text-base leading-7 text-white/55 sm:text-lg sm:leading-8">Pomagamy programistom łączyć technologię, AI, biznes i rozwój. Praktyczna wiedza, która zmienia sposób, w jaki myślisz i tworzysz oprogramowanie.</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="#kursy" class="inline-flex h-14 items-center justify-center rounded-full bg-electric px-7 text-sm font-extrabold text-ink transition hover:scale-[1.02] hover:bg-white">Zobacz programy <span class="ml-2">↓</span></a>
+          <a href="/o-nas" class="inline-flex h-14 items-center justify-center rounded-full border border-white/15 bg-white/[.03] px-7 text-sm font-bold text-white transition hover:bg-white/10">Poznaj nas <span class="ml-2">→</span></a>
+        </div>
+        <div class="mt-12 flex flex-wrap gap-x-9 gap-y-5 border-t border-white/[.08] pt-7">
+          <div><strong class="font-display text-2xl tracking-tight">7 lat</strong><p class="mt-1 text-xs text-white/35">edukacji technologicznej</p></div>
+          <div><strong class="font-display text-2xl tracking-tight">400+</strong><p class="mt-1 text-xs text-white/35">absolwentów programów</p></div>
+          <div><strong class="font-display text-2xl tracking-tight">3 × 2 × 1</strong><p class="mt-1 text-xs text-white/35">inspiracji co piątek</p></div>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[32rem] lg:mx-0 lg:ml-auto">
+        <div class="absolute inset-6 rotate-6 rounded-[2.5rem] border border-violet/20 bg-violet/10"></div>
+        <div class="glass noise relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
+          <div class="flex items-center justify-between">
+            <div class="flex gap-1.5"><span class="size-2 rounded-full bg-coral"></span><span class="size-2 rounded-full bg-electric"></span><span class="size-2 rounded-full bg-violet"></span></div>
+            <span class="font-mono text-[10px] text-white/30">10xdevs.ai / cohort_03</span>
+          </div>
+          <div class="mt-16">
+            <p class="font-mono text-xs text-electric">&gt; NOWE OBLICZE PROGRAMOWANIA_</p>
+            <h2 class="mt-4 font-display text-4xl font-bold leading-[.95] tracking-[-.06em] sm:text-5xl">10x<br /><span class="text-violet">Devs</span> 3.0</h2>
+            <p class="mt-5 max-w-sm text-sm leading-6 text-white/50">Świadomie stosuj generatywne AI w całym cyklu wytwarzania oprogramowania — od pomysłu do produkcji.</p>
+          </div>
+          <div class="mt-12 space-y-2 font-mono text-[11px]">
+            <div class="flex justify-between rounded-lg border border-white/[.07] bg-white/[.03] px-3 py-2.5"><span class="text-white/35">01</span><span class="text-white/65">spec-driven development</span><span class="text-electric">✓</span></div>
+            <div class="flex justify-between rounded-lg border border-white/[.07] bg-white/[.03] px-3 py-2.5"><span class="text-white/35">02</span><span class="text-white/65">context engineering</span><span class="text-electric">✓</span></div>
+            <div class="flex justify-between rounded-lg border border-white/[.07] bg-white/[.03] px-3 py-2.5"><span class="text-white/35">03</span><span class="text-white/65">AI-assisted delivery</span><span class="animate-pulse text-violet">●</span></div>
+          </div>
+          <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="mt-5 flex items-center justify-between rounded-xl bg-white p-4 text-sm font-extrabold text-ink transition hover:bg-electric"><span>Wejdź do programu</span><span>↗</span></a>
+        </div>
+        <div class="absolute -bottom-5 -left-5 hidden rotate-[-5deg] rounded-xl border border-white/10 bg-panel-soft px-4 py-3 shadow-xl sm:block">
+          <p class="text-[10px] font-bold uppercase tracking-wider text-white/35">Najbliższa edycja</p><p class="mt-1 font-display text-sm font-bold text-electric">Start 14 września →</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kursy" class="section-pad container-shell scroll-mt-20">
+    <div class="grid gap-8 lg:grid-cols-[.7fr_1.3fr] lg:items-end">
+      <div>
+        <span class="eyebrow">Programy rozwojowe</span>
+        <h2 class="section-title mt-5">Wiedza, która pracuje <span class="text-white/30">razem z Tobą.</span></h2>
+      </div>
+      <p class="max-w-xl text-sm leading-7 text-white/50 lg:ml-auto sm:text-base">Nie uczymy kolejnego frameworka na pamięć. Pokazujemy sprawdzone sposoby myślenia, budowania jakości i używania AI tam, gdzie daje realną przewagę.</p>
+    </div>
+    <div class="mt-12 grid auto-rows-fr gap-5 md:grid-cols-2">
+      {courses.map(course => <CourseCard course={course} />)}
+      <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="group noise relative overflow-hidden rounded-[1.75rem] border border-coral/25 bg-[linear-gradient(125deg,rgba(255,107,129,.18),rgba(131,120,255,.08),rgba(16,19,29,.8))] p-7 md:col-span-2 sm:p-10">
+        <div class="grid items-center gap-10 md:grid-cols-[1fr_.8fr]">
+          <div>
+            <div class="flex items-center gap-3"><span class="text-[11px] font-extrabold uppercase tracking-[.15em] text-coral">Programowanie × AI</span><span class="rounded-full bg-coral px-2.5 py-1 text-[9px] font-black text-ink">3.0</span></div>
+            <h3 class="mt-7 font-display text-4xl font-bold tracking-[-.05em] sm:text-5xl">10xDevs</h3>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-white/55 sm:text-base">Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania. Od wymagań, przez kod, aż po jakość i wdrożenie.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+            {['Planowanie', 'Kodowanie', 'Testowanie', 'Wdrażanie'].map((item, i) => <div class="rounded-xl border border-white/[.08] bg-black/20 p-4"><span class="text-white/25">0{i+1}</span><p class="mt-5 font-sans font-bold text-white/70">{item}</p></div>)}
+          </div>
+        </div>
+        <span class="absolute bottom-6 right-6 grid size-11 place-items-center rounded-full bg-coral text-lg text-ink transition group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="border-y border-white/[.06] bg-white/[.015]">
+    <div class="section-pad container-shell">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div><span class="eyebrow">Oglądaj i słuchaj</span><h2 class="section-title mt-5">Najnowsze <span class="text-white/30">materiały.</span></h2></div>
+        <a href="/youtube" class="text-sm font-bold text-white/50 hover:text-electric">Wszystkie filmy →</a>
+      </div>
+      <div class="mt-12 grid gap-5 lg:grid-cols-2">
+        <VideoCard video={videos[0]} />
+        <VideoCard video={videos[1]} />
+      </div>
+      <div class="mt-5 space-y-3">
+        {podcastEpisodes.slice(0, 3).map((episode, index) => <PodcastCard episode={episode} index={index} />)}
+      </div>
+      <a href="/podcast" class="mt-7 inline-flex items-center gap-2 text-sm font-bold text-electric hover:underline">Przejdź do wszystkich podcastów →</a>
+    </div>
+  </section>
+
+  <section class="section-pad container-shell">
+    <div class="grid gap-14 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+      <div class="relative mx-auto max-w-[30rem]">
+        <div class="absolute -inset-4 rotate-[-3deg] rounded-[2rem] border border-electric/15"></div>
+        <div class="relative grid grid-cols-2 gap-3">
+          <div class="overflow-hidden rounded-[1.5rem] bg-panel pt-6"><img src="/images/przemek.webp" alt="Przemek Smyrdek" width="400" height="400" loading="lazy" class="w-full object-contain" /></div>
+          <div class="mt-12 overflow-hidden rounded-[1.5rem] bg-panel pt-6"><img src="/images/marcin.webp" alt="Marcin Czarkowski" width="400" height="400" loading="lazy" class="w-full object-contain" /></div>
+        </div>
+        <div class="glass absolute -bottom-5 left-8 rounded-xl px-4 py-3"><p class="text-xs font-bold"><span class="mr-2 text-electric">●</span>Przemek + Marcin</p></div>
+      </div>
+      <div>
+        <span class="eyebrow">Cześć, tu Przeprogramowani</span>
+        <h2 class="section-title mt-5">Łączymy kod z tym, <span class="text-white/30">co naprawdę ważne.</span></h2>
+        <p class="mt-6 max-w-xl text-base leading-7 text-white/55">Programowanie spotyka się tu z rozwojem osobistym. Patrzymy szerzej — na architekturę, biznes, ludzi i na siebie. Tworzymy treści, kursy i narzędzia, które pomagają rosnąć na wielu płaszczyznach.</p>
+        <a href="/o-nas" class="mt-8 inline-flex h-12 items-center rounded-full border border-white/15 px-6 text-sm font-bold transition hover:border-electric hover:text-electric">Poznaj naszą historię →</a>
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

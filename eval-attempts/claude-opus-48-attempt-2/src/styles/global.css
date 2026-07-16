@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden; /* guard against decorative glows overflowing the viewport */
+  }
+
+  ::selection {
+    @apply bg-brand-500/40 text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-white font-semibold tracking-tight;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+      transition-all duration-200 focus-visible:outline-none focus-visible:ring-2
+      focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-500 text-white shadow-lg shadow-brand-500/25 hover:bg-brand-400
+      hover:shadow-brand-400/30 hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/[0.03] text-white hover:border-white/30 hover:bg-white/[0.07];
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-300;
+  }
+
+  .link-underline {
+    @apply relative text-slate-300 hover:text-white;
+  }
+}
+
+/* Subtle animated grid/glow background used on hero sections. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}

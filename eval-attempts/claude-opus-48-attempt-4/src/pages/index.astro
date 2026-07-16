@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import YouTubeGallery from '../components/YouTubeGallery.tsx';
+import Newsletter from '../components/Newsletter.astro';
+import { courses, episodes, videos, values, clients } from '../data/site';
+
+const latestEpisodes = episodes.slice(0, 4);
+const latestVideos = videos.slice(0, 6);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <!-- Values -->
+  <section class="section">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Kim jesteśmy"
+        title="Najlepsi programiści myślą szeroko"
+        description="O architekturze, biznesie, ludziach i o sobie. Od 7 lat tworzymy edukację technologiczną, która wykracza poza sam kod."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          values.map((value) => (
+            <div class="card p-7">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/15 text-brand-300">
+                {value.icon === 'compass' && (
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="9" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.5 8.5l-2 5-5 2 2-5z" />
+                  </svg>
+                )}
+                {value.icon === 'sparkles' && (
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9zM18 15l.9 2.1 2.1.9-2.1.9L18 21l-.9-2.1-2.1-.9 2.1-.9z" />
+                  </svg>
+                )}
+                {value.icon === 'shield' && (
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="mt-5 text-lg font-semibold text-white">{value.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-14 flex flex-col items-center gap-6 border-t border-white/10 pt-10 sm:flex-row sm:justify-between">
+        <p class="text-sm text-slate-500">Zaufali nam między innymi:</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {clients.map((client) => (
+            <span class="text-lg font-semibold text-slate-400">{client}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="kursy" class="section scroll-mt-20 border-t border-white/10 bg-ink-900/50">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Kursy"
+        title="Rozwijaj się z naszymi programami"
+        description="Od AI-native software engineering, przez kompletny frontend, po zaawansowany TypeScript. Wybierz ścieżkę dla siebie."
+      />
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast -->
+  <section class="section">
+    <div class="container-page">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Najnowsze odcinki"
+          description="Rozmowy o programowaniu, biznesie i rozwoju — dla programistów na każdym etapie kariery."
+        />
+        <a href="/podcast" class="btn-secondary flex-shrink-0">Wszystkie odcinki</a>
+      </div>
+      <div class="mt-10 grid gap-4">
+        {latestEpisodes.map((episode, i) => <EpisodeCard episode={episode} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube -->
+  <section class="section border-t border-white/10 bg-ink-900/50">
+    <div class="container-page">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Ostatnie filmy"
+          description="Praktyczne materiały o agentach AI, technikach programowania i pracy nowoczesnego developera."
+        />
+        <a
+          href="/youtube"
+          class="btn-secondary flex-shrink-0"
+        >
+          Zobacz kanał
+        </a>
+      </div>
+      <div class="mt-10">
+        <YouTubeGallery client:visible videos={latestVideos} />
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

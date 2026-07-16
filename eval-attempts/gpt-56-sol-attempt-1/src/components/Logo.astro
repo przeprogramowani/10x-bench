@@ -1,0 +1,8 @@
+---
+const { light = false } = Astro.props;
+---
+
+<a href="/" class="inline-flex items-center gap-2.5" aria-label="Przeprogramowani — strona główna">
+  <span class:list={["grid size-9 place-items-center rounded-xl text-sm font-black tracking-[-.08em]", light ? "bg-electric text-ink" : "bg-white text-ink"]}>&lt;/&gt;</span>
+  <span class="font-display text-base font-bold tracking-[-.035em] sm:text-lg">Przeprogramowani</span>
+</a>

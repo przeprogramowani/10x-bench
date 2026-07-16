@@ -1,0 +1,29 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  class?: string;
+  align?: 'left' | 'center';
+}
+const { id, eyebrow, title, description, class: className = '', align = 'left' } = Astro.props;
+const centered = align === 'center';
+---
+
+<section id={id} class:list={['py-16 sm:py-24', className]}>
+  <div class="container-page">
+    {
+      (eyebrow || title || description) && (
+        <div class:list={['max-w-2xl', centered && 'mx-auto text-center']}>
+          {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+          {title && (
+            <h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+          )}
+          {description && <p class="mt-4 text-lg leading-relaxed text-slate-400">{description}</p>}
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</section>

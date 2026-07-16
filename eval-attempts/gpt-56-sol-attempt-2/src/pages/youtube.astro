@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { videos } from '../data/content';
+import { ArrowUpRight, Play, Video } from 'lucide-react';
+---
+<BaseLayout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o programowaniu, AI, frontendzie i karierze w IT.">
+  <PageHero eyebrow="YouTube" title="Wiedza, którą widać w praktyce." lead="Live coding, rozmowy, eksperymenty i relacje z najważniejszych wydarzeń technologicznych. Pokazujemy proces, nie tylko efekt." accent="coral" />
+
+  <section class="py-24 sm:py-32">
+    <div class="section-shell">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div><p class="eyebrow text-coral"><Video size={15} /> Najnowsze filmy</p><h2 class="mt-5 font-display text-4xl font-bold tracking-tight sm:text-5xl">Zobacz, co właśnie testujemy.</h2></div>
+        <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-extrabold text-coral">Przejdź do kanału <ArrowUpRight size={17} /></a>
+      </div>
+
+      <div class="mt-12 grid gap-x-5 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        {videos.map((video, index) => (
+          <a href={video.url} target="_blank" rel="noreferrer" class="focus-ring group block">
+            <div class="relative aspect-video overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+              <img src={video.image} alt={`Miniatura filmu: ${video.title}`} class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading={index < 3 ? 'eager' : 'lazy'} />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent"></div>
+              <span class="absolute bottom-4 left-4 grid size-12 place-items-center rounded-full bg-coral text-white shadow-xl transition group-hover:scale-110"><Play size={18} fill="currentColor" /></span>
+              <span class="absolute right-4 top-4 rounded-full bg-ink/75 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider backdrop-blur">{video.tag}</span>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-bold leading-snug transition-colors group-hover:text-coral">{video.title}</h3>
+            <span class="mt-3 inline-flex items-center gap-1 text-xs font-bold text-white/35">Oglądaj na YouTube <ArrowUpRight size={13} /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-coral py-16 text-ink">
+    <div class="section-shell flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between"><div><p class="eyebrow text-ink/55">Nowe materiały</p><h2 class="mt-3 max-w-2xl font-display text-3xl font-bold sm:text-4xl">Kod, AI i rozwój — w Twoim feedzie, bez szumu.</h2></div><a href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" target="_blank" rel="noreferrer" class="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-6 py-4 font-extrabold text-paper">Subskrybuj kanał <ArrowUpRight size={18} /></a></div>
+  </section>
+</BaseLayout>

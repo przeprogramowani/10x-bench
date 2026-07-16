@@ -1,0 +1,27 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  external?: boolean;
+  variant?: 'light' | 'dark' | 'outline';
+}
+
+const { href, label, external = false, variant = 'light' } = Astro.props;
+const variants = {
+  light: 'bg-paper text-ink hover:bg-lime',
+  dark: 'bg-ink text-paper hover:bg-paper hover:text-ink',
+  outline: 'border border-white/20 text-paper hover:border-lime hover:text-lime',
+};
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noreferrer' : undefined}
+  class:list={['group inline-flex items-center gap-3 rounded-full px-5 py-3 text-sm font-extrabold transition', variants[variant]]}
+>
+  {label}
+  <svg class="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">
+    <path d="M7 17 17 7M7 7h10v10" />
+  </svg>
+</a>

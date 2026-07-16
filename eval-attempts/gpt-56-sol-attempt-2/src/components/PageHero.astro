@@ -1,0 +1,14 @@
+---
+interface Props { eyebrow: string; title: string; lead: string; accent?: string; }
+const { eyebrow, title, lead, accent = 'lime' } = Astro.props;
+const accentClass = accent === 'violet' ? 'text-violet' : accent === 'coral' ? 'text-coral' : 'text-lime';
+---
+<section class="relative overflow-hidden border-b border-white/10 pb-16 pt-36 sm:pb-24 sm:pt-44">
+  <div class="grid-noise absolute inset-0"></div>
+  <div class="absolute right-[-10%] top-20 size-[420px] rounded-full bg-violet/15 blur-[120px]"></div>
+  <div class="section-shell relative">
+    <p class:list={["eyebrow", accentClass]}>{eyebrow}</p>
+    <h1 class="mt-6 max-w-4xl font-display text-5xl font-bold leading-[.98] tracking-[-.04em] sm:text-7xl lg:text-8xl">{title}</h1>
+    <p class="mt-7 max-w-2xl text-lg leading-8 text-white/60 sm:text-xl">{lead}</p>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import Icon from '../components/Icon.astro';
+import { episodes, podcastMeta, podcastLinks } from '../data/podcast';
+
+const platforms = [
+  { label: 'Spotify', href: podcastLinks.spotify, icon: 'spotify' },
+  { label: 'Apple Podcasts', href: podcastLinks.apple, icon: 'apple' },
+  { label: 'YouTube', href: podcastLinks.youtube, icon: 'youtube' },
+];
+---
+
+<Layout
+  title="Podcast"
+  description={podcastMeta.description}
+>
+  <!-- Nagłówek -->
+  <section class="relative overflow-hidden border-b border-white/5">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -right-32 -top-32 h-[26rem] w-[26rem] rounded-full bg-brand-600/15 blur-[120px]"></div>
+    </div>
+    <div class="container-page py-16 sm:py-20">
+      <div class="grid items-center gap-10 lg:grid-cols-[1.5fr,1fr]">
+        <div class="animate-fade-up">
+          <span class="eyebrow">
+            <Icon name="headphones" class="h-3.5 w-3.5" />
+            Podcast
+          </span>
+          <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            {podcastMeta.title}
+          </h1>
+          <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-300">
+            {podcastMeta.description}
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            {
+              platforms.map((p) => (
+                <a
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-secondary"
+                >
+                  <Icon name={p.icon} class="h-4 w-4" />
+                  {p.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+          {
+            [
+              { value: podcastMeta.episodes + '+', label: 'Odcinków' },
+              { value: podcastMeta.rating, label: 'Ocena' },
+              { value: podcastMeta.years, label: 'Na antenie' },
+            ].map((s) => (
+              <div class="card px-3 py-5 text-center">
+                <div class="text-2xl font-bold text-white">{s.value}</div>
+                <div class="mt-1 text-xs text-slate-400">{s.label}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista odcinków -->
+  <Section
+    eyebrow="Najnowsze"
+    title="Ostatnie odcinki"
+    description="Wybrane rozmowy o architekturze, karierze, AI i rozwoju osobistym programisty."
+  >
+    <div class="mt-10 space-y-4">
+      {episodes.map((ep, i) => <EpisodeCard episode={ep} index={i} />)}
+    </div>
+
+    <div class="mt-10 rounded-2xl border border-white/10 bg-ink-800/40 p-6 text-center sm:p-8">
+      <p class="text-slate-300">
+        Chcesz nadrobić wszystkie {podcastMeta.episodes}+ odcinków?
+      </p>
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        {
+          platforms.map((p) => (
+            <a href={p.href} target="_blank" rel="noopener" class="btn-secondary">
+              <Icon name={p.icon} class="h-4 w-4" />
+              {p.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+</Layout>

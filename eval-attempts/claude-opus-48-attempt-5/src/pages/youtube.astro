@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Newsletter from '../components/Newsletter.tsx';
+import { videos, channelUrl, watchUrl } from '../data/videos';
+
+const featured = videos[0];
+const rest = videos.slice(1);
+const featuredDate = new Date(featured.date).toLocaleDateString('pl-PL', {
+  day: 'numeric', month: 'long', year: 'numeric',
+});
+---
+
+<Layout
+  title="YouTube"
+  description="Najnowsze filmy z kanału YouTube Przeprogramowani — o AI, programowaniu i nowościach ze świata IT. Nowe materiały co tydzień."
+  path="/youtube"
+>
+  <PageHeader
+    eyebrow="YouTube"
+    title="Najnowsze filmy"
+    subtitle="Cotygodniowa dawka wiedzy o AI, programowaniu i nowościach ze świata IT — prosto z naszego kanału."
+  />
+
+  <!-- Featured video with real embed -->
+  <section class="py-16">
+    <div class="container-x">
+      <div class="card overflow-hidden lg:grid lg:grid-cols-[1.5fr_1fr]" data-reveal>
+        <div class="relative aspect-video w-full bg-ink-900">
+          <iframe
+            class="absolute inset-0 h-full w-full"
+            src={`https://www.youtube-nocookie.com/embed/${featured.id}`}
+            title={featured.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="flex flex-col justify-center p-7 sm:p-9">
+          <span class="text-xs font-semibold uppercase tracking-wider text-red-400">Najnowszy odcinek</span>
+          <h2 class="mt-3 text-2xl font-bold leading-snug text-white">{featured.title}</h2>
+          <time datetime={featured.date} class="mt-3 text-sm text-slate-400">{featuredDate}</time>
+          <a href={watchUrl(featured.id)} target="_blank" rel="noopener noreferrer" class="btn-ghost mt-6 self-start">
+            Oglądaj na YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid of the rest -->
+  <section class="pb-8">
+    <div class="container-x">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {rest.map((video, i) => <VideoCard video={video} index={i} />)}
+      </div>
+      <div class="mt-12 text-center" data-reveal>
+        <a href={channelUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z" /></svg>
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container-x" data-reveal>
+      <Newsletter client:visible />
+    </div>
+  </section>
+</Layout>

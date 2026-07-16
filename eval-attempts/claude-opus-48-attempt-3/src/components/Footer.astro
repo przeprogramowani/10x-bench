@@ -1,0 +1,74 @@
+---
+import Icon from './Icon';
+import { site, socials, nav, courses } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="relative mt-24 border-t border-white/10 bg-ink-800/60">
+  <div class="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <a href="/" class="flex items-center gap-2.5">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-fuchsia-500 text-sm font-black text-white">
+          P
+        </span>
+        <span class="text-[15px] font-bold text-white">Przeprogramowani</span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+        {site.tagline}. {site.mission}.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              target={s.href.startsWith('mailto') ? undefined : '_blank'}
+              rel="noopener"
+              aria-label={s.label}
+              class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-slate-300 transition-colors hover:border-brand-400/50 hover:bg-brand-500/10 hover:text-white"
+            >
+              <Icon name={s.icon} className="h-5 w-5" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white">Nawigacja</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="link-underline">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li><a href={site.newsletterUrl} target="_blank" rel="noopener" class="link-underline">Newsletter</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold text-white">Szkolenia</h3>
+      <ul class="mt-4 space-y-2.5 text-sm">
+        {
+          courses.map((c) => (
+            <li>
+              <a href={c.url} target="_blank" rel="noopener" class="link-underline">
+                {c.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
+      <p>© {year} Przeprogramowani. Wszystkie prawa zastrzeżone.</p>
+      <a href={`mailto:${site.email}`} class="hover:text-slate-300">{site.email}</a>
+    </div>
+  </div>
+</footer>

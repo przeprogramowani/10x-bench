@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+---
+
+<BaseLayout title="404 — Przeprogramowani">
+  <section class="flex min-h-[78vh] items-center pt-[72px]">
+    <div class="page-shell py-24 text-center">
+      <p class="eyebrow">Błąd 404</p>
+      <h1 class="display mt-7 text-[clamp(6rem,20vw,14rem)] text-lime">404</h1>
+      <p class="mx-auto mt-6 max-w-lg text-lg text-paper/55">Ten fragment kodu nie prowadzi do żadnej strony. Wróćmy do czegoś, co działa.</p>
+      <div class="mt-9"><ArrowLink href="/" label="Wróć na stronę główną" /></div>
+    </div>
+  </section>
+</BaseLayout>

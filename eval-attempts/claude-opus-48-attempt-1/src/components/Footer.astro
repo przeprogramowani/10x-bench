@@ -1,0 +1,101 @@
+---
+import { site, nav, socials } from '../data/site';
+import { courses } from '../data/courses';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-ink-800/40">
+  <div class="container-page py-14">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:pr-6">
+        <a href="/" class="flex items-center gap-2.5 text-white">
+          <Logo class="h-8 w-8" />
+          <span class="text-base font-bold tracking-tight">Przeprogramowani</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+          {site.tagline}. Miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {
+            socials.map((s) => (
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener"
+                aria-label={s.label}
+                class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition hover:border-brand-400/40 hover:text-white"
+              >
+                <Icon name={s.icon} class="h-4 w-4" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Nawigacja</h3>
+        <ul class="mt-4 space-y-3 text-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} class="text-slate-400 transition hover:text-white">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Kursy</h3>
+        <ul class="mt-4 space-y-3 text-sm">
+          {
+            courses.map((c) => (
+              <li>
+                <a href={c.url} target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">
+                  {c.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Kontakt</h3>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li>
+            <a
+              href={`mailto:${site.email}`}
+              class="inline-flex items-center gap-2 text-slate-400 transition hover:text-white"
+            >
+              <Icon name="mail" class="h-4 w-4" />
+              {site.email}
+            </a>
+          </li>
+          <li class="text-slate-400">
+            {site.stats.years} w edukacji technicznej
+          </li>
+          <li class="text-slate-400">
+            Społeczność {site.stats.community} programistów
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-sm text-slate-500 sm:flex-row"
+    >
+      <p>© {year} {site.name}. Wszelkie prawa zastrzeżone.</p>
+      <p>
+        Zbudowane z <span class="text-slate-400">Astro</span>,
+        <span class="text-slate-400">React</span> i
+        <span class="text-slate-400">Tailwind</span>.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ArrowLeft } from 'lucide-react';
+---
+<BaseLayout title="404 — Przeprogramowani" description="Nie znaleziono strony.">
+  <section class="grid min-h-[80dvh] place-items-center px-4 pb-24 pt-36 text-center"><div><p class="font-mono text-sm font-bold text-lime">ERROR 404</p><h1 class="mt-5 font-display text-6xl font-bold tracking-tight sm:text-8xl">Ta ścieżka<br />nie kompiluje się.</h1><p class="mx-auto mt-6 max-w-md text-white/50">Strona mogła zmienić adres albo nigdy nie przeszła code review.</p><a href="/" class="mt-8 inline-flex items-center gap-2 rounded-full bg-lime px-6 py-4 font-extrabold text-ink"><ArrowLeft size={18} /> Wróć na stronę główną</a></div></section>
+</BaseLayout>

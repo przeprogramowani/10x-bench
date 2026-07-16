@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+import { podcasts } from '../data/content';
+---
+
+<BaseLayout title="Podcast — Przeprogramowani" description="Najnowsze odcinki Opanuj.AI Podcast i Przeprogramowani ft. Gość.">
+  <PageHero eyebrow="Podcast" title="Wiedza" accent="do ucha." description="Comiesięczne podsumowania najważniejszych wydarzeń ze świata AI oraz rozmowy dla głodnych wiedzy o technologii, karierze i biznesie." />
+
+  <section class="py-24 sm:py-32">
+    <div class="page-shell grid gap-12 lg:grid-cols-[.64fr_1.36fr]">
+      <div>
+        <p class="eyebrow">Najnowsze odcinki</p>
+        <h2 class="mt-6 text-4xl font-black tracking-[-.05em] sm:text-5xl">Naciśnij play. <span class="text-paper/25">My zajmiemy się resztą.</span></h2>
+      </div>
+      <div>
+        {podcasts.map((episode, index) => <PodcastCard episode={episode} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20 text-ink sm:py-28">
+    <div class="page-shell grid gap-6 lg:grid-cols-2">
+      <article class="rounded-3xl bg-ink p-7 text-paper sm:p-10">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-lime px-3 py-1.5 text-[10px] font-black uppercase tracking-[.12em] text-ink">4000+ słuchaczy</span>
+          <span class="text-xs text-paper/30">01</span>
+        </div>
+        <h2 class="mt-20 text-4xl font-black tracking-[-.05em] sm:text-5xl">Opanuj.AI Podcast</h2>
+        <p class="mt-5 max-w-lg leading-7 text-paper/55">Najważniejsze premiery modeli, narzędzia i praktyczne konsekwencje zmian w AI — bez marketingowego szumu.</p>
+      </article>
+      <article class="rounded-3xl bg-[#d9d4c8] p-7 sm:p-10">
+        <div class="flex items-center justify-between">
+          <span class="rounded-full bg-cyan px-3 py-1.5 text-[10px] font-black uppercase tracking-[.12em]">3800+ słuchaczy</span>
+          <span class="text-xs text-ink/30">02</span>
+        </div>
+        <h2 class="mt-20 text-4xl font-black tracking-[-.05em] sm:text-5xl">Przeprogramowani ft. Gość</h2>
+        <p class="mt-5 max-w-lg leading-7 text-ink/60">Szczere rozmowy z ekspertami i praktykami o decyzjach, które kształtują karierę nowoczesnego programisty.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="page-shell flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
+      <div>
+        <p class="eyebrow">Słuchaj tak, jak lubisz</p>
+        <h2 class="mt-5 text-4xl font-black tracking-[-.05em]">Jesteśmy na Twojej platformie.</h2>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <ArrowLink href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" label="Spotify" external variant="outline" />
+        <ArrowLink href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1465292644" label="Apple Podcasts" external variant="outline" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

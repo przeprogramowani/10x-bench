@@ -125,7 +125,7 @@ This benchmark serves as a practical evaluation tool for:
 
 | Repository | Purpose |
 |------------|---------|
-| **10x-bench** (this repo) | Model implementations, results dashboard, data processing, and the `/10x-run-eval` skill |
+| **10x-bench** (this repo) | Model implementations, results dashboard, data processing, and the `/10x-score-attempts` skill |
 | [**10x-bench-eval**](../10x-bench-eval/) | Evaluation criteria, scoring methodology, benchmark prompt, reference content |
 
 ---

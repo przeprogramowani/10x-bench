@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+
+const team = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'https://przeprogramowani.pl/img/profiles/przemek.webp',
+    description: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer oraz kontrybutor open source.',
+    linkedin: 'https://www.linkedin.com/in/psmyrdek/',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'https://przeprogramowani.pl/img/profiles/marcin.webp',
+    description: 'Lead techniczny Platformy Frontendowej w SmartRecruiters. Specjalista TypeScript, React i Node.js. Twórca podcastu Opanuj.AI.',
+    linkedin: 'https://www.linkedin.com/in/mkczarkowski/',
+  },
+];
+---
+
+<BaseLayout title="O nas — Przeprogramowani" description="Poznaj Przeprogramowanych — łączymy programowanie, biznes i rozwój osobisty.">
+  <PageHero eyebrow="O nas" title="Patrzymy" accent="szerzej." description="Łączymy świat programowania, biznesu i rozwoju. Tworzymy treści, kursy i narzędzia, które pomagają programistom rosnąć na wielu płaszczyznach." />
+
+  <section class="py-24 sm:py-32">
+    <div class="page-shell grid gap-14 lg:grid-cols-[.7fr_1.3fr]">
+      <div>
+        <p class="eyebrow">Nasze podejście</p>
+        <p class="mt-5 text-sm font-semibold uppercase tracking-[.12em] text-paper/30">Technologia / Biznes / Ludzie</p>
+      </div>
+      <div>
+        <h2 class="text-3xl font-black leading-tight tracking-[-.045em] sm:text-5xl">Najlepsi programiści widzą nie tylko kod — rozumieją architekturę, biznes, ludzi i samych siebie.</h2>
+        <p class="mt-8 max-w-3xl text-lg leading-8 text-paper/55">Od technicznych deep-dive’ów po rozmowy o karierze i rozwoju. Dajemy kontekst, który pomaga podejmować lepsze decyzje w projektach, zespołach i własnej ścieżce zawodowej.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-24 text-ink sm:py-32">
+    <div class="page-shell">
+      <p class="text-xs font-black uppercase tracking-[.16em]">Zespół</p>
+      <div class="mt-10 grid gap-5 lg:grid-cols-2">
+        {team.map((person, index) => (
+          <article class="overflow-hidden rounded-3xl bg-[#dedbd2]">
+            <div class="relative aspect-[4/3] overflow-hidden bg-[#d2cfc5]">
+              <span class="absolute left-6 top-6 z-10 text-xs font-black">0{index + 1}</span>
+              <div class="absolute inset-0 dot-grid opacity-25"></div>
+              <img src={person.image} alt={person.name} width="400" height="400" class="relative mx-auto h-full w-auto object-contain object-bottom grayscale transition duration-500 hover:grayscale-0" loading="lazy" />
+            </div>
+            <div class="p-7 sm:p-9">
+              <p class="text-[10px] font-black uppercase tracking-[.14em] text-ink/45">{person.role}</p>
+              <h2 class="mt-3 text-3xl font-black tracking-[-.045em]">{person.name}</h2>
+              <p class="mt-4 max-w-xl text-sm leading-7 text-ink/60">{person.description}</p>
+              <div class="mt-7"><ArrowLink href={person.linkedin} label="LinkedIn" external variant="dark" /></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 sm:py-32">
+    <div class="page-shell grid gap-10 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <p class="eyebrow">Od 2017 roku</p>
+        <h2 class="display mt-6 text-6xl sm:text-8xl">7+ lat edukacji technologicznej.</h2>
+      </div>
+      <div class="flex flex-col justify-end">
+        <p class="text-lg leading-8 text-paper/55">Szkolimy, publikujemy i budujemy społeczność ambitnych programistów. Współpracujemy z zespołami technologicznymi w całej Polsce.</p>
+        <a class="mt-8 w-fit text-sm font-black text-lime underline decoration-lime/30 underline-offset-8" href="mailto:kontakt@przeprogramowani.pl">Porozmawiajmy o współpracy →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

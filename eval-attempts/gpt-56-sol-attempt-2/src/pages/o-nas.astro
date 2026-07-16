@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { ArrowUpRight, Code2, Brain, Users, BriefcaseBusiness } from 'lucide-react';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder · Engineering & Product',
+    image: 'https://przeprogramowani.pl/img/profiles/przemek.webp',
+    bio: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer, prelegent i kontrybutor open source.',
+    href: 'https://www.linkedin.com/in/psmyrdek/',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder · Frontend & Education',
+    image: 'https://przeprogramowani.pl/img/profiles/marcin.webp',
+    bio: 'Lead techniczny Platformy Frontendowej w SmartRecruiters. Specjalista TypeScript, React i Node.js oraz twórca Opanuj.AI Podcast.',
+    href: 'https://www.linkedin.com/in/mkczarkowski/',
+  },
+];
+---
+<BaseLayout title="O nas — Przeprogramowani" description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego oraz misję Przeprogramowani.pl.">
+  <PageHero eyebrow="O nas" title="Programowanie to coś więcej niż kod." lead="Łączymy świat technologii, biznesu i rozwoju. Bo najlepsze rozwiązania zaczynają się od lepszych pytań — nie od kolejnej biblioteki." />
+
+  <section class="py-24 sm:py-32">
+    <div class="section-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
+      <div><p class="eyebrow text-lime">Nasza perspektywa</p><h2 class="mt-5 font-display text-4xl font-bold tracking-[-.04em] sm:text-5xl">Rozwijamy programistów, nie tylko umiejętności.</h2></div>
+      <div class="space-y-6 text-lg leading-8 text-white/60">
+        <p>Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i siebie.</p>
+        <p>Tworzymy kursy, podcasty i materiały, które pomagają przejść od kopiowania rozwiązań do samodzielnego podejmowania decyzji. Techniczny deep dive ma u nas taki sam sens jak rozmowa o komunikacji czy karierze.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-white/[.025] py-24 sm:py-32">
+    <div class="section-shell">
+      <p class="eyebrow text-violet">Twórcy</p>
+      <div class="mt-10 grid gap-5 lg:grid-cols-2">
+        {founders.map((founder, index) => (
+          <article class="group overflow-hidden rounded-[2rem] border border-white/10 bg-[#11141a]">
+            <div class="grid sm:grid-cols-[220px_1fr]">
+              <div class:list={["relative min-h-72 overflow-hidden", index === 0 ? "bg-lime" : "bg-violet"]}>
+                <img src={founder.image} alt={founder.name} class="absolute inset-x-0 bottom-0 mx-auto h-[94%] w-full object-contain object-bottom grayscale transition duration-500 group-hover:grayscale-0" loading="lazy" />
+              </div>
+              <div class="flex flex-col p-7">
+                <span class="font-mono text-xs font-bold uppercase tracking-wider text-white/35">{founder.role}</span>
+                <h3 class="mt-5 font-display text-3xl font-bold">{founder.name}</h3>
+                <p class="mt-4 text-sm leading-6 text-white/55">{founder.bio}</p>
+                <a href={founder.href} target="_blank" rel="noreferrer" class="mt-auto pt-7 inline-flex items-center gap-2 text-sm font-bold text-lime">LinkedIn <ArrowUpRight size={16} /></a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-24 text-ink sm:py-32">
+    <div class="section-shell">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          { icon: Code2, number: '1500+', label: 'przeszkolonych programistów' },
+          { icon: Brain, number: '7 lat', label: 'na rynku edukacji technologicznej' },
+          { icon: Users, number: '40k+', label: 'osób w społeczności kanałów' },
+          { icon: BriefcaseBusiness, number: '10+', label: 'lat doświadczenia każdego z twórców' },
+        ].map((stat) => <div class="rounded-3xl border border-ink/10 bg-white p-6"><stat.icon size={22} className="text-violet" /><p class="mt-8 font-display text-4xl font-bold tracking-tight">{stat.number}</p><p class="mt-2 text-sm leading-6 text-ink/55">{stat.label}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 text-center sm:py-32"><div class="section-shell"><p class="eyebrow text-lime">Współpraca</p><h2 class="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold tracking-tight sm:text-6xl">Zróbmy razem coś, co ma znaczenie.</h2><a href="mailto:kontakt@przeprogramowani.pl" class="mt-9 inline-flex items-center gap-2 rounded-full bg-lime px-6 py-4 font-extrabold text-ink">Napisz do nas <ArrowUpRight size={18} /></a></div></section>
+</BaseLayout>

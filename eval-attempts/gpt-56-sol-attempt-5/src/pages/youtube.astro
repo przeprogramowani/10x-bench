@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import VideoCard from '../components/VideoCard.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+import { videos } from '../data/content';
+---
+
+<BaseLayout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o AI, programowaniu i nowoczesnym software engineeringu.">
+  <PageHero eyebrow="YouTube" title="Zobacz, co" accent="nadchodzi." description="Testujemy narzędzia, tłumaczymy zmiany i pokazujemy praktyczne workflow. Materiały dla programistów, którzy chcą rozumieć więcej niż nagłówki." />
+
+  <section class="bg-paper py-24 text-ink sm:py-32">
+    <div class="page-shell">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-xs font-black uppercase tracking-[.16em]">Ostatnio na kanale</p>
+          <h2 class="display mt-5 text-6xl sm:text-8xl">Nowe filmy</h2>
+        </div>
+        <ArrowLink href="https://www.youtube.com/c/przeprogramowani/videos" label="Subskrybuj kanał" external variant="dark" />
+      </div>
+
+      <div class="mt-14 grid gap-x-6 gap-y-14 lg:grid-cols-2">
+        {videos.map((video, index) => <VideoCard video={video} featured={index === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden py-24 sm:py-32">
+    <div class="absolute inset-0 dot-grid opacity-20"></div>
+    <div class="page-shell relative text-center">
+      <p class="eyebrow">Nie przegap kolejnego materiału</p>
+      <h2 class="display mx-auto mt-6 max-w-5xl text-6xl sm:text-8xl">Programowanie zmienia się szybko. My trzymamy rękę na pulsie.</h2>
+      <div class="mt-10"><ArrowLink href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" label="Dołącz do kanału" external /></div>
+    </div>
+  </section>
+</BaseLayout>

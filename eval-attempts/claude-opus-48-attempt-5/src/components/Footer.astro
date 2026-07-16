@@ -1,0 +1,74 @@
+---
+import { site, nav } from '../data/site';
+import { courses } from '../data/courses';
+
+const year = 2026;
+
+const socialLinks = [
+  { name: 'YouTube', href: site.socials.youtube, path: 'M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z' },
+  { name: 'Spotify', href: site.socials.spotify, path: 'M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 1 1-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02Zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-2-8.1-2.55-11.9-1.4a.94.94 0 1 1-.54-1.8c4.35-1.3 9.75-.68 13.42 1.6.44.27.58.85.31 1.29Zm.13-3.4C15.36 8.36 8.9 8.14 5.2 9.26a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.38-1.04 15.87 1.63a1.12 1.12 0 1 1-1.15 1.93Z' },
+  { name: 'Instagram', href: site.socials.instagram, path: 'M12 2.16c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 3.68a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z' },
+  { name: 'Facebook', href: site.socials.facebook, path: 'M24 12a12 12 0 1 0-13.88 11.85v-8.38H7.08V12h3.04V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.92-1.95 1.87V12h3.32l-.53 3.47h-2.79v8.38A12 12 0 0 0 24 12Z' },
+];
+---
+
+<footer class="relative mt-24 border-t border-white/10 bg-ink-900/50">
+  <div class="container-x py-14">
+    <div class="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div>
+        <a href="/" class="flex items-center gap-2.5">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-lg font-bold text-white">P</span>
+          <span class="font-display text-lg font-semibold text-white">Przeprogramowani</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+          Szersze spojrzenie na programowanie. Kursy, podcasty i narzędzia dla ambitnych programistów — od {site.years} lat.
+        </p>
+        <div class="mt-5 flex items-center gap-3">
+          {socialLinks.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.name}
+              class="grid h-10 w-10 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-colors hover:border-brand-400/40 hover:bg-brand-500/10 hover:text-white"
+            >
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Nawigacja</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {nav.map((item) => (
+            <li><a href={item.href} class="text-slate-400 transition-colors hover:text-white">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Kursy</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {courses.map((c) => (
+            <li><a href={c.url} target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-white">{c.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Kontakt</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href={`mailto:${site.email}`} class="text-slate-400 transition-colors hover:text-white">{site.email}</a></li>
+          <li><a href={site.socials.youtube} target="_blank" rel="noopener noreferrer" class="text-slate-400 transition-colors hover:text-white">Kanał YouTube</a></li>
+          <li><a href="/podcast" class="text-slate-400 transition-colors hover:text-white">Słuchaj podcastu</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-slate-500 sm:flex-row">
+      <p>© {year} Przeprogramowani. Wszelkie prawa zastrzeżone.</p>
+      <p>Zbudowane z Astro, React i Tailwind — hostowane na Cloudflare.</p>
+    </div>
+  </div>
+</footer>

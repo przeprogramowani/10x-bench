@@ -1,0 +1,28 @@
+---
+import Icon from './Icon';
+import { site } from '../data/site';
+---
+
+<section class="container-x py-16 sm:py-20">
+  <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/20 via-ink-800 to-fuchsia-600/10 px-6 py-12 sm:px-12 sm:py-16">
+    <div class="glow pointer-events-none absolute inset-0"></div>
+    <div class="relative mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Przeprogramowany Newsletter</span>
+      <h2 class="mt-4 text-2xl font-bold sm:text-3xl">Co piątek 3 × 2 × 1 prosto na Twoją skrzynkę</h2>
+      <p class="mt-3 text-slate-300">
+        3 rekomendacje technologiczne, 2 wskazówki rozwojowe i 1 bonus. Dołącz do programistów, którzy
+        świadomie rozwijają się w epoce AI.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={site.newsletterUrl} target="_blank" rel="noopener" class="btn-primary w-full sm:w-auto">
+          Zapisz się za darmo
+          <Icon name="arrow" className="h-4 w-4" />
+        </a>
+        <a href={site.youtubeSubscribeUrl} target="_blank" rel="noopener" class="btn-ghost w-full sm:w-auto">
+          <Icon name="youtube" className="h-5 w-5" />
+          Subskrybuj na YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

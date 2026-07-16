@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/[.08]">
+  <div class="container-shell grid gap-12 py-14 md:grid-cols-[1.3fr_.7fr_.7fr]">
+    <div>
+      <Logo />
+      <p class="mt-5 max-w-sm text-sm leading-6 text-white/45">Szersze spojrzenie na programowanie. Technologia, AI, rozwój i decyzje, które mają znaczenie.</p>
+      <a href="mailto:kontakt@przeprogramowani.pl" class="mt-5 inline-block text-sm font-bold text-electric hover:underline">kontakt@przeprogramowani.pl</a>
+    </div>
+    <div>
+      <p class="text-xs font-extrabold uppercase tracking-[.16em] text-white/35">Odkrywaj</p>
+      <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-white/65">
+        <a href="/o-nas" class="hover:text-white">O nas</a>
+        <a href="/podcast" class="hover:text-white">Podcast</a>
+        <a href="/youtube" class="hover:text-white">YouTube</a>
+        <a href="/#kursy" class="hover:text-white">Programy</a>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs font-extrabold uppercase tracking-[.16em] text-white/35">Dołącz</p>
+      <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-white/65">
+        <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer" class="hover:text-white">YouTube ↗</a>
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" class="hover:text-white">Newsletter ↗</a>
+        <a href="https://www.instagram.com/przeprogramowani" target="_blank" rel="noreferrer" class="hover:text-white">Instagram ↗</a>
+        <a href="https://przeprogramowani.pl/discord" target="_blank" rel="noreferrer" class="hover:text-white">Discord ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-shell flex flex-col gap-2 border-t border-white/[.06] py-6 text-xs text-white/30 sm:flex-row sm:items-center sm:justify-between">
+    <p>© {year} Przeprogramowani.pl</p>
+    <p>Zbudowane z ciekawości. Napędzane wiedzą.</p>
+  </div>
+</footer>

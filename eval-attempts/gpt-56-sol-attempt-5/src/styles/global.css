@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Arial Black", "Avenir Next", "Segoe UI", sans-serif;
+  --color-ink: #0b0b0f;
+  --color-paper: #f4f2eb;
+  --color-lime: #b8ff32;
+  --color-cyan: #66e6ff;
+  --color-purple: #bd94ff;
+  --color-muted: #aaa9a3;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0b0b0f;
+}
+
+body {
+  margin: 0;
+  color: #f4f2eb;
+  background:
+    radial-gradient(circle at 80% 8%, rgb(102 230 255 / 0.08), transparent 23rem),
+    #0b0b0f;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  color: #0b0b0f;
+  background: #b8ff32;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid #b8ff32;
+  outline-offset: 4px;
+}
+
+.page-shell {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: #b8ff32;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: .55rem;
+  height: .55rem;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  box-shadow: 0 0 1.1rem currentColor;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -.065em;
+  line-height: .9;
+}
+
+.card-border {
+  border: 1px solid rgb(244 242 235 / .13);
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgb(244 242 235 / .18) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}

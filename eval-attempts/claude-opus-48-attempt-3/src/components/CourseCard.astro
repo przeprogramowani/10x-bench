@@ -1,0 +1,56 @@
+---
+import Icon from './Icon';
+import type { Course } from '../data/site';
+
+interface Props {
+  course: Course;
+  featured?: boolean;
+}
+const { course, featured = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    'card card-hover group relative flex flex-col overflow-hidden p-6 sm:p-7',
+    featured && 'ring-1 ring-brand-400/40',
+  ]}
+>
+  <!-- accent bar -->
+  <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${course.accent}`}></div>
+
+  <div class="flex items-start justify-between gap-3">
+    <div class={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${course.accent} text-white shadow-lg`}>
+      <Icon name="spark" className="h-6 w-6" />
+    </div>
+    {course.badge && (
+      <span class="rounded-full border border-brand-400/40 bg-brand-500/15 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-brand-200">
+        {course.badge}
+      </span>
+    )}
+  </div>
+
+  <h3 class="mt-5 text-xl font-bold text-white">{course.name}</h3>
+  <p class="mt-1 text-sm font-medium text-brand-200">{course.tagline}</p>
+  <p class="mt-3 text-sm leading-relaxed text-slate-400">{course.description}</p>
+
+  <ul class="mt-5 flex flex-wrap gap-2">
+    {
+      course.highlights.map((h) => (
+        <li class="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-xs text-slate-300">
+          <Icon name="check" className="h-3.5 w-3.5 text-brand-300" />
+          {h}
+        </li>
+      ))
+    }
+  </ul>
+
+  <a
+    href={course.url}
+    target="_blank"
+    rel="noopener"
+    class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-colors group-hover:text-brand-200"
+  >
+    Poznaj szczegóły
+    <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+  </a>
+</article>

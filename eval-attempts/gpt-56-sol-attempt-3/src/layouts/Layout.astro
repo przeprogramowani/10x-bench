@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title: string; description?: string; }
+const { title, description = 'Szersze spojrzenie na programowanie — AI, technologia, kursy i rozwój nowoczesnych developerów.' } = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#070908" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23d8ff3e%22/><text x=%2210%22 y=%2265%22 font-size=%2244%22 font-family=%22monospace%22 font-weight=%22700%22>%3C/%3E</text></svg>" />
+    <title>{title}</title>
+  </head>
+  <body class="noise">
+    <Header />
+    <main class="page-fade"><slot /></main>
+    <Footer />
+  </body>
+</html>

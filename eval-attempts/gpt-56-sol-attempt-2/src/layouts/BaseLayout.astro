@@ -1,0 +1,40 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#090b0f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://przeprogramowani.pl/img/page-cover.jpg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#content" class="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-lime px-4 py-2 font-bold text-ink focus:translate-y-0">Przejdź do treści</a>
+    <Header client:load pathname={Astro.url.pathname} />
+    <main id="content"><slot /></main>
+    <Footer />
+  </body>
+</html>

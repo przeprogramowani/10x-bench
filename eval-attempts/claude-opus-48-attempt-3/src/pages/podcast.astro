@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon';
+import PodcastCard from '../components/PodcastCard.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import { episodes, podcastPlatforms } from '../data/podcast';
+---
+
+<Layout
+  title="Podcast"
+  description="Podcast Przeprogramowani — rozmowy o frontendzie, karierze programisty i AI. Posłuchaj ostatnich odcinków."
+>
+  <section class="relative overflow-hidden pt-28 pb-10 sm:pt-36">
+    <div class="glow pointer-events-none absolute inset-x-0 top-0 h-[460px]"></div>
+    <div class="container-x relative">
+      <div class="max-w-3xl">
+        <span class="eyebrow">
+          <Icon name="spotify" className="h-4 w-4" />
+          Podcast
+        </span>
+        <h1 class="mt-5 text-4xl font-bold sm:text-5xl">Przeprogramowani — podcast</h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Szersze spojrzenie na programowanie w formie audio. Rozmawiamy z ekspertami o architekturze
+          frontendu, rozwoju kariery i wpływie AI na naszą pracę.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {
+            podcastPlatforms.map((p) => (
+              <a href={p.href} target="_blank" rel="noopener" class="btn-ghost">
+                {p.label}
+                <Icon name="arrow" className="h-4 w-4" />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-x py-12 sm:py-16">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {episodes.map((episode) => <PodcastCard episode={episode} />)}
+    </div>
+  </section>
+
+  <NewsletterCTA />
+</Layout>

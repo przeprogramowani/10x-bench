@@ -1,0 +1,43 @@
+---
+interface Props {
+  video: {
+    id: string;
+    title: string;
+    category: string;
+    duration: string;
+  };
+  featured?: boolean;
+}
+
+const { video, featured = false } = Astro.props;
+---
+
+<a
+  href={`https://www.youtube.com/watch?v=${video.id}`}
+  target="_blank"
+  rel="noreferrer"
+  class:list={['group block', featured && 'lg:col-span-2']}
+>
+  <div class:list={['relative overflow-hidden rounded-2xl bg-white/5', featured ? 'aspect-[16/8.5]' : 'aspect-video']}>
+    <img
+      src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
+      alt=""
+      width="1280"
+      height="720"
+      loading="lazy"
+      class="size-full object-cover opacity-80 transition duration-500 group-hover:scale-[1.025] group-hover:opacity-100"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+    <span class="absolute right-4 top-4 rounded-full bg-ink/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] backdrop-blur-md">{video.duration}</span>
+    <span class="absolute bottom-4 left-4 grid size-12 place-items-center rounded-full bg-lime text-ink shadow-xl transition-transform group-hover:scale-110 sm:size-14">
+      <svg class="ml-1 size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z" /></svg>
+    </span>
+  </div>
+  <div class="mt-4 flex items-start justify-between gap-5">
+    <div>
+      <p class="text-[11px] font-bold uppercase tracking-[.14em] text-lime">{video.category}</p>
+      <h2 class:list={['mt-2 font-bold leading-tight tracking-[-.035em] transition-colors group-hover:text-lime', featured ? 'text-2xl sm:text-4xl' : 'text-xl']}>{video.title}</h2>
+    </div>
+    <svg class="mt-1 size-5 shrink-0 text-paper/35 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+  </div>
+</a>

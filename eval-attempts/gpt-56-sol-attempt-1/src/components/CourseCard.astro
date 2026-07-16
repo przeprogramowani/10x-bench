@@ -1,0 +1,29 @@
+---
+type Course = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  href: string;
+  color: 'lime' | 'blue';
+  badge: string;
+  meta: string;
+};
+const { course, wide = false } = Astro.props as { course: Course; wide?: boolean };
+const isLime = course.color === 'lime';
+---
+
+<a href={course.href} target="_blank" rel="noreferrer" class:list={["group noise card-hover relative isolate overflow-hidden rounded-[1.75rem] border p-7 sm:p-9", wide && "md:col-span-2", isLime ? "border-electric/20 bg-[linear-gradient(135deg,rgba(201,255,85,.13),rgba(16,19,29,.8)_48%)]" : "border-violet/25 bg-[linear-gradient(135deg,rgba(131,120,255,.18),rgba(16,19,29,.8)_48%)]"]}>
+  <div class:list={["absolute -right-16 -top-16 size-48 rounded-full blur-3xl", isLime ? "bg-electric/20" : "bg-violet/25"]}></div>
+  <div class="relative z-10 flex h-full flex-col">
+    <div class="flex items-center justify-between gap-4">
+      <p class:list={["text-[11px] font-extrabold uppercase tracking-[.15em]", isLime ? "text-electric" : "text-[#a99fff]"]}>{course.eyebrow}</p>
+      <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white/65">{course.badge}</span>
+    </div>
+    <h3 class="mt-10 font-display text-3xl font-bold tracking-[-.05em] sm:text-4xl">{course.title}</h3>
+    <p class="mt-4 max-w-lg text-sm leading-6 text-white/55 sm:text-base">{course.description}</p>
+    <div class="mt-auto flex items-end justify-between gap-4 pt-12">
+      <p class="text-xs font-bold text-white/40">{course.meta}</p>
+      <span class:list={["grid size-11 place-items-center rounded-full text-lg transition group-hover:-translate-y-1 group-hover:translate-x-1", isLime ? "bg-electric text-ink" : "bg-violet text-white"]}>↗</span>
+    </div>
+  </div>
+</a>

@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
+Local build,1,1,astro check && astro build succeeded; 4 pages built with Cloudflare adapter; output in dist/client
+Manual testing,1,1,User-confirmed: site works correctly on click-through
+Tech stack,1,1,"React 19, Tailwind CSS 4 (@tailwindcss/vite), @astrojs/cloudflare adapter configured in astro.config.mjs. Note: Astro is v7 (^7.0.9), newer than the v6 baseline; all required deps present and Cloudflare configured"
+O nas page,1,1,"200 OK. Przemek Smyrdek (DAZN/Cabify, full-stack .NET/Java/Node/Angular/TS) and Marcin Czarkowski (SmartRecruiters, 10+ yrs, TS/React/Node, Opanuj.AI Podcast); correct LinkedIn URLs. Bios accurate, not oversimplified"
+Podcast page,1,1,"200 OK. Both podcasts shown with correct Spotify show IDs (Opanuj.AI 3D6LmchBdoqL2sWkQjvWOy, Przeprogramowani 3yVvOAXSYq6sQB02w4A4wo). Episode list present; some episode links fall back to show-level/anchor URLs but data is not mocked"
+YouTube page,1,1,"200 OK. All 6 video IDs verified via oEmbed as real, unique, and on-channel (author_name=Przeprogramowani); titles match. No placeholder/rickroll IDs"
+Kursy section,1,1,"200 OK. Opanuj Frontend + Opanuj TypeScript course cards plus dedicated 10xDevs card; 10xDevs 3.0 featured prominently in index hero. Matches context"
+Consistent UI,1,1,User-confirmed: coherent design across pages
+Responsive design,1,1,User-confirmed: responsive across breakpoints
+SEO Tags,1,1,"BaseLayout provides per-page title, meta description, canonical, theme-color, full OG tags (title/description/type/url/locale/image) and twitter:card; lang=pl. Applied to all pages, content matches brand"
+Penalty,0,N/A,User-confirmed: no penalty

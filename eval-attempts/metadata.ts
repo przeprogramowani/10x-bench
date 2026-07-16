@@ -31,6 +31,7 @@ export type ModelId =
   | "qwen-3.6"
   | "gpt-54"
   | "gpt-55"
+  | "gpt-56-sol"
   | "claude-fable-5"
   | "deepseek-v4-pro";
 
@@ -60,6 +61,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "qwen-3.6": "Qwen 3.6",
   "gpt-54": "GPT-5.4",
   "gpt-55": "GPT-5.5",
+  "gpt-56-sol": "GPT-5.6 Sol",
   "claude-fable-5": "Claude Fable 5",
   "deepseek-v4-pro": "DeepSeek V4 Pro",
 };
@@ -89,6 +91,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "qwen-3.6": AGENT_ENVIRONMENT.ClaudeCodeHigh,
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-55": AGENT_ENVIRONMENT.CodexDesktopHigh,
+  "gpt-56-sol": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "claude-fable-5": AGENT_ENVIRONMENT.ClaudeDesktop,
   "deepseek-v4-pro": AGENT_ENVIRONMENT.OpenCode,
 };
@@ -143,6 +146,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "qwen-3.6": { input: 0.15, output: 1.0 },
   "gpt-54": { input: 1.75, output: 14.0 },
   "gpt-55": { input: 5.0, output: 30.0 },
+  "gpt-56-sol": { input: 5.0, output: 30.0 },
   "claude-fable-5": { input: 10.0, output: 50.0 },
   "deepseek-v4-pro": { input: 0.435, output: 0.87 },
 };

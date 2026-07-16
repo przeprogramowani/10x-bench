@@ -1,0 +1,56 @@
+---
+import type { PodcastShow } from '../data/podcasts';
+
+interface Props {
+  show: PodcastShow;
+  limit?: number;
+}
+const { show, limit = 6 } = Astro.props;
+const episodes = show.episodes.slice(0, limit);
+
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<article class="card flex h-full flex-col p-6 sm:p-8" data-reveal>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class={`grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br ${show.accent} text-white shadow-lg`}>
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+          <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21H9v2h6v-2h-2v-3.08A7 7 0 0 0 19 11h-2Z" />
+        </svg>
+      </span>
+      <div>
+        <h3 class="text-lg font-bold text-white">{show.name}</h3>
+        <p class="text-xs font-medium text-slate-400">{show.listeners}</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href={show.links.spotify} target="_blank" rel="noopener noreferrer" aria-label={`${show.name} na Spotify`} class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-brand-400/40">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.3-2.1-10.4-1.1a.75.75 0 1 1-.34-1.46c4.5-1 8.4-.6 11.5 1.3.36.22.47.7.24 1.02Zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-2-8.1-2.55-11.9-1.4a.94.94 0 1 1-.54-1.8c4.35-1.3 9.75-.68 13.42 1.6.44.27.58.85.31 1.29Zm.13-3.4C15.36 8.36 8.9 8.14 5.2 9.26a1.12 1.12 0 1 1-.65-2.15c4.25-1.29 11.38-1.04 15.87 1.63a1.12 1.12 0 1 1-1.15 1.93Z" /></svg>
+      </a>
+      <a href={show.links.apple} target="_blank" rel="noopener noreferrer" aria-label={`${show.name} na Apple Podcasts`} class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:text-white hover:border-brand-400/40">
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-1.6 19.87c.2.04.27-.08.27-.19v-1.4c-1.4.24-1.76-.34-1.87-.65-.06-.16-.33-.65-.56-.78-.19-.1-.46-.35 0-.36.43 0 .74.4.84.56.5.83 1.3.6 1.61.45.05-.36.2-.6.35-.74-1.24-.14-2.53-.62-2.53-2.76 0-.6.22-1.1.57-1.49-.06-.14-.25-.71.05-1.48 0 0 .47-.15 1.53.57a5.3 5.3 0 0 1 2.78 0c1.06-.72 1.53-.57 1.53-.57.3.77.11 1.34.06 1.48.35.39.56.88.56 1.49 0 2.15-1.3 2.62-2.54 2.76.2.17.38.51.38 1.03v1.53c0 .11.07.24.28.19A10 10 0 0 0 12 2Z" /></svg>
+      </a>
+    </div>
+  </div>
+
+  <p class="mt-4 text-sm leading-relaxed text-slate-400">{show.description}</p>
+
+  <ul class="mt-6 flex flex-1 flex-col divide-y divide-white/[0.06]">
+    {episodes.map((ep) => (
+      <li class="group py-3.5 first:pt-0">
+        <a href={show.links.spotify} target="_blank" rel="noopener noreferrer" class="flex items-start gap-3">
+          <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-brand-500/60 transition-colors group-hover:bg-accent-400"></span>
+          <span class="min-w-0 flex-1">
+            <span class="block text-sm font-medium leading-snug text-slate-200 transition-colors group-hover:text-white">{ep.title}</span>
+            <span class="mt-1 flex items-center gap-2 text-xs text-slate-500">
+              <time datetime={ep.date}>{fmt(ep.date)}</time>
+              {ep.duration && <><span aria-hidden="true">·</span><span>{ep.duration}</span></>}
+            </span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</article>

@@ -1,0 +1,24 @@
+---
+type Episode = {
+  title: string;
+  duration: string;
+  series: string;
+  description: string;
+  url: string;
+};
+const { episode, index } = Astro.props as { episode: Episode; index: number };
+---
+
+<a href={episode.url} target="_blank" rel="noreferrer" class="group card-hover grid grid-cols-[auto_1fr_auto] items-start gap-4 rounded-2xl border border-white/[.09] bg-panel p-5 sm:items-center sm:gap-6 sm:p-6">
+  <span class="grid size-11 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 font-display text-sm font-bold text-white/50 transition group-hover:border-electric group-hover:bg-electric group-hover:text-ink">{String(index + 1).padStart(2, '0')}</span>
+  <div>
+    <div class="mb-2 flex flex-wrap items-center gap-2 text-[10px] font-extrabold uppercase tracking-[.13em]">
+      <span class="text-violet">{episode.series}</span>
+      <span class="text-white/25">•</span>
+      <span class="text-white/40">{episode.duration}</span>
+    </div>
+    <h3 class="font-display text-lg font-bold leading-snug tracking-[-.03em] sm:text-xl">{episode.title}</h3>
+    <p class="mt-2 hidden max-w-2xl text-sm leading-6 text-white/45 sm:block">{episode.description}</p>
+  </div>
+  <span class="mt-2 text-xl text-white/30 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-electric">↗</span>
+</a>

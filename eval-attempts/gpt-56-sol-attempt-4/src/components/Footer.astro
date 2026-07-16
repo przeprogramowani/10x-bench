@@ -1,0 +1,39 @@
+---
+import { navItems } from '../data/content';
+---
+
+<footer class="bg-ink text-white">
+  <div class="container-page py-12 sm:py-16">
+    <div class="grid gap-12 border-b border-white/12 pb-12 lg:grid-cols-[1.25fr_.75fr]">
+      <div>
+        <p class="display max-w-3xl text-4xl font-black leading-[.95] sm:text-6xl">
+          Zyskaj szersze spojrzenie<br /><span class="text-coral">na programowanie.</span>
+        </p>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="arrow-link mt-8 inline-flex items-center gap-3 border-b border-white/40 pb-1 text-sm font-bold hover:border-coral hover:text-coral">
+          kontakt@przeprogramowani.pl
+          <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7M7 7h10v10" /></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-8 text-sm">
+        <div>
+          <p class="mb-4 text-xs font-bold uppercase tracking-[.14em] text-white/40">Na skróty</p>
+          <div class="flex flex-col gap-3">
+            {navItems.map((item) => <a href={item.href} class="text-white/75 hover:text-white">{item.label}</a>)}
+          </div>
+        </div>
+        <div>
+          <p class="mb-4 text-xs font-bold uppercase tracking-[.14em] text-white/40">Znajdź nas</p>
+          <div class="flex flex-col gap-3">
+            <a href="https://www.youtube.com/c/przeprogramowani" class="text-white/75 hover:text-white">YouTube ↗</a>
+            <a href="https://www.instagram.com/przeprogramowani/" class="text-white/75 hover:text-white">Instagram ↗</a>
+            <a href="https://przeprogramowani.substack.com" class="text-white/75 hover:text-white">Newsletter ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {new Date().getFullYear()} Przeprogramowani.pl</p>
+      <p>Programowanie · biznes · rozwój</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,31 @@
+---
+interface Props {
+  episode: {
+    title: string;
+    description: string;
+    duration: string;
+    show: string;
+    art: string;
+    href: string;
+  };
+  index?: number;
+}
+const { episode, index = 0 } = Astro.props;
+---
+
+<a href={episode.href} target="_blank" rel="noreferrer" class="group grid gap-5 border-t border-ink/20 py-6 sm:grid-cols-[100px_1fr_auto] sm:items-center">
+  <div class="relative size-[100px] overflow-hidden rounded-2xl bg-ink">
+    <img src={episode.art} alt="" loading="lazy" class="size-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-75" />
+    <span class="absolute inset-0 grid place-items-center opacity-0 transition group-hover:opacity-100" aria-hidden="true">
+      <span class="grid size-10 place-items-center rounded-full bg-coral text-white"><svg class="ml-0.5 size-4" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z" /></svg></span>
+    </span>
+  </div>
+  <div>
+    <div class="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-black uppercase tracking-[.12em] text-ink/45">
+      <span>{String(index + 1).padStart(2, '0')}</span><span class="size-1 rounded-full bg-coral"></span><span>{episode.show}</span><span>{episode.duration}</span>
+    </div>
+    <h2 class="display text-2xl font-black leading-tight transition-colors group-hover:text-coral sm:text-3xl">{episode.title}</h2>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-ink/60">{episode.description}</p>
+  </div>
+  <span class="hidden size-12 place-items-center rounded-full border border-ink/30 transition group-hover:border-coral group-hover:bg-coral group-hover:text-white sm:grid" aria-hidden="true">↗</span>
+</a>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { founders, values, stats, clients } from '../data/site';
+---
+
+<BaseLayout
+  title="O nas"
+  description="Poznaj Przeprogramowani — Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju od 7 lat."
+  path="/o-nas"
+>
+  <!-- Intro -->
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div
+      class="absolute -top-32 left-1/2 h-96 w-[700px] -translate-x-1/2 rounded-full bg-brand-600/15 blur-[120px]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-page relative py-20 sm:py-28">
+      <div class="max-w-3xl">
+        <span class="eyebrow">O nas</span>
+        <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+          Łączymy świat programowania, <span class="gradient-text">biznesu i rozwoju</span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Przeprogramowani to projekt edukacyjny tworzony z myślą o ambitnych programistach.
+          Wierzymy, że najlepsi developerzy myślą szeroko — o architekturze, biznesie, ludziach
+          i o samych sobie. Od 7 lat tworzymy kursy, podcasty, treści i narzędzia wspierające
+          rozwój programistów w erze AI.
+        </p>
+      </div>
+
+      <dl class="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="card p-6">
+              <dd class="text-3xl font-extrabold text-white">{stat.value}</dd>
+              <dt class="mt-1 text-sm text-slate-400">{stat.label}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="section">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Zespół"
+        title="Twórcy Przeprogramowani"
+        description="Dwóch praktyków z wieloletnim doświadczeniem w budowaniu produktów i edukacji technologicznej."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          founders.map((person) => (
+            <article class="card p-8">
+              <div class="flex items-center gap-4">
+                <span
+                  class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-violet-600 text-xl font-bold text-white shadow-lg shadow-brand-500/30"
+                  aria-hidden="true"
+                >
+                  {person.initials}
+                </span>
+                <div>
+                  <h3 class="text-xl font-bold text-white">{person.name}</h3>
+                  <p class="text-sm font-medium text-brand-300">{person.role}</p>
+                </div>
+              </div>
+              <p class="mt-6 text-sm leading-relaxed text-slate-400">{person.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section border-t border-white/10 bg-ink-900/50">
+    <div class="container-page">
+      <SectionHeading
+        eyebrow="Nasze wartości"
+        title="Co nas napędza"
+        align="center"
+      />
+      <div class="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
+        {
+          values.map((value) => (
+            <div class="card p-7 text-center">
+              <h3 class="text-lg font-semibold text-white">{value.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-400">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16 text-center">
+        <p class="text-sm text-slate-500">Współpracowaliśmy między innymi z:</p>
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          {clients.map((client) => (
+            <span class="text-xl font-semibold text-slate-400">{client}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

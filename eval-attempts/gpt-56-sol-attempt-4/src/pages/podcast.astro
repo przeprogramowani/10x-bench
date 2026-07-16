@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import { podcastEpisodes } from '../data/content';
+---
+
+<Layout title="Podcast — Przeprogramowani" description="Najnowsze odcinki podcastów Przeprogramowanych i Opanuj.AI o technologii, programowaniu, AI i karierze.">
+  <section class="grid-lines relative overflow-hidden bg-ink pb-20 pt-36 text-white sm:pb-28 sm:pt-44">
+    <div class="absolute -right-20 top-20 size-80 rounded-full bg-coral/20 blur-[110px]"></div>
+    <div class="container-page relative grid items-end gap-12 lg:grid-cols-[1.15fr_.85fr]">
+      <div>
+        <p class="eyebrow text-lime">Podcast</p>
+        <h1 class="display mt-6 text-7xl font-black leading-[.84] sm:text-9xl">Wiedza<br /><em class="font-serif font-normal text-coral">do ucha.</em></h1>
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/60">Rozmowy o technologii, AI, karierze i rozwoju. Do spaceru, pociągu albo spokojnego popołudnia z kodem.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="rounded-full bg-lime px-5 py-3 text-sm font-black text-ink">Słuchaj na Spotify ↗</a>
+          <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" class="rounded-full border border-white/30 px-5 py-3 text-sm font-bold">Apple Podcasts ↗</a>
+        </div>
+      </div>
+      <div class="relative mx-auto w-full max-w-[470px]">
+        <div class="absolute -left-5 -top-5 h-full w-full rotate-[-5deg] rounded-[2rem] bg-lime"></div>
+        <img src="/images/podcast/opanuj-ai.webp" alt="Okładka Opanuj.AI Podcast" class="relative z-10 w-full rotate-3 rounded-[2rem] shadow-2xl" />
+        <div class="absolute -bottom-6 -left-8 z-20 rounded-full bg-coral px-5 py-3 text-xs font-black uppercase tracking-wider shadow-xl">4000+ słuchaczy</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="container-page">
+      <div class="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div><p class="eyebrow text-coral">Najnowsze odcinki</p><h2 class="display mt-4 text-5xl font-black sm:text-7xl">Naciśnij play.</h2></div>
+        <p class="max-w-md text-sm leading-relaxed text-ink/55">Dwa formaty, jedna ciekawość świata: comiesięczny Opanuj.AI Podcast i rozmowy Przeprogramowani ft. Gość.</p>
+      </div>
+      <div>{podcastEpisodes.map((episode, index) => <PodcastCard episode={episode} index={index} />)}</div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 sm:py-24">
+    <div class="container-page grid gap-6 md:grid-cols-2">
+      <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" class="group flex min-h-[280px] flex-col justify-between rounded-[1.75rem] bg-[#c4d9ff] p-7 sm:p-9"><span class="text-xs font-black uppercase tracking-wider">01 · Opanuj.AI</span><div><h2 class="display text-4xl font-black sm:text-5xl">Najważniejsze wydarzenia ze świata AI.</h2><p class="mt-4 text-sm text-ink/60">Comiesięczne podsumowania bez marketingowego szumu.</p></div><span class="text-xl">↗</span></a>
+      <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="group flex min-h-[280px] flex-col justify-between rounded-[1.75rem] bg-[#ffb7aa] p-7 sm:p-9"><span class="text-xs font-black uppercase tracking-wider">02 · ft. Gość</span><div><h2 class="display text-4xl font-black sm:text-5xl">Rozmowy dla głodnych wiedzy.</h2><p class="mt-4 text-sm text-ink/60">Ludzie, doświadczenia i historie spoza schematu.</p></div><span class="text-xl">↗</span></a>
+    </div>
+  </section>
+</Layout>

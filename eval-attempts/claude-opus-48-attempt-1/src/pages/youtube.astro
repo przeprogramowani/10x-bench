@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Icon from '../components/Icon.astro';
+import { videos, youtubeChannel } from '../data/youtube';
+
+const [featured, ...rest] = videos;
+---
+
+<Layout
+  title="YouTube"
+  description={youtubeChannel.description}
+>
+  <!-- Nagłówek -->
+  <section class="relative overflow-hidden border-b border-white/5">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-32 -top-32 h-[26rem] w-[26rem] rounded-full bg-red-600/10 blur-[120px]"></div>
+    </div>
+    <div class="container-page py-16 sm:py-20">
+      <div class="max-w-3xl animate-fade-up">
+        <span class="eyebrow">
+          <Icon name="youtube" class="h-3.5 w-3.5" />
+          YouTube
+        </span>
+        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Kanał <span class="gradient-text">{youtubeChannel.name}</span>
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-slate-300">
+          {youtubeChannel.description}
+        </p>
+        <a
+          href={youtubeChannel.url}
+          target="_blank"
+          rel="noopener"
+          class="btn-primary mt-7 bg-red-600 shadow-red-600/30 hover:bg-red-500 hover:shadow-red-500/40"
+        >
+          <Icon name="youtube" class="h-4 w-4" />
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filmy -->
+  <Section
+    eyebrow="Najnowsze"
+    title="Ostatnie filmy"
+    description="Nowości ze świata AI i programowania, benchmarki modeli, live demo i relacje z konferencji."
+  >
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <VideoCard video={featured} featured />
+      {rest.map((video) => <VideoCard video={video} />)}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href={youtubeChannel.url} target="_blank" rel="noopener" class="btn-secondary">
+        Zobacz wszystkie filmy na YouTube
+        <Icon name="external" class="h-4 w-4" />
+      </a>
+    </div>
+  </Section>
+</Layout>

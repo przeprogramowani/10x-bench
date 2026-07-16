@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
+Local build,1,1,astro check && astro build succeeded; static output in dist/ (index + o-nas + podcast + youtube + 404)
+Manual testing,1,1,User-confirmed: site works correctly on click-through
+Tech stack,0.5,1,React 19.2.7 and Tailwind CSS 4.3.2 present; but Astro is 7.0.9 (not 6) and no Cloudflare adapter (@astrojs/cloudflare) installed/configured in astro.config.mjs (only react + @tailwindcss/vite). wrangler is a devDep but no adapter
+O nas page,0.5,1,200 OK; both founders present with LinkedIn; Przemek DAZN/Cabify mentioned; but Marcin bio omits SmartRecruiters and course assignments (Opanuj JavaScript / 10xDevs) are missing — bios simplified
+Podcast page,0.5,1,200 OK; episodes are hallucinated/mock data (generic titles/durations no real episode URLs); all links point to single Przeprogramowani show 3yVvOAXSYq6sQB02w4A4wo; Opanuj.AI show ID 3D6LmchBdoqL2sWkQjvWOy is MISSING (both podcasts referenced only by tag)
+YouTube page,1,1,200 OK; 6 unique video IDs all verified real on Przeprogramowani channel via oEmbed (B4t6w4QsD24 0JOszZXqKaM XgyH-HSzKRQ 03y826SVjG0 S-iNbyLSisE x8j4rO-T8bg); titles match channel
+Kursy section,1,1,Dedicated #kursy section + hero featuring 10xDevs; correct URLs 10xdevs.pl opanujfrontend.pl opanujtypescript.pl; content matches context
+Consistent UI,1,1,User-confirmed: coherent design across pages
+Responsive design,0.5,1,User-confirmed: partial — layout issues at some breakpoints
+SEO Tags,1,1,Layout.astro provides meta description + og:title/description/type + theme-color + lang=pl + per-page title/description applied to all pages; brand copy matches context (tagline Szersze spojrzenie na programowanie)
+Penalty,0,N/A,User-confirmed: no penalty

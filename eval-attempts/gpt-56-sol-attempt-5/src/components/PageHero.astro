@@ -1,0 +1,24 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  accent?: string;
+  description: string;
+}
+
+const { eyebrow, title, accent, description } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-white/10 pt-[72px]">
+  <div class="pointer-events-none absolute inset-0 dot-grid opacity-25 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"></div>
+  <div class="page-shell relative py-20 sm:py-28 lg:py-36">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="display mt-7 max-w-5xl text-[clamp(4rem,11vw,9.5rem)]">
+      {title} {accent && <span class="text-lime">{accent}</span>}
+    </h1>
+    <div class="mt-10 grid gap-6 border-t border-white/10 pt-6 lg:grid-cols-[1fr_1fr]">
+      <p class="text-xs font-bold uppercase tracking-[.16em] text-paper/35">Przeprogramowani.pl / 2026</p>
+      <p class="max-w-2xl text-lg leading-8 text-paper/65 sm:text-xl">{description}</p>
+    </div>
+  </div>
+</section>

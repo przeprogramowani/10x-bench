@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { episodes, social } from '../data/site';
+
+const platforms = [
+  { label: 'Spotify', href: social.spotify },
+  { label: 'Apple Podcasts', href: social.applePodcasts },
+  { label: 'YouTube', href: social.youtube },
+];
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Przeprogramowani — podcast o programowaniu, biznesie i rozwoju. Rozmowy z ekspertami dla developerów na każdym etapie kariery."
+  path="/podcast"
+>
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div
+      class="absolute -top-32 right-0 h-96 w-[600px] rounded-full bg-brand-600/15 blur-[120px]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-page relative py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="eyebrow">Podcast</span>
+        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Rozmowy o <span class="gradient-text">szerszym spojrzeniu</span> na programowanie
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Łączymy światy programowania, biznesu i rozwoju. Podcast skierowany do programistów na
+          każdym etapie kariery — od juniorów szukających kierunku, po seniorów rozważających
+          kolejne kroki. Gościmy ekspertów i rozmawiamy o architekturze, karierze, AI i nauce w IT.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {
+            platforms.map((p) => (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-secondary"
+              >
+                Słuchaj na {p.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page">
+      <div class="mb-10 flex items-baseline justify-between">
+        <h2 class="text-2xl font-bold text-white">Najnowsze odcinki</h2>
+        <span class="text-sm text-slate-500">{episodes.length} ostatnich</span>
+      </div>
+      <div class="grid gap-4">
+        {episodes.map((episode, i) => <EpisodeCard episode={episode} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

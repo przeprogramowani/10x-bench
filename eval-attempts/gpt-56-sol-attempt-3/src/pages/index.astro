@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { videos, episodes } from '../data/content';
+const featuredVideos = videos.slice(0, 3);
+const featuredEpisodes = episodes.slice(0, 3);
+---
+<Layout title="Przeprogramowani — Szersze spojrzenie na programowanie">
+  <section class="relative min-h-[920px] overflow-hidden border-b border-white/10 pt-28 md:min-h-[880px] md:pt-36">
+    <div class="grid-lines absolute inset-0 opacity-60"></div>
+    <div class="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-purple/12 blur-[130px]"></div>
+    <div class="container-shell relative z-10">
+      <div class="grid gap-12 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+        <div>
+          <span class="eyebrow">Edukacja technologiczna w epoce AI</span>
+          <h1 class="display mt-8 max-w-[900px] text-[clamp(4rem,10vw,8.7rem)]">Myśl szerzej.<br/><span class="text-acid">Koduj mądrzej.</span></h1>
+          <div class="mt-9 flex max-w-2xl flex-col gap-6 border-l border-white/20 pl-5 sm:flex-row sm:items-end sm:justify-between sm:pl-7">
+            <p class="max-w-lg text-base leading-7 text-white/60 md:text-lg">Pomagamy ambitnym developerom odnaleźć się w nowej rzeczywistości — od fundamentów frontendu po świadome tworzenie produktów z AI.</p>
+            <a href="#kursy" class="arrow-link flex shrink-0 items-center gap-3 font-mono text-xs uppercase tracking-wider text-acid">Poznaj programy <span class="arrow text-lg">↓</span></a>
+          </div>
+        </div>
+        <a href="https://www.10xdevs.pl/" target="_blank" rel="noreferrer" class="group relative mx-auto w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-white/15 bg-[#111411] p-3 shadow-2xl shadow-black/30 lg:mx-0">
+          <div class="relative aspect-[4/4.45] overflow-hidden rounded-[1.35rem] bg-gradient-to-br from-[#1d2030] to-[#0c0e0d]">
+            <img src="/images/10xdevs-hero.webp" alt="Przemek Smyrdek i Marcin Czarkowski — prowadzący 10xDevs" class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6">
+              <div class="mb-3 flex items-center justify-between"><span class="rounded-full bg-acid px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-black">Edycja 4.0 · 2026</span><span class="text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></div>
+              <h2 class="text-4xl font-bold tracking-[-.055em]">10x<span class="text-acid">Devs</span></h2>
+              <p class="mt-2 text-sm text-white/60">5 tygodni. Pełny AI-native workflow. 6700+ absolwentów.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="mt-16 grid grid-cols-2 border-y border-white/10 md:mt-20 md:grid-cols-4">
+        {[
+          ['7+', 'lat edukacji'], ['6700+', 'absolwentów 10xDevs'], ['400+', 'kursantów Frontend'], ['co piątek', 'nowy newsletter']
+        ].map(([value, label], i) => <div class:list={['py-5 md:py-7', i % 2 === 1 ? 'border-l border-white/10 pl-5 md:pl-7' : '', i > 1 ? 'border-t border-white/10 md:border-t-0 md:border-l md:pl-7' : '']}><p class="text-xl font-semibold tracking-tight md:text-3xl">{value}</p><p class="mt-1 font-mono text-[10px] uppercase tracking-widest text-white/35">{label}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="overflow-hidden border-b border-white/10 bg-acid py-3 text-ink">
+    <div class="marquee-track flex gap-10 font-mono text-xs font-semibold uppercase tracking-[.18em]">
+      {[...Array(2)].flatMap(() => ['AI-native development', 'Frontend', 'TypeScript', 'Architektura', 'Rozwój kariery', 'Praktyka ponad hype']).map(item => <><span>{item}</span><span>✦</span></>)}
+    </div>
+  </section>
+
+  <section class="section-pad" id="kursy">
+    <div class="container-shell">
+      <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div><span class="eyebrow">Programy edukacyjne</span><h2 class="display mt-5 max-w-3xl text-5xl sm:text-6xl md:text-8xl">Wiedza, która<br/><span class="stroke-text">zmienia sposób pracy.</span></h2></div>
+        <p class="max-w-sm text-sm leading-6 text-white/50">Nie uczymy narzędzi w próżni. Uczymy podejmować lepsze decyzje, dowozić i budować rozwiązania, które przetrwają kolejną falę zmian.</p>
+      </div>
+      <div class="mt-14 grid gap-4 lg:grid-cols-3">
+        <a href="https://www.10xdevs.pl/" class="card-hover group relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-acid/30 bg-[#11150c] p-7 md:p-8">
+          <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-acid/16 blur-3xl"></div>
+          <div class="relative flex h-full flex-col"><div class="flex items-start justify-between"><span class="font-mono text-xs uppercase tracking-widest text-acid">01 / Flagowy program</span><span class="text-2xl">↗</span></div><div class="my-auto py-16"><div class="mb-7 grid h-20 w-20 place-items-center rounded-2xl border border-acid/30 bg-acid/10 font-mono text-2xl text-acid">10×</div><h3 class="text-5xl font-semibold tracking-[-.06em]">10xDevs</h3><p class="mt-5 max-w-sm leading-7 text-white/55">Opanuj praktyczny workflow programowania z AI w całym cyklu wytwarzania oprogramowania.</p></div><div class="border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-wider text-white/45">5 tygodni · AI · Praktyka</div></div>
+        </a>
+        <a href="https://opanujfrontend.pl/" class="card-hover group relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-[#13111a] p-7 md:p-8">
+          <div class="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-purple/25 blur-3xl"></div>
+          <div class="relative flex h-full flex-col"><div class="flex items-start justify-between"><span class="font-mono text-xs uppercase tracking-widest text-purple">02 / Frontend</span><span class="text-2xl">↗</span></div><div class="my-auto py-16"><div class="mb-7 flex h-20 w-20 items-center justify-center gap-1 rounded-2xl border border-purple/30 bg-purple/10 font-mono text-xl text-purple"><span>{'{'}</span><span class="animate-pulse text-white">_</span><span>{'}'}</span></div><h3 class="text-5xl font-semibold tracking-[-.06em]">Opanuj<br/>Frontend</h3><p class="mt-5 max-w-sm leading-7 text-white/55">5 modułów o nowoczesnym frontendzie, testowaniu, CI/CD, open source i architekturze.</p></div><div class="border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-wider text-white/45">AI Edition · React · Web</div></div>
+        </a>
+        <a href="https://opanujtypescript.pl/" class="card-hover group relative min-h-[520px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-[#0c151a] p-7 md:p-8">
+          <div class="absolute -right-24 top-1/3 h-64 w-64 rounded-full bg-sky-400/20 blur-3xl"></div>
+          <div class="relative flex h-full flex-col"><div class="flex items-start justify-between"><span class="font-mono text-xs uppercase tracking-widest text-sky-300">03 / TypeScript</span><span class="text-2xl">↗</span></div><div class="my-auto py-16"><div class="mb-7 grid h-20 w-20 place-items-center rounded-2xl bg-[#3178c6] font-mono text-2xl font-bold text-white shadow-xl shadow-blue-500/15">TS</div><h3 class="text-5xl font-semibold tracking-[-.06em]">Opanuj<br/>TypeScript</h3><p class="mt-5 max-w-sm leading-7 text-white/55">Pisz bezpieczniejsze aplikacje i podnieś jakość projektów działających na produkcji.</p></div><div class="border-t border-white/10 pt-5 font-mono text-xs uppercase tracking-wider text-white/45">TypeScript 5 · React 19</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad border-y border-white/10 bg-[#0c0f0d]">
+    <div class="container-shell grid gap-12 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+      <div class="lg:sticky lg:top-28 lg:self-start"><span class="eyebrow">Słuchaj</span><h2 class="display mt-5 text-6xl md:text-7xl">Rozmowy<br/>bez skrótów.</h2><p class="mt-7 max-w-sm leading-7 text-white/50">AI, architektura, kariera i dojrzałość zawodowa. Z gośćmi, którzy mają coś konkretnego do powiedzenia.</p><a href="/podcast" class="arrow-link mt-9 inline-flex items-center gap-3 border-b border-acid pb-2 font-mono text-xs uppercase tracking-wider text-acid">Wszystkie odcinki <span class="arrow">↗</span></a></div>
+      <div class="divide-y divide-white/10 border-y border-white/10">
+        {featuredEpisodes.map(ep => <a href="/podcast" class="group grid gap-5 py-7 sm:grid-cols-[70px_1fr_auto] sm:items-center"><div class="grid h-14 w-14 place-items-center rounded-full border border-white/15 font-mono text-sm text-white/40 transition-colors group-hover:border-acid group-hover:text-acid">{ep.no}</div><div><p class="mb-2 font-mono text-[10px] uppercase tracking-widest text-acid">{ep.tag} · {ep.duration}</p><h3 class="text-xl font-medium leading-snug tracking-[-.025em] md:text-2xl">{ep.title}</h3></div><span class="text-2xl text-white/30 transition group-hover:translate-x-1 group-hover:text-acid">→</span></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container-shell">
+      <div class="flex items-end justify-between gap-5"><div><span class="eyebrow">Oglądaj</span><h2 class="display mt-5 text-6xl md:text-8xl">Najnowsze na YT.</h2></div><a href="/youtube" class="arrow-link hidden items-center gap-3 font-mono text-xs uppercase tracking-wider text-acid sm:flex">Zobacz kanał <span class="arrow">↗</span></a></div>
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {featuredVideos.map((video, i) => <a href={`https://youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer" class="group"><div class="relative aspect-video overflow-hidden rounded-2xl bg-surface"><img src={video.image} alt="" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" /><div class="absolute inset-0 bg-black/10 transition group-hover:bg-transparent"></div><div class="absolute bottom-4 left-4 grid h-11 w-11 place-items-center rounded-full bg-acid text-sm text-ink shadow-xl">▶</div></div><p class="mt-5 font-mono text-[10px] uppercase tracking-widest text-white/35">0{i+1} · {video.meta}</p><h3 class="mt-2 text-xl font-medium leading-snug tracking-[-.025em]">{video.title}</h3></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-5 md:pb-10">
+    <div class="container-shell overflow-hidden rounded-[2rem] bg-acid px-6 py-12 text-ink md:px-14 md:py-16">
+      <div class="grid gap-10 lg:grid-cols-[1fr_.8fr] lg:items-end"><div><span class="font-mono text-xs font-bold uppercase tracking-[.2em]">Przeprogramowany newsletter</span><h2 class="display mt-5 max-w-3xl text-5xl sm:text-6xl md:text-7xl">Co piątek. Same konkrety.</h2></div><div><p class="mb-6 max-w-lg text-sm leading-6 text-black/65">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Dołącz do ponad 3000 czytelników.</p><a href="https://przeprogramowani.substack.com/" class="flex w-full items-center justify-between rounded-full bg-ink px-6 py-4 font-semibold text-white transition hover:bg-purple">Zapisz się za darmo <span>↗</span></a></div></div>
+    </div>
+  </section>
+</Layout>

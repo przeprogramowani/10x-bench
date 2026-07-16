@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import ArrowLink from '../components/ArrowLink.astro';
+import VideoCard from '../components/VideoCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import { courses, podcasts, videos } from '../data/content';
+
+const partnerNames = ['SmartRecruiters', 'Callstack', 'Future Processing', 'Autodesk', 'Huuuge Games', 'Euvic'];
+---
+
+<BaseLayout>
+  <section class="relative min-h-[760px] overflow-hidden pt-[72px] lg:min-h-[820px]">
+    <div class="absolute inset-0 dot-grid opacity-30 [mask-image:radial-gradient(circle_at_70%_40%,black,transparent_70%)]"></div>
+    <div class="pointer-events-none absolute -right-28 top-40 hidden aspect-square w-[42rem] rounded-full border border-lime/25 lg:block">
+      <div class="absolute inset-[12%] rounded-full border border-cyan/20"></div>
+      <div class="absolute inset-[27%] rounded-full bg-lime blur-3xl opacity-15"></div>
+      <div class="absolute left-1/2 top-1/2 h-[140%] w-px -translate-x-1/2 -translate-y-1/2 rotate-[38deg] bg-gradient-to-b from-transparent via-lime/50 to-transparent"></div>
+      <div class="absolute left-[16%] top-[19%] size-3 rounded-full bg-lime shadow-[0_0_25px_#b8ff32]"></div>
+      <div class="absolute bottom-[18%] right-[18%] size-2 rounded-full bg-cyan shadow-[0_0_25px_#66e6ff]"></div>
+    </div>
+
+    <div class="page-shell relative flex min-h-[688px] flex-col justify-center py-16 lg:min-h-[748px]">
+      <div class="max-w-5xl">
+        <p class="eyebrow">Nowość / Edycja 4.0 / Start 14.09</p>
+        <h1 class="display mt-7 text-[clamp(4.6rem,13vw,11rem)]">
+          10x<span class="text-lime">Devs</span>
+        </h1>
+        <h2 class="mt-5 max-w-3xl text-2xl font-extrabold leading-[1.08] tracking-[-.045em] sm:text-4xl lg:text-5xl">AI‑Native Software Engineering. Od hype’u do działającego procesu.</h2>
+        <p class="mt-6 max-w-2xl text-base leading-7 text-paper/60 sm:text-lg">Poznaj praktyczny workflow współpracy z agentami AI — od researchu i planu, przez implementację oraz testy, aż po wdrożenie.</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <ArrowLink href="https://www.10xdevs.pl/" label="Poznaj program" external />
+          <a href="#kursy" class="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-sm font-bold transition hover:border-lime hover:text-lime">Zobacz wszystkie kursy</a>
+        </div>
+      </div>
+
+      <div class="mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+        {['5+1 tygodni', 'Projekt końcowy', 'Certyfikat', '6700+ absolwentów'].map((item) => (
+          <div class="bg-ink/80 px-4 py-4 text-xs font-bold sm:px-5">{item}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="overflow-hidden border-y border-white/10 bg-paper py-4 text-ink" aria-label="Obszary tematyczne">
+    <div class="marquee-track flex gap-8 pr-8 text-lg font-black uppercase tracking-[-.03em] sm:text-xl">
+      {[...Array(2)].flatMap(() => ['Frontend', 'TypeScript', 'AI Engineering', 'Podcast', 'YouTube', 'Architektura', 'Kariera']).map((item) => (
+        <span class="flex items-center gap-8"><span>{item}</span><span class="text-lg text-lime [text-shadow:0_0_0_#0b0b0f]">✦</span></span>
+      ))}
+    </div>
+  </section>
+
+  <section id="kursy" class="scroll-mt-24 py-24 sm:py-32">
+    <div class="page-shell">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-end">
+        <div>
+          <p class="eyebrow">Programy edukacyjne</p>
+          <h2 class="display mt-6 text-6xl sm:text-8xl">Rozwijaj się <span class="text-paper/25">szerzej.</span></h2>
+        </div>
+        <p class="max-w-xl text-lg leading-8 text-paper/55 lg:justify-self-end">Od jakości frontendu, przez bezpieczne typowanie, po świadomą współpracę z AI. Wiedza, którą przenosisz do produkcyjnego kodu.</p>
+      </div>
+
+      <div class="mt-14 grid gap-5 lg:grid-cols-2">
+        {courses.map((course) => (
+          <article class="group relative flex min-h-[460px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[.035] p-7 transition hover:-translate-y-1 hover:border-white/25 sm:p-10">
+            <div class:list={['absolute -right-20 -top-20 size-64 rounded-full blur-[90px] opacity-15 transition group-hover:opacity-30', course.tone === 'cyan' ? 'bg-cyan' : 'bg-purple']}></div>
+            <div class="relative flex items-center justify-between">
+              <span class="text-xs font-bold text-paper/30">{course.index} / PROGRAM</span>
+              <span class:list={['rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-[.12em] text-ink', course.tone === 'cyan' ? 'bg-cyan' : 'bg-purple']}>{course.kicker}</span>
+            </div>
+            <div class="relative mt-auto pt-20">
+              <h3 class="text-4xl font-black leading-none tracking-[-.055em] sm:text-5xl">{course.title}</h3>
+              <p class="mt-5 max-w-lg text-base leading-7 text-paper/55">{course.description}</p>
+              <div class="mt-7 flex flex-wrap gap-2">
+                {course.stats.map((stat) => <span class="rounded-full border border-white/15 px-3 py-1.5 text-xs text-paper/55">{stat}</span>)}
+              </div>
+              <div class="mt-8">
+                <ArrowLink href={course.href} label="Zobacz program" external variant="outline" />
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-24 text-ink sm:py-32">
+    <div class="page-shell">
+      <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div>
+          <p class="text-xs font-black uppercase tracking-[.16em]">Ostatnio na kanale</p>
+          <h2 class="display mt-6 text-6xl sm:text-8xl">YouTube</h2>
+        </div>
+        <ArrowLink href="/youtube" label="Wszystkie filmy" variant="dark" />
+      </div>
+      <div class="mt-14 grid gap-x-6 gap-y-12 lg:grid-cols-3">
+        {videos.slice(0, 3).map((video, index) => <VideoCard video={video} featured={index === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 sm:py-32">
+    <div class="page-shell">
+      <div class="grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
+        <div>
+          <p class="eyebrow">Do słuchania</p>
+          <h2 class="display mt-6 text-6xl sm:text-8xl">Podcasty</h2>
+          <p class="mt-6 max-w-sm text-base leading-7 text-paper/50">Comiesięczne podsumowania AI i rozmowy z ludźmi, którzy naprawdę dowożą w branży.</p>
+          <div class="mt-8"><ArrowLink href="/podcast" label="Przejdź do podcastów" variant="outline" /></div>
+        </div>
+        <div>
+          {podcasts.slice(0, 3).map((episode, index) => <PodcastCard episode={episode} index={index} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 py-14">
+    <div class="page-shell">
+      <p class="text-center text-[10px] font-bold uppercase tracking-[.18em] text-paper/30">Zaufali nam</p>
+      <div class="mt-8 grid grid-cols-2 gap-5 text-center text-sm font-extrabold text-paper/35 sm:grid-cols-3 lg:grid-cols-6">
+        {partnerNames.map((name) => <span>{name}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-lime py-20 text-ink sm:py-28">
+    <div class="page-shell grid gap-8 lg:grid-cols-[1.3fr_auto] lg:items-end">
+      <div>
+        <p class="text-xs font-black uppercase tracking-[.16em]">Przeprogramowany Newsletter</p>
+        <h2 class="display mt-5 max-w-4xl text-6xl sm:text-8xl">3—2—1. Co piątek.</h2>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-ink/65">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Bez szumu — sama wartościowa wiedza.</p>
+      </div>
+      <ArrowLink href="https://przeprogramowani.substack.com/" label="Zapisz się za darmo" external variant="dark" />
+    </div>
+  </section>
+</BaseLayout>

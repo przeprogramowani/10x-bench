@@ -1,0 +1,94 @@
+---
+import type { Course } from '../data/site';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+
+const accentMap = {
+  brand: {
+    ring: 'hover:border-brand-400/50',
+    glow: 'from-brand-500/20',
+    chip: 'bg-brand-500/15 text-brand-200 border-brand-400/20',
+    dot: 'bg-brand-400',
+    btn: 'bg-brand-500 hover:bg-brand-400 text-white shadow-brand-500/25',
+  },
+  accent: {
+    ring: 'hover:border-accent-400/50',
+    glow: 'from-accent-500/20',
+    chip: 'bg-accent-500/15 text-accent-400 border-accent-400/20',
+    dot: 'bg-accent-400',
+    btn: 'bg-accent-500 hover:bg-accent-400 text-ink-950 shadow-accent-500/25',
+  },
+  emerald: {
+    ring: 'hover:border-emerald-400/50',
+    glow: 'from-emerald-500/20',
+    chip: 'bg-emerald-500/15 text-emerald-300 border-emerald-400/20',
+    dot: 'bg-emerald-400',
+    btn: 'bg-emerald-500 hover:bg-emerald-400 text-ink-950 shadow-emerald-500/25',
+  },
+} as const;
+
+const a = accentMap[course.accent];
+---
+
+<article
+  class={`card group relative flex h-full flex-col overflow-hidden p-7 transition-all duration-300 hover:-translate-y-1 ${a.ring}`}
+>
+  <div
+    class={`pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br ${a.glow} to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100`}
+  >
+  </div>
+
+  <div class="relative flex items-center justify-between gap-3">
+    <span class={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold ${a.chip}`}>
+      <span class={`h-1.5 w-1.5 rounded-full ${a.dot}`}></span>
+      {course.subtitle}
+    </span>
+  </div>
+
+  <h3 class="relative mt-5 text-2xl">{course.name}</h3>
+  <p class="relative mt-1 text-sm font-medium text-slate-400">{course.tagline}</p>
+
+  <p class="relative mt-4 text-sm leading-relaxed text-slate-300">{course.description}</p>
+
+  <ul class="relative mt-6 space-y-2.5">
+    {
+      course.highlights.map((h) => (
+        <li class="flex items-start gap-2.5 text-sm text-slate-300">
+          <svg class={`mt-0.5 h-4 w-4 flex-none ${course.accent === 'brand' ? 'text-brand-400' : course.accent === 'accent' ? 'text-accent-400' : 'text-emerald-400'}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.29 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
+          </svg>
+          <span>{h}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="relative mt-7 grid grid-cols-3 gap-3 border-t border-white/10 pt-6">
+    {
+      course.stats.map((s) => (
+        <div>
+          <div class="text-lg font-bold text-white">{s.value}</div>
+          <div class="mt-0.5 text-[11px] uppercase tracking-wide text-slate-500">{s.label}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="relative mt-7 pt-1">
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`btn w-full font-semibold shadow-lg ${a.btn}`}
+    >
+      {course.cta}
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M4 10h12M12 5l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</article>

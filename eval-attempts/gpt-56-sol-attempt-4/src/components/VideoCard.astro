@@ -1,0 +1,37 @@
+---
+interface Props {
+  video: {
+    id: string;
+    title: string;
+    date: string;
+    category: string;
+  };
+  featured?: boolean;
+}
+const { video, featured = false } = Astro.props;
+---
+
+<a
+  href={`https://www.youtube.com/watch?v=${video.id}`}
+  target="_blank"
+  rel="noreferrer"
+  class:list={[
+    'group arrow-link block border-t border-ink/20 pt-4',
+    featured && 'md:col-span-2',
+  ]}
+>
+  <div class:list={['relative overflow-hidden rounded-[1.25rem] bg-ink', featured ? 'aspect-[16/8.2]' : 'aspect-video']}>
+    <img src={`/images/youtube/${video.id}.jpg`} alt="" loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025] group-hover:opacity-80" />
+    <span class="absolute left-4 top-4 rounded-full bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-ink">{video.category}</span>
+    <span class="absolute bottom-4 right-4 grid size-12 place-items-center rounded-full bg-coral text-white shadow-lg transition-transform group-hover:scale-110" aria-hidden="true">
+      <svg class="ml-0.5 size-5" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7V5Z" /></svg>
+    </span>
+  </div>
+  <div class="mt-4 flex items-start justify-between gap-4">
+    <div>
+      <p class="mb-2 text-xs font-bold uppercase tracking-[.12em] text-ink/45">{video.date}</p>
+      <h2 class:list={['display font-black leading-[1.02]', featured ? 'text-3xl sm:text-4xl' : 'text-2xl']}>{video.title}</h2>
+    </div>
+    <svg class="mt-1 size-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7M7 7h10v10" /></svg>
+  </div>
+</a>

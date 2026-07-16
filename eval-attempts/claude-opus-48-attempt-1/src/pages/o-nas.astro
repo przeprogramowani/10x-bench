@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import Icon from '../components/Icon.astro';
+import { site, clients } from '../data/site';
+import { founders, values } from '../data/team';
+---
+
+<Layout
+  title="O nas"
+  description="Poznaj Przeprogramowani — zespół, misję i historię projektu, w którym programowanie spotyka się z rozwojem osobistym. Za marką stoją Przemek Smyrdek i Marcin Czarkowski."
+>
+  <!-- Nagłówek -->
+  <section class="relative overflow-hidden border-b border-white/5">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-brand-600/15 blur-[120px]"></div>
+    </div>
+    <div class="container-page py-16 sm:py-24">
+      <div class="max-w-3xl animate-fade-up">
+        <span class="eyebrow">O nas</span>
+        <h1 class="mt-5 text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Miejsce, w którym programowanie spotyka się z
+          <span class="gradient-text"> rozwojem osobistym</span>
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">
+          Wierzymy, że najlepsi programiści myślą szeroko — biorą pod uwagę architekturę,
+          biznes, ludzi i samych siebie. Od {site.stats.years} tworzymy treści, kursy i narzędzia,
+          które pomagają developerom rosnąć na wielu płaszczyznach: od technicznych deep-dive’ów
+          po rozmowy o karierze i rozwoju osobistym.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statystyki -->
+  <section class="border-b border-white/5 bg-ink-800/30 py-12">
+    <div class="container-page grid grid-cols-2 gap-8 sm:grid-cols-3">
+      {
+        [
+          { value: site.stats.years, label: 'W edukacji technicznej' },
+          { value: site.stats.community, label: 'Programistów w społeczności' },
+          { value: site.stats.trained, label: 'Absolwentów naszych kursów' },
+        ].map((s) => (
+          <div>
+            <div class="text-4xl font-bold text-white">{s.value}</div>
+            <div class="mt-1 text-sm text-slate-400">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Wartości -->
+  <Section
+    eyebrow="Nasze podejście"
+    title="Wartości, które nas prowadzą"
+    description="To one decydują o tym, jak tworzymy każdy materiał, kurs i odcinek."
+  >
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        values.map((v) => (
+          <div class="card p-7">
+            <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500/15 text-brand-300">
+              <Icon name={v.icon} class="h-5 w-5" />
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-white">{v.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">{v.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Założyciele -->
+  <section class="border-t border-white/5 bg-ink-800/20">
+    <Section
+      eyebrow="Zespół"
+      title="Poznaj założycieli"
+      description="Za Przeprogramowani stoją dwaj inżynierowie z wieloletnim doświadczeniem w produkcie i edukacji."
+    >
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          founders.map((f) => (
+            <article class="card p-8">
+              <div class="flex items-center gap-4">
+                <div
+                  class:list={[
+                    'flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br text-xl font-bold text-white shadow-lg',
+                    f.accent,
+                  ]}
+                >
+                  {f.initials}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white">{f.name}</h3>
+                  <p class="text-sm font-medium text-brand-300">{f.role}</p>
+                </div>
+              </div>
+              <ul class="mt-6 space-y-3">
+                {f.bio.map((line) => (
+                  <li class="flex items-start gap-2.5 text-sm leading-relaxed text-slate-300">
+                    <Icon name="check" class="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-400" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+  </section>
+
+  <!-- Klienci -->
+  <Section
+    eyebrow="Zaufanie"
+    title="Zaufali nam programiści z topowych zespołów"
+    description="Nasze materiały i szkolenia trafiają do developerów pracujących m.in. w tych organizacjach."
+  >
+    <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      {
+        clients.map((c) => (
+          <div class="card flex items-center justify-center px-4 py-6 text-center text-sm font-semibold text-slate-300">
+            {c}
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <section class="border-t border-white/5 py-16 sm:py-20">
+    <div class="container-page">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl">Masz pytanie lub propozycję?</h2>
+        <p class="mt-3 text-slate-400">
+          Napisz do nas — chętnie porozmawiamy o współpracy, szkoleniach dla zespołu lub gościnnym
+          udziale w podcaście.
+        </p>
+        <a href={`mailto:${site.email}`} class="btn-primary mt-6">
+          <Icon name="mail" class="h-4 w-4" />
+          {site.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

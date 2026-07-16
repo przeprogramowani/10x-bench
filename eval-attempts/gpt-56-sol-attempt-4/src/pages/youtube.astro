@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { youtubeVideos } from '../data/content';
+---
+
+<Layout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o AI, frontendzie, TypeScripcie i świadomym budowaniu oprogramowania.">
+  <section class="grid-lines relative overflow-hidden bg-ink pb-20 pt-36 text-white sm:pb-28 sm:pt-44">
+    <div class="absolute left-[55%] top-0 size-96 rounded-full bg-coral/20 blur-[130px]"></div>
+    <div class="container-page relative">
+      <div class="grid items-end gap-8 lg:grid-cols-[1.25fr_.75fr]">
+        <div><p class="eyebrow text-lime">YouTube</p><h1 class="display mt-6 text-7xl font-black leading-[.84] sm:text-9xl lg:text-[8.5rem]">Zobacz,<br />jak <em class="font-serif font-normal text-coral">działa.</em></h1></div>
+        <div class="lg:pb-3"><p class="max-w-lg text-lg leading-relaxed text-white/60">Deep dive’y, relacje z wydarzeń i praktyczne demo. O technologii bez zbędnych skrótów.</p><a href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" class="mt-7 inline-flex rounded-full bg-lime px-5 py-3 text-sm font-black text-ink">Subskrybuj kanał ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="container-page">
+      <div class="mb-12 flex items-end justify-between"><div><p class="eyebrow text-coral">Najnowsze</p><h2 class="display mt-4 text-5xl font-black sm:text-7xl">Ostatnie filmy.</h2></div><p class="hidden text-xs font-black uppercase tracking-[.12em] text-ink/40 sm:block">Aktualizacja: lipiec 2026</p></div>
+      <div class="grid gap-x-6 gap-y-14 md:grid-cols-2">
+        {youtubeVideos.map((video, index) => <VideoCard video={video} featured={index === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-coral py-16 text-ink sm:py-20">
+    <div class="container-page flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"><h2 class="display max-w-3xl text-4xl font-black leading-[.95] sm:text-6xl">Nie przegap kolejnego materiału.</h2><a href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" class="shrink-0 rounded-full bg-ink px-6 py-3.5 text-sm font-black text-white">YouTube — subskrybuj ↗</a></div>
+  </section>
+</Layout>

@@ -1,0 +1,33 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-white/10 bg-[#07080b]">
+  <div class="section-shell py-12 sm:py-16">
+    <div class="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <a href="/" class="inline-flex items-center gap-2.5 font-display text-lg font-bold">
+          <span class="grid size-8 place-items-center rounded-lg bg-lime font-mono text-sm font-black text-ink">&lt;/&gt;</span>
+          Przeprogramowani
+        </a>
+        <p class="mt-5 max-w-sm text-sm leading-6 text-white/50">Łączymy świat programowania, biznesu i rozwoju. Tworzymy wiedzę dla ambitnych developerów.</p>
+      </div>
+      <div>
+        <p class="eyebrow text-white/35">Odkrywaj</p>
+        <div class="mt-5 grid gap-3 text-sm font-semibold text-white/70">
+          <a class="hover:text-lime" href="/o-nas">O nas</a><a class="hover:text-lime" href="/podcast">Podcast</a><a class="hover:text-lime" href="/youtube">YouTube</a><a class="hover:text-lime" href="/#kursy">Kursy</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow text-white/35">Bądźmy w kontakcie</p>
+        <div class="mt-5 grid gap-3 text-sm font-semibold text-white/70">
+          <a class="hover:text-lime" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+          <a class="hover:text-lime" href="https://www.youtube.com/c/przeprogramowani" target="_blank">YouTube ↗</a>
+          <a class="hover:text-lime" href="https://przeprogramowani.substack.com" target="_blank">Newsletter ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 pt-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} Przeprogramowani.pl</p><p>Szersze spojrzenie na programowanie.</p>
+    </div>
+  </div>
+</footer>

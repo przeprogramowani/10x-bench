@@ -1,0 +1,124 @@
+---
+import { site, social } from '../data/site';
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Projekt',
+    links: [
+      { label: 'O nas', href: '/o-nas' },
+      { label: 'Podcast', href: '/podcast' },
+      { label: 'YouTube', href: '/youtube' },
+      { label: 'Blog', href: 'https://przeprogramowani.pl/artykuly' },
+    ],
+  },
+  {
+    title: 'Kursy',
+    links: [
+      { label: '10xDevs 4.0', href: 'https://www.10xdevs.pl' },
+      { label: 'Opanuj Frontend', href: 'https://opanujfrontend.pl' },
+      { label: 'Opanuj TypeScript', href: 'https://opanujtypescript.pl' },
+      { label: 'Opanuj AI', href: 'https://opanuj.ai' },
+    ],
+  },
+  {
+    title: 'Społeczność',
+    links: [
+      { label: 'Newsletter', href: 'https://przeprogramowani.pl/newsletter' },
+      { label: 'YouTube', href: social.youtube },
+      { label: 'Spotify', href: social.spotify },
+      { label: 'Apple Podcasts', href: social.applePodcasts },
+    ],
+  },
+];
+---
+
+<footer class="border-t border-white/10 bg-ink-900">
+  <div class="container-page py-16">
+    <div class="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div>
+        <a href="/" class="flex items-center gap-2.5">
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-violet-600 font-mono text-lg font-bold text-white"
+            >{'</>'}</span
+          >
+          <span class="text-lg font-bold text-white">Przeprogramowani</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+          {site.description}
+        </p>
+        <div class="mt-6 flex items-center gap-3">
+          <a
+            href={social.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-white/25 hover:text-white"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href={social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-white/25 hover:text-white"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href={social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-slate-400 transition hover:border-white/25 hover:text-white"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4a3.6 3.6 0 0 1-1.4-.9 3.6 3.6 0 0 1-.9-1.4c-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 5.6a4.2 4.2 0 1 0 0 8.4 4.2 4.2 0 0 0 0-8.4zm0 6.9a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.3-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {
+        columns.map((col) => (
+          <div>
+            <h3 class="text-sm font-semibold text-white">{col.title}</h3>
+            <ul class="mt-4 space-y-3">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    class="text-sm text-slate-400 transition hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-500 sm:flex-row sm:items-center"
+    >
+      <p>© {year} Przeprogramowani. Szersze spojrzenie na programowanie.</p>
+      <a href={`mailto:${site.email}`} class="transition hover:text-white">{site.email}</a>
+    </div>
+  </div>
+</footer>

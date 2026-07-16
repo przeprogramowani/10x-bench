@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import { podcastEpisodes, youtubeVideos } from '../data/content';
+---
+
+<Layout
+  title="Przeprogramowani — szersze spojrzenie na programowanie"
+  description="Kursy, podcasty i materiały dla programistów, którzy chcą świadomie rozwijać technologię, karierę i sposób pracy z AI."
+>
+  <section class="grain grid-lines relative min-h-[820px] overflow-hidden bg-ink pb-16 pt-28 text-white sm:min-h-[880px] sm:pt-36 lg:flex lg:min-h-[760px] lg:items-center lg:pb-0 lg:pt-20">
+    <div class="absolute -left-24 top-40 size-72 rounded-full bg-coral/20 blur-[100px]"></div>
+    <div class="container-page relative z-10 grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
+      <div class="reveal relative z-20">
+        <div class="eyebrow mb-6 text-lime">Nowa edycja · jesień 2026</div>
+        <p class="mb-3 text-lg font-semibold text-white/55 sm:text-xl">Bestsellerowy program Przeprogramowanych</p>
+        <h1 class="display max-w-[850px] text-[4.2rem] font-black leading-[.82] sm:text-[6.5rem] lg:text-[7.3rem] xl:text-[8.3rem]">
+          10x<span class="text-coral">Devs</span>
+        </h1>
+        <h2 class="display mt-5 max-w-2xl text-3xl font-black leading-[.98] sm:text-5xl">
+          Autocomplete to dopiero początek.
+        </h2>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
+          Przejmij kontrolę nad AI w całym procesie tworzenia oprogramowania — od analizy wymagań, przez implementację, aż po testy i produkcję.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://10xdevs.pl" class="arrow-link inline-flex items-center gap-3 rounded-full bg-lime px-6 py-3.5 text-sm font-extrabold text-ink transition hover:bg-white">
+            Poznaj 10xDevs
+            <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7M7 7h10v10" /></svg>
+          </a>
+          <a href="#kursy" class="rounded-full border border-white/25 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white hover:text-ink">Zobacz nasze kursy</a>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-7 text-xs font-bold uppercase tracking-wider text-white/45">
+          <span><b class="mr-1 text-white">5+1</b> tygodni</span>
+          <span><b class="mr-1 text-white">1000+</b> programistów</span>
+          <span><b class="mr-1 text-white">AI-native</b> workflow</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay relative -mx-16 mt-2 min-h-[330px] sm:-mx-8 sm:min-h-[430px] lg:-ml-40 lg:-mr-28 lg:min-h-[650px]">
+        <div class="float absolute inset-x-8 top-6 mx-auto aspect-square max-w-[650px] rounded-full border border-white/10 bg-gradient-to-b from-white/10 to-transparent"></div>
+        <img src="/images/10xdevs-hero.webp" alt="Przemek Smyrdek i Marcin Czarkowski — prowadzący 10xDevs" class="absolute inset-x-0 bottom-[-4rem] z-10 mx-auto w-full max-w-[780px] drop-shadow-[0_25px_70px_rgba(0,0,0,.55)] sm:bottom-[-5rem] lg:bottom-0 lg:w-[116%] lg:max-w-none" />
+        <div class="absolute right-[9%] top-[6%] z-20 rotate-3 rounded-xl bg-coral px-4 py-3 text-xs font-black uppercase tracking-wider shadow-2xl sm:right-[14%] sm:top-[10%]">Zero vibe coding<br />100% engineering</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="overflow-hidden border-y border-ink bg-coral py-3 text-ink">
+    <div class="flex min-w-max items-center gap-7 text-xs font-black uppercase tracking-[.14em]">
+      <span>Architektura</span><span>✦</span><span>AI Engineering</span><span>✦</span><span>Frontend</span><span>✦</span><span>TypeScript</span><span>✦</span><span>Rozwój</span><span>✦</span><span>Podcast</span><span>✦</span><span>Architektura</span><span>✦</span><span>AI Engineering</span><span>✦</span><span>Frontend</span><span>✦</span><span>TypeScript</span>
+    </div>
+  </div>
+
+  <section class="py-20 sm:py-28" id="kursy">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:gap-16">
+        <div>
+          <p class="eyebrow text-coral">Programy edukacyjne</p>
+          <h2 class="display mt-5 text-5xl font-black leading-[.92] sm:text-7xl">Wiedza, która pracuje <em class="font-serif font-normal">w praktyce.</em></h2>
+        </div>
+        <div class="self-end lg:pb-2">
+          <p class="max-w-2xl text-lg leading-relaxed text-ink/65 sm:text-xl">Nie uczymy skrótów. Pomagamy budować kompetencje, które zostają z Tobą po zmianie frameworka, narzędzia czy modelu AI.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 grid gap-5 lg:grid-cols-2">
+        <a href="https://www.opanujfrontend.pl" class="group relative min-h-[560px] overflow-hidden rounded-[1.75rem] bg-[#39171e] text-white">
+          <img src="/images/courses/opanuj-frontend.webp" alt="Opanuj Frontend: AI Edition" class="absolute inset-0 h-full w-full object-cover opacity-45 transition duration-700 group-hover:scale-105 group-hover:opacity-55" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1d0d12] via-[#1d0d12]/65 to-transparent"></div>
+          <div class="relative flex h-full min-h-[560px] flex-col p-7 sm:p-9">
+            <div class="flex items-center justify-between"><span class="rounded-full border border-white/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider">10 tygodni</span><span class="text-sm font-black">01</span></div>
+            <div class="mt-auto">
+              <p class="mb-3 text-sm font-bold text-coral">AI Edition</p>
+              <h3 class="display text-5xl font-black leading-[.9] sm:text-6xl">Opanuj<br />Frontend</h3>
+              <p class="mt-5 max-w-md text-sm leading-relaxed text-white/65 sm:text-base">5 modułów o jakości, testowaniu, CI/CD, pracy zespołowej i architekturze nowoczesnych aplikacji.</p>
+              <div class="mt-7 flex items-center justify-between border-t border-white/20 pt-5 text-sm font-bold"><span>383 absolwentów</span><span class="text-xl">↗</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.opanujtypescript.pl" class="group relative min-h-[560px] overflow-hidden rounded-[1.75rem] bg-[#071c31] text-white">
+          <img src="/images/courses/opanuj-typescript.webp" alt="Opanuj TypeScript — kurs TypeScript 5 i React 19" class="absolute inset-0 h-full w-full object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-60" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#061625] via-[#061625]/65 to-transparent"></div>
+          <div class="relative flex h-full min-h-[560px] flex-col p-7 sm:p-9">
+            <div class="flex items-center justify-between"><span class="rounded-full border border-white/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider">Frontend Pro</span><span class="text-sm font-black">02</span></div>
+            <div class="mt-auto">
+              <p class="mb-3 text-sm font-bold text-[#7cc5ff]">TypeScript 5 · React 19</p>
+              <h3 class="display text-5xl font-black leading-[.9] sm:text-6xl">Opanuj<br />TypeScript</h3>
+              <p class="mt-5 max-w-md text-sm leading-relaxed text-white/65 sm:text-base">Generyki, typowanie Reacta i ponad 40 praktycznych ćwiczeń do niezawodnych aplikacji produkcyjnych.</p>
+              <div class="mt-7 flex items-center justify-between border-t border-white/20 pt-5 text-sm font-bold"><span>121 absolwentów</span><span class="text-xl">↗</span></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 sm:py-28">
+    <div class="container-page">
+      <div class="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div><p class="eyebrow text-coral">Ostatnio na YouTube</p><h2 class="display mt-4 text-5xl font-black sm:text-7xl">Patrz szerzej.</h2></div>
+        <a href="/youtube" class="arrow-link inline-flex items-center gap-3 text-sm font-extrabold">Wszystkie filmy <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17 17 7M7 7h10v10" /></svg></a>
+      </div>
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        {youtubeVideos.slice(0, 3).map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28">
+    <div class="container-page grid gap-14 lg:grid-cols-[.7fr_1.3fr]">
+      <div>
+        <p class="eyebrow text-coral">Do słuchania</p>
+        <h2 class="display mt-5 text-5xl font-black leading-[.92] sm:text-7xl">Dobre rozmowy zostają na dłużej.</h2>
+        <p class="mt-6 max-w-md leading-relaxed text-ink/60">Technologia, AI, kariera i ludzie, którzy patrzą na branżę z różnych perspektyw.</p>
+        <a href="/podcast" class="arrow-link mt-7 inline-flex items-center gap-3 text-sm font-extrabold">Przejdź do podcastów <span>↗</span></a>
+      </div>
+      <div>
+        {podcastEpisodes.slice(0, 3).map((episode, index) => <PodcastCard episode={episode} index={index} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-lime py-20 text-ink sm:py-28">
+    <div class="container-page grid items-center gap-10 lg:grid-cols-[1.2fr_.8fr]">
+      <div>
+        <p class="eyebrow">Co piątek · 3–2–1</p>
+        <h2 class="display mt-5 max-w-4xl text-5xl font-black leading-[.88] sm:text-7xl lg:text-8xl">Przeprogramowany Newsletter</h2>
+      </div>
+      <div>
+        <p class="text-lg leading-relaxed text-ink/65">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Bez szumu. Zawsze coś, co warto zapisać na później.</p>
+        <a href="https://przeprogramowani.substack.com" class="mt-7 inline-flex rounded-full bg-ink px-6 py-3.5 text-sm font-extrabold text-white hover:bg-coral">Zapisz się za darmo ↗</a>
+      </div>
+    </div>
+  </section>
+</Layout>

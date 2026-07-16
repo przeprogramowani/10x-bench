@@ -1,0 +1,49 @@
+---
+import type { Video } from '../data/videos';
+import { thumb, watchUrl } from '../data/videos';
+
+interface Props {
+  video: Video;
+  index?: number;
+}
+const { video, index = 0 } = Astro.props;
+
+const formatted = new Date(video.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<a
+  href={watchUrl(video.id)}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="card card-hover group flex flex-col overflow-hidden"
+  data-reveal
+  data-reveal-delay={index * 80}
+>
+  <div class="relative aspect-video overflow-hidden">
+    <img
+      src={thumb(video.id)}
+      alt={`Miniatura: ${video.title}`}
+      loading="lazy"
+      decoding="async"
+      width="480"
+      height="360"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent"></div>
+    <div class="absolute inset-0 grid place-items-center">
+      <span class="grid h-14 w-14 place-items-center rounded-full bg-red-600/90 text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
+        <svg viewBox="0 0 24 24" class="ml-0.5 h-6 w-6" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+      </span>
+    </div>
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <time datetime={video.date} class="text-xs font-medium uppercase tracking-wide text-brand-300">{formatted}</time>
+    <h3 class="mt-2 line-clamp-2 font-semibold leading-snug text-white transition-colors group-hover:text-brand-200">
+      {video.title}
+    </h3>
+  </div>
+</a>

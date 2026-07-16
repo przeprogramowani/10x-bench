@@ -1,0 +1,35 @@
+---
+interface Props {
+  episode: {
+    title: string;
+    subtitle: string;
+    duration: string;
+    show: string;
+    href: string;
+    tone: string;
+  };
+  index: number;
+}
+
+const { episode, index } = Astro.props;
+const tones: Record<string, string> = {
+  lime: 'bg-lime text-ink',
+  cyan: 'bg-cyan text-ink',
+  purple: 'bg-purple text-ink',
+};
+---
+
+<a href={episode.href} target="_blank" rel="noreferrer" class="group grid gap-5 border-t border-white/12 py-7 transition hover:border-lime sm:grid-cols-[56px_1fr_auto] sm:items-center">
+  <span class="text-xs font-bold text-paper/30">{String(index + 1).padStart(2, '0')}</span>
+  <div>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class:list={['rounded-full px-2.5 py-1 text-[9px] font-black uppercase tracking-[.1em]', tones[episode.tone]]}>{episode.show}</span>
+      <span class="text-[10px] font-semibold uppercase tracking-[.12em] text-paper/35">{episode.duration}</span>
+    </div>
+    <h2 class="mt-3 text-xl font-extrabold leading-tight tracking-[-.035em] transition group-hover:text-lime sm:text-2xl">{episode.title}</h2>
+    <p class="mt-1 text-sm text-paper/45">{episode.subtitle}</p>
+  </div>
+  <span class="grid size-12 place-items-center rounded-full border border-white/15 transition group-hover:border-lime group-hover:bg-lime group-hover:text-ink">
+    <svg class="ml-0.5 size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z" /></svg>
+  </span>
+</a>

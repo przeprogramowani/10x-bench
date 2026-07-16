@@ -1,0 +1,12 @@
+---
+const { eyebrow, title, accent, description } = Astro.props;
+---
+
+<section class="noise relative overflow-hidden border-b border-white/[.06]">
+  <div class="absolute left-1/2 top-0 size-[28rem] -translate-x-1/2 rounded-full bg-violet/10 blur-[100px]"></div>
+  <div class="container-shell relative py-20 text-center sm:py-28">
+    <span class="eyebrow">{eyebrow}</span>
+    <h1 class="display-title mx-auto mt-6 max-w-5xl">{title} <span class="text-gradient">{accent}</span></h1>
+    <p class="mx-auto mt-7 max-w-2xl text-base leading-7 text-white/50 sm:text-lg sm:leading-8">{description}</p>
+  </div>
+</section>

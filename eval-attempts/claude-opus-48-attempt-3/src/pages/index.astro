@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import PodcastCard from '../components/PodcastCard.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import VideoGrid from '../components/VideoGrid.tsx';
+import { site, courses, stats, clients } from '../data/site';
+import { episodes } from '../data/podcast';
+
+const latestEpisodes = episodes.slice(0, 3);
+---
+
+<Layout>
+  <!-- HERO -->
+  <section class="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
+    <div class="glow pointer-events-none absolute inset-x-0 top-0 h-[600px]"></div>
+    <div class="grid-mask pointer-events-none absolute inset-x-0 top-0 h-[600px]"></div>
+
+    <div class="container-x relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <a
+          href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+          target="_blank"
+          rel="noopener"
+          class="group inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-1.5 text-sm text-brand-100 transition-colors hover:border-brand-400/60"
+        >
+          <span class="flex h-2 w-2 items-center justify-center">
+            <span class="absolute h-2 w-2 animate-ping rounded-full bg-brand-400 opacity-75"></span>
+            <span class="h-2 w-2 rounded-full bg-brand-400"></span>
+          </span>
+          10xDevs 4.0 — nowa edycja jesienią 2026
+          <Icon name="arrow" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
+
+        <h1 class="mt-6 text-4xl font-bold leading-[1.05] sm:text-6xl">
+          Szersze spojrzenie na
+          <span class="bg-gradient-to-r from-brand-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
+            {' '}programowanie
+          </span>
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+          {site.description}
+        </p>
+
+        <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="#kursy" class="btn-primary w-full sm:w-auto">
+            Zobacz nasze szkolenia
+            <Icon name="arrow" className="h-4 w-4" />
+          </a>
+          <a href="/podcast" class="btn-ghost w-full sm:w-auto">
+            <Icon name="play" className="h-4 w-4" />
+            Posłuchaj podcastu
+          </a>
+        </div>
+
+        <!-- clients -->
+        <div class="mt-14">
+          <p class="text-xs font-medium uppercase tracking-widest text-slate-500">
+            Zaufali nam m.in.
+          </p>
+          <div class="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-slate-400">
+            {clients.map((c) => <span>{c}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <!-- stats -->
+      <dl class="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
+        {
+          stats.map((s) => (
+            <div class="card px-4 py-6 text-center">
+              <dt class="sr-only">{s.label}</dt>
+              <dd class="text-3xl font-bold text-white sm:text-4xl">{s.value}</dd>
+              <p class="mt-1 text-xs leading-snug text-slate-400">{s.label}</p>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- KURSY -->
+  <section id="kursy" class="container-x scroll-mt-24 py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="Szkolenia"
+      title="Programy, które realnie zmieniają sposób pracy"
+      description="Trzy autorskie ścieżki rozwoju — od nowoczesnego frontendu, przez jakość kodu w TypeScript, po świadome programowanie z generatywnym AI."
+    />
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {courses.map((course) => <CourseCard course={course} featured={course.id === '10xdevs'} />)}
+    </div>
+  </section>
+
+  <!-- PODCAST TEASER -->
+  <section class="container-x py-16 sm:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <SectionHeading
+        eyebrow="Podcast"
+        title="Ostatnie odcinki podcastu"
+        description="Rozmowy o frontendzie, karierze i AI z ekspertami z branży."
+      />
+      <a href="/podcast" class="btn-ghost shrink-0">
+        Wszystkie odcinki
+        <Icon name="arrow" className="h-4 w-4" />
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {latestEpisodes.map((episode) => <PodcastCard episode={episode} />)}
+    </div>
+  </section>
+
+  <!-- YOUTUBE TEASER -->
+  <section class="container-x py-16 sm:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <SectionHeading
+        eyebrow="YouTube"
+        title="Najnowsze filmy"
+        description="Analizy narzędzi AI, relacje z konferencji i praktyczne demo prosto z naszego kanału."
+      />
+      <a href="/youtube" class="btn-ghost shrink-0">
+        Więcej filmów
+        <Icon name="arrow" className="h-4 w-4" />
+      </a>
+    </div>
+    <div class="mt-10">
+      <VideoGrid client:visible limit={3} />
+    </div>
+  </section>
+
+  <NewsletterCTA />
+</Layout>

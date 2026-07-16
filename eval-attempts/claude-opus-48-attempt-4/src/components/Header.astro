@@ -1,0 +1,66 @@
+---
+import { nav, social } from '../data/site';
+import MobileNav from './MobileNav.tsx';
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href.startsWith('/#') ? false : pathname === href || (href !== '/' && pathname.startsWith(href));
+---
+
+<header class="sticky top-0 z-30 border-b border-white/10 bg-ink-950/70 backdrop-blur-xl">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="group flex items-center gap-2.5" aria-label="Przeprogramowani — strona główna">
+      <span
+        class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-violet-600 font-mono text-lg font-bold text-white shadow-lg shadow-brand-500/30"
+        >{'</>'}</span
+      >
+      <span class="text-lg font-bold tracking-tight text-white group-hover:text-brand-200">
+        Przeprogramowani
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-lg px-4 py-2 text-sm font-medium transition',
+              isActive(item.href)
+                ? 'text-white bg-white/5'
+                : 'text-slate-300 hover:text-white hover:bg-white/5',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 md:flex">
+      <a
+        href={social.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+        class="text-slate-400 transition hover:text-white"
+      >
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"
+          ></path>
+        </svg>
+      </a>
+      <a href="https://www.10xdevs.pl" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        10xDevs 4.0
+      </a>
+    </div>
+
+    <MobileNav
+      client:load
+      items={nav}
+      ctaHref="https://www.10xdevs.pl"
+      ctaLabel="10xDevs 4.0"
+    />
+  </div>
+</header>

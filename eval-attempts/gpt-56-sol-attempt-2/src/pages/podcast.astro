@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { podcastEpisodes } from '../data/content';
+import { ArrowUpRight, Headphones, Radio, Rss } from 'lucide-react';
+---
+<BaseLayout title="Podcast — Przeprogramowani" description="Najnowsze odcinki podcastów Przeprogramowani i Opanuj.AI o technologii, programowaniu i rozwoju.">
+  <PageHero eyebrow="Podcast" title="Głos dla głodnych wiedzy." lead="Technologia, AI, programowanie i kariera — bez marketingowych skrótów. Rozmawiamy z praktykami i analizujemy to, co naprawdę zmienia naszą branżę." accent="violet" />
+
+  <section class="py-24 sm:py-32">
+    <div class="section-shell">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div><p class="eyebrow text-lime"><Radio size={14} /> Ostatnie odcinki</p><h2 class="mt-5 font-display text-4xl font-bold tracking-tight sm:text-5xl">Naciśnij play. Poszerz perspektywę.</h2></div>
+        <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-extrabold text-lime">Wszystkie na Spotify <ArrowUpRight size={17} /></a>
+      </div>
+
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {podcastEpisodes.map((episode, index) => (
+          <a href={episode.url} target="_blank" rel="noreferrer" class="card-lift focus-ring group flex min-h-[360px] flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#11141a] p-6 hover:border-violet/50 hover:shadow-2xl hover:shadow-violet/10">
+            <div class="flex items-start justify-between">
+              <div class:list={["grid size-14 place-items-center rounded-2xl", index < 3 ? "bg-violet text-white" : "bg-lime text-ink"]}><Headphones size={24} /></div>
+              <span class="font-mono text-xs text-white/35">{episode.duration}</span>
+            </div>
+            <div class="mt-12"><span class="eyebrow text-white/35">{episode.series}</span><h3 class="mt-4 font-display text-2xl font-bold leading-tight transition-colors group-hover:text-lime">{episode.title}</h3><p class="mt-4 text-sm leading-6 text-white/50">{episode.description}</p></div>
+            <div class="mt-auto flex items-center justify-between border-t border-white/8 pt-5 text-sm font-bold"><span>Słuchaj odcinka</span><ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-lime py-16 text-ink">
+    <div class="section-shell flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+      <div><span class="eyebrow text-ink/50"><Rss size={14} /> Subskrybuj</span><h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Wracamy z tematami, które zostają na dłużej.</h2></div>
+      <div class="flex flex-wrap gap-3"><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" class="rounded-full bg-ink px-5 py-3 text-sm font-extrabold text-paper">Spotify</a><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" class="rounded-full border border-ink/20 px-5 py-3 text-sm font-extrabold">Apple Podcasts</a></div>
+    </div>
+  </section>
+</BaseLayout>

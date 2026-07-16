@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import PodcastShow from '../components/PodcastShow.astro';
+import Newsletter from '../components/Newsletter.tsx';
+import { courses } from '../data/courses';
+import { videos, channelUrl } from '../data/videos';
+import { shows } from '../data/podcasts';
+import { clients } from '../data/site';
+
+const latestVideos = videos.slice(0, 3);
+const marquee = [...clients, ...clients];
+---
+
+<Layout path="/">
+  <Hero />
+
+  <!-- Clients marquee -->
+  <section class="border-y border-white/5 bg-ink-900/40 py-8">
+    <div class="container-x">
+      <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+        Uczą się z nami inżynierowie z firm takich jak
+      </p>
+    </div>
+    <div class="relative mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <div class="flex w-max animate-marquee items-center gap-12 whitespace-nowrap pr-12">
+        {marquee.map((c) => (
+          <span class="font-display text-lg font-semibold text-slate-500/80">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="kursy" class="py-20 sm:py-28">
+    <div class="container-x">
+      <SectionHeading
+        eyebrow="Nasze kursy"
+        title="Programy, które robią z Ciebie lepszego inżyniera"
+        subtitle="Trzy ścieżki rozwoju — od nowoczesnego frontendu, przez zaawansowany TypeScript, po pracę z AI. Wszystkie prowadzone przez praktyków z 10+ latami doświadczenia."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course, i) => <CourseCard course={course} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast -->
+  <section class="py-20 sm:py-28">
+    <div class="container-x">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Słuchaj Przeprogramowanych"
+          subtitle="Dwa podcasty, jedno miejsce: konkretne podsumowania świata AI i rozmowy z ekspertami branży."
+        />
+        <a href="/podcast" class="btn-ghost hidden shrink-0 sm:inline-flex" data-reveal>Wszystkie odcinki</a>
+      </div>
+      <div class="mt-12 grid gap-6 lg:grid-cols-2">
+        {shows.map((show) => <PodcastShow show={show} limit={5} />)}
+      </div>
+      <div class="mt-8 sm:hidden">
+        <a href="/podcast" class="btn-ghost w-full">Wszystkie odcinki</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube -->
+  <section class="py-20 sm:py-28">
+    <div class="container-x">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Najnowsze filmy"
+          subtitle="Cotygodniowa dawka wiedzy o AI, programowaniu i nowościach ze świata IT."
+        />
+        <a href="/youtube" class="btn-ghost hidden shrink-0 sm:inline-flex" data-reveal>Zobacz kanał</a>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {latestVideos.map((video, i) => <VideoCard video={video} index={i} />)}
+      </div>
+      <div class="mt-8 sm:hidden">
+        <a href={channelUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost w-full">Zobacz kanał na YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About teaser -->
+  <section class="py-20 sm:py-28">
+    <div class="container-x">
+      <div class="card relative overflow-hidden p-8 sm:p-12" data-reveal>
+        <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-600/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]">
+          <div>
+            <span class="eyebrow">O nas</span>
+            <h2 class="mt-5 text-3xl font-bold sm:text-4xl">
+              Najlepsi programiści myślą szerzej niż tylko kod
+            </h2>
+            <p class="mt-4 max-w-xl leading-relaxed text-slate-400">
+              Od 7 lat tworzymy treści, kursy i narzędzia, które pomagają programistom rosnąć na wielu
+              płaszczyznach — architektura, biznes, ludzie. Za projektem stoją Przemek Smyrdek i Marcin Czarkowski.
+            </p>
+            <a href="/o-nas" class="btn-ghost mt-8">Poznaj naszą historię</a>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-3xl font-bold text-white">7 lat</div>
+              <div class="mt-1 text-sm text-slate-400">na rynku edukacji technicznej</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-3xl font-bold text-white">1 500+</div>
+              <div class="mt-1 text-sm text-slate-400">przeszkolonych programistów</div>
+            </div>
+            <div class="col-span-2 rounded-2xl border border-white/10 bg-gradient-to-br from-brand-600/20 to-transparent p-5">
+              <div class="text-sm leading-relaxed text-slate-300">
+                „Opanuj.AI Podcast” — najpopularniejszy techniczny podcast o LLM-ach w Polsce.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="pb-24">
+    <div class="container-x" data-reveal>
+      <Newsletter client:visible />
+    </div>
+  </section>
+</Layout>

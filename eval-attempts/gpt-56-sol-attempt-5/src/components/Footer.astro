@@ -1,0 +1,39 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10 bg-ink">
+  <div class="page-shell py-14 sm:py-20">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <a href="/" class="inline-flex items-center gap-2.5" aria-label="Przeprogramowani">
+          <span class="grid size-9 place-items-center rounded-lg bg-lime text-sm font-black text-ink">&lt;/&gt;</span>
+          <span class="font-extrabold tracking-[-0.03em]">Przeprogramowani</span>
+        </a>
+        <p class="mt-5 max-w-sm text-sm leading-7 text-paper/55">Technologia, biznes i rozwój w jednym miejscu. Zyskaj szersze spojrzenie na programowanie.</p>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[.18em] text-paper/35">Odkrywaj</p>
+        <div class="mt-5 grid gap-3 text-sm font-semibold">
+          <a class="w-fit hover:text-lime" href="/o-nas">O nas</a>
+          <a class="w-fit hover:text-lime" href="/podcast">Podcast</a>
+          <a class="w-fit hover:text-lime" href="/youtube">YouTube</a>
+          <a class="w-fit hover:text-lime" href="/#kursy">Kursy</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[.18em] text-paper/35">Kontakt</p>
+        <a class="mt-5 block w-fit text-sm font-semibold hover:text-lime" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+        <div class="mt-4 flex gap-4 text-sm text-paper/55">
+          <a class="hover:text-paper" href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer">YouTube</a>
+          <a class="hover:text-paper" href="https://www.instagram.com/przeprogramowani/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="hover:text-paper" href="https://www.facebook.com/przeprogramowani" target="_blank" rel="noreferrer">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-paper/35 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} Przeprogramowani.pl</p>
+      <p>Zaprojektowane dla ludzi, którzy patrzą szerzej.</p>
+    </div>
+  </div>
+</footer>

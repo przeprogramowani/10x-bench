@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Newsletter from '../components/Newsletter.tsx';
+import { courses } from '../data/courses';
+---
+
+<Layout
+  title="Kursy"
+  description="Kursy Przeprogramowani: 10xDevs (AI-Native Software Engineering), Opanuj Frontend i Opanuj TypeScript. Praktyczna wiedza dla ambitnych programistów."
+  path="/kursy"
+>
+  <PageHeader
+    eyebrow="Kursy"
+    title="Wybierz swoją ścieżkę rozwoju"
+    subtitle="Trzy programy, jeden cel: zrobić z Ciebie kompletnego, nowoczesnego inżyniera. Prowadzone przez praktyków, oparte na produkcyjnych przykładach."
+  />
+
+  <!-- Quick nav -->
+  <section class="border-b border-white/5 py-6">
+    <div class="container-x">
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {courses.map((c) => (
+          <a href={`#${c.id}`} class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:border-brand-400/40 hover:text-white">
+            <span class="mr-1.5" aria-hidden="true">{c.emoji}</span>{c.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="divide-y divide-white/5">
+    {courses.map((course, i) => (
+      <section id={course.id} class="scroll-mt-24 py-16 sm:py-20">
+        <div class="container-x">
+          <div class="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+            <!-- Left: overview -->
+            <div class="lg:sticky lg:top-24" data-reveal>
+              <div class={`inline-grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${course.accent} text-3xl shadow-lg`}>
+                <span aria-hidden="true">{course.emoji}</span>
+              </div>
+              <h2 class="mt-5 text-3xl font-bold sm:text-4xl">{course.name}</h2>
+              <p class="mt-2 text-lg font-medium text-brand-300">{course.tagline}</p>
+              <p class="mt-4 leading-relaxed text-slate-400">{course.description}</p>
+
+              <dl class="mt-6 grid grid-cols-3 gap-3">
+                {course.meta.map((m) => (
+                  <div class="rounded-xl border border-white/10 bg-white/5 p-4 text-center">
+                    <dt class="text-[11px] uppercase tracking-wide text-slate-500">{m.label}</dt>
+                    <dd class="mt-1 text-sm font-bold text-white">{m.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div class="mt-6 flex flex-wrap gap-2">
+                {course.stack.map((t) => (
+                  <span class="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300">{t}</span>
+                ))}
+              </div>
+
+              <a href={course.url} target="_blank" rel="noopener noreferrer" class="btn-accent mt-8 w-full sm:w-auto">
+                Przejdź do kursu
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" /></svg>
+              </a>
+            </div>
+
+            <!-- Right: details -->
+            <div class="space-y-8" data-reveal data-reveal-delay="100">
+              <div class="card p-6 sm:p-8">
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Czego się nauczysz</h3>
+                <ul class="mt-5 space-y-3">
+                  {course.highlights.map((h) => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed text-slate-300">
+                      <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-400" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {course.modules && (
+                <div class="card p-6 sm:p-8">
+                  <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Program kursu</h3>
+                  <ol class="mt-5 space-y-4">
+                    {course.modules.map((mod, mi) => (
+                      <li class="flex gap-4">
+                        <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg bg-brand-500/15 font-display text-sm font-bold text-brand-300">
+                          {mi + 1}
+                        </span>
+                        <div>
+                          <h4 class="font-semibold text-white">{mod.title}</h4>
+                          <p class="mt-1 text-sm text-slate-400">{mod.points.join(' · ')}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <section class="py-16">
+    <div class="container-x" data-reveal>
+      <Newsletter client:visible />
+    </div>
+  </section>
+</Layout>

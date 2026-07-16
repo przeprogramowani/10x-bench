@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Newsletter from '../components/Newsletter.astro';
+
+const values = [
+  { number: '01', title: 'Szerszy kontekst', text: 'Technologia nie istnieje w próżni. Łączymy kod z biznesem, ludźmi i konsekwencjami decyzji.' },
+  { number: '02', title: 'Praktyka ponad szum', text: 'Testujemy narzędzia w prawdziwych projektach i przekazujemy tylko to, co wnosi realną wartość.' },
+  { number: '03', title: 'Rozwój na lata', text: 'Uczymy sposobu myślenia i fundamentów, które zostają na dłużej niż jedna wersja frameworka.' },
+];
+---
+
+<BaseLayout title="O nas — Przeprogramowani" description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego — twórców Przeprogramowanych, kursów i podcastów dla programistów.">
+  <PageHero eyebrow="O Przeprogramowanych" title="Kod to dopiero" accent="początek." description="Łączymy świat programowania, biznesu i rozwoju. Pomagamy programistom stawać się lepszymi specjalistami — i bardziej świadomymi ludźmi." />
+
+  <section class="section-pad container-shell">
+    <div class="grid gap-5 md:grid-cols-2">
+      <article class="group overflow-hidden rounded-[2rem] border border-white/[.08] bg-panel">
+        <div class="relative bg-[radial-gradient(circle_at_50%_10%,rgba(201,255,85,.15),transparent_58%)] px-8 pt-10">
+          <img src="/images/przemek.webp" alt="Przemek Smyrdek" width="480" height="480" class="mx-auto w-full max-w-[22rem] object-contain transition duration-500 group-hover:scale-[1.02]" />
+        </div>
+        <div class="border-t border-white/[.07] p-7 sm:p-9">
+          <p class="text-[11px] font-extrabold uppercase tracking-[.15em] text-electric">Co-founder • Full-stack</p>
+          <h2 class="mt-3 font-display text-3xl font-bold tracking-[-.045em]">Przemek Smyrdek</h2>
+          <p class="mt-4 text-sm leading-6 text-white/50">Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer pracujący z .NET, Javą, Node.js, Angularem i TypeScriptem. Prelegent i kontrybutor open source.</p>
+          <a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noreferrer" class="mt-6 inline-flex text-sm font-bold text-white/60 hover:text-electric">LinkedIn ↗</a>
+        </div>
+      </article>
+
+      <article class="group overflow-hidden rounded-[2rem] border border-white/[.08] bg-panel">
+        <div class="relative bg-[radial-gradient(circle_at_50%_10%,rgba(131,120,255,.22),transparent_58%)] px-8 pt-10">
+          <img src="/images/marcin.webp" alt="Marcin Czarkowski" width="480" height="480" class="mx-auto w-full max-w-[22rem] object-contain transition duration-500 group-hover:scale-[1.02]" />
+        </div>
+        <div class="border-t border-white/[.07] p-7 sm:p-9">
+          <p class="text-[11px] font-extrabold uppercase tracking-[.15em] text-violet">Co-founder • Frontend</p>
+          <h2 class="mt-3 font-display text-3xl font-bold tracking-[-.045em]">Marcin Czarkowski</h2>
+          <p class="mt-4 text-sm leading-6 text-white/50">Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii i nauki o uczeniu się. Specjalista TypeScript, React i Node.js oraz twórca Opanuj.AI Podcast.</p>
+          <a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noreferrer" class="mt-6 inline-flex text-sm font-bold text-white/60 hover:text-electric">LinkedIn ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="border-y border-white/[.06] bg-white/[.015]">
+    <div class="section-pad container-shell">
+      <div class="grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
+        <div><span class="eyebrow">Nasze podejście</span><h2 class="section-title mt-5">Uczymy myśleć, <span class="text-white/30">nie odtwarzać.</span></h2></div>
+        <div class="space-y-3">
+          {values.map(value => (
+            <article class="grid gap-4 rounded-2xl border border-white/[.08] bg-panel p-6 sm:grid-cols-[auto_1fr] sm:gap-7 sm:p-7">
+              <span class="font-mono text-sm text-electric">{value.number}</span>
+              <div><h3 class="font-display text-xl font-bold tracking-[-.03em]">{value.title}</h3><p class="mt-2 text-sm leading-6 text-white/45">{value.text}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad container-shell text-center">
+    <p class="text-[11px] font-extrabold uppercase tracking-[.18em] text-white/30">Od 2017 roku</p>
+    <p class="mx-auto mt-6 max-w-4xl font-display text-3xl font-semibold leading-tight tracking-[-.045em] text-white/90 sm:text-5xl">„Najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i na siebie.”</p>
+    <div class="mx-auto mt-12 grid max-w-3xl grid-cols-3 divide-x divide-white/[.08]">
+      <div><strong class="font-display text-2xl sm:text-4xl">7+</strong><p class="mt-2 text-[10px] uppercase tracking-wider text-white/35 sm:text-xs">lat</p></div>
+      <div><strong class="font-display text-2xl sm:text-4xl">400+</strong><p class="mt-2 text-[10px] uppercase tracking-wider text-white/35 sm:text-xs">absolwentów</p></div>
+      <div><strong class="font-display text-2xl sm:text-4xl">2</strong><p class="mt-2 text-[10px] uppercase tracking-wider text-white/35 sm:text-xs">twórców</p></div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

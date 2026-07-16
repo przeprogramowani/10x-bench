@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import VideoCard from '../components/VideoCard.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { videos } from '../data/content';
+---
+
+<BaseLayout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o AI, programowaniu, narzędziach i rozwoju nowoczesnego programisty.">
+  <PageHero eyebrow="YouTube" title="Zobacz programowanie" accent="z innej strony." description="Deep dive’y, relacje, live’y i praktyczne eksperymenty z AI. Zero bezrefleksyjnego hype’u — maksimum kontekstu." />
+
+  <section class="section-pad container-shell">
+    <VideoCard video={videos[0]} featured />
+    <div class="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {videos.slice(1).map(video => <VideoCard video={video} />)}
+    </div>
+  </section>
+
+  <section class="border-y border-white/[.06] bg-white/[.015]">
+    <div class="container-shell grid gap-8 py-16 sm:grid-cols-[1fr_auto] sm:items-center sm:py-20">
+      <div><p class="text-xs font-extrabold uppercase tracking-[.16em] text-coral">Nowy materiał bez polowania na algorytm</p><h2 class="mt-4 font-display text-3xl font-bold tracking-[-.045em] sm:text-5xl">Zasubskrybuj i bądź na bieżąco.</h2><p class="mt-4 max-w-2xl text-sm leading-6 text-white/45">AI, TypeScript, architektura i rozwój zawodowy — materiały dla tych, którzy chcą rozumieć więcej.</p></div>
+      <a href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" target="_blank" rel="noreferrer" class="inline-flex h-14 items-center justify-center rounded-full bg-[#ff0033] px-7 text-sm font-extrabold text-white transition hover:scale-[1.02]">▶ Subskrybuj kanał</a>
+    </div>
+  </section>
+  <div class="pt-20 sm:pt-28"><Newsletter /></div>
+</BaseLayout>

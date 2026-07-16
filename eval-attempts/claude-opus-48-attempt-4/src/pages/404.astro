@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — Nie znaleziono strony" path="/404">
+  <section class="section">
+    <div class="container-page flex min-h-[50vh] flex-col items-center justify-center text-center">
+      <p class="font-mono text-7xl font-extrabold gradient-text">404</p>
+      <h1 class="mt-6 text-2xl font-bold text-white sm:text-3xl">Ta strona się przeprogramowała</h1>
+      <p class="mt-3 max-w-md text-slate-400">
+        Nie znaleźliśmy strony, której szukasz. Wróć na stronę główną i odkryj nasze kursy,
+        podcast i filmy.
+      </p>
+      <a href="/" class="btn-primary mt-8">Wróć na stronę główną</a>
+    </div>
+  </section>
+</BaseLayout>

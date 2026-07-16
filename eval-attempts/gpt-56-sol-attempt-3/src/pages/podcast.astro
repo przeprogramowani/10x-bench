@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { episodes } from '../data/content';
+---
+<Layout title="Podcast — Przeprogramowani" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju kariery.">
+  <section class="relative overflow-hidden border-b border-white/10 pb-20 pt-36 md:pb-28 md:pt-48">
+    <div class="grid-lines absolute inset-0"></div><div class="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-purple/15 blur-[110px]"></div>
+    <div class="container-shell relative grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
+      <div><span class="eyebrow">Podcasty</span><h1 class="display mt-7 text-[clamp(4rem,10vw,9rem)]">Włącz<br/><span class="text-acid">ciekawość.</span></h1><p class="mt-8 max-w-xl text-lg leading-8 text-white/55">Rozmowy o technologii, AI i programowaniu. Zamiast prostych odpowiedzi — lepsze pytania i doświadczenie ludzi, którzy byli tam przed nami.</p></div>
+      <div class="relative mx-auto aspect-square w-full max-w-[430px] overflow-hidden rounded-[2.25rem] border border-white/15 bg-[#111411] p-8 shadow-2xl shadow-black/50">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(146,108,255,.45),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(216,255,62,.2),transparent_35%)]"></div>
+        <div class="relative flex h-full flex-col justify-between"><div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[.2em] text-white/45"><span>Przeprogramowani</span><span>Est. 2019</span></div><div><div class="mb-6 flex h-20 items-end gap-1">{[20,45,72,38,90,54,28,65,40,82,32,55].map(h => <span class="w-1.5 rounded-full bg-acid" style={`height:${h}%`}></span>)}</div><h2 class="text-5xl font-semibold tracking-[-.06em]">Szersze<br/>spojrzenie.</h2></div><div class="flex items-center justify-between border-t border-white/15 pt-5"><span class="font-mono text-xs uppercase tracking-wider text-white/45">Nowe odcinki</span><span class="grid h-11 w-11 place-items-center rounded-full bg-acid text-ink">▶</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-white/10 py-8"><div class="container-shell flex flex-wrap items-center gap-x-10 gap-y-4"><span class="font-mono text-[10px] uppercase tracking-widest text-white/30">Słuchaj na</span><a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" class="font-semibold hover:text-acid">Spotify ↗</a><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1467881919" class="font-semibold hover:text-acid">Apple Podcasts ↗</a><a href="https://www.youtube.com/c/przeprogramowani" class="font-semibold hover:text-acid">YouTube ↗</a></div></section>
+
+  <section class="section-pad">
+    <div class="container-shell"><div class="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><span class="eyebrow">Ostatnie odcinki</span><h2 class="display mt-5 text-6xl md:text-8xl">Posłuchaj teraz.</h2></div><p class="max-w-sm text-sm leading-6 text-white/45">Opanuj.AI i Przeprogramowani ft. Gość — dwa formaty, jedna ciekawość technologii.</p></div>
+      <div class="divide-y divide-white/10 border-y border-white/10">
+        {episodes.map(ep => <a href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noreferrer" class="group grid gap-5 py-7 md:grid-cols-[72px_1fr_120px] md:items-center md:py-9"><div class="relative grid h-14 w-14 place-items-center rounded-full border border-white/15 font-mono text-xs text-white/35 transition group-hover:border-acid group-hover:bg-acid group-hover:text-ink"><span class="group-hover:hidden">{ep.no}</span><span class="hidden group-hover:inline">▶</span></div><div><div class="mb-3 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-widest"><span class="text-acid">{ep.tag}</span><span class="text-white/30">{ep.duration}</span></div><h3 class="text-2xl font-medium leading-tight tracking-[-.035em] md:text-3xl">{ep.title}</h3><p class="mt-3 max-w-3xl text-sm leading-6 text-white/42">{ep.description}</p></div><span class="hidden justify-self-end font-mono text-xs uppercase tracking-wider text-white/30 transition group-hover:text-acid md:block">Odtwórz ↗</span></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-8 md:pb-14"><div class="container-shell"><div class="overflow-hidden rounded-[2rem] border border-white/10 bg-[#111411] p-7 md:p-12"><div class="grid gap-10 lg:grid-cols-[1fr_.8fr] lg:items-center"><div><span class="eyebrow">Przeprogramowani ft. Gość</span><h2 class="display mt-5 text-5xl md:text-7xl">Masz historię,<br/>którą warto usłyszeć?</h2></div><div><p class="leading-7 text-white/50">Zapraszamy praktyków, twórców i ludzi z nietypową perspektywą na technologię. Jeśli chcesz dołączyć do rozmowy — odezwij się.</p><a href="mailto:kontakt@przeprogramowani.pl" class="mt-7 inline-flex rounded-full bg-white px-6 py-3.5 font-semibold text-ink transition hover:bg-acid">Zaproponuj temat ↗</a></div></div></div></div></section>
+</Layout>

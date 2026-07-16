@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, podcast } from '../data/site';
+---
+
+<Layout
+  title="Podcast"
+  description={`${podcast.name} — ${podcast.description}`}
+  path="/podcast"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute right-[-10%] top-[-20%] h-[380px] w-[540px] rounded-full bg-emerald-600/15 blur-[120px]" aria-hidden="true"></div>
+    <div class="container-page relative py-20 sm:py-24">
+      <div class="max-w-3xl">
+        <span class="eyebrow"><span class="h-px w-6 bg-emerald-400"></span>Podcast</span>
+        <h1 class="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl">{podcast.name}</h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-300">{podcast.description}</p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          {
+            podcast.platforms.map((p) => (
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-ghost !py-2.5 text-sm"
+              >
+                {p.label}
+              </a>
+            ))
+          }
+        </div>
+
+        <p class="mt-6 flex items-center gap-2 text-sm text-slate-400">
+          <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+          Ponad {podcast.listeners} słuchaczy co miesiąc
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes -->
+  <section class="border-t border-white/10 py-16 sm:py-20">
+    <div class="container-page">
+      <h2 class="text-2xl">Ostatnie odcinki</h2>
+      <div class="mt-8 space-y-4">
+        {
+          podcast.episodes.map((ep, i) => (
+            <article class="card group flex flex-col gap-4 p-6 transition-colors hover:border-emerald-400/30 sm:flex-row sm:items-center">
+              <div class="grid h-14 w-14 flex-none place-items-center rounded-xl bg-emerald-500/10 text-emerald-300 transition-colors group-hover:bg-emerald-500/20">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-xs text-slate-500">EP {String(podcast.episodes.length - i).padStart(2, '0')}</span>
+                  <span class="font-mono text-xs text-emerald-300">{ep.duration}</span>
+                </div>
+                <h3 class="mt-1.5 text-base font-semibold text-white sm:text-lg">{ep.title}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-slate-400">{ep.summary}</p>
+              </div>
+              <a
+                href={site.socials.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-ghost flex-none !py-2.5 text-sm"
+                aria-label={`Posłuchaj: ${ep.title}`}
+              >
+                Posłuchaj
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Second show -->
+      <div class="mt-14 card flex flex-col items-start gap-4 border-brand-400/20 bg-brand-500/[0.04] p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 class="text-xl">Przeprogramowani ft. Gość</h3>
+          <p class="mt-2 max-w-xl text-sm text-slate-400">
+            Drugi z naszych podcastów — rozmowy nastawione na wiedzę, z gośćmi takimi jak Tomasz Ducin,
+            Wojciech Trawiński czy Wiktoria Sitko. O architekturze frontendu, dojrzałości zawodowej i
+            barierach językowych w IT.
+          </p>
+        </div>
+        <a href={site.socials.spotify} target="_blank" rel="noopener noreferrer" class="btn-ghost flex-none text-sm">
+          Słuchaj na Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

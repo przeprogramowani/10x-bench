@@ -1,0 +1,53 @@
+---
+import type { Episode } from '../data/podcast';
+import { podcastLinks } from '../data/podcast';
+import Icon from './Icon.astro';
+
+interface Props {
+  episode: Episode;
+  index: number;
+}
+const { episode, index } = Astro.props;
+
+const formatted = new Date(episode.date).toLocaleDateString('pl-PL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="card card-hover group flex flex-col gap-4 p-6 sm:flex-row sm:items-center">
+  <div
+    class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/20 to-indigo-500/20 text-brand-300"
+  >
+    <Icon name="headphones" class="h-6 w-6" />
+  </div>
+
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name="calendar" class="h-3.5 w-3.5" />
+        {formatted}
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name="clock" class="h-3.5 w-3.5" />
+        {episode.duration}
+      </span>
+      {episode.guest && <span class="text-brand-300">Gość: {episode.guest}</span>}
+    </div>
+    <h3 class="mt-1.5 text-base font-semibold text-white">
+      {episode.title}
+    </h3>
+    <p class="mt-1 line-clamp-2 text-sm leading-relaxed text-slate-400">{episode.description}</p>
+  </div>
+
+  <a
+    href={podcastLinks.spotify}
+    target="_blank"
+    rel="noopener"
+    aria-label={`Posłuchaj odcinka: ${episode.title}`}
+    class="flex h-11 w-11 flex-shrink-0 items-center justify-center self-start rounded-full bg-white/5 text-white transition group-hover:bg-brand-500 sm:self-center"
+  >
+    <Icon name="play" class="h-5 w-5" />
+  </a>
+</article>

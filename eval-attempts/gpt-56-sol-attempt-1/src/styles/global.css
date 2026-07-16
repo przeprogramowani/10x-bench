@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #070910;
+  --color-panel: #10131d;
+  --color-panel-soft: #171b27;
+  --color-mist: #a8afc2;
+  --color-electric: #c9ff55;
+  --color-violet: #8378ff;
+  --color-coral: #ff6b81;
+  --font-sans: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Inter", "Avenir Next", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  background: var(--color-ink);
+  font-synthesis: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 10% -10%, rgba(131, 120, 255, .15), transparent 30rem),
+    radial-gradient(circle at 90% 15%, rgba(201, 255, 85, .08), transparent 24rem),
+    var(--color-ink);
+  color: #f8f8fb;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+  content: "";
+}
+
+::selection {
+  background: var(--color-electric);
+  color: var(--color-ink);
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-electric);
+  outline-offset: 4px;
+}
+
+.container-shell {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.section-pad {
+  padding-block: clamp(5rem, 10vw, 8.5rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  color: var(--color-electric);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.display-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.55rem, 7vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -.06em;
+  line-height: .98;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: 1.02;
+}
+
+.text-gradient {
+  color: transparent;
+  background: linear-gradient(100deg, var(--color-electric) 5%, #e9ffc0 50%, #a9ffbf 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, .1);
+  background: rgba(15, 18, 27, .72);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(18px);
+}
+
+.card-hover {
+  transition: transform .3s ease, border-color .3s ease, background .3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 255, 85, .4);
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::after {
+  position: absolute;
+  inset: 0;
+  opacity: .035;
+  pointer-events: none;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: rise .7s both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (max-width: 640px) {
+  .container-shell { width: min(100% - 1.25rem, 1200px); }
+}

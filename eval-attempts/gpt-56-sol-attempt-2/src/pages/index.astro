@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { courses, videos, podcastEpisodes } from '../data/content';
+import { ArrowRight, ArrowUpRight, Play, Headphones, Sparkles, Check, Terminal, Zap } from 'lucide-react';
+---
+<BaseLayout title="Przeprogramowani — Szersze spojrzenie na programowanie" description="Kursy, podcasty i materiały dla programistów, którzy chcą świadomie rozwijać się w epoce AI.">
+  <section class="relative min-h-[min(940px,100dvh)] overflow-hidden border-b border-white/10 pt-[76px]">
+    <div class="grid-noise absolute inset-0"></div>
+    <div class="absolute -left-24 top-36 size-80 rounded-full bg-violet/20 blur-[100px]"></div>
+    <div class="absolute -right-20 bottom-0 size-[460px] rounded-full bg-lime/10 blur-[120px]"></div>
+
+    <div class="section-shell relative grid min-h-[calc(min(940px,100dvh)-76px)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
+      <div class="min-w-0">
+        <a href="https://www.10xdevs.pl/" target="_blank" rel="noreferrer" class="focus-ring group inline-flex max-w-full items-center gap-2 rounded-full border border-lime/30 bg-lime/8 py-2 pl-2 pr-3 text-[10px] font-extrabold uppercase tracking-[.1em] text-lime transition hover:bg-lime/15 sm:gap-3 sm:pr-4 sm:text-xs sm:tracking-[.12em]">
+          <span class="rounded-full bg-lime px-2.5 py-1 text-[10px] text-ink">Nowość</span>
+          10xDevs 4.0 · Wrzesień 2026
+          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+
+        <h1 class="mt-8 max-w-4xl font-display text-[clamp(3.4rem,8vw,7.6rem)] font-bold leading-[.86] tracking-[-.065em]">
+          Programuj<br />
+          <span class="text-lime">szerzej.</span>
+        </h1>
+        <p class="mt-8 max-w-xl text-lg leading-8 text-white/62 sm:text-xl">Technologia zmienia się szybciej niż frameworki. My pomagamy Ci rozwijać warsztat, myślenie i karierę — od solidnego frontendu po AI-native software engineering.</p>
+
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+          <a href="https://www.10xdevs.pl/" target="_blank" rel="noreferrer" class="focus-ring group inline-flex items-center justify-center gap-3 rounded-full bg-lime px-6 py-4 font-extrabold text-ink transition hover:scale-[1.02]">
+            Poznaj 10xDevs <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+          </a>
+          <a href="#kursy" class="focus-ring inline-flex items-center justify-center rounded-full border border-white/18 px-6 py-4 font-bold transition hover:bg-white/8">Zobacz programy</a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/10 pt-6 text-sm text-white/45">
+          <span><strong class="text-white">7 lat</strong> edukacji technologicznej</span>
+          <span><strong class="text-white">1500+</strong> przeszkolonych devów</span>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[560px] lg:ml-auto">
+        <div class="absolute -inset-8 rounded-full bg-lime/8 blur-3xl"></div>
+        <div class="relative rotate-[2deg] overflow-hidden rounded-[2rem] border border-white/12 bg-[#11151b] shadow-2xl shadow-black/40">
+          <div class="flex items-center justify-between border-b border-white/8 px-5 py-4 font-mono text-xs text-white/35">
+            <span>10xdevs/main.ts</span><span class="flex gap-1.5"><i class="size-2 rounded-full bg-coral"></i><i class="size-2 rounded-full bg-amber-300"></i><i class="size-2 rounded-full bg-lime"></i></span>
+          </div>
+          <div class="p-6 sm:p-9">
+            <div class="flex items-center justify-between">
+              <span class="eyebrow text-lime"><Sparkles size={14} /> AI-Native</span>
+              <span class="font-mono text-xs text-white/30">v4.0</span>
+            </div>
+            <p class="mt-12 font-display text-5xl font-bold tracking-[-.05em] sm:text-7xl">10x<span class="text-lime">Devs</span></p>
+            <p class="mt-4 max-w-sm text-base leading-7 text-white/55">Praktyki, narzędzia i workflow dla programistów tworzących oprogramowanie wspólnie z AI.</p>
+            <div class="mt-10 grid gap-3 font-mono text-xs sm:grid-cols-2">
+              {['Planowanie z AI', 'AI coding tools', 'RAG i agenci', 'Wdrożenie MVP'].map((item) => <span class="flex items-center gap-2 rounded-xl border border-white/8 bg-white/[.035] px-3 py-3 text-white/65"><Check size={14} className="text-lime" />{item}</span>)}
+            </div>
+          </div>
+          <div class="flex items-center justify-between border-t border-white/8 bg-lime px-6 py-5 text-ink">
+            <span class="font-display text-lg font-bold">Nowe oblicze programowania</span><Terminal size={22} />
+          </div>
+        </div>
+        <div class="absolute -bottom-5 -left-4 -rotate-6 rounded-2xl border border-white/12 bg-paper px-4 py-3 font-mono text-xs font-bold text-ink shadow-xl sm:-left-10">human + AI &gt; AI</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 sm:py-32" id="kursy">
+    <div class="section-shell">
+      <div class="grid gap-7 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
+        <div>
+          <p class="eyebrow text-lime">Programy rozwojowe</p>
+          <h2 class="mt-5 font-display text-4xl font-bold tracking-[-.04em] sm:text-6xl">Mniej tutoriali.<br />Więcej <span class="text-white/35">sprawczości.</span></h2>
+        </div>
+        <p class="max-w-xl text-lg leading-8 text-white/55 lg:ml-auto">Programy zaprojektowane przez praktyków. Uczysz się na realnych problemach — z feedbackiem, społecznością i jasną ścieżką od wiedzy do działania.</p>
+      </div>
+
+      <div class="mt-14 grid gap-5 lg:grid-cols-2">
+        {courses.map((course, index) => (
+          <a href={course.href} target="_blank" rel="noreferrer" class:list={["card-lift focus-ring group relative min-h-[410px] overflow-hidden rounded-[2rem] border p-7 sm:p-10", index === 0 ? "border-lime/25 bg-lime text-ink" : "border-violet/30 bg-[#171222] text-white"]}>
+            <div class:list={["absolute -right-16 -top-16 size-52 rounded-full border-[40px] opacity-25", index === 0 ? "border-ink" : "border-violet"]}></div>
+            <div class="relative flex h-full flex-col">
+              <div class="flex items-center justify-between">
+                <span class:list={["eyebrow", index === 0 ? "text-ink/55" : "text-violet"]}>{course.kicker}</span>
+                <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </div>
+              <h3 class="mt-16 max-w-md font-display text-5xl font-bold tracking-[-.05em] sm:text-6xl">{course.title}</h3>
+              <p class:list={["mt-5 max-w-lg text-base leading-7", index === 0 ? "text-ink/65" : "text-white/60"]}>{course.description}</p>
+              <div class:list={["mt-auto border-t pt-5 font-mono text-xs font-bold uppercase tracking-wider", index === 0 ? "border-ink/15" : "border-white/10 text-white/45"]}>{course.detail}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-paper py-24 text-ink sm:py-32">
+    <div class="section-shell">
+      <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <p class="eyebrow text-violet">Świeże spojrzenie</p>
+          <h2 class="mt-5 font-display text-5xl font-bold tracking-[-.045em] sm:text-6xl">Oglądaj.<br />Słuchaj.<br /><span class="text-ink/35">Kwestionuj.</span></h2>
+          <p class="mt-6 max-w-sm leading-7 text-ink/60">Rozmowy i analizy bez powierzchownych skrótów. O kodzie, AI, karierze i biznesie.</p>
+          <div class="mt-8 flex gap-3">
+            <a href="/youtube" class="rounded-full border border-ink/20 px-5 py-3 text-sm font-extrabold hover:bg-ink hover:text-paper">YouTube</a>
+            <a href="/podcast" class="rounded-full border border-ink/20 px-5 py-3 text-sm font-extrabold hover:bg-ink hover:text-paper">Podcast</a>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {videos.slice(0, 2).map((video) => (
+            <a href={video.url} target="_blank" rel="noreferrer" class="group overflow-hidden rounded-3xl border border-ink/10 bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div class="relative aspect-video overflow-hidden rounded-2xl bg-ink">
+                <img src={video.image} alt="" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                <span class="absolute inset-0 grid place-items-center bg-ink/10"><i class="grid size-12 place-items-center rounded-full bg-paper text-ink shadow-lg"><Play size={18} fill="currentColor" /></i></span>
+              </div>
+              <div class="p-3 pb-4"><p class="mt-1 font-display text-lg font-bold leading-snug">{video.title}</p><span class="mt-3 inline-block font-mono text-[11px] font-bold uppercase text-violet">{video.tag}</span></div>
+            </a>
+          ))}
+          <a href={podcastEpisodes[0].url} target="_blank" rel="noreferrer" class="group relative overflow-hidden rounded-3xl bg-ink p-6 text-paper sm:col-span-2">
+            <div class="absolute -right-12 -top-12 size-48 rounded-full bg-violet/35 blur-3xl"></div>
+            <div class="relative flex min-h-44 flex-col justify-between sm:flex-row sm:items-end">
+              <div><span class="eyebrow text-lime"><Headphones size={14} /> Najnowszy podcast</span><h3 class="mt-5 max-w-xl font-display text-2xl font-bold sm:text-3xl">{podcastEpisodes[0].title}</h3></div>
+              <span class="mt-6 grid size-12 shrink-0 place-items-center rounded-full border border-white/20 transition group-hover:bg-lime group-hover:text-ink"><ArrowUpRight /></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden py-24 sm:py-32">
+    <div class="absolute left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/15 blur-[120px]"></div>
+    <div class="section-shell relative text-center">
+      <p class="eyebrow text-lime"><Zap size={14} /> Newsletter 3–2–1</p>
+      <h2 class="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold tracking-[-.04em] sm:text-6xl">Piątkowa porcja wiedzy, która nie zalega w zakładkach.</h2>
+      <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-white/55">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Konkretnie, raz w tygodniu.</p>
+      <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" class="focus-ring mt-9 inline-flex items-center gap-2 rounded-full bg-paper px-6 py-4 font-extrabold text-ink hover:bg-lime">Dołącz do newslettera <ArrowUpRight size={18} /></a>
+    </div>
+  </section>
+</BaseLayout>

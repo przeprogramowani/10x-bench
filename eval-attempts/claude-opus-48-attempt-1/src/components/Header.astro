@@ -1,0 +1,46 @@
+---
+import { nav } from '../data/site';
+import MobileNav from './MobileNav.tsx';
+import Logo from './Logo.astro';
+
+const current = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? current === '/' : current.startsWith(href.split('#')[0]) && href !== '/#kursy';
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-white/5 bg-ink-900/80 backdrop-blur-lg"
+>
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2.5 text-white" aria-label="Przeprogramowani — strona główna">
+      <Logo class="h-8 w-8" />
+      <span class="text-base font-bold tracking-tight">Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Główna nawigacja">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              isActive(item.href)
+                ? 'text-white bg-white/5'
+                : 'text-slate-400 hover:text-white hover:bg-white/5',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://10xdevs.pl" class="btn-primary hidden md:inline-flex" target="_blank" rel="noopener">
+        Dołącz do 10xDevs
+      </a>
+      <MobileNav client:load items={nav} current={current} />
+    </div>
+  </div>
+</header>
