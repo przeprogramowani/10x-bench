@@ -52,6 +52,20 @@ interface ProcessedResults {
   supersededModels: Record<string, string>;
 }
 
+// Slim public payload served at https://10xbench.ai/api/leaderboard.json,
+// consumed by @przeprogramowani/10x-cli. Additive changes are fine on the same
+// schemaVersion; breaking shape changes must bump it (published CLI versions
+// are pinned to the shape they shipped with).
+const LEADERBOARD_SCHEMA_VERSION = 1;
+
+interface LeaderboardPayload {
+  schemaVersion: number;
+  generatedAt: string;
+  totalAttempts: number;
+  leaderboard: ModelFamilyAverage[];
+  supersededModels: Record<string, string>;
+}
+
 // Extract model name from directory name
 function extractModelInfo(dirname: string): {
   modelName: string;
@@ -274,6 +288,25 @@ async function processResults(): Promise<void> {
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
 
   console.log(`✓ Generated ${outputPath}`);
+
+  // Write the slim public leaderboard endpoint (deployed as a static file)
+  const leaderboardDir = path.join(projectRoot, "website", "public", "api");
+  if (!fs.existsSync(leaderboardDir)) {
+    fs.mkdirSync(leaderboardDir, {recursive: true});
+  }
+
+  const leaderboardPayload: LeaderboardPayload = {
+    schemaVersion: LEADERBOARD_SCHEMA_VERSION,
+    generatedAt: output.generatedAt,
+    totalAttempts: output.totalAttempts,
+    leaderboard: modelAverages,
+    supersededModels: output.supersededModels,
+  };
+
+  const leaderboardPath = path.join(leaderboardDir, "leaderboard.json");
+  fs.writeFileSync(leaderboardPath, JSON.stringify(leaderboardPayload, null, 2));
+
+  console.log(`✓ Generated ${leaderboardPath}`);
 
   // Print model family averages
   console.log("\nModel Family Averages:");
