@@ -53,17 +53,21 @@ interface ProcessedResults {
 }
 
 // Slim public payload served at https://10xbench.ai/api/leaderboard.json,
-// consumed by @przeprogramowani/10x-cli. Additive changes are fine on the same
+// consumed by @przeprogramowani/10x-cli. Preprocessed for display: superseded
+// model families are dropped and only the top 10 remain, so consumers render
+// it as-is without any filtering logic. Additive changes are fine on the same
 // schemaVersion; breaking shape changes must bump it (published CLI versions
 // are pinned to the shape they shipped with).
 const LEADERBOARD_SCHEMA_VERSION = 1;
+const LEADERBOARD_TOP_N = 10;
 
 interface LeaderboardPayload {
   schemaVersion: number;
   generatedAt: string;
   totalAttempts: number;
+  /** Latest-only family count before the top-N cut. */
+  totalModels: number;
   leaderboard: ModelFamilyAverage[];
-  supersededModels: Record<string, string>;
 }
 
 // Extract model name from directory name
@@ -295,12 +299,14 @@ async function processResults(): Promise<void> {
     fs.mkdirSync(leaderboardDir, {recursive: true});
   }
 
+  const supersededIds = new Set(Object.keys(SUPERSEDED_MODELS));
+  const latestOnly = modelAverages.filter((m) => !supersededIds.has(m.modelBaseId));
   const leaderboardPayload: LeaderboardPayload = {
     schemaVersion: LEADERBOARD_SCHEMA_VERSION,
     generatedAt: output.generatedAt,
     totalAttempts: output.totalAttempts,
-    leaderboard: modelAverages,
-    supersededModels: output.supersededModels,
+    totalModels: latestOnly.length,
+    leaderboard: latestOnly.slice(0, LEADERBOARD_TOP_N),
   };
 
   const leaderboardPath = path.join(leaderboardDir, "leaderboard.json");
