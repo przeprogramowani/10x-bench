@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { podcasts } from '../data/content';
+
+const platforms = [
+  { name: 'Spotify', symbol: '◉', href: 'https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o' },
+  { name: 'Apple Podcasts', symbol: '◒', href: 'https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250' },
+  { name: 'RSS', symbol: '⌁', href: 'https://anchor.fm/s/22544b7c/podcast/rss' },
+];
+---
+<BaseLayout title="Podcast — Przeprogramowani" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju zawodowym.">
+  <section class="grain relative overflow-hidden border-b border-white/10 bg-ink">
+    <div class="pointer-events-none absolute -right-20 top-1/2 hidden h-[35rem] w-[35rem] -translate-y-1/2 rounded-full border-[80px] border-acid/10 lg:block"></div>
+    <div class="relative mx-auto grid max-w-[1440px] gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.05fr_.95fr] lg:px-12 lg:py-32">
+      <div class="self-center">
+        <p class="eyebrow text-acid">Podcast / odpal myślenie</p>
+        <h1 class="display mt-5 max-w-3xl text-[3.4rem] font-bold leading-[0.88] sm:text-7xl lg:text-[6.3rem]">Głos, który<br /><span class="text-acid">zostaje</span> z Tobą<br />po odcinku.</h1>
+        <p class="mt-8 max-w-lg text-base leading-8 text-paper/65">Rozmowy o technologii, AI i programowaniu dla ludzi głodnych wiedzy. Bez marketingowego szumu, za to z przestrzenią na niuanse.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {platforms.map((platform) => <a href={platform.href} class="flex items-center gap-2 border border-white/20 px-4 py-3 text-xs font-bold text-paper transition-colors hover:border-acid hover:text-acid" target="_blank" rel="noreferrer"><span class="text-base text-acid">{platform.symbol}</span>{platform.name}</a>)}
+        </div>
+      </div>
+      <div class="relative mx-auto w-full max-w-[500px]">
+        <div class="relative aspect-square overflow-hidden bg-rust p-5 text-ink shadow-[16px_16px_0_#dfff42] sm:p-8">
+          <div class="absolute inset-0 grid-lines opacity-30"></div>
+          <div class="relative flex h-full flex-col justify-between">
+            <div class="flex justify-between font-mono text-[0.61rem] font-semibold uppercase tracking-[0.1em]"><span>Przeprogramowani</span><span>on air</span></div>
+            <div>
+              <div class="mb-6 flex h-28 items-center gap-1.5 sm:h-36">{[28, 58, 85, 44, 75, 100, 62, 38, 82, 50, 27, 68, 90, 48, 25, 72, 96, 52, 34, 74, 44, 83, 60, 30].map((height, index) => <i style={`height: ${height}%`} class={`block flex-1 bg-ink ${index % 3 === 0 ? 'opacity-100' : 'opacity-70'}`}></i>)}</div>
+              <p class="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.13em]">Technologia / ludzie / kontekst</p>
+              <p class="display mt-2 text-5xl font-bold leading-[0.85] tracking-[-0.08em] sm:text-6xl">Słuchaj<br /><span class="outline-text text-ink/80">szerzej.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20 text-ink sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="grid gap-7 border-b border-ink/15 pb-9 lg:grid-cols-[.7fr_1.3fr] lg:pb-12">
+        <p class="eyebrow text-ink/50">Najnowsze odcinki</p>
+        <div><h2 class="display text-5xl font-bold leading-[0.9] sm:text-6xl">W kolejce do<br /><span class="text-rust">odsłuchania.</span></h2><p class="mt-5 max-w-xl text-sm leading-7 text-ink/65">Najnowsze rozmowy z dwóch serii: comiesięczny Opanuj.AI Podcast oraz Przeprogramowani ft. Gość.</p></div>
+      </div>
+      <div class="mt-3">
+        {podcasts.map((episode, index) => (
+          <a href={episode.href} class="group grid gap-4 border-b border-ink/15 py-6 sm:grid-cols-[4rem_1fr_auto] sm:items-center sm:py-7" target="_blank" rel="noreferrer">
+            <span class="font-mono text-xs font-semibold text-ink/45">0{index + 1}</span>
+            <div><p class="eyebrow text-rust">{episode.tag}</p><h3 class="mt-2 max-w-2xl text-xl font-extrabold leading-[1.22] transition-colors group-hover:text-rust sm:text-2xl">{episode.title}</h3></div>
+            <div class="flex items-center gap-4"><span class="font-mono text-[0.68rem] font-semibold text-ink/55">{episode.duration}</span><span class="grid h-11 w-11 place-items-center rounded-full border border-ink/30 text-ink transition-colors group-hover:bg-ink group-hover:text-acid">▶</span></div>
+          </a>
+        ))}
+      </div>
+      <div class="mt-9 flex flex-col gap-4 border border-ink/15 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"><p class="text-sm font-semibold text-ink/70">Znajdź wszystkie odcinki w swojej ulubionej aplikacji.</p><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="w-fit bg-ink px-4 py-3 text-xs font-bold text-paper hover:bg-rust" target="_blank" rel="noreferrer">Otwórz w Spotify ↗</a></div>
+    </div>
+  </section>
+
+  <section class="bg-[#26313b] py-20 sm:py-28">
+    <div class="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-12">
+      <div><p class="eyebrow text-acid">Dwie serie, wiele perspektyw</p><h2 class="display mt-5 text-5xl font-bold leading-[0.9] sm:text-6xl">Wybierz swój<br />wątek.</h2></div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <article class="border border-white/15 p-6 sm:p-7"><span class="font-mono text-xs text-acid">01</span><h3 class="display mt-10 text-3xl font-bold leading-[0.9]">Opanuj.AI<br />Podcast</h3><p class="mt-5 text-sm leading-7 text-paper/60">Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Co warto wiedzieć, zanim zaczniesz wdrażać.</p></article>
+        <article class="border border-white/15 p-6 sm:p-7"><span class="font-mono text-xs text-acid">02</span><h3 class="display mt-10 text-3xl font-bold leading-[0.9]">Przeprogramowani<br />ft. Gość</h3><p class="mt-5 text-sm leading-7 text-paper/60">Rozmowy dla głodnych wiedzy: o technologii, pracy, rozwoju i decyzjach, które zmieniają ścieżkę.</p></article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

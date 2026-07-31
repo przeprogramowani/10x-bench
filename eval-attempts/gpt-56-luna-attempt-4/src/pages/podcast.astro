@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { podcastEpisodes } from '../data/content';
+---
+<Layout title="Podcast — Przeprogramowani" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju.">
+  <section class="inner-hero podcast-hero page-width">
+    <div class="inner-hero-bg" aria-hidden="true">LISTEN</div>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> PODCAST / 02</p>
+    <h1>Słuchaj.<br /><em>Myśl szerzej.</em></h1>
+    <p class="inner-hero-lead">Rozmowy o technologii, AI, programowaniu i tym, co dzieje się pomiędzy wierszami kodu.</p>
+    <div class="podcast-platforms"><span>Spotify</span><span>Apple Podcasts</span><span>RSS</span></div>
+  </section>
+
+  <section class="podcast-list-section page-width section-pad" aria-labelledby="episodes-title">
+    <div class="section-heading"><div><p class="section-kicker"><span>01</span><span>Ostatnie odcinki</span></p><h2 id="episodes-title">Dobre pytania<br /><em>brzmią dłużej.</em></h2></div><p>Włącz, kiedy masz chwilę. Zostań, jeśli chcesz zrozumieć więcej niż sam nagłówek.</p></div>
+    <div class="featured-episode"><div class="featured-art"><span class="art-label">LATEST / {podcastEpisodes[0].number}</span><span class="art-big">OPANUJ<br /><i>.AI</i></span><span class="art-wave">~ ~ ~ ~ ~ ~ ~</span></div><div class="featured-copy"><p class="card-meta">{podcastEpisodes[0].label} <span>{podcastEpisodes[0].duration}</span></p><h3>{podcastEpisodes[0].title}</h3><h4>{podcastEpisodes[0].subtitle}</h4><p>{podcastEpisodes[0].description}</p><a class="button button-primary" href={podcastEpisodes[0].href}>Posłuchaj teraz <span aria-hidden="true">↗</span></a></div></div>
+    <div class="episode-list">{podcastEpisodes.slice(1).map((episode) => <a class="episode-row" href={episode.href}><div class:list={["episode-art", `episode-${episode.tone}`]}><span>{episode.number}</span><i>✳</i></div><div class="episode-info"><p class="card-meta">{episode.label} <span>{episode.duration}</span></p><h3>{episode.title}</h3><p>{episode.subtitle}</p></div><span class="episode-arrow" aria-hidden="true">↗</span></a>)}</div>
+  </section>
+
+  <section class="podcast-shows section-pad" aria-labelledby="shows-title"><div class="page-width"><div class="section-kicker"><span>02</span><span>Dwa formaty</span></div><h2 id="shows-title">Wybierz swój<br /><em>punkt widzenia.</em></h2><div class="shows-grid"><article><span class="show-number">01</span><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> OPANUJ.AI PODCAST</p><h3>Technologia<br />w <em>ruchu.</em></h3><p>Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Modele, agenci, produkty i decyzje, które będą miały znaczenie.</p><a class="text-link" href="https://podcasters.spotify.com/pod/show/opanujai">Otwórz serię <span aria-hidden="true">↗</span></a></article><article><span class="show-number">02</span><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> PRZEPROGRAMOWANI FT. GOŚĆ</p><h3>Rozmowy dla<br /><em>głodnych wiedzy.</em></h3><p>Spotkania z osobami, które mają coś ważnego do powiedzenia o pracy, karierze, uczeniu się i budowaniu rzeczy.</p><a class="text-link" href="https://podcasters.spotify.com/pod/show/przeprogramowani">Otwórz serię <span aria-hidden="true">↗</span></a></article></div></div></section>
+
+  <section class="newsletter-strip page-width section-pad"><div><p class="eyebrow"><span class="eyebrow-dot"></span> NIE PRZEGAP KOLEJNEGO ODCINKA</p><h2>Treści z kontekstem<br /><em>prosto na skrzynkę.</em></h2></div><a class="button button-lime" href="https://przeprogramowani.substack.com">Dołącz do newslettera <span aria-hidden="true">↗</span></a></section>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaCard from '../components/MediaCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { videos } from '../data/content';
+---
+
+<BaseLayout title="YouTube — Przeprogramowani.pl" description="Najnowsze filmy, live'y i praktyczna wiedza Przeprogramowanych.">
+  <section class="bg-[#d8e0ff] py-24 md:py-32">
+    <div class="container-wide grid gap-12 md:grid-cols-[1fr_0.85fr] md:items-end"><div><p class="eyebrow">YouTube / 01</p><h1 class="display mt-6 text-[clamp(3.7rem,8vw,8rem)] font-medium leading-[0.84] tracking-[-0.1em]">Zobacz<br /><span class="text-[#3148d9]">szerszy</span><br />kadr.</h1></div><div><p class="max-w-[400px] text-lg leading-8 text-ink/65">Praktyczne materiały, rozmowy i live'y dla ludzi, którzy chcą rozumieć technologię, a nie tylko za nią nadążać.</p><a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer" class="link-arrow mt-8">Otwórz kanał YouTube</a></div></div>
+  </section>
+
+  <section class="container-wide py-24 md:py-32">
+    <SectionHeading eyebrow="Najnowsze filmy" title="Playlista na dziś." description="Od workflow z agentami po konferencje i narzędzia, które realnie zmieniają codzienny development." />
+    <div class="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2">{videos.map((video, index) => <MediaCard title={video.title} label={video.label} date={video.date} image={video.image} href={video.href} large={index === 0} />)}</div>
+  </section>
+
+  <section class="bg-ink py-24 text-paper md:py-32"><div class="container-wide grid gap-12 md:grid-cols-[1fr_1fr] md:items-center"><div><p class="eyebrow eyebrow-light">Dlaczego warto</p><h2 class="display mt-5 max-w-[550px] text-5xl font-semibold leading-[0.9] tracking-[-0.085em] md:text-6xl">Nie scrolluj.<br /><span class="text-lime">Zainspiruj się.</span></h2></div><div class="space-y-8 text-sm leading-6 text-paper/60"><div class="border-t border-white/15 pt-4"><span class="text-lime">01</span><p class="mt-3 max-w-[420px]">Skomplikowane tematy tłumaczymy bez akademickiego nadęcia i bez clickbaitowych obietnic.</p></div><div class="border-t border-white/15 pt-4"><span class="text-lime">02</span><p class="mt-3 max-w-[420px]">Pokazujemy cały kontekst: od kodu, przez zespół, aż po decyzje biznesowe i koszty.</p></div><div class="border-t border-white/15 pt-4"><span class="text-lime">03</span><p class="mt-3 max-w-[420px]">Rozmawiamy z praktykami, którzy dowożą produkty, a nie tylko komentują trendy.</p></div></div></div></section>
+
+  <section class="container-wide py-24"><div class="flex flex-col items-start justify-between gap-8 rounded-[26px] bg-coral p-8 md:flex-row md:items-end md:p-12"><div><p class="eyebrow !text-ink/55">Subskrybuj</p><h2 class="display mt-4 text-5xl font-semibold leading-[0.9] tracking-[-0.08em] md:text-6xl">Nowy materiał?<br />Będziesz wiedzieć.</h2></div><a href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1" target="_blank" rel="noreferrer" class="link-arrow text-lg">Dołącz do kanału</a></div></section>
+</BaseLayout>

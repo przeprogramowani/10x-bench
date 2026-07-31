@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+import Icon from "../components/Icon.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Przeprogramowani | Szersze spojrzenie na programowanie",
+  description = "Treści, kursy i narzędzia dla programistów, którzy chcą patrzeć szerzej.",
+} = Astro.props;
+const pathname = Astro.url.pathname;
+const navigation = [
+  { href: "/o-nas", label: "O nas" },
+  { href: "/podcast", label: "Podcast" },
+  { href: "/youtube", label: "YouTube" },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0e16" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/" aria-label="Przeprogramowani - strona główna">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>przeprogramowani<span class="brand-dot">.</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Główna nawigacja">
+          {navigation.map((item) => (
+            <a class:list={["nav-link", pathname === item.href && "is-active"]} href={item.href}>{item.label}</a>
+          ))}
+        </nav>
+        <a class="header-cta" href="https://10xdevs.pl" target="_blank" rel="noreferrer">Poznaj 10xDevs <Icon name="arrow" size={16} /></a>
+        <details class="mobile-menu">
+          <summary aria-label="Otwórz menu"><Icon name="menu" /></summary>
+          <nav aria-label="Menu mobilne">
+            {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+            <a class="mobile-menu-cta" href="https://10xdevs.pl" target="_blank" rel="noreferrer">Poznaj 10xDevs <Icon name="arrow" size={16} /></a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer">
+      <div class="shell footer-top">
+        <a class="brand brand-footer" href="/" aria-label="Przeprogramowani - strona główna">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>przeprogramowani<span class="brand-dot">.</span></span>
+        </a>
+        <p>Szersze spojrzenie<br />na programowanie.</p>
+        <a class="footer-mail" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl <Icon name="arrow" size={17} /></a>
+      </div>
+      <div class="shell footer-bottom">
+        <span>© {new Date().getFullYear()} Przeprogramowani.pl</span>
+        <div>
+          <a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer">YouTube</a>
+          <a href="https://www.instagram.com/przeprogramowani" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/company/przeprogramowani" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+---
+import type { MediaItem } from '../data/content';
+
+interface Props {
+  item: MediaItem;
+  type: 'podcast' | 'video';
+}
+
+const { item, type } = Astro.props;
+---
+
+<a class={`media-card media-card--${type}`} href={item.href} target="_blank" rel="noreferrer">
+  <div class="media-image-wrap">
+    <img src={item.image} alt="" class="media-image" loading="lazy" />
+    <span class="media-play" aria-hidden="true">{type === 'podcast' ? 'S' : '▶'}</span>
+    <span class="media-duration">{item.duration}</span>
+  </div>
+  <div class="media-copy">
+    <span class="media-meta">{item.meta}</span>
+    <h3>{item.title}</h3>
+    <p>{item.description}</p>
+  </div>
+</a>

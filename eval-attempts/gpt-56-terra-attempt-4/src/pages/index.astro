@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaCard from '../components/MediaCard.astro';
+import { podcasts, videos } from '../data/content';
+---
+
+<BaseLayout title="Przeprogramowani | Szersze spojrzenie na programowanie" description="Programy edukacyjne, podcasty i materiały dla programistow, ktorzy patrza szerzej.">
+  <main>
+    <section class="hero-section">
+      <div class="hero-grid-lines" aria-hidden="true"></div>
+      <div class="site-shell hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow--light"><span></span> OD 2019 ROKU</div>
+          <h1>Programuj <em>swobodniej.</em><br />Mysl szerzej.</h1>
+          <p class="hero-lead">Pomagamy programistom rozwijac warsztat, odwage i techniczne spojrzenie na swiat, ktory zmienia sie szybciej niz kiedykolwiek.</p>
+          <div class="hero-actions">
+            <a class="button button--coral" href="#programy">Poznaj programy <span>↓</span></a>
+            <a class="text-link text-link--light" href="/podcast">Posluchaj podcastu <span>→</span></a>
+          </div>
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p><strong>6700+</strong> programistow<br />uczylo sie z nami</p>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Wizualizacja pracy z AI">
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+          <div class="visual-chip chip-top">AI-NATIVE<br /><b>WORKFLOW</b></div>
+          <div class="visual-chip chip-left">01 <b>RESEARCH</b></div>
+          <div class="visual-chip chip-right">04 <b>DEPLOY</b></div>
+          <div class="terminal-card">
+            <div class="terminal-top"><span></span><span></span><span></span><b>10x-workflow</b></div>
+            <div class="terminal-line"><i>01</i><span class="code-pink">context</span> mapped</div>
+            <div class="terminal-line"><i>02</i><span class="code-blue">plan</span> reviewed</div>
+            <div class="terminal-line"><i>03</i><span class="code-orange">build</span> in progress <b class="cursor"></b></div>
+            <div class="terminal-progress"><span></span></div>
+            <div class="terminal-bottom"><span>Quality checks</span><b>PASS</b></div>
+          </div>
+          <div class="visual-stamp">human<br />+<br />machine</div>
+        </div>
+      </div>
+      <div class="hero-marquee"><div>ARCHITECTURE <i>✦</i> SOFTWARE CRAFT <i>✦</i> AI-NATIVE <i>✦</i> CAREER <i>✦</i> ARCHITECTURE <i>✦</i> SOFTWARE CRAFT</div></div>
+    </section>
+
+    <section class="intro-section site-shell">
+      <p class="section-number">01 / CO ROBIMY</p>
+      <div class="intro-grid">
+        <h2>Wiedza techniczna jest dopiero <span>poczatkiem.</span></h2>
+        <div>
+          <p class="intro-lead">Tworzymy programy, ktore lacza praktyke z mysleniem systemowym. Bez sztucznego hype'u. Z przestrzenia na pytania, eksperymenty i prace na realnych problemach.</p>
+          <a class="text-link" href="/o-nas">Poznaj nas blizej <span>→</span></a>
+        </div>
+      </div>
+      <div class="value-grid">
+        <article><span class="value-icon">↗</span><h3>Praktyka nad teoria</h3><p>Materialy, ktore zabierzesz prosto do swojego repozytorium.</p></article>
+        <article><span class="value-icon">◎</span><h3>Szersza perspektywa</h3><p>Kod, produkt, ludzie i proces jako jeden system.</p></article>
+        <article><span class="value-icon">◒</span><h3>Rozwoj w rytmie pracy</h3><p>Uczysz sie po swojemu, z jasnym kierunkiem i wsparciem.</p></article>
+      </div>
+    </section>
+
+    <section class="program-section" id="programy">
+      <div class="site-shell">
+        <div class="section-heading"><div><p class="section-number">02 / PROGRAMY</p><h2>Wybierz swoja <span>nastepna orbite.</span></h2></div><p>Od fundamentow produkcyjnego frontendu po nowy sposob pracy z agentami AI.</p></div>
+        <div class="program-grid">
+          <a class="program-card program-card--10x" href="https://10xdevs.pl" target="_blank" rel="noreferrer">
+            <div class="program-card-top"><span class="program-label">NOWA EDYCJA / START 14.09</span><span class="program-arrow">↗</span></div>
+            <div class="program-content"><div class="program-mark">10<span>x</span></div><h3>10xDevs <small>4.0</small></h3><p>AI-Native Software Engineering. Poznaj workflow, ktory dziala na prawdziwych projektach.</p><ul><li>5 + 1 tygodni</li><li>Projekt koncowy</li><li>Certyfikat</li></ul></div>
+            <div class="space-object" aria-hidden="true"><div class="planet-ring"></div><div class="planet-core"></div></div>
+          </a>
+          <a class="program-card program-card--frontend" href="https://www.opanujfrontend.pl" target="_blank" rel="noreferrer">
+            <div class="program-card-top"><span class="program-label">AI EDITION</span><span class="program-arrow">↗</span></div>
+            <div class="frontend-shape" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="program-content"><div class="course-code">O:FE</div><h3>Opanuj<br />Frontend</h3><p>Kompletny warsztat tworzenia aplikacji wysokiej jakosci.</p><div class="program-foot">10 tygodni nauki <b>→</b></div></div>
+          </a>
+          <a class="program-card program-card--typescript" href="https://www.opanujtypescript.pl" target="_blank" rel="noreferrer">
+            <div class="program-card-top"><span class="program-label">FRONTEND PRO</span><span class="program-arrow">↗</span></div>
+            <div class="type-monogram" aria-hidden="true">TS</div>
+            <div class="program-content"><div class="course-code">O:TS</div><h3>Opanuj<br />TypeScript</h3><p>Pewne decyzje, zaawansowane typy i React 19 w praktyce.</p><div class="program-foot">40+ cwiczen <b>→</b></div></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="site-shell quote-layout"><span class="quote-mark">“</span><blockquote>Nie uczymy obslugiwac<br />narzedzi. Uczymy <em>myslec</em>,<br />gdy narzedzia sie zmieniaja.</blockquote><p>Przeprogramowani<br /><span>szersze spojrzenie na programowanie</span></p></div>
+    </section>
+
+    <section class="media-section site-shell">
+      <div class="section-heading section-heading--media"><div><p class="section-number">03 / DO POSLUCHANIA</p><h2>Rozmowy dla<br /><span>glodnych wiedzy.</span></h2></div><a class="button button--dark" href="/podcast">Wszystkie odcinki <span>→</span></a></div>
+      <div class="media-grid media-grid--podcasts">
+        {podcasts.slice(0, 3).map((item) => <MediaCard item={item} type="podcast" />)}
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="site-shell">
+        <div class="section-heading section-heading--media"><div><p class="section-number">04 / NA EKRANIE</p><h2>Technologia bez<br /><span>skrotow myslowych.</span></h2></div><a class="button button--outline" href="/youtube">Przejdz na YouTube <span>↗</span></a></div>
+        <div class="media-grid media-grid--videos">
+          {videos.slice(0, 3).map((item) => <MediaCard item={item} type="video" />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section site-shell">
+      <div class="newsletter-card">
+        <div class="newsletter-rings" aria-hidden="true"></div>
+        <div><p class="section-number section-number--light">PRZEPROGRAMOWANY NEWSLETTER</p><h2>Jedna wiadomosc.<br /><span>Trzy dobre tropy.</span></h2><p>W piatek dostajesz 3 techniczne rekomendacje, 2 rozwojowe i jeden bonus. Bez szumu.</p></div>
+        <a class="button button--coral" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Zapisz sie za darmo <span>→</span></a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

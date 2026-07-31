@@ -91,6 +91,32 @@ function extractModelInfo(dirname: string): {
   return {modelName, attemptNumber};
 }
 
+function parseCSVLine(line: string): string[] {
+  const fields: string[] = [];
+  let field = "";
+  let quoted = false;
+
+  for (let i = 0; i < line.length; i += 1) {
+    const character = line[i];
+    if (character === '"') {
+      if (quoted && line[i + 1] === '"') {
+        field += '"';
+        i += 1;
+      } else {
+        quoted = !quoted;
+      }
+    } else if (character === "," && !quoted) {
+      fields.push(field);
+      field = "";
+    } else {
+      field += character;
+    }
+  }
+
+  fields.push(field);
+  return fields;
+}
+
 // Parse CSV file - handle both 3-column and 2-column formats
 function parseCSV(csvContent: string): CriterionResult[] {
   const lines = csvContent.trim().split("\n");
@@ -101,31 +127,22 @@ function parseCSV(csvContent: string): CriterionResult[] {
     const line = lines[i].trim();
     if (!line) continue;
 
-    // Try parsing 3-column format: Criterion,Score,Max,Notes
-    let match = line.match(/^"?([^",]+)"?,(.+?),(.+?),(.*)$/);
-
-    if (!match) {
-      // Try 2-column format: Criterion,Score,Notes (assume Max=1)
-      match = line.match(/^"?([^",]+)"?,(.+?),(.*)$/);
-      if (match) {
-        const [, criterion, scoreStr, notes] = match;
-        results.push({
-          name: criterion.trim(),
-          score: scoreStr.trim() === "N/A" ? 0 : parseFloat(scoreStr.trim()),
-          max: 1,
-          notes: notes.trim(),
-        });
-        continue;
-      }
-    }
-
-    if (match) {
-      const [, criterion, scoreStr, maxStr, notes] = match;
+    const fields = parseCSVLine(line);
+    if (fields.length >= 4) {
+      const [criterion, scoreStr, maxStr, ...noteParts] = fields;
       results.push({
         name: criterion.trim(),
         score: scoreStr.trim() === "N/A" ? 0 : parseFloat(scoreStr.trim()),
         max: maxStr.trim() === "N/A" ? 1 : parseFloat(maxStr.trim()),
-        notes: notes.trim(),
+        notes: noteParts.join(",").trim(),
+      });
+    } else if (fields.length >= 3) {
+      const [criterion, scoreStr, ...noteParts] = fields;
+      results.push({
+        name: criterion.trim(),
+        score: scoreStr.trim() === "N/A" ? 0 : parseFloat(scoreStr.trim()),
+        max: 1,
+        notes: noteParts.join(",").trim(),
       });
     }
   }

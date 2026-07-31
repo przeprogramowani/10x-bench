@@ -1,0 +1,81 @@
+---
+import MobileMenu from '../components/MobileMenu';
+import { navItems } from '../data/content';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  light?: boolean;
+}
+
+const {
+  title = 'Przeprogramowani — Szersze spojrzenie na programowanie',
+  description = 'Treści, podcasty i programy edukacyjne dla programistów, którzy chcą widzieć szerzej.',
+  light = false,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101110" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class:list={['min-h-screen', 'antialiased', light && 'page-light']}>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Przeprogramowani - strona główna">
+        <span class="brand-symbol" aria-hidden="true">&lt;/&gt;</span>
+        <span class="brand-name">przeprogramowani<span>.pl</span></span>
+      </a>
+      <nav class="desktop-navigation" aria-label="Główna nawigacja">
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+        <a class="header-cta" href="https://10xdevs.pl"><span>10xDevs</span><span aria-hidden="true">↗</span></a>
+      </nav>
+      <MobileMenu client:load items={navItems} />
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div>
+          <a class="brand footer-brand" href="/">
+            <span class="brand-symbol" aria-hidden="true">&lt;/&gt;</span>
+            <span class="brand-name">przeprogramowani<span>.pl</span></span>
+          </a>
+          <p class="footer-tagline">Szersze spojrzenie<br />na programowanie.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <p class="footer-label">Odkrywaj</p>
+            <a href="/o-nas">O nas</a>
+            <a href="/podcast">Podcast</a>
+            <a href="/youtube">YouTube</a>
+          </div>
+          <div>
+            <p class="footer-label">Ucz się</p>
+            <a href="/#kursy">Opanuj Frontend</a>
+            <a href="https://www.opanujtypescript.pl">Opanuj TypeScript</a>
+            <a href="https://10xdevs.pl">10xDevs</a>
+          </div>
+          <div>
+            <p class="footer-label">Znajdź nas</p>
+            <a href="https://www.youtube.com/c/przeprogramowani">YouTube ↗</a>
+            <a href="https://www.facebook.com/przeprogramowani">Facebook ↗</a>
+            <a href="mailto:kontakt@przeprogramowani.pl">Napisz do nas ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Przeprogramowani.pl</span>
+        <span>Tworzymy z myślą o ludziach, nie tylko o kodzie.</span>
+        <a href="https://przeprogramowani.pl">przeprogramowani.pl ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>

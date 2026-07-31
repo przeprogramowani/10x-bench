@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.tsx';
+import CoursesSection from '../components/CoursesSection.tsx';
+import NewsletterSection from '../components/NewsletterSection.tsx';
+import Footer from '../components/Footer.tsx';
+---
+<Layout title="Kursy — Przeprogramowani | Opanuj Frontend, TypeScript i AI" description="Kursy programistyczne Przeprogramowanych: Opanuj Frontend: AI Edition, Opanuj TypeScript, 10xDevs i Opanuj.AI. Szkolenia dla ambitnych developerów.">
+  <Header />
+  <main class="pt-24">
+    <section class="py-20 md:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h1 class="section-title mb-4">
+            Nasze <span class="gradient-text">kursy</span>
+          </h1>
+          <p class="section-subtitle mx-auto">
+            Kompleksowe programy edukacyjne dla programistów na każdym poziomie
+          </p>
+        </div>
+      </div>
+    </section>
+    <CoursesSection />
+    <NewsletterSection />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const videos = [
+  { id: 'c5HVzK-tclM', label: '10xDevs / LIVE', title: 'Poznaj AI Workflow, które działa na produkcji', time: '1:18:42' },
+  { id: 'B4t6w4QsD24', label: 'Opanuj.AI', title: 'Darmowe AI na każdym Maku — jak działa Apple Foundational Models', time: '24:18' },
+  { id: '0JOszZXqKaM', label: 'Opanuj.AI LIVE', title: 'Byliśmy na Google I/O 2026 — wrażenia na gorąco!', time: '42:06' },
+  { id: 'XgyH-HSzKRQ', label: 'Konferencje', title: 'Byłem na Google I/O 2026. Nie tego się spodziewałem.', time: '16:31' },
+  { id: '03y826SVjG0', label: 'AI / Praktyka', title: 'Jak wybrać najlepszego Agenta AI do programowania?', time: '28:09' },
+  { id: 'S-iNbyLSisE', label: 'Claude Code / LIVE', title: '5 Agent Skills do jakościowego programowania z AI', time: '1:04:12' },
+];
+---
+
+<BaseLayout currentPath="/youtube" title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o programowaniu, AI i rozwoju.">
+  <main>
+    <section class="bg-sky py-24 md:py-32"><div class="container-wide grid gap-10 md:grid-cols-[1fr_.7fr] md:items-end"><div><p class="eyebrow">YouTube / 01</p><h1 class="display mt-7 text-6xl leading-[.88] md:text-8xl">Oglądaj.<br /><span class="text-orange">Myśl.</span><br />Buduj.</h1></div><div><p class="text-lg leading-7 text-black/65">Nowości ze świata IT, techniki skutecznej pracy i nauki oraz rozmowy o tym, jak kierować swoją karierą w najlepszy dla Ciebie sposób.</p><a class="button-primary mt-8" href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noreferrer">Subskrybuj kanał <span>↗</span></a></div></div></section>
+
+    <section class="section-pad"><div class="container-wide"><div class="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p class="section-label eyebrow">Najnowsze / 02</p><h2 class="display heading-lg mt-5">Technologia<br /><span class="text-orange">w praktyce.</span></h2></div><div class="flex items-center gap-3 text-sm text-black/50"><span class="inline-block h-2 w-2 rounded-full bg-orange"></span> 20.5k subskrybentów</div></div><div class="grid gap-x-5 gap-y-12 md:grid-cols-2 lg:grid-cols-3">{videos.map((video, index) => <a class="group" href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer"><div class="media-thumb border hairline"><img src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} loading={index > 1 ? 'lazy' : 'eager'} /><span class="play-button">▶</span><span class="absolute right-3 top-3 bg-ink px-2 py-1 text-[.65rem] font-bold text-white">{video.time}</span></div><p class="eyebrow mt-5 text-orange">{video.label}</p><h3 class="display mt-2 text-2xl leading-tight transition group-hover:text-orange">{video.title}</h3><span class="mt-4 inline-block text-xs font-bold">Oglądaj na YouTube ↗</span></a>)}</div></div></section>
+
+    <section class="section-pad border-y hairline bg-ink text-white"><div class="container-wide grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center"><div><p class="eyebrow text-orange">Nie przegap kolejnego</p><h2 class="display mt-5 text-5xl leading-[.92] md:text-6xl">Wiedza jest<br /><span class="text-sky">bliżej, niż myślisz.</span></h2></div><div class="border-l border-white/20 pl-7"><p class="max-w-[430px] text-base leading-7 text-white/60">Dołącz do kanału, na którym o technologiach mówi się po ludzku — z kontekstem, przykładami i zdrową dawką sceptycyzmu.</p><a class="button-primary button-orange mt-8" href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noreferrer">Przejdź do YouTube ↗</a></div></div></section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  light?: boolean;
+}
+
+const { eyebrow, title, description, light = false } = Astro.props;
+---
+
+<div class:list={['flex flex-col gap-5 md:flex-row md:items-end md:justify-between', light && 'text-paper']}>
+  <div class="max-w-[650px]">
+    <p class:list={['eyebrow', light && 'eyebrow-light']}>{eyebrow}</p>
+    <h2 class="display mt-4 text-4xl font-semibold leading-[0.98] tracking-[-0.07em] md:text-6xl">{title}</h2>
+  </div>
+  {description && <p class:list={['max-w-[310px] text-sm leading-6', light ? 'text-paper/60' : 'text-ink/60']}>{description}</p>}
+</div>

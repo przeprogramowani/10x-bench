@@ -1,0 +1,70 @@
+---
+import SiteHeader from '../components/SiteHeader';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  noHeader?: boolean;
+}
+
+const {
+  title = 'Przeprogramowani — szersze spojrzenie na programowanie',
+  description = 'Wiedza, która pomaga programować mądrzej. Podcasty, YouTube i programy edukacyjne dla ambitnych developerów.',
+  currentPath = '/',
+  noHeader = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0d0c" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c8f169'/%3E%3Ctext x='8' y='43' font-family='Arial' font-size='23' font-weight='700' fill='%230b0d0c'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E" />
+    <title>{title}</title>
+  </head>
+  <body>
+    {!noHeader && <SiteHeader currentPath={currentPath} client:load />}
+    <slot />
+    {!noHeader && <footer class="border-t hairline bg-ink">
+      <div class="site-container grid gap-12 py-14 md:grid-cols-[1.3fr_1fr_1fr] md:py-20">
+        <div>
+          <a href="/" class="group flex w-fit items-center gap-3">
+            <span class="grid h-9 w-9 place-items-center bg-cream font-display text-[15px] font-bold text-ink">&lt;/&gt;</span>
+            <span class="font-display text-[15px] font-bold tracking-[-0.04em]">Przeprogramowani</span>
+          </a>
+          <p class="mt-6 max-w-xs text-sm leading-6 text-mist">Szersze spojrzenie na programowanie. Tworzymy treści, które pomagają rozwijać się w świecie technologii.</p>
+          <p class="mt-8 text-xs text-mist/60">© 2026 Przeprogramowani.pl</p>
+        </div>
+        <div>
+          <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.16em] text-lime">Odkrywaj</p>
+          <div class="flex flex-col items-start gap-3 text-sm text-mist">
+            <a href="/o-nas" class="transition-colors hover:text-cream">O nas</a>
+            <a href="/podcast" class="transition-colors hover:text-cream">Podcast</a>
+            <a href="/youtube" class="transition-colors hover:text-cream">YouTube</a>
+            <a href="/kursy" class="transition-colors hover:text-cream">Programy edukacyjne</a>
+          </div>
+        </div>
+        <div>
+          <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.16em] text-lime">Połącz się</p>
+          <div class="flex flex-col items-start gap-3 text-sm text-mist">
+            <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" class="transition-colors hover:text-cream">Newsletter</a>
+            <a href="https://www.youtube.com/@przeprogramowani" target="_blank" rel="noreferrer" class="transition-colors hover:text-cream">YouTube ↗</a>
+            <a href="https://www.instagram.com/przeprogramowani" target="_blank" rel="noreferrer" class="transition-colors hover:text-cream">Instagram ↗</a>
+            <a href="mailto:kontakt@przeprogramowani.pl" class="transition-colors hover:text-cream">kontakt@przeprogramowani.pl</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t hairline">
+        <div class="site-container flex flex-col gap-3 py-5 text-[11px] text-mist/60 sm:flex-row sm:items-center sm:justify-between">
+          <span>Robimy miejsce na dobre pytania.</span>
+          <span>Polityka prywatności · Regulamin</span>
+        </div>
+      </div>
+    </footer>}
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout title="O nas — Przeprogramowani.pl" description="Poznaj Przeprogramowanych — miejsce, w którym programowanie spotyka się z rozwojem osobistym.">
+  <section class="ink-panel relative overflow-hidden">
+    <div class="grid-lines absolute inset-0"></div>
+    <div class="site-container relative py-20 sm:py-28">
+      <p class="eyebrow eyebrow-light">O nas / 01</p>
+      <h1 class="display mt-8 max-w-4xl text-6xl font-semibold text-paper sm:text-8xl">Kod to dopiero<br /><span class="text-acid">początek.</span></h1>
+      <div class="mt-12 grid gap-10 border-t border-paper/20 pt-7 lg:grid-cols-[1fr_0.72fr]">
+        <p class="max-w-2xl text-xl leading-8 text-paper/80 sm:text-2xl sm:leading-9">Łączymy świat programowania, biznesu i rozwoju. Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, na ludzi i na siebie.</p>
+        <p class="max-w-sm text-sm leading-7 text-paper/55 lg:pt-1">Tworzymy treści, kursy i narzędzia, które pomagają rozwijać się na wielu płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-container py-20 sm:py-28">
+    <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div><p class="eyebrow">02 / Ludzie</p><h2 class="display mt-6 max-w-[10ch] text-5xl font-semibold sm:text-6xl">Dwie głowy. Jeden kierunek<span class="text-ember">.</span></h2></div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <article class="border border-ink/15 bg-white p-4">
+          <div class="relative aspect-[0.92] overflow-hidden bg-moss"><img class="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0" src="https://przeprogramowani.pl/img/profiles/przemek.webp" alt="Przemek Smyrdek" loading="lazy" /><span class="absolute bottom-3 left-3 pill border-acid/50 bg-ink/70 text-acid">01</span></div>
+          <div class="px-1 pb-1 pt-5"><h3 class="font-display text-2xl font-semibold tracking-[-0.04em]">Przemek Smyrdek</h3><p class="mt-1 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ember">Co-founder / Przeprogramowani</p><p class="mt-4 text-xs leading-5 text-ink/60">Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer, prelegent i kontrybutor open source.</p><a class="mt-5 inline-flex font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink/60 hover:text-ember" href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+        </article>
+        <article class="border border-ink/15 bg-white p-4 sm:mt-12">
+          <div class="relative aspect-[0.92] overflow-hidden bg-acid"><img class="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0" src="https://przeprogramowani.pl/img/profiles/marcin.webp" alt="Marcin Czarkowski" loading="lazy" /><span class="absolute bottom-3 left-3 pill border-ink/30 bg-paper/80 text-ink">02</span></div>
+          <div class="px-1 pb-1 pt-5"><h3 class="font-display text-2xl font-semibold tracking-[-0.04em]">Marcin Czarkowski</h3><p class="mt-1 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ember">Co-founder / Przeprogramowani</p><p class="mt-4 text-xs leading-5 text-ink/60">Lead techniczny Platformy Frontendowej w SmartRecruiters. Entuzjasta neurobiologii, TypeScriptu, Reacta i uczenia się opartego na badaniach.</p><a class="mt-5 inline-flex font-mono text-[0.62rem] uppercase tracking-[0.08em] text-ink/60 hover:text-ember" href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-container pb-20 sm:pb-28">
+    <div class="section-rule pt-5"><p class="eyebrow">03 / Co jest dla nas ważne</p></div>
+    <div class="mt-10 grid gap-0 border-l border-ink/15 md:grid-cols-3">
+      <div class="border-b border-r border-ink/15 p-6 md:border-b-0"><span class="font-mono text-xs text-ember">01</span><h3 class="mt-12 font-display text-2xl font-semibold">Kontekst ponad hype</h3><p class="mt-4 text-sm leading-6 text-ink/60">Narzędzia są wymienne. Umiejętność zadawania dobrych pytań zostaje.</p></div>
+      <div class="border-b border-r border-ink/15 p-6 md:border-b-0"><span class="font-mono text-xs text-ember">02</span><h3 class="mt-12 font-display text-2xl font-semibold">Praktyka bez skrótów</h3><p class="mt-4 text-sm leading-6 text-ink/60">Pokazujemy decyzje, kompromisy i cały proces, nie tylko efekt na slajdzie.</p></div>
+      <div class="border-r border-ink/15 p-6"><span class="font-mono text-xs text-ember">03</span><h3 class="mt-12 font-display text-2xl font-semibold">Rozwój na serio</h3><p class="mt-4 text-sm leading-6 text-ink/60">Dobra kariera w tech to maraton ciekawości, nie sprint za kolejnym frameworkiem.</p></div>
+    </div>
+  </section>
+</SiteLayout>

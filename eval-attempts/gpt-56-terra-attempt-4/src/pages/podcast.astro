@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaCard from '../components/MediaCard.astro';
+import { podcasts } from '../data/content';
+---
+
+<BaseLayout title="Podcast | Przeprogramowani" description="Najnowsze odcinki podcastow Przeprogramowani i Opanuj.AI.">
+  <main class="inner-page">
+    <section class="page-hero page-hero--podcast"><div class="podcast-disc podcast-disc--one" aria-hidden="true"></div><div class="podcast-disc podcast-disc--two" aria-hidden="true"></div><div class="site-shell"><p class="eyebrow eyebrow--light"><span></span> PODCAST</p><h1>Sluchaj, zanim<br /><em>swiat przewinie dalej.</em></h1><p>Rozmowy o AI, technologii i programowaniu z perspektywa, ktora wykracza poza kolejny news.</p><a class="button button--coral" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Obserwuj na Spotify <span>↗</span></a></div></section>
+    <section class="podcast-content site-shell"><div class="section-heading"><div><p class="section-number">NAJNOWSZE</p><h2>Odcinki, ktore<br /><span>warto miec w uszach.</span></h2></div><p>Opanuj.AI Podcast to comiesieczne podsumowania najwazniejszych wydarzen ze swiata AI i rozmowy z osobami, ktore buduja technologie.</p></div><div class="media-list">{podcasts.map((item, index) => <div class="media-list-row"><span class="list-index">0{index + 1}</span><MediaCard item={item} type="podcast" /></div>)}</div></section>
+    <section class="platform-section"><div class="site-shell"><p class="section-number section-number--light">SLUCHAJ TAM, GDZIE LUBISZ</p><h2>Jedna rozmowa.<br /><span>Wiele platform.</span></h2><div class="platform-buttons"><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Spotify <b>↗</b></a><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer">Apple Podcasts <b>↗</b></a><a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noreferrer">RSS <b>↗</b></a></div></div></section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastEpisodes from '../components/PodcastEpisodes';
+---
+
+<Layout title="Podcast" description="Słuchaj podcastów Przeprogramowanych o technologii, AI i programowaniu. Opanuj.AI Podcast i Przeprogramowani ft. Gość.">
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-8 text-sm text-slate-500">
+        <a href="/" class="hover:text-white">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Podcast</span>
+      </nav>
+      <div class="mx-auto max-w-2xl">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">Podcasty</h1>
+        <p class="mt-4 text-lg text-slate-400">Słuchaj naszych podcastów o technologii, AI i programowaniu</p>
+      </div>
+
+      <!-- Opanuj.AI Podcast -->
+      <div class="mt-16">
+        <div class="mb-8 flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white">Opanuj.AI Podcast</h2>
+            <p class="text-sm text-slate-400">Ponad 4000 słuchaczy — comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI</p>
+          </div>
+        </div>
+        <PodcastEpisodes client:load />
+      </div>
+
+      <!-- Przeprogramowani ft. Gość -->
+      <div class="mt-20">
+        <div class="mb-8 flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white">Przeprogramowani ft. Gość</h2>
+            <p class="text-sm text-slate-400">Ponad 3800 słuchaczy — rozmowy dla głodnych wiedzy</p>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { title: 'Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko', duration: '00:33:45', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo' },
+            { title: 'O dojrzewaniu zawodowym programisty, Wojciech Trawiński', duration: '00:45:56', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn' },
+            { title: 'Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin', duration: '01:16:44', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3' },
+            { title: 'Co nowego w TypeScript? Zmiany w języku i nasze plany konferencyjne', duration: '01:36:34', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm' },
+            { title: 'No-code i Low-code - przyszłość tworzenia aplikacji? | Kamil Tarczyński', duration: '00:36:31', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/No-code-i-Low-code---przyszo-tworzenia-aplikacji---Kamil-Tarczyski---Przeprogramowani-ft--Go-e2kqhp6' },
+            { title: 'Nauka nowoczesnego frontendu | Paweł Gnat', duration: '00:42:11', url: 'https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Nauka-nowoczesnego-frontendu--Pawe-Gnat---Przeprogramowani-ft--Go-e2kj935' },
+          ].map((ep, i) => (
+            <a key={i} href={ep.url} target="_blank" class="group rounded-xl border border-white/5 bg-surface-light/50 p-4 transition hover:border-amber-500/30 hover:bg-surface-light">
+              <div class="mb-2 flex items-center gap-2">
+                <span class="rounded bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">Przeprogramowani ft. Gość</span>
+                <span class="text-xs text-slate-500">{ep.duration}</span>
+              </div>
+              <h4 class="text-sm font-medium text-slate-200 line-clamp-2 group-hover:text-amber-400">{ep.title}</h4>
+              <div class="mt-3 flex items-center gap-1 text-xs text-slate-500 group-hover:text-amber-400">
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Słuchaj
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Platforms -->
+      <div class="mt-20 rounded-3xl border border-white/5 bg-gradient-to-br from-amber-500/5 to-brand/5 p-8 sm:p-12">
+        <h2 class="mb-6 text-center text-xl font-bold text-white">Jesteśmy na twojej ulubionej platformie</h2>
+        <div class="flex flex-wrap items-center justify-center gap-6">
+          <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" class="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white">Apple Podcasts</a>
+          <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" class="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white">Spotify</a>
+          <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw" target="_blank" class="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white">Google Podcasts</a>
+          <a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" class="rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-slate-200 transition hover:bg-white/10 hover:text-white">RSS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="O nas" description="Poznaj zespół Przeprogramowanych — Przemek Smyrdek i Marcin Czarkowski. Łączymy świat programowania, biznesu i rozwoju.">
+  <section class="py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mb-8 text-sm text-slate-500">
+        <a href="/" class="hover:text-white">Strona główna</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">O nas</span>
+      </nav>
+      <div class="mx-auto max-w-2xl">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">O nas</h1>
+        <p class="mt-4 text-lg text-slate-400">Łączymy świat programowania, biznesu i rozwoju</p>
+      </div>
+
+      <!-- Team -->
+      <div class="mt-16 grid gap-8 md:grid-cols-2">
+        <div class="rounded-2xl border border-white/5 bg-surface-light/50 p-6 sm:p-8">
+          <div class="flex items-start gap-4">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand/30 to-accent/30 text-xl font-bold text-white">PS</div>
+            <div>
+              <h2 class="text-xl font-bold text-white">Przemek Smyrdek</h2>
+              <p class="text-sm text-slate-400">Co-founder, Przeprogramowani</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-slate-300">
+            Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).
+          </p>
+          <a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" class="mt-4 inline-flex items-center gap-1 text-sm text-brand-light hover:text-accent">
+            LinkedIn →
+          </a>
+        </div>
+
+        <div class="rounded-2xl border border-white/5 bg-surface-light/50 p-6 sm:p-8">
+          <div class="flex items-start gap-4">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500/30 to-cyan-500/30 text-xl font-bold text-white">MC</div>
+            <div>
+              <h2 class="text-xl font-bold text-white">Marcin Czarkowski</h2>
+              <p class="text-sm text-slate-400">Co-founder, Przeprogramowani</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-slate-300">
+            Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się. Twórca "Opanuj AI Podcast" — najpopularniejszego technicznego podcastu o LLM w Polsce. Specjalista TypeScript, React, Node.js.
+          </p>
+          <a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" class="mt-4 inline-flex items-center gap-1 text-sm text-brand-light hover:text-accent">
+            LinkedIn →
+          </a>
+        </div>
+      </div>
+
+      <!-- Mission -->
+      <div class="mt-20 rounded-3xl border border-white/5 bg-gradient-to-br from-brand/5 via-surface to-accent/5 p-8 sm:p-12">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl">Witaj na Przeprogramowanych!</h2>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-slate-300">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.
+        </p>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-slate-300">
+          Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach. Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju.
+        </p>
+        <p class="mt-6 text-lg font-semibold text-white">Zyskaj szersze spojrzenie na programowanie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats + Partners -->
+  <section class="border-t border-white/5 bg-surface-light/30 py-16">
+    <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+      <div class="text-5xl font-bold text-white">7</div>
+      <p class="mt-2 text-sm text-slate-400">lat na rynku edukacji technologicznej</p>
+      <div class="mt-12">
+        <p class="mb-6 text-xs font-semibold uppercase tracking-widest text-slate-500">Zaufali nam</p>
+        <div class="flex flex-wrap items-center justify-center gap-8 opacity-50 grayscale">
+          {['Huuuge Games', 'Nutridome', 'SmartRecruiters', 'Future Processing', 'Callstack', 'edrone', 'Xfive', 'Euvic', 'Strabag', 'Autodesk'].map(name => (
+            <span key={name} class="text-sm font-semibold text-slate-400">{name}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
