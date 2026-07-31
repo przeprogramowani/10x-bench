@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import { episodes } from '../data/content';
+---
+<BaseLayout title="Podcast — Przeprogramowani.pl" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju.">
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <p class="mono-label mono-label--light">Strona główna / Podcast</p>
+      <h1 class="display-heading">Rozmowy, które<br /><span>zostają</span> na dłużej.</h1>
+      <p class="page-hero__intro">Technologia, AI, programowanie i rozwój. Słuchaj rozmów z ludźmi, którzy nie boją się zadawać trudnych pytań.</p>
+    </div>
+  </section>
+  <section class="page-media">
+    <div class="container">
+      <p class="mono-label mono-label--light">Ostatnie odcinki / 2026</p>
+      <div class="episode-list">
+        {episodes.map((episode) => <EpisodeCard episode={episode} />)}
+      </div>
+      <div class="page-media__platforms">
+        <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Słuchaj na Spotify ↗</a>
+        <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250">Apple Podcasts ↗</a>
+        <a href="https://youtube.com/channel/UCLlxU3mNEO91RHU6CtLrB3w">Podcast na YouTube ↗</a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

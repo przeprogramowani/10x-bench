@@ -1,0 +1,21 @@
+---
+import type { Video } from '../data/content';
+
+interface Props {
+  video: Video;
+  eager?: boolean;
+}
+
+const { video, eager = false } = Astro.props;
+---
+<article class="video-card">
+  <a href={video.href} aria-label={`Obejrzyj: ${video.title}`}>
+    <div class="video-card__image-wrap">
+      <img class="video-card__image" src={video.image} alt="" loading={eager ? 'eager' : 'lazy'} />
+      <span class="video-card__duration">{video.duration}</span>
+      <span class="video-card__play" aria-hidden="true">▶</span>
+    </div>
+    <span class="video-card__category">{video.category}</span>
+    <h3>{video.title}</h3>
+  </a>
+</article>

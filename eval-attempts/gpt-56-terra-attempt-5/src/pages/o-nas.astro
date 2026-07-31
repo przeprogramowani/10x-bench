@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'https://przeprogramowani.pl/img/profiles/przemek.webp',
+    profile: 'https://www.linkedin.com/in/psmyrdek/',
+    description: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer i kontrybutor Open Source.',
+    skills: ['Product thinking', 'Architecture', 'AI workflows'],
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    image: 'https://przeprogramowani.pl/img/profiles/marcin.webp',
+    profile: 'https://www.linkedin.com/in/mkczarkowski/',
+    description: 'Lead techniczny Platformy Frontendowej w SmartRecruiters. Twórca Opanuj AI Podcast i specjalista TypeScript, React oraz Node.js.',
+    skills: ['Frontend craft', 'Learning science', 'TypeScript'],
+  },
+];
+---
+<BaseLayout title="O nas — Przeprogramowani" description="Poznaj Przeprogramowanych: tworzymy programy edukacyjne dla programistów, którzy chcą widzieć więcej.">
+  <section class="grain relative overflow-hidden border-b border-white/10 bg-ink">
+    <div class="absolute inset-y-0 right-0 hidden w-[44%] grid-lines opacity-40 lg:block"></div>
+    <div class="relative mx-auto max-w-[1440px] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
+      <p class="eyebrow text-acid">00 / o nas</p>
+      <h1 class="display mt-6 max-w-5xl text-[3.4rem] font-bold leading-[0.88] sm:text-7xl lg:text-[6.4rem]">Tworzymy przestrzeń dla <span class="text-acid">myślących</span> programistów.</h1>
+      <p class="mt-9 max-w-xl text-base leading-8 text-paper/65 sm:text-lg">Łączymy świat programowania, biznesu i rozwoju. Bez obietnic na skróty, za to z wiedzą, która wytrzymuje zderzenie z prawdziwym projektem.</p>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20 text-ink sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="grid gap-8 border-b border-ink/15 pb-12 lg:grid-cols-[.7fr_1.3fr]">
+        <p class="eyebrow text-ink/50">Nasz punkt widzenia</p>
+        <div>
+          <h2 class="display max-w-3xl text-4xl font-bold leading-[0.96] sm:text-5xl">Najlepsi programiści patrzą szerzej.</h2>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-ink/65">Na architekturę, na biznes, na ludzi i na siebie. Przeprogramowani to miejsce, w którym techniczne deep-dive'y spotykają się z rozmowami o karierze, współpracy i świadomym rozwoju.</p>
+        </div>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="border-t-2 border-rust pt-5"><span class="font-mono text-xs font-semibold text-rust">01</span><h3 class="mt-6 text-lg font-extrabold">Praktyka ponad teorię</h3><p class="mt-3 text-sm leading-7 text-ink/60">Dzielimy się metodami, które sprawdzają się w produktach, zespołach i codziennej pracy.</p></div>
+        <div class="border-t-2 border-acid pt-5"><span class="font-mono text-xs font-semibold text-ink/50">02</span><h3 class="mt-6 text-lg font-extrabold">Ciekawość bez dogmatów</h3><p class="mt-3 text-sm leading-7 text-ink/60">Śledzimy nowe technologie, zadajemy pytania i uczymy się wybierać narzędzia świadomie.</p></div>
+        <div class="border-t-2 border-slate pt-5"><span class="font-mono text-xs font-semibold text-ink/50">03</span><h3 class="mt-6 text-lg font-extrabold">Rozwój w wielu wymiarach</h3><p class="mt-3 text-sm leading-7 text-ink/60">Dobry kod jest ważny. Równie ważna jest komunikacja, kontekst biznesowy i sprawczość.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink py-20 sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col justify-between gap-5 border-b border-white/15 pb-8 sm:flex-row sm:items-end">
+        <div><p class="eyebrow text-acid">Poznajmy się</p><h2 class="display mt-4 text-5xl font-bold leading-[0.9] sm:text-6xl">Ludzie po<br />drugiej stronie.</h2></div>
+        <p class="max-w-xs text-sm leading-6 text-paper/55">Od 7 lat tworzymy edukację technologiczną wspólnie z praktykami branży.</p>
+      </div>
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        {founders.map((founder, index) => (
+          <article class="group relative overflow-hidden bg-[#191d1a]">
+            <div class="grid min-h-[500px] sm:grid-cols-[.87fr_1.13fr]">
+              <div class="relative min-h-[300px] overflow-hidden bg-[#d4d2ca]">
+                <img class="h-full w-full object-cover object-top grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0" src={founder.image} alt={`Portret ${founder.name}`} loading="lazy" />
+                <span class="absolute left-4 top-4 grid h-8 w-8 place-items-center bg-acid font-mono text-xs font-bold text-ink">0{index + 1}</span>
+              </div>
+              <div class="flex flex-col justify-between p-6 sm:p-8">
+                <div>
+                  <p class="eyebrow text-acid">{founder.role}</p>
+                  <h3 class="display mt-4 text-4xl font-bold leading-[0.9]">{founder.name}</h3>
+                  <p class="mt-5 text-sm leading-7 text-paper/60">{founder.description}</p>
+                </div>
+                <div class="mt-7">
+                  <div class="flex flex-wrap gap-2">{founder.skills.map((skill) => <span class="border border-white/15 px-2 py-1 font-mono text-[0.56rem] uppercase tracking-[0.08em] text-paper/60">{skill}</span>)}</div>
+                  <a href={founder.profile} class="mt-6 inline-block border-b border-acid pb-1 text-sm font-bold text-acid">LinkedIn ↗</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-rust py-20 text-ink sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="grid gap-8 lg:grid-cols-[.7fr_1.3fr]">
+        <p class="eyebrow">Współpraca</p>
+        <div><h2 class="display max-w-3xl text-5xl font-bold leading-[0.9] sm:text-6xl">Masz pomysł, który warto<br />zrobić <span class="outline-text text-ink/80">dobrze?</span></h2><a href="mailto:kontakt@przeprogramowani.pl" class="mt-8 inline-flex border-b-2 border-ink pb-1 text-sm font-extrabold">kontakt@przeprogramowani.pl <span class="ml-2">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

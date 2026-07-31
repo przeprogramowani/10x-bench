@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import MobileMenu from '../components/MobileMenu';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { title = 'Przeprogramowani — Szersze spojrzenie na programowanie', description = 'Treści, podcasty i programy edukacyjne dla programistów, którzy chcą widzieć szerzej.', currentPath = '/' } = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="top-strip">
+        <div class="container-wide flex min-h-9 items-center justify-between gap-4 text-[.7rem] font-bold tracking-[.08em]">
+          <span>NOWOŚĆ / 10xDEVS 4.0</span>
+          <a href="https://10xdevs.pl" target="_blank" rel="noreferrer">Programuj z AI <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <header class="site-header">
+        <div class="container-wide flex h-[76px] items-center justify-between">
+          <a href="/" class="flex items-center gap-3" aria-label="Przeprogramowani, strona główna">
+            <span class="logo-mark">&lt;/&gt;</span>
+            <span class="logo-word">przeprogramowani</span>
+          </a>
+          <nav class="desktop-nav flex items-center gap-7" aria-label="Główna nawigacja">
+            <a class={`nav-link ${currentPath === '/o-nas' ? 'active' : ''}`} href="/o-nas">O nas</a>
+            <a class={`nav-link ${currentPath === '/podcast' ? 'active' : ''}`} href="/podcast">Podcast</a>
+            <a class={`nav-link ${currentPath === '/youtube' ? 'active' : ''}`} href="/youtube">YouTube</a>
+            <a class={`nav-link ${currentPath === '/' ? 'active' : ''}`} href="/#programy">Programy</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a class="desktop-cta button-primary button-orange" href="https://10xdevs.pl" target="_blank" rel="noreferrer">10xDevs <span aria-hidden="true">↗</span></a>
+            <MobileMenu client:load />
+          </div>
+        </div>
+      </header>
+      <slot />
+      <footer class="bg-ink py-14 text-white">
+        <div class="container-wide">
+          <div class="grid gap-12 border-b border-white/15 pb-12 md:grid-cols-[1.5fr_1fr_1fr]">
+            <div>
+              <a href="/" class="flex items-center gap-3">
+                <span class="logo-mark bg-white !text-ink">&lt;/&gt;</span>
+                <span class="logo-word">przeprogramowani</span>
+              </a>
+              <p class="mt-6 max-w-[285px] text-sm leading-6 text-white/55">Szersze spojrzenie na programowanie. Wiedza, która zostaje z Tobą na dłużej.</p>
+            </div>
+            <div>
+              <p class="eyebrow text-white/35">Odkrywaj</p>
+              <div class="mt-5 grid gap-3">
+                <a class="footer-link" href="/o-nas">O nas</a>
+                <a class="footer-link" href="/podcast">Podcast</a>
+                <a class="footer-link" href="/youtube">YouTube</a>
+                <a class="footer-link" href="/#programy">Programy edukacyjne</a>
+              </div>
+            </div>
+            <div>
+              <p class="eyebrow text-white/35">Znajdź nas</p>
+              <div class="mt-5 grid gap-3">
+                <a class="footer-link" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Newsletter</a>
+                <a class="footer-link" href="https://www.linkedin.com/company/przeprogramowani/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a class="footer-link" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between gap-3 pt-6 text-[.7rem] uppercase tracking-[.12em] text-white/35 md:flex-row">
+            <span>© 2026 Przeprogramowani.pl</span>
+            <span>Tworzymy z ciekawości. Dzielimy się z intencją.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

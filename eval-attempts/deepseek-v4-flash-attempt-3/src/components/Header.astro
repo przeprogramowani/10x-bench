@@ -1,0 +1,47 @@
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-900">
+      <span class="text-brand-600 font-mono">&lt;/&gt;</span>
+      Przeprogramowani
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="/#about" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">O nas</a>
+      <a href="/#podcast" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Podcast</a>
+      <a href="/#youtube" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">YouTube</a>
+      <a href="/#courses" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Kursy</a>
+    </div>
+    <a
+      href="https://10xdevs.pl"
+      target="_blank"
+      class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-600 to-accent-500 text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity"
+    >
+      10xDevs 4.0
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-gray-900" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+    <div class="px-4 py-4 space-y-3">
+      <a href="/#about" class="block text-sm font-medium text-gray-600 hover:text-brand-600">O nas</a>
+      <a href="/#podcast" class="block text-sm font-medium text-gray-600 hover:text-brand-600">Podcast</a>
+      <a href="/#youtube" class="block text-sm font-medium text-gray-600 hover:text-brand-600">YouTube</a>
+      <a href="/#courses" class="block text-sm font-medium text-gray-600 hover:text-brand-600">Kursy</a>
+      <a href="https://10xdevs.pl" target="_blank" class="block text-sm font-semibold text-brand-600">10xDevs 4.0 →</a>
+    </div>
+  </div>
+</header>
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+</script>

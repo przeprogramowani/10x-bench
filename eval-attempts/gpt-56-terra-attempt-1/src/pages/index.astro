@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { courses, latestEpisodes, latestVideos } from "../data/content";
+---
+
+<Layout>
+  <section class="noise overflow-hidden border-b border-white/10">
+    <div class="grid-lines absolute inset-0 opacity-50"></div>
+    <div class="relative mx-auto grid max-w-[1440px] gap-12 px-5 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20 lg:grid-cols-[1.06fr_.94fr] lg:items-end lg:px-12 lg:pb-28 lg:pt-28">
+      <div>
+        <p class="eyebrow">Edukacja technologiczna od 2019</p>
+        <h1 class="display mt-7 max-w-4xl text-[clamp(3.5rem,8.3vw,8.1rem)] font-bold leading-[0.84] text-[#f4f4ef]">
+          Programuj<br />
+          <span class="text-[#c7ff3d]">szerzej.</span>
+        </h1>
+        <p class="mt-8 max-w-xl text-base leading-7 text-[#b6b7b0] sm:text-lg">Pomagamy programistom projektować lepsze produkty, pracować mądrzej i świadomie korzystać z AI. Bez skrótów. Z konkretem.</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a class="group inline-flex items-center gap-3 bg-[#c7ff3d] px-5 py-3.5 text-sm font-extrabold text-[#101111] transition-transform hover:-translate-y-0.5" href="https://10xdevs.pl">
+            Poznaj 10xDevs
+            <span class="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a class="inline-flex items-center gap-3 border border-white/20 px-5 py-3.5 text-sm font-extrabold text-white transition-colors hover:border-white hover:bg-white hover:text-[#101111]" href="#kursy">
+            Zobacz programy
+          </a>
+        </div>
+        <div class="mt-14 flex gap-8 border-t border-white/10 pt-6 sm:gap-12">
+          <div><strong class="display block text-3xl font-bold">7 lat</strong><span class="mt-1 block text-xs text-[#8c8d87]">na rynku edukacji</span></div>
+          <div><strong class="display block text-3xl font-bold">6 700+</strong><span class="mt-1 block text-xs text-[#8c8d87]">absolwentów 10xDevs</span></div>
+          <div class="hidden sm:block"><strong class="display block text-3xl font-bold">20k+</strong><span class="mt-1 block text-xs text-[#8c8d87]">subskrybentów YT</span></div>
+        </div>
+      </div>
+      <div class="relative mx-auto w-full max-w-[590px] lg:mb-4">
+        <div class="absolute -inset-5 border border-[#c7ff3d]/30 sm:-inset-8"></div>
+        <div class="relative overflow-hidden bg-[#c7ff3d] p-5 text-[#101111] sm:p-8">
+          <div class="flex items-center justify-between border-b border-[#101111]/20 pb-5 text-[0.65rem] font-extrabold uppercase tracking-[0.14em]">
+            <span>Nowość / 2026</span><span>01 - 06</span>
+          </div>
+          <div class="relative py-9 sm:py-14">
+            <p class="text-xs font-extrabold uppercase tracking-[0.15em]">Program dla developerów</p>
+            <p class="display mt-3 text-[clamp(4.5rem,12vw,8.5rem)] font-bold leading-[0.72] tracking-[-0.11em]">10×</p>
+            <h2 class="display mt-5 text-3xl font-bold leading-none sm:text-5xl">10xDevs<br />4.0</h2>
+            <p class="mt-5 max-w-sm text-sm font-semibold leading-6">Czas na AI-native software engineering.</p>
+          </div>
+          <div class="flex items-center justify-between border-t border-[#101111]/20 pt-5">
+            <div class="flex -space-x-2" aria-label="Prowadzący">
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-[#c7ff3d] bg-[#222] text-[10px] font-bold text-white">PS</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-[#c7ff3d] bg-[#47523a] text-[10px] font-bold text-white">MC</span>
+            </div>
+            <a href="https://10xdevs.pl" class="text-sm font-extrabold underline decoration-2 underline-offset-4">Sprawdź program ↗</a>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-3 hidden w-44 bg-[#f4f4ef] p-4 text-[#101111] shadow-2xl sm:block">
+          <p class="text-[0.65rem] font-extrabold uppercase tracking-[0.1em]">AI, ale z głową</p>
+          <div class="mt-3 h-px bg-[#101111]/20"></div>
+          <p class="mt-3 text-xs leading-5">Od pierwszego promptu po odpowiedzialny delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-white/10 bg-[#151716]">
+    <div class="mx-auto max-w-[1440px] px-5 py-8 md:px-8 lg:px-12">
+      <p class="mb-5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.18em] text-[#777870]">Pracujemy z ludźmi i zespołami z</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-display text-lg font-bold text-[#c9cac3] sm:gap-x-14 sm:text-xl">
+        <span>Callstack</span><span>SmartRecruiters</span><span>Future Processing</span><span>edrone</span><span>Autodesk</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="kursy" class="mx-auto max-w-[1440px] px-5 py-20 md:px-8 md:py-28 lg:px-12">
+    <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+      <div>
+        <p class="eyebrow">Programy edukacyjne</p>
+        <h2 class="display mt-5 max-w-md text-5xl font-bold leading-[0.92] sm:text-6xl">Wiedza, która zostaje w kodzie.</h2>
+        <p class="mt-6 max-w-sm text-sm leading-7 text-[#a2a39c]">Od pogłębionych fundamentów frontendu po AI-assisted development. Wybierz obszar, który chcesz opanować.</p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        {courses.map((course, index) => (
+          <a href={course.url} class={`lift group flex min-h-[330px] flex-col justify-between border p-6 sm:p-7 ${course.tone === "lime" ? "border-[#c7ff3d]/40 bg-[#c7ff3d] text-[#101111]" : "border-[#4d92ff]/40 bg-[#151a28] text-[#f4f4ef]"}`}>
+            <div>
+              <div class="flex items-center justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.14em]">
+                <span>0{index + 1} / Program</span><span>{course.detail}</span>
+              </div>
+              <h3 class="display mt-12 text-4xl font-bold leading-[0.88]">{course.name}</h3>
+              <p class={`mt-3 text-xs font-bold ${course.tone === "lime" ? "text-[#101111]/70" : "text-[#9dc3ff]"}`}>{course.edition}</p>
+              <p class={`mt-5 max-w-xs text-sm leading-6 ${course.tone === "lime" ? "text-[#101111]/80" : "text-[#b6bdce]"}`}>{course.description}</p>
+            </div>
+            <span class="mt-8 inline-flex w-fit border-b border-current pb-1 text-sm font-extrabold">Poznaj program <span class="ml-2 transition-transform group-hover:translate-x-1">→</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-[#f4f4ef] text-[#101111]">
+    <div class="mx-auto grid max-w-[1440px] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[.8fr_1.2fr] lg:px-12">
+      <div>
+        <p class="eyebrow !text-[#597c05]">Najnowsze z kanału</p>
+        <h2 class="display mt-5 text-5xl font-bold leading-[0.92] sm:text-6xl">Nie tylko<br />do słuchania.</h2>
+        <p class="mt-6 max-w-sm text-sm leading-7 text-[#4f514c]">Krótkie materiały o AI, narzędziach i decyzjach, które stoją za dobrym softwarem.</p>
+        <a href="/youtube" class="mt-8 inline-flex border-b-2 border-[#101111] pb-1 text-sm font-extrabold">Wszystkie filmy <span class="ml-2">→</span></a>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-3">
+        {latestVideos.map((video) => (
+          <a href={`https://www.youtube.com/watch?v=${video.id}`} class="group block">
+            <div class="relative aspect-video overflow-hidden bg-[#252525]">
+              <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              <span class="absolute bottom-2 right-2 bg-[#101111] px-1.5 py-1 text-[0.62rem] font-bold text-white">{video.duration}</span>
+              <span class="absolute inset-0 grid place-items-center bg-[#101111]/0 transition-colors group-hover:bg-[#101111]/30"><span class="grid h-10 w-10 place-items-center rounded-full bg-[#c7ff3d] text-[#101111] opacity-0 transition-opacity group-hover:opacity-100">▶</span></span>
+            </div>
+            <h3 class="mt-3 text-sm font-extrabold leading-5">{video.title}</h3>
+            <p class="mt-2 text-xs text-[#6b6d66]">{video.views} · {video.age}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1440px] px-5 py-20 md:px-8 md:py-28 lg:px-12">
+    <div class="flex flex-col justify-between gap-8 border-b border-white/10 pb-9 sm:flex-row sm:items-end">
+      <div>
+        <p class="eyebrow">Podcasty</p>
+        <h2 class="display mt-5 text-5xl font-bold leading-[0.92] sm:text-6xl">Długie formaty.<br />Prawdziwe rozmowy.</h2>
+      </div>
+      <a class="w-fit border-b border-[#c7ff3d] pb-1 text-sm font-extrabold text-[#c7ff3d]" href="/podcast">Posłuchaj wszystkich <span class="ml-2">→</span></a>
+    </div>
+    <div class="divide-y divide-white/10">
+      {latestEpisodes.map((episode, index) => (
+        <a href={episode.url} class="group grid gap-4 py-6 transition-colors hover:bg-white/[0.025] sm:grid-cols-[80px_1fr_auto] sm:items-center sm:px-3" target="_blank" rel="noreferrer">
+          <p class="display text-3xl font-bold text-[#565752]">0{index + 1}</p>
+          <div><p class="text-xs font-bold text-[#c7ff3d]">{episode.category}</p><h3 class="mt-1 text-sm font-extrabold sm:text-base">{episode.title}</h3><p class="mt-1 text-xs text-[#969790]">{episode.subtitle}</p></div>
+          <div class="flex items-center gap-4 sm:justify-end"><span class="text-xs font-bold text-[#969790]">{episode.duration}</span><span class="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-xs transition-colors group-hover:border-[#c7ff3d] group-hover:bg-[#c7ff3d] group-hover:text-[#101111]">▶</span></div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 px-5 py-6 md:px-8 lg:px-12">
+    <div class="mx-auto flex max-w-[1344px] flex-col gap-5 bg-[#c7ff3d] px-6 py-7 text-[#101111] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div><p class="text-[0.65rem] font-extrabold uppercase tracking-[0.16em]">Przeprogramowany newsletter</p><p class="display mt-2 text-2xl font-bold tracking-[-0.04em]">Co piątek: 3-2-1 dla ambitnych devów.</p></div>
+      <a class="whitespace-nowrap bg-[#101111] px-5 py-3 text-center text-sm font-extrabold text-white transition-transform hover:-translate-y-0.5" href="https://przeprogramowani.substack.com">Zapisz się za darmo →</a>
+    </div>
+  </section>
+</Layout>

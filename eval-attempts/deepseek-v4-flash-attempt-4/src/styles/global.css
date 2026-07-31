@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --color-brand: #7c3aed;
+  --color-brand-light: #a78bfa;
+  --color-accent: #22d3ee;
+  --color-accent-dark: #06b6d4;
+  --color-surface: #0f172a;
+  --color-surface-light: #1e293b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-surface text-slate-100 antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand/30 text-white;
+  }
+}

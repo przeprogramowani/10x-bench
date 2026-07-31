@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { partners } from '../data/content';
+---
+
+<Layout currentPath="/o-nas" title="O nas — Przeprogramowani" description="Poznaj Przeprogramowanych — przestrzeń dla osób, które chcą rozwijać się w technologii świadomie i po swojemu.">
+  <main>
+    <section class="grid-lines border-b hairline py-24 sm:py-32">
+      <div class="site-container grid gap-12 lg:grid-cols-[1fr_.8fr] lg:items-end lg:gap-24">
+        <div><div class="eyebrow">O nas</div><h1 class="display mt-7 max-w-4xl text-[clamp(3.7rem,8vw,7.5rem)] font-medium leading-[.86]">Technologia to <span class="text-lime">ludzie.</span></h1></div>
+        <p class="max-w-md text-lg leading-8 text-mist">Przeprogramowani to edukacja technologiczna dla osób, które nie chcą stać w miejscu. Od 2019 roku tworzymy treści, programy i społeczność pomagające lepiej rozumieć świat software'u.</p>
+      </div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32">
+      <div class="grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+        <div><p class="font-mono text-xs text-lime">/nasza perspektywa</p><div class="mt-8 h-px w-20 bg-lime"></div></div>
+        <div class="max-w-3xl"><p class="display text-4xl leading-[.98] text-cream sm:text-6xl">Najlepsza nauka nie kończy się na odpowiedzi. Zaczyna się od <span class="text-lime">dobrego pytania.</span></p><div class="mt-10 grid gap-8 text-base leading-7 text-mist sm:grid-cols-2"><p>Technologie zmieniają się szybko. Dlatego zamiast uczyć listy narzędzi, pomagamy budować fundamenty: umiejętność rozumienia problemu, oceniania kompromisów i uczenia się nowych rzeczy.</p><p>Łączymy praktykę z kontekstem. Rozmawiamy z ludźmi, którzy dowożą produkty, analizujemy trendy i tworzymy programy, które można od razu przełożyć na codzienną pracę.</p></div></div>
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-panel py-24 sm:py-32">
+      <div class="site-container">
+        <div class="mb-14 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><div class="eyebrow">Co robimy</div><h2 class="display mt-5 text-5xl leading-[.9] sm:text-6xl">Trzy drogi do rozwoju.</h2></div><p class="max-w-xs text-sm leading-6 text-mist">Różne formaty, ten sam cel: więcej sprawczości w pracy z technologią.</p></div>
+        <div class="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
+          <div class="bg-[#182019] p-7 sm:p-9"><span class="font-mono text-xs text-lime">01</span><h3 class="display mt-24 text-3xl">Uczymy</h3><p class="mt-5 text-sm leading-6 text-mist">Projektujemy kursy o frontendzie, TypeScripcie i AI, które prowadzą od wiedzy do praktyki.</p></div>
+          <div class="bg-[#171617] p-7 sm:p-9"><span class="font-mono text-xs text-coral">02</span><h3 class="display mt-24 text-3xl">Rozmawiamy</h3><p class="mt-5 text-sm leading-6 text-mist">W podcaście i na YouTube spotykamy ludzi, którzy mają coś wartościowego do powiedzenia.</p></div>
+          <div class="bg-[#141c20] p-7 sm:p-9"><span class="font-mono text-xs text-[#9bd4e5]">03</span><h3 class="display mt-24 text-3xl">Łączymy</h3><p class="mt-5 text-sm leading-6 text-mist">Tworzymy miejsce, w którym można wymieniać się doświadczeniem i rozwijać razem z innymi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
+        <div><div class="eyebrow">Za Przeprogramowanymi</div><h2 class="display mt-6 max-w-lg text-5xl leading-[.9] sm:text-6xl">Marcin &amp; Przemek</h2><p class="mt-8 max-w-md text-base leading-7 text-mist">Dwóch programistów, którzy lubią rozkładać złożone tematy na części pierwsze. Wspólnie tworzą podcast, kursy i materiały dla kolejnych pokoleń developerów.</p></div>
+        <div class="grid gap-4 sm:grid-cols-2"><div class="flex min-h-[230px] flex-col justify-between border border-white/10 bg-panel p-7"><span class="text-5xl text-lime">M</span><div><p class="font-display text-2xl">Marcin</p><p class="mt-1 text-xs uppercase tracking-[.14em] text-mist">programista · edukator</p></div></div><div class="flex min-h-[230px] flex-col justify-between border border-white/10 bg-panel p-7"><span class="text-5xl text-coral">P</span><div><p class="font-display text-2xl">Przemek</p><p class="mt-1 text-xs uppercase tracking-[.14em] text-mist">programista · edukator</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-[#d6fc68] py-20 text-ink sm:py-28">
+      <div class="site-container flex flex-col justify-between gap-10 md:flex-row md:items-end"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-ink/60">Chcesz zrobić coś razem?</p><h2 class="display mt-5 max-w-2xl text-5xl leading-[.88] sm:text-6xl">Porozmawiajmy o współpracy.</h2></div><a class="button-secondary border-ink/30 text-ink hover:border-ink" href="mailto:kontakt@przeprogramowani.pl">Napisz do nas <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="site-container py-14 sm:py-20"><p class="mb-7 text-[10px] font-bold uppercase tracking-[.18em] text-mist">Współpracowaliśmy między innymi z</p><div class="flex flex-wrap gap-x-8 gap-y-4 text-sm font-semibold text-mist/70 sm:gap-x-12">{partners.map((partner) => <span>{partner}</span>)}</div></section>
+  </main>
+</Layout>

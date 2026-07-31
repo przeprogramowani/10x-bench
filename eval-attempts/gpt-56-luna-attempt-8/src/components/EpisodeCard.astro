@@ -1,0 +1,21 @@
+---
+import type { Episode } from '../data/content';
+
+interface Props {
+  episode: Episode;
+}
+
+const { episode } = Astro.props;
+---
+<article class="episode">
+  <span class="episode__number">{episode.index}</span>
+  <div>
+    <span class="episode__show">{episode.show}</span>
+    <h3>{episode.title}</h3>
+  </div>
+  <p class="episode__description">{episode.description}</p>
+  <div class="episode__meta">
+    <span>{episode.duration}</span>
+    <a class="play-button" href={episode.href} aria-label={`Odtwórz: ${episode.title}`}>▶</a>
+  </div>
+</article>

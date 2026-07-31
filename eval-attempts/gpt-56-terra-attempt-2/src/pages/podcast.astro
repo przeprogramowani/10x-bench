@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import NewsletterForm from "../components/NewsletterForm";
+
+const aiEpisodes = [
+  ["BAN NA AI?! USA BLOKUJE ANTHROPICA i OPENAI (Claude Mythos, Claude Fable i GPT-5.6)", "01:21:53", "https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPICA-i-OPEN-AI-Claude-Mythos--Claude-Fable-i-GPT-5-6-e3lfs2p"],
+  ["Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE", "01:12:26", "https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u"],
+  ["GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI?", "00:47:22", "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh"],
+  ["TEGO AI NIE POTRAFI - ARC-AGI-3 i koniec epoki SaaS", "01:39:33", "https://podcasters.spotify.com/pod/show/opanujai/episodes/TEGO-AI-NIE-POTRAFI---ARC-AGI-3-i-koniec-epoki-SaaS--Opanuj-AI-e3hc7nk"],
+];
+const guestEpisodes = [
+  ["Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko", "00:33:45", "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo"],
+  ["O dojrzewaniu zawodowym programisty, Wojciech Trawiński", "00:45:56", "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn"],
+  ["Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin", "01:16:44", "https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3"],
+];
+---
+
+<BaseLayout title="Podcast | Przeprogramowani" description="Podcasty Przeprogramowani o technologii, AI i programowaniu.">
+  <section class="shell podcast-page">
+    <div class="podcast-lead">
+      <div><span class="eyebrow">Podcasty Przeprogramowani</span><h1>Rozmowy dla <em>głodnych wiedzy.</em></h1></div>
+      <a class="platform-link" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Słuchaj na Spotify <Icon name="arrow" size={16} /></a>
+    </div>
+    <div class="show-block">
+      <div class="show-title-row"><div><h2>Opanuj.AI Podcast</h2><p>Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Ponad 4 000 słuchaczy.</p></div><span class="eyebrow">Najnowsze odcinki</span></div>
+      <div class="episode-list">
+        {aiEpisodes.map(([title, time, href], index) => <a class="episode-row" href={href} target="_blank" rel="noreferrer"><span class="episode-number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><span class="episode-time">{time}</span><span class="row-play"><Icon name="play" size={12} /></span></a>)}
+      </div>
+    </div>
+    <div class="show-block">
+      <div class="show-title-row"><div><h2>Przeprogramowani ft. Gość</h2><p>Rozmowy o technologii, karierze i umiejętnościach, które naprawdę przydają się w pracy.</p></div><span class="eyebrow">Wybrane odcinki</span></div>
+      <div class="episode-list">
+        {guestEpisodes.map(([title, time, href], index) => <a class="episode-row" href={href} target="_blank" rel="noreferrer"><span class="episode-number">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><span class="episode-time">{time}</span><span class="row-play"><Icon name="play" size={12} /></span></a>)}
+      </div>
+    </div>
+    <section class="podcast-signup">
+      <div><span class="eyebrow">Nie przegap premiery</span><h2>Najciekawsze linki i nowe odcinki prosto na maila.</h2></div>
+      <div><p>Przeprogramowany Newsletter wysyłamy w każdy piątek. Trzy rekomendacje techniczne, dwie rozwojowe i bonus od nas.</p><NewsletterForm client:visible /></div>
+    </section>
+  </section>
+</BaseLayout>

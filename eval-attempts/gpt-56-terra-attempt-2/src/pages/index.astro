@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import NewsletterForm from "../components/NewsletterForm";
+
+const courses = [
+  {
+    label: "Frontend",
+    title: "Opanuj Frontend: AI Edition",
+    copy: "Pięć obszernych modułów o nowoczesnym frontendzie, testowaniu, CI/CD i architekturze aplikacji.",
+    href: "https://www.opanujfrontend.pl?utm_source=przeprogramowani_website",
+    image: "https://przeprogramowani.pl/img/featured/kurs-ofe.jpg",
+  },
+  {
+    label: "TypeScript",
+    title: "Opanuj TypeScript",
+    copy: "Twórz projekty, które łatwiej rozwijać. Pracuj z aktualnym TypeScript i React 19.",
+    href: "https://www.opanujtypescript.pl?utm_source=przeprogramowani_website",
+    image: "https://przeprogramowani.pl/img/featured/kurs-ots.jpg",
+  },
+  {
+    label: "AI-native engineering",
+    title: "10xDevs 4.0",
+    copy: "Praktyczny system pracy z AI: od researchu i planu po testy, review i wdrożenie.",
+    href: "https://10xdevs.pl",
+    image: "https://cdn.prod.website-files.com/698b104fda97d1c7b03d1f59/69930442ade6530f1db4282c_mvp-image-v2-webp.webp",
+  },
+];
+
+const podcasts = [
+  {
+    title: "BAN NA AI?! USA BLOKUJE ANTHROPICA i OPENAI",
+    length: "01:21:53",
+    href: "https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPICA-i-OPEN-AI-Claude-Mythos--Claude-Fable-i-GPT-5-6-e3lfs2p",
+  },
+  {
+    title: "Byliśmy na Google I/O 2026 - wrażenia na gorąco!",
+    length: "01:12:26",
+    href: "https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u",
+  },
+  {
+    title: "GPT-5.5 VS Opus 4.7 - kto rządzi na scenie AI?",
+    length: "00:47:22",
+    href: "https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh",
+  },
+];
+
+const videos = [
+  {
+    title: "Poznaj AI Workflow, które działa na produkcji - LIVE 10xDevs",
+    image: "https://i3.ytimg.com/vi/c5HVzK-tclM/maxresdefault.jpg",
+    href: "https://www.youtube.com/watch?v=c5HVzK-tclM",
+    date: "10xDevs LIVE",
+  },
+  {
+    title: "Darmowe AI na każdym Maku - Apple Foundation Models na macOS 27",
+    image: "https://i3.ytimg.com/vi/B4t6w4QsD24/maxresdefault.jpg",
+    href: "https://www.youtube.com/watch?v=B4t6w4QsD24",
+    date: "Opanuj.AI",
+  },
+  {
+    title: "Byłem na Google I/O 2026. Nie tego się spodziewałem.",
+    image: "https://i3.ytimg.com/vi/XgyH-HSzKRQ/maxresdefault.jpg",
+    href: "https://www.youtube.com/watch?v=XgyH-HSzKRQ",
+    date: "Google I/O 2026",
+  },
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow eyebrow-light">Edukacja technologiczna / od 2019</span>
+        <h1>Programowanie<br />to <em>więcej</em> niż kod.</h1>
+        <p class="hero-description">Tworzymy kursy, podcasty i narzędzia dla osób, które chcą świadomie budować swoją przyszłość w technologii.</p>
+        <div class="hero-actions">
+          <a class="button button-acid" href="#programy">Zobacz programy <Icon name="arrow" size={17} /></a>
+          <a class="button button-outline" href="#materialy">Posłuchaj nas</a>
+        </div>
+        <div class="hero-mini-stats" aria-label="Przeprogramowani w liczbach">
+          <div><strong>7 lat</strong><span>edukacji IT</span></div>
+          <div><strong>6 700+</strong><span>absolwentów 10xDevs</span></div>
+          <div><strong>2 podcasty</strong><span>dla głodnych wiedzy</span></div>
+        </div>
+      </div>
+      <div class="orbital-stage" aria-hidden="true">
+        <span class="orbit-label">AI-NATIVE SOFTWARE ENGINEERING</span>
+        <div class="hero-disc"><span class="hero-disc-text">10x</span><span class="hero-disc-sub">DEVS / 4.0</span></div>
+        <p class="stage-note"><b>Nowa edycja</b>5+1 tygodni pracy z AI. Własny workflow, projekt i certyfikat.</p>
+      </div>
+    </div>
+    <div class="hero-ticker" aria-hidden="true">
+      <div class="ticker-content"><span>Nowoczesny frontend</span><span>AI-native engineering</span><span>TypeScript na produkcji</span><span>Szersze spojrzenie</span><span>Nowoczesny frontend</span><span>AI-native engineering</span><span>TypeScript na produkcji</span><span>Szersze spojrzenie</span></div>
+    </div>
+  </section>
+
+  <section class="shell intro">
+    <div>
+      <span class="eyebrow">Kim jesteśmy</span>
+      <h2 class="section-title">Technologia jest narzędziem. <em>Ty jesteś zmianą.</em></h2>
+    </div>
+    <div class="intro-side">
+      <p class="section-copy">Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem. Mówimy o architekturze, biznesie, ludziach i o tym, jak pracować mądrzej w szybko zmieniającej się branży.</p>
+      <a class="text-link" href="/o-nas">Poznaj nas bliżej <Icon name="arrow" size={17} /></a>
+      <div class="numbers" aria-label="Statystyki Przeprogramowani">
+        <div><strong>10+</strong><span>lat doświadczenia</span></div>
+        <div><strong>4k+</strong><span>słuchaczy AI</span></div>
+        <div><strong>40h</strong><span>materiałów 10xDevs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programy" class="programs">
+    <div class="shell">
+      <div class="section-heading">
+        <div><span class="eyebrow">Programy edukacyjne</span><h2 class="section-title">Wiedza, która zostaje <em>w kodzie.</em></h2></div>
+        <p class="section-copy">Konkretne umiejętności, praktyczne projekty i narzędzia, do których wracasz po zakończeniu kursu.</p>
+      </div>
+      <div class="course-grid">
+        {courses.map((course) => (
+          <a class="course-card" href={course.href} target="_blank" rel="noreferrer">
+            <img src={course.image} alt="" loading="lazy" />
+            <div class="course-card-top"><span class="course-type">{course.label}</span><span class="course-arrow"><Icon name="arrow" size={17} /></span></div>
+            <h3>{course.title}</h3>
+            <p>{course.copy}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="materialy" class="media-section">
+    <div class="shell">
+      <div class="media-heading">
+        <div><span class="eyebrow">Do słuchania</span><h2 class="section-title">Rozmowy, które <em>nie kończą się</em> na trendach.</h2></div>
+        <a class="text-link" href="/podcast">Wszystkie odcinki <Icon name="arrow" size={17} /></a>
+      </div>
+      <div class="podcast-grid">
+        {podcasts.map((episode, index) => (
+          <a class="episode-card" href={episode.href} target="_blank" rel="noreferrer">
+            <div class="episode-meta"><span>Opanuj.AI / {String(index + 1).padStart(2, "0")}</span><span class="episode-icon"><Icon name="play" size={13} /></span></div>
+            <h3>{episode.title}</h3>
+            <span class="listen"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>{episode.length}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="shell">
+      <div class="media-heading">
+        <div><span class="eyebrow eyebrow-light">Na ekranie</span><h2 class="section-title">Oglądaj. Testuj.<br /><em>Myśl szerzej.</em></h2></div>
+        <a class="text-link" href="/youtube">Wszystkie filmy <Icon name="arrow" size={17} /></a>
+      </div>
+      <div class="video-grid">
+        {videos.map((video) => (
+          <a class="video-card" href={video.href} target="_blank" rel="noreferrer">
+            <div class="video-thumb"><img src={video.image} alt="" loading="lazy" /><span class="play-button"><Icon name="play" size={16} /></span></div>
+            <h3>{video.title}</h3><span>{video.date}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-band">
+    <div class="shell newsletter-grid">
+      <div><span class="eyebrow">Przeprogramowany newsletter</span><h2>Co piątek: 3 rzeczy techniczne, 2 rozwojowe i 1 bonus.</h2></div>
+      <div><NewsletterForm client:visible /><p class="mt-4 text-xs font-semibold text-[rgba(10,13,21,.68)]">Bez spamu. Tylko materiały, które warto zapisać.</p></div>
+    </div>
+  </section>
+</BaseLayout>

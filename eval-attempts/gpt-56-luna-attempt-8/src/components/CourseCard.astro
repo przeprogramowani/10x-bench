@@ -1,0 +1,23 @@
+---
+import type { Course } from '../data/content';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+<article class="course-card" style={`--course-color: ${course.color}`}>
+  <div class="course-card__top">
+    <span class="course-card__eyebrow">{course.eyebrow}</span>
+    <span class="course-card__mark" aria-hidden="true">{course.mark}</span>
+  </div>
+  <h3>{course.title}</h3>
+  <p>{course.description}</p>
+  <div class="course-card__bottom">
+    <span class="course-card__details">{course.details}</span>
+    <a class="course-card__link" href={course.href}>
+      {course.cta} <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</article>

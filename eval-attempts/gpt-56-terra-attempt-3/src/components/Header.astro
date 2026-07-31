@@ -1,0 +1,28 @@
+---
+import { navItems } from "../data/site";
+import MobileNav from "./MobileNav";
+
+const { currentPath = "" } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur">
+  <div class="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-5 md:px-8">
+    <a href="/" class="group flex items-center gap-3" aria-label="Przeprogramowani - strona główna">
+      <span class="grid h-9 w-9 place-items-center bg-ink font-mono text-sm font-semibold text-signal transition-transform group-hover:-rotate-6">/&gt;</span>
+      <span class="text-[15px] font-bold tracking-[-0.04em]">Przeprogramowani<span class="text-iris">.pl</span></span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Główna nawigacja">
+      {navItems.map((item) => (
+        <a href={item.href} class:list={["text-sm font-semibold transition-colors hover:text-iris", currentPath === item.href && "text-iris"]}>
+          {item.label}
+        </a>
+      ))}
+      <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="bg-ink px-4 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-signal transition-colors hover:bg-iris">
+        10xDevs <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <MobileNav client:load items={navItems} />
+  </div>
+</header>

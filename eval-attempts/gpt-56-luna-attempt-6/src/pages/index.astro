@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterForm from '../components/NewsletterForm';
+
+const videos = [
+  { id: 'c5HVzK-tclM', title: 'Poznaj AI Workflow, które działa na produkcji', meta: 'LIVE 10xDevs · 1:18:42' },
+  { id: 'B4t6w4QsD24', title: 'Darmowe AI na każdym Maku — jak działa Apple Foundational Models', meta: 'Opanuj.AI · 24:18' },
+  { id: '0JOszZXqKaM', title: 'Byliśmy na Google I/O 2026 — wrażenia na gorąco!', meta: 'Opanuj.AI LIVE · 42:06' },
+];
+
+const episodes = [
+  { number: '041', title: 'BAN NA AI?! USA blokuje Anthropica i OpenAI', meta: 'Opanuj.AI · 01:21:53' },
+  { number: '040', title: 'Byliśmy na Google I/O 2026 — wrażenia na gorąco!', meta: 'Opanuj.AI LIVE · 01:12:26' },
+  { number: '039', title: 'GPT-5.5 vs Opus 4.7 — kto rządzi na scenie AI?', meta: 'Opanuj.AI · 00:47:22' },
+];
+---
+
+<BaseLayout>
+  <main>
+    <section class="hero">
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="hero-content container-wide grid min-h-[650px] items-center gap-12 py-20 lg:grid-cols-[1.05fr_.95fr]">
+        <div class="max-w-[700px]">
+          <div class="eyebrow mb-8 flex items-center gap-3 text-sky"><span class="h-2 w-2 rounded-full bg-orange"></span> Edukacja technologiczna / 2026</div>
+          <h1 class="display heading-xl">Programuj<br /><span class="text-orange">szerzej.</span></h1>
+          <p class="mt-8 max-w-[520px] text-lg leading-7 text-white/65 md:text-xl">Łączymy kod, biznes i rozwój osobisty. Pomagamy ambitnym programistom podejmować lepsze decyzje — dziś i w epoce AI.</p>
+          <div class="mt-9 flex flex-wrap items-center gap-5">
+            <a class="button-primary button-orange" href="#programy">Zobacz programy <span aria-hidden="true">↓</span></a>
+            <a class="text-sm font-bold text-white/70 transition hover:text-white" href="/o-nas">Poznaj nas <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="relative hidden min-h-[460px] lg:block" aria-hidden="true">
+          <div class="absolute right-[20%] top-[2%] text-right"><span class="eyebrow text-white/40">Nowa era</span><p class="display mt-2 text-2xl">human<br /><span class="text-orange">× machine</span></p></div>
+          <div class="hero-number absolute bottom-[8%] right-[16%]">10</div>
+          <div class="hero-panel">
+            <div class="mb-5 flex items-center justify-between text-[.65rem] uppercase tracking-[.12em] text-white/45"><span>10xDevs / 4.0</span><span class="text-orange">● live</span></div>
+            <div class="hero-panel-code"><div><span class="accent">const</span> impact = <span class="blue">await</span> build({`{`}</div><div class="pl-4">clarity: <span class="accent">true</span>,</div><div class="pl-4">ai: <span class="accent">'with intention'</span></div><div>{`}`});</div></div>
+            <div class="mt-7 flex items-end justify-between"><span class="text-xs text-white/45">programowanie<br />z generatywnym AI</span><span class="text-3xl text-sky">↗</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-content absolute bottom-0 left-0 right-0 border-t border-white/15">
+        <div class="container-wide flex flex-wrap items-center justify-between gap-4 py-4 text-[.68rem] uppercase tracking-[.12em] text-white/45"><span>Przeprogramowani.pl</span><span>Od 2019 / Polska</span><span class="hidden md:inline">Scrolluj, jeśli chcesz widzieć więcej <span class="ml-2 text-orange">↓</span></span></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="programy">
+      <div class="container-wide">
+        <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div><p class="section-label eyebrow">01 / Programy</p><h2 class="display heading-lg mt-5 max-w-[690px]">Wiedza, którą<br /><span class="text-orange">możesz wdrożyć.</span></h2></div>
+          <p class="max-w-[310px] text-sm leading-6 text-black/55">Nie uczymy narzędzi dla samych narzędzi. Pokazujemy sposób myślenia, który zostaje z Tobą dłużej niż kolejna wersja frameworka.</p>
+        </div>
+        <div class="grid gap-5 md:grid-cols-3">
+          <a class="program-card orange" href="https://opanujfrontend.pl" target="_blank" rel="noreferrer">
+            <div class="flex items-start justify-between"><span class="eyebrow">Program / 01</span><span class="text-xs font-bold">AI EDITION</span></div>
+            <div class="card-art"><span class="big-symbol">&lt;/&gt;</span></div>
+            <div class="relative z-10"><p class="mb-3 text-sm font-bold">Frontend</p><h3 class="display text-4xl font-semibold leading-[.95]">Opanuj<br />Frontend</h3><div class="mt-7 flex items-center justify-between"><span class="max-w-[180px] text-sm leading-5 text-black/65">Zostań nowoczesnym frontend developerem.</span><span class="card-arrow">↗</span></div></div>
+          </a>
+          <a class="program-card blue" href="https://opanujtypescript.pl" target="_blank" rel="noreferrer">
+            <div class="flex items-start justify-between"><span class="eyebrow">Program / 02</span><span class="text-xs font-bold">5+ / REACT 19</span></div>
+            <div class="card-art"><span class="big-symbol">TS</span></div>
+            <div class="relative z-10"><p class="mb-3 text-sm font-bold">TypeScript</p><h3 class="display text-4xl font-semibold leading-[.95]">Opanuj<br />TypeScript</h3><div class="mt-7 flex items-center justify-between"><span class="max-w-[180px] text-sm leading-5 text-black/65">Buduj niezawodne aplikacje na produkcji.</span><span class="card-arrow">↗</span></div></div>
+          </a>
+          <a class="program-card dark" href="https://10xdevs.pl" target="_blank" rel="noreferrer">
+            <div class="flex items-start justify-between"><span class="eyebrow text-white/60">Program / 03</span><span class="text-xs font-bold text-orange">NOWOŚĆ</span></div>
+            <div class="card-art"><span class="big-symbol text-white">10×</span></div>
+            <div class="relative z-10"><p class="mb-3 text-sm font-bold text-sky">Generative AI</p><h3 class="display text-4xl font-semibold leading-[.95]">10xDevs<br /><span class="text-orange">4.0</span></h3><div class="mt-7 flex items-center justify-between"><span class="max-w-[180px] text-sm leading-5 text-white/60">Programuj szybciej. Myśl odpowiedzialnie.</span><span class="card-arrow">↗</span></div></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-white py-5">
+      <div class="container-wide flex flex-wrap items-center justify-between gap-x-10 gap-y-5 text-[.72rem] font-bold uppercase tracking-[.13em] text-black/45">
+        <span class="text-orange">Zaufali nam</span><span>SmartRecruiters</span><span>Huuuge Games</span><span>Future Processing</span><span class="hidden md:inline">Callstack</span><span class="hidden md:inline">Autodesk</span>
+      </div>
+    </section>
+
+    <section class="section-pad bg-paper-deep">
+      <div class="container-wide">
+        <div class="mb-11 flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p class="section-label eyebrow">02 / Na bieżąco</p><h2 class="display heading-lg mt-5">Nie stój w miejscu.</h2></div><a class="button-outline" href="/youtube">Wszystkie materiały <span>↗</span></a></div>
+        <div class="grid gap-5 md:grid-cols-3">
+          {videos.map((video, index) => (
+            <a class="media-card" href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">
+              <div class="media-thumb"><img src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} loading={index === 0 ? 'eager' : 'lazy'} /><span class="play-button" aria-hidden="true">▶</span></div>
+              <div class="p-5"><p class="mb-3 text-[.68rem] font-bold uppercase tracking-[.1em] text-orange">{video.meta}</p><h3 class="display text-xl font-semibold leading-tight">{video.title}</h3><span class="mt-7 inline-block text-xs font-bold">Oglądaj na YouTube ↗</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="podcasty">
+      <div class="container-wide grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+        <div><p class="section-label eyebrow">03 / Podcast</p><h2 class="display heading-lg mt-5">Myślenie<br /><span class="text-orange">na głos.</span></h2><p class="mt-7 max-w-[370px] text-base leading-7 text-black/60">Rozmowy dla głodnych wiedzy. O technologii, AI, karierze i decyzjach, które budują dobre oprogramowanie.</p><div class="mt-9 flex flex-wrap gap-3"><a class="button-primary" href="/podcast">Posłuchaj podcastu <span>↗</span></a><a class="button-outline" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Spotify</a></div></div>
+        <div>
+          <div class="mb-5 flex items-center justify-between"><span class="eyebrow text-black/45">Ostatnie odcinki / Opanuj.AI</span><span class="rounded-full border border-black/15 px-3 py-1 text-[.68rem] font-bold">4000+ słuchaczy</span></div>
+          {episodes.map((episode) => (
+            <a class="episode-row" href="/podcast">
+              <span class="episode-number">EP. {episode.number}</span><span class="episode-title">{episode.title}</span><span class="episode-time text-right text-xs text-black/45">{episode.meta}<br /><span class="text-orange">Odtwórz ↗</span></span>
+            </a>
+          ))}
+          <a class="mt-6 inline-block text-sm font-bold" href="/podcast">Zobacz wszystkie odcinki <span class="text-orange">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad border-y hairline bg-mint">
+      <div class="container-wide grid items-center gap-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div class="about-photo"><span class="about-photo-label">PRZEPROGRAMOWANI / OD 2019</span><div class="absolute bottom-6 left-6 text-white"><p class="eyebrow text-white/60">O nas</p><p class="display mt-2 text-3xl">Kod to dopiero<br />początek.</p></div></div>
+        <div><p class="section-label eyebrow">04 / Kim jesteśmy</p><h2 class="display heading-lg mt-5 max-w-[580px]">Łączymy świat programowania, biznesu i rozwoju.</h2><p class="mt-7 max-w-[560px] text-base leading-7 text-black/65">Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie. Tworzymy treści, kursy i narzędzia, które pomagają rozwijać się na wielu płaszczyznach.</p><div class="mt-9 grid grid-cols-2 gap-7 border-t border-black/15 pt-6 sm:grid-cols-3"><div><p class="display text-4xl font-semibold">7</p><p class="mt-1 text-xs leading-4 text-black/55">lat edukacji<br />technologicznej</p></div><div><p class="display text-4xl font-semibold">1.5k<span class="text-orange">+</span></p><p class="mt-1 text-xs leading-4 text-black/55">przeszkolonych<br />programistów</p></div><div><p class="display text-4xl font-semibold">∞</p><p class="mt-1 text-xs leading-4 text-black/55">ciekawości<br />do odkrycia</p></div></div><a class="mt-9 inline-block text-sm font-bold" href="/o-nas">Poznaj Przeprogramowanych <span class="text-orange">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="newsletter section-pad">
+      <div class="container-wide relative z-10 grid items-center gap-12 lg:grid-cols-[1fr_.8fr]">
+        <div><p class="eyebrow text-orange">05 / Newsletter</p><h2 class="display mt-5 max-w-[650px] text-4xl leading-[.98] md:text-6xl">Raz w tygodniu.<br /><span class="text-sky">Bez szumu.</span></h2><p class="mt-6 max-w-[440px] text-base leading-7 text-white/55">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Przeprogramowany newsletter prosto na Twoją skrzynkę.</p></div>
+        <div><NewsletterForm client:load /><p class="mt-4 text-xs leading-5 text-white/35">Dołączasz do osób, które chcą być na bieżąco, ale nie chcą scrollować bez końca. Zero spamu.</p></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

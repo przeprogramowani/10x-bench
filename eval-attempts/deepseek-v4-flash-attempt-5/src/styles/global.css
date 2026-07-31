@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark-950 text-white font-sans antialiased;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-400;
+  }
+  .gradient-border {
+    @apply border border-transparent bg-gradient-to-r from-primary-500/50 to-accent-500/50 bg-clip-border;
+  }
+  .glass {
+    @apply bg-dark-800/60 backdrop-blur-xl border border-dark-700/50;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold 
+           bg-gradient-to-r from-primary-600 to-accent-600 
+           hover:from-primary-500 hover:to-accent-500 
+           transition-all duration-200 shadow-lg shadow-primary-600/25;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold 
+           glass hover:bg-dark-700/80 transition-all duration-200;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  .section-subtitle {
+    @apply text-lg md:text-xl text-dark-400 max-w-2xl;
+  }
+}

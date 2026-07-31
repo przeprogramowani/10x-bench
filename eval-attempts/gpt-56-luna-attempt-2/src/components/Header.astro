@@ -1,0 +1,72 @@
+---
+const links = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-black/10 bg-paper/90 backdrop-blur-md">
+  <div class="site-container flex h-[74px] items-center justify-between gap-6">
+    <a href="/" class="group flex items-center gap-3" aria-label="Przejdź do strony głównej">
+      <span class="flex h-9 w-9 items-center justify-center bg-ink font-mono text-sm font-medium text-acid transition-transform group-hover:-rotate-6">&lt;/&gt;</span>
+      <span class="font-display text-[0.95rem] font-bold tracking-[-0.04em]">PRZEPROGRAMOWANI<span class="text-ember">.</span>PL</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Główna nawigacja">
+      {links.map((link) => (
+        <a class="text-[0.75rem] font-bold uppercase tracking-[0.03em] text-ink/65 transition-colors hover:text-ink" href={link.href}>{link.label}</a>
+      ))}
+      <a class="text-[0.75rem] font-bold uppercase tracking-[0.03em] text-ink/65 transition-colors hover:text-ink" href="#programy">Programy</a>
+    </nav>
+
+    <div class="hidden items-center gap-4 md:flex">
+      <a class="font-mono text-[0.68rem] font-medium uppercase tracking-[0.07em] text-ink/60 transition-colors hover:text-ink" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Newsletter</a>
+      <a class="flex items-center gap-2 bg-ink px-4 py-3 font-mono text-[0.68rem] font-medium uppercase tracking-[0.06em] text-acid transition-colors hover:bg-moss" href="https://10xdevs.pl" target="_blank" rel="noreferrer">10xDevs <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <button class="relative z-10 flex h-10 w-10 items-center justify-center border border-ink/20 md:hidden" id="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Otwórz menu">
+      <span class="sr-only">Menu</span>
+      <span class="absolute h-px w-4 bg-ink transition-transform" data-menu-line="one"></span>
+      <span class="absolute h-px w-4 translate-y-1.5 bg-ink transition-transform" data-menu-line="two"></span>
+    </button>
+  </div>
+
+  <div class="hidden border-t border-black/10 bg-paper px-4 pb-5 pt-4 md:hidden" id="mobile-menu">
+    <nav class="site-container flex flex-col" aria-label="Mobilna nawigacja">
+      {links.map((link) => (
+        <a class="border-b border-black/10 py-4 font-display text-2xl font-semibold" href={link.href}>{link.label}</a>
+      ))}
+      <a class="border-b border-black/10 py-4 font-display text-2xl font-semibold" href="/#programy">Programy</a>
+      <div class="flex items-center gap-5 pt-5">
+        <a class="arrow-link text-sm" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Newsletter</a>
+        <a class="arrow-link text-sm text-ember" href="https://10xdevs.pl" target="_blank" rel="noreferrer">10xDevs</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const mobileMenu = document.querySelector<HTMLElement>('#mobile-menu');
+  const lineOne = document.querySelector<HTMLElement>('[data-menu-line="one"]');
+  const lineTwo = document.querySelector<HTMLElement>('[data-menu-line="two"]');
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu?.classList.toggle('hidden', isOpen);
+    lineOne?.classList.toggle('rotate-45', !isOpen);
+    lineOne?.classList.toggle('translate-y-1.5', !isOpen);
+    lineTwo?.classList.toggle('-rotate-45', !isOpen);
+    lineTwo?.classList.toggle('translate-y-0', !isOpen);
+    menuToggle.setAttribute('aria-label', isOpen ? 'Otwórz menu' : 'Zamknij menu');
+  });
+
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

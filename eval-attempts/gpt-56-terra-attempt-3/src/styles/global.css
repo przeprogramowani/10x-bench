@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper font-display text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-signal text-ink;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-4 outline-iris;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.16em];
+  }
+
+  .grid-paper {
+    background-image: linear-gradient(to right, rgba(16, 17, 22, 0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 17, 22, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.1em] transition-transform duration-200 hover:translate-x-1;
+  }
+}

@@ -1,0 +1,107 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import CourseCard from '../components/CourseCard.astro';
+import MediaGrid from '../components/MediaGrid';
+import { videos } from '../data/content';
+---
+
+<SiteLayout>
+  <section class="ink-panel relative overflow-hidden">
+    <div class="grid-lines absolute inset-0"></div>
+    <div class="site-container relative grid gap-14 pb-20 pt-16 lg:grid-cols-[1.02fr_0.98fr] lg:items-end lg:gap-10 lg:pb-24 lg:pt-24">
+      <div>
+        <div class="mb-10 flex items-center gap-3 text-acid">
+          <span class="h-2 w-2 rounded-full bg-acid"></span>
+          <p class="font-mono text-[0.68rem] uppercase tracking-[0.12em]">Edukacja technologiczna / od 2019</p>
+        </div>
+        <h1 class="display max-w-[10ch] text-6xl font-semibold text-paper sm:text-8xl lg:text-[7.4rem]">Szersze<br /><span class="text-acid">spojrzenie</span><br />na kod<span class="text-ember">.</span></h1>
+        <p class="mt-10 max-w-md text-base leading-7 text-paper/65 sm:text-lg">Łączymy programowanie, biznes i rozwój. Pomagamy ambitnym programistom rozumieć nie tylko <em>jak</em> budować, ale też <em>po co</em>.</p>
+        <div class="mt-9 flex flex-wrap items-center gap-5">
+          <a class="flex items-center gap-3 bg-acid px-5 py-4 text-xs font-extrabold uppercase tracking-[0.04em] text-ink transition-colors hover:bg-white" href="#programy">Poznaj programy <span aria-hidden="true">↓</span></a>
+          <a class="arrow-link text-xs text-paper/75 hover:text-acid" href="/o-nas">Kim jesteśmy</a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[540px] lg:mb-1 lg:ml-auto">
+        <div class="absolute -right-2 -top-7 z-10 flex h-[92px] w-[92px] rotate-12 items-center justify-center rounded-full bg-ember text-center font-mono text-[0.6rem] font-medium uppercase leading-4 text-ink sm:-right-6 sm:-top-8">
+          <span>nowa<br />edycja<br />09.2026</span>
+        </div>
+        <div class="relative aspect-[0.94] overflow-hidden border border-acid/50 bg-acid p-7 text-ink sm:p-10">
+          <div class="noise absolute inset-0"></div>
+          <div class="absolute right-8 top-8 font-mono text-[0.62rem] uppercase tracking-[0.1em]">/ 001 — AI ERA</div>
+          <div class="absolute bottom-7 left-7 right-7 sm:bottom-10 sm:left-10 sm:right-10">
+            <p class="font-mono text-xs font-medium uppercase tracking-[0.13em]">Programuj z</p>
+            <h2 class="display mt-3 text-[6.5rem] font-semibold leading-[0.75] tracking-[-0.09em] sm:text-[9rem]">10x<span class="text-ember">.</span></h2>
+            <h3 class="display mt-2 text-5xl font-semibold tracking-[-0.08em] sm:text-7xl">Devs</h3>
+            <div class="mt-8 flex items-end justify-between border-t border-ink/25 pt-4">
+              <p class="max-w-[16ch] text-xs font-bold uppercase leading-5">Nowe oblicze<br />programowania<br />z generatywnym AI</p>
+              <a class="flex h-12 w-12 items-center justify-center border border-ink text-xl transition-colors hover:bg-ink hover:text-acid" href="https://10xdevs.pl?utm_source=przeprogramowani_website" target="_blank" rel="noreferrer" aria-label="Przejdź do 10xDevs">↗</a>
+            </div>
+          </div>
+        </div>
+        <p class="mt-3 text-right font-mono text-[0.61rem] uppercase tracking-[0.08em] text-paper/40">10xDevs 4.0 / świadome użycie AI w całym cyklu wytwarzania</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="overflow-hidden border-b border-ink bg-acid py-3">
+    <div class="marquee-track flex items-center gap-7 font-mono text-[0.66rem] font-medium uppercase tracking-[0.12em]">
+      <span>Frontend</span><span class="text-ember">✳</span><span>TypeScript</span><span class="text-ember">✳</span><span>Architektura</span><span class="text-ember">✳</span><span>AI w praktyce</span><span class="text-ember">✳</span><span>Kariera</span><span class="text-ember">✳</span>
+      <span>Frontend</span><span class="text-ember">✳</span><span>TypeScript</span><span class="text-ember">✳</span><span>Architektura</span><span class="text-ember">✳</span><span>AI w praktyce</span><span class="text-ember">✳</span><span>Kariera</span><span class="text-ember">✳</span>
+    </div>
+  </div>
+
+  <section class="site-container py-20 sm:py-28">
+    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+      <div>
+        <p class="eyebrow">01 / Punkt widzenia</p>
+        <h2 class="display mt-7 max-w-[11ch] text-5xl font-semibold sm:text-6xl">Nie uczymy tylko narzędzi<span class="text-ember">.</span></h2>
+      </div>
+      <div class="max-w-2xl lg:pt-10">
+        <p class="text-xl leading-8 tracking-[-0.02em] sm:text-2xl sm:leading-9">Technologie zmieniają się szybko. Dlatego zamiast kolejnego kursu składania klocków dajemy Ci kontekst, praktykę i sposób myślenia, który działa także jutro.</p>
+        <div class="mt-12 grid gap-7 border-t border-ink/15 pt-7 sm:grid-cols-3">
+          <div><p class="font-display text-4xl font-semibold tracking-[-0.07em]">7<span class="text-ember">+</span></p><p class="mt-2 text-xs leading-5 text-ink/55">lat na rynku<br />edukacji tech</p></div>
+          <div><p class="font-display text-4xl font-semibold tracking-[-0.07em]">3</p><p class="mt-2 text-xs leading-5 text-ink/55">ścieżki<br />rozwoju</p></div>
+          <div><p class="font-display text-4xl font-semibold tracking-[-0.07em]">∞</p><p class="mt-2 text-xs leading-5 text-ink/55">ciekawości<br />do odkrycia</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-container pb-24" id="programy">
+    <div class="section-rule pt-5">
+      <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div><p class="eyebrow">02 / Programy edukacyjne</p><h2 class="display mt-5 text-5xl font-semibold sm:text-6xl">Zbuduj swoją<br /><span class="text-ember">następną wersję.</span></h2></div>
+        <p class="max-w-xs text-sm leading-6 text-ink/55 sm:pb-1">Konkretne programy dla ludzi, którzy chcą dowozić lepszy software i podejmować lepsze decyzje.</p>
+      </div>
+    </div>
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      <CourseCard number="01" label="Frontend" title="Opanuj Frontend: AI Edition" description="Pięć obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych." meta="5 modułów / 400 absolwentów" href="https://www.opanujfrontend.pl?utm_source=przeprogramowani_website" tone="acid" />
+      <CourseCard number="02" label="TypeScript" title="Opanuj TypeScript" description="Szkolenie, które podniesie jakość Twoich projektów produkcyjnych. Najnowszy TypeScript 5 i React 19." meta="TypeScript 5 / React 19" href="https://www.opanujtypescript.pl?utm_source=przeprogramowani_website" tone="ember" />
+      <CourseCard number="03" label="Generative AI" title="10xDevs 4.0" description="Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania." meta="Start / wrzesień 2026" href="https://10xdevs.pl?utm_source=przeprogramowani_website" tone="moss" />
+    </div>
+  </section>
+
+  <section class="ink-panel py-20 sm:py-28">
+    <div class="site-container">
+      <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div><p class="eyebrow eyebrow-light">03 / Słuchaj i oglądaj</p><h2 class="display mt-6 max-w-lg text-5xl font-semibold sm:text-6xl">Rozwój nie ma autoplayu<span class="text-acid">.</span></h2></div>
+        <a class="arrow-link text-xs text-paper/70 hover:text-acid" href="/youtube">Zobacz wszystkie materiały</a>
+      </div>
+      <div class="mt-12"><MediaGrid client:load videos={videos.slice(0, 3)} compact /></div>
+    </div>
+  </section>
+
+  <section class="site-container py-20 sm:py-28">
+    <div class="grid overflow-hidden border border-ink bg-ember lg:grid-cols-[0.9fr_1.1fr]">
+      <div class="noise relative flex min-h-[300px] flex-col justify-between p-7 sm:p-10">
+        <p class="relative font-mono text-[0.68rem] uppercase tracking-[0.1em]">Przeprogramowany / newsletter</p>
+        <div class="relative"><p class="display max-w-[12ch] text-4xl font-semibold sm:text-5xl">Dobre rzeczy. Raz w tygodniu<span class="text-paper">.</span></p><p class="mt-5 max-w-sm text-sm leading-6 text-ink/70">3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Bez spamu, za to z myślą.</p></div>
+      </div>
+      <div class="flex min-h-[300px] flex-col justify-between bg-ink p-7 text-paper sm:p-10">
+        <div class="flex items-center justify-between"><span class="pill border-paper/30 text-paper">Newsletter</span><span class="font-mono text-xs text-paper/40">03—02—01</span></div>
+        <div><h3 class="display max-w-sm text-4xl font-semibold">Zapisz się za darmo<span class="text-acid">.</span></h3><a class="mt-7 inline-flex items-center gap-3 bg-acid px-5 py-4 text-xs font-extrabold uppercase tracking-[0.04em] text-ink transition-colors hover:bg-white" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Dołącz do listy <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

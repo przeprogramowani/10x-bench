@@ -1,0 +1,39 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="border-t border-white/10 bg-ink">
+  <div class="mx-auto max-w-[1440px] px-5 pb-8 pt-14 sm:px-8 lg:px-12 lg:pt-20">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_.7fr_.7fr]">
+      <div>
+        <a class="inline-flex items-center gap-2" href="/" aria-label="Przeprogramowani - strona główna">
+          <span class="grid h-8 w-8 place-items-center bg-acid font-mono text-sm font-bold text-ink">/&gt;</span>
+          <span class="font-display text-lg font-bold tracking-[-0.06em]">przeprogramowani</span>
+        </a>
+        <p class="mt-5 max-w-sm text-sm leading-7 text-paper/60">Szersze spojrzenie na programowanie. Treści, kursy i narzędzia dla ludzi, którzy chcą budować lepiej.</p>
+        <a class="mt-6 inline-block text-sm font-bold text-acid hover:underline" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+      </div>
+      <div>
+        <p class="eyebrow text-paper/40">Odkrywaj</p>
+        <ul class="mt-5 space-y-3 text-sm font-semibold text-paper/80">
+          <li><a class="hover:text-acid" href="/o-nas">O nas</a></li>
+          <li><a class="hover:text-acid" href="/podcast">Podcast</a></li>
+          <li><a class="hover:text-acid" href="/youtube">YouTube</a></li>
+          <li><a class="hover:text-acid" href="https://przeprogramowani.substack.com">Newsletter ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow text-paper/40">Programy</p>
+        <ul class="mt-5 space-y-3 text-sm font-semibold text-paper/80">
+          <li><a class="hover:text-acid" href="https://10xdevs.pl">10xDevs ↗</a></li>
+          <li><a class="hover:text-acid" href="https://www.opanujfrontend.pl">Opanuj Frontend ↗</a></li>
+          <li><a class="hover:text-acid" href="https://www.opanujtypescript.pl">Opanuj TypeScript ↗</a></li>
+          <li><a class="hover:text-acid" href="https://opanuj.ai">Opanuj AI ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-16 flex flex-col gap-3 border-t border-white/10 pt-5 text-[0.65rem] font-medium uppercase tracking-[0.1em] text-paper/35 sm:flex-row sm:justify-between">
+      <span>© {currentYear} Przeprogramowani</span>
+      <span>Warszawa / Internet</span>
+    </div>
+  </div>
+</footer>

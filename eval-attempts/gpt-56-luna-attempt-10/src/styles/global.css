@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  color: #101112;
+  background: #f4f2ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #101112;
+  --paper: #f4f2ed;
+  --acid: #d9ff55;
+  --violet: #9d81ff;
+  --orange: #ff7648;
+  --line: rgba(16, 17, 18, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--paper);
+}
+
+::selection {
+  color: var(--ink);
+  background: var(--acid);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgba(16, 17, 18, 0.6);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.55rem;
+  height: 0.55rem;
+  content: '';
+  background: var(--acid);
+  border: 1px solid var(--ink);
+  transform: rotate(45deg);
+}
+
+.eyebrow-light {
+  color: rgba(244, 242, 237, 0.6);
+}
+
+.display-grid {
+  background-image: linear-gradient(rgba(16, 17, 18, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 17, 18, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.dark-grid {
+  background-image: linear-gradient(rgba(244, 242, 237, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 242, 237, 0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.dark-noise::after {
+  mix-blend-mode: screen;
+  opacity: 0.025;
+}
+
+.pill-arrow {
+  display: inline-flex;
+  width: 1.8rem;
+  height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+a:hover .pill-arrow {
+  color: var(--ink);
+  background: var(--acid);
+  transform: rotate(-45deg);
+}
+
+.underlined-link {
+  border-bottom: 1px solid currentColor;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.underlined-link:hover {
+  color: #6f51ee;
+  border-color: #6f51ee;
+}
+
+.course-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 29rem;
+  border: 1px solid var(--ink);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.course-card:hover {
+  transform: translateY(-0.45rem);
+  box-shadow: 0.5rem 0.5rem 0 var(--ink);
+}
+
+.course-card::before {
+  position: absolute;
+  z-index: -1;
+  top: -5rem;
+  right: -4rem;
+  width: 15rem;
+  height: 15rem;
+  content: '';
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.course-card::after {
+  position: absolute;
+  z-index: -1;
+  right: -6rem;
+  bottom: -7rem;
+  width: 19rem;
+  height: 19rem;
+  content: '';
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.media-card img {
+  transition: transform 400ms ease, filter 400ms ease;
+}
+
+.media-card:hover img {
+  filter: saturate(1.2);
+  transform: scale(1.04);
+}
+
+.media-card .play-icon {
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.media-card:hover .play-icon {
+  background: var(--acid);
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.orbit {
+  animation: orbit 18s linear infinite;
+}
+
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.55rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

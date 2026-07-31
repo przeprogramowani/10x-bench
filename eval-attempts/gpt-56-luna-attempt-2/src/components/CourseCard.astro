@@ -1,0 +1,34 @@
+---
+interface Props {
+  number: string;
+  label: string;
+  title: string;
+  description: string;
+  meta: string;
+  href: string;
+  tone?: 'acid' | 'ember' | 'moss';
+}
+
+const { number, label, title, description, meta, href, tone = 'acid' } = Astro.props;
+const toneClasses = {
+  acid: 'bg-acid text-ink',
+  ember: 'bg-ember text-ink',
+  moss: 'bg-moss text-paper',
+};
+---
+
+<article class:list={['course-card relative flex min-h-[360px] flex-col justify-between overflow-hidden border border-ink', toneClasses[tone]]}>
+  <div class="noise absolute inset-0 opacity-30"></div>
+  <div class="relative flex items-start justify-between p-6">
+    <span class="font-mono text-xs font-medium opacity-60">{number}</span>
+    <span class="pill border-current/40 text-[0.6rem]">{label}</span>
+  </div>
+  <div class="relative p-6 pt-16">
+    <h3 class="display max-w-[13ch] text-4xl font-semibold">{title}</h3>
+    <p class="mt-5 max-w-sm text-sm leading-6 opacity-75">{description}</p>
+  </div>
+  <div class="relative flex items-center justify-between border-t border-current/20 px-6 py-4">
+    <span class="font-mono text-[0.63rem] uppercase tracking-[0.08em] opacity-65">{meta}</span>
+    <a href={href} target="_blank" rel="noreferrer" class="arrow-link text-xs" aria-label={`Zobacz ${title}`}>Zobacz</a>
+  </div>
+</article>

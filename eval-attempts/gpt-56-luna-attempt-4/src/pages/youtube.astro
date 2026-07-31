@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { youtubeVideos } from '../data/content';
+
+const ytImage = (id: string) => `https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`;
+---
+<Layout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o programowaniu, AI, frontendzie i rozwoju.">
+  <section class="inner-hero youtube-hero page-width">
+    <div class="inner-hero-bg" aria-hidden="true">WATCH</div>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> YOUTUBE / 03</p>
+    <h1>Oglądaj.<br /><em>Buduj lepiej.</em></h1>
+    <p class="inner-hero-lead">Konkretne rozmowy, live'y i techniczne deep-dive'y dla osób, które chcą rozumieć nie tylko jak, ale również po co.</p>
+    <a class="channel-button" href="https://www.youtube.com/c/przeprogramowani/videos"><span class="youtube-icon">▶</span> Przejdź na kanał <span aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="videos-section page-width section-pad" aria-labelledby="videos-title">
+    <div class="section-heading"><div><p class="section-kicker"><span>01</span><span>Ostatnie filmy</span></p><h2 id="videos-title">Play. Pause.<br /><em>Think.</em></h2></div><p>Nowe technologie, sprawdzone praktyki i rozmowy bez skrótów myślowych.</p></div>
+    <div class="video-grid">{youtubeVideos.map((video, index) => <a class:list={["video-card", index === 0 && 'video-card-featured']} href={video.href}><div class="video-card-image"><img src={ytImage(video.id)} alt={`Miniatura: ${video.title}`} loading={index > 1 ? 'lazy' : undefined} /><span class="video-play">▶</span><span class="video-card-index">0{index + 1}</span></div><div class="video-card-body"><p class="card-meta">{video.category}</p><h3>{video.title}</h3><p>{video.description}</p><span class="video-watch">Obejrzyj <span aria-hidden="true">↗</span></span></div></a>)}</div>
+  </section>
+
+  <section class="channel-cta section-pad"><div class="page-width channel-cta-inner"><div class="channel-big-play">▶</div><div><p class="eyebrow"><span class="eyebrow-dot"></span> 15 000+ OSÓB WOKÓŁ NAS</p><h2>Dołącz do<br /><em>rozmowy.</em></h2><p>Subskrybuj kanał, jeśli chcesz regularnie dostawać materiały, które porządkują chaos nowych technologii.</p><a class="button button-primary" href="https://www.youtube.com/c/przeprogramowani/videos">Subskrybuj kanał <span aria-hidden="true">↗</span></a></div></div></section>
+</Layout>

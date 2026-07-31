@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { videos } from "../data/site";
+---
+
+<BaseLayout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowani o AI, programowaniu i nowoczesnym warsztacie.">
+  <section class="relative overflow-hidden border-b-2 border-ink bg-ember">
+    <div class="absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,#101116_1px,transparent_1px),linear-gradient(to_bottom,#101116_1px,transparent_1px)] [background-size:32px_32px]"></div>
+    <div class="relative mx-auto grid max-w-[1400px] gap-10 px-5 py-16 md:px-8 lg:grid-cols-[1fr_.7fr] lg:items-end lg:py-24">
+      <div>
+        <p class="eyebrow">YouTube / Przeprogramowani</p>
+        <h1 class="mt-5 text-5xl font-bold leading-[0.92] tracking-[-0.07em] sm:text-7xl">Zobacz, zanim<br />zrobisz <span class="text-paper">kolejny commit.</span></h1>
+      </div>
+      <div class="justify-self-start border-2 border-ink bg-paper p-5 shadow-hard lg:justify-self-end">
+        <svg viewBox="0 0 120 80" class="h-20 w-32" aria-hidden="true"><rect x="3" y="3" width="114" height="74" fill="#101116"/><path d="M50 22l30 18-30 18z" fill="#e6ff4e"/><path d="M12 12h19M12 68h35M89 68h19" stroke="#ff5a36" stroke-width="4"/></svg>
+        <p class="mt-3 max-w-[200px] font-mono text-[10px] font-medium uppercase leading-relaxed tracking-[0.11em]">AI, technologie i praca, którą można dowieźć.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
+    <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <p class="eyebrow text-iris">Najnowsze publikacje</p>
+        <h2 class="mt-4 text-4xl font-bold leading-[0.95] tracking-[-0.06em] md:text-6xl">Co ostatnio<br />wypuściliśmy.</h2>
+      </div>
+      <a href="https://youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer" class="inline-flex w-fit items-center gap-3 bg-ink px-5 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-signal transition-transform hover:-translate-y-1">Przejdź na kanał <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <div class="mt-12 grid gap-x-5 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video, index) => (
+        <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer" class="group block">
+          <div class="relative aspect-video overflow-hidden border-2 border-ink bg-ink">
+            <img src={`https://i3.ytimg.com/vi/${video.id}/maxresdefault.jpg`} alt="" class="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-70" loading={index > 2 ? "lazy" : "eager"} />
+            <span class="absolute bottom-3 left-3 grid h-10 w-10 place-items-center bg-signal text-ink transition-transform group-hover:scale-110" aria-hidden="true"><svg viewBox="0 0 18 18" class="h-4 w-4"><path d="M5 3l10 6-10 6z" fill="currentColor" /></svg></span>
+            <span class="absolute right-3 top-3 bg-ink px-2 py-1 font-mono text-[10px] font-medium text-paper">{String(index + 1).padStart(2, "0")}</span>
+          </div>
+          <div class="mt-4 flex items-start justify-between gap-4">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.13em] text-ink/55">{video.tag}</p>
+              <h3 class="mt-2 text-xl font-bold leading-[1.03] tracking-[-0.045em] group-hover:text-iris">{video.title}</h3>
+            </div>
+            <span class="pt-5 text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t-2 border-ink bg-[#e9e4d9]">
+    <div class="mx-auto grid max-w-[1400px] gap-10 px-5 py-16 md:px-8 lg:grid-cols-[.78fr_1.22fr] lg:py-24">
+      <div>
+        <p class="eyebrow text-ember">Formaty, które lubimy</p>
+        <h2 class="mt-4 text-4xl font-bold leading-[0.95] tracking-[-0.06em] md:text-5xl">Najpierw zrozum. Potem wybierz narzędzie.</h2>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-3">
+        <div class="border-2 border-ink bg-paper p-5">
+          <span class="font-mono text-[10px] uppercase tracking-[0.13em] text-ink/55">01</span>
+          <h3 class="mt-8 text-xl font-bold leading-tight tracking-[-0.04em]">AI bez magii</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/65">Modele, agenci i workflow, które można uczciwie ocenić.</p>
+        </div>
+        <div class="border-2 border-ink bg-signal p-5">
+          <span class="font-mono text-[10px] uppercase tracking-[0.13em] text-ink/55">02</span>
+          <h3 class="mt-8 text-xl font-bold leading-tight tracking-[-0.04em]">Praca na produkcji</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/65">Praktyki, które pomagają dowozić jakość, nie tylko demo.</p>
+        </div>
+        <div class="border-2 border-ink bg-iris p-5 text-paper">
+          <span class="font-mono text-[10px] uppercase tracking-[0.13em] text-paper/65">03</span>
+          <h3 class="mt-8 text-xl font-bold leading-tight tracking-[-0.04em]">Rozwój z głową</h3>
+          <p class="mt-3 text-sm leading-relaxed text-paper/75">Perspektywa, która wykracza poza kolejny framework.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

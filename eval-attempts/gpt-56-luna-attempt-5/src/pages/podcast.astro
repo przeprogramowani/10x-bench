@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { podcasts } from '../data/content';
+---
+
+<Layout currentPath="/podcast" title="Podcast — Przeprogramowani" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju kariery.">
+  <main>
+    <section class="grid-lines border-b hairline py-24 sm:py-32">
+      <div class="site-container grid gap-10 lg:grid-cols-[1fr_.7fr] lg:items-end lg:gap-20"><div><div class="eyebrow">Słuchaj, kiedy chcesz</div><h1 class="display mt-7 max-w-4xl text-[clamp(3.7rem,8vw,7.5rem)] font-medium leading-[.86]">Rozmowy, które <span class="text-coral">zostają.</span></h1></div><p class="max-w-md text-lg leading-8 text-mist">Technologia, AI, praca i rozwój. Bez skrótów, bez szybkich recept, za to z gośćmi, którzy mają własną perspektywę.</p></div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32">
+      <div class="grid gap-14 lg:grid-cols-[.68fr_1.32fr] lg:gap-24">
+        <div><div class="eyebrow text-coral">Dwa formaty</div><h2 class="display mt-6 text-5xl leading-[.9] sm:text-6xl">Wybierz swój feed.</h2><p class="mt-7 max-w-sm text-sm leading-6 text-mist">Od rozmów o budowaniu produktów po comiesięczny przegląd najważniejszych wydarzeń w AI.</p><div class="mt-9 flex flex-wrap gap-3"><a class="button-primary bg-coral hover:bg-[#ff907b]" href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noreferrer">Spotify <span aria-hidden="true">↗</span></a><a class="button-secondary" href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer">Apple Podcasts <span aria-hidden="true">↗</span></a></div></div>
+        <div class="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-2">
+          <div class="bg-[#171617] p-7 sm:p-9"><span class="grid h-12 w-12 place-items-center rounded-full bg-coral text-ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M12 16a4 4 0 0 0 4-4V7a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1M12 19v3M8 22h8"/></svg></span><p class="mt-16 text-[10px] uppercase tracking-[.18em] text-coral">Przeprogramowani ft. Gość</p><h3 class="display mt-3 text-3xl leading-[.92]">Rozmowy dla głodnych wiedzy.</h3><p class="mt-5 text-sm leading-6 text-mist">Ludzie, kariera i technologia widziane z różnych stron.</p></div>
+          <div class="bg-[#d6fc68] p-7 text-ink sm:p-9"><span class="grid h-12 w-12 place-items-center rounded-full bg-ink text-lime"><span class="font-display text-xl">AI</span></span><p class="mt-16 text-[10px] uppercase tracking-[.18em] text-ink/60">Opanuj.AI Podcast</p><h3 class="display mt-3 text-3xl leading-[.92]">Co miesiąc o świecie AI.</h3><p class="mt-5 text-sm leading-6 text-ink/70">Najważniejsze premiery, trendy i pytania, które warto dziś zadawać.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-panel py-24 sm:py-32">
+      <div class="site-container"><div class="flex flex-col justify-between gap-5 border-b hairline pb-7 sm:flex-row sm:items-end"><div><div class="eyebrow text-coral">Najnowsze odcinki</div><h2 class="display mt-5 text-5xl leading-[.9] sm:text-6xl">Posłuchaj teraz.</h2></div><p class="max-w-xs text-sm leading-6 text-mist">Włącz rozmowę podczas spaceru, dojazdu albo kolejnego refaktoru.</p></div>
+        <div class="mt-6 divide-y divide-white/10">
+          {podcasts.map((podcast, index) => (
+            <a class="group grid gap-5 py-8 md:grid-cols-[100px_1fr_120px] md:items-start md:gap-8" href={podcast.platformUrl} target="_blank" rel="noreferrer">
+              <div class="flex items-center justify-between md:block"><span class={`font-mono text-xs ${podcast.tone === 'coral' ? 'text-coral' : podcast.tone === 'blue' ? 'text-[#9bd4e5]' : 'text-[#bfadff]'}`}>{String(index + 1).padStart(2, '0')} / 03</span><span class="text-xs text-mist md:mt-3 md:block">{podcast.date}</span></div>
+              <div><p class={`text-[10px] font-bold uppercase tracking-[.16em] ${podcast.tone === 'coral' ? 'text-coral' : podcast.tone === 'blue' ? 'text-[#9bd4e5]' : 'text-[#bfadff]'}`}>{podcast.series}</p><h3 class="display mt-3 max-w-2xl text-3xl leading-[.92] transition-colors group-hover:text-lime sm:text-4xl">{podcast.title}</h3><p class="mt-4 max-w-xl text-sm leading-6 text-mist">{podcast.description}</p></div>
+              <div class="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-mist md:block md:border-t-0 md:pt-0 md:text-right"><span>{podcast.duration}</span><span class="ml-5 text-xl text-cream transition-transform group-hover:inline-block group-hover:translate-x-1 group-hover:-translate-y-1 md:ml-0 md:mt-5 md:block">↗</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32"><div class="grid items-center gap-10 lg:grid-cols-[1.2fr_.8fr] lg:gap-24"><div><div class="eyebrow">Jesteśmy tam, gdzie Ty</div><h2 class="display mt-6 max-w-2xl text-5xl leading-[.9] sm:text-6xl">Słuchaj na swojej ulubionej platformie.</h2></div><div class="grid grid-cols-2 gap-3"><a class="border border-white/10 bg-panel p-5 text-sm transition-colors hover:border-lime/50 hover:text-lime" href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo" target="_blank" rel="noreferrer">Spotify <span class="float-right">↗</span></a><a class="border border-white/10 bg-panel p-5 text-sm transition-colors hover:border-lime/50 hover:text-lime" href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer">Apple Podcasts <span class="float-right">↗</span></a><a class="border border-white/10 bg-panel p-5 text-sm transition-colors hover:border-lime/50 hover:text-lime" href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw" target="_blank" rel="noreferrer">Google Podcasts <span class="float-right">↗</span></a><a class="border border-white/10 bg-panel p-5 text-sm transition-colors hover:border-lime/50 hover:text-lime" href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noreferrer">RSS <span class="float-right">↗</span></a></div></div></section>
+  </main>
+</Layout>

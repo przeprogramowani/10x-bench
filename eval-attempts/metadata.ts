@@ -34,8 +34,11 @@ export type ModelId =
   | "gpt-54"
   | "gpt-55"
   | "gpt-56-sol"
+  | "gpt-56-luna"
+  | "gpt-56-terra"
   | "claude-fable-5"
-  | "deepseek-v4-pro";
+  | "deepseek-v4-pro"
+  | "deepseek-v4-flash";
 
 // Keyed by base model ID (directory name without "-attempt-{n}")
 export const AGENT_NAMES: Record<ModelId, string> = {
@@ -66,8 +69,11 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "gpt-54": "GPT-5.4",
   "gpt-55": "GPT-5.5",
   "gpt-56-sol": "GPT-5.6 Sol",
+  "gpt-56-luna": "GPT-5.6 Luna (xhigh)",
+  "gpt-56-terra": "GPT-5.6 Terra (xhigh)",
   "claude-fable-5": "Claude Fable 5",
   "deepseek-v4-pro": "DeepSeek V4 Pro",
+  "deepseek-v4-flash": "DeepSeek V4 Flash",
 };
 
 export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
@@ -98,8 +104,11 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-55": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-56-sol": AGENT_ENVIRONMENT.CodexDesktopHigh,
+  "gpt-56-luna": AGENT_ENVIRONMENT.OpenCode,
+  "gpt-56-terra": AGENT_ENVIRONMENT.OpenCode,
   "claude-fable-5": AGENT_ENVIRONMENT.ClaudeDesktop,
   "deepseek-v4-pro": AGENT_ENVIRONMENT.OpenCode,
+  "deepseek-v4-flash": AGENT_ENVIRONMENT.OpenCode,
 };
 
 /** Models superseded by newer versions (old → new) */
@@ -159,8 +168,11 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "gpt-54": { input: 1.75, output: 14.0 },
   "gpt-55": { input: 5.0, output: 30.0 },
   "gpt-56-sol": { input: 5.0, output: 30.0 },
+  "gpt-56-luna": { input: 1.0, output: 6.0 },
+  "gpt-56-terra": { input: 2.0, output: 12.0 },
   "claude-fable-5": { input: 10.0, output: 50.0 },
   "deepseek-v4-pro": { input: 0.435, output: 0.87 },
+  "deepseek-v4-flash": { input: 0.09, output: 0.18 },
 };
 
 /** Type guard: check whether a runtime string is a known ModelId */

@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const people = [
+  { name: 'Przemek Smyrdek', role: 'Co-founder, Przeprogramowani', bio: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer i kontrybutor Open Source.', image: 'https://przeprogramowani.pl/img/profiles/przemek.webp', linkedin: 'https://www.linkedin.com/in/psmyrdek/' },
+  { name: 'Marcin Czarkowski', role: 'Co-founder, Przeprogramowani', bio: 'Lead techniczny Platformy Frontendowej w SmartRecruiters. Entuzjasta neurobiologii i twórca Opanuj.AI Podcast.', image: 'https://przeprogramowani.pl/img/profiles/marcin.webp', linkedin: 'https://www.linkedin.com/in/mkczarkowski/' }
+];
+---
+
+<Layout title="O nas — Przeprogramowani.pl" description="Poznaj ludzi stojących za Przeprogramowani.pl.">
+  <main>
+    <section class="relative overflow-hidden bg-ink py-24 text-paper sm:py-32">
+      <div class="absolute right-[-80px] top-[-100px] h-[420px] w-[420px] rounded-full border-[1px] border-mint/20"></div><div class="absolute right-[20px] top-[-15px] h-[260px] w-[260px] rounded-full border-[28px] border-mint/10"></div>
+      <div class="container-shell relative"><p class="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-mint">/ o nas</p><h1 class="mt-8 max-w-[850px] font-display text-[clamp(3.5rem,8vw,7.8rem)] font-semibold leading-[0.87] tracking-[-0.08em]">Łączymy świat<br /><span class="text-mint">kodu, biznesu</span><br />i rozwoju.</h1><p class="mt-9 max-w-[500px] text-base leading-7 text-paper/60 sm:text-lg">Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i na siebie.</p></div>
+    </section>
+
+    <section class="container-shell grid gap-12 py-24 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
+      <div><p class="eyebrow">/ nasza perspektywa</p><p class="mt-6 font-display text-3xl font-semibold leading-tight tracking-[-0.06em] sm:text-4xl">Technologia jest narzędziem. Rozwój — procesem.</p></div>
+      <div class="max-w-[650px] text-base leading-8 text-ink/65"><p>Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach — od technicznych deep-dive’ów po rozmowy o karierze i rozwoju.</p><p class="mt-6">Nie uczymy kolekcjonowania frameworków. Uczymy podejmowania lepszych decyzji, budowania dobrych nawyków i rozumienia, jak software działa w prawdziwym świecie.</p></div>
+    </section>
+
+    <section class="border-y border-line bg-[#e9eee7] py-24 sm:py-32">
+      <div class="container-shell"><div class="flex items-end justify-between gap-6"><div><p class="eyebrow">/ poznaj założycieli</p><h2 class="mt-5 font-display text-4xl font-semibold tracking-[-0.07em] sm:text-6xl">Po drugiej stronie<br /><span class="text-forest/45">ekranu.</span></h2></div><span class="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-ink/40 sm:block">2 osoby · 1 kierunek</span></div>
+        <div class="mt-14 grid gap-5 md:grid-cols-2">
+          {people.map((person, index) => (
+            <article class="overflow-hidden rounded-[22px] border border-ink/10 bg-paper">
+              <div class={`relative h-[340px] overflow-hidden ${index === 0 ? 'bg-[#d9e8ff]' : 'bg-[#d2f5e2]'}`}><img src={person.image} alt={person.name} loading="lazy" class="h-full w-full object-contain object-bottom transition duration-500 hover:scale-[1.03]" /><span class="absolute left-6 top-6 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-ink/45">0{index + 1} / founder</span></div>
+              <div class="p-7 sm:p-8"><div class="flex items-start justify-between gap-3"><div><h3 class="font-display text-2xl font-semibold tracking-[-0.06em]">{person.name}</h3><p class="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-forest/55">{person.role}</p></div><a href={person.linkedin} target="_blank" rel="noreferrer" aria-label={`LinkedIn: ${person.name}`} class="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 font-mono text-xs font-bold transition hover:bg-ink hover:text-paper">in</a></div><p class="mt-6 max-w-[480px] text-sm leading-6 text-ink/60">{person.bio}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="container-shell py-24 sm:py-32"><div class="grid gap-6 md:grid-cols-3"><div class="rounded-[22px] bg-mint p-7 sm:p-8"><span class="font-mono text-xs">01 —</span><h3 class="mt-20 font-display text-3xl font-semibold leading-none tracking-[-0.07em]">Szerokość<br />zamiast szumu.</h3><p class="mt-5 text-sm leading-6 text-ink/60">Łączymy kropki między technologią, biznesem i rozwojem.</p></div><div class="rounded-[22px] border border-line p-7 sm:p-8"><span class="font-mono text-xs text-ink/45">02 —</span><h3 class="mt-20 font-display text-3xl font-semibold leading-none tracking-[-0.07em]">Praktyka<br />zamiast teorii.</h3><p class="mt-5 text-sm leading-6 text-ink/60">Każda idea musi sprawdzić się poza slajdem.</p></div><div class="rounded-[22px] bg-forest p-7 text-paper sm:p-8"><span class="font-mono text-xs text-paper/45">03 —</span><h3 class="mt-20 font-display text-3xl font-semibold leading-none tracking-[-0.07em]">Ciekawość<br /><span class="text-mint">zamiast ego.</span></h3><p class="mt-5 text-sm leading-6 text-paper/55">Zadajemy lepsze pytania, zanim pobiegniemy po odpowiedzi.</p></div></div></section>
+
+    <section class="container-shell pb-24 sm:pb-32"><div class="rounded-[26px] bg-ink px-7 py-12 text-paper sm:px-12 sm:py-14"><div class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end"><div><p class="font-mono text-[10px] uppercase tracking-[0.2em] text-mint">/ następny krok</p><h2 class="mt-5 max-w-[600px] font-display text-4xl font-semibold leading-[0.95] tracking-[-0.07em] sm:text-5xl">Zacznij patrzeć<br /><span class="text-mint">szerzej.</span></h2></div><a href="/#kursy" class="inline-flex items-center gap-2 rounded-full bg-mint px-5 py-3 text-sm font-bold text-ink transition hover:bg-lime">Zobacz nasze kursy <span>→</span></a></div></div></section>
+  </main>
+</Layout>

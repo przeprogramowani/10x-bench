@@ -1,0 +1,33 @@
+---
+import SiteHeader from '../components/SiteHeader';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Przeprogramowani.pl — Szersze spojrzenie na programowanie',
+  description = 'Kursy, podcasty i materiały dla programistów, którzy chcą patrzeć szerzej.',
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101827" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+    <SiteHeader client:load currentPath={currentPath} />
+    <main id="main-content">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #101111;
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #101111;
+  color: #f4f4ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #c7ff3d;
+  color: #101111;
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+  content: "";
+  inset: 0;
+  opacity: 0.16;
+  pointer-events: none;
+  position: absolute;
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.eyebrow {
+  align-items: center;
+  color: #c7ff3d;
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: 800;
+  gap: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  background: currentColor;
+  content: "";
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+.display {
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+  letter-spacing: -0.06em;
+}
+
+.lift {
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.lift:hover {
+  border-color: rgba(199, 255, 61, 0.55);
+  transform: translateY(-4px);
+}

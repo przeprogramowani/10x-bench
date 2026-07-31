@@ -1,0 +1,45 @@
+---
+import Navigation from '../components/Navigation';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Przeprogramowani - szersze spojrzenie na programowanie.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101a38" />
+    <title>{title}</title>
+  </head>
+  <body class="antialiased">
+    <Navigation client:load />
+    <slot />
+    <footer class="site-footer">
+      <div class="site-shell footer-grid">
+        <div>
+          <a href="/" class="brand brand--footer"><span class="brand-mark">&lt;/&gt;</span><span>Przeprogramowani</span></a>
+          <p>Szersze spojrzenie na programowanie.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/o-nas">O nas</a>
+          <a href="/podcast">Podcast</a>
+          <a href="/youtube">YouTube</a>
+          <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Newsletter</a>
+        </div>
+        <div class="footer-contact">
+          <span>Masz pomysl na wspolprace?</span>
+          <a href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+        </div>
+      </div>
+      <div class="site-shell footer-bottom">© {new Date().getFullYear()} Przeprogramowani.pl</div>
+    </footer>
+  </body>
+</html>
