@@ -237,15 +237,31 @@ Ten sam renderer, publiczny 10xBench i firmowy benchmark obok siebie.
 > ale struktura hybrydowa (skille + `templates/` kopiowane do projektu) z tej analizy
 > przenosi się 1:1 na wariant 10x-cli.
 
+## Rozstrzygnięcia z analiz podproblemów (12.08.2026)
+
+Cztery pogłębione analizy (subagenty Opus) leżą w `thoughts/shared/research/`:
+
+| Podproblem | Dokument | Kluczowe rozstrzygnięcia |
+|---|---|---|
+| LLM-as-judge | `2026-08-12-bench-kit-llm-judge.md` | **jeden stały sędzia + targetowany drugi przebieg** (panel tylko do kalibracji rubryki — koszt sędziego ~$20/era jest pomijalny, decyduje dryf); anchory monotoniczne bez 0.5; evidence-forcing z walidacją cytatów; **golden set jako bramka przed każdą sesją** (aliasy modeli nie pinują checkpointu); anonimizacja częściowa + probe atrybucji; bridge protocol między erami (~$3) |
+| Adaptery harnessów | `2026-08-12-bench-kit-harness-adapters.md` | adapter **deklaratywny** (LaunchSpec, nie proces); **czas mierzy runner**; `null ≠ 0` w tokenach/koszcie + `cost.source`/`billing_mode`; Claude Code: `--bare` + `--session-id` + tokeny z `modelUsage`; Codex nie raportuje USD; OpenCode: atrybucja z katalogu → session id; izolacja **fresh-clone** (worktree ujawnia cudze próby); timeout = DNF bez retry, retry tylko infra; `time_trusted:false` przy równoległości |
+| Zadania repo-based | `2026-08-12-bench-kit-repo-tasks.md` | kolejność typów: **napraw (odwrócony fix z testem regresyjnym) i wykonaj (zamknięty ticket+PR) najpierw** — repo zawiera gotowe rozwiązania i verifiery; `verify/` nigdy w worktree + restore-then-verify; squash historii + usunięte remote'y; baseline = tarball/obraz z digestem, nie SHA; protokół pilotażu (20–80% pass, rozstęp ≥30 pp); portfel v1 = 4 zadania w 2–3 dni; **nie publikować treści zadań** |
+| Pipeline wyników | `2026-08-12-bench-kit-results-pipeline.md` | **multi-task w schemacie od dnia 1** (UI może być jednozadaniowe); ważona średnia po zadaniach, nie suma punktów; era z `criteriaSha256` = automatyczna detekcja dryfu (prototyp już cicho zmienił erę: 60 prób bez `Penalty`, 61 z); nieudane runy = 0, nie pominięte; **Cloudflare Pages + Access dla firm** (GitHub Pages z prywatnego repo = publiczna strona!); `history/leaderboard.jsonl` append-only; regresje: reguła ±1σ, PR comment, nigdy `exit 1`; scatter Pareto + `costToPass` zamiast `$/punkt` |
+
+Rozstrzygnięte tym samym pytania z pierwszej wersji konceptu: multi-task (tak, w schemacie
+od razu), polityka sędziego (jeden stały + drugi przebieg), autoryzacja leaderboardu
+(Cloudflare Access przed statycznym dashboardem — nie przesuwa SQLite wcześniej).
+
 ## Otwarte pytania (do rozstrzygnięcia przed MVP)
 
 1. **Źródło treści kitu dla `10x bench init`**: bundlowana w paczce CLI (a),
    delivery API jako pseudo-lekcja z auth (b), czy publiczny endpoint na 10xbench.ai (c)?
-2. Czy MVP celuje w **jedno zadanie** (jak 10x-bench) czy od razu multi-task z agregacją
-   per zadanie na leaderboardzie?
-3. Które harnessy poza OpenCode są faktycznie priorytetem u odbiorców (Claude Code
-   headless wydaje się naturalnym #2)?
-4. Leaderboard wewnętrzny: wystarczy prywatne repo + artefakt/Pages, czy od razu
-   potrzebna autoryzacja (SSO) → co przesuwa wariant SQLite wcześniej?
-5. Polityka sędziego: jeden stały model-sędzia dla wszystkich er, czy panel 2–3 sędziów
-   z medianą (droższe, stabilniejsze)?
+   Wstępna rekomendacja: (a).
+2. Które harnessy poza OpenCode są priorytetem u odbiorców? Analiza adapterów daje gotowe,
+   zweryfikowane komendy dla Claude Code headless (`--bare`) i Codex CLI — naturalna kolejność
+   to OpenCode → Claude Code → Codex.
+3. **Bramka prywatności jako pierwsze pytanie `/bench-init`**: czy kod firmowy może trafiać
+   do API modeli (DPA/zero-retention)? Odpowiedź zmienia listę testowanych modeli — trzeba
+   zdecydować, jak kit wspiera wariant „tylko modele lokalne/z DPA".
+4. Model sędziego domyślny dla kitu (analiza wskazuje `claude-opus-5` effort=high) — czy kit
+   ma pozwalać na wybór, skoro zmiana sędziego = nowa era?
