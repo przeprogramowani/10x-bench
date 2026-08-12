@@ -155,13 +155,70 @@ Trzy warianty publikacji, od najtańszego:
 Leaderboard od początku wersjonuje **erę benchmarku**: zmiana zadań, scorecardu albo
 sędziego = nowa era; wyników między erami nie porównujemy wprost.
 
-## Dystrybucja kitu
+## Dystrybucja kitu: przez 10x-cli
 
-Rekomendacja: **plugin Claude Code** (`10x-bench-kit`) zawierający 5–6 skilli + katalog
-`templates/` (scaffold, szablony skryptów, workflow, website). `bench-init` kopiuje
-i parametryzuje szablony zamiast generować wszystko od zera — mniej dryfu, łatwiejsze
-upgrade'y kitu. Alternatywa minimalna: template repository na GitHubie z `.claude/skills/`
-w środku.
+**Decyzja: kit dystrybuujemy przez [`10x-cli`](https://github.com/przeprogramowani/10x-cli)**
+— nowy tryb inicjalizacji benchmarku, dostępny dla każdego użytkownika, z instalacją
+skilli we wskazanym miejscu. To zamyka dyskusję „plugin vs template repo" i jest lepsze
+od obu, bo CLI ma już gotową całą maszynerię dystrybucyjną:
+
+| Mechanizm w 10x-cli (dziś) | Co daje kitowi za darmo |
+|---|---|
+| `writer.ts` + manifest (`.10x-cli-manifest.json`) | idempotentna instalacja skilli, czyszczenie stale'i, wykrywanie lokalnych edycji |
+| `ToolProfile` (claude-code, cursor, copilot, codex, windsurf, gemini, generic) | instalacja kitu pod dowolne narzędzie agentowe, nie tylko Claude Code |
+| `10x sync` (contentHash cheap-skip, raport konfliktów, „keeps your edit") | aktualizacje kitu u użytkowników bez nadpisywania ich modyfikacji |
+| blok rules z sentinelami w `CLAUDE.md`/`AGENTS.md` | wstrzyknięcie reguł benchmarku (np. zakaz czytania innych prób) zarządzane przez CLI |
+| `10x bench` + `bench-client.ts` (publiczny, no-auth, `schemaVersion`) | wzorzec renderowania leaderboardu w terminalu + wersjonowany schemat danych |
+
+### Proponowany interfejs: `10x bench init`
+
+```bash
+# Inicjalizacja benchmarku w bieżącym katalogu (nowe repo benchmarku lub istniejący projekt)
+10x bench init
+
+# Wybór miejsca i narzędzia
+10x bench init --dir ./ai-bench --tool claude-code
+10x bench init --tool cursor          # kit działa też poza Claude Code
+```
+
+Podział odpowiedzialności — **CLI robi część deterministyczną, skille część inteligentną**:
+
+1. `10x bench init` instaluje 5–6 skilli kitu przez istniejący writer (ścieżki wg
+   `ToolProfile`, wpis do manifestu), dokłada blok rules z sentinelami i minimalny
+   scaffold (katalogi, `bench.config.ts` ze stubem). Zero pytań o domenę firmy —
+   to nie jest rola CLI.
+2. Użytkownik mówi agentowi „zainicjuj benchmark" → skill `/bench-init` prowadzi
+   wywiad i parametryzuje scaffold (jak dziś `10x-cli-setup`: CLI instaluje, skill
+   prowadzi).
+3. Aktualizacje kitu: `10x sync` (kit trackowany w manifeście jak lekcja — konflikt
+   z lokalną edycją skilla jest raportowany, nie nadpisywany).
+
+### Skąd CLI bierze treść kitu (do rozstrzygnięcia)
+
+- **(a) Bundlowana w paczce CLI** — kit wersjonowany razem z CLI, działa offline
+  i bez logowania (spójne z publicznym `10x bench`); update = update CLI.
+- **(b) Delivery API jako pseudo-lekcja** (np. ref `bench-kit`) — kit aktualizuje się
+  niezależnie od wydań CLI i dziedziczy pełną mechanikę `get`/`sync` (contentHash,
+  konflikt-raport); ale wymaga auth, więc „dla każdego użytkownika" trzeba by osobno
+  odblokować.
+- **(c) Publiczny endpoint na 10xbench.ai** — obok danych leaderboardu; no-auth,
+  aktualizacje niezależne od CLI; wymaga rozszerzenia `bench-client.ts` (świadomie
+  osobny allowlist hostów).
+
+Wstępna rekomendacja: **(a) na start** (najprostsze, spójne z no-auth `bench`),
+z migracją do (c) gdy kit zacznie żyć szybciej niż CLI.
+
+### Synergia: leaderboard firmowy w `10x bench`
+
+Skoro kit generuje `results.json`, warto od początku trzymać go w schemacie zgodnym
+z `bench-client.ts` (`schemaVersion`!). Wtedy naturalne rozszerzenie:
+
+```bash
+10x bench --source ./website/src/data/results.json   # lokalny benchmark w terminalu
+10x bench --url https://bench.firma.internal          # wewnętrzny leaderboard zespołu
+```
+
+Ten sam renderer, publiczny 10xBench i firmowy benchmark obok siebie.
 
 ## Roadmapa (fazy)
 
@@ -175,10 +232,15 @@ w środku.
 4. **Skala** — leaderboard SQLite z trendami i erami, alerty regresji („nowy model X
    słabszy od poprzednika na naszym stacku"), wiele benchmarków per firma.
 
+> Alternatywny kanał (plugin Claude Code z marketplace) został przeanalizowany i opisany
+> w `thoughts/shared/research/2026-08-12-bench-kit-plugin-distribution.md` — odłożony,
+> ale struktura hybrydowa (skille + `templates/` kopiowane do projektu) z tej analizy
+> przenosi się 1:1 na wariant 10x-cli.
+
 ## Otwarte pytania (do rozstrzygnięcia przed MVP)
 
-1. **Plugin vs template repo** jako nośnik kitu? (plugin = łatwe upgrade'y skilli;
-   template = prostsze do sforkowania i zmodyfikowania)
+1. **Źródło treści kitu dla `10x bench init`**: bundlowana w paczce CLI (a),
+   delivery API jako pseudo-lekcja z auth (b), czy publiczny endpoint na 10xbench.ai (c)?
 2. Czy MVP celuje w **jedno zadanie** (jak 10x-bench) czy od razu multi-task z agregacją
    per zadanie na leaderboardzie?
 3. Które harnessy poza OpenCode są faktycznie priorytetem u odbiorców (Claude Code
