@@ -1,52 +1,52 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = '10x-bench-kit — Your Company\'s Private AI Benchmark';
+const title = '10x-bench-kit | Private AI Benchmark';
 const description =
-  'Open source template for scaffolding a private, reproducible AI-agent benchmark on your own repositories. Stop trusting external leaderboards — measure quality, cost and time on your stack, in full isolation.';
+  'An open-source template for running reproducible AI-agent evaluations on your own repositories. Compare quality, cost and runtime using tasks from your codebase.';
 
 const problems = [
   {
-    icon: '✶',
-    title: 'Contaminated leaderboards',
-    body: 'Public benchmark tasks leak into training data. Scores keep climbing, but you can no longer tell whether a model got smarter — or just memorized the test.',
+    index: '01',
+    title: 'Training-data overlap',
+    body: 'Public benchmark tasks can appear in training data. A higher score may reflect a better model, familiarity with the test, or both.',
   },
   {
-    icon: '✧',
-    title: 'Not your stack',
-    body: 'Leaderboards measure greenfield puzzles. Your reality is a product repo with legacy corners, internal conventions and a build that must stay green.',
+    index: '02',
+    title: 'Generic tasks',
+    body: 'Leaderboards use their own tasks and environments. Your team works in an existing product repo with internal conventions, dependencies and CI checks.',
   },
   {
-    icon: '✦',
-    title: 'Numbers you can\'t audit',
-    body: 'Vendor-reported evals are marketing. The only benchmark you can fully trust is one you can read, run and re-run yourself — end to end.',
+    index: '03',
+    title: 'Limited reproducibility',
+    body: 'Published scores do not always include the prompts, environment, rubric and model settings required to reproduce the evaluation.',
   },
 ];
 
 const values = [
   {
-    title: 'One-command scaffold',
-    body: 'Run <code>10x bench-kit init</code> and get a complete benchmark instance: a fresh repo holding your tasks, evaluation pool, config and CI workflows — versioned in a manifest from day one.',
+    title: 'A working repository from the start',
+    body: 'Run <code>10x bench-kit init</code> to create a repository with tasks, an evaluation pool, configuration and CI workflows. The generated manifest records the template version.',
   },
   {
-    title: 'Isolation by construction',
-    body: 'Every trial is a disposable container with a fresh copy of your base repo at a pinned commit. The agent never sees a single evaluation asset — assertions are mounted only after it finishes.',
+    title: 'Isolated trials',
+    body: 'Each trial runs in a disposable container with a fresh copy of your base repo at a pinned commit. Evaluation assets are mounted only after the agent finishes.',
   },
   {
-    title: 'Three signals, one score',
-    body: 'Quality (static checks → hidden tests → e2e → LLM-as-judge, weighted per task), cost, and wall-clock time. Each trial produces a <code>result.json</code> artifact you can diff and archive.',
+    title: 'Quality, cost and runtime',
+    body: 'Score quality with static checks, hidden tests, e2e tests and an LLM judge, weighted per task. Each trial records its score, cost and wall-clock time in <code>result.json</code>.',
   },
   {
-    title: 'Comparable over time',
-    body: 'Every result is stamped with the template version, task hash, judge model and rubric version. Results compare only within an “era” — so a rubric change can never silently rewrite history.',
+    title: 'Versioned comparisons',
+    body: 'Each result records the template version, task hash, judge model and rubric version. Results are compared only within the same evaluation era.',
   },
   {
-    title: 'Customized by conversation',
-    body: 'Agent skills do the judgment work: <code>bench-wiring</code> takes you from init to green validate, <code>bench-new-task</code> and <code>bench-build</code> author tasks, <code>bench-rubric</code> calibrates your judge.',
+    title: 'Guided setup',
+    body: 'Included skills guide setup and task authoring: <code>bench-wiring</code>, <code>bench-new-task</code>, <code>bench-build</code> and <code>bench-rubric</code>.',
   },
   {
-    title: 'Updates without takeover',
-    body: 'Three ownership zones: the kit\'s runtime updates atomically, shared skills arrive as a proposed diff you review, and your tasks and evaluation pool are untouchable. Your benchmark stays yours.',
+    title: 'Defined update boundaries',
+    body: 'The runtime updates atomically, changes to shared skills arrive as a diff for review, and updates do not modify your tasks or evaluation pool.',
   },
 ];
 
@@ -54,38 +54,38 @@ const lifecycle = [
   {
     step: '01',
     title: 'Workspace',
-    body: 'A fresh copy of your base repo at a pinned commit, plus the task overlay. Empty agent state, zero evaluation materials in sight.',
+    body: 'The runner creates a fresh copy of your base repo at a pinned commit, applies the task overlay and starts with empty agent state.',
   },
   {
     step: '02',
     title: 'Execution',
-    body: 'The agent runs non-interactively from prompt.md under a hard timeout — one shot, no human in the loop.',
+    body: 'The agent runs <code>prompt.md</code> non-interactively under a fixed timeout.',
   },
   {
     step: '03',
     title: 'Metrics',
-    body: 'An adapter reads the harness storage into metrics.json; the workspace diff becomes patch.diff.',
+    body: 'An adapter writes OpenCode data to <code>metrics.json</code>, while the workspace changes are saved as <code>patch.diff</code>.',
   },
   {
     step: '04',
     title: 'Evaluation',
-    body: 'Only now are assertions mounted from the pool: static → tests → e2e → LLM-as-judge. Score = weighted sum per task.yaml.',
+    body: 'The runner mounts the evaluation pool and runs static checks, tests, e2e checks and the LLM judge. Weights come from <code>task.yaml</code>.',
   },
   {
     step: '05',
     title: 'Artifact',
-    body: 'result.json, stamped with every version that shaped the score — the unit of comparison within an era.',
+    body: '<code>result.json</code> records the score, metrics and evaluation versions used for the trial.',
   },
 ];
 
 const requirements = [
   {
-    title: 'A GitHub repository with Actions',
-    body: 'Trials run as a matrix of model × task × trial via workflow_dispatch — pick models, tasks and trial count per run.',
+    title: 'GitHub Actions',
+    body: 'Trials run as a model × task × trial matrix through <code>workflow_dispatch</code>. You select the models, tasks and number of trials for each run.',
   },
   {
     title: '10xCLI',
-    body: 'The kit is materialized and updated through the 10x CLI: bench-kit init creates the instance, bench-kit update migrates it.',
+    body: 'The 10x CLI creates and updates the kit instance with <code>bench-kit init</code> and <code>bench-kit update</code>.',
   },
   {
     title: 'Model API keys',
@@ -93,184 +93,216 @@ const requirements = [
   },
   {
     title: 'A base repository',
-    body: 'The product repo your tasks run against, pinned at a commit. Private repo? A fine-grained PAT with read-only contents access is all it takes.',
+    body: 'The product repository your tasks run against, pinned at a commit. Private repositories require a fine-grained token with read-only access to contents.',
   },
   {
-    title: 'OpenCode as the harness',
-    body: 'The kit currently drives agents through OpenCode exclusively, with the harness version pinned by the template for reproducibility.',
+    title: 'OpenCode as the runner',
+    body: 'The kit currently runs agents through OpenCode. The template pins the OpenCode version used by each evaluation era.',
   },
   {
-    title: 'An afternoon',
-    body: 'Wiring secrets, filling the evaluation pool and calibrating rubrics is a guided conversation with the skills — then bench validate gates your first run.',
+    title: 'Your evaluation inputs',
+    body: 'Before the first run, add secrets, prepare evaluation assets and calibrate the rubrics. The bench-wiring skill runs the validation checks.',
   },
 ];
 
 const quickstart = [
-  { cmd: '10x bench-kit init acme-bench', note: 'materialize the template into a fresh instance repo' },
-  { cmd: '# wire secrets: model keys, judge key, base-repo token', note: 'guided by the bench-wiring skill' },
-  { cmd: '# customize via skills: image, evaluation pool, rubrics, first tasks', note: 'a conversation, not a config marathon' },
-  { cmd: 'bench validate', note: 'the gate before your first run' },
-  { cmd: '# GitHub Actions → workflow_dispatch (models, tasks, trials)', note: 'and the matrix takes it from there' },
+  {
+    step: '01',
+    title: 'Create the instance',
+    body: 'Run the installer inside your product repository so it can register that repository as the first benchmark target.',
+    code: '10x bench-kit init my-benchmark',
+  },
+  {
+    step: '02',
+    title: 'Open it in your coding agent',
+    body: 'The installer places the benchmark skills where your selected agent can use them.',
+  },
+  {
+    step: '03',
+    title: 'Use bench-wiring',
+    body: 'Ask the agent to configure model keys, the judge, repository access and the container image. The skill runs the validation checks.',
+  },
+  {
+    step: '04',
+    title: 'Add real tasks',
+    body: 'Use bench-new-task and bench-build to turn representative work into tasks with hidden evaluation assets.',
+  },
+  {
+    step: '05',
+    title: 'Run the matrix',
+    body: 'Start the bench-run workflow in GitHub Actions and select the models, tasks and number of trials.',
+  },
 ];
 ---
 
 <Layout title={title} description={description}>
-  <!-- Deep-space backdrop -->
-  <div class="kit-space" aria-hidden="true">
-    <div class="kit-nebula kit-nebula-1"></div>
-    <div class="kit-nebula kit-nebula-2"></div>
-    <div class="kit-nebula kit-nebula-3"></div>
-    <div class="kit-stars"></div>
-    <div class="kit-stars kit-stars-2"></div>
+  <div class="kit-backdrop" aria-hidden="true">
+    <div class="kit-grid"></div>
+    <div class="kit-glow"></div>
   </div>
 
-  <div class="kit-page relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero -->
-    <section class="pt-10 pb-20 md:pt-16 md:pb-28 text-center">
-      <p class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-violet-300 mb-8">
-        <span class="h-1.5 w-1.5 rounded-full bg-fuchsia-400 kit-pulse"></span>
-        Open source · Template repository
-      </p>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-        <span class="text-violet-50">Benchmark models on</span><br />
-        <span class="kit-gradient-text">your codebase,</span>
-        <span class="text-violet-50">not someone else's leaderboard.</span>
-      </h1>
-      <p class="max-w-2xl mx-auto text-lg md:text-xl text-violet-200/80 mb-10">
-        <strong class="text-violet-100 font-semibold">10x-bench-kit</strong> scaffolds a private, reproducible AI-agent
-        benchmark for your company — your repos, your tasks, your rubrics. Quality, cost and time, measured in full isolation.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-        <a
-          href="https://github.com/przeprogramowani/10x-bench-kit"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="kit-btn-primary inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold text-white"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
-          </svg>
-          View on GitHub
-        </a>
-        <a
-          href="#how-it-works"
-          class="inline-flex items-center gap-2 rounded-lg border border-violet-500/40 bg-violet-500/5 px-6 py-3 font-semibold text-violet-200 hover:bg-violet-500/15 hover:text-violet-100 transition-colors"
-        >
-          How it works ↓
-        </a>
+  <div class="kit-page relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-28">
+      <div>
+        <p class="kit-badge mb-7">
+          <span class="h-1.5 w-1.5 rounded-full bg-lime-300"></span>
+          Open source template
+        </p>
+        <h1 class="max-w-3xl text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-stone-50 sm:text-5xl md:text-7xl">
+          Compare AI coding models <span class="kit-accent-text">on your codebase.</span>
+        </h1>
+        <p class="mt-7 max-w-2xl text-lg leading-8 text-stone-300 md:text-xl">
+          <strong class="font-semibold text-stone-100">10x-bench-kit</strong> creates a private, reproducible benchmark
+          for your repositories, tasks and rubrics. Run the same work across models and compare quality, cost and runtime.
+        </p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="https://github.com/przeprogramowani/10x-bench-kit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="kit-btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold"
+          >
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+            </svg>
+            View on GitHub
+          </a>
+          <a href="#how-it-works" class="kit-btn-secondary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">
+            See how a trial runs
+          </a>
+        </div>
       </div>
 
-      <!-- Terminal mock -->
-      <div class="kit-terminal max-w-2xl mx-auto rounded-xl border border-violet-500/25 text-left overflow-hidden">
-        <div class="flex items-center gap-1.5 px-4 py-3 border-b border-violet-500/20 bg-violet-950/40">
-          <span class="h-3 w-3 rounded-full bg-violet-500/30"></span>
-          <span class="h-3 w-3 rounded-full bg-violet-500/30"></span>
-          <span class="h-3 w-3 rounded-full bg-violet-500/30"></span>
-          <span class="ml-3 text-xs text-violet-400/70 font-mono">acme — bench</span>
+      <div class="kit-terminal overflow-hidden rounded-xl border border-stone-700/70 text-left">
+        <div class="flex items-center justify-between border-b border-stone-700/70 bg-black/20 px-5 py-3.5">
+          <div class="flex gap-1.5" aria-hidden="true">
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-600"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-600"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-lime-400"></span>
+          </div>
+          <span class="text-xs font-mono text-stone-500">acme-bench / main</span>
         </div>
-        <div class="p-5 font-mono text-sm leading-7 overflow-x-auto">
-          <p><span class="text-fuchsia-400">$</span> <span class="text-violet-100">10x bench-kit init acme-bench</span></p>
-          <p class="text-violet-300/80"><span class="text-emerald-400">✔</span> template materialized · fresh git init · manifest written</p>
-          <p><span class="text-fuchsia-400">$</span> <span class="text-violet-100">cd acme-bench && bench validate</span></p>
-          <p class="text-violet-300/80"><span class="text-emerald-400">✔</span> instance valid — ready for the first run</p>
-          <p class="text-violet-500/60">→ GitHub Actions · workflow_dispatch · model × task × trial</p>
+        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 md:p-7">
+          <p><span class="text-lime-300">$</span> <span class="text-stone-100">10x bench-kit init acme-bench</span></p>
+          <p class="mt-3 text-stone-400"><span class="text-emerald-400">✓</span> benchmark instance created</p>
+          <p class="text-stone-400"><span class="text-emerald-400">✓</span> base repository registered</p>
+          <p class="text-stone-400"><span class="text-emerald-400">✓</span> agent skills installed</p>
+          <p class="text-stone-400"><span class="text-emerald-400">✓</span> runner dependencies installed</p>
+          <p class="mt-3 text-stone-500">Next: open acme-bench in your coding agent</p>
+          <p class="text-stone-500">Ask it to use bench-wiring</p>
         </div>
       </div>
     </section>
 
-    <!-- Problem -->
-    <section class="py-16 md:py-20">
-      <p class="kit-eyebrow">The problem</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-4">Why external benchmarks stopped being enough</h2>
-      <p class="max-w-2xl text-violet-200/75 mb-10">
-        Choosing a model for real engineering work on someone else's numbers is an act of faith.
-        Three reasons that faith keeps getting punished:
+    <div class="kit-proof-grid grid grid-cols-1 border-y border-stone-800 sm:grid-cols-3">
+      <div><strong>Pinned baseline</strong><span>Same repository commit</span></div>
+      <div><strong>Hidden checks</strong><span>Mounted after execution</span></div>
+      <div><strong>Versioned output</strong><span>Comparable within an era</span></div>
+    </div>
+
+    <section class="py-20 md:py-28">
+      <p class="kit-eyebrow">Why test locally</p>
+      <h2 class="max-w-3xl text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Public benchmarks don't show which model fits your team</h2>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
+        A public leaderboard ranks models on its own tasks and environment. Your decision depends on how those models
+        perform in your repositories, under your constraints.
       </p>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="mt-12 grid gap-4 md:grid-cols-3">
         {problems.map((p) => (
-          <div class="kit-card rounded-xl p-6">
-            <span class="text-2xl text-fuchsia-400/90" aria-hidden="true">{p.icon}</span>
-            <h3 class="text-lg font-semibold text-violet-100 mt-4 mb-2">{p.title}</h3>
-            <p class="text-sm leading-6 text-violet-200/70">{p.body}</p>
-          </div>
+          <article class="kit-card rounded-lg p-6 md:p-7">
+            <span class="font-mono text-xs text-lime-300">{p.index}</span>
+            <h3 class="mt-8 text-lg font-semibold text-stone-100">{p.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-stone-400">{p.body}</p>
+          </article>
         ))}
       </div>
-      <p class="mt-10 text-center text-lg md:text-xl text-violet-100 font-medium">
-        The model that tops a leaderboard can still fail on <span class="kit-gradient-text font-semibold">your</span> codebase.
-        The fix isn't a better leaderboard — it's <span class="kit-gradient-text font-semibold">your own</span>.
+      <p class="mt-10 max-w-3xl border-l-2 border-lime-300 pl-5 text-lg font-medium leading-8 text-stone-200">
+        Shortlist models with public benchmarks, then test the finalists on your own tasks.
       </p>
     </section>
 
-    <!-- Value -->
-    <section class="py-16 md:py-20">
-      <p class="kit-eyebrow">The value</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-4">A company benchmark, scaffolded — not built from scratch</h2>
-      <p class="max-w-2xl text-violet-200/75 mb-10">
-        10x-bench-kit is the template our own <a href="/" class="text-violet-300 underline decoration-violet-500/40 hover:text-violet-200">10xBench</a> methodology grew into:
-        everything a private benchmark instance needs, minus the months of harness plumbing.
+    <section class="border-t border-stone-800 py-20 md:py-28">
+      <p class="kit-eyebrow">What's included</p>
+      <h2 class="max-w-3xl text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Start with the benchmark infrastructure in place</h2>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
+        We built 10x-bench-kit from the infrastructure behind <a href="/" class="text-lime-300 underline decoration-lime-300/30 hover:text-lime-200">10xBench</a>.
+        The template includes the runner, evaluation flow, versioning and CI setup. Add tasks and criteria from your own work.
       </p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="mt-12 grid gap-px overflow-hidden rounded-lg border border-stone-800 bg-stone-800 md:grid-cols-2 lg:grid-cols-3">
         {values.map((v) => (
-          <div class="kit-card rounded-xl p-6">
-            <h3 class="text-base font-semibold text-violet-100 mb-2">{v.title}</h3>
-            <p class="text-sm leading-6 text-violet-200/70" set:html={v.body} />
-          </div>
+          <article class="bg-[#101513] p-6 md:p-7">
+            <h3 class="text-base font-semibold text-stone-100">{v.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-stone-400" set:html={v.body} />
+          </article>
         ))}
       </div>
     </section>
 
-    <!-- Lifecycle -->
-    <section id="how-it-works" class="py-16 md:py-20 scroll-mt-24">
+    <section id="how-it-works" class="scroll-mt-24 border-t border-stone-800 py-20 md:py-28">
       <p class="kit-eyebrow">How it works</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-4">The life of a single trial</h2>
-      <p class="max-w-2xl text-violet-200/75 mb-12">
-        One trial = one matrix job of <span class="font-mono text-sm text-fuchsia-300">model × task × trial</span> in a
-        disposable container. The agent and the evaluation never share a moment in time.
+      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">What happens in each trial</h2>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
+        Each <span class="font-mono text-sm text-lime-300">model × task × trial</span> combination runs as a separate
+        matrix job. Evaluation assets are added only after the agent has finished its work.
       </p>
-      <ol class="relative border-l border-violet-500/25 ml-3 space-y-10">
+      <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         {lifecycle.map((s) => (
-          <li class="pl-8 relative">
-            <span class="absolute -left-[13px] top-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-violet-500/40 bg-[#12082a] text-[10px] font-mono text-fuchsia-300">{s.step}</span>
-            <h3 class="text-lg font-semibold text-violet-100 mb-1">{s.title}</h3>
-            <p class="text-sm leading-6 text-violet-200/70 max-w-xl">{s.body}</p>
+          <li class="kit-step rounded-lg border border-stone-800 p-5">
+            <span class="font-mono text-xs text-lime-300">{s.step}</span>
+            <h3 class="mt-8 text-base font-semibold text-stone-100">{s.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-stone-400" set:html={s.body} />
           </li>
         ))}
       </ol>
     </section>
 
-    <!-- Ownership zones -->
-    <section class="py-16 md:py-20">
-      <p class="kit-eyebrow">Ownership</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-4">Three zones, three contracts</h2>
-      <p class="max-w-2xl text-violet-200/75 mb-10">
-        A template you can keep updating is only useful if updates can't trample your work.
-        Every path in the instance belongs to exactly one zone with a fixed contract on <code>bench-kit update</code>:
+    <section class="border-t border-stone-800 py-20 md:py-28">
+      <p class="kit-eyebrow">Quickstart</p>
+      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Five steps to your first run</h2>
+      <ol class="mt-12 grid overflow-hidden rounded-lg border border-stone-800 bg-stone-800 lg:grid-cols-5 lg:gap-px">
+        {quickstart.map((item) => (
+          <li class="border-b border-stone-800 bg-[#101513] p-6 last:border-b-0 lg:min-h-64 lg:border-b-0">
+            <span class="font-mono text-xs text-lime-300">{item.step}</span>
+            <h3 class="mt-7 text-base font-semibold text-stone-100">{item.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-stone-400">{item.body}</p>
+            {item.code && <code class="mt-5 block overflow-x-auto whitespace-nowrap">{item.code}</code>}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="border-t border-stone-800 py-20 md:py-28">
+      <p class="kit-eyebrow">Updates</p>
+      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Engine separated from execution</h2>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
+        The instance separates kit-owned files, shared skills and company-owned evaluation assets.
+        <code>bench-kit update</code> handles each group differently:
       </p>
-      <div class="kit-card rounded-xl overflow-hidden">
+      <div class="mt-12 overflow-hidden rounded-lg border border-stone-800 bg-[#101513]">
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-violet-500/25 text-left">
-                <th class="px-6 py-4 font-semibold text-violet-200">Zone</th>
-                <th class="px-6 py-4 font-semibold text-violet-200">Owner</th>
-                <th class="px-6 py-4 font-semibold text-violet-200">On update</th>
+              <tr class="border-b border-stone-800 bg-white/[0.02] text-left">
+                <th class="px-6 py-4 font-semibold text-stone-300">Zone</th>
+                <th class="px-6 py-4 font-semibold text-stone-300">Owner</th>
+                <th class="px-6 py-4 font-semibold text-stone-300">On update</th>
               </tr>
             </thead>
-            <tbody class="text-violet-200/75">
-              <tr class="border-b border-violet-500/15">
-                <td class="px-6 py-4 font-mono text-fuchsia-300 whitespace-nowrap">.bench-kit/</td>
+            <tbody class="text-stone-400">
+              <tr class="border-b border-stone-800">
+                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">.bench-kit/</td>
                 <td class="px-6 py-4">the kit</td>
-                <td class="px-6 py-4">replaced atomically — runner, docker, workflows always current</td>
+                <td class="px-6 py-4">replaced atomically with the updated runner, container and workflows</td>
               </tr>
-              <tr class="border-b border-violet-500/15">
-                <td class="px-6 py-4 font-mono text-fuchsia-300 whitespace-nowrap">.agents/skills/</td>
+              <tr class="border-b border-stone-800">
+                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">.agents/skills/</td>
                 <td class="px-6 py-4">shared</td>
-                <td class="px-6 py-4">proposed as a diff — your company decides what to accept</td>
+                <td class="px-6 py-4">proposed as a diff for your team to review</td>
               </tr>
               <tr>
-                <td class="px-6 py-4 font-mono text-fuchsia-300 whitespace-nowrap">tasks/ · evaluation-pool/ · bench.config.yaml</td>
+                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">tasks/ · evaluation-pool/ · bench.config.yaml</td>
                 <td class="px-6 py-4">your company</td>
-                <td class="px-6 py-4">untouchable — the kit never writes here</td>
+                <td class="px-6 py-4">left unchanged by the updater</td>
               </tr>
             </tbody>
           </table>
@@ -278,106 +310,70 @@ const quickstart = [
       </div>
     </section>
 
-    <!-- Requirements -->
-    <section class="py-16 md:py-20">
-      <p class="kit-eyebrow">What you need</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-10">The full checklist fits on one screen</h2>
-      <div class="grid md:grid-cols-2 gap-x-10 gap-y-8">
+    <section class="grid gap-12 border-t border-stone-800 py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="kit-eyebrow">What you need</p>
+        <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Before you run the kit</h2>
+        <p class="mt-5 max-w-md text-lg leading-8 text-stone-400">Prepare the repository, credentials and evaluation inputs once. The validation command checks them before the first run.</p>
+      </div>
+      <div class="grid gap-x-10 gap-y-8 md:grid-cols-2">
         {requirements.map((r) => (
           <div class="flex gap-4">
-            <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-500/15 border border-violet-500/30 text-fuchsia-300 text-xs" aria-hidden="true">✦</span>
+            <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-lime-300/40 bg-lime-300/10 text-[10px] text-lime-300" aria-hidden="true">✓</span>
             <div>
-              <h3 class="font-semibold text-violet-100 mb-1">{r.title}</h3>
-              <p class="text-sm leading-6 text-violet-200/70">{r.body}</p>
+              <h3 class="font-semibold text-stone-100">{r.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-stone-400" set:html={r.body} />
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Quickstart -->
-    <section class="py-16 md:py-20">
-      <p class="kit-eyebrow">Quickstart</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-violet-50 mb-10">Five steps to your first run</h2>
-      <div class="kit-terminal rounded-xl border border-violet-500/25 overflow-hidden">
-        <div class="p-6 font-mono text-sm leading-8 overflow-x-auto">
-          {quickstart.map((q) => (
-            <p class="whitespace-nowrap">
-              {q.cmd.startsWith('#')
-                ? <span class="text-violet-500/70">{q.cmd}</span>
-                : <><span class="text-fuchsia-400">$ </span><span class="text-violet-100">{q.cmd}</span></>}
-              <span class="text-violet-400/50 text-xs ml-4 hidden md:inline">— {q.note}</span>
-            </p>
-          ))}
-        </div>
+    <section class="mb-12 flex flex-col gap-8 rounded-xl border border-stone-700 bg-[#141a17] p-8 md:mb-20 md:flex-row md:items-center md:justify-between md:p-12">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-4xl">Run your first comparison</h2>
+        <p class="mt-3 max-w-xl text-base leading-7 text-stone-400">Create an instance, add one representative task and compare the models your team is considering.</p>
       </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-20 md:py-28 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        <span class="kit-gradient-text">Own your benchmark.</span>
-      </h2>
-      <p class="max-w-xl mx-auto text-violet-200/75 mb-10">
-        Stop debating leaderboard screenshots. Scaffold an instance, author your first task,
-        and let the numbers come from your own repos.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="https://github.com/przeprogramowani/10x-bench-kit"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="kit-btn-primary inline-flex items-center gap-2 rounded-lg px-8 py-3.5 font-semibold text-white"
-        >
-          Get 10x-bench-kit
-        </a>
-        <a
-          href="/"
-          class="inline-flex items-center gap-2 rounded-lg border border-violet-500/40 bg-violet-500/5 px-8 py-3.5 font-semibold text-violet-200 hover:bg-violet-500/15 hover:text-violet-100 transition-colors"
-        >
-          See 10xBench results
-        </a>
+      <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
+        <a href="https://github.com/przeprogramowani/10x-bench-kit" target="_blank" rel="noopener noreferrer" class="kit-btn-primary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">Get the kit</a>
+        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="kit-btn-secondary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">10xDevs &#8599;</a>
       </div>
-      <p class="mt-10 text-xs text-violet-400/60">
-        Harness: OpenCode (exclusively, pinned) · Instances are created with
-        <a href="https://github.com/przeprogramowani/10x-cli" target="_blank" rel="noopener noreferrer" class="underline decoration-violet-500/40 hover:text-violet-300">10xCLI</a>
-      </p>
     </section>
   </div>
 </Layout>
 
 <style is:global>
-  /* Deep-space theme for /kit — overrides the site-wide slate palette */
   html,
   body {
-    background-color: #060213 !important;
-    color: #ddd6fe !important;
+    background-color: #0b0f0e !important;
+    color: #e7e5e4 !important;
   }
 
   main {
     background-color: transparent !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
     position: relative;
   }
 
   nav,
   #mobile-menu,
   footer {
-    background-color: rgba(9, 4, 26, 0.85) !important;
-    border-color: rgba(139, 92, 246, 0.18) !important;
+    background-color: rgba(11, 15, 14, 0.94) !important;
+    border-color: rgba(120, 113, 108, 0.25) !important;
     position: relative;
     z-index: 20;
   }
 
   .kit-page code {
-    background-color: rgba(139, 92, 246, 0.15);
-    color: #d8b4fe;
+    background-color: rgba(190, 242, 100, 0.09);
+    color: #bef264;
     border-radius: 0.25rem;
     padding: 0.15em 0.4em;
     font-size: 0.85em;
   }
 
-  /* Backdrop layers */
-  .kit-space {
+  .kit-backdrop {
     position: fixed;
     inset: 0;
     z-index: 0;
@@ -385,127 +381,124 @@ const quickstart = [
     pointer-events: none;
   }
 
-  .kit-nebula {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(90px);
-  }
-
-  .kit-nebula-1 {
-    top: -15%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70vw;
-    height: 55vh;
-    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.28), transparent 70%);
-  }
-
-  .kit-nebula-2 {
-    bottom: -20%;
-    left: -10%;
-    width: 55vw;
-    height: 50vh;
-    background: radial-gradient(ellipse at center, rgba(192, 38, 211, 0.14), transparent 70%);
-  }
-
-  .kit-nebula-3 {
-    top: 30%;
-    right: -15%;
-    width: 45vw;
-    height: 45vh;
-    background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.14), transparent 70%);
-  }
-
-  .kit-stars {
+  .kit-grid {
     position: absolute;
     inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 25px 35px, rgba(255, 255, 255, 0.9), transparent),
-      radial-gradient(1px 1px at 130px 180px, rgba(216, 180, 254, 0.8), transparent),
-      radial-gradient(1.5px 1.5px at 220px 70px, rgba(255, 255, 255, 0.7), transparent),
-      radial-gradient(1px 1px at 320px 230px, rgba(196, 181, 253, 0.7), transparent),
-      radial-gradient(1px 1px at 400px 120px, rgba(255, 255, 255, 0.55), transparent),
-      radial-gradient(1px 1px at 60px 260px, rgba(232, 121, 249, 0.5), transparent);
-    background-size: 460px 320px;
-    background-repeat: repeat;
-    opacity: 0.7;
+    background-image: linear-gradient(rgba(231, 229, 228, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(231, 229, 228, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 38%);
   }
 
-  .kit-stars-2 {
-    background-image:
-      radial-gradient(1px 1px at 80px 60px, rgba(255, 255, 255, 0.6), transparent),
-      radial-gradient(1.5px 1.5px at 260px 190px, rgba(216, 180, 254, 0.6), transparent),
-      radial-gradient(1px 1px at 170px 300px, rgba(255, 255, 255, 0.45), transparent),
-      radial-gradient(1px 1px at 350px 40px, rgba(196, 181, 253, 0.5), transparent);
-    background-size: 620px 420px;
-    opacity: 0.5;
-    animation: kit-twinkle 7s ease-in-out infinite alternate;
+  .kit-glow {
+    position: absolute;
+    top: -28rem;
+    left: 50%;
+    height: 48rem;
+    width: 72rem;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    background: rgba(52, 211, 153, 0.09);
+    filter: blur(110px);
   }
 
-  @keyframes kit-twinkle {
-    from { opacity: 0.25; }
-    to { opacity: 0.6; }
+  .kit-accent-text {
+    color: #bef264;
   }
 
-  .kit-pulse {
-    animation: kit-pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes kit-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .kit-stars-2,
-    .kit-pulse {
-      animation: none;
-    }
-  }
-
-  /* Components */
-  .kit-gradient-text {
-    background: linear-gradient(100deg, #a78bfa 0%, #e879f9 55%, #c4b5fd 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .kit-badge {
+    align-items: center;
+    background: rgba(190, 242, 100, 0.06);
+    border: 1px solid rgba(190, 242, 100, 0.22);
+    border-radius: 9999px;
+    color: #d9f99d;
+    display: inline-flex;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    gap: 0.5rem;
+    letter-spacing: 0.06em;
+    padding: 0.45rem 0.75rem;
+    text-transform: uppercase;
   }
 
   .kit-eyebrow {
+    color: #a3e635;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    color: rgba(232, 121, 249, 0.85);
-    margin-bottom: 0.75rem;
   }
 
   .kit-card {
-    background: linear-gradient(160deg, rgba(46, 20, 90, 0.35), rgba(15, 7, 35, 0.55));
-    border: 1px solid rgba(139, 92, 246, 0.22);
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    background: #101513;
+    border: 1px solid rgba(120, 113, 108, 0.25);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
   }
 
   .kit-card:hover {
-    border-color: rgba(167, 139, 250, 0.5);
-    box-shadow: 0 0 32px rgba(124, 58, 237, 0.18);
-    transform: translateY(-2px);
+    background: #131a17;
+    border-color: rgba(190, 242, 100, 0.35);
+  }
+
+  .kit-proof-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.4rem 1.5rem;
+  }
+
+  .kit-proof-grid > div + div {
+    border-top: 1px solid rgb(41 37 36);
+  }
+
+  .kit-proof-grid strong {
+    color: #e7e5e4;
+    font-size: 0.875rem;
+  }
+
+  .kit-proof-grid span {
+    color: #78716c;
+    font-size: 0.75rem;
+  }
+
+  .kit-step {
+    background: rgba(16, 21, 19, 0.7);
   }
 
   .kit-terminal {
-    background: rgba(10, 4, 26, 0.8);
-    box-shadow: 0 0 60px rgba(124, 58, 237, 0.12);
-    backdrop-filter: blur(4px);
+    background: rgba(13, 18, 16, 0.94);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
   }
 
   .kit-btn-primary {
-    background: linear-gradient(100deg, #7c3aed, #a21caf);
-    box-shadow: 0 0 24px rgba(139, 92, 246, 0.35);
-    transition: box-shadow 0.25s ease, filter 0.25s ease;
+    background: #bef264;
+    color: #17200e;
+    transition: background-color 0.2s ease;
   }
 
   .kit-btn-primary:hover {
-    filter: brightness(1.12);
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.55);
+    background: #d9f99d;
+  }
+
+  .kit-btn-secondary {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(168, 162, 158, 0.35);
+    color: #d6d3d1;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .kit-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(214, 211, 209, 0.55);
+  }
+
+  @media (min-width: 640px) {
+    .kit-proof-grid > div + div {
+      border-left: 1px solid rgb(41 37 36);
+      border-top: 0;
+    }
   }
 </style>
