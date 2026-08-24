@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import { stats, team } from '../data/content';
+---
+<BaseLayout title="O nas — Przeprogramowani.pl" description="Poznaj Przemka i Marcina, założycieli Przeprogramowanych.">
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <p class="mono-label mono-label--light">Strona główna / O nas</p>
+      <h1 class="display-heading">Łączymy świat<br /><span>kodu, ludzi</span><br />i rozwoju.</h1>
+      <p class="page-hero__intro">Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Patrzymy szerzej, żeby pomagać Ci budować lepsze rzeczy.</p>
+    </div>
+  </section>
+  <section class="page-body">
+    <div class="container">
+      <div class="team-grid">
+        {team.map((person) => (
+          <article class="person-card">
+            <div class="person-card__avatar" aria-hidden="true">{person.initials}</div>
+            <div>
+              <p class="person-card__role">{person.role}</p>
+              <h2>{person.name}</h2>
+              <p>{person.text}</p>
+              <a class="person-card__link" href={person.linkedin}>LinkedIn ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="about-copy">
+        <div><p class="eyebrow">Nasza perspektywa</p></div>
+        <div class="about-copy__text">
+          <h2>Witaj na <em>Przeprogramowanych.</em></h2>
+          <p>Nie chcemy dokładać kolejnego kursu do listy rzeczy do obejrzenia. Tworzymy doświadczenia edukacyjne, które zmieniają sposób, w jaki pracujesz i myślisz o swojej pracy.</p>
+          <p>Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju. Zawsze z szacunkiem do Twojego czasu i z ciekawością tego, co dopiero nadejdzie.</p>
+        </div>
+      </div>
+      <ul class="about-list" style="margin-top: 86px">
+        <li><span class="about-list__number">01</span><div><strong>Technologia bez zadęcia</strong><p>Rozbieramy trudne tematy na części, ale nie upraszczamy ich do banałów.</p></div></li>
+        <li><span class="about-list__number">02</span><div><strong>Doświadczenie z pierwszej ręki</strong><p>Przekazujemy wiedzę z projektów komercyjnych, globalnych zespołów i własnych eksperymentów.</p></div></li>
+        <li><span class="about-list__number">03</span><div><strong>Rozwój, który ma kontekst</strong><p>Dobry kod to dopiero początek. Liczy się też komunikacja, decyzje i odpowiedzialność.</p></div></li>
+      </ul>
+    </div>
+  </section>
+  <section class="stats" aria-label="Przeprogramowani w liczbach">
+    <div class="container stats__grid">
+      {stats.map((stat) => <div class="stat"><strong class="stat__value">{stat.value}</strong><span class="stat__label">{stat.label}</span></div>)}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

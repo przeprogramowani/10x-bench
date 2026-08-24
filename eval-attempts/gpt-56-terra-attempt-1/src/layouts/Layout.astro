@@ -1,0 +1,81 @@
+---
+import "../styles/global.css";
+import MobileMenu from "../components/MobileMenu";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Przeprogramowani | Szersze spojrzenie na programowanie",
+  description = "Programy edukacyjne, podcasty i materiały dla nowoczesnych programistów.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101111" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23c7ff3d'/%3E%3Cpath d='M17 18 5 32l12 14M47 18l12 14-12 14M37 12 27 52' fill='none' stroke='%23101111' stroke-width='5'/%3E%3C/svg%3E" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#101111]/90 backdrop-blur-xl">
+      <div class="relative mx-auto flex h-[73px] max-w-[1440px] items-center justify-between px-5 md:px-8 lg:px-12">
+        <a href="/" aria-label="Przeprogramowani - strona główna" class="flex items-center gap-3 font-display text-base font-bold tracking-[-0.06em] sm:text-lg">
+          <span class="grid h-8 w-8 place-items-center bg-[#c7ff3d] text-sm font-extrabold text-[#101111]">/&gt;</span>
+          <span>Przeprogramowani</span>
+        </a>
+        <nav aria-label="Główna nawigacja" class="hidden items-center gap-7 text-sm font-semibold text-[#c6c6c1] md:flex">
+          <a class="transition-colors hover:text-[#c7ff3d]" href="/o-nas">O nas</a>
+          <a class="transition-colors hover:text-[#c7ff3d]" href="/podcast">Podcast</a>
+          <a class="transition-colors hover:text-[#c7ff3d]" href="/youtube">YouTube</a>
+          <a class="transition-colors hover:text-[#c7ff3d]" href="/#kursy">Kursy</a>
+        </nav>
+        <a class="hidden border border-[#c7ff3d] px-4 py-2 text-xs font-extrabold text-[#c7ff3d] transition-colors hover:bg-[#c7ff3d] hover:text-[#101111] md:block" href="https://10xdevs.pl">
+          10xDevs 4.0
+        </a>
+        <MobileMenu client:load />
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="border-t border-white/10 bg-[#0a0b0b]">
+      <div class="mx-auto grid max-w-[1440px] gap-12 px-5 py-12 md:grid-cols-[1.25fr_1fr_1fr] md:px-8 lg:px-12 lg:py-16">
+        <div>
+          <a href="/" class="flex items-center gap-3 font-display text-lg font-bold tracking-[-0.06em]">
+            <span class="grid h-8 w-8 place-items-center bg-[#c7ff3d] text-sm font-extrabold text-[#101111]">/&gt;</span>
+            Przeprogramowani
+          </a>
+          <p class="mt-5 max-w-sm text-sm leading-6 text-[#a2a39c]">Szersze spojrzenie na programowanie. Wiedza, która pomaga pracować świadomie w epoce AI.</p>
+        </div>
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#777870]">Odkrywaj</p>
+          <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-[#d1d2cb]">
+            <a href="/o-nas" class="hover:text-[#c7ff3d]">O nas</a>
+            <a href="/podcast" class="hover:text-[#c7ff3d]">Podcast</a>
+            <a href="/youtube" class="hover:text-[#c7ff3d]">YouTube</a>
+            <a href="https://przeprogramowani.substack.com" class="hover:text-[#c7ff3d]">Newsletter</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#777870]">Programy</p>
+          <div class="mt-5 flex flex-col gap-3 text-sm font-semibold text-[#d1d2cb]">
+            <a href="https://10xdevs.pl" class="hover:text-[#c7ff3d]">10xDevs</a>
+            <a href="https://www.opanujfrontend.pl" class="hover:text-[#c7ff3d]">Opanuj Frontend</a>
+            <a href="https://www.opanujtypescript.pl" class="hover:text-[#c7ff3d]">Opanuj TypeScript</a>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto flex max-w-[1440px] flex-col gap-3 border-t border-white/10 px-5 py-5 text-xs text-[#777870] sm:flex-row sm:justify-between md:px-8 lg:px-12">
+        <p>© {new Date().getFullYear()} Przeprogramowani.pl</p>
+        <a href="mailto:kontakt@przeprogramowani.pl" class="hover:text-[#c7ff3d]">kontakt@przeprogramowani.pl</a>
+      </div>
+    </footer>
+  </body>
+</html>

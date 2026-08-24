@@ -1,0 +1,28 @@
+---
+interface Props {
+  name: "arrow" | "play" | "menu" | "spark" | "sound" | "close";
+  size?: number;
+  stroke?: number;
+}
+
+const { name, size = 20, stroke = 1.8 } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={stroke}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {name === "arrow" && <><path d="M5 12h13" /><path d="m13 6 6 6-6 6" /></>}
+  {name === "play" && <path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none" />}
+  {name === "menu" && <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>}
+  {name === "spark" && <><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z" /><path d="m19 16 .7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16Z" /></>}
+  {name === "sound" && <><path d="M4 12h2" /><path d="M8 8v8" /><path d="M12 5v14" /><path d="M16 8v8" /><path d="M20 10v4" /></>}
+  {name === "close" && <><path d="m6 6 12 12" /><path d="m18 6-12 12" /></>}
+</svg>

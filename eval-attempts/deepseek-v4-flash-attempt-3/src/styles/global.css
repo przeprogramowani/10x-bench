@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-900;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-600 mt-3 max-w-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl
+           hover:bg-brand-700 transition-all duration-200 shadow-lg shadow-brand-600/25
+           hover:shadow-brand-600/40;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-200 text-gray-700 font-semibold rounded-xl
+           hover:border-brand-500 hover:text-brand-600 transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl
+           hover:bg-accent-600 transition-all duration-200 shadow-lg shadow-accent-500/25;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent-500;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md
+           transition-all duration-300;
+  }
+}

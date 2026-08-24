@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses, podcastEpisodes, youtubeVideos } from '../data/content';
+
+const ytImage = (id: string) => `https://i3.ytimg.com/vi/${id}/maxresdefault.jpg`;
+---
+<Layout
+  title="Przeprogramowani — Szersze spojrzenie na programowanie"
+  description="Rozwijaj się szerzej: podcasty, YouTube i praktyczne programy edukacyjne dla ambitnych programistów."
+>
+  <section class="hero-section" aria-labelledby="hero-title">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-copy page-width">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> PRZEPROGRAMOWANI / OD 2019</p>
+      <h1 id="hero-title">Programowanie<br /><em>zaczyna się szerzej.</em></h1>
+      <p class="hero-lead">Łączymy kod, kontekst i rozwój. Tworzymy treści oraz programy, które pomagają programistom podejmować lepsze decyzje - w pracy i poza nią.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#kursy">Zobacz programy <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="/o-nas">Poznaj nas <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-note" aria-hidden="true">
+      <span>SCROLL TO EXPLORE</span>
+      <span class="hero-note-line"></span>
+    </div>
+    <div class="hero-side page-width">
+      <div class="hero-index">01 <span>/ 04</span></div>
+      <div class="hero-10x-card">
+        <div class="hero-10x-orbit orbit-one"></div>
+        <div class="hero-10x-orbit orbit-two"></div>
+        <div class="hero-10x-topline"><span>NOWOŚĆ / PROGRAM</span><span>2026</span></div>
+        <div class="hero-10x-content">
+          <p class="hero-10x-kicker">10xDevs</p>
+          <h2>Programuj<br /><strong>z AI.</strong></h2>
+          <p>Techniki i narzędzia, które pozwalają świadomie stosować AI w całym cyklu wytwarzania oprogramowania.</p>
+          <a class="round-arrow" href="https://10xdevs.pl" aria-label="Poznaj 10xDevs">↗</a>
+        </div>
+        <div class="hero-10x-code">&lt;build /&gt; <span>faster</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-section page-width section-pad" aria-labelledby="intro-title">
+    <div class="section-kicker"><span>01</span><span>Nasza perspektywa</span></div>
+    <div class="intro-content">
+      <h2 id="intro-title">Nie uczymy<br /><em>samego kodu.</em></h2>
+      <div class="intro-text">
+        <p>Najlepsi programiści patrzą szerzej - na architekturę, biznes, ludzi i siebie. Dlatego tworzymy miejsce, w którym technologia spotyka się z rozwojem osobistym.</p>
+        <a class="text-link text-link-light" href="/o-nas">Dowiedz się, co robimy <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><strong>7</strong><span>lat na rynku<br />edukacji tech</span></div>
+      <div class="stat-item"><strong>15k<span>+</span></strong><span>osób w naszej<br />społeczności</span></div>
+      <div class="stat-item"><strong>3–2–1</strong><span>format naszego<br />newslettera</span></div>
+      <div class="stat-item stat-item-note"><span>Wiedza, która<br />zostaje na dłużej.</span><span class="mini-mark">✳</span></div>
+    </div>
+  </section>
+
+  <section id="kursy" class="courses-section section-pad" aria-labelledby="courses-title">
+    <div class="page-width">
+      <div class="section-heading section-heading-dark">
+        <div><p class="section-kicker"><span>02</span><span>Programy edukacyjne</span></p><h2 id="courses-title">Wybierz swój<br /><em>następny krok.</em></h2></div>
+        <p>Praktyczne programy stworzone przez ludzi, którzy codziennie budują i utrzymują produkty na dużą skalę.</p>
+      </div>
+      <div class="course-grid">
+        {courses.map((course) => (
+          <article class:list={["course-card", `course-${course.tone}`]}>
+            <div class="course-card-top"><span>{course.number}</span><span>{course.tag}</span></div>
+            <h3>{course.title.split('\n').map((line) => <>{line}<br /></>)}</h3>
+            <p>{course.description}</p>
+            <ul>
+              {course.points.map((point) => <li><span>+</span>{point}</li>)}
+            </ul>
+            <a class="card-arrow" href={course.href}>Poznaj program <span aria-hidden="true">↗</span></a>
+            <div class="course-decoration" aria-hidden="true">{course.tone === 'coral' ? 'F' : 'TS'}</div>
+          </article>
+        ))}
+        <article class="course-aside">
+          <p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> WKRÓTCE</p>
+          <h3>Wiedza<br />bez <em>szumu.</em></h3>
+          <p>Dołącz do newslettera i w każdy piątek dostawaj 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus.</p>
+          <a class="text-link" href="https://przeprogramowani.substack.com">Przeprogramowany newsletter <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="media-section page-width section-pad" aria-labelledby="media-title">
+    <div class="section-heading">
+      <div><p class="section-kicker"><span>03</span><span>Posłuchaj i zobacz</span></p><h2 id="media-title">Treści, które<br /><em>otwierają głowę.</em></h2></div>
+      <p>Technologia zmienia się szybko. Dobry kontekst pozwala nadążyć bez gonienia za każdym trendem.</p>
+    </div>
+    <div class="media-grid">
+      <article class="podcast-feature">
+        <div class="podcast-feature-art"><span class="art-label">PODCAST / 118</span><span class="art-big">AI<br /><i>in context.</i></span><span class="art-wave">~ ~ ~ ~ ~ ~</span></div>
+        <div class="podcast-feature-body">
+          <div class="card-meta"><span>OPANUJ.AI PODCAST</span><span>{podcastEpisodes[0].duration}</span></div>
+          <h3>{podcastEpisodes[0].title}</h3>
+          <p>{podcastEpisodes[0].subtitle}</p>
+          <a class="text-link" href={podcastEpisodes[0].href}>Posłuchaj odcinka <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+      <div class="youtube-preview">
+        <div class="preview-heading"><span class="youtube-icon">▶</span><div><p class="card-meta">NAJNOWSZE NA YOUTUBE</p><h3>Wideo z szerszą<br /><em>perspektywą.</em></h3></div><a class="round-arrow round-arrow-small" href="/youtube" aria-label="Zobacz wszystkie filmy">↗</a></div>
+        <div class="video-mini-list">
+          {youtubeVideos.slice(0, 3).map((video, index) => (
+            <a class="video-mini" href={video.href}>
+              <div class="video-mini-image"><img src={ytImage(video.id)} alt="" loading="lazy" /><span class="play-icon">▶</span></div>
+              <div><span class="video-number">0{index + 1}</span><h4>{video.title}</h4><span class="video-category">{video.category}</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="media-footer"><span>Masz ochotę na więcej?</span><a class="text-link" href="/podcast">Wszystkie podcasty <span aria-hidden="true">↗</span></a><a class="text-link" href="/youtube">Cały kanał YouTube <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="newsletter-section section-pad" aria-labelledby="newsletter-title">
+    <div class="newsletter-glow" aria-hidden="true"></div>
+    <div class="page-width newsletter-inner">
+      <div class="newsletter-mark" aria-hidden="true">✳</div>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> CO PIĄTEK / BEZPŁATNIE</p>
+      <h2 id="newsletter-title">Zostań<br /><em>przeprogramowany.</em></h2>
+      <p>Najciekawsze rzeczy z technologii, AI i rozwoju osobistego. Bez spamu. Zawsze z kontekstem.</p>
+      <a class="button button-lime" href="https://przeprogramowani.substack.com">Zapisz się do newslettera <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="trusted-section page-width section-pad" aria-label="Zaufali nam">
+    <div class="section-kicker"><span>04</span><span>Współpraca</span></div>
+    <div class="trusted-layout"><h2>Zaufali<br /><em>nam.</em></h2><div class="trusted-copy"><p>Od lat dzielimy się wiedzą także w zespołach, które tworzą produkty używane przez miliony ludzi.</p><a class="text-link text-link-light" href="mailto:kontakt@przeprogramowani.pl">Nawiąż współpracę <span aria-hidden="true">↗</span></a></div></div>
+    <div class="logo-cloud"><span>Huuuge Games</span><span>smartrecruiters</span><span>Future Processing</span><span>Callstack</span><span>edrone</span><span>xfive</span><span>Euvic</span><span>Autodesk</span></div>
+  </section>
+</Layout>

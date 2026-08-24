@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  label: string;
+  image: string;
+  href: string;
+  date?: string;
+  duration?: string;
+  description?: string;
+  large?: boolean;
+}
+
+const { title, label, image, href, date, duration, description, large = false } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noreferrer" class:list={['group block', large && 'md:col-span-2']}>
+  <div class:list={['relative overflow-hidden rounded-[22px] bg-ink', large ? 'aspect-[16/8]' : 'aspect-[16/10]']}>
+    <img src={image} alt="" loading="lazy" class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100" />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+    <div class="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 text-paper">
+      <span class="rounded-full bg-paper/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-ink">{label}</span>
+      {duration && <span class="rounded-full bg-ink/70 px-2.5 py-1.5 text-[10px] font-semibold backdrop-blur-sm">{duration}</span>}
+    </div>
+  </div>
+  <div class="mt-4 flex items-start justify-between gap-4">
+    <div>
+      <h3 class:list={['display font-semibold leading-[1.05] tracking-[-0.055em] group-hover:underline group-hover:decoration-ink/20 group-hover:underline-offset-4', large ? 'text-2xl md:text-3xl' : 'text-xl']}>{title}</h3>
+      {description && <p class="mt-2 max-w-[500px] text-sm leading-6 text-ink/55">{description}</p>}
+    </div>
+    {date && <span class="shrink-0 pt-1 text-[11px] font-medium text-ink/40">{date}</span>}
+  </div>
+</a>

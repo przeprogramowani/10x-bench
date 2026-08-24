@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { episodes } from "../data/site";
+---
+
+<BaseLayout title="Podcast — Przeprogramowani" description="Najnowsze odcinki podcastów Przeprogramowani i Opanuj.AI.">
+  <section class="border-b-2 border-ink bg-ink text-paper">
+    <div class="mx-auto grid max-w-[1400px] gap-10 px-5 py-16 md:px-8 lg:grid-cols-[1fr_.75fr] lg:items-end lg:py-24">
+      <div>
+        <p class="eyebrow text-signal">Podcast / odcinki i rozmowy</p>
+        <h1 class="mt-5 text-5xl font-bold leading-[0.92] tracking-[-0.07em] sm:text-7xl">Długie rozmowy.<br /><span class="text-signal">Krótka droga</span><br />do sedna.</h1>
+      </div>
+      <p class="max-w-md text-lg leading-relaxed text-paper/70">O technologii, AI, jakości pracy i karierze. Bez robienia z każdego tematu piętnastosekundowego skrótu.</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
+    <div class="grid overflow-hidden border-2 border-ink lg:grid-cols-[.92fr_1.08fr]">
+      <div class="relative min-h-[340px] overflow-hidden bg-signal p-7 text-ink sm:p-10">
+        <span class="eyebrow">Najnowszy odcinek / Opanuj.AI</span>
+        <div class="absolute -bottom-12 -right-8 grid h-64 w-64 place-items-center rounded-full border-[28px] border-ink" aria-hidden="true">
+          <span class="font-mono text-4xl font-semibold tracking-[-0.12em]">AI</span>
+        </div>
+        <div class="absolute bottom-8 left-8 flex items-end gap-1" aria-hidden="true">
+          {[20, 45, 30, 62, 37, 76, 50, 28, 64, 41, 75].map((height) => <span class="w-1 bg-ink" style={`height:${height}px`}></span>)}
+        </div>
+      </div>
+      <div class="flex flex-col justify-between bg-paper p-7 sm:p-10">
+        <div>
+          <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.12em] text-ink/55">
+            <span>{episodes[0].series}</span>
+            <span>{episodes[0].duration}</span>
+          </div>
+          <h2 class="mt-8 max-w-xl text-3xl font-bold leading-[0.96] tracking-[-0.055em] sm:text-5xl">{episodes[0].title}</h2>
+          <p class="mt-5 max-w-xl leading-relaxed text-ink/70">{episodes[0].summary}</p>
+        </div>
+        <a href={episodes[0].href} target="_blank" rel="noreferrer" class="mt-10 inline-flex w-fit items-center gap-3 bg-ink px-5 py-3.5 font-mono text-xs font-semibold uppercase tracking-[0.1em] text-signal transition-transform hover:-translate-y-1">Odtwórz w Spotify <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t-2 border-ink bg-[#e9e4d9]">
+    <div class="mx-auto max-w-[1400px] px-5 py-16 md:px-8 lg:py-24">
+      <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="eyebrow text-ember">Kolejka odsłuchu</p>
+          <h2 class="mt-4 text-4xl font-bold leading-[0.95] tracking-[-0.06em] md:text-6xl">Najnowsze odcinki</h2>
+        </div>
+        <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer" class="link-arrow">Otwórz Spotify <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="mt-10 border-t-2 border-ink">
+        {episodes.map((episode) => (
+          <a href={episode.href} target="_blank" rel="noreferrer" class="group grid gap-4 border-b-2 border-ink py-6 transition-colors hover:bg-signal sm:grid-cols-[80px_1fr_auto] sm:items-center sm:px-4">
+            <span class="font-mono text-2xl font-semibold text-iris">{episode.number}</span>
+            <div>
+              <div class="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink/55">
+                <span>{episode.series}</span><span>{episode.duration}</span>
+              </div>
+              <h3 class="mt-2 text-xl font-bold leading-tight tracking-[-0.035em] sm:text-2xl">{episode.title}</h3>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-ink/65">{episode.summary}</p>
+            </div>
+            <span class="font-mono text-xs font-semibold uppercase tracking-[0.1em]">Słuchaj ↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-iris text-paper">
+    <div class="mx-auto grid max-w-[1400px] gap-8 px-5 py-14 md:px-8 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div>
+        <p class="eyebrow text-signal">Na twoich zasadach</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-[-0.05em] sm:text-4xl">Wybierz swoją ulubioną aplikację.</h2>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer" class="border border-paper/50 px-4 py-3 font-mono text-xs font-semibold uppercase tracking-[0.1em] hover:border-signal hover:text-signal">Spotify ↗</a>
+        <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer" class="border border-paper/50 px-4 py-3 font-mono text-xs font-semibold uppercase tracking-[0.1em] hover:border-signal hover:text-signal">Apple Podcasts ↗</a>
+        <a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noreferrer" class="border border-paper/50 px-4 py-3 font-mono text-xs font-semibold uppercase tracking-[0.1em] hover:border-signal hover:text-signal">RSS ↗</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

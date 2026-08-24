@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos } from '../data/content';
+---
+<BaseLayout title="YouTube — Przeprogramowani.pl" description="Najnowsze filmy Przeprogramowanych o programowaniu, AI i rozwoju.">
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <p class="mono-label mono-label--light">Strona główna / YouTube</p>
+      <h1 class="display-heading">Wiedza, którą<br /><span>możesz zobaczyć.</span></h1>
+      <p class="page-hero__intro">Darmowe materiały, techniczne deep-dive'y i rozmowy dla programistów, którzy stawiają na własny rozwój.</p>
+    </div>
+  </section>
+  <section class="page-media">
+    <div class="container">
+      <p class="mono-label mono-label--light">Najnowsze filmy / Przeprogramowani</p>
+      <div class="video-grid">
+        {videos.map((video, index) => <VideoCard video={video} eager={index === 0} />)}
+      </div>
+      <a class="button button--acid" style="margin-top: 55px" href="https://youtube.com/c/przeprogramowani/videos">Zobacz wszystkie filmy <span class="button__arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

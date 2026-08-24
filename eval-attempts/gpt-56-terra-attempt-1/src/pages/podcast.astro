@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { latestEpisodes } from "../data/content";
+---
+
+<Layout title="Podcast | Przeprogramowani" description="Najnowsze odcinki podcastów Przeprogramowani i Opanuj.AI.">
+  <section class="border-b border-white/10 bg-[#191c19]">
+    <div class="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[1fr_.78fr] lg:items-center lg:px-12">
+      <div>
+        <p class="eyebrow">Przeprogramowani / Podcast</p>
+        <h1 class="display mt-6 text-[clamp(3.7rem,8vw,8rem)] font-bold leading-[0.82]">Słuchaj<br /><span class="text-[#c7ff3d]">uważniej.</span></h1>
+        <p class="mt-8 max-w-xl text-base leading-7 text-[#b6b7b0]">Rozmowy o technologii, AI i programowaniu. Długie formaty dla głodnych wiedzy, bez klikalnych skrótów.</p>
+        <div class="mt-8 flex flex-wrap gap-3"><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="bg-[#c7ff3d] px-5 py-3 text-sm font-extrabold text-[#101111]">Słuchaj w Spotify ↗</a><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" class="border border-white/20 px-5 py-3 text-sm font-extrabold">Apple Podcasts ↗</a></div>
+      </div>
+      <div class="relative mx-auto w-full max-w-md rotate-2 bg-[#c7ff3d] p-5 text-[#101111] shadow-2xl sm:p-7">
+        <div class="flex aspect-square flex-col justify-between border border-[#101111]/25 p-5 sm:p-7">
+          <div class="flex justify-between text-[0.65rem] font-extrabold uppercase tracking-[0.14em]"><span>Podcast</span><span>001</span></div>
+          <div><p class="display text-[6rem] font-bold leading-none tracking-[-0.12em] sm:text-[8rem]">AI</p><p class="display mt-2 text-3xl font-bold leading-none sm:text-4xl">Opanuj.<br />Słuchaj.</p></div>
+          <div class="flex items-end justify-between"><span class="text-xs font-bold">z Przeprogramowanymi</span><span class="grid h-11 w-11 place-items-center rounded-full bg-[#101111] text-xs text-[#c7ff3d]">▶</span></div>
+        </div>
+        <div class="absolute -bottom-3 -left-3 -z-10 h-full w-full border border-[#c7ff3d]/50"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1440px] px-5 py-20 md:px-8 md:py-28 lg:px-12">
+    <div class="flex flex-col justify-between gap-5 border-b border-white/10 pb-8 sm:flex-row sm:items-end"><div><p class="eyebrow">Ostatnie odcinki</p><h2 class="display mt-5 text-5xl font-bold leading-none sm:text-6xl">Opanuj.AI Podcast</h2></div><p class="text-sm text-[#969790]">Co miesiąc najważniejsze tematy z AI.</p></div>
+    <div class="divide-y divide-white/10">
+      {latestEpisodes.map((episode, index) => (
+        <article class="group grid gap-5 py-7 sm:grid-cols-[90px_1fr_auto] sm:items-center sm:py-9">
+          <p class="display text-4xl font-bold text-[#52534e]">0{index + 1}</p>
+          <div><p class="text-xs font-extrabold uppercase tracking-[0.12em] text-[#c7ff3d]">{episode.category}</p><h3 class="mt-2 max-w-2xl text-xl font-extrabold leading-7 sm:text-2xl">{episode.title}</h3><p class="mt-2 text-sm text-[#969790]">{episode.subtitle}</p></div>
+          <div class="flex items-center gap-5"><span class="text-xs font-bold text-[#969790]">{episode.duration}</span><a aria-label={`Odtwórz: ${episode.title}`} href={episode.url} target="_blank" rel="noreferrer" class="grid h-12 w-12 place-items-center rounded-full border border-white/20 text-sm transition-colors group-hover:border-[#c7ff3d] group-hover:bg-[#c7ff3d] group-hover:text-[#101111]">▶</a></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 bg-[#151716]"><div class="mx-auto grid max-w-[1440px] gap-6 px-5 py-16 md:grid-cols-2 md:px-8 lg:px-12"><div class="border border-white/10 p-6 sm:p-8"><p class="text-xs font-extrabold uppercase tracking-[0.13em] text-[#c7ff3d]">Dla głodnych wiedzy</p><h2 class="display mt-5 text-3xl font-bold leading-none">Przeprogramowani<br />ft. Gość</h2><p class="mt-5 max-w-sm text-sm leading-6 text-[#a2a39c]">Rozmowy z ludźmi, którzy projektują swoją technologiczną drogę po swojemu.</p><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="mt-7 inline-block border-b border-[#c7ff3d] pb-1 text-sm font-extrabold text-[#c7ff3d]">Otwórz serię →</a></div><div class="border border-white/10 p-6 sm:p-8"><p class="text-xs font-extrabold uppercase tracking-[0.13em] text-[#c7ff3d]">W każdy piątek</p><h2 class="display mt-5 text-3xl font-bold leading-none">Przeprogramowany<br />Newsletter</h2><p class="mt-5 max-w-sm text-sm leading-6 text-[#a2a39c]">Trzy techniczne rekomendacje, dwie rozwojowe i jedna niespodzianka. Bez spamu.</p><a href="https://przeprogramowani.substack.com" class="mt-7 inline-block border-b border-[#c7ff3d] pb-1 text-sm font-extrabold text-[#c7ff3d]">Zapisz się →</a></div></div></section>
+</Layout>

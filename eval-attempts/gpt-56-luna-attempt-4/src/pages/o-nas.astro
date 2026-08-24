@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { people } from '../data/content';
+---
+<Layout title="O nas — Przeprogramowani" description="Poznaj Przeprogramowanych - miejsce, w którym programowanie spotyka się z rozwojem osobistym.">
+  <section class="inner-hero page-width">
+    <div class="inner-hero-bg" aria-hidden="true">ABOUT</div>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> O NAS / 01</p>
+    <h1>Łączymy świat<br /><em>programowania,</em><br />biznesu i rozwoju.</h1>
+    <p class="inner-hero-lead">Wierzymy, że najlepsi programiści patrzą szerzej - na architekturę, na biznes, na ludzi i na siebie.</p>
+  </section>
+
+  <section class="about-manifesto page-width section-pad">
+    <div class="section-kicker"><span>01</span><span>Nasza idea</span></div>
+    <div class="manifesto-grid"><h2>Nie musisz<br />wybierać między<br /><em>technologią</em><br />a rozwojem.</h2><div><p>Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu płaszczyznach.</p><p>Od technicznych deep-dive'ów po rozmowy o karierze, uczeniu się i świadomym korzystaniu z AI. Zależy nam na tym, żeby wiedza była użyteczna długo po zamknięciu karty w przeglądarce.</p><div class="manifesto-sign">Szersze spojrzenie <span>✳</span></div></div></div>
+  </section>
+
+  <section class="people-section section-pad" aria-labelledby="people-title">
+    <div class="page-width"><div class="section-heading"><div><p class="section-kicker"><span>02</span><span>Ludzie za projektem</span></p><h2 id="people-title">Poznaj<br /><em>Przeprogramowanych.</em></h2></div><p>Dwa różne spojrzenia. Wspólna ciekawość. Dziesiątki projektów komercyjnych, godzin rozmów i jeszcze więcej pytań.</p></div>
+      <div class="people-grid">{people.map((person, index) => <article class="person-card"><div class="person-image-wrap"><span class="person-index">0{index + 1}</span><img src={person.image} alt={person.name} loading="lazy" /></div><div class="person-body"><p class="card-meta">{person.role}</p><h3>{person.name}</h3><p>{person.bio}</p><a class="text-link text-link-light" href={person.href}>LinkedIn <span aria-hidden="true">↗</span></a></div></article>)}</div>
+    </div>
+  </section>
+
+  <section class="principles-section page-width section-pad" aria-labelledby="principles-title">
+    <div class="section-kicker"><span>03</span><span>Jak działamy</span></div>
+    <h2 id="principles-title">Trzy rzeczy,<br /><em>które są ważne.</em></h2>
+    <div class="principle-grid"><article><span>01</span><h3>Kontekst<br />przed hype'em.</h3><p>Nie gonimy za każdą premierą. Pokazujemy, co naprawdę zmienia się w pracy programisty i dlaczego.</p></article><article><span>02</span><h3>Praktyka<br />przed teorią.</h3><p>Każdy materiał ma prowadzić do lepszej decyzji, działającego rozwiązania albo nowego pytania.</p></article><article><span>03</span><h3>Rozwój<br />na serio.</h3><p>Technologia to narzędzie. Rozwijamy również sposób uczenia się, komunikacji i pracy w zespole.</p></article></div>
+  </section>
+
+  <section class="about-cta section-pad"><div class="page-width about-cta-inner"><span class="mini-mark">✳</span><h2>Masz pytanie,<br /><em>pomysł albo projekt?</em></h2><p>Porozmawiajmy. Najlepsze rzeczy zaczynają się od krótkiej wiadomości.</p><a class="button button-primary" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl <span aria-hidden="true">↗</span></a></div></section>
+</Layout>

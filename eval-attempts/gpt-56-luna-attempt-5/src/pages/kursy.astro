@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses } from '../data/content';
+---
+
+<Layout currentPath="/kursy" title="Programy edukacyjne — Przeprogramowani" description="Opanuj Frontend, Opanuj TypeScript i 10xDevs — programy edukacyjne Przeprogramowanych dla ambitnych programistów.">
+  <main>
+    <section class="grid-lines border-b hairline py-24 sm:py-32">
+      <div class="site-container grid gap-12 lg:grid-cols-[1fr_.75fr] lg:items-end lg:gap-24"><div><div class="eyebrow">Programy edukacyjne</div><h1 class="display mt-7 max-w-5xl text-[clamp(3.7rem,8vw,7.5rem)] font-medium leading-[.86]">Nie stój w miejscu. <span class="text-lime">Buduj lepiej.</span></h1></div><p class="max-w-md text-lg leading-8 text-mist">Trzy programy. Trzy różne punkty startu. Wspólny cel: więcej kompetencji, pewności i sprawczości w pracy.</p></div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32"><div class="mb-14 flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><div class="eyebrow">Wybierz swoją ścieżkę</div><h2 class="display mt-5 text-5xl leading-[.9] sm:text-6xl">Rzeczy, które<br />przyspieszają rozwój.</h2></div><p class="max-w-xs text-sm leading-6 text-mist">Każdy program powstał z doświadczeń pracy nad prawdziwymi produktami i zespołami.</p></div>
+      <div class="space-y-4">
+        {courses.map((course) => (
+          <article class={`group relative overflow-hidden border p-7 transition-transform hover:-translate-y-1 sm:p-10 ${course.accent === 'lime' ? 'border-lime/30 bg-[#142016]' : course.accent === 'coral' ? 'border-coral/30 bg-[#1a1514]' : 'border-[#8fb9cf]/30 bg-[#111a1e]'}`}>
+            {course.accent === 'blue' && <div class="pointer-events-none absolute -right-20 -top-28 h-72 w-72 rounded-full border-[35px] border-[#9bd4e5]/10"></div>}
+            <div class="relative grid gap-10 lg:grid-cols-[90px_1fr_250px] lg:items-center lg:gap-12"><div><span class={`font-mono text-sm ${course.accent === 'lime' ? 'text-lime' : course.accent === 'coral' ? 'text-coral' : 'text-[#9bd4e5]'}`}>{course.index} / 03</span></div><div><p class={`text-[10px] font-bold uppercase tracking-[.18em] ${course.accent === 'lime' ? 'text-lime' : course.accent === 'coral' ? 'text-coral' : 'text-[#9bd4e5]'}`}>{course.label}</p><h3 class="display mt-3 text-4xl leading-[.88] sm:text-6xl">{course.name}</h3><p class="mt-5 max-w-2xl text-sm leading-6 text-mist">{course.description}</p><span class="mt-6 inline-flex text-[10px] uppercase tracking-[.14em] text-mist">{course.details}</span></div><div class="lg:text-right"><a class={`button-secondary w-full sm:w-auto ${course.accent === 'lime' ? 'border-lime/40 text-lime hover:border-lime' : course.accent === 'coral' ? 'border-coral/40 text-coral hover:border-coral' : 'border-[#9bd4e5]/40 text-[#9bd4e5] hover:border-[#9bd4e5]'}`} href={course.href} target="_blank" rel="noreferrer">Poznaj program <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-panel py-24 sm:py-32"><div class="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24"><div><div class="eyebrow text-coral">Dlaczego my</div><h2 class="display mt-6 text-5xl leading-[.9] sm:text-6xl">Uczysz się tego, co działa.</h2></div><div class="grid gap-x-10 gap-y-10 sm:grid-cols-2"><div><span class="font-display text-3xl text-lime">01</span><h3 class="mt-5 font-display text-xl">Praktyka ponad teorię</h3><p class="mt-3 text-sm leading-6 text-mist">Zadania, decyzje i przykłady, które możesz przenieść do swojego projektu.</p></div><div><span class="font-display text-3xl text-coral">02</span><h3 class="mt-5 font-display text-xl">Kontekst zamiast hype'u</h3><p class="mt-3 text-sm leading-6 text-mist">Pokazujemy trade-offy i uczymy rozpoznawać, kiedy narzędzie ma sens.</p></div><div><span class="font-display text-3xl text-[#9bd4e5]">03</span><h3 class="mt-5 font-display text-xl">Wsparcie ludzi</h3><p class="mt-3 text-sm leading-6 text-mist">Nie zostajesz sam z materiałem. Rozwijasz się wśród innych praktyków.</p></div><div><span class="font-display text-3xl text-cream">04</span><h3 class="mt-5 font-display text-xl">Długofalowa zmiana</h3><p class="mt-3 text-sm leading-6 text-mist">Budujesz system pracy, który zostaje z Tobą dłużej niż jeden trend.</p></div></div></div></section>
+
+    <section class="border-b hairline bg-[#d6fc68] py-20 text-ink sm:py-28"><div class="site-container flex flex-col justify-between gap-9 md:flex-row md:items-end"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-ink/60">Nie wiesz, od czego zacząć?</p><h2 class="display mt-5 max-w-2xl text-5xl leading-[.88] sm:text-6xl">Zacznij od rozmowy.</h2></div><a class="button-secondary border-ink/30 text-ink hover:border-ink" href="mailto:kontakt@przeprogramowani.pl">Napisz do nas <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+</Layout>

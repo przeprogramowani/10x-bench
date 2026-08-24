@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Przeprogramowani.pl — Szersze spojrzenie na programowanie",
+  description = "Technologie, AI i kariera dla programistów, którzy chcą patrzeć szerzej.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101116" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23101116'/%3E%3Cpath d='M14 18l12 14-12 14M31 46h20' fill='none' stroke='%23e6ff4e' stroke-width='5' stroke-linecap='square'/%3E%3C/svg%3E" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-signal focus:px-4 focus:py-2 focus:text-ink">Przejdź do treści</a>
+    <Header currentPath={Astro.url.pathname} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

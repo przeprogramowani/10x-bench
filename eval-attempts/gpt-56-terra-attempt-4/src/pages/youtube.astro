@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaCard from '../components/MediaCard.astro';
+import { videos } from '../data/content';
+---
+
+<BaseLayout title="YouTube | Przeprogramowani" description="Najnowsze filmy Przeprogramowani o AI i programowaniu.">
+  <main class="inner-page">
+    <section class="page-hero page-hero--youtube"><div class="play-geometry" aria-hidden="true"><span></span></div><div class="site-shell"><p class="eyebrow eyebrow--light"><span></span> YOUTUBE</p><h1>Technologia,<br /><em>ktora zostaje w glowie.</em></h1><p>Analizy, relacje, live'y i poradniki dla developerow, ktorzy chca rozumiec wiecej niz naglowek.</p><a class="button button--coral" href="https://www.youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer">Subskrybuj kanal <span>↗</span></a></div></section>
+    <section class="youtube-content site-shell"><div class="section-heading"><div><p class="section-number">NAJNOWSZE FILMY</p><h2>Od AI workflow<br />po <span>realia produkcji.</span></h2></div><p>Wybrane najnowsze materialy z kanalu Przeprogramowani i Opanuj.AI.</p></div><div class="video-page-grid">{videos.map((item) => <MediaCard item={item} type="video" />)}</div></section>
+    <section class="youtube-cta site-shell"><div><span class="youtube-dot"></span><p>PRZEPROGRAMOWANI NA YOUTUBE</p><h2>Bez clickbaitu.<br /><span>Z dobrym kontekstem.</span></h2></div><a class="button button--dark" href="https://www.youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer">Zobacz wszystkie filmy <span>↗</span></a></section>
+  </main>
+</BaseLayout>

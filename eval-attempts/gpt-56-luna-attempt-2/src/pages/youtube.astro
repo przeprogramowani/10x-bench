@@ -1,0 +1,22 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import MediaGrid from '../components/MediaGrid';
+import { videos } from '../data/content';
+---
+
+<SiteLayout title="YouTube — Przeprogramowani.pl" description="Najnowsze filmy Przeprogramowanych o AI, frontendzie, TypeScript i nowoczesnym programowaniu.">
+  <section class="ink-panel relative overflow-hidden">
+    <div class="grid-lines absolute inset-0"></div>
+    <div class="site-container relative py-20 sm:py-28">
+      <div class="flex flex-col justify-between gap-10 lg:flex-row lg:items-end"><div><p class="eyebrow eyebrow-light">YouTube / 01</p><h1 class="display mt-8 max-w-3xl text-6xl font-semibold text-paper sm:text-8xl">Oglądaj.<br /><span class="text-acid">Sprawdzaj.</span></h1></div><p class="max-w-sm text-sm leading-7 text-paper/60 lg:pb-2">Rozmowy, eksperymenty i praktyczne deep-dive'y. Zobacz, jak technologia działa poza slajdami.</p></div>
+      <div class="mt-16 flex items-end justify-between border-t border-paper/20 pt-5"><p class="font-mono text-[0.65rem] uppercase tracking-[0.1em] text-paper/45">Najnowsze materiały / 2026</p><a class="arrow-link text-xs text-acid" href="https://youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer">Kanał YouTube</a></div>
+    </div>
+  </section>
+
+  <section class="site-container py-20 sm:py-28">
+    <div class="mb-12 flex flex-col justify-between gap-5 border-b border-ink/15 pb-6 sm:flex-row sm:items-end"><div><p class="eyebrow">02 / Ostatnie filmy</p><h2 class="display mt-5 text-5xl font-semibold sm:text-6xl">Wiedza w ruchu<span class="text-ember">.</span></h2></div><p class="max-w-xs text-sm leading-6 text-ink/55">Filtruj po temacie i znajdź materiał na dokładnie ten moment.</p></div>
+    <MediaGrid client:load videos={videos} />
+  </section>
+
+  <section class="site-container pb-20 sm:pb-28"><div class="ink-panel relative overflow-hidden p-8 sm:p-12"><div class="grid-lines absolute inset-0"></div><div class="relative flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p class="eyebrow eyebrow-light">Nie przegap następnego</p><h2 class="display mt-5 max-w-lg text-4xl font-semibold text-paper sm:text-5xl">Subskrybuj kanał.<br /><span class="text-acid">Zostań z nami.</span></h2></div><a class="flex items-center gap-3 bg-acid px-5 py-4 text-xs font-extrabold uppercase tracking-[0.04em] text-ink hover:bg-white" href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noreferrer">YouTube ↗</a></div></div></section>
+</SiteLayout>

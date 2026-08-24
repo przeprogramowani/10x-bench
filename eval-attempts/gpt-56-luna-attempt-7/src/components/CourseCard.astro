@@ -1,0 +1,36 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  suffix: string;
+  description: string;
+  meta: string;
+  href: string;
+  theme: string;
+  icon: string;
+  compact?: boolean;
+}
+
+const { eyebrow, title, suffix, description, meta, href, theme, icon, compact = false } = Astro.props;
+const themeClasses = {
+  coral: 'bg-coral text-ink',
+  blue: 'bg-[#d8e0ff] text-ink',
+  lime: 'bg-lime text-ink',
+}[theme] ?? 'bg-ink text-paper';
+---
+
+<a href={href} class:list={['group relative flex min-h-[390px] flex-col justify-between overflow-hidden rounded-[26px] p-7 transition-transform duration-300 hover:-translate-y-1 md:p-9', themeClasses, compact && 'min-h-[340px]']}>
+  <div class="relative z-10 flex items-start justify-between gap-5">
+    <p class="eyebrow !text-ink/55">{eyebrow}</p>
+    <span class="grid h-12 w-12 place-items-center rounded-full border border-ink/15 text-sm font-bold tracking-tight transition-transform duration-300 group-hover:rotate-12">{icon}</span>
+  </div>
+  <div class="relative z-10">
+    <h3 class="display max-w-[440px] text-4xl font-semibold leading-[0.94] tracking-[-0.075em] md:text-[3.25rem]">{title}<span class="text-ink/45">{suffix}</span></h3>
+    <p class="mt-5 max-w-[370px] text-[15px] leading-6 text-ink/70">{description}</p>
+    <div class="mt-7 flex items-center justify-between border-t border-ink/15 pt-4 text-xs font-semibold">
+      <span class="text-ink/55">{meta}</span>
+      <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/20 text-lg transition-transform duration-300 group-hover:translate-x-1">↗</span>
+    </div>
+  </div>
+  <div class="pointer-events-none absolute -bottom-28 -right-16 h-64 w-64 rounded-full border-[32px] border-ink/5 transition-transform duration-500 group-hover:scale-110" />
+</a>

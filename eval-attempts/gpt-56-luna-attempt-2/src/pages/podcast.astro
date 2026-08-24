@@ -1,0 +1,27 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PodcastGrid from '../components/PodcastGrid';
+import { episodes } from '../data/content';
+---
+
+<SiteLayout title="Podcast — Przeprogramowani.pl" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju.">
+  <section class="relative overflow-hidden bg-moss text-paper">
+    <div class="grid-lines absolute inset-0 opacity-60"></div>
+    <div class="site-container relative py-20 sm:py-28">
+      <div class="flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
+        <div><p class="eyebrow eyebrow-light">Podcast / 01</p><h1 class="display mt-8 max-w-3xl text-6xl font-semibold sm:text-8xl">Myślenie<br /><span class="text-acid">na głos.</span></h1></div>
+        <p class="max-w-sm text-sm leading-7 text-paper/60 lg:pb-2">Rozmowy dla głodnych wiedzy. O technologii, AI, programowaniu, karierze i tym, co dzieje się pomiędzy.</p>
+      </div>
+      <div class="mt-16 grid gap-4 border-t border-paper/20 pt-5 sm:grid-cols-3"><div><p class="font-display text-4xl font-semibold text-acid">4k<span class="text-ember">+</span></p><p class="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-paper/45">słuchaczy Opanuj.AI</p></div><div><p class="font-display text-4xl font-semibold">2</p><p class="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-paper/45">serie podcastów</p></div><div><p class="font-display text-4xl font-semibold">∞</p><p class="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.08em] text-paper/45">pytań bez prostych odpowiedzi</p></div></div>
+    </div>
+  </section>
+
+  <section class="site-container py-20 sm:py-28">
+    <div class="mb-12 flex flex-col justify-between gap-5 border-b border-ink/15 pb-6 sm:flex-row sm:items-end"><div><p class="eyebrow">02 / Ostatnie odcinki</p><h2 class="display mt-5 text-5xl font-semibold sm:text-6xl">Wciśnij play<span class="text-ember">.</span></h2></div><p class="max-w-xs text-sm leading-6 text-ink/55">Wybierz serię, która najlepiej pasuje do Twojego dzisiejszego trybu myślenia.</p></div>
+    <PodcastGrid client:load episodes={episodes} />
+  </section>
+
+  <section class="site-container pb-20 sm:pb-28">
+    <div class="grid gap-7 border border-ink bg-acid p-7 sm:p-10 lg:grid-cols-[1fr_0.7fr] lg:items-end"><div><p class="eyebrow">Słuchaj gdzie chcesz</p><h2 class="display mt-5 max-w-xl text-4xl font-semibold sm:text-5xl">Zabierz rozmowę<br />ze sobą<span class="text-ember">.</span></h2></div><div class="flex flex-wrap gap-3 lg:justify-end"><a class="border border-ink px-4 py-3 font-mono text-[0.64rem] uppercase tracking-[0.06em] transition-colors hover:bg-ink hover:text-acid" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Spotify ↗</a><a class="border border-ink px-4 py-3 font-mono text-[0.64rem] uppercase tracking-[0.06em] transition-colors hover:bg-ink hover:text-acid" href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer">Apple Podcasts ↗</a></div></div>
+  </section>
+</SiteLayout>

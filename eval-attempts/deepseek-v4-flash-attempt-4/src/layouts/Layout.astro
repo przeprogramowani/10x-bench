@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import MobileMenu from '../components/MobileMenu';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title === 'Przeprogramowani' ? title : `${title} — Przeprogramowani`;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description || 'Szersze spojrzenie na programowanie — kursy, podcasty i społeczność dla ambitnych programistów.'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <nav class="sticky top-0 z-50 border-b border-white/5 bg-surface/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+          <span class="text-brand-light">&lt;/&gt;</span>
+          <span>Przeprogramowani</span>
+        </a>
+        <div class="hidden items-center gap-6 md:flex">
+          <a href="/o-nas" class="text-sm font-medium text-slate-300 transition hover:text-white">O nas</a>
+          <a href="/podcast" class="text-sm font-medium text-slate-300 transition hover:text-white">Podcast</a>
+          <a href="/youtube" class="text-sm font-medium text-slate-300 transition hover:text-white">YouTube</a>
+          <a href="https://opanujfrontend.pl" target="_blank" class="text-sm font-medium text-slate-300 transition hover:text-white">Opanuj Frontend</a>
+          <a href="https://opanujtypescript.pl" target="_blank" class="text-sm font-medium text-slate-300 transition hover:text-white">Opanuj TypeScript</a>
+          <a href="https://10xdevs.pl" target="_blank" class="rounded-full bg-gradient-to-r from-brand to-accent px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90">
+            10xDevs
+          </a>
+        </div>
+        <MobileMenu client:load />
+      </div>
+    </nav>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/5 bg-surface-light">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="grid gap-8 md:grid-cols-4">
+          <div>
+            <a href="/" class="flex items-center gap-2 text-lg font-bold">
+              <span class="text-brand-light">&lt;/&gt;</span>
+              <span>Przeprogramowani</span>
+            </a>
+            <p class="mt-2 text-sm text-slate-400">Szersze spojrzenie na programowanie</p>
+          </div>
+          <div>
+            <h4 class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-400">Strony</h4>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li><a href="/o-nas" class="transition hover:text-white">O nas</a></li>
+              <li><a href="/podcast" class="transition hover:text-white">Podcast</a></li>
+              <li><a href="/youtube" class="transition hover:text-white">YouTube</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-400">Kursy</h4>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li><a href="https://10xdevs.pl" target="_blank" class="transition hover:text-white">10xDevs</a></li>
+              <li><a href="https://opanujfrontend.pl" target="_blank" class="transition hover:text-white">Opanuj Frontend</a></li>
+              <li><a href="https://opanujtypescript.pl" target="_blank" class="transition hover:text-white">Opanuj TypeScript</a></li>
+              <li><a href="https://opanuj.ai" target="_blank" class="transition hover:text-white">Opanuj AI</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-400">Kontakt</h4>
+            <ul class="space-y-2 text-sm text-slate-300">
+              <li><a href="mailto:kontakt@przeprogramowani.pl" class="transition hover:text-white">kontakt@przeprogramowani.pl</a></li>
+              <li class="flex gap-4 pt-2">
+                <a href="https://facebook.com/przeprogramowani" target="_blank" aria-label="Facebook" class="transition hover:text-white">FB</a>
+                <a href="https://instagram.com/przeprogramowani" target="_blank" aria-label="Instagram" class="transition hover:text-white">IG</a>
+                <a href="https://youtube.com/c/przeprogramowani" target="_blank" aria-label="YouTube" class="transition hover:text-white">YT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-white/5 pt-8 text-center text-xs text-slate-500">
+          &copy; {new Date().getFullYear()} Przeprogramowani.pl — Szersze spojrzenie na programowanie
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<script>
+  // Mobile menu state is handled by React component below
+</script>

@@ -1,0 +1,43 @@
+---
+import { navigation, siteMeta } from "../data/site";
+---
+
+<footer class="mt-20 border-t border-white/8 bg-[rgba(5,10,21,0.92)]">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
+    <div class="space-y-4">
+      <p class="font-display text-2xl text-white">{siteMeta.title}</p>
+      <p class="max-w-xl text-sm leading-7 text-[var(--color-muted)]">
+        Treści o nowoczesnym programowaniu, AI i świadomym rozwoju programisty. Kursy, podcast, YouTube i newsletter w jednym miejscu.
+      </p>
+      <a
+        href={`mailto:${siteMeta.email}`}
+        class="inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-brand)]/60 hover:text-white"
+      >
+        {siteMeta.email}
+      </a>
+    </div>
+
+    <div>
+      <p class="mb-4 font-display text-sm uppercase tracking-[0.22em] text-[var(--color-muted)]">Nawigacja</p>
+      <div class="grid gap-2">
+        {
+          navigation.map((item) => (
+            <a href={item.href} class="text-sm text-[var(--color-text)] transition hover:text-[var(--color-brand)]">
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-4 font-display text-sm uppercase tracking-[0.22em] text-[var(--color-muted)]">Kanały</p>
+      <div class="grid gap-2">
+        <a href={siteMeta.youtube} target="_blank" rel="noreferrer" class="text-sm text-[var(--color-text)] transition hover:text-[var(--color-brand)]">YouTube</a>
+        <a href={siteMeta.podcast} target="_blank" rel="noreferrer" class="text-sm text-[var(--color-text)] transition hover:text-[var(--color-brand)]">Podcast</a>
+        <a href={siteMeta.newsletter} target="_blank" rel="noreferrer" class="text-sm text-[var(--color-text)] transition hover:text-[var(--color-brand)]">Newsletter</a>
+        <a href="https://10xdevs.pl/" target="_blank" rel="noreferrer" class="text-sm text-[var(--color-text)] transition hover:text-[var(--color-brand)]">10xDevs</a>
+      </div>
+    </div>
+  </div>
+</footer>

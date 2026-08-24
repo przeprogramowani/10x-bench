@@ -1,0 +1,198 @@
+---
+import SiteHeader from '../components/SiteHeader';
+import '../styles/global.css';
+
+const podcastEpisodes = [
+  {
+    number: '143',
+    title: 'BAN NA AI?! USA BLOKUJE ANTHROPICA i OPEN AI',
+    description: 'Claude Mythos, Claude Fable i GPT-5.6. Co naprawdę zmienia się w świecie modeli?',
+    meta: 'Opanuj.AI · 01:21:53',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+  },
+  {
+    number: '142',
+    title: 'Byliśmy na Google I/O 2026 — wrażenia na gorąco!',
+    description: 'Relacja z konferencji i najważniejsze premiery, które wpłyną na pracę developerów.',
+    meta: 'Opanuj.AI LIVE · 01:12:26',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+  },
+  {
+    number: '141',
+    title: 'GPT-5.5 vs Opus 4.7 — kto rządzi na scenie AI?',
+    description: 'Cursor 3.0, DeepSeek V4, Meta Muse i kwietniowy wysyp dużych premier.',
+    meta: 'Opanuj.AI · 00:47:22',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+  },
+  {
+    number: '140',
+    title: 'Programowanie w epoce AI z Claude Code, Cursorem i Copilotem',
+    description: 'Gość: Dawid Sibiński. O tym, jak wygląda codzienna praca z agentami.',
+    meta: 'Opanuj.AI · 01:28:30',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+  },
+];
+
+const videos = [
+  {
+    title: 'Poznaj AI Workflow, które działa na produkcji',
+    tag: '10xDevs LIVE',
+    date: 'ostatnio',
+    image: 'https://i3.ytimg.com/vi/c5HVzK-tclM/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=c5HVzK-tclM',
+  },
+  {
+    title: 'Darmowe AI na każdym Maku — Apple Foundational Models',
+    tag: 'AI & narzędzia',
+    date: 'ostatnio',
+    image: 'https://i3.ytimg.com/vi/B4t6w4QsD24/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=B4t6w4QsD24',
+  },
+  {
+    title: 'Byliśmy na Google I/O 2026 — wrażenia na gorąco!',
+    tag: 'Opanuj.AI LIVE',
+    date: 'maj 2026',
+    image: 'https://i3.ytimg.com/vi/0JOszZXqKaM/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=0JOszZXqKaM',
+  },
+  {
+    title: 'Jak wybrać najlepszego Agenta AI do programowania?',
+    tag: 'Praktyka',
+    date: 'nowy film',
+    image: 'https://i3.ytimg.com/vi/03y826SVjG0/maxresdefault.jpg',
+    href: 'https://www.youtube.com/watch?v=03y826SVjG0',
+  },
+];
+
+const principles = [
+  ['01', 'Praktyka ponad hype', 'Pokazujemy rozwiązania, które działają poza demem i trafiają na produkcję.'],
+  ['02', 'Szerszy kontekst', 'Łączymy kod, architekturę, biznes i rozwój osobisty w jeden obraz.'],
+  ['03', 'Nauka, która zostaje', 'Materiały budujemy tak, żebyś nie tylko wiedział, ale też umiał zastosować.'],
+];
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Przeprogramowani.pl — szersze spojrzenie na programowanie. Kursy, podcasty i praktyczna wiedza dla ambitnych programistów." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c5ff3b'/%3E%3Ctext x='8' y='42' font-size='26' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E" />
+    <title>Przeprogramowani — szersze spojrzenie na programowanie</title>
+  </head>
+  <body id="top">
+    <div class="announcement">
+      <div class="mx-auto flex max-w-[1280px] items-center justify-center gap-2 px-5 py-2 text-center sm:justify-start sm:px-8 lg:px-10">
+        <span class="font-bold">Nowość</span><span class="opacity-40">/</span><span>10xDevs 4.0 — programuj z AI, nie na autopilocie</span><a class="ml-1 font-bold underline underline-offset-2" href="#10xdevs">Sprawdź <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <SiteHeader client:load />
+
+    <main>
+      <section class="hero-glow noise relative overflow-hidden bg-ink text-white" aria-labelledby="hero-title">
+        <div class="dot-grid absolute inset-0 opacity-40"></div>
+        <div class="relative mx-auto max-w-[1280px] px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24 lg:px-10 lg:pb-28 lg:pt-28">
+          <div class="grid items-end gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+            <div>
+              <div class="mb-8 flex items-center gap-3">
+                <span class="h-2 w-2 rounded-full bg-lime"></span>
+                <span class="eyebrow eyebrow-light">Przeprogramowani.pl / od 2019</span>
+              </div>
+              <h1 class="display-heading max-w-[750px] text-[clamp(3.7rem,9.5vw,8.2rem)] font-semibold" id="hero-title">Rozwijaj się <span class="font-serif italic text-lime">szerzej.</span><br />Programuj <span class="font-serif italic text-white/80">odważniej.</span></h1>
+              <p class="mt-9 max-w-[510px] text-base leading-7 text-white/60 sm:text-lg sm:leading-8">Tworzymy edukację technologiczną dla ludzi, którzy chcą rozumieć więcej niż framework. Konkretna wiedza, dobre pytania i praktyka, która dowozi.</p>
+              <div class="mt-9 flex flex-wrap gap-3">
+                <a class="button button-lime" href="#kursy">Znajdź swoją ścieżkę <span aria-hidden="true">↓</span></a>
+                <a class="button button-ghost" href="#o-nas">Poznaj nas <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+
+            <div class="relative lg:pb-2">
+              <div class="mb-4 flex items-center justify-between">
+                <span class="eyebrow eyebrow-light">/ teraz na radarze</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.13em] text-lime">edycja 04.0</span>
+              </div>
+              <a class="hero-art noise block" href="https://10xdevs.pl" target="_blank" rel="noreferrer">
+                <img src="https://cdn.prod.website-files.com/698b104fda97d1c7b03d1f59/6a5f61dccf83fd31f87152c1_marcin-przemek-hero-4-0.webp" alt="Przemek Smyrdek i Marcin Czarkowski, twórcy 10xDevs" />
+                <div class="absolute inset-x-6 bottom-6 z-10 sm:inset-x-8 sm:bottom-8">
+                  <div class="mb-4 flex items-center gap-2"><span class="rounded-full bg-lime px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-ink">program premium</span><span class="font-mono text-[10px] uppercase tracking-[0.12em] text-white/60">start 14.09.2026</span></div>
+                  <div class="flex items-end justify-between gap-4"><div><p class="font-mono text-xs uppercase tracking-[0.12em] text-white/70">10x</p><h2 class="display-heading text-5xl font-semibold tracking-[-0.09em] text-white sm:text-6xl">Devs<span class="text-lime">.</span></h2></div><span class="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/30 text-xl text-lime transition-transform group-hover:rotate-45" aria-hidden="true">↗</span></div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-16 grid grid-cols-2 border-t border-white/15 pt-7 sm:grid-cols-4 lg:mt-24 lg:grid-cols-[1fr_1fr_1fr_2fr]">
+            <div class="border-r border-white/15 pr-4"><p class="font-display text-3xl font-semibold tracking-[-0.06em] text-lime">7+</p><p class="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-white/50">lat edukacji</p></div>
+            <div class="border-r border-white/15 px-4 sm:pl-6"><p class="font-display text-3xl font-semibold tracking-[-0.06em] text-lime">15k</p><p class="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-white/50">osób w społeczności</p></div>
+            <div class="px-4 sm:pl-6"><p class="font-display text-3xl font-semibold tracking-[-0.06em] text-lime">6700+</p><p class="mt-1 font-mono text-[10px] uppercase tracking-[0.08em] text-white/50">absolwentów 10xDevs</p></div>
+            <div class="col-span-2 mt-7 flex items-start gap-3 border-t border-white/15 pt-5 sm:col-span-1 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0"><span class="mt-1 text-lg text-lime">✳</span><p class="max-w-[240px] text-sm leading-6 text-white/60">Technologia zmienia się szybko. Dlatego uczymy sposobu myślenia, nie tylko narzędzi.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="overflow-hidden bg-lime py-3 text-ink">
+        <div class="marquee-track flex items-center gap-8 font-mono text-[11px] font-medium uppercase tracking-[0.13em]"><span>ucz się rzeczy, które mają znaczenie</span><span>✳</span><span>buduj lepsze oprogramowanie</span><span>✳</span><span>myśl szerzej</span><span>✳</span><span>ucz się rzeczy, które mają znaczenie</span><span>✳</span><span>buduj lepsze oprogramowanie</span><span>✳</span><span>myśl szerzej</span><span>✳</span></div>
+      </div>
+
+      <section class="bg-paper px-5 py-20 sm:px-8 sm:py-28 lg:px-10" id="kursy" aria-labelledby="courses-title">
+        <div class="mx-auto max-w-[1280px]">
+          <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+            <div><p class="eyebrow">/ ścieżki rozwoju</p><h2 class="display-heading mt-4 max-w-[680px] text-5xl font-semibold sm:text-7xl" id="courses-title">Wybierz, co<br /><span class="font-serif font-normal italic text-violet">opanujesz.</span></h2></div>
+            <p class="max-w-[330px] text-sm leading-6 text-ink/60">Od pierwszych świadomych decyzji na frontendzie po pracę z AI w dużych, komercyjnych projektach.</p>
+          </div>
+
+          <div class="mt-12 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
+            <a class="course-card group course-card-frontend" href="https://opanujfrontend.pl" target="_blank" rel="noreferrer">
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="absolute right-12 top-14 z-10 font-mono text-[9px] uppercase tracking-[0.15em] text-white/60">O:FE / AI EDITION</div>
+              <div class="relative z-10 flex h-full flex-col justify-between p-7 text-white sm:p-9"><div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-full border border-white/30 font-mono text-xs">01</span><span class="rounded-full border border-white/30 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em]">10 tygodni</span></div><div><p class="mb-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">Frontend · jakość · architektura</p><h3 class="display-heading max-w-[520px] text-5xl font-semibold sm:text-6xl">Opanuj<br /><span class="font-serif font-normal italic">Frontend.</span></h3><div class="mt-6 flex items-center justify-between gap-4"><p class="max-w-[350px] text-sm leading-6 text-white/75">Zostań kompletnym frontend developerem. Testy, CI/CD, architektura i AI w codziennej pracy.</p><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-xl text-ink transition-transform group-hover:rotate-45">↗</span></div></div></div>
+            </a>
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+              <a class="course-card group course-card-typescript min-h-0 lg:min-h-[180px]" href="https://opanujtypescript.pl" target="_blank" rel="noreferrer"><div class="absolute right-7 top-7 z-10 grid h-10 w-10 place-items-center rounded-full border border-white/35 font-mono text-xs text-white">02</div><div class="relative z-10 flex h-full flex-col justify-end p-7 text-white"><p class="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/65">TypeScript · React 19 · praktyka</p><h3 class="display-heading text-4xl font-semibold">Opanuj <span class="font-serif font-normal italic">TypeScript.</span></h3><div class="mt-4 flex items-center justify-between"><span class="text-sm text-white/70">Frontend Pro</span><span class="text-2xl text-lime transition-transform group-hover:rotate-45">↗</span></div></div></a>
+              <div class="flex min-h-[180px] flex-col justify-between rounded-[24px] bg-[#e5e1d7] p-7"><div class="flex justify-between"><span class="eyebrow">/ darmowe treści</span><span class="font-mono text-xs text-violet">03</span></div><div><h3 class="display-heading text-4xl font-semibold">Newsletter<br /><span class="font-serif font-normal italic">3–2–1.</span></h3><a class="mt-4 inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.1em] underline decoration-violet underline-offset-4" href="#newsletter">Dołącz za darmo <span aria-hidden="true">↗</span></a></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-ink px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-10" id="10xdevs" aria-labelledby="10x-title">
+        <div class="mx-auto max-w-[1280px]">
+          <div class="grid gap-14 lg:grid-cols-[0.74fr_1.26fr] lg:gap-24">
+            <div><p class="eyebrow eyebrow-light">/ nowa era developmentu</p><div class="mt-7 flex items-center gap-3"><span class="rounded-full bg-coral px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">edycja 4.0</span><span class="font-mono text-[10px] uppercase tracking-[0.12em] text-white/50">start 14 września 2026</span></div><h2 class="display-heading mt-6 text-6xl font-semibold sm:text-8xl" id="10x-title">Nie promptuj.<br /><span class="font-serif font-normal italic text-lime">Orkiestruj.</span></h2><p class="mt-7 max-w-[390px] text-base leading-7 text-white/60">10xDevs to praktyczny program o AI-Native Software Engineering. Od pomysłu, przez plan i implementację, aż po testy, legacy i produkcję.</p><a class="button button-lime mt-8" href="https://10xdevs.pl" target="_blank" rel="noreferrer">Zobacz program <span aria-hidden="true">↗</span></a></div>
+            <div class="relative"><div class="absolute -right-2 -top-8 hidden font-mono text-[10px] uppercase tracking-[0.13em] text-white/40 sm:block">/ system pracy dla wymagających devów</div><div class="grid gap-3 sm:grid-cols-2"><div class="rounded-2xl border border-white/15 bg-white/[0.04] p-6 sm:col-span-2"><span class="font-mono text-xs text-lime">01 / 10xWorkflow</span><h3 class="mt-12 font-display text-3xl font-medium tracking-[-0.06em]">Research → Plan → Implement</h3><p class="mt-3 max-w-[440px] text-sm leading-6 text-white/50">Powtarzalny proces, który pozwala delegować złożone zadania agentowi bez oddawania kontroli nad kodem.</p></div><div class="rounded-2xl border border-white/15 bg-white/[0.04] p-6"><span class="font-mono text-xs text-coral">02 / Legacy</span><h3 class="mt-14 font-display text-2xl font-medium tracking-[-0.05em]">Duże repozytoria.<br />Prawdziwe problemy.</h3></div><div class="rounded-2xl border border-white/15 bg-lime p-6 text-ink"><span class="font-mono text-xs">03 / Delivery</span><h3 class="mt-14 font-display text-2xl font-medium tracking-[-0.05em]">Od localhosta<br />po Cloudflare.</h3></div></div><div class="mt-5 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-5 font-mono text-[10px] uppercase tracking-[0.1em] text-white/45"><span>5+1 tygodni</span><span>40h materiałów</span><span>projekt końcowy</span><span>certyfikat</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#e5e1d7] px-5 py-20 sm:px-8 sm:py-28 lg:px-10" id="o-nas" aria-labelledby="about-title">
+        <div class="mx-auto max-w-[1280px]">
+          <div class="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+            <div class="relative min-h-[450px] overflow-hidden rounded-[24px] bg-[#cbc5b8] sm:min-h-[560px]"><div class="absolute left-5 top-5 z-10 rounded-full bg-paper px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em]">/ poznajmy się</div><img class="absolute bottom-0 left-1/2 h-[92%] w-auto max-w-none -translate-x-1/2 object-contain grayscale" src="https://przeprogramowani.pl/img/profiles/przemek.webp" alt="Przemek Smyrdek" /><div class="absolute bottom-5 left-5 z-10"><p class="font-display text-xl font-semibold tracking-[-0.05em]">Przemek <span class="font-serif font-normal italic">Smyrdek</span></p><p class="mt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-ink/55">co-founder · engineer · edukator</p></div><div class="absolute -right-8 top-24 font-serif text-[180px] leading-none text-white/30">&amp;</div></div>
+            <div class="flex flex-col justify-center"><p class="eyebrow">/ o nas</p><h2 class="display-heading mt-5 max-w-[680px] text-5xl font-semibold sm:text-7xl" id="about-title">Kod to dopiero<br /><span class="font-serif font-normal italic text-violet">początek.</span></h2><p class="mt-8 max-w-[600px] text-lg leading-8 text-ink/70">Łączymy świat programowania, biznesu i rozwoju. Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, ludzi, produkt i siebie.</p><p class="mt-5 max-w-[600px] text-base leading-7 text-ink/55">Tworzymy treści, kursy i narzędzia, które pomagają rozwijać się na wielu płaszczyznach. Bez lania wody. Z szacunkiem do Twojego czasu i ciekawości.</p><div class="mt-10 grid max-w-[600px] gap-5 border-t border-ink/15 pt-6 sm:grid-cols-3">{principles.map(([number, title, description]) => <div><span class="font-mono text-[10px] text-violet">{number}</span><h3 class="mt-3 font-display text-lg font-semibold tracking-[-0.04em]">{title}</h3><p class="mt-2 text-sm leading-6 text-ink/55">{description}</p></div>)}</div><a class="mt-9 inline-flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.1em]" href="#newsletter">Porozmawiajmy <span class="grid h-8 w-8 place-items-center rounded-full bg-ink text-lg text-lime">↗</span></a></div>
+          </div>
+          <div class="mt-16 grid gap-5 border-t border-ink/15 pt-8 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4"><p class="eyebrow sm:col-span-2 lg:col-span-1">/ pracowaliśmy i<br />uczyliśmy w</p><div class="font-display text-lg font-semibold tracking-[-0.04em] text-ink/50">DAZN<br /><span class="text-sm font-normal">global product teams</span></div><div class="font-display text-lg font-semibold tracking-[-0.04em] text-ink/50">SmartRecruiters<br /><span class="text-sm font-normal">technology at scale</span></div><div class="font-display text-lg font-semibold tracking-[-0.04em] text-ink/50">4Developers<br /><span class="text-sm font-normal">conference speakers</span></div></div>
+        </div>
+      </section>
+
+      <section class="bg-paper px-5 py-20 sm:px-8 sm:py-28 lg:px-10" id="podcast" aria-labelledby="podcast-title">
+        <div class="mx-auto max-w-[1280px]">
+          <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><p class="eyebrow">/ podcast</p><h2 class="display-heading mt-4 max-w-[650px] text-5xl font-semibold sm:text-7xl" id="podcast-title">Słuchaj, kiedy<br /><span class="font-serif font-normal italic text-coral">chcesz.</span></h2></div><a class="inline-flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.1em]" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer">Otwórz w Spotify <span class="grid h-8 w-8 place-items-center rounded-full bg-ink text-lg text-lime">↗</span></a></div>
+          <div class="mt-12 grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+            <div class="relative min-h-[390px] overflow-hidden rounded-[24px] bg-[#151514] p-7 text-white sm:min-h-[450px] sm:p-9"><div class="absolute -right-12 -top-20 h-72 w-72 rounded-full border border-coral/40"></div><div class="absolute -right-1 -top-6 h-56 w-56 rounded-full border border-coral/30"></div><div class="absolute inset-x-0 top-[46%] h-px bg-white/10"></div><div class="relative flex h-full flex-col justify-between"><div class="flex justify-between"><span class="rounded-full bg-coral px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink">Opanuj.AI</span><span class="font-mono text-[10px] uppercase tracking-[0.12em] text-white/40">podcast / 2026</span></div><div><p class="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">Nowy odcinek</p><h3 class="display-heading mt-3 max-w-[370px] text-4xl font-semibold sm:text-5xl">Technologia<br /><span class="font-serif font-normal italic text-lime">bez skrótów.</span></h3><div class="mt-7 flex items-center gap-4"><a class="play-button" href="https://podcasters.spotify.com/pod/show/opanujai" target="_blank" rel="noreferrer" aria-label="Odtwórz podcast">▶</a><span class="font-mono text-[10px] uppercase tracking-[0.1em] text-white/55">Ponad 4 000 słuchaczy<br />co miesiąc</span></div></div></div></div>
+            <div>{podcastEpisodes.map((episode) => <a class="episode-row group flex gap-4 border-t border-ink/15 py-5" href={episode.href} target="_blank" rel="noreferrer"><span class="w-9 shrink-0 pt-1 font-mono text-[11px] text-coral">{episode.number}</span><div class="min-w-0 flex-1"><h3 class="font-display text-lg font-semibold leading-tight tracking-[-0.04em] group-hover:text-coral">{episode.title}</h3><p class="mt-2 max-w-[570px] text-sm leading-6 text-ink/55">{episode.description}</p><p class="mt-3 font-mono text-[10px] uppercase tracking-[0.1em] text-ink/40">{episode.meta}</p></div><span class="pt-1 text-lg text-coral transition-transform group-hover:translate-x-1">↗</span></a>)}</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#151514] px-5 py-20 text-white sm:px-8 sm:py-28 lg:px-10" id="youtube" aria-labelledby="youtube-title">
+        <div class="mx-auto max-w-[1280px]"><div class="flex flex-col justify-between gap-7 md:flex-row md:items-end"><div><p class="eyebrow eyebrow-light">/ youtube</p><h2 class="display-heading mt-4 max-w-[760px] text-5xl font-semibold sm:text-7xl" id="youtube-title">Zobacz, jak to<br /><span class="font-serif font-normal italic text-lime">robimy.</span></h2></div><a class="inline-flex items-center gap-3 font-mono text-xs font-medium uppercase tracking-[0.1em] text-white/75 hover:text-lime" href="https://www.youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer">Cały kanał <span class="grid h-8 w-8 place-items-center rounded-full border border-white/25 text-lg text-lime">↗</span></a></div><div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{videos.map((video) => <a class="video-card group" href={video.href} target="_blank" rel="noreferrer"><div class="relative aspect-[1.28] overflow-hidden rounded-2xl bg-[#2b2b27]"><img class="h-full w-full object-cover" src={video.image} alt={video.title} loading="lazy" /><div class="absolute inset-0 flex items-center justify-center bg-ink/15"><span class="play-button h-12 w-12 opacity-0 transition-opacity group-hover:opacity-100">▶</span></div><span class="absolute left-3 top-3 rounded-full bg-lime px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink">{video.tag}</span></div><div class="mt-4 flex items-start justify-between gap-3"><div><h3 class="font-display text-lg font-medium leading-tight tracking-[-0.04em] text-white/90 group-hover:text-lime">{video.title}</h3><p class="mt-2 font-mono text-[10px] uppercase tracking-[0.1em] text-white/40">{video.date}</p></div><span class="pt-1 text-lime">↗</span></div></a>)}</div></div>
+      </section>
+
+      <section class="bg-coral px-5 py-16 sm:px-8 sm:py-20 lg:px-10" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="mx-auto grid max-w-[1280px] gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-end"><div><p class="eyebrow text-ink/60">/ newsletter</p><h2 class="display-heading mt-4 max-w-[700px] text-5xl font-semibold sm:text-7xl" id="newsletter-title">3 rzeczy, które<br /><span class="font-serif font-normal italic">warto wiedzieć.</span></h2></div><div><p class="max-w-[390px] text-base leading-7 text-ink/70">Co piątek wysyłamy 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Zero spamu. Dużo mięsa.</p><a class="button mt-7 bg-ink text-white hover:bg-[#2a2a25]" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Zapisz się za darmo <span class="text-lime" aria-hidden="true">↗</span></a></div></div>
+      </section>
+    </main>
+
+    <footer class="bg-ink px-5 pb-8 pt-16 text-white sm:px-8 lg:px-10">
+      <div class="mx-auto max-w-[1280px]"><div class="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"><div><a class="flex items-center gap-3" href="#top"><span class="grid h-9 w-9 place-items-center rounded-[10px] bg-lime font-mono text-[15px] font-medium tracking-[-0.08em] text-ink">&lt;/&gt;</span><span class="font-display text-[17px] font-bold tracking-[-0.04em]">przeprogramowani<span class="text-lime">.</span></span></a><p class="mt-5 max-w-[300px] text-sm leading-6 text-white/50">Szersze spojrzenie na programowanie. Tworzymy, uczymy, pytamy.</p></div><div><p class="eyebrow eyebrow-light mb-5">/ poznaj</p><div class="flex flex-col gap-3 text-sm text-white/65"><a class="hover:text-lime" href="#o-nas">O nas</a><a class="hover:text-lime" href="#kursy">Kursy</a><a class="hover:text-lime" href="#10xdevs">10xDevs</a></div></div><div><p class="eyebrow eyebrow-light mb-5">/ słuchaj i oglądaj</p><div class="flex flex-col gap-3 text-sm text-white/65"><a class="hover:text-lime" href="#podcast">Podcast</a><a class="hover:text-lime" href="#youtube">YouTube</a><a class="hover:text-lime" href="https://przeprogramowani.pl/artykuly" target="_blank" rel="noreferrer">Blog ↗</a></div></div><div><p class="eyebrow eyebrow-light mb-5">/ kontakt</p><div class="flex flex-col gap-3 text-sm text-white/65"><a class="hover:text-lime" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a><a class="hover:text-lime" href="https://www.linkedin.com/company/przeprogramowani/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a class="hover:text-lime" href="https://www.instagram.com/przeprogramowani/" target="_blank" rel="noreferrer">Instagram ↗</a></div></div></div><div class="flex flex-col justify-between gap-5 pt-7 text-[10px] uppercase tracking-[0.1em] text-white/35 sm:flex-row"><span>© 2026 Przeprogramowani.pl</span><span>zbudowane z ciekawości i kawy</span><span>polityka prywatności</span></div></div>
+    </footer>
+  </body>
+</html>

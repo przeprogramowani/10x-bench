@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/site';
+import Hero from '../components/Hero';
+import CoursesSection from '../components/CoursesSection';
+import YouTubeSection from '../components/YouTubeSection';
+import PodcastSection from '../components/PodcastSection';
+import BrandsSection from '../components/BrandsSection';
+---
+<Layout title={siteConfig.title} description={siteConfig.description}>
+  <Hero client:load />
+  <CoursesSection client:load />
+  <YouTubeSection client:load />
+  <PodcastSection client:load />
+  <BrandsSection client:load />
+</Layout>

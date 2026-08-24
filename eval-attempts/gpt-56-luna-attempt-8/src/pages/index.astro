@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import CourseCard from '../components/CourseCard.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { courses, episodes, stats, videos } from '../data/content';
+
+const featuredEpisodes = episodes.slice(0, 3);
+const featuredVideos = videos.slice(0, 3);
+---
+<BaseLayout
+  title="Przeprogramowani.pl — Szersze spojrzenie na programowanie"
+  description="Kursy, podcasty i materiały dla programistów, którzy chcą patrzeć szerzej. Poznaj 10xDevs, Opanuj Frontend i Opanuj TypeScript."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Szersze spojrzenie na programowanie</p>
+        <h1 id="hero-title" class="display-heading">Programuj<br /><strong>z szerszej</strong><br />perspektywy.</h1>
+        <p>Łączymy technologię, praktykę i rozwój. Pomagamy ambitnym programistom podejmować lepsze decyzje — w kodzie i poza nim.</p>
+        <div class="hero__actions">
+          <a class="button button--acid" href="https://10xdevs.pl">Poznaj 10xDevs <span class="button__arrow" aria-hidden="true">↗</span></a>
+          <a class="button button--outline-light" href="#materiały">Zobacz materiały</a>
+        </div>
+        <div class="hero__proof">
+          <span class="avatar-stack" aria-hidden="true"><span>PS</span><span>MC</span><span>+</span></span>
+          <span><strong>7 lat na rynku edukacji</strong>Uczymy tego, co sami chcemy wiedzieć.</span>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <span class="hero__tenx">10x</span>
+        <span class="hero__tag">Edycja 4.0 / 2026</span>
+        <div class="hero__code">
+          <div class="hero__code-top"><i></i><i></i><i></i></div>
+          <span class="hero__code-row"><span class="pink">const</span> developer = &#123;</span>
+          <span class="hero__code-row">&nbsp;&nbsp;curiosity: <span class="green">true</span>,</span>
+          <span class="hero__code-row">&nbsp;&nbsp;craft: <span class="green">'intentional'</span>,</span>
+          <span class="hero__code-row">&nbsp;&nbsp;ai: <span class="blue">new</span> Partner(),</span>
+          <span class="hero__code-row">&#125;</span>
+        </div>
+        <div class="hero__terminal"><strong>~/przeprogramowani</strong><br />$ npm run <b>learn</b><br /><span>building better decisions...</span><br /><strong>✓ done in 7 years</strong></div>
+        <span class="hero__corner">/ 01 — start here</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Obszary, w których pomagamy">
+    <div class="marquee__track">
+      <span class="marquee__item">Frontend, który ma sens</span>
+      <span class="marquee__item">TypeScript na produkcji</span>
+      <span class="marquee__item">AI jako partner</span>
+      <span class="marquee__item">Rozwój bez skrótów</span>
+      <span class="marquee__item">Frontend, który ma sens</span>
+      <span class="marquee__item">TypeScript na produkcji</span>
+      <span class="marquee__item">AI jako partner</span>
+      <span class="marquee__item">Rozwój bez skrótów</span>
+    </div>
+  </div>
+
+  <section class="stats" aria-label="Przeprogramowani w liczbach">
+    <div class="container stats__grid">
+      {stats.map((stat) => (
+        <div class="stat">
+          <strong class="stat__value">{stat.value}</strong>
+          <span class="stat__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="story" id="o-nas" aria-labelledby="story-title">
+    <div class="container story__grid">
+      <div class="story__label"><p class="eyebrow">01 / O nas</p></div>
+      <div class="story__content">
+        <h2 id="story-title" class="section-heading">Nie uczymy tylko <em>narzędzi.</em></h2>
+        <p>Wierzymy, że dobry programista patrzy szerzej — na architekturę, biznes, ludzi i siebie. Dlatego tworzymy treści, kursy i rozmowy, które pomagają rozwijać się na wielu płaszczyznach.</p>
+        <div class="principles">
+          <article class="principle"><span class="principle__number">01</span><h3>Praktyka</h3><p>Bez akademickiego pyłu. Tylko rzeczy, które działają w prawdziwych projektach.</p></article>
+          <article class="principle"><span class="principle__number">02</span><h3>Kontekst</h3><p>Technologia jest środkiem. Pokazujemy, jak podejmować właściwe decyzje.</p></article>
+          <article class="principle"><span class="principle__number">03</span><h3>Ciekawość</h3><p>Nie gonimy za każdą nowinką. Sprawdzamy, co naprawdę zmienia reguły gry.</p></article>
+        </div>
+        <a class="button button--outline" href="/o-nas" style="margin-top: 34px">Poznaj nas bliżej <span class="button__arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tenx-section" aria-labelledby="tenx-title">
+    <div class="container tenx-section__grid">
+      <div class="tenx-section__copy">
+        <p class="mono-label mono-label--light">02 / Program edukacyjny</p>
+        <h2 id="tenx-title" class="section-heading">Zostań<br /><span>10xDEVEM.</span></h2>
+        <p>10xDevs to program o programowaniu w epoce Generative AI. Poznaj techniki i narzędzia, które pozwalają świadomie stosować AI w całym cyklu wytwarzania oprogramowania.</p>
+        <div class="tenx-section__actions">
+          <a class="button button--acid" href="https://10xdevs.pl">Zobacz 10xDevs 4.0 <span class="button__arrow" aria-hidden="true">↗</span></a>
+          <a class="button button--outline-light" href="https://www.youtube.com/watch?v=duTuGy1xF-Q">Zobacz demo</a>
+        </div>
+      </div>
+      <div class="tenx-section__side" aria-label="Obszary programu 10xDevs">
+        <div class="tenx-section__side-label"><span>10xDevs / workflow</span><span>online · 2026</span></div>
+        <div class="tenx-section__diagram">
+          <div class="diagram-node"><small>01 / myślenie</small><strong>Intent</strong></div>
+          <div class="diagram-node"><small>02 / narzędzia</small><strong>AI stack</strong></div>
+          <div class="diagram-node"><small>03 / działanie</small><strong>Ship</strong></div>
+          <div class="diagram-node"><small>04 / jakość</small><strong>Review</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="kursy" aria-labelledby="courses-title">
+    <div class="container">
+      <div class="section-topline">
+        <div><p class="eyebrow">03 / Programy</p><h2 id="courses-title" class="section-heading" style="margin-top: 20px">Wybierz swój<br /><em>następny krok.</em></h2></div>
+        <p class="section-intro">Od solidnych fundamentów frontendu po zaawansowane typowanie. Ucz się od praktyków, którzy codziennie dowożą kod na produkcję.</p>
+      </div>
+      <div class="course-grid">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="media-section" id="materiały" aria-labelledby="podcast-title">
+    <div class="container">
+      <div class="media-section__header">
+        <div><p class="mono-label mono-label--light">04 / Podcast</p><h2 id="podcast-title" class="section-heading">Słuchaj. <em>Myśl.</em><br />Rozwijaj się.</h2></div>
+        <a class="button button--outline-light" href="/podcast">Wszystkie odcinki <span class="button__arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="episode-list">
+        {featuredEpisodes.map((episode) => <EpisodeCard episode={episode} />)}
+      </div>
+      <div class="platforms" aria-label="Platformy podcastu">
+        <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Spotify ↗</a>
+        <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250">Apple Podcasts ↗</a>
+        <a href="https://anchor.fm/s/22544b7c/podcast/rss">RSS ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" aria-labelledby="videos-title">
+    <div class="container">
+      <div class="video-section__header">
+        <div><p class="eyebrow">05 / YouTube</p><h2 id="videos-title" class="section-heading" style="margin-top: 20px">Wiedza, którą<br /><em>możesz zobaczyć.</em></h2></div>
+        <a class="button button--outline" href="/youtube">Przejdź do kanału <span class="button__arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="video-grid">
+        {featuredVideos.map((video, index) => <VideoCard video={video} eager={index === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter" aria-labelledby="newsletter-title">
+    <div class="container newsletter__grid">
+      <div class="newsletter__copy"><p class="eyebrow">06 / Newsletter</p><h2 id="newsletter-title" class="section-heading">Przeprogramowany<br />na <em>piątek.</em></h2><p>Co tydzień dostajesz 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. Bez spamu. Zawsze konkretnie.</p></div>
+      <div>
+        <form class="newsletter__form" action="https://przeprogramowani.substack.com/subscribe" method="post">
+          <label class="sr-only" for="email">Twój adres e-mail</label>
+          <input id="email" name="email" type="email" placeholder="twój@email.pl" required />
+          <button type="submit">Zapisz mnie ↗</button>
+        </form>
+        <p class="newsletter__note">Dołączasz do osób, które chcą rozwijać się świadomie.</p>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

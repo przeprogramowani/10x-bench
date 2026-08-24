@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaCard from '../components/MediaCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { episodes } from '../data/content';
+---
+
+<BaseLayout title="Podcast — Przeprogramowani.pl" description="Podcasty Przeprogramowanych o technologii, AI, programowaniu i rozwoju.">
+  <section class="relative overflow-hidden bg-ink py-24 text-paper md:py-32">
+    <div class="absolute bottom-[-180px] right-[-20px] h-[480px] w-[480px] rounded-full border-[70px] border-coral/20" />
+    <div class="dot-grid absolute right-12 top-20 h-48 w-48 rounded-full opacity-60" />
+    <div class="container-wide relative z-10">
+      <p class="eyebrow eyebrow-light">Podcast / 01</p>
+      <h1 class="display mt-6 max-w-[900px] text-[clamp(3.7rem,8vw,8rem)] font-medium leading-[0.84] tracking-[-0.1em]">Rozmowy,<br /><span class="text-coral">które zostają.</span></h1>
+      <div class="mt-12 grid gap-8 md:grid-cols-[1fr_0.6fr] md:items-end"><p class="max-w-[600px] text-lg leading-8 text-paper/65">Słuchaj o technologii, AI, programowaniu, karierze i rozwoju. Bez uproszczeń, ale też bez niepotrzebnego komplikowania.</p><p class="border-l border-lime/40 pl-5 text-sm leading-6 text-paper/55"><span class="text-lime">4000+</span> słuchaczy<br />na naszych kanałach</p></div>
+    </div>
+  </section>
+
+  <section class="container-wide py-24 md:py-32">
+    <SectionHeading eyebrow="Najnowsze odcinki" title="Włącz ciekawość." description="Nowe rozmowy o tym, jak technologia zmienia naszą pracę i sposób myślenia." />
+    <div class="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2">
+      {episodes.map((episode, index) => <MediaCard title={episode.title} label={episode.show} image={episode.image} href={episode.href} duration={episode.duration} description={episode.description} large={index === 0} />)}
+    </div>
+  </section>
+
+  <section class="bg-[#e9e4da] py-20 md:py-24">
+    <div class="container-wide grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-center"><div><p class="eyebrow">Słuchaj tam, gdzie lubisz</p><h2 class="display mt-5 text-5xl font-semibold leading-[0.9] tracking-[-0.08em]">Twoja aplikacja.<br /><span class="text-coral">Nasz głos.</span></h2></div><div class="grid grid-cols-2 gap-3 sm:grid-cols-4"><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" class="grid min-h-28 place-items-center rounded-2xl border border-ink/15 bg-paper p-4 text-center text-xs font-bold transition-colors hover:bg-ink hover:text-paper">Apple<br />Podcasts ↗</a><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" class="grid min-h-28 place-items-center rounded-2xl border border-ink/15 bg-paper p-4 text-center text-xs font-bold transition-colors hover:bg-ink hover:text-paper">Spotify ↗</a><a href="https://podcasts.google.com" class="grid min-h-28 place-items-center rounded-2xl border border-ink/15 bg-paper p-4 text-center text-xs font-bold transition-colors hover:bg-ink hover:text-paper">Google<br />Podcasts ↗</a><a href="https://anchor.fm/s/22544b7c/podcast/rss" class="grid min-h-28 place-items-center rounded-2xl border border-ink/15 bg-paper p-4 text-center text-xs font-bold transition-colors hover:bg-ink hover:text-paper">RSS<br />feed ↗</a></div></div>
+  </section>
+
+  <section class="container-wide py-24 md:py-32"><div class="grid gap-10 rounded-[28px] bg-lime p-8 md:grid-cols-[1fr_auto] md:items-end md:p-12"><div><p class="eyebrow !text-ink/55">Nie tylko podcast</p><h2 class="display mt-5 max-w-[650px] text-5xl font-semibold leading-[0.9] tracking-[-0.085em] md:text-7xl">Wiedza, kiedy<br />jej potrzebujesz.</h2><p class="mt-6 max-w-[420px] text-sm leading-6 text-ink/60">Dołącz do naszego newslettera i dostawaj co piątek selekcję rzeczy, które warto przeczytać, obejrzeć lub przemyśleć.</p></div><a href="https://przeprogramowani.substack.com" class="grid h-28 w-28 place-items-center rounded-full border border-ink/30 text-center text-xs font-bold uppercase tracking-[0.08em] transition-colors hover:bg-ink hover:text-paper md:h-36 md:w-36">Zapisz się<br /><span class="text-lg">↗</span></a></div></section>
+</BaseLayout>

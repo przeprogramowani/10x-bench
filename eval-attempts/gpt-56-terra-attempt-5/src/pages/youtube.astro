@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { videos } from '../data/content';
+---
+<BaseLayout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych o AI, programowaniu i budowaniu produktów.">
+  <section class="grain relative overflow-hidden border-b border-white/10 bg-ink">
+    <div class="absolute inset-y-0 right-0 hidden w-[44%] grid-lines opacity-40 lg:block"></div>
+    <div class="relative mx-auto max-w-[1440px] px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-32">
+      <p class="eyebrow text-acid">YouTube / play</p>
+      <div class="mt-6 grid gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-end">
+        <h1 class="display max-w-4xl text-[3.5rem] font-bold leading-[0.86] sm:text-7xl lg:text-[6.4rem]">Technologia,<br />którą <span class="text-acid">warto</span><br />zrozumieć.</h1>
+        <div class="border-l-2 border-rust pl-5"><p class="max-w-md text-base leading-8 text-paper/65">Analizujemy nowości, pokazujemy proces i rozmawiamy z ludźmi, którzy budują rzeczy ważniejsze niż kolejny tutorial.</p><a class="mt-7 inline-flex bg-acid px-5 py-3.5 text-sm font-extrabold text-ink transition-transform hover:-rotate-2" href="https://youtube.com/c/przeprogramowani/videos" target="_blank" rel="noreferrer">Subskrybuj kanał ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20 text-ink sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col justify-between gap-4 border-b border-ink/15 pb-8 sm:flex-row sm:items-end"><div><p class="eyebrow text-ink/50">Najnowsze materiały</p><h2 class="display mt-4 text-5xl font-bold leading-[0.9] sm:text-6xl">Odpal odcinek.</h2></div><p class="max-w-xs text-sm leading-6 text-ink/60">Nowe filmy o AI, pracy programisty i świadomym tworzeniu oprogramowania.</p></div>
+      <div class="mt-8 grid gap-x-5 gap-y-10 md:grid-cols-2">
+        {videos.map((video, index) => (
+          <a href={video.href} class={`group ${index === 0 ? 'md:col-span-2' : ''}`} target="_blank" rel="noreferrer">
+            <div class={`relative overflow-hidden bg-slate ${index === 0 ? 'aspect-[16/7]' : 'aspect-video'}`}>
+              <img class="h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80" src={video.image} alt={`Miniatura filmu: ${video.title}`} loading={index === 0 ? 'eager' : 'lazy'} />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent"></div>
+              <span class="absolute bottom-3 left-3 bg-acid px-2 py-1 font-mono text-[0.62rem] font-bold text-ink">{video.tag}</span>
+              <span class="absolute bottom-3 right-3 bg-ink px-2 py-1 font-mono text-[0.62rem] font-semibold text-paper">{video.duration}</span>
+              <span class="play-button absolute inset-0 grid place-items-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-paper/95 text-ink transition-transform group-hover:scale-110"><svg width="15" height="17" viewBox="0 0 14 16" fill="none" aria-hidden="true"><path d="M13 8 1 15V1l12 7Z" fill="currentColor" /></svg></span></span>
+            </div>
+            <div class="mt-4 flex items-start gap-4"><span class="pt-1 font-mono text-xs font-semibold text-rust">0{index + 1}</span><h3 class={`font-extrabold leading-[1.18] transition-colors group-hover:text-rust ${index === 0 ? 'max-w-3xl text-2xl sm:text-3xl' : 'text-lg sm:text-xl'}`}>{video.title}</h3></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-acid py-20 text-ink sm:py-28">
+    <div class="mx-auto grid max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-[.75fr_1.25fr] lg:px-12"><p class="eyebrow">Na żywo i bez montażu</p><div><h2 class="display max-w-4xl text-5xl font-bold leading-[0.9] sm:text-6xl">Wpadnij na live,<br />zadaj <span class="outline-text text-ink/80">pytanie.</span></h2><p class="mt-6 max-w-xl text-sm font-medium leading-7 text-ink/70">Najciekawsze rozmowy często zaczynają się po pierwszym pytaniu z czatu. Śledź nas na YouTube, aby nie przegapić kolejnego spotkania.</p><a href="https://youtube.com/c/przeprogramowani/videos" class="mt-8 inline-flex bg-ink px-5 py-3.5 text-sm font-extrabold text-paper" target="_blank" rel="noreferrer">Zobacz kanał <span class="ml-2 text-acid">↗</span></a></div></div>
+  </section>
+</BaseLayout>

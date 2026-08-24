@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { courses, podcasts, videos } from '../data/content';
+---
+<BaseLayout description="Przeprogramowani: kursy, podcasty i materiały dla programistów, którzy chcą pracować świadomie w epoce AI.">
+  <section class="grain relative overflow-hidden border-b border-white/10 bg-ink">
+    <div class="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] grid-lines opacity-70 lg:block"></div>
+    <div class="relative mx-auto grid min-h-[700px] max-w-[1440px] items-end gap-12 px-5 pb-10 pt-16 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:px-12 lg:pb-12 lg:pt-20">
+      <div class="relative z-10 max-w-3xl lg:pb-12">
+        <a href="https://10xdevs.pl" class="eyebrow inline-flex items-center gap-3 border border-acid/40 bg-acid/10 px-3 py-2 text-acid transition-colors hover:bg-acid hover:text-ink">
+          <span class="h-1.5 w-1.5 rounded-full bg-acid"></span> Nowe: 10xDevs 4.0 <span aria-hidden="true">↗</span>
+        </a>
+        <h1 class="display mt-8 max-w-3xl text-[3.35rem] font-bold leading-[0.9] text-paper sm:text-7xl lg:text-[5.8rem] xl:text-[6.7rem]">
+          Myśl szerzej.<br />
+          <span class="text-acid">Buduj lepiej.</span>
+        </h1>
+        <p class="mt-7 max-w-xl text-base leading-7 text-paper/65 sm:text-lg">Programowanie to więcej niż frameworki. Uczymy, jak podejmować lepsze decyzje techniczne, tworzyć wartościowe produkty i świadomie współpracować z AI.</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#programy" class="bg-acid px-5 py-3.5 text-sm font-extrabold text-ink transition-transform hover:-rotate-2">Odkryj programy <span aria-hidden="true">↓</span></a>
+          <a href="/podcast" class="border border-white/25 px-5 py-3.5 text-sm font-bold text-paper transition-colors hover:border-paper hover:bg-white/5">Posłuchaj podcastu</a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[620px] self-center lg:translate-y-6">
+        <div class="relative aspect-[1.06] overflow-hidden bg-[#dfff42] p-4 text-ink sm:p-6">
+          <div class="absolute -right-[7%] -top-[10%] h-[70%] w-[70%] rounded-full border-[32px] border-ink/10"></div>
+          <div class="absolute bottom-[8%] left-[7%] h-24 w-24 rounded-full bg-rust float-one"></div>
+          <div class="absolute bottom-[16%] right-[14%] h-11 w-11 bg-ink float-two"></div>
+          <div class="relative flex items-start justify-between font-mono text-[0.6rem] font-semibold uppercase tracking-[0.1em]">
+            <span>program / 04</span><span>wrzesień 2026</span>
+          </div>
+          <div class="absolute inset-x-5 bottom-6 sm:inset-x-7 sm:bottom-8">
+            <p class="font-mono text-xs font-semibold uppercase tracking-[0.16em]">AI-native software engineering</p>
+            <p class="display mt-2 max-w-md text-5xl font-bold leading-[0.85] tracking-[-0.08em] sm:text-6xl">10xDevs<br /><span class="outline-text text-ink/80">4.0</span></p>
+          </div>
+        </div>
+        <div class="relative ml-auto -mt-4 mr-5 w-[72%] bg-ink p-4 text-paper shadow-[0_15px_0_#ee5d2c] sm:-mt-6 sm:mr-8 sm:p-5">
+          <div class="flex items-center justify-between border-b border-white/15 pb-3 font-mono text-[0.6rem] uppercase tracking-[0.1em] text-paper/60">
+            <span>cykl tworzenia</span><span>AI / Human</span>
+          </div>
+          <div class="mt-4 grid grid-cols-4 gap-2 text-center font-mono text-[0.56rem] uppercase tracking-[0.05em] text-acid sm:gap-3">
+            <span>01<br /><i class="mt-1 block h-1 bg-acid not-italic" />Research</span>
+            <span>02<br /><i class="mt-1 block h-1 bg-acid not-italic" />Plan</span>
+            <span>03<br /><i class="mt-1 block h-1 bg-acid not-italic" />Build</span>
+            <span>04<br /><i class="mt-1 block h-1 bg-acid not-italic" />Ship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-white/10 bg-paper text-ink">
+    <div class="mx-auto grid max-w-[1440px] gap-7 px-5 py-7 sm:px-8 md:grid-cols-[1.1fr_1fr] lg:px-12">
+      <p class="display max-w-xl text-2xl font-bold leading-[1.05] sm:text-3xl">Edukacja technologiczna dla ludzi, którzy nie chcą zostać w tyle.</p>
+      <div class="flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-ink/15 pt-5 font-mono text-[0.61rem] font-semibold uppercase tracking-[0.1em] text-ink/60 md:border-l md:border-t-0 md:pl-7 md:pt-0">
+        <span>7 lat na rynku</span><span class="h-1 w-1 rounded-full bg-rust"></span><span>kursy / podcasty / narzędzia</span><span class="h-1 w-1 rounded-full bg-rust"></span><span>dla devów</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="programy" class="bg-paper py-20 text-ink sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="grid gap-7 border-b border-ink/15 pb-9 lg:grid-cols-[.7fr_1.3fr] lg:pb-12">
+        <p class="eyebrow text-ink/50">01 / programy edukacyjne</p>
+        <div>
+          <h2 class="display max-w-3xl text-5xl font-bold leading-[0.91] sm:text-6xl lg:text-7xl">Nauka, która zostaje<br /><span class="text-rust">w kodzie.</span></h2>
+          <p class="mt-6 max-w-xl text-sm leading-7 text-ink/65 sm:text-base">Konkretna wiedza, wymagające projekty i społeczność, która pomaga przełożyć teorię na działanie.</p>
+        </div>
+      </div>
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
+        {courses.map((course) => (
+          <a href={course.href} class={`course-card group relative flex min-h-[560px] flex-col justify-between overflow-hidden p-6 sm:p-8 ${course.tone}`}>
+            <div class="absolute inset-0 overflow-hidden opacity-30 mix-blend-multiply">
+              <img class="course-image h-full w-full object-cover" src={course.image} alt="" loading="lazy" />
+            </div>
+            <div class="relative flex justify-between font-mono text-[0.62rem] font-semibold uppercase tracking-[0.1em]">
+              <span>{course.eyebrow}</span><span>{course.number}</span>
+            </div>
+            <div class="relative">
+              <h3 class="display whitespace-pre-line text-5xl font-bold leading-[0.85] sm:text-6xl">{course.title}</h3>
+              <p class="mt-6 max-w-md text-sm font-medium leading-6 opacity-80">{course.description}</p>
+              <span class={`mt-7 inline-flex h-11 w-11 items-center justify-center ${course.accent} text-ink transition-transform group-hover:translate-x-2`} aria-label={`Poznaj ${course.title.replace('\n', ' ')}`}>↗</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="overflow-hidden bg-rust py-20 text-ink sm:py-28">
+    <div class="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-12">
+      <div>
+        <p class="eyebrow">02 / posłuchaj</p>
+        <h2 class="display mt-5 text-5xl font-bold leading-[0.88] sm:text-6xl">Głosy<br />branży.</h2>
+        <p class="mt-6 max-w-sm text-sm font-medium leading-7 text-ink/75">Rozmowy o tym, co naprawdę wpływa na jakość Twojej pracy: od AI i architektury po karierę i uczenie się.</p>
+        <a href="/podcast" class="mt-8 inline-flex border-b-2 border-ink pb-1 text-sm font-extrabold">Wszystkie odcinki <span class="ml-2">→</span></a>
+      </div>
+      <div class="border-t border-ink/30">
+        {podcasts.slice(0, 3).map((episode, index) => (
+          <a href={episode.href} class="group grid gap-4 border-b border-ink/30 py-5 sm:grid-cols-[2.5rem_1fr_auto] sm:items-center" target="_blank" rel="noreferrer">
+            <span class="font-mono text-xs font-semibold text-ink/60">0{index + 1}</span>
+            <div>
+              <p class="eyebrow text-ink/60">{episode.tag}</p>
+              <h3 class="mt-2 max-w-xl text-base font-extrabold leading-6 sm:text-lg">{episode.title}</h3>
+            </div>
+            <span class="flex items-center gap-3 text-xs font-bold"><span class="hidden sm:inline">{episode.duration}</span><i class="grid h-9 w-9 place-items-center rounded-full border border-ink/40 not-italic transition-colors group-hover:bg-ink group-hover:text-rust">▶</i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink py-20 sm:py-28">
+    <div class="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col justify-between gap-6 border-b border-white/15 pb-8 sm:flex-row sm:items-end">
+        <div>
+          <p class="eyebrow text-acid">03 / oglądaj</p>
+          <h2 class="display mt-4 text-5xl font-bold leading-[0.9] sm:text-6xl">Zobacz, co<br />nas kręci.</h2>
+        </div>
+        <a href="/youtube" class="text-sm font-bold text-paper hover:text-acid">Kanał YouTube <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {videos.map((video) => (
+          <a href={video.href} class="group" target="_blank" rel="noreferrer">
+            <div class="relative aspect-video overflow-hidden bg-slate">
+              <img class="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-75" src={video.image} alt="" loading="lazy" />
+              <span class="absolute bottom-2 right-2 bg-ink px-2 py-1 font-mono text-[0.62rem] font-semibold">{video.duration}</span>
+              <span class="play-button absolute inset-0 grid place-items-center opacity-0 transition-opacity group-hover:opacity-100"><span class="grid h-12 w-12 place-items-center rounded-full bg-acid text-ink"><svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true"><path d="M13 8 1 15V1l12 7Z" fill="currentColor" /></svg></span></span>
+            </div>
+            <p class="eyebrow mt-4 text-acid">{video.tag}</p>
+            <h3 class="mt-2 text-sm font-bold leading-6 text-paper">{video.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-acid py-20 text-ink sm:py-28">
+    <div class="absolute -right-8 -top-10 font-display text-[16rem] font-bold leading-none tracking-[-0.1em] text-ink/10 sm:text-[24rem]">?</div>
+    <div class="relative mx-auto grid max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-[1fr_.7fr] lg:px-12">
+      <div>
+        <p class="eyebrow">Raz w tygodniu</p>
+        <h2 class="display mt-5 max-w-3xl text-5xl font-bold leading-[0.88] sm:text-6xl lg:text-7xl">Nie przegap<br />dobrego linka.</h2>
+      </div>
+      <div class="self-end">
+        <p class="max-w-md text-sm font-medium leading-7 text-ink/75">Przeprogramowany Newsletter: 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus. W piątek, bez spamu.</p>
+        <a href="https://przeprogramowani.substack.com" class="mt-7 inline-flex bg-ink px-5 py-3.5 text-sm font-extrabold text-paper transition-transform hover:-rotate-2">Zapisuję się <span class="ml-2 text-acid">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

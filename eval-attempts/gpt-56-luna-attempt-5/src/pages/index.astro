@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses, partners, podcasts, videos } from '../data/content';
+
+const featuredPodcast = podcasts[0];
+const featuredVideo = videos[1];
+---
+
+<Layout currentPath="/" title="Przeprogramowani — szersze spojrzenie na programowanie" description="Podcasty, filmy i programy edukacyjne dla osób, które chcą programować świadomie w epoce AI.">
+  <main>
+    <section class="hero grid-lines noise relative overflow-hidden border-b hairline">
+      <div class="site-container relative grid min-h-[650px] items-center gap-12 py-20 lg:grid-cols-[1.08fr_.92fr] lg:gap-20 lg:py-28">
+        <div class="reveal-up max-w-3xl">
+          <div class="eyebrow">Szersze spojrzenie na programowanie</div>
+          <h1 class="display mt-7 max-w-3xl text-[clamp(3.5rem,8vw,7.7rem)] font-medium leading-[.88] text-cream">
+            Kod to dopiero <span class="text-lime">początek.</span>
+          </h1>
+          <p class="mt-8 max-w-xl text-lg leading-8 text-mist sm:text-xl">
+            Pomagamy ambitnym programistom rozwijać warsztat, podejmować lepsze decyzje i budować oprogramowanie, które ma sens.
+          </p>
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a class="button-primary" href="#programy">Zobacz programy <span aria-hidden="true">↘</span></a>
+            <a class="button-secondary" href="/o-nas">Poznaj nas <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-xs text-mist">
+            <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-lime"></span>7 lat edukacji technologicznej</span>
+            <span class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-coral"></span>20K+ osób na YouTube</span>
+          </div>
+        </div>
+
+        <div class="reveal-up delay-2 relative mx-auto w-full max-w-[480px] lg:ml-auto">
+          <div class="absolute -right-4 -top-10 hidden h-24 w-24 rounded-full border border-lime/30 sm:block"></div>
+          <div class="absolute -bottom-9 -left-7 hidden h-16 w-16 rounded-full bg-coral/20 blur-xl sm:block"></div>
+          <div class="relative overflow-hidden border border-lime/40 bg-[#101714] shadow-[18px_18px_0_rgba(200,241,105,.12)]">
+            <div class="flex items-center justify-between border-b border-white/10 px-5 py-4 text-[10px] uppercase tracking-[.18em] text-mist">
+              <span>Przeprogramowani / 04</span>
+              <span class="text-lime">Rekomendowane</span>
+            </div>
+            <div class="relative min-h-[340px] overflow-hidden bg-[#d6fc68] p-7 text-ink sm:p-10">
+              <div class="absolute -right-20 -top-20 h-56 w-56 rounded-full border-[30px] border-ink/10"></div>
+              <div class="absolute bottom-[-65px] right-[-35px] h-48 w-48 rotate-45 border-[20px] border-coral/70"></div>
+              <p class="relative z-10 text-[11px] font-bold uppercase tracking-[.2em]">Nowa edycja</p>
+              <h2 class="display relative z-10 mt-12 max-w-[320px] text-5xl font-semibold leading-[.85] tracking-[-.08em] sm:text-6xl">10xDevs <span class="text-coral">4.0</span></h2>
+              <p class="relative z-10 mt-7 max-w-[280px] text-base font-medium leading-6">AI-native software engineering. Programuj szybciej, ale przede wszystkim — świadomiej.</p>
+              <a class="relative z-10 mt-8 inline-flex items-center gap-3 border-b-2 border-ink pb-1 text-xs font-bold uppercase tracking-[.12em]" href="https://10xdevs.pl?utm_source=przeprogramowani_website" target="_blank" rel="noreferrer">Sprawdź program <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="grid grid-cols-3 divide-x divide-white/10 border-t border-white/10 bg-panel">
+              <div class="p-4"><strong class="block font-display text-xl text-cream">AI</strong><span class="mt-1 block text-[10px] uppercase tracking-[.12em] text-mist">workflow</span></div>
+              <div class="p-4"><strong class="block font-display text-xl text-cream">PROD</strong><span class="mt-1 block text-[10px] uppercase tracking-[.12em] text-mist">delivery</span></div>
+              <div class="p-4"><strong class="block font-display text-xl text-cream">10x</strong><span class="mt-1 block text-[10px] uppercase tracking-[.12em] text-mist">impact</span></div>
+            </div>
+          </div>
+          <p class="mt-5 text-right text-[10px] uppercase tracking-[.18em] text-mist">01 / zbuduj swój system pracy</p>
+        </div>
+      </div>
+      <div class="pointer-events-none absolute bottom-8 left-[4%] hidden font-mono text-[10px] text-mist/50 lg:block">&lt;main&gt; / build-better-software</div>
+    </section>
+
+    <section class="border-b hairline bg-panel">
+      <div class="site-container grid grid-cols-2 divide-x divide-white/10 sm:grid-cols-4">
+        <div class="px-4 py-8 sm:px-7"><p class="font-display text-3xl text-lime sm:text-4xl">7</p><p class="mt-2 text-[10px] uppercase tracking-[.14em] text-mist">lat na rynku</p></div>
+        <div class="px-4 py-8 sm:px-7"><p class="font-display text-3xl text-cream sm:text-4xl">6.7K+</p><p class="mt-2 text-[10px] uppercase tracking-[.14em] text-mist">absolwentów 10xDevs</p></div>
+        <div class="border-t border-white/10 px-4 py-8 sm:border-t-0 sm:px-7"><p class="font-display text-3xl text-coral sm:text-4xl">398</p><p class="mt-2 text-[10px] uppercase tracking-[.14em] text-mist">filmów na YouTube</p></div>
+        <div class="border-t border-white/10 px-4 py-8 sm:border-t-0 sm:px-7"><p class="font-display text-3xl text-cream sm:text-4xl">1.5K+</p><p class="mt-2 text-[10px] uppercase tracking-[.14em] text-mist">przeszkolonych devów</p></div>
+      </div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32">
+      <div class="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <div>
+          <div class="eyebrow">Wybierz swój format</div>
+          <h2 class="display mt-6 max-w-md text-5xl font-medium leading-[.93] sm:text-6xl">Wiedza, która zostaje na dłużej.</h2>
+          <p class="mt-7 max-w-sm text-base leading-7 text-mist">Nie gonimy za kolejnym frameworkiem. Rozmawiamy o tym, co naprawdę pomaga rosnąć: praktyce, kontekście i dobrych pytaniach.</p>
+        </div>
+        <div class="grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2">
+          <a class="group bg-panel p-7 transition-colors hover:bg-[#182019] sm:p-9" href="/podcast">
+            <div class="flex items-start justify-between"><span class="grid h-11 w-11 place-items-center rounded-full bg-coral text-ink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-5 w-5"><path d="M12 16a4 4 0 0 0 4-4V7a4 4 0 0 0-8 0v5a4 4 0 0 0 4 4Z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1M12 19v3M8 22h8"/></svg></span><span class="text-2xl text-mist transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></div>
+            <p class="mt-14 text-[10px] font-bold uppercase tracking-[.18em] text-coral">Podcast</p>
+            <h3 class="display mt-3 text-3xl leading-none">Długie rozmowy. Konkretne wnioski.</h3>
+            <p class="mt-5 text-sm leading-6 text-mist">Technologia, AI i ludzie, którzy budują rzeczy naprawdę.</p>
+          </a>
+          <a class="group bg-[#d6fc68] p-7 text-ink transition-colors hover:bg-[#e0ff8c] sm:p-9" href="/youtube">
+            <div class="flex items-start justify-between"><span class="grid h-11 w-11 place-items-center rounded-full bg-ink text-lime"><svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg></span><span class="text-2xl text-ink/50 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></div>
+            <p class="mt-14 text-[10px] font-bold uppercase tracking-[.18em] text-ink/60">YouTube</p>
+            <h3 class="display mt-3 text-3xl leading-none">O technologii bez lania wody.</h3>
+            <p class="mt-5 text-sm leading-6 text-ink/70">Nowości ze świata IT, praktyka i rozwój kariery.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="programy" class="border-y hairline bg-[#0e1411] py-24 sm:py-32">
+      <div class="site-container">
+        <div class="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div><div class="eyebrow">Edukacja technologiczna</div><h2 class="display mt-6 max-w-2xl text-5xl font-medium leading-[.92] sm:text-7xl">Zrób następny krok.<br /><span class="text-lime">Po swojemu.</span></h2></div>
+          <p class="max-w-xs text-sm leading-6 text-mist">Programy dla osób, które chcą nie tylko znać narzędzia, ale rozumieć, kiedy i po co ich używać.</p>
+        </div>
+        <div class="mt-16 grid gap-4 lg:grid-cols-3">
+          {courses.map((course) => (
+            <article class={`course-card group relative flex min-h-[390px] flex-col overflow-hidden border p-7 transition-transform hover:-translate-y-1 sm:p-8 ${course.accent === 'lime' ? 'border-lime/30 bg-[#142016]' : course.accent === 'coral' ? 'border-coral/30 bg-[#1a1514]' : 'border-[#8fb9cf]/30 bg-[#111a1e]'}`}>
+              <div class="flex items-start justify-between"><span class={`font-mono text-xs ${course.accent === 'lime' ? 'text-lime' : course.accent === 'coral' ? 'text-coral' : 'text-[#9bd4e5]'}`}>{course.index} / 03</span><span class="text-3xl text-mist/60 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span></div>
+              <div class="mt-auto">
+                <p class={`text-[10px] font-bold uppercase tracking-[.18em] ${course.accent === 'lime' ? 'text-lime' : course.accent === 'coral' ? 'text-coral' : 'text-[#9bd4e5]'}`}>{course.label}</p>
+                <h3 class="display mt-3 text-4xl font-medium leading-[.88] text-cream">{course.name}</h3>
+                <p class="mt-6 max-w-sm text-sm leading-6 text-mist">{course.description}</p>
+                <div class="mt-7 flex items-end justify-between gap-3 border-t border-white/10 pt-5"><span class="text-[10px] uppercase tracking-[.12em] text-mist">{course.details}</span><a class={`text-sm font-bold transition-colors hover:text-cream ${course.accent === 'lime' ? 'text-lime' : course.accent === 'coral' ? 'text-coral' : 'text-[#9bd4e5]'}`} href={course.href} target="_blank" rel="noreferrer">Sprawdź <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="site-container py-24 sm:py-32">
+      <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+        <div class="relative min-h-[390px] overflow-hidden border border-white/10 bg-panel p-7 sm:p-10">
+          <div class="absolute right-[-70px] top-[-75px] h-64 w-64 rounded-full border-[35px] border-lime/15"></div>
+          <div class="absolute bottom-[-90px] left-[-30px] h-60 w-60 rotate-12 border-[28px] border-coral/15"></div>
+          <span class="relative z-10 font-mono text-[10px] uppercase tracking-[.17em] text-mist">Manifest / 001</span>
+          <div class="relative z-10 mt-28 max-w-md"><p class="display text-5xl leading-[.88] text-cream sm:text-6xl">Mniej szumu.<br /><span class="text-lime">Więcej sensu.</span></p><p class="mt-6 max-w-xs text-sm leading-6 text-mist">Dobre programowanie zaczyna się od ciekawości i kończy na odpowiedzialności.</p></div>
+          <span class="absolute bottom-8 right-8 font-mono text-[10px] text-mist/60">/przeprogramowani</span>
+        </div>
+        <div>
+          <div class="eyebrow">Kim jesteśmy</div>
+          <h2 class="display mt-6 max-w-xl text-5xl font-medium leading-[.92] sm:text-6xl">Tworzymy przestrzeń dla ludzi, którzy chcą rosnąć.</h2>
+          <p class="mt-8 max-w-lg text-lg leading-8 text-mist">Przeprogramowani to edukacja technologiczna, która łączy doświadczenie z ciekawością. Pokazujemy nie tylko jak działa kod, ale też jak lepiej się uczyć, pracować i podejmować decyzje.</p>
+          <a class="link-arrow mt-9 text-lime" href="/o-nas">Dowiedz się więcej <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y hairline bg-[#d6fc68] py-20 text-ink sm:py-28">
+      <div class="site-container grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+        <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-ink/60">Newsletter 3—2—1</p><h2 class="display mt-5 max-w-lg text-5xl font-medium leading-[.9] sm:text-6xl">Dobre rzeczy raz w tygodniu.</h2></div>
+        <div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end"><p class="max-w-sm text-sm leading-6 text-ink/75">W piątek dostajesz 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus-niespodziankę. Bez spamu. Bez korpo-mowy.</p><a class="button-secondary border-ink/30 text-ink hover:border-ink" href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer">Zapisz się za darmo <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="site-container overflow-hidden py-20 sm:py-24">
+      <div class="flex flex-col gap-4 border-b hairline pb-6 sm:flex-row sm:items-end sm:justify-between"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-lime">Ostatnio u nas</p><h2 class="display mt-3 text-4xl sm:text-5xl">Posłuchaj. Obejrzyj. Zostań.</h2></div><a class="link-arrow text-mist" href="/youtube">Wszystkie materiały <span aria-hidden="true">→</span></a></div>
+      <div class="grid gap-4 pt-6 md:grid-cols-2">
+        <a class="group grid gap-5 border-b border-white/10 pb-7 sm:grid-cols-[140px_1fr] sm:gap-7" href="/podcast"><div class={`relative grid aspect-square place-items-center overflow-hidden sm:aspect-auto ${featuredPodcast.tone === 'coral' ? 'bg-coral' : featuredPodcast.tone === 'blue' ? 'bg-[#9bd4e5]' : 'bg-[#bfadff]'}`}><span class="font-display text-5xl text-ink/80">01</span><span class="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-[.16em] text-ink/70">Podcast</span></div><div><p class="text-[10px] uppercase tracking-[.16em] text-coral">{featuredPodcast.series} · {featuredPodcast.date}</p><h3 class="display mt-3 text-2xl leading-none transition-colors group-hover:text-lime">{featuredPodcast.title}</h3><p class="mt-4 text-sm leading-6 text-mist">{featuredPodcast.description}</p><span class="mt-6 inline-flex text-xs font-bold text-cream">Odtwórz odcinek <span class="ml-2 text-coral">↗</span></span></div></a>
+        <a class="group grid gap-5 border-b border-white/10 pb-7 sm:grid-cols-[140px_1fr] sm:gap-7" href={`https://www.youtube.com/watch?v=${featuredVideo.id}`} target="_blank" rel="noreferrer"><div class="relative aspect-square overflow-hidden bg-[#1c2521] sm:aspect-auto"><img class="h-full w-full object-cover opacity-80 grayscale transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0" src={`https://i.ytimg.com/vi/${featuredVideo.id}/hqdefault.jpg`} alt="" loading="lazy" /><span class="absolute bottom-3 left-3 bg-lime px-2 py-1 text-[10px] font-bold uppercase tracking-[.16em] text-ink">YouTube</span></div><div><p class="text-[10px] uppercase tracking-[.16em] text-lime">{featuredVideo.category} · {featuredVideo.date}</p><h3 class="display mt-3 text-2xl leading-none transition-colors group-hover:text-lime">{featuredVideo.title}</h3><p class="mt-4 text-sm leading-6 text-mist">Praktyczne spojrzenie na narzędzia i procesy, które zmieniają codzienną pracę developera.</p><span class="mt-6 inline-flex text-xs font-bold text-cream">Obejrzyj film <span class="ml-2 text-lime">↗</span></span></div></a>
+      </div>
+    </section>
+
+    <section class="border-t hairline py-12">
+      <div class="site-container"><p class="mb-8 text-[10px] font-bold uppercase tracking-[.18em] text-mist">Zaufali nam</p><div class="flex flex-wrap items-center gap-x-9 gap-y-5 text-sm font-semibold text-mist/70 sm:gap-x-12">{partners.map((partner) => <span>{partner}</span>)}</div></div>
+    </section>
+  </main>
+</Layout>

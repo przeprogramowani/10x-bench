@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const people = [
+  { name: 'Przemek Smyrdek', role: 'Co-founder, Przeprogramowani', image: 'https://przeprogramowani.pl/img/profiles/przemek.webp', text: 'Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify. Full-stack developer, prelegent i kontrybutor Open Source.' },
+  { name: 'Marcin Czarkowski', role: 'Co-founder, Przeprogramowani', image: 'https://przeprogramowani.pl/img/profiles/marcin.webp', text: 'Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem. Entuzjasta neurobiologii i twórca podcastu Opanuj.AI.' },
+];
+---
+
+<BaseLayout currentPath="/o-nas" title="O nas — Przeprogramowani" description="Poznaj Przeprogramowanych — łączymy świat programowania, biznesu i rozwoju.">
+  <main>
+    <section class="bg-ink py-24 text-white md:py-32">
+      <div class="container-wide grid gap-12 lg:grid-cols-[1fr_.8fr] lg:items-end"><div><p class="eyebrow text-orange">O nas / 01</p><h1 class="display mt-7 max-w-[800px] text-6xl leading-[.9] md:text-8xl">Patrzymy<br /><span class="text-orange">szerzej.</span></h1></div><p class="max-w-[370px] text-lg leading-7 text-white/60">Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Zamiast gotowych recept dajemy Ci lepsze pytania.</p></div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container-wide grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+        <div><p class="section-label eyebrow">Nasza perspektywa</p><p class="display mt-5 text-3xl leading-tight md:text-4xl">Najlepsi programiści to ci, którzy widzą więcej niż sam kod.</p></div>
+        <div class="max-w-[680px] text-lg leading-8 text-black/65"><p>Technologia zmienia się szybciej niż kiedykolwiek. Dlatego uczymy nie tylko składni i narzędzi, ale też podejmowania decyzji, pracy z ludźmi i świadomego rozwoju.</p><p class="mt-6">Tworzymy podcasty, artykuły, programy edukacyjne i narzędzia dla osób, które chcą budować rzeczy z sensem — od pierwszego komponentu po produkt działający na dużą skalę.</p><div class="quote-block mt-12 text-2xl leading-tight text-ink md:text-3xl"><p class="relative z-10 font-semibold">„Szersze spojrzenie” nie jest sloganem. To sposób, w jaki pracujemy i uczymy.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section-pad border-y hairline bg-paper-deep">
+      <div class="container-wide"><div class="mb-12"><p class="section-label eyebrow">Ludzie / 02</p><h2 class="display heading-lg mt-5">Poznaj twórców.</h2></div><div class="grid gap-5 md:grid-cols-2">{people.map((person) => <article class="border hairline bg-paper p-5"><div class="grid gap-7 sm:grid-cols-[180px_1fr] sm:items-end"><div class="aspect-[4/5] overflow-hidden bg-ink"><img class="h-full w-full object-cover grayscale" src={person.image} alt={person.name} loading="lazy" /></div><div><p class="eyebrow text-orange">{person.role}</p><h3 class="display mt-3 text-3xl leading-none">{person.name}</h3><p class="mt-5 text-sm leading-6 text-black/60">{person.text}</p><a class="mt-5 inline-block text-sm font-bold" href="https://www.linkedin.com/company/przeprogramowani/" target="_blank" rel="noreferrer">LinkedIn <span class="text-orange">↗</span></a></div></div></article>)}</div></div>
+    </section>
+
+    <section class="section-pad"><div class="container-wide"><div class="grid gap-5 md:grid-cols-3"><div class="border-t-2 border-orange pt-5"><p class="display text-6xl">7</p><p class="mt-2 text-sm leading-5 text-black/55">lat na rynku edukacji technologicznej</p></div><div class="border-t-2 border-ink pt-5"><p class="display text-6xl">1.5k<span class="text-orange">+</span></p><p class="mt-2 text-sm leading-5 text-black/55">przeszkolonych programistów w naszych programach</p></div><div class="border-t-2 border-ink pt-5"><p class="display text-6xl">10x</p><p class="mt-2 text-sm leading-5 text-black/55">więcej ciekawości, mniej drogi na skróty</p></div></div><div class="mt-20 flex flex-col items-start justify-between gap-8 border-t hairline pt-8 md:flex-row md:items-center"><p class="display max-w-[550px] text-3xl leading-tight">Chcesz zrobić coś razem?<br /><span class="text-orange">Porozmawiajmy.</span></p><a class="button-primary" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl ↗</a></div></div></section>
+  </main>
+</BaseLayout>

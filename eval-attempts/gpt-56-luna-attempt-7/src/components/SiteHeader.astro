@@ -1,0 +1,24 @@
+---
+import MobileMenu from './MobileMenu';
+---
+
+<div class="relative z-50 bg-paper">
+  <div class="bg-ink py-2.5 text-center text-[11px] font-semibold tracking-wide text-paper">
+    <span class="mr-2 inline-block rounded-full bg-lime px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] text-ink">Nowość</span>
+    <a href="https://10xdevs.pl?utm_source=przeprogramowani_website" class="transition-opacity hover:opacity-75">10xDevs 4.0 — programuj z AI <span class="ml-1 text-lime">→</span></a>
+  </div>
+  <header class="container-wide flex h-[78px] items-center justify-between">
+    <a href="/" class="group flex items-center gap-2.5" aria-label="Przeprogramowani - strona główna">
+      <span class="grid h-9 w-9 place-items-center rounded-[10px] bg-ink text-[13px] font-bold tracking-[-0.15em] text-lime transition-transform group-hover:-rotate-6">&lt;/&gt;</span>
+      <span class="display text-[17px] font-bold tracking-[-0.06em]">przeprogramowani<span class="text-coral">.</span></span>
+    </a>
+    <nav class="hidden items-center gap-8 text-[13px] font-semibold text-ink/70 md:flex" aria-label="Główna nawigacja">
+      <a class="transition-colors hover:text-ink" href="/o-nas">O nas</a>
+      <a class="transition-colors hover:text-ink" href="/podcast">Podcast</a>
+      <a class="transition-colors hover:text-ink" href="/youtube">YouTube</a>
+      <a class="transition-colors hover:text-ink" href="/#kursy">Kursy</a>
+      <a class="ml-1 inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-paper transition-transform hover:-translate-y-0.5" href="https://10xdevs.pl?utm_source=przeprogramowani_website">10xDevs <span class="text-lime">↗</span></a>
+    </nav>
+    <MobileMenu client:load />
+  </header>
+</div>

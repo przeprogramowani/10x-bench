@@ -1,0 +1,17 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+};
+
+const { eyebrow, title, description, align = "left" } = Astro.props;
+const centered = align === "center";
+---
+
+<div class:list={["space-y-4", centered && "mx-auto max-w-3xl text-center"]}>
+  <p class="font-display text-xs uppercase tracking-[0.3em] text-[var(--color-brand-2)]">{eyebrow}</p>
+  <h2 class="font-display text-3xl leading-tight text-white sm:text-4xl">{title}</h2>
+  {description && <p class="text-base leading-8 text-[var(--color-muted)] sm:text-lg">{description}</p>}
+</div>
