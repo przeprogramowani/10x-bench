@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchPrzeprogramowaniPodcastFeed } from '../../data/przeprogramowani-podcast';
+import PodcastPlayerCard from '../../components/PodcastPlayerCard.astro';
+import ResilienceAlert from '../../components/ResilienceAlert.astro';
+
+const feed = await fetchPrzeprogramowaniPodcastFeed();
+---
+
+<Layout
+  title="Podcast Przeprogramowani — Rozmowy i odcinki | Przeprogramowani.pl"
+  description="Słuchaj Podcastu Przeprogramowani. Wywiady z gośćmi, architektura frontendu, czysty kod, dojrzałość inżynierska i rozwój w IT. Prowadzą Przemek Smyrdek i Marcin Czarkowski."
+  currentPath="/podcast/przeprogramowani"
+>
+  <div class="space-y-12">
+    <!-- Breadcrumbs / Back link -->
+    <nav aria-label="Ścieżka powrotu" class="text-xs text-slate-400">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-white">Strona główna</a></li>
+        <li><span aria-hidden="true">/</span></li>
+        <li><a href="/podcast" class="hover:text-white">Podcasty</a></li>
+        <li><span aria-hidden="true">/</span></li>
+        <li class="text-amber-400 font-semibold" aria-current="page">Podcast Przeprogramowani</li>
+      </ol>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+        <span>Inżynieria • Architektura • Kariera</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+        Podcast Przeprogramowani — Rozmowy o inżynierii i karierze w IT
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Rozmowy dla głodnych wiedzy programistów. Dyskutujemy z ekspertami branżowymi o architekturze aplikacji, jakości kodu, przejściu z juniora na seniora oraz realiach pracy w nowoczesnych firmach technologicznych.
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+        <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg">
+          🎙️ Prowadzący: Przemek Smyrdek & Marcin Czarkowski
+        </span>
+        <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg">
+          👥 Ponad 3800 stałych słuchaczy
+        </span>
+        <a
+          href="https://podcasters.spotify.com/pod/show/przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-amber-400 hover:text-amber-300"
+        >
+          Oficjalna strona w Spotify ↗
+        </a>
+      </div>
+    </header>
+
+    <!-- Resilience Alert -->
+    <ResilienceAlert feed={feed} />
+
+    <!-- Episodes List -->
+    <section aria-labelledby="episodes-heading" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <h2 id="episodes-heading" class="text-2xl font-bold text-white">
+            Najnowsze odcinki ({feed.items.length})
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Zgodnie z regułą doboru: najnowsze dostępne materiały z oficjalnego feedu RSS
+          </p>
+        </div>
+        <div class="text-xs text-slate-500">
+          Status źródła: <span class={feed.status === 'live' ? 'text-emerald-400 font-semibold' : 'text-amber-400 font-semibold'}>
+            {feed.status === 'live' ? '● Połączono z RSS na żywo' : '○ Pamięć podręczna'}
+          </span>
+        </div>
+      </div>
+
+      {feed.items.length === 0 ? (
+        <div class="p-8 rounded-2xl bg-slate-900 text-center text-slate-400">
+          <p>Brak dostępnych odcinków w tej chwili.</p>
+          <a href={feed.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-amber-400 underline mt-2 inline-block">
+            Odwiedź stronę podcastu
+          </a>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {feed.items.map((item) => (
+            <PodcastPlayerCard item={item} />
+          ))}
+        </div>
+      )}
+    </section>
+
+    <!-- Navigation Hub Footer -->
+    <nav aria-label="Nawigacja po podcastach" class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a
+        href="/podcast"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white"
+      >
+        <span>← Wróć do katalogu obu podcastów</span>
+      </a>
+      <a
+        href="/podcast/opanuj-ai"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300"
+      >
+        <span>Zobacz pierwszy format: Opanuj.AI Podcast →</span>
+      </a>
+    </nav>
+  </div>
+</Layout>

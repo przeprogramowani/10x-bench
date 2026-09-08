@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,26.02.2026 14:41,N/A,26.02.2026 14:41
+Local build,1,1,Build successful with Astro 5 and Cloudflare adapter
+Manual testing,1,1,All pages accessible and returning 200; navigation styles and content working properly
+Tech stack,1,1,Astro 5.17.1 + React 19.2.4 + Tailwind CSS 4.2.1 + Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200 but missing founder bios (no Przemek Smyrdek/Marcin Czarkowski names or DAZN/Cabify/SmartRecruiters details); generic content only
+Podcast page,0.5,1,Page exists and returns 200 but only shows Opanuj.AI Podcast (missing Przeprogramowany Podcast); episode data is fabricated; Spotify link is generic https://spotify.com instead of correct show URLs
+YouTube page,0.5,1,Page exists and returns 200 but video data is entirely fabricated with no real YouTube IDs; uses gradient placeholders instead of actual content
+Kursy section,0.5,1,Section exists with 10xDevs featured in hero but only shows 2 of 6 courses (missing Opanuj JavaScript 850+ graduates and others); partial content match
+Consistent UI,1,1,UI is consistent across all pages
+Responsive design,1,1,Fully responsive design across all screen sizes
+SEO Tags,0.5,1,Basic meta tags (title + description) in Layout.astro applied to all pages but no OG/Twitter tags and descriptions dont match context file copy (missing tagline and mission)
+Penalty,0,N/A,No penalty applied

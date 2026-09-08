@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { COURSES } from '../data/static/courses';
+import CourseCard from '../components/CourseCard.astro';
+---
+
+<Layout
+  title="Kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani.pl"
+  description="Poznaj flagowe programy edukacyjne Przeprogramowanych: 10xDevs (AI-Native Engineering), Opanuj Frontend: AI Edition oraz Opanuj TypeScript: Frontend Pro."
+  canonicalPath="/kursy"
+>
+  <div class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-4">
+        <span>Autorskie programy edukacyjne</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-6">
+        Edukacja technologiczna w epoce AI
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+        Topowe szkolenia dla ambitnych programistów. Uczymy tworzenia stabilnych, skalowalnych systemów produkcyjnych oraz świadomego wykorzystania Generative AI i agentów w codziennej pracy.
+      </p>
+    </div>
+
+    {/* Courses Grid */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+      {COURSES.map((course) => (
+        <CourseCard course={course} />
+      ))}
+    </div>
+
+    {/* Why Learn With Us Section */}
+    <section class="bg-gradient-to-br from-slate-900 to-slate-850 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-xl">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-8 text-center sm:text-left">
+        Dlaczego zaufało nam już ponad 7000 programistów?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="space-y-3">
+          <div class="text-emerald-400 font-extrabold text-2xl">01. Praktyka & Kod</div>
+          <h3 class="text-lg font-bold text-white">Praca na realnym kodzie</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Nie tworzymy zabawek ani prostych tutoriali. Uczymy na architekturze produkcyjnej, systemach legacy, zaawansowanym typowaniu i prawdziwych scenariuszach biznesowych.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-emerald-400 font-extrabold text-2xl">02. AI-Native</div>
+          <h3 class="text-lg font-bold text-white">Świadome użycie AI</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Pokazujemy, jak zapanować nad agentami i oknem kontekstowym. AI staje się Twoim wzmacniaczem produktywności, a nie nieprzewidywalną loterią promptów.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="text-emerald-400 font-extrabold text-2xl">03. Społeczność</div>
+          <h3 class="text-lg font-bold text-white">Aktywne wsparcie autorów</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Cotygodniowe spotkania Q&A na żywo, code review oraz dedykowana platforma społecznościowa z setkami programistów na każdym poziomie zaawansowania.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

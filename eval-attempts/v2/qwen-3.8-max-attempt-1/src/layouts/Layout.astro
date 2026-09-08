@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+import MobileNav from '../components/MobileNav';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+const site = Astro.site ?? new URL('http://localhost:8788');
+const canonical = new URL(path, site).toString();
+
+const navLinks = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcasty' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/kursy', label: 'Kursy' },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Przeprogramowani" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="flex min-h-screen flex-col bg-ink-900 text-slate-100">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-amber-400 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-900"
+    >
+      Przejdź do treści
+    </a>
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-ink-800/95 backdrop-blur">
+      <div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+        <a href="/" class="flex items-center gap-2 text-lg font-bold text-white" aria-label="Przeprogramowani — strona główna">
+          <span class="text-brand-500" aria-hidden="true">&lt;/&gt;</span>
+          <span>Przeprogramowani</span>
+        </a>
+        <nav aria-label="Nawigacja główna" class="hidden md:block">
+          <ul class="flex items-center gap-1">
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class={`rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10 hover:text-white ${
+                      path.startsWith(link.href) ? 'bg-brand-600 text-white' : 'text-slate-200'
+                    }`}
+                    aria-current={path.startsWith(link.href) ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <MobileNav client:load />
+      </div>
+    </header>
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <footer class="border-t border-white/10 bg-ink-800">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div>
+          <p class="text-base font-bold text-white">&lt;/&gt; Przeprogramowani</p>
+          <p class="mt-2 text-sm text-slate-300">
+            Szersze spojrzenie na programowanie — kursy, podcasty i filmy o nowoczesnym
+            tworzeniu oprogramowania.
+          </p>
+        </div>
+        <nav aria-label="Mapa strony">
+          <p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Strony</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="hover:text-brand-500 hover:underline" href="/">Strona główna</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/o-nas">O nas</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/podcast">Podcasty</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/podcast/opanuj-ai">Opanuj.AI Podcast</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/podcast/przeprogramowani">Podcast Przeprogramowani</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/youtube">YouTube</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" href="/kursy">Kursy</a></li>
+          </ul>
+        </nav>
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Źródła</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://przeprogramowani.pl">przeprogramowani.pl</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://10xdevs.pl">Kurs 10xDevs</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li>
+            <li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.youtube.com/@Przeprogramowani">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 px-4 py-4 text-center text-xs text-slate-400">
+        Nieoficjalna prezentacja projektu Przeprogramowani. Dane mediów pobierane z publicznych
+        feedów RSS/Atom. Kontakt oficjalny:
+        <a class="underline hover:text-brand-500" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+      </div>
+    </footer>
+  </body>
+</html>

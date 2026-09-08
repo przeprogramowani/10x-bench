@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses } from '../data/courses';
+import { founders } from '../data/founders';
+import { getYouTubeVideos } from '../data/youtube';
+import { getOpanujAIPodcast } from '../data/podcast-opanuj-ai';
+import { getPrzeprogramowaniPodcast } from '../data/podcast-przeprogramowani';
+
+const ytData = await getYouTubeVideos();
+const opanujData = await getOpanujAIPodcast();
+const przeprogData = await getPrzeprogramowaniPodcast();
+
+const featuredCourse = courses.find((c) => c.id === '10xdevs') || courses[0];
+const otherCourses = courses.filter((c) => c.id !== '10xdevs');
+const latestVideos = ytData.items.slice(0, 3);
+---
+
+<Layout
+  title="Przeprogramowani.pl — Szersze spojrzenie na programowanie | Edukacja, Kursy, Podcasty i AI"
+  description="Oficjalna strona Przeprogramowani.pl. Odkryj flagowy kurs 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast Opanuj.AI i kanał YouTube dla nowoczesnych programistów."
+  canonicalPath="/"
+>
+  <!-- Hero Section with Prominently Featured 10xDevs Course -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-blue-950/40 via-gray-950 to-gray-950 border-b border-gray-800/80 pt-16 pb-20 lg:pt-24 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Text & Project Overview -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-medium">
+            <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-ping"></span>
+            Nowość: Warsztaty i program edukacyjny 10xDevs
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+            Szersze spojrzenie na <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">programowanie</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl">
+            Witaj na <strong class="text-white font-semibold">Przeprogramowani.pl</strong>. Łączymy świat nowoczesnego software developmentu, inżynierii AI, architektury systemów i rozwoju zawodowego. Pomagamy programistom patrzeć szerzej — na technologię, biznes i ludzi.
+          </p>
+
+          <!-- 10xDevs Featured Call To Action -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-900/60 border border-blue-500/30 shadow-2xl shadow-blue-500/10 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-blue-600 text-white">
+                Wyróżniony Kurs AI
+              </span>
+              <span class="text-xs text-blue-300 font-mono">10xdevs.pl</span>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-white tracking-tight">
+                {featuredCourse.title} — {featuredCourse.tagline}
+              </h2>
+              <p class="text-gray-300 text-sm mt-2 leading-relaxed">
+                {featuredCourse.description}
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a
+                href={featuredCourse.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-lg shadow-blue-600/30 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <span>Dołącz do kursu 10xDevs</span>
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a
+                href="/kursy"
+                class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 rounded-xl transition-all border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              >
+                Wszystkie kursy →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Stats & Highlights -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 text-center">
+              <p class="text-3xl sm:text-4xl font-extrabold text-blue-400">7+ lat</p>
+              <p class="text-xs sm:text-sm text-gray-400 mt-1">na rynku edukacji IT</p>
+            </div>
+            <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 text-center">
+              <p class="text-3xl sm:text-4xl font-extrabold text-indigo-400">2 Podcasty</p>
+              <p class="text-xs sm:text-sm text-gray-400 mt-1">Opanuj.AI i Gość</p>
+            </div>
+            <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 text-center">
+              <p class="text-3xl sm:text-4xl font-extrabold text-emerald-400">400+</p>
+              <p class="text-xs sm:text-sm text-gray-400 mt-1">absolwentów programów</p>
+            </div>
+            <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 text-center">
+              <p class="text-3xl sm:text-4xl font-extrabold text-purple-400">3-2-1</p>
+              <p class="text-xs sm:text-sm text-gray-400 mt-1">format newslettera</p>
+            </div>
+          </div>
+
+          <!-- Quick Navigation Hub -->
+          <div class="p-6 rounded-2xl bg-gray-900/50 border border-gray-800 space-y-4">
+            <h2 class="text-base font-semibold text-white">Eksploruj Przeprogramowani.pl:</h2>
+            <div class="grid grid-cols-1 gap-2.5">
+              <a href="/o-nas" class="p-3 rounded-lg bg-gray-800/60 hover:bg-gray-800 border border-gray-700/60 flex items-center justify-between text-sm text-gray-200 hover:text-white transition-colors">
+                <span>👥 <strong>O nas</strong> — Misja i sylwetki twórców</span>
+                <span class="text-blue-400">Zobacz →</span>
+              </a>
+              <a href="/kursy" class="p-3 rounded-lg bg-gray-800/60 hover:bg-gray-800 border border-gray-700/60 flex items-center justify-between text-sm text-gray-200 hover:text-white transition-colors">
+                <span>🎓 <strong>Kursy</strong> — 10xDevs, Frontend, TypeScript</span>
+                <span class="text-blue-400">Zobacz →</span>
+              </a>
+              <a href="/podcast" class="p-3 rounded-lg bg-gray-800/60 hover:bg-gray-800 border border-gray-700/60 flex items-center justify-between text-sm text-gray-200 hover:text-white transition-colors">
+                <span>🎙️ <strong>Katalog Podcastów</strong> — Opanuj.AI i Przeprogramowani</span>
+                <span class="text-blue-400">Zobacz →</span>
+              </a>
+              <a href="/youtube" class="p-3 rounded-lg bg-gray-800/60 hover:bg-gray-800 border border-gray-700/60 flex items-center justify-between text-sm text-gray-200 hover:text-white transition-colors">
+                <span>📺 <strong>YouTube</strong> — Filmy, live’y i analizy</span>
+                <span class="text-blue-400">Zobacz →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: O nas zapowiedź (Founders Preview) -->
+  <section class="py-16 lg:py-20 border-b border-gray-800/80 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs uppercase tracking-wider font-bold text-blue-400">Poznaj nas</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Twórcy i wartości Przeprogramowanych</h2>
+        </div>
+        <a href="/o-nas" class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300">
+          Pełny opis działalności i sylwetki →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {founders.map((founder) => (
+          <div class="p-6 sm:p-8 rounded-2xl bg-gray-900/60 border border-gray-800 flex flex-col sm:flex-row gap-6 items-start">
+            <img
+              src={founder.avatarUrl}
+              alt={`Zdjęcie profilowe: ${founder.name}`}
+              class="w-24 h-24 rounded-2xl object-cover border-2 border-blue-500/30 shrink-0"
+              loading="lazy"
+            />
+            <div class="space-y-3">
+              <div>
+                <h3 class="text-xl font-bold text-white">{founder.name}</h3>
+                <p class="text-sm font-medium text-blue-400">{founder.role}</p>
+              </div>
+              <p class="text-sm text-gray-300 leading-relaxed">
+                {founder.bio}
+              </p>
+              <div class="pt-2">
+                <a
+                  href={founder.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-semibold text-gray-400 hover:text-white"
+                >
+                  Profil LinkedIn →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Kursy zapowiedź (Courses Preview) -->
+  <section class="py-16 lg:py-20 border-b border-gray-800/80 bg-gray-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs uppercase tracking-wider font-bold text-indigo-400">Edukacja i rozwój</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Programy edukacyjne Przeprogramowanych</h2>
+        </div>
+        <a href="/kursy" class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300">
+          Zobacz wszystkie kursy i programy →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {courses.map((course) => (
+          <div class={`p-6 rounded-2xl border flex flex-col justify-between ${
+            course.id === '10xdevs'
+              ? 'bg-gradient-to-b from-blue-950/30 to-gray-900 border-blue-500/40 shadow-lg shadow-blue-500/10'
+              : 'bg-gray-900/70 border-gray-800'
+          }`}>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-gray-800 text-gray-300">
+                  {course.badge}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white">{course.title}</h3>
+              <p class="text-sm font-medium text-blue-400">{course.tagline}</p>
+              <p class="text-xs text-gray-300 leading-relaxed line-clamp-3">
+                {course.description}
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-gray-800">
+              <a
+                href={course.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-semibold rounded-lg bg-blue-600/80 hover:bg-blue-600 text-white transition-colors"
+              >
+                Przejdź do strony kursu →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Podcasty zapowiedź (Podcasts Preview) -->
+  <section class="py-16 lg:py-20 border-b border-gray-800/80 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs uppercase tracking-wider font-bold text-purple-400">Dźwięk i rozmowy</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Dwa oficjalne podcasty</h2>
+        </div>
+        <a href="/podcast" class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300">
+          Otwórz pełny katalog podcastów →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Opanuj.AI Card -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-purple-950/20 to-gray-900 border border-purple-500/30 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <img
+                src="/img/podcast/opanuj-ai-cover.jpg"
+                alt="Okładka Opanuj.AI Podcast"
+                class="w-16 h-16 rounded-xl object-cover border border-purple-500/40"
+                loading="lazy"
+              />
+              <div>
+                <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Comiesięczne podsumowania AI</span>
+                <h3 class="text-2xl font-bold text-white">Podcast Opanuj.AI</h3>
+              </div>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Najpopularniejszy techniczny podcast o LLM, agentach i Generative AI w Polsce. Prowadzący Marcin Czarkowski i Przemek Smyrdek analizują najnowsze wydarzenia, benchmarki i architekturę systemów AI.
+            </p>
+            {opanujData.items[0] && (
+              <div class="p-3 bg-gray-950/60 rounded-xl border border-gray-800 text-xs">
+                <span class="text-gray-400">Najnowszy odcinek:</span>
+                <p class="font-semibold text-white mt-1 line-clamp-1">{opanujData.items[0].title}</p>
+                <p class="text-gray-400 mt-0.5">{opanujData.items[0].formattedDate}</p>
+              </div>
+            )}
+          </div>
+          <div class="pt-6 mt-6 border-t border-gray-800 flex gap-3">
+            <a
+              href="/podcast/opanuj-ai"
+              class="flex-1 text-center py-2.5 px-4 bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm rounded-lg transition-colors"
+            >
+              Przejdź do Opanuj.AI →
+            </a>
+          </div>
+        </div>
+
+        <!-- Przeprogramowani ft. Gość Card -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-blue-950/20 to-gray-900 border border-blue-500/30 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <img
+                src="/img/podcast/przeprogramowani-cover.jpg"
+                alt="Okładka Przeprogramowani ft. Gość"
+                class="w-16 h-16 rounded-xl object-cover border border-blue-500/40"
+                loading="lazy"
+              />
+              <div>
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Rozmowy z ekspertami IT</span>
+                <h3 class="text-2xl font-bold text-white">Przeprogramowani ft. Gość</h3>
+              </div>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Głębokie rozmowy z inżynierami, managerami i liderami branży technologicznej. Dobre praktyki, architektura, ścieżka kariery i wyzwania współczesnego inżyniera oprogramowania.
+            </p>
+            {przeprogData.items[0] && (
+              <div class="p-3 bg-gray-950/60 rounded-xl border border-gray-800 text-xs">
+                <span class="text-gray-400">Ostatni dostępny odcinek:</span>
+                <p class="font-semibold text-white mt-1 line-clamp-1">{przeprogData.items[0].title}</p>
+                <p class="text-gray-400 mt-0.5">{przeprogData.items[0].formattedDate}</p>
+              </div>
+            )}
+          </div>
+          <div class="pt-6 mt-6 border-t border-gray-800 flex gap-3">
+            <a
+              href="/podcast/przeprogramowani"
+              class="flex-1 text-center py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-lg transition-colors"
+            >
+              Przejdź do Przeprogramowani →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: YouTube zapowiedź (YouTube Preview) -->
+  <section class="py-16 lg:py-20 bg-gray-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs uppercase tracking-wider font-bold text-red-400">Wideo & Livestreamy</span>
+          <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Najnowsze materiały na kanale YouTube</h2>
+        </div>
+        <a href="/youtube" class="inline-flex items-center gap-1.5 text-sm font-semibold text-red-400 hover:text-red-300">
+          Otwórz podstronę YouTube z odtwarzaczami →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {latestVideos.map((video) => (
+          <div class="bg-gray-900/80 border border-gray-800 rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-gray-700 transition-all">
+            <div>
+              <div class="relative aspect-video overflow-hidden">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  <span class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg">
+                    ▶
+                  </span>
+                </div>
+              </div>
+              <div class="p-5 space-y-2">
+                <span class="text-xs text-gray-400 font-mono">{video.formattedDate}</span>
+                <h3 class="text-base font-bold text-white line-clamp-2 group-hover:text-red-300 transition-colors">
+                  {video.title}
+                </h3>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <a
+                href="/youtube"
+                class="inline-flex items-center gap-1 text-xs font-semibold text-red-400 hover:text-red-300"
+              >
+                Odtwórz wideo na stronie →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

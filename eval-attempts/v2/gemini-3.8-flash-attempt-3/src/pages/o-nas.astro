@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { founders } from '../data/founders';
+
+const values = [
+  {
+    icon: '🔭',
+    title: 'Szersze spojrzenie',
+    description: 'Programowanie to nie tylko wklepywanie linijek kodu czy pisanie promptów. To rozumienie architektury, decyzji biznesowych, procesów w zespole i potrzeb użytkowników końcowych.',
+  },
+  {
+    icon: '⚡',
+    title: 'Praktyka i inżynieria produkcji',
+    description: 'Wszystkie techniki, które przekazujemy w naszych kursach i podcastach, sprawdziliśmy w boju w międzynarodowych środowiskach produkcyjnych (SmartRecruiters, DAZN, Cabify).',
+  },
+  {
+    icon: '🧠',
+    title: 'Edukacja oparta na nauce',
+    description: 'Łączymy wiedzę techniczną z mechanizmami kognitywistyki i neurobiologii uczenia się (metoda 3-2-1, spaced repetition, feedback loop), aby nauka przynosiła trwałe rezultaty.',
+  },
+  {
+    icon: '🤖',
+    title: 'Świadome wykorzystanie AI',
+    description: 'Odrzucamy pusty hype na rzecz inżynierii agentowej, benchmarków, modeli reasoningowych i AI-Native SDLC, które realnie podnoszą jakość i tempo pracy developera.',
+  },
+];
+
+const trustedBrands = [
+  'SmartRecruiters',
+  'Callstack',
+  'Huuuge Games',
+  'Future Processing',
+  'edrone',
+  'Xfive',
+  'Euvic',
+  'Autodesk',
+];
+---
+
+<Layout
+  title="O nas — Przeprogramowani.pl | Misja, Wartości i Twórcy"
+  description="Poznaj twórców Przeprogramowani.pl: Przemka Smyrdka i Marcina Czarkowskiego. Dowiedz się więcej o naszej misji, ponad 7 latach na rynku edukacji IT i podejściu do AI."
+  canonicalPath="/o-nas"
+>
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-6">
+        <nav aria-label="Breadcrumb" class="text-xs text-gray-400 flex items-center gap-2">
+          <a href="/" class="hover:text-blue-400">Strona główna</a>
+          <span>/</span>
+          <span class="text-gray-200">O nas</span>
+        </nav>
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          O nas — Łączymy świat programowania, biznesu i rozwoju
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed">
+          Przeprogramowani to miejsce stworzone z przekonania, że najlepsi inżynierowie to ci, którzy patrzą szerzej. Tworzymy topowe programy edukacyjne, podcasty technologiczne i treści pomagające programistom świadomie rozwijać swoje rzemiosło.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Twórcy (Both Founders detailed) -->
+  <section class="py-16 lg:py-20 border-b border-gray-800/80 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs uppercase tracking-wider font-bold text-blue-400">Zespół założycielski</span>
+        <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Sylwetki twórców Przeprogramowanych</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Doświadczeni inżynierowie i liderzy techniczni z bogatym dorobkiem w międzynarodowych firmach produktowych.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {founders.map((founder) => (
+          <article class="bg-gray-900/70 border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+            <div class="space-y-6">
+              <div class="flex items-start gap-5">
+                <img
+                  src={founder.avatarUrl}
+                  alt={`Zdjęcie profilowe: ${founder.name}`}
+                  class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-blue-500/30 shrink-0"
+                  loading="lazy"
+                />
+                <div>
+                  <h3 class="text-2xl font-bold text-white">{founder.name}</h3>
+                  <p class="text-sm font-semibold text-blue-400 mt-0.5">{founder.role}</p>
+                  <p class="text-xs text-gray-400 mt-2 font-mono">{founder.currentRole}</p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <h4 class="text-xs uppercase tracking-wider font-bold text-gray-400">Doświadczenie i biografia</h4>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                  {founder.bio}
+                </p>
+              </div>
+
+              <div class="space-y-2">
+                <h4 class="text-xs uppercase tracking-wider font-bold text-gray-400">Główne obszary i technologie</h4>
+                <div class="flex flex-wrap gap-1.5">
+                  {founder.technologies.map((tech) => (
+                    <span class="px-2.5 py-1 text-xs rounded-md bg-gray-800 text-gray-300 border border-gray-700/60">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-gray-800 flex items-center justify-between">
+              <span class="text-xs text-gray-400">Doświadczenie komercyjne: {founder.experience}</span>
+              <a
+                href={founder.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600 hover:text-white transition-colors"
+              >
+                <span>LinkedIn</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wartości i Działalność -->
+  <section class="py-16 lg:py-20 border-b border-gray-800/80 bg-gray-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-xs uppercase tracking-wider font-bold text-indigo-400">Filozofia</span>
+        <h2 class="text-3xl font-bold text-white tracking-tight mt-1">Działalność i wartości Przeprogramowanych</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Nasza praca opiera się na czterech filarach, które odróżniają nas od powierzchownych tutoriali.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((val) => (
+          <div class="p-6 rounded-2xl bg-gray-900/60 border border-gray-800 space-y-3">
+            <span class="text-3xl">{val.icon}</span>
+            <h3 class="text-lg font-bold text-white">{val.title}</h3>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+              {val.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Zaufali nam -->
+  <section class="py-16 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <span class="text-xs uppercase tracking-wider font-bold text-blue-400">Zaufanie branży IT</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+          Ponad 7 lat doświadczenia i współpraca z liderami
+        </h2>
+        <p class="text-sm text-gray-400 max-w-xl mx-auto mt-2">
+          Nasi absolwenci i partnerzy pracują w czołowych organizacjach technologicznych w Polsce i na świecie.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
+        {trustedBrands.map((brand) => (
+          <div class="px-5 py-3 rounded-xl bg-gray-900 border border-gray-800 text-sm font-semibold text-gray-300">
+            {brand}
+          </div>
+        ))}
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/kursy"
+          class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-colors shadow-lg shadow-blue-500/20"
+        >
+          Sprawdź nasze kursy →
+        </a>
+        <a
+          href="/"
+          class="px-6 py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white font-semibold text-sm transition-colors border border-gray-700"
+        >
+          Wróć na stronę główną
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

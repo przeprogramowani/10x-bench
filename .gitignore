@@ -7,3 +7,11 @@ dist
 **/.wrangler
 **/.claude
 *.txt
+
+# Version the two benchmark workflows; keep other local Claude configuration private.
+!/.claude/
+/.claude/*
+!/.claude/skills/
+/.claude/skills/*
+!/.claude/skills/10x-eval-model/
+!/.claude/skills/10x-score-attempts/

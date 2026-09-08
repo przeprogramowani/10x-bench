@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,9min 24s,N/A,9min 24s
+Test run,9.02.2026 16:40,N/A,9.02.2026 16:40
+Local build,1,1,Build successful with astro build - no errors
+Manual testing,1,1,Dev server running on port 4322 - all pages accessible and returning 200
+Tech stack,1,1,Astro 5.17.1 + React 19.2.4 + Tailwind CSS 4.1.18 + Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page found and returns 200. Founder names and key companies (DAZN/Cabify/SmartRecruiters) present but bios simplified - missing publications/conferences/open source for Przemek and neuroscience/testing details for Marcin
+Podcast page,0.5,1,Page found and returns 200. Fetches real data from Spotify for Creators (not mocks) but only displays Przeprogramowani Podcast - OpanujAI Podcast entirely missing
+YouTube page,1,1,Page found and returns 200. Fetches real data from actual Przeprogramowani YouTube channel RSS feed (channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw verified). Real video IDs and titles
+Kursy section,1,1,Courses displayed prominently on main page hero. 10xDevs featured as Hero tag with correct URL (10xdevs.pl). Opanuj Frontend and Opanuj TypeScript also included with correct URLs
+Consistent UI,1,1,UI consistent across all pages per user evaluation
+Responsive design,1,1,Fully responsive layout per user evaluation
+SEO Tags,0.5,1,Meta title and description in shared Layout covering all pages. Each page has custom title/description. Missing OG tags and Twitter cards. Descriptions partially match context

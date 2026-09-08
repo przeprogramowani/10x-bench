@@ -1,0 +1,79 @@
+
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+09:47:17 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+09:47:17 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:47:17 [types] Generated 290ms
+09:47:17 [build] output: "static"
+09:47:17 [build] mode: "static"
+09:47:17 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/
+09:47:17 [build] adapter: @astrojs/cloudflare
+09:47:17 [build] Collecting build info...
+09:47:17 [build] ✓ Completed in 325ms.
+09:47:17 [build] Building static entrypoints...
+09:47:18 [vite] ✓ built in 368ms
+09:47:18 [vite] ✓ built in 50ms
+09:47:18 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9234 instead
+
+
+ generating static routes 
+09:47:18   ├─ /kursy/index.html (+17ms) 
+09:47:18   ├─ /o-nas/index.html (+6ms) 
+09:47:18   ├─ /podcast/opanuj-ai/index.html[data] Zapis cache dla opanuj-ai nie powiódł się: Error: operation not permitted
+    at mkdirSync (node-internal:internal_fs_sync:277:17)
+    at writeCache (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:185:3)
+    at loadSource (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:223:3)
+    at async file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/opanuj-ai_BheWdFoJ.mjs:16:17
+    at async callComponentAsTemplateResultOrResponse (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6686:24)
+    at async renderToAsyncIterable (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6706:25)
+    at async renderPage (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:7146:33)
+    at async handlePages (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:13704:16)
+    at async callMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:14959:9)
+    at async handleMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:15092:18) {
+  syscall: 'mkdir',
+  code: 'EPERM'
+}
+[data] opanuj-ai: OK, 53 elementów z feedu, 3 wyświetlanych
+ (+211ms) 
+09:47:18   ├─ /podcast/przeprogramowani/index.html[data] Zapis cache dla przeprogramowani-podcast nie powiódł się: Error: operation not permitted
+    at mkdirSync (node-internal:internal_fs_sync:277:17)
+    at writeCache (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:185:3)
+    at loadSource (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:223:3)
+    at async file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/przeprogramowani_CLOOCSfx.mjs:16:17
+    at async callComponentAsTemplateResultOrResponse (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6686:24)
+    at async renderToAsyncIterable (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6706:25)
+    at async renderPage (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:7146:33)
+    at async handlePages (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:13704:16)
+    at async callMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:14959:9)
+    at async handleMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:15092:18) {
+  syscall: 'mkdir',
+  code: 'EPERM'
+}
+[data] przeprogramowani-podcast: OK, 98 elementów z feedu, 6 wyświetlanych (poza oknem 90 dni — najnowsze dostępne)
+ (+83ms) 
+09:47:19   ├─ /podcast/index.html (+5ms) 
+09:47:19   ├─ /youtube/index.html[data] Zapis cache dla youtube nie powiódł się: Error: operation not permitted
+    at mkdirSync (node-internal:internal_fs_sync:277:17)
+    at writeCache (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:185:3)
+    at loadSource (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/loader_DdlT51M6.mjs:223:3)
+    at async file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/youtube_wqOskmgh.mjs:15:17
+    at async callComponentAsTemplateResultOrResponse (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6686:24)
+    at async renderToAsyncIterable (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:6706:25)
+    at async renderPage (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/server_D5WcQ02B.mjs:7146:33)
+    at async handlePages (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:13704:16)
+    at async callMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:14959:9)
+    at async handleMiddleware (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/dist/server/.prerender/chunks/entrypoints_BME_pL-S.mjs:15092:18) {
+  syscall: 'mkdir',
+  code: 'EPERM'
+}
+[data] youtube: OK, 15 elementów z feedu, 6 wyświetlanych
+ (+78ms) 
+09:47:19   ├─ /index.html (+5ms) 
+09:47:19 ✓ Completed in 879ms.
+
+09:47:19 [build] ✓ Completed in 1.33s.
+09:47:19 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:47:19 [build] 7 page(s) built in 1.65s
+09:47:19 [build] Complete!

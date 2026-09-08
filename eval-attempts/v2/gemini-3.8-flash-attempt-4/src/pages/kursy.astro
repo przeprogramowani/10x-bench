@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard.astro';
+import { COURSES } from '../data/courses';
+
+const featuredCourse = COURSES.find((c) => c.id === '10xdevs') || COURSES[0];
+const standardCourses = COURSES.filter((c) => c.id !== '10xdevs');
+---
+
+<Layout
+  title="Kursy i programy szkoleniowe — Przeprogramowani | 10xDevs, Frontend, TypeScript"
+  description="Autorskie programy edukacyjne Przeprogramowanych: 10xDevs 4.0 (Generative AI & Agentic SDLC), Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Zdobądź wiedzę z produkcji."
+  canonicalPath="/kursy"
+>
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 mb-4">
+        <span>Oferta edukacyjna</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Programy edukacyjne dla ambitnych inżynierów
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        Tworzymy kompleksowe programy szkoleniowe, które pomagają programistom przejść od sprawnego pisania kodu do poziomu samodzielnych architektów tworzących oprogramowanie w nowej erze Generative AI.
+      </p>
+    </div>
+
+    {/* Section: Featured Flagship Course (10xDevs) */}
+    <section class="mb-20" aria-labelledby="featured-course-heading">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 id="featured-course-heading" class="text-xs font-bold uppercase tracking-wider text-amber-400">
+          Wyróżniony flagowy program
+        </h2>
+        <span class="text-xs text-gray-400">Rekrutacja do edycji 4.0</span>
+      </div>
+
+      <CourseCard course={featuredCourse} featured={true} />
+    </section>
+
+    {/* Section: Standard Courses */}
+    <section class="mb-20" aria-labelledby="all-courses-heading">
+      <div class="mb-8">
+        <h2 id="all-courses-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">
+          Specjalistyczne programy frontendowe i TypeScript
+        </h2>
+        <p class="text-sm text-gray-400">
+          Ugruntowane szkolenia, które przeszkoliły setki inżynierów z największych firm w Polsce
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {standardCourses.map((course) => (
+          <CourseCard course={course} featured={false} />
+        ))}
+      </div>
+    </section>
+
+    {/* Trust & Guarantee Box */}
+    <section class="bg-[#0b101d] rounded-3xl p-8 sm:p-12 border border-gray-800">
+      <div class="grid lg:grid-cols-3 gap-8 items-center">
+        <div class="lg:col-span-2 space-y-4">
+          <h3 class="text-2xl font-bold text-white tracking-tight">
+            Dlaczego warto uczyć się z Przeprogramowanymi?
+          </h3>
+          <p class="text-sm text-gray-300 leading-relaxed">
+            Nie powielamy ogólnodostępnej dokumentacji. Nasze programy bazują na zamkniętych społecznościach, sesjach Q&amp;A na żywo, code review z mentorami oraz praktycznych projektach osadzonych w realiach produkcyjnych.
+          </p>
+          <div class="flex flex-wrap gap-6 pt-2 text-xs text-gray-400">
+            <span class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              Zamknięte społeczności absolwentów
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              Praktyka na realnym kodzie
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              Dożywotni dostęp do materiałów
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold text-sm text-center shadow-lg shadow-amber-500/20 transition-all"
+          >
+            Aplikuj do 10xDevs 4.0 ↗
+          </a>
+          <a
+            href="/"
+            class="px-6 py-3.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-sm text-center border border-gray-700 transition-colors"
+          >
+            Wróć na stronę główną
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #f59e0b;
+    --color-primary-hover: #d97706;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #090d16;
+    color: #f1f5f9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  /* Accessible focus indicators */
+  *:focus-visible {
+    outline: 2px solid #f59e0b !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Ensure no horizontal overflow at 390px and 1440px */
+body {
+  overflow-x: hidden;
+  min-width: 320px;
+}

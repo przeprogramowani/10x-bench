@@ -1,0 +1,101 @@
+---
+import type { SourceResult } from '../lib/types.ts';
+
+interface Props {
+  result: SourceResult;
+  kind: 'audio' | 'video';
+  emptyHint: string;
+}
+
+const { result, kind, emptyHint } = Astro.props;
+
+function formatFetched(iso: string | null): string {
+  if (!iso) return 'nieznany czas pobrania';
+  const d = new Date(iso);
+  return d.toLocaleString('pl-PL', { timeZone: 'UTC', dateStyle: 'medium', timeStyle: 'short' }) + ' UTC';
+}
+---
+
+<section aria-label={`Materiały: ${result.sourceName}`}>
+  {result.status === 'stale' && (
+    <p class="mb-6 rounded-lg border border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-200" role="status">
+      Wyświetlane dane pochodzą z pamięci podręcznej (pobrano {formatFetched(result.fetchedAt)}) i mogą być
+      nieaktualne — źródło jest chwilowo niedostępne ({result.error}).
+      Sprawdź bezpośrednio: <a class="underline hover:text-white" rel="noopener noreferrer" href={result.sourceUrl}>{result.sourceName}</a>.
+    </p>
+  )}
+  {result.status === 'error' && (
+    <p class="mb-6 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200" role="alert">
+      Nie udało się pobrać materiałów ze źródła ({result.error}).
+      Otwórz stronę źródła bezpośrednio: <a class="underline hover:text-white" rel="noopener noreferrer" href={result.sourceUrl}>{result.sourceName}</a>.
+    </p>
+  )}
+  {result.status === 'fresh' && (
+    <p class="mb-6 text-xs text-ink-300">
+      Dane pobrane na żywo ze źródła {formatFetched(result.fetchedAt)} (feed: <code>{result.requestedUrl}</code>).
+    </p>
+  )}
+
+  {result.items.length === 0 ? (
+    <p class="rounded-lg border border-ink-700 bg-ink-900 px-4 py-6 text-sm text-ink-300">{emptyHint}</p>
+  ) : (
+    <ul class="grid gap-6">
+      {result.items.map((item) => (
+        <li class="overflow-hidden rounded-xl border border-ink-800 bg-ink-900">
+          <div class="p-5">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-300">
+              <span class="rounded-full bg-brand-600/20 px-2.5 py-1 font-medium text-accent-400">{item.sourceName}</span>
+              <time datetime={item.publishedAt ?? undefined}>{item.publishedLabel}</time>
+            </div>
+            <h3 class="mt-3 text-lg leading-snug">
+              <a class="text-white underline-offset-4 hover:text-accent-400 hover:underline" rel="noopener noreferrer" href={item.itemUrl}>
+                {item.title}
+              </a>
+            </h3>
+            {item.description && <p class="mt-2 line-clamp-3 text-sm text-ink-300">{item.description}</p>}
+          </div>
+
+          {kind === 'audio' && item.audioUrl && (
+            <div class="border-t border-ink-800 px-5 py-4">
+              <audio controls preload="none" class="w-full" src={item.audioUrl}>
+                Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                <a rel="noopener noreferrer" href={item.audioUrl}>Pobierz odcinek</a>.
+              </audio>
+            </div>
+          )}
+
+          {kind === 'video' && item.videoId && (
+            <div class="border-t border-ink-800">
+              <div class="aspect-video w-full">
+                <iframe
+                  class="h-full w-full"
+                  src={`https://www.youtube-nocookie.com/embed/${item.videoId}`}
+                  title={item.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          )}
+
+          <div class="flex flex-wrap items-center justify-between gap-3 border-t border-ink-800 bg-ink-950/60 px-5 py-3 text-sm">
+            <a class="font-medium text-accent-400 underline-offset-4 hover:underline" rel="noopener noreferrer" href={item.itemUrl}>
+              {kind === 'video' ? 'Otwórz film na YouTube' : 'Otwórz odcinek w serwisie źródłowym'}
+            </a>
+            {kind === 'audio' && !item.audioUrl && (
+              <span class="text-xs text-ink-300">
+                Brak pliku audio w feedzie — odtwarzanie dostępne przez odnośnik do źródła.
+              </span>
+            )}
+            {kind === 'video' && (
+              <span class="text-xs text-ink-300">
+                Jeśli osadzony odtwarzacz nie działa, użyj odnośnika obok.
+              </span>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</section>

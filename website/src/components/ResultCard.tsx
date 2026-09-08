@@ -23,14 +23,15 @@ interface AttemptResult {
 interface Props {
   attempt: AttemptResult;
   screenshotHashes?: Record<string, string>;
+  screenshotBasePath?: string;
 }
 
-export default function ResultCard({ attempt, screenshotHashes }: Props) {
+export default function ResultCard({ attempt, screenshotHashes, screenshotBasePath = "/screenshots" }: Props) {
   const [hasScreenshot, setHasScreenshot] = useState(true);
   const [preview, setPreview] = useState<{ x: number; y: number } | null>(null);
   const filename = `${attempt.id}.png`;
   const hash = screenshotHashes?.[filename];
-  const screenshotPath = `/screenshots/${filename}${hash ? `?v=${hash}` : ''}`;
+  const screenshotPath = `${screenshotBasePath}/${filename}${hash ? `?v=${hash}` : ''}`;
 
   const handleMouseEnter = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();

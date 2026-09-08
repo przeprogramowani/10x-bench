@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title,
-  description = 'See how leading LLMs perform when asked to one-shot a real production website in Astro, React, Tailwind and Cloudflare. Compare scores, screenshots and code across every model.',
+  description = 'Compare autonomous website development against the precise 10xBench V2 specification, with real research, working software and demonstrated verification.',
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL('https://10xbench.ai');
@@ -58,7 +58,7 @@ const ogImage = new URL('10xbench.jpeg', siteUrl).href;
         alternateName: '10xBench — LLM Coding Benchmark',
         url: siteUrl.href,
         description:
-          'A reproducible benchmark comparing how leading LLMs one-shot a real production website in Astro, React, Tailwind and Cloudflare.',
+          '10xBench V2 compares autonomous completion of a precise website specification, with up to 60 minutes for implementation and verification.',
       })}
     />
   </head>
@@ -70,15 +70,16 @@ const ogImage = new URL('10xbench.jpeg', siteUrl).href;
             <a href="/" class="text-xl font-bold text-slate-100 hover:text-white">10x Bench</a>
           </div>
           <!-- Desktop nav -->
-          <div class="hidden md:flex gap-8">
-            <a href="/" class="text-slate-300 hover:text-white font-medium">Results</a>
-            <a href="/benchmark" class="text-slate-300 hover:text-white font-medium">Benchmark</a>
+          <div class="hidden lg:flex gap-8">
+            <a href="/" class="text-slate-300 hover:text-white font-medium">V2 Results</a>
+            <a href="/benchmark" class="text-slate-300 hover:text-white font-medium">V2 Benchmark</a>
+            <a href="/v1" class="text-slate-300 hover:text-white font-medium">V1 Archive</a>
             <a href="/kit" class="text-slate-300 hover:text-white font-medium">Kit</a>
             <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-300 font-normal">Code &#8599;</a>
             <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-300 font-normal">10xDevs &#8599;</a>
           </div>
           <!-- Hamburger button (mobile only) -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white" aria-label="Toggle menu">
+          <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-300 hover:text-white" aria-label="Toggle menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -87,10 +88,11 @@ const ogImage = new URL('10xbench.jpeg', siteUrl).href;
       </div>
     </nav>
     <!-- Mobile menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-700">
+    <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col">
-        <a href="/" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">Results</a>
-        <a href="/benchmark" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">Benchmark</a>
+        <a href="/" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">V2 Results</a>
+        <a href="/benchmark" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">V2 Benchmark</a>
+        <a href="/v1" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">V1 Archive</a>
         <a href="/kit" class="py-3 text-slate-300 hover:text-white font-medium border-b border-slate-700">Kit</a>
         <a href="https://github.com/przeprogramowani/10x-bench" target="_blank" rel="noopener noreferrer" class="py-3 text-slate-400 hover:text-slate-300 font-normal border-b border-slate-700">Code &#8599;</a>
         <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="py-3 text-slate-400 hover:text-slate-300 font-normal">10xDevs &#8599;</a>

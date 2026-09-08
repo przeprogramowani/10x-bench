@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
+import MediaStatusBadge from '../components/MediaStatusBadge.astro';
+import { fetchYoutubeVideos } from '../data/sources/youtube';
+
+const result = await fetchYoutubeVideos();
+const videos = result.data;
+---
+
+<Layout
+  title="YouTube — Przeprogramowani | Filmy, live streamy i tutoriale"
+  description="Oficjalne materiały wideo kanału Przeprogramowani na YouTube. Najnowsze demonstracje projektów 10xDevs, hackathony AI, testy modeli i webinarowe live'y architektoniczne."
+  canonicalPath="/youtube"
+>
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 border border-red-500/30 text-red-400 mb-4">
+        <span>Oficjalny kanał wideo</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Wideo na kanale YouTube Przeprogramowani
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed mb-4">
+        Materiały wideo dla ambitnych inżynierów. Oglądaj relacje z demo day kursu 10xDevs, live streamy z budowy feature’ów z agentami AI, analizy najnowszych architektur frontendowych oraz podsumowania branżowe.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400">
+        <span>Kanał: <strong>@Przeprogramowani</strong></span>
+        <span>•</span>
+        <span>Tematyka: <strong>Generative AI, TypeScript, Architektura</strong></span>
+        <span>•</span>
+        <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-red-400 hover:underline">
+          Subskrybuj kanał na YouTube ↗
+        </a>
+      </div>
+    </div>
+
+    {/* Source Status Verification Badge */}
+    <MediaStatusBadge
+      status={result.status}
+      isStale={result.isStale}
+      fetchedAt={result.fetchedAt}
+      sourceUrl={result.sourceUrl}
+      sourceName="YouTube RSS Channel Feed"
+      errorMessage={result.errorMessage}
+    />
+
+    {/* Videos Grid */}
+    <section aria-labelledby="videos-heading">
+      <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-800">
+        <div>
+          <h2 id="videos-heading" class="text-2xl font-bold text-white tracking-tight">
+            Najnowsze materiały (ostatnie 90 dni)
+          </h2>
+          <p class="text-xs text-gray-400 mt-1">
+            Rzeczywiste publikacje z oficjalnego kanału YouTube pobrane i zweryfikowane po stronie serwera
+          </p>
+        </div>
+        <div class="text-xs font-mono text-red-400">
+          Liczba filmów: {videos.length}
+        </div>
+      </div>
+
+      {videos.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {videos.map((video) => (
+            <VideoPlayer item={video} />
+          ))}
+        </div>
+      ) : (
+        <div class="p-8 rounded-2xl bg-gray-900 border border-gray-800 text-center">
+          <p class="text-gray-300 text-sm">Brak dostępnych materiałów w wybranym oknie czasowym.</p>
+          <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-xs text-red-400 underline">
+            Odwiedź kanał bezpośrednio na YouTube
+          </a>
+        </div>
+      )}
+    </section>
+
+    {/* Bottom channel link */}
+    <div class="mt-16 pt-8 border-t border-gray-800/80 flex flex-wrap items-center justify-between gap-4 text-sm">
+      <a href="/" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Wróć na stronę główną</span>
+      </a>
+
+      <a
+        href="https://www.youtube.com/c/przeprogramowani?sub_confirmation=1"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold transition-colors shadow-lg shadow-red-600/20"
+      >
+        <span>Subskrybuj kanał Przeprogramowani</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</Layout>

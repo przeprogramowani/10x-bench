@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AudioPlayer from '../../components/AudioPlayer.astro';
+import MediaStatusBadge from '../../components/MediaStatusBadge.astro';
+import { fetchPrzeprogramowaniEpisodes } from '../../data/sources/przeprogramowani-podcast';
+
+const result = await fetchPrzeprogramowaniEpisodes();
+const episodes = result.data;
+---
+
+<Layout
+  title="Podcast Przeprogramowani ft. Gość — Rozmowy dla głodnych wiedzy"
+  description="Oficjalny podcast Przeprogramowani ft. Gość prowadzony przez Marcina Czarkowskiego i Przemka Smyrdka. Pogłębione wywiady o architekturze, inżynierii i rozwoju w IT."
+  canonicalPath="/podcast/przeprogramowani"
+>
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Breadcrumbs */}
+    <nav class="flex items-center gap-2 text-xs text-gray-400 mb-6" aria-label="Ścieżka powrotu">
+      <a href="/" class="hover:text-amber-400">Strona główna</a>
+      <span>/</span>
+      <a href="/podcast" class="hover:text-amber-400">Podcasty</a>
+      <span>/</span>
+      <span class="text-gray-200" aria-current="page">Przeprogramowani ft. Gość</span>
+    </nav>
+
+    {/* Header */}
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 mb-4">
+        <span>Podcast inżynierski i wywiady</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Przeprogramowani ft. Gość
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed mb-4">
+        Szersze spojrzenie na programowanie. Długie, merytoryczne rozmowy z inżynierami, architektami, liderami technicznymi i twórcami projektów IT. Dyskutujemy o jakości kodu, architekturze aplikacji, barierach rozwoju zawodowego oraz wyzwaniach branży technologicznej.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 text-xs text-gray-400">
+        <span>Prowadzący: <strong>Marcin Czarkowski</strong> i <strong>Przemek Smyrdek</strong></span>
+        <span>•</span>
+        <span>Format: <strong>Pogłębione wywiady z gośćmi</strong></span>
+        <span>•</span>
+        <span>Społeczność: <strong>3800+ słuchaczy</strong></span>
+      </div>
+    </div>
+
+    {/* Source Verification Badge */}
+    <MediaStatusBadge
+      status={result.status}
+      isStale={result.isStale}
+      fetchedAt={result.fetchedAt}
+      sourceUrl={result.sourceUrl}
+      sourceName="Feed RSS Przeprogramowani (Anchor/Spotify)"
+      errorMessage={result.errorMessage}
+    />
+
+    {/* Notice regarding 90-day window rule */}
+    <div class="mb-8 p-4 bg-gray-900/60 rounded-xl border border-gray-800 text-xs text-gray-400">
+      <span class="text-amber-400 font-semibold">Informacja o publikacjach:</span> Ze względu na brak nowych wydań w ścisłym oknie ostatnich 90 dni, zgodnie z regułą doboru materiałów prezentujemy najnowsze archiwalne odcinki z ich rzeczywistymi datami emisji.
+    </div>
+
+    {/* Episodes List */}
+    <section aria-labelledby="episodes-heading">
+      <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-800">
+        <div>
+          <h2 id="episodes-heading" class="text-2xl font-bold text-white tracking-tight">
+            Najnowsze dostępne odcinki
+          </h2>
+          <p class="text-xs text-gray-400 mt-1">
+            Rzeczywiste odcinki z oficjalnego feedu z autentycznymi datami
+          </p>
+        </div>
+        <div class="text-xs font-mono text-amber-400">
+          Liczba materiałów: {episodes.length}
+        </div>
+      </div>
+
+      {episodes.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {episodes.map((episode) => (
+            <AudioPlayer item={episode} />
+          ))}
+        </div>
+      ) : (
+        <div class="p-8 rounded-2xl bg-gray-900 border border-gray-800 text-center">
+          <p class="text-gray-300 text-sm">Brak dostępnych odcinków w feedzie.</p>
+          <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-xs text-amber-400 underline">
+            Przejdź do oficjalnego profilu Spotify
+          </a>
+        </div>
+      )}
+    </section>
+
+    {/* Back navigation CTA */}
+    <div class="mt-16 pt-8 border-t border-gray-800/80 flex flex-wrap items-center justify-between gap-4 text-sm">
+      <a href="/podcast" class="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Wróć do katalogu obu podcastów</span>
+      </a>
+      <a href="/podcast/opanuj-ai" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold">
+        <span>Przejdź do podcastu Opanuj.AI</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { COURSES } from '../config/site';
+---
+
+<Base
+  path="/kursy"
+  title="Kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani"
+  description="Topowe programy edukacyjne Przeprogramowanych: 10xDevs (programowanie z Generatywnym AI), Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Sprawdź szczegóły i zapisz się."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+    <nav aria-label="Ścieżka okruszków" class="text-sm text-slate-400">
+      <a class="hover:text-white hover:underline" href="/">Strona główna</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-slate-200">Kursy</span>
+    </nav>
+
+    <h1 class="mt-4 text-3xl font-extrabold text-white md:text-5xl">Kursy i programy edukacyjne</h1>
+    <p class="mt-4 max-w-3xl text-lg text-slate-300">
+      Topowe programy edukacyjne dla ambitnych programistów — od świadomego korzystania
+      z Generatywnego AI po zaawansowany frontend i TypeScript.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {COURSES.map((course) => (
+        <article
+          class={`rounded-2xl border p-6 md:p-8 ${course.featured ? 'border-accent-500/60 bg-gradient-to-br from-slate-900 to-brand-900/40' : 'border-slate-800 bg-slate-900/60'}`}
+        >
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              {course.featured && (
+                <p class="mb-2 inline-block rounded-full bg-accent-500 px-3 py-1 text-xs font-bold uppercase tracking-wide text-slate-950">
+                  Wyróżniony kurs
+                </p>
+              )}
+              <h2 class="text-2xl font-extrabold text-white">{course.name}</h2>
+            </div>
+            <a
+              class="inline-block rounded-lg bg-brand-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-600"
+              href={course.url}
+              rel="noopener"
+              target="_blank"
+            >
+              Przejdź do kursu ↗
+            </a>
+          </div>
+          <p class="mt-4 max-w-3xl text-slate-300">{course.short}</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            {course.details.map((detail) => (
+              <li class="flex items-start gap-2 text-sm text-slate-300">
+                <span aria-hidden="true" class="mt-0.5 text-brand-500">✔</span>
+                <span>{detail}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 text-sm text-slate-400">
+            Oficjalna strona kursu:{' '}
+            <a class="text-brand-100 underline hover:text-white" href={course.url} rel="noopener" target="_blank">
+              {course.url.replace(/^https?:\/\//, '')} ↗
+            </a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

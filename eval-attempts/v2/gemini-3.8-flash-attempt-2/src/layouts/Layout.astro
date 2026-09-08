@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  ogImage = 'https://przeprogramowani.pl/img/10xdevs-hero.webp',
+} = Astro.props;
+
+// Configurable site URL from Astro config with fallback
+const siteUrl = (Astro.site ? Astro.site.toString() : 'https://przeprogramowani.pl').replace(/\/$/, '');
+const currentPath = Astro.url.pathname;
+const canonicalUrl = new URL(currentPath, siteUrl).toString();
+const fullTitle = `${title} | Przeprogramowani.pl`;
+---
+
+<!doctype html>
+<html lang="pl" class="h-full bg-slate-950">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Przeprogramowani.pl" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="flex flex-col min-h-full bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+    <!-- Accessibility Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-amber-400 text-slate-950 font-bold rounded-lg shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+    >
+      Przejdź do treści głównej
+    </a>
+
+    <!-- Global Header -->
+    <Header currentPath={currentPath} />
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 focus:outline-none" tabindex="-1">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+  </body>
+</html>

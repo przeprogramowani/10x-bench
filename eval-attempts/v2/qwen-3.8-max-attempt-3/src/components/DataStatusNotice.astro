@@ -1,0 +1,40 @@
+---
+import type { SourceResult } from '../data/sources';
+import { formatDate } from '../data/index';
+
+interface Props {
+  result: SourceResult;
+}
+
+const { result } = Astro.props;
+---
+
+{
+  result.status === 'stale' && (
+    <p
+      role="status"
+      class="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200"
+    >
+      <strong>Dane z pamięci podręcznej — mogą być nieaktualne.</strong>{' '}
+      Nie udało się pobrać świeżych danych ze źródła ({result.error}). Poniższa lista pochodzi
+      z zapisu z {formatDate(result.fetchedAt)} ({result.fetchedAt}).{' '}
+      <a class="font-semibold underline hover:text-amber-100" href={result.homepage} rel="noopener" target="_blank">
+        Sprawdź najnowsze materiały bezpośrednio w źródle ↗
+      </a>
+    </p>
+  )
+}
+{
+  result.status === 'unavailable' && (
+    <p
+      role="status"
+      class="mb-6 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+    >
+      <strong>Materiały tymczasowo niedostępne.</strong> Nie udało się pobrać danych ze źródła
+      {result.error ? ` (${result.error})` : ''}.{' '}
+      <a class="font-semibold underline hover:text-red-100" href={result.homepage} rel="noopener" target="_blank">
+        Przejdź bezpośrednio do {result.sourceName} ↗
+      </a>
+    </p>
+  )
+}

@@ -1,0 +1,77 @@
+---
+interface Props {
+  status: 'live' | 'cached' | 'error';
+  sourceUrl: string;
+  sourceName: string;
+  fetchedAt: string;
+  errorMessage?: string;
+  isFallback: boolean;
+}
+
+const { status, sourceUrl, sourceName, fetchedAt, errorMessage, isFallback } = Astro.props;
+
+const formattedDate = new Date(fetchedAt).toLocaleString('pl-PL', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+});
+---
+
+{status === 'cached' && (
+  <div class="mb-8 p-4 bg-amber-950/40 border border-amber-600/40 rounded-xl text-amber-200 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+    <div class="flex items-start gap-3">
+      <span class="text-xl">⚠️</span>
+      <div>
+        <p class="font-semibold text-amber-300">
+          Dane z pamięci podręcznej (źródło chwilowo niedostępne)
+        </p>
+        <p class="text-xs text-amber-200/80 mt-0.5">
+          {errorMessage || `Nie udało się pobrać najnowszych danych z ${sourceName}.`} Prezentujemy zweryfikowane dane archiwalne z dnia: {formattedDate}.
+        </p>
+      </div>
+    </div>
+    <a
+      href={sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="shrink-0 px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-200 text-xs font-semibold rounded-lg transition-colors"
+    >
+      Przejdź do źródła zewnętrznego →
+    </a>
+  </div>
+)}
+
+{status === 'error' && (
+  <div class="mb-8 p-4 bg-red-950/40 border border-red-600/40 rounded-xl text-red-200 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg">
+    <div class="flex items-start gap-3">
+      <span class="text-xl">🚫</span>
+      <div>
+        <p class="font-semibold text-red-300">
+          Źródło zewnętrzne {sourceName} jest niedostępne
+        </p>
+        <p class="text-xs text-red-200/80 mt-0.5">
+          {errorMessage || 'Wystąpił problem z pobraniem danych po stronie serwera.'}
+        </p>
+      </div>
+    </div>
+    <a
+      href={sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="shrink-0 px-3 py-1.5 bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-200 text-xs font-semibold rounded-lg transition-colors"
+    >
+      Odwiedź {sourceName} bezpośrednio →
+    </a>
+  </div>
+)}
+
+{status === 'live' && (
+  <div class="mb-6 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-400 bg-gray-900/40 border border-gray-800/60 rounded-lg px-3 py-2">
+    <span class="flex items-center gap-1.5 text-emerald-400 font-medium">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      Aktualne dane pobrane po stronie serwera
+    </span>
+    <span class="text-gray-400">
+      Ostatnia aktualizacja: {formattedDate} • Źródło: <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-400 underline hover:text-blue-300">{sourceName}</a>
+    </span>
+  </div>
+)}

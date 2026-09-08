@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 14:32,N/A,16.07.2026 14:32
+Local build,1,1,npm install + astro build succeeded; 6 static pages generated
+Manual testing,1,1,User-confirmed: site works end-to-end; nav, links, and interactions all functional
+Tech stack,0,1,"React 19 ok, but Astro 5.5 (required 6), Tailwind 3.4 via @astrojs/tailwind (required 4), and NO Cloudflare adapter (output: static). Missing required deps AND adapter"
+O nas page,1,1,"200; both founders present with accurate DAZN/Cabify (Przemek) and SmartRecruiters (Marcin) details, roles, tech stacks, Opanuj.AI podcast authorship. Bios condensed — per-founder course assignments omitted"
+Podcast page,0.5,1,"200; both shows (Opanuj.AI + Przeprogramowani ft. Gość) displayed with realistic episodes, but ALL Spotify URLs are placeholders/wrong — opanuj-ai & przeprogramowani slugs and creators.spotify.com profile instead of context IDs 3D6LmchBdoqL2sWkQjvWOy and 3yVvOAXSYq6sQB02w4A4wo"
+YouTube page,1,1,"200; 5 unique video IDs all verified via oEmbed as real, on-channel (author Przeprogramowani) with exactly matching titles; no placeholder/rickroll IDs"
+Kursy section,1,1,"200; 10xDevs 4.0 featured on index; courses match context (10xDevs, Opanuj Frontend, Opanuj TypeScript) with correct URLs 10xdevs.pl / opanujfrontend.pl / opanujtypescript.pl"
+Consistent UI,1,1,User-confirmed: cohesive visual design across pages
+Responsive design,1,1,User-confirmed: fully responsive across mobile/tablet/desktop
+SEO Tags,1,1,"Layout.astro has full meta suite (title, description, canonical, OG, Twitter, theme-color) plus JSON-LD Organization schema; applied to all pages; content matches context (name, tagline, description)"
+Penalty,0,N/A,User-confirmed: no penalty

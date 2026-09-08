@@ -1,0 +1,76 @@
+---
+import type { MediaItem } from '../data/types';
+
+interface Props {
+  item: MediaItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="bg-[#0f172a]/90 rounded-2xl border border-gray-800 overflow-hidden shadow-lg hover:border-gray-700 transition-all flex flex-col justify-between">
+  <div>
+    {/* Embedded Video Player */}
+    <div class="relative w-full aspect-video bg-black/80">
+      <iframe
+        class="w-full h-full"
+        src={item.embedUrl}
+        title={item.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      >
+      </iframe>
+    </div>
+
+    <div class="p-5 sm:p-6">
+      {/* Meta header */}
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-950/60 border border-red-800/50 text-red-300">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>YouTube</span>
+        </span>
+        <time datetime={item.publishedAt} class="text-xs text-gray-400">
+          {item.formattedDate}
+        </time>
+      </div>
+
+      {/* Video Title */}
+      <h3 class="text-lg font-bold text-white hover:text-amber-400 transition-colors mb-3 leading-snug">
+        <a href={item.url} target="_blank" rel="noopener noreferrer" class="focus-visible:ring-2 focus-visible:ring-amber-400 rounded">
+          {item.title}
+        </a>
+      </h3>
+
+      {/* Description Snippet */}
+      {item.description && (
+        <p class="text-sm text-gray-400 line-clamp-2 mb-4 leading-relaxed">
+          {item.description}
+        </p>
+      )}
+    </div>
+  </div>
+
+  <div class="p-5 sm:p-6 pt-0 border-t border-gray-800/80 mt-2">
+    {/* Independent link to original video */}
+    <div class="flex items-center justify-between gap-3 pt-4 text-xs">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gray-800/90 hover:bg-red-600 hover:text-white text-gray-200 font-medium transition-all border border-gray-700/60 w-full justify-center sm:w-auto"
+        aria-label={`Obejrzyj "${item.title}" bezpośrednio na YouTube`}
+      >
+        <span>Obejrzyj bezpośrednio na YouTube</span>
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+      <span class="text-gray-500 text-[11px] hidden sm:inline font-mono">
+        ID: {item.id}
+      </span>
+    </div>
+  </div>
+</article>

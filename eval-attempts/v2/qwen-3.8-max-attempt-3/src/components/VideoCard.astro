@@ -1,0 +1,53 @@
+---
+import type { MediaItem } from '../data/sources';
+import { formatDate } from '../data/index';
+
+interface Props {
+  item: MediaItem;
+}
+
+const { item } = Astro.props;
+const embedUrl = item.videoId
+  ? `https://www.youtube-nocookie.com/embed/${item.videoId}`
+  : null;
+---
+
+<article class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/60">
+  {embedUrl ? (
+    <div class="aspect-video w-full bg-black">
+      <iframe
+        class="h-full w-full"
+        src={embedUrl}
+        title={`Film YouTube: ${item.title}`}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  ) : (
+    <p class="p-4 text-sm text-slate-400">
+      Osadzenie niedostępne —{' '}
+      <a class="underline" href={item.url} rel="noopener" target="_blank">obejrzyj film na YouTube</a>.
+    </p>
+  )}
+  <div class="p-5">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+      <span class="rounded-full bg-brand-500/15 px-2.5 py-1 font-medium text-brand-100">{item.sourceName}</span>
+      <time datetime={item.publishedAt ?? undefined}>
+        {item.publishedAt ? formatDate(item.publishedAt) : 'data publikacji nieznana'}
+      </time>
+    </div>
+    <h3 class="mt-3 text-lg font-bold leading-snug text-white">
+      <a class="rounded hover:text-brand-100 hover:underline" href={item.url} rel="noopener" target="_blank">
+        {item.title}
+      </a>
+    </h3>
+    {item.description && <p class="mt-2 line-clamp-2 text-sm text-slate-300">{item.description}</p>}
+    <p class="mt-3 text-sm">
+      <a class="font-medium text-brand-100 underline decoration-brand-500/50 hover:decoration-brand-100" href={item.url} rel="noopener" target="_blank">
+        Otwórz film na YouTube ↗
+      </a>
+    </p>
+  </div>
+</article>

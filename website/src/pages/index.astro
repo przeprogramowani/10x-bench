@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ResultsDashboard from '../components/ResultsDashboard';
-import resultsData from '../data/results.json';
-import screenshotHashes from '../data/screenshot-hashes.json';
+import resultsData from '../data/results-v2.json';
+import screenshotHashes from '../data/screenshot-hashes-v2.json';
 
-const title = '10xBench — LLM Coding Benchmark in Astro, React, Tailwind & Cloudflare';
-const description = 'See how leading LLMs perform when each gets a single shot at building a real production website in Astro, React, Tailwind and Cloudflare. Compare scores, screenshots and generated code side by side.';
+const title = '10xBench V2 — Autonomous Website Development Benchmark';
+const description = '10xBench V2 measures autonomous completion of a precise website specification, including real content research, Cloudflare Workers configuration and demonstrated verification.';
 
 // Sort results: 1) by model family average (best models first), 2) by attempt number (ascending)
 const modelAverageMap = new Map(
@@ -29,23 +29,34 @@ const sortedResults = [...resultsData.results].sort((a, b) => {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Hero Section -->
     <div class="mb-12">
-      <h1 class="text-2xl md:text-4xl font-bold text-slate-100 mb-4">10x Bench Results</h1>
+      <h1 class="text-2xl md:text-4xl font-bold text-slate-100 mb-4">10xBench V2</h1>
       <p class="text-lg text-slate-300 mb-2">
-        See how LLMs perform at coding the Przeprogramowani.pl website in Astro + React + Tailwind + Cloudflare stack.
+        One complete specification. Up to 60 minutes of autonomous research, implementation and verification. Build the Przeprogramowani.pl website with Astro, React, Tailwind and Cloudflare Workers configuration; no public deployment.
       </p>
-      <p class="text-sm text-slate-400">
-        {resultsData.totalAttempts} evaluated attempts • Last updated {new Date(resultsData.generatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-      </p>
+      <p class="text-sm text-slate-400">80 points for the delivered outcome · 20 points for demonstrated self-verification</p>
+      <div class="flex flex-wrap gap-4 mt-5">
+        <a href="/benchmark" class="text-blue-400 underline">V2 specification and scoring</a>
+        <a href="/v1" class="text-blue-400 underline">Explore the V1 archive</a>
+      </div>
     </div>
 
-    <!-- Results Dashboard with "Only latest models" toggle -->
-    <ResultsDashboard
-      client:load
-      modelAverages={resultsData.modelAverages}
-      sortedResults={sortedResults}
-      supersededModels={resultsData.supersededModels ?? {}}
-      screenshotHashes={screenshotHashes}
-    />
+    {resultsData.totalAttempts === 0 ? (
+      <section class="rounded-xl border border-slate-700 bg-slate-800 p-6 md:p-8" aria-labelledby="empty-title">
+        <h2 id="empty-title" class="text-2xl font-bold text-slate-100 mb-3">No V2 results yet</h2>
+        <p class="text-slate-300 max-w-2xl">The first V2 campaign has not been run. Rankings will appear here after new attempts are evaluated and their required manual reviews are complete.</p>
+        <p class="text-slate-400 mt-3 max-w-2xl">V1 scores remain in the archive. Historical attempts are not converted into V2 results or automatically rerun.</p>
+      </section>
+    ) : (
+      <ResultsDashboard
+        client:load
+        modelAverages={resultsData.modelAverages}
+        sortedResults={sortedResults}
+        supersededModels={resultsData.supersededModels ?? {}}
+        screenshotHashes={screenshotHashes}
+        screenshotBasePath="/screenshots/v2"
+        benchmarkVersion="v2"
+      />
+    )}
 
   </div>
 </Layout>

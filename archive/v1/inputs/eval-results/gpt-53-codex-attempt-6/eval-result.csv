@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,8min 0s,N/A,8min 0s
+Test run,11.02.2026 21:41,N/A,11.02.2026 21:41
+Local build,1,1,Build successful with Astro 5.17.1 server output mode and Cloudflare adapter
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube return 200) with working navigation styles and content
+Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 and Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200 but team bios are simplified - missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin plus course assignments not listed
+Podcast page,0.5,1,Page exists and returns 200 with live RSS feed data but only Przeprogramowani Podcast displayed - OpanujAI Podcast is completely missing
+YouTube page,1,1,Page exists and returns 200 with live YouTube RSS feed from channel UCb2Y3vMeD6N4WDt5Acw7Arw and unique realistic video IDs in fallback data
+Kursy section,0.5,1,Courses section on index with 10xDevs featured in hero but only 3 of 6 courses listed - missing Opanuj JavaScript and Opanuj AI and Cursor Programuj z AI
+Consistent UI,1,1,UI consistent across all pages with cohesive dark theme glass-card design and gradient accents
+Responsive design,1,1,Containers components and navigation are responsive with mobile nav and grid layouts
+SEO Tags,1,1,BaseLayout provides title and description meta tags to all pages with lang=pl viewport and charset - content matches context

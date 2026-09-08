@@ -1,0 +1,15 @@
+Criterion,Score,Max,Notes
+Task completion time,6min 29s,N/A,6min 29s
+Test run,27.06.2026 22:30,N/A,27.06.2026 22:30
+API cost,$0.0890,N/A,$0.0890 (in 155945 / out 21030 / cache 538880 / 1 session)
+Local build,1,1,"npm run build succeeded (dist/ produced); dev server serves all pages with HTTP 200"
+Manual testing,1,1,"Dev server starts; /, /o-nas, /podcast, /youtube all return 200; nav, styles and content render correctly"
+Tech stack,0,1,"Astro 5.5, React 19, Tailwind 3.4 (requires v4), and NO @astrojs/cloudflare adapter (output static). Missing required deps and no Cloudflare adapter"
+O nas page,1,1,"/o-nas 200. Both founders accurate and detailed: Przemek Smyrdek (Lead Eng/Manager DAZN and Cabify) and Marcin Czarkowski (SmartRecruiters frontend platform lead, Opanuj.AI podcast)"
+Podcast page,0.5,1,"/podcast 200. Both Przeprogramowani and Opanuj.AI shows present with real-looking episodes, but only Spotify show id found is 4qHUZJpeBK8Ij9e2wTVm2o which matches neither canonical id (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy)"
+YouTube page,1,1,"/youtube 200. 6 unique real Przeprogramowani videos, all oEmbed-verified (author=Przeprogramowani), no placeholders or duplicates"
+Kursy section,1,1,"Courses in courses.json with all three: 10xDevs (10xdevs.pl), Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript. Index hero features 10xDevs (heroCourse)"
+Consistent UI,1,1,"User-confirmed: UI consistent across all pages"
+Responsive design,1,1,"User-confirmed: layout responsive across breakpoints"
+SEO Tags,0.5,1,"BaseLayout (shared, all pages) has per-page title and meta description, but no og/twitter tags and no dedicated SEO component. Partial"
+Penalty,0,N/A,"No penalty - user-confirmed no issues beyond standard criteria; fully autonomous run"

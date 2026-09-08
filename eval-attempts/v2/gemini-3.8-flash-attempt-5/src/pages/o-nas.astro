@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BRAND_INFO, FOUNDERS } from '../data/static/about';
+---
+
+<Layout
+  title="O nas — Twórcy, misja i wartości | Przeprogramowani.pl"
+  description="Poznaj Przeprogramowanych — Przemka Smyrdka i Marcina Czarkowskiego. Od 7 lat promujemy szersze spojrzenie na programowanie, architekturę i nowoczesną inżynierię AI."
+  canonicalPath="/o-nas"
+>
+  <div class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-4">
+        <span>O projekcie i zespole</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-6">
+        Łączymy świat programowania, biznesu i rozwoju
+      </h1>
+      <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+        Przeprogramowani to społeczność i platforma edukacyjna stworzona z myślą o programistach, którzy chcą patrzeć szerzej — na architekturę systemów, procesy inżynierskie, wpływ AI oraz rozwój osobisty.
+      </p>
+    </div>
+
+    {/* Founders Section */}
+    <section class="mb-24">
+      <div class="border-b border-slate-800 pb-4 mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Poznaj twórców
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Praktycy z ponad dekadą komercyjnego doświadczenia w międzynarodowych organizacjach
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {FOUNDERS.map((founder) => (
+          <article class="bg-slate-850 border border-slate-800 rounded-3xl p-7 sm:p-9 flex flex-col justify-between shadow-xl">
+            <div>
+              <div class="flex items-center gap-5 mb-6">
+                <img
+                  src={founder.avatar}
+                  alt={`Zdjęcie profilowe: ${founder.name}`}
+                  class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-emerald-500/40 shadow-md shrink-0"
+                  loading="lazy"
+                />
+                <div>
+                  <h3 class="text-2xl font-bold text-white tracking-tight">{founder.name}</h3>
+                  <p class="text-sm font-semibold text-emerald-400 mt-0.5">{founder.role}</p>
+                  <a
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors mt-2 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded"
+                    aria-label={`Profil LinkedIn: ${founder.name}`}
+                  >
+                    <svg class="w-3.5 h-3.5 fill-current text-sky-400" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    <span>Profil na LinkedIn</span>
+                  </a>
+                </div>
+              </div>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                {founder.bio}
+              </p>
+
+              <div class="space-y-2 pt-4 border-t border-slate-800">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Doświadczenie i osiągnięcia:</h4>
+                <ul class="space-y-1.5 text-xs sm:text-sm text-slate-300">
+                  {founder.highlights.map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-emerald-400 shrink-0 mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* Mission and Values Section */}
+    <section class="bg-gradient-to-br from-slate-900 to-slate-850 border border-slate-800 rounded-3xl p-8 sm:p-12 mb-20 shadow-xl">
+      <div class="max-w-3xl mb-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+          Nasze wartości i filozofia działania
+        </h2>
+        <p class="text-slate-300 leading-relaxed text-base sm:text-lg">
+          Od ponad {BRAND_INFO.yearsOnMarket} tworzymy przestrzeń, w której teoria łączy się z praktyką inżynierską. Wierzymy, że najlepsi programiści nie zamykają się w jednym języku czy narzędziu.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-lg">
+            1
+          </div>
+          <h3 class="text-lg font-bold text-white">Pragmatyzm inżynierski</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Nie gonimy ślepo za nowinkami. Wybieramy technologie, które realnie rozwiązują problemy w projektach produkcyjnych i przynoszą wartość biznesową.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center font-bold text-lg">
+            2
+          </div>
+          <h3 class="text-lg font-bold text-white">AI jako wzmacniacz (Leverage)</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Modele LLM i agenci AI to nie zastępstwo inżyniera, lecz potężne narzędzia wymagające dyscypliny, jasnych kontraktów, evalów i architektury.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-lg">
+            3
+          </div>
+          <h3 class="text-lg font-bold text-white">Dzielenie się wiedzą</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Darmowe podcasty, kanał YouTube i newsletter to nasza stała cegiełka do rozwoju społeczności programistów w Polsce i na świecie.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Community and Contact Banner */}
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-2xl mx-auto space-y-4">
+      <h3 class="text-xl font-bold text-white">Chcesz nawiązać współpracę lub porozmawiać?</h3>
+      <p class="text-sm text-slate-400">
+        Napisz do nas bezpośrednio na <a href={`mailto:${BRAND_INFO.contactEmail}`} class="text-emerald-400 hover:underline font-medium">{BRAND_INFO.contactEmail}</a>.
+      </p>
+      <div class="pt-2 flex items-center justify-center gap-4">
+        <a href="/podcast" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-white transition-colors">
+          Posłuchaj naszych podcastów
+        </a>
+        <a href="/kursy" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors">
+          Zobacz nasze kursy
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

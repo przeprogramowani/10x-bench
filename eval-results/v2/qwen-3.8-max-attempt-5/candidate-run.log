@@ -1,0 +1,1277 @@
+[0m
+> build · qwen/qwen3.8-max-0902
+[0m
+[0m$ [0mls -la && date -u +%Y-%m-%dT%H:%M:%SZ
+total 48
+drwxr-xr-x@ 5 psmyrdek  staff   160 Sep  8 09:30 .
+drwxr-xr-x@ 7 psmyrdek  staff   224 Sep  8 09:28 ..
+-rw-r--r--@ 1 psmyrdek  staff  4877 Sep  8 09:28 assessment.md
+-rw-r--r--@ 1 psmyrdek  staff   504 Sep  8 09:30 BASELINE.md
+-rw-r--r--@ 1 psmyrdek  staff  9188 Sep  8 09:28 prompt.md
+2026-09-08T07:31:13Z
+[0m
+[0m$ [0mnode -v && npm -v
+v22.14.0
+10.9.2
+[0m
+[0m→ [0mRead BASELINE.md
+[0m
+[0m$ [0mmkdir -p research evidence && date -u +%H:%M:%S
+07:31:26
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m# [0mTodos
+[•] Research official sources (site, courses, podcasts, YouTube)
+[ ] Scaffold Astro 7 + React 19 + Tailwind 4 + Cloudflare adapter
+[ ] Data source modules (feeds, YT RSS) with cache/fallback
+[ ] All 7 pages + nav + SEO
+[ ] Build + wrangler local preview + route checks
+[ ] Controlled failure test
+[ ] VERIFICATION.md + README + evidence
+[0m
+[0m$ [0mcurl -sL --max-time 20 -A "Mozilla/5.0" https://przeprogramowani.pl -o research/przeprogramowani-pl.html; echo "exit=$? size=$(wc -c < research/przeprogramowani-pl.html 2>/dev/null)"
+exit=0 size=   66701
+[0m
+[0m$ [0mcurl -sL --max-time 20 -A "Mozilla/5.0" "https://www.youtube.com/@przeprogramowani" -o research/youtube-channel.html; echo "exit=$?"; grep -o '"channelId":"[^"]*"' research/youtube-channel.html | head -2; grep -o 'channel_id=[^"&]*' research/youtube-channel.html | head -2
+exit=0
+"channelId":"UCLlxU3mNEO91RHU6CtLrB3w"
+"channelId":"UCFqS-TikA3oFn-fKSO4O7eQ"
+channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+[0m
+[0m$ [0mgrep -o '<link rel="canonical" href="[^"]*"' research/youtube-channel.html; grep -o '"externalId":"[^"]*"' research/youtube-channel.html | head -2; grep -o '<title>[^<]*' research/youtube-channel.html | head -1
+<link rel="canonical" href="https://www.youtube.com/channel/UCb2Y3vMeD6N4WDt5Acw7Arw"
+"externalId":"UCb2Y3vMeD6N4WDt5Acw7Arw"
+<title>Przeprogramowani - YouTube
+[0m
+[0m$ [0mgrep -oE 'href="https?://[^"]+"' research/przeprogramowani-pl.html | sort -u | grep -viE 'fonts|gstatic|google|facebook|twitter|instagram|linkedin|youtube.com/@|\.png|\.jpg|\.svg|\.css|\.js' | head -50
+href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+href="https://10xdevs.pl"
+href="https://10xrules.ai"
+href="https://opanuj.ai"
+href="https://opanuj.ai/"
+href="https://opanujfrontend.pl"
+href="https://przeprogramowani.pl/"
+href="https://przeprogramowani.substack.com"
+href="https://www.opanujfrontend.pl?utm_source=przeprogramowani_website"
+href="https://www.opanujtypescript.pl?utm_source=przeprogramowani_website"
+href="https://www.youtube.com/watch?v=0JOszZXqKaM"
+href="https://www.youtube.com/watch?v=1agLBxJskps"
+href="https://www.youtube.com/watch?v=9Eoa5Tj54fI"
+href="https://www.youtube.com/watch?v=bdO9bBvg8Zg"
+href="https://www.youtube.com/watch?v=cKU4jlaUnZc"
+href="https://www.youtube.com/watch?v=rR2sbf0KkRU"
+href="https://youtube.com/c/przeprogramowani"
+href="https://youtube.com/c/przeprogramowani/videos"
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mcurl -sL --max-time 20 "https://www.youtube.com/feeds/videos.xml?channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw" -o research/youtube-feed.xml; echo "exit=$? size=$(wc -c < research/youtube-feed.xml)"; grep -c "<entry>" research/youtube-feed.xml
+exit=0 size=   31943
+15
+[0m
+[0m$ [0mcurl -sL --max-time 20 -A "Mozilla/5.0" "https://opanuj.ai" -o research/opanuj-ai.html; echo "exit=$? size=$(wc -c < research/opanuj-ai.html)"; grep -oiE '(feed|rss|podcast|itunes|spotify|anchor)[^"]{0,120}' research/opanuj-ai.html | sort -u | head -30
+exit=0 size=   70416
+feedback i najnowsze trendy, zapewniając średnio wzrost produktywności w pracy.</p> </div> <div class=
+Podcast </a> </div><div class=
+podcast.BjYL8fe3.png
+podcasters.spotify.com/pod/show/opanujai
+podcastów promujących szersze spojrzenie na programowanie.</p> </div> <ul role=
+podcastów z ekspertami z branży IT. Pasjonat siłowni, literatury i rozwoju osobistego.</p> </div> <ul role=
+podcastowe
+podcastu Opanuj.AI oraz flagowego szkolenia 10xDevs o skutecznej współpracy
+[0m
+[0m$ [0mgrep -oiE 'href="[^"]*(podcast|feed|rss)[^"]*"' research/przeprogramowani-pl.html | sort -u | head
+href="/podcast"
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mcurl -sL --max-time 20 -A "Mozilla/5.0" "https://przeprogramowani.pl/podcast" -o research/podcast-page.html; echo "exit=$? size=$(wc -c < research/podcast-page.html)"; grep -oiE 'href="[^"]*(feed|rss|podcast|spotify|anchor|apple)[^"]*"' research/podcast-page.html | sort -u | head -20
+exit=0 size=   71932
+href="/podcast"
+href="https://anchor.fm/s/22544b7c/podcast/rss"
+href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPICA-i-OPEN-AI-Claude-Mythos--Claude-Fable-i-GPT-5-6-e3lfs2p"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Cena-i-bezpieczestwo---kluczowe-pytania-o-AI-przyszoci--Opanuj-AI-e3mvo52"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/GPT-5-5-VS-Opus-4-7---kto-rzdzi-na-scenie-AI---Cursor-3-0--DeepSeek-V4--Meta-Muse-e3injdh"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Kod-nie-jest-ju-wskim-gardem--Nadchodzi-AI-Native-SDLC--Opanuj-AI-e3o9hpt"
+href="https://podcasters.spotify.com/pod/show/opanujai/episodes/TEGO-AI-NIE-POTRAFI---ARC-AGI-3-i-koniec-epoki-SaaS--Opanuj-AI-e3hc7nk"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-frontendu-Co-naprawd-ma-znaczenie--Tomasz-Ducin--Przeprogramowani-ft--Go-e2pfjg3"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Co-nowego-w-TypeScript--Zmiany-w-jzyku-i-nasze-plany-konferencyjne-LIVE-YT-e2nepgm"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Nauka-nowoczesnego-frontendu--Pawe-Gnat---Przeprogramowani-ft--Go-e2kj935"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/No-code-i-Low-code---przyszo-tworzenia-aplikacji---Kamil-Tarczyski---Przeprogramowani-ft--Go-e2kqhp6"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu-zawodowym-programisty--Wojciech-Trawiski--Przeprogramowani-ft--Go-e380adn"
+href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs--Angielski-Od-strachu-do-sukcesu--Wiktoria-Sitko--Przeprogramowani-ft--Go-e38lmlo"
+href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+href="https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy8yMjU0NGI3Yy9wb2RjYXN0L3Jzcw"
+href="https://przeprogramowani.pl/podcast"
+[0m
+[0m$ [0mgrep -oE 'https://[^"]*(anchor|spotifycdn|feed|rss|podbean|buzzsprout|simplecast|transistor)[^"]*' research/opanuj-ai.html | sort -u | head -20
+(no output)
+[0m
+[0m$ [0mcurl -sL --max-time 25 "https://anchor.fm/s/22544b7c/podcast/rss" -o research/feed-anchor.xml; echo "exit=$? size=$(wc -c < research/feed-anchor.xml)"; grep -oE '<title>[^<]*</title>' research/feed-anchor.xml | head -3; grep -c "<item>" research/feed-anchor.xml
+exit=0 size=       9
+0
+[0m
+[0m$ [0mcurl -sL --max-time 25 "https://itunes.apple.com/search?term=opanuj%20ai&media=podcast&limit=5" -o research/itunes-opanujai.json; python3 -c "
+import json
+d=json.load(open('research/itunes-opanujai.json'))
+for r in d.get('results',[]):
+    print(r.get('collectionName'),'|',r.get('feedUrl'),'|',r.get('collectionViewUrl'))
+"
+Opanuj.AI Podcast | https://anchor.fm/s/e2cb03d0/podcast/rss | https://podcasts.apple.com/us/podcast/opanuj-ai-podcast/id1690353799?uo=4
+[0m
+[0m$ [0mcat research/feed-anchor.xml; echo; curl -sIL --max-time 25 -A "Mozilla/5.0 (Macintosh)" "https://anchor.fm/s/22544b7c/podcast/rss" | head -20
+Not Found
+HTTP/2 404 
+etag: W/"9-0gXL1ngzMqISxa6S1zx3F4wtLyg"
+x-timer: S1788852727.604929,VS0,VE3
+x-powered-by: Express
+via: 1.1 varnish, 1.1 varnish, 1.1 varnish
+content-type: text/plain; charset=utf-8
+cache-control: public, s-maxage=604892, max-age=300
+accept-ranges: bytes
+date: Tue, 08 Sep 2026 07:32:34 GMT
+age: 27
+x-served-by: cache-iad-kcgs7200151-IAD, cache-iad-kcgs7200151-IAD, cache-iad-kcgs7200151-IAD, cache-ber1080049-BER
+x-cache: MISS, MISS, HIT
+x-cache-hits: 0, 0, 1
+vary: Authorization, Accept-Encoding
+strict-transport-security: max-age=86400
+content-length: 9
+[0m
+[0m$ [0mcurl -sL --max-time 25 -A "Mozilla/5.0" "https://anchor.fm/s/e2cb03d0/podcast/rss" -o research/feed-opanujai.xml; echo "exit=$? size=$(wc -c < research/feed-opanujai.xml)"; head -c 300 research/feed-opanujai.xml
+exit=0 size=  148245
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:anchor="https://anchor.fm/xmlns" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:i
+[0m
+[0m$ [0mcurl -sL --max-time 25 "https://itunes.apple.com/lookup?id=1508387250" -o research/itunes-przeprogramowani.json; python3 -c "
+import json
+d=json.load(open('research/itunes-przeprogramowani.json'))
+for r in d.get('results',[]):
+    print(r.get('collectionName'),'|',r.get('feedUrl'))
+"
+(no output)
+[0m
+[0m$ [0mgrep -oE '<title>[^<]*</title>' research/feed-opanujai.xml | head -3; grep -c "<item>" research/feed-opanujai.xml; python3 - <<'EOF'
+import re
+s=open('research/feed-opanujai.xml').read()
+items=re.findall(r'<item>(.*?)</item>',s,re.S)[:3]
+for it in items:
+    t=re.search(r'<title>(.*?)</title>',it,re.S)
+    d=re.search(r'<pubDate>(.*?)</pubDate>',it,re.S)
+    l=re.search(r'<link>(.*?)</link>',it,re.S)
+    e=re.search(r'<enclosure[^>]*url="([^"]*)"',it)
+    print((t.group(1) if t else '')[:80],'|',d.group(1) if d else '','|',(l.group(1) if l else '')[:90],'|',(e.group(1) if e else '')[:70])
+EOF
+53
+<![CDATA[Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC | Opanuj.AI]] | Thu, 03 Sep 2026 10:00:50 GMT | https://podcasters.spotify.com/pod/show/opanujai/episodes/Kod-nie-jest-ju-wskim-gardem--Na | https://anchor.fm/s/e2cb03d0/podcast/play/125142269/https%3A%2F%2Fd3ct
+<![CDATA[Cena i bezpieczeństwo - kluczowe pytania o AI przyszłości | Opanuj.AI]] | Wed, 05 Aug 2026 06:00:00 GMT | https://podcasters.spotify.com/pod/show/opanujai/episodes/Cena-i-bezpieczestwo---kluczowe- | https://anchor.fm/s/e2cb03d0/podcast/play/123772514/https%3A%2F%2Fd3ct
+<![CDATA[BAN NA AI?! USA BLOKUJE ANTHROPICA i OPEN AI (Claude Mythos, Claude Fab | Wed, 01 Jul 2026 05:00:00 GMT | https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPI | https://anchor.fm/s/e2cb03d0/podcast/play/122203673/https%3A%2F%2Fd3ct
+[0m
+[0m$ [0mcurl -sL --max-time 25 "https://itunes.apple.com/search?term=przeprogramowani&media=podcast&limit=5" -o research/itunes-search2.json; python3 -c "
+import json
+d=json.load(open('research/itunes-search2.json'))
+for r in d.get('results',[]):
+    print(r.get('collectionName'),'|',r.get('feedUrl'),'|',r.get('collectionId'))
+"
+Opanuj.AI Podcast | https://anchor.fm/s/e2cb03d0/podcast/rss | 1690353799
+Przeprogramowani | https://anchor.fm/s/c72d808/podcast/rss | 1471770526
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mcurl -sL --max-time 25 -A "Mozilla/5.0" "https://anchor.fm/s/c72d808/podcast/rss" -o research/feed-przeprogramowani.xml; echo "exit=$? size=$(wc -c < research/feed-przeprogramowani.xml)"; python3 - <<'EOF'
+import re
+s=open('research/feed-przeprogramowani.xml').read()
+t=re.search(r'<channel>.*?<title>(.*?)</title>',s,re.S)
+print('CHANNEL:',t.group(1) if t else '?')
+items=re.findall(r'<item>(.*?)</item>',s,re.S)
+print('items:',len(items))
+for it in items[:3]:
+    ti=re.search(r'<title>(.*?)</title>',it,re.S)
+    d=re.search(r'<pubDate>(.*?)</pubDate>',it,re.S)
+    l=re.search(r'<link>(.*?)</link>',it,re.S)
+    e=re.search(r'<enclosure[^>]*url="([^"]*)"',it)
+    print((ti.group(1) if ti else '')[:80],'|',d.group(1) if d else '','|',(l.group(1) if l else '')[:80],'|audio:',bool(e))
+EOF
+exit=0 size=  306732
+CHANNEL: <![CDATA[Przeprogramowani]]>
+items: 98
+<![CDATA[Programista vs. Angielski: Od strachu do sukcesu, Wiktoria Sitko | Prze | Thu, 25 Sep 2025 04:00:00 GMT | https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Programista-vs |audio: True
+<![CDATA[O dojrzewaniu zawodowym programisty, Wojciech Trawiński | Przeprogramow | Wed, 10 Sep 2025 04:00:00 GMT | https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/O-dojrzewaniu- |audio: True
+<![CDATA[Architektura frontendu: Co naprawdę ma znaczenie? Tomasz Ducin, Przepro | Thu, 10 Oct 2024 12:31:14 GMT | https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/Architektura-f |audio: True
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import re
+s=open('research/youtube-feed.xml').read()
+entries=re.findall(r'<entry>(.*?)</entry>',s,re.S)
+for e in entries[:4]:
+    t=re.search(r'<title>(.*?)</title>',e,re.S)
+    d=re.search(r'<published>(.*?)</published>',e,re.S)
+    v=re.search(r'<yt:videoId>(.*?)</yt:videoId>',e,re.S)
+    print(t.group(1)[:80],'|',d.group(1),'|',v.group(1))
+EOF
+10xDevs Demo Day LIVE 🎉 Zobacz 9 najlepszych projektów! | 2026-09-02T18:48:12+00:00 | cKU4jlaUnZc
+Hackathon AI-Native - tak było na BRAVE UNAITED | 2026-08-31T16:45:32+00:00 | 1agLBxJskps
+Zbiórka na młodych Hakersów - już 2 września! | 2026-08-29T14:07:41+00:00 | 09X1N549NAU
+10xWorkflow i Core Skill Chain - Budujemy nowy feature na platformie | 2026-08-27T17:00:28+00:00 | rR2sbf0KkRU
+[0m
+[0m$ [0mfor u in https://10xdevs.pl https://opanujfrontend.pl https://opanujtypescript.pl https://opanuj.ai https://przeprogramowani.pl; do code=$(curl -sL --max-time 15 -A "Mozilla/5.0" -o /dev/null -w "%{http_code} %{url_effective}" "$u"); echo "$u -> $code"; done
+https://10xdevs.pl -> 200 https://www.10xdevs.pl/
+https://opanujfrontend.pl -> 200 https://opanujfrontend.pl/
+https://opanujtypescript.pl -> 200 https://opanujtypescript.pl/
+https://opanuj.ai -> 200 https://opanuj.ai/
+https://przeprogramowani.pl -> 200 https://przeprogramowani.pl/
+[0m
+[0m$ [0mnpm view @astrojs/cloudflare version peerDependencies 2>/dev/null; npm view @astrojs/react version peerDependencies 2>/dev/null; npm view @tailwindcss/vite version 2>/dev/null; npm view wrangler version 2>/dev/null
+version = '14.3.0'
+peerDependencies = { astro: '^7.2.0', wrangler: '^4.125.0' }
+version = '6.0.5'
+peerDependencies = {
+  react: '^17.0.2 || ^18.0.0 || ^19.0.0',
+  'react-dom': '^17.0.2 || ^18.0.0 || ^19.0.0',
+  '@types/react': '^17.0.50 || ^18.0.21 || ^19.0.0',
+  '@types/react-dom': '^17.0.17 || ^18.0.6 || ^19.0.0'
+}
+4.3.3
+4.129.1
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import re,html
+s=open('research/przeprogramowani-pl.html').read()
+txt=re.sub(r'<script.*?</script>','',s,flags=re.S)
+txt=re.sub(r'<style.*?</style>','',txt,flags=re.S)
+txt=re.sub(r'<[^>]+>',' ',txt)
+txt=html.unescape(re.sub(r'\s+',' ',txt))
+print(txt[:3500])
+EOF
+Przeprogramowani - Szersze spojrzenie na programowanie Przejdź do treści Nowość! 10xDevs — Programuj z AI Zobacz teraz → </> Przeprogramowani O Nas Newsletter Podcasty Blog Kalendarz YouTube 10xDevs Nowość - Wrzesień 2026 10xDevs 4.0 Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania. Szczegóły → Newsletter Przeprogramowany Newsletter Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1: 3 rekomendacje techniczne 2 rekomendacje rozwojowe 1 bonus niespodzianka Nie przegapisz też nowości od Przeprogramowanych i ofert specjalnych. Zapisz się za darmo → Zeskanuj i dołącz Edukacja technologiczna w epoce AI Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI Gen AI Opanuj AI Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji. Zdobądź praktyczną wiedzę o AI i wdróż ją w codziennej pracy. Szczegóły → Frontend Opanuj Frontend: AI Edition Zostań nowoczesnym frontend developerem — 5 obszernych modułów o frontendzie, testowaniu, CI/CD, open source i architekturze aplikacji webowych. Cztery edycje i prawie 400 absolwentów! Szczegóły → TypeScript Opanuj TypeScript Opanuj TypeScript to szkolenie, które podniesie jakość twoich projektów działających na produkcji i ułatwi ich rozwój. Pracujemy z najnowszymi wersjami TypeScript 5 i React 19! Szczegóły → Nasz produkt 10xRules.ai — Reguły AI dla Twojego zespołu Buduj osobiste reguły AI i zarządzaj promptami zespołowymi na jednej platformie 🧑‍💻 Rules Builder Dla indywidualnych programistów 🎨 Visual Rule Builder Intuicyjny interfejs do tworzenia reguł AI bez pisania kodu 📚 140+ Frameworków i bibliotek Kompleksowe wsparcie dla 6 warstw technologicznych: frontend, backend, bazy danych, DevOps, testowanie i praktyki kodowania 📦 Smart Import Automatycznie wykryj swój stack technologiczny przez upload pliku package.json lub requirements.txt 💾 Elastyczny eksport Eksportuj jako pojedynczy plik lub wiele plików markdown zoptymalizowanych dla różnych edytorów AI 👥 Prompt Library Dla zespołów developerskich 🏢 Zarządzanie organizacją Wsparcie dla wielu organizacji z kontrolą dostępu opartą na rolach (RBAC) dla administratorów i członków ✍️ Kuracja treści Workflow draft/publish zapewnia jakość i spójność promptów w zespole 👥 Doświadczenie użytkownika Przeglądaj, filtruj i kopiuj prompty z centralnej biblioteki organizacji 🤝 Narzędzia współpracy Centralne repozytorium do dzielenia się wiedzą zespołową i standaryzacji promptów Wypróbuj 10xRules.ai Filmy i podcasty Rozwój nowoczesnego programisty 10xDevs Demo Day LIVE 🎉 Zobacz 9 najlepszych projektów! Hackathon AI-Native - tak było na BRAVE UNAITED 10xWorkflow i Core Skill Chain - Budujemy nowy feature na platformie Projektowanie stabilnych bibliotek i architektury z agentem AI – LIVE z Adrianem Połubińskim NOWA GENERACJA AI - GPT-5.6 Sol i Fable 5 działają inaczej niż myślisz Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026 Zaufali nam 7 7 lat na rynku edukacji technologicznej Chcesz nawiązać współpracę? kontakt@przeprogramowani.pl Huuuge Games Nutridome SmartRecruiters Future Processing Callstack edrone Xfive Euvic Strabag Autodesk Huuuge Games Nutridome SmartRecruiters Future Processing Callstack edrone Xfive Euvic Strabag Autodesk O nas Blog YouTube Podcast 10xDevs Opanuj Frontend Opanuj AI Newsletter Przeprogramowani.pl — Szersze spojrzenie na pro
+[0m
+Research done. Now scaffolding.
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mmkdir -p /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site
+(no output)
+[0m
+[0m← [0mWrite site/package.json
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mEdit site/package.json
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
+@@ -18,9 +18,9 @@
+     "react-dom": "19.2.8",
+     "tailwindcss": "4.3.3"
+   },
+   "devDependencies": {
+-    "@types/react": "19.2.2",
+-    "@types/react-dom": "19.2.1",
++    "@types/react": "^19.0.0",
++    "@types/react-dom": "^19.0.0",
+     "wrangler": "4.129.1"
+   }
+ }
+
+[0m
+[0m$ [0mcd site && npm install --no-audit --no-fund > ../evidence/npm-install.log 2>&1; echo "install-exit=$?" >> ../evidence/npm-install.log
+(no output)
+[0m
+[0m$ [0mtail -5 evidence/npm-install.log; ls site/node_modules 2>/dev/null | head -3; ls site/package-lock.json 2>/dev/null
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+
+added 291 packages in 5s
+install-exit=0
+@astrojs
+@babel
+@bruits
+site/package-lock.json
+[0m
+[0m$ [0mpython3 - <<'EOF'
+import re,html
+s=open('research/opanuj-ai.html').read()
+txt=re.sub(r'<script.*?</script>','',s,flags=re.S)
+txt=re.sub(r'<style.*?</style>','',txt,flags=re.S)
+txt=re.sub(r'<[^>]+>',' ',txt)
+txt=html.unescape(re.sub(r'\s+',' ',txt))
+i=txt.find('Smyrdek'); j=txt.find('Czarkowski')
+print('--- around Smyrdek ---'); print(txt[max(0,i-1200):i+600])
+print('--- around Czarkowski ---'); print(txt[max(0,j-300):j+900])
+EOF
+--- around Smyrdek ---
+ nasz zespół Łączymy ponad 10 lat doświadczenia w programowaniu z pasją do generatywnej sztucznej inteligencji. Realizujemy projekty szkoleniowe dla firm produktowych, software house'ów i globalnych korporacji. Praktyczne wdrożenia AI Aktywnie wykorzystujemy narzędzia AI w codziennej pracy programistycznej oraz przy tworzeniu materiałów edukacyjnych. Szukamy powtarzalnych wzorców i frameworków, które możemy Ci przekazać z dużym przekonaniem. Dzielenie się wiedzą Jesteśmy autorami docenianego podcastu Opanuj.AI oraz flagowego szkolenia 10xDevs o skutecznej współpracy programisty z Agentami AI - w pierwszej edycji przeszkoliliśmy ponad 1000 uczestników. Eksperymentowanie z AI Regularnie testujemy najnowsze narzędzia AI i poddajemy je merytorycznej analizie. W trakcie naszej współpracy przekażemy Ci konkretne wskazówki dotyczące współpracy z AI wykraczające poza marketingowe ulotki danej usługi. Marcin Czarkowski Co-Founder, Lead Software Engineer Tech lead w SmartRecruiters, przedsiębiorca i doświadczony trener, który prowadził szkolenia dla setek programistów. Autor podcastów z ekspertami z branży IT. Pasjonat siłowni, literatury i rozwoju osobistego. LinkedIn Twitter Email Przemek Smyrdek Co-Founder, Engineering Manager Lead engineer i engineering manager w globalnych firmach produktowych takich jak DAZN i Cabify. Autor programów szkoleniowych, kursów i podcastów promujących szersze spojrzenie na programowanie. LinkedIn Twitter Email Jakub Paczkowski Trainer, Lead Engineer & Manager Doświadczony manager zespołów developerskich oraz programista backendowy. Pasjonat ułatwiania życia sobie i innym, przez podnoszenie efektywności. Szkoleniowiec GenAI, kładący nacisk na zrozumienie zasad działania technologii, a nie samo jej użycie. LinkedIn Email Krzysztof Bohaczyk Trainer,
+--- around Czarkowski ---
+edycji przeszkoliliśmy ponad 1000 uczestników. Eksperymentowanie z AI Regularnie testujemy najnowsze narzędzia AI i poddajemy je merytorycznej analizie. W trakcie naszej współpracy przekażemy Ci konkretne wskazówki dotyczące współpracy z AI wykraczające poza marketingowe ulotki danej usługi. Marcin Czarkowski Co-Founder, Lead Software Engineer Tech lead w SmartRecruiters, przedsiębiorca i doświadczony trener, który prowadził szkolenia dla setek programistów. Autor podcastów z ekspertami z branży IT. Pasjonat siłowni, literatury i rozwoju osobistego. LinkedIn Twitter Email Przemek Smyrdek Co-Founder, Engineering Manager Lead engineer i engineering manager w globalnych firmach produktowych takich jak DAZN i Cabify. Autor programów szkoleniowych, kursów i podcastów promujących szersze spojrzenie na programowanie. LinkedIn Twitter Email Jakub Paczkowski Trainer, Lead Engineer & Manager Doświadczony manager zespołów developerskich oraz programista backendowy. Pasjonat ułatwiania życia sobie i innym, przez podnoszenie efektywności. Szkoleniowiec GenAI, kładący nacisk na zrozumienie zasad działania technologii, a nie samo jej użycie. LinkedIn Email Krzysztof Bohaczyk Trainer, Full-stack D
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite research/NOTES.md
+Wrote file successfully.
+[0m
+Dependencies installed. Now writing research notes and the site implementation.
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mmkdir -p site/src/data/cache && python3 - <<'EOF'
+import re, json, html, email.utils, datetime
+
+def clean(s):
+    return html.unescape(re.sub(r'\s+',' ', s or '')).strip()
+
+def parse_rss(path, source, maxn=8):
+    s=open(path).read()
+    ch=re.search(r'<channel>(.*?)</channel>',s,re.S).group(1)
+    title=clean(re.sub(r'<!\[CDATA\[|\]\]>','',re.search(r'<title>(.*?)</title>',ch,re.S).group(1)))
+    items=[]
+    for it in re.findall(r'<item>(.*?)</item>',ch,re.S)[:maxn]:
+        t=re.search(r'<title>(.*?)</title>',it,re.S)
+        d=re.search(r'<pubDate>(.*?)</pubDate>',it,re.S)
+        l=re.search(r'<link>(.*?)</link>',it,re.S)
+        e=re.search(r'<enclosure[^>]*url="([^"]*)"',it)
+        desc=re.search(r'<description>(.*?)</description>',it,re.S)
+        pub=None
+        if d:
+            try:
+                pub=email.utils.parsedate_to_datetime(d.group(1)).isoformat()
+            except Exception: pass
+        summ=''
+        if desc:
+            dd=clean(re.sub(r'<!\[CDATA\[|\]\]>','',desc.group(1)))
+            dd=clean(re.sub(r'<[^>]+>',' ',dd))
+            summ=dd[:220]
+        items.append({'id':l.group(1) if l else t.group(1),'title':clean(re.sub(r'<!\[CDATA\[|\]\]>','',t.group(1) if t else '')),'url':l.group(1) if l else '','publishedAt':pub,'audioUrl':e.group(1) if e else None,'summary':summ})
+    return {'source':source,'channelTitle':title,'items':items}
+
+def parse_yt(path, source, maxn=8):
+    s=open(path).read()
+    items=[]
+    for e in re.findall(r'<entry>(.*?)</entry>',s,re.S)[:maxn]:
+        t=re.search(r'<title>(.*?)</title>',e,re.S)
+        d=re.search(r'<published>(.*?)</published>',e,re.S)
+        v=re.search(r'<yt:videoId>(.*?)</yt:videoId>',e,re.S)
+        g=re.search(r'<media:description>(.*?)</media:description>',e,re.S)
+        summ=clean(g.group(1) if g else '')[:220]
+        items.append({'id':v.group(1),'title':clean(t.group(1)),'url':'https://www.youtube.com/watch?v='+v.group(1),'publishedAt':d.group(1) if d else None,'audioUrl':None,'summary':summ})
+    return {'source':source,'channelTitle':'Przeprogramowani','items':items}
+
+now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+for fn,data in [
+  ('youtube.json', parse_yt('research/youtube-feed.xml','youtube')),
+  ('opanujai.json', parse_rss('research/feed-opanujai.xml','opanujai')),
+  ('przeprogramowani.json', parse_rss('research/feed-przeprogramowani.xml','przeprogramowani')),
+]:
+    data['fetchedAt']=now
+    json.dump(data,open('site/src/data/cache/'+fn,'w'),ensure_ascii=False,indent=1)
+    print(fn,len(data['items']),'items')
+EOF
+youtube.json 8 items
+opanujai.json 8 items
+przeprogramowani.json 8 items
+[0m
+[0m← [0mWrite site/astro.config.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/tsconfig.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/styles/global.css
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/lib/sources.ts
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/lib/content.ts
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/layouts/Layout.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/components/Header.astro
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/components/MobileNav.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/components/Footer.astro
+Wrote file successfully.
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/components/SourceStatus.astro
+Wrote file successfully.
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/components/MediaItemCard.astro
+Wrote file successfully.
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/pages/index.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/pages/o-nas.astro
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/pages/podcast/index.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/pages/podcast/opanuj-ai.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/pages/podcast/przeprogramowani.astro
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/src/pages/youtube.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite site/src/pages/kursy.astro
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -25; echo "build-exit=${pipestatus[1]}"
+09:43:43 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/dist/
+09:43:43 [build] adapter: @astrojs/cloudflare
+09:43:43 [build] Collecting build info...
+09:43:43 [build] ✓ Completed in 315ms.
+09:43:43 [build] Building static entrypoints...
+09:43:43 [vite] ✓ built in 296ms
+09:43:43 [vite] ✓ built in 50ms
+09:43:43 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9231 instead
+
+
+ generating static routes 
+09:43:44   ├─ /kursy/index.html (+31ms) 
+09:43:44   ├─ /o-nas/index.html (+7ms) 
+09:43:44   ├─ /podcast/opanuj-ai/index.html (+224ms) 
+09:43:44   ├─ /podcast/przeprogramowani/index.html (+81ms) 
+09:43:44   ├─ /podcast/index.html (+9ms) 
+09:43:44   ├─ /youtube/index.html (+85ms) 
+09:43:44   ├─ /index.html (+5ms) 
+09:43:45 ✓ Completed in 1.13s.
+
+09:43:45 [build] ✓ Completed in 1.51s.
+09:43:45 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:43:45 [build] 7 page(s) built in 1.83s
+09:43:45 [build] Complete!
+build-exit=0
+[0m
+[0m$ [0mls dist/ && ls dist/_worker.js 2>/dev/null | head; grep -o "Dane pobrane na żywo" dist/youtube/index.html dist/podcast/opanuj-ai/index.html dist/podcast/przeprogramowani/index.html 2>/dev/null; grep -c "<article" dist/youtube/index.html dist/podcast/opanuj-ai/index.html dist/podcast/przeprogramowani/index.html
+client
+server
+grep: dist/youtube/index.html: No such file or directory
+grep: dist/podcast/opanuj-ai/index.html: No such file or directory
+grep: dist/podcast/przeprogramowani/index.html: No such file or directory
+[0m
+[0m$ [0mls dist/client/ dist/server/ | head -30; find dist -maxdepth 2 -name "*.js" | head; ls dist/_worker.js 2>/dev/null; find dist -maxdepth 1 | head
+dist/client/:
+_astro
+_headers
+index.html
+kursy
+o-nas
+podcast
+wrangler.json
+youtube
+
+dist/server/:
+dist
+dist/server
+dist/client
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mcat dist/client/wrangler.json; echo ---; grep -o "Dane pobrane na żywo" dist/client/youtube/index.html dist/client/podcast/opanuj-ai/index.html dist/client/podcast/przeprogramowani/index.html; echo ---; grep -c "<article" dist/client/youtube/index.html dist/client/podcast/opanuj-ai/index.html dist/client/podcast/przeprogramowani/index.html
+{"topLevelName":"przeprogramowani-pl-site","dev":{"ip":"localhost","local_protocol":"http","upstream_protocol":"http","enable_containers":true,"generate_types":false},"name":"przeprogramowani-pl-site","compatibility_date":"2026-09-07","compatibility_flags":[],"vars":{},"durable_objects":{"bindings":[]},"kv_namespaces":[{"binding":"SESSION"}],"queues":{"producers":[],"consumers":[]},"connect":[],"r2_buckets":[],"d1_databases":[],"vectorize":[],"ai_search_namespaces":[],"ai_search":[],"agent_memory":[],"hyperdrive":[],"workflows":[],"secrets_store_secrets":[],"artifacts":[],"services":[],"analytics_engine_datasets":[],"images":{"binding":"IMAGES"},"unsafe_hello_world":[],"flagship":[],"ratelimits":[],"worker_loaders":[],"jsx_factory":"React.createElement","jsx_fragment":"React.Fragment","migrations":[],"exports":{},"triggers":{},"rules":[],"build":{"watch_dir":"./src"},"dispatch_namespaces":[],"logfwdr":{"bindings":[]},"assets":{"directory":"."},"observability":{"enabled":true},"python_modules":{"exclude":["**/*.pyc"]},"previews":{"kv_namespaces":[{"binding":"SESSION"}],"images":{"binding":"IMAGES"}},"define":{},"cloudchamber":{},"send_email":[],"mtls_certificates":[],"pipelines":[],"vpc_services":[],"vpc_networks":[]}---
+dist/client/youtube/index.html:Dane pobrane na żywo
+dist/client/podcast/opanuj-ai/index.html:Dane pobrane na żywo
+dist/client/podcast/przeprogramowani/index.html:Dane pobrane na żywo
+---
+dist/client/youtube/index.html:1
+dist/client/podcast/opanuj-ai/index.html:1
+dist/client/podcast/przeprogramowani/index.html:1
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mgrep -o "nie opublikowało nowych materiałów w ciągu ostatnich 90 dni" dist/client/podcast/przeprogramowani/index.html | head -1; grep -o "25 września 2025" dist/client/podcast/przeprogramowani/index.html | head -1; grep -o "3 września 2026" dist/client/podcast/opanuj-ai/index.html | head -1; grep -o "2 września 2026" dist/client/youtube/index.html | head -1
+nie opublikowało nowych materiałów w ciągu ostatnich 90 dni
+25 września 2025
+3 września 2026
+2 września 2026
+[0m
+[0m$ [0mnohup npx wrangler dev --config dist/client/wrangler.json --port 8788 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "started pid=$!"
+started pid=89084
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0msleep 6; tail -5 evidence/wrangler-dev.log; for p in / /o-nas /podcast /podcast/ /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy /o-nas/; do code=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8788$p"); echo "$p -> $code"; done
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mAddress already in use (127.0.0.1:8788). Please check that you are not already running a server on this address or specify a different port with --port.[0m
+
+
+🪵  Logs were written to "/Users/psmyrdek/.wrangler/logs/wrangler-2026-09-08_07-44-55_870.log"
+/ -> 200
+/o-nas -> 200
+/podcast -> 200
+/podcast/ -> 200
+/podcast/opanuj-ai -> 200
+/podcast/przeprogramowani -> 200
+/youtube -> 200
+/kursy -> 200
+/o-nas/ -> 200
+[0m
+[0m$ [0mlsof -nP -iTCP:8788 -sTCP:LISTEN | head -5; curl -s http://127.0.0.1:8788/ | head -c 300
+COMMAND   PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+workerd 84418 psmyrdek   16u  IPv4  0x3cbda53a6253f74      0t0  TCP 127.0.0.1:8788 (LISTEN)
+workerd 84418 psmyrdek   17u  IPv6 0x44f078cd397e96b2      0t0  TCP [::1]:8788 (LISTEN)
+<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Przeprogramowani — Szersze spojrzenie na programowanie</title><meta name="description" content="Przeprogramowani to edukacja technologiczna: kurs 10xDevs o programo
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+Another `workerd` process (not mine) occupies port 8788. I won't touch it; using port 8790 instead.
+[0m
+[0m$ [0mnohup npx wrangler dev --config dist/client/wrangler.json --port 8790 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "pid=$!"; sleep 7; tail -8 evidence/wrangler-dev.log
+pid=92463
+tail: evidence/wrangler-dev.log: No such file or directory
+[0m
+[0m$ [0msleep 3; tail -10 ../evidence/wrangler-dev.log; echo ===; for p in / /o-nas /o-nas/ /podcast /podcast/ /podcast/opanuj-ai /podcast/opanuj-ai/ /podcast/przeprogramowani /youtube /kursy; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8790$p"); echo "$p -> $out"; done; curl -s http://127.0.0.1:8790/ | grep -o "<title>[^<]*"
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+zsh:1: == not found
+[0m
+[0m$ [0mfor p in / /o-nas /o-nas/ /podcast /podcast/ /podcast/opanuj-ai /podcast/opanuj-ai/ /podcast/przeprogramowani /youtube /kursy; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8790$p"); echo "$p -> $out"; done; curl -s http://127.0.0.1:8790/ | grep -o "<title>[^<]*"; curl -s http://127.0.0.1:8790/_astro/ 2>/dev/null | head -c 50; ls dist/client/_astro | head -5
+/ -> 000
+/o-nas -> 000
+/o-nas/ -> 000
+/podcast -> 000
+/podcast/ -> 000
+/podcast/opanuj-ai -> 000
+/podcast/opanuj-ai/ -> 000
+/podcast/przeprogramowani -> 000
+/youtube -> 000
+/kursy -> 000
+client.B2huqpV0.js
+Layout.D2Ec0XqZ.css
+MobileNav.uW01dZS7.js
+react.Q2GtEPr4.js
+[0m
+[0m$ [0mtail -25 ../evidence/wrangler-dev.log; lsof -nP -iTCP:8790 -sTCP:LISTEN | head -3; ps aux | grep -c "[w]rangler"
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+⎔ Local server updated and ready
+⎔ Reloading local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+14
+[0m
+[0m$ [0mps aux | grep "[w]rangler" | awk '{print $2, $9, $11, $12, $13, $14, $15, $16}' | head -20; echo ---; lsof -nP -iTCP -sTCP:LISTEN 2>/dev/null | grep -E "879|workerd|wrangler" | head -10
+95447 9:46AM npm exec wrangler dev --port 8787
+95474 9:46AM /Users/psmyrdek/.nvm/versions/node/v22.14.0/bin/node --no-warnings /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1/node_modules/wrangler/wrangler-dist/cli.js dev --port 8787
+95473 9:46AM node /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1/node_modules/.bin/wrangler dev --port 8787 --ip
+95446 9:46AM /bin/zsh -c npx wrangler dev --port
+95476 9:46AM /bin/zsh -c ps aux | grep
+95254 9:46AM /bin/zsh -c pkill -f "wrangler dev"
+58047 8:40AM /Users/psmyrdek/.nvm/versions/node/v22.14.0/bin/node --no-warnings /Users/psmyrdek/dev/przeprogramowani-edu/node_modules/.pnpm/wrangler@4.114.0_@cloudflare+workers-types@5.20260804.1/node_modules/wrangler/wrangler-dist/cli.js dev --config /tmp/edu-cms-runtime/wrangler.json
+58045 8:40AM node node_modules/wrangler/bin/wrangler.js dev --config /tmp/edu-cms-runtime/wrangler.json --port
+---
+node      12737 psmyrdek   17u  IPv6 0x32f7c44f9906f326      0t0  TCP [::1]:8792 (LISTEN)
+workerd   58075 psmyrdek   11u  IPv4 0x6f2384eadb9760bc      0t0  TCP 127.0.0.1:55441 (LISTEN)
+workerd   58075 psmyrdek   12u  IPv4 0x62ccc492bcbea7dd      0t0  TCP 127.0.0.1:9230 (LISTEN)
+workerd   62078 psmyrdek   12u  IPv4 0x384beb88dc853f9e      0t0  TCP 127.0.0.1:55813 (LISTEN)
+workerd   62078 psmyrdek   33u  IPv4  0x178e2a0fee94ccc      0t0  TCP 127.0.0.1:55816 (LISTEN)
+workerd   62078 psmyrdek   34u  IPv4 0x7e8acb1026b53b77      0t0  TCP 127.0.0.1:55817 (LISTEN)
+workerd   63938 psmyrdek   12u  IPv4 0x16e3792a3af6aaa7      0t0  TCP 127.0.0.1:54339 (LISTEN)
+workerd   63938 psmyrdek   27u  IPv4 0x628333279ab16546      0t0  TCP 127.0.0.1:56087 (LISTEN)
+workerd   63938 psmyrdek   28u  IPv4 0xd53161dc24ed6d6d      0t0  TCP 127.0.0.1:56088 (LISTEN)
+workerd   95444 psmyrdek    9u  IPv4 0x245b8bbf1ca2ae9a      0t0  TCP 127.0.0.1:59274 (LISTEN)
+[0m
+[0m$ [0mps aux | grep "[q]wen-3.8-max-attempt-5" | head -5; nohup npx wrangler dev --config dist/client/wrangler.json --port 8795 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "pid=$!"
+psmyrdek         65480  18.2  1.5 562859216 561776   ??  SN    9:31AM   2:25.42 opencode run --dir /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5 --model openrouter/qwen/qwen3.8-max-0902 --variant high --auto # 10xBench V2 — strona Przeprogramowani.pl\012\012Zbuduj kompletną, nowoczesną i responsywną stronę Przeprogramowani.pl w języku polskim. Samodzielnie zbierz informacje z oficjalnych źródeł w internecie, zaplanuj pracę, wykonaj implementację i sprawdź jej działanie. Otrzymujesz całe zadanie jednocześnie; wybór architektury i kolejności pracy należy do Ciebie. Masz maksymalnie 60 minut od uruchomienia próby, łącznie z researchem, kodowaniem i testami. Możesz skończyć wcześniej.\012\012## P01 — Strony i nawigacja\012\012Każdy z poniższych adresów ma być osobną stroną dostępną przez bezpośrednie wejście. Dopuszczalne są końcowe ukośniki w adresach.\012\012| Adres | Zawartość |\012| --- | --- |\012| `/` | Przedstawienie projektu, wyróżniony kurs 10xDevs w hero z prawdziwym odnośnikiem do kursu oraz zapowiedzi pozostałych stron. |\012| `/o-nas` | Działalność i wartości Przeprogramowanych oraz sylwetki Przemka Smyrdka i Marcina Czarkowskiego, zgodne ze źródłami. |\012| `/podcast` | Katalog obu podcastów z opisami i odnośnikami do ich osobnych stron. |\012| `/podcast/opanuj-ai` | Podcast Opanuj.AI: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/podcast/przeprogramowani` | Podcast Przeprogramowani: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/youtube` | Najnowsze rzeczywiste filmy oficjalnego kanału Przeprogramowani, odtwarzanie i odnośniki do filmów. |\012| `/kursy` | Opanuj Frontend, Opanuj TypeScript i 10xDevs: opisy oraz prawdziwe odnośniki do kursów. |\012\012Nawigacja globalna prowadzi do O nas, katalogu podcastów, YouTube i kursów. Ze wszystkich stron można wrócić na stronę główną. Katalog podcastów prowadzi do obu podcastów. Nawigacja mobilna działa myszą, dotykiem i klawiaturą. Wszystkie wymagane strony zwracają HTTP 200 i właściwy HTML w lokalnym podglądzie produkcyjnym.\012\012## P02 — Rzetelna treść\012\012Sprawdź aktualne informacje na oficjalnej stronie projektu i stronach produktów. Opisy mogą być napisane własnymi słowami; nie trzeba odtwarzać konkretnego tekstu ani nieaktualnych szczegółów zawodowych autorów. Nie wymyślaj nazwisk, doświadczenia, kursów, cytatów, statystyk ani odnośników. Nie używaj atrap CTA lub adresów `#` zamiast rzeczywistych celów nawigacji.\012\012## P03 — Podcasty i YouTube\012\012Dla każdego z dwóch podcastów i kanału YouTube pokaż niepusty wybór najnowszych materiałów z 90 dni poprzedzających start próby. Jeśli źródło niczego w tym okresie nie opublikowało, wybierz najnowszy dostępny materiał i pokaż jego rzeczywistą datę. Nie ma wymaganej liczby odcinków lub filmów ani premii za ich liczbę. Nie traktuj publikacji późniejszych niż start próby jako wymaganych.\012\012Każdy element zawiera prawdziwy tytuł, identyfikację źródła, datę publikacji, jeśli źródło ją podaje, oraz oryginalny adres konkretnego odcinka lub filmu. Brakującą datę oznacz jako nieznaną. Zachowaj w danych lub dokumentacji adres źródła i czas pobrania. Zapisz dowody researchu: adresy i zwięzłe fakty lub odpowiedzi źródła, bez sekretów i zbędnego kopiowania pełnych treści.\012\012Zapewnij osadzony odtwarzacz dostawcy albo odtwarzacz audio/wideo oraz niezależny od niego odnośnik do oryginału. Jeśli dostawca blokuje osadzenie, pokaż zrozumiałą informację lub stałą pomoc przy odtwarzaniu i zachowaj odnośnik do konkretnego materiału. Udokumentowane ograniczenie dostawcy nie jest błędem Twojej implementacji. Sam link do całego kanału lub podcastu nie zastępuje linków do dostępnych elementów.\012\012## P04 — Pobieranie danych i obsługa awarii\012\012Pobieraj zewnętrzne treści po stronie serwera w dedykowanych modułach źródeł danych. Możesz robić to podczas budowania albo obsługi żądania. Moduły pobierają, walidują i normalizują odpowiedzi; strony i komponenty prezentują otrzymane dane strukturalne. Pobieranie feedów w przeglądarce, umieszczenie logiki pobierania bezpośrednio w komponentach prezentacyjnych lub wyłącznie ręcznie wpisane listy nie spełniają tego wymagania.\012\012Timeout, błąd HTTP lub nieprawidłowa odpowiedź jednego źródła nie mogą wyłączyć całej strony. Pokaż sprawdzone dane z pamięci podręcznej z oznaczeniem ich nieaktualności albo komunikat o niedostępności z linkiem do źródła. Nie przedstawiaj fikcyjnych danych jako pobranych. Poprawny pusty stan awaryjny nie dowodzi, że pobieranie rzeczywistych materiałów działa. Sprawdź także działającą ścieżkę pobierania oraz co najmniej jedną kontrolowaną awarię źródła.\012\012## P05 — Technologie\012\012Użyj Astro, React i Tailwind CSS w najnowszych stabilnych głównych wersjach dostępnych w chwili startu próby, zgodnie z dołączonym przez operatora zapisem wersji. Wykluczone są prerelease. Późniejsze wydanie nowej wersji głównej nie zmienia wymagań tej próby. W obrębie zapisanej wersji głównej wybór wydania patch/minor należy do Ciebie. Zapisz lockfile i faktycznie zainstalowane wersje; sama deklaracja zakresu w `package.json` nie wystarcza. Zapewnij powtarzalną instalację i działający build produkcyjny.\012\012## P06 — Gotowość do Cloudflare Workers, bez publikowania\012\012Zainstaluj zgodny z wybraną wersją Astro oficjalny adapter `@astrojs/cloudflare` i rzeczywiście skonfiguruj go w Astro. Konfiguracja musi odpowiadać wynikowi buildu oraz runtime Cloudflare Workers. Udostępnij lokalny podgląd produkcyjny w runtime Workers, obsługujący strony i zasoby. Statyczne pobieranie danych podczas buildu jest dopuszczalne.\012\012W README opisz dokładne polecenia instalacji, buildu, lokalnego podglądu i przyszłego wdrożenia oraz potrzebne zmienne i bindingi. Korzystaj z mechanizmu właściwego dla zainstalowanej wersji adaptera: generowana konfiguracja jest dopuszczalna, ręczny plik Wrangler nie jest wymagany sam w sobie. Instrukcja musi wskazywać Workers, a nie Cloudflare Pages, i zgadzać się z rzeczywistymi artefaktami.\012\012**Nie publikuj strony.** Nie wykonuj poleceń tworzących lub zmieniających zasoby zdalne. Nie potrzebujesz konta Cloudflare ani jego poświadczeń. Publiczny adres nie jest wymagany i nie daje punktów. Gotowość ocenimy na podstawie konfiguracji, wyniku buildu, lokalnego działania i instrukcji.\012\012## P07 — Wygląd, dostępność i SEO\012\012Zastosuj spójne style, typografię i kontrolki na wszystkich stronach. Sprawdź widoki o szerokości 390 px i 1440 px: bez poziomego przewijania całej strony, uciętych treści i niedostępnych przycisków. Zapewnij widoczny fokus klawiatury, zrozumiałe etykiety i odpowiednie teksty alternatywne obrazów.\012\012Każda strona ma jeden główny nagłówek H1, własny opisowy tytuł i meta description, canonical oparty na konfigurowalnym adresie witryny oraz zgodne z treścią Open Graph title, description i URL. Język dokumentu to polski. Projekt graficzny należy do Ciebie; nie wymagamy odwzorowania istniejącej strony piksel po pikselu.\012\012## P08 — Samoweryfikacja i zakończenie\012\012Przed zakończeniem przygotuj `VERIFICATION.md`. Zapisz rzeczywiście wykonane polecenia i obserwacje, czas ich wykonania, kody wyjścia oraz odnośniki do logów, zrzutów ekranu lub innych dowodów w katalogu próby. Obejmij: zainstalowane wersje i build, lokalny Workers i wymagane adresy, research, odnośniki i odtwarzanie, widoki desktop/mobile, SEO oraz kontrolowaną awarię źródła.\012\012Rozróżniaj sprawdzenia udane, nieudane, niewykonane i zablokowane zewnętrznie. Nie przedstawiaj planowanych testów jako wykonanych. Raportuj ograniczenia i pozostałe błędy. Udokumentowany nieudany test może otrzymać punkty za rzetelną samoweryfikację, ale nie za niedziałającą funkcję. Testy wykonane później przez oceniającego nie zastępują Twoich dowodów.\012\012## P09 — Zasady próby i oceny\012\012Pracuj wyłącznie w przydzielonym katalogu próby. Możesz czytać ten opis, dołączony zapis wersji oraz publiczne źródła i dokumentację. Nie czytaj innych prób, historycznych implementacji, wyników ocen ani instrukcji dla oceniającego. To ograniczenie proceduralne, a nie deklaracja technicznej izolacji katalogów. Naruszenie izolacji lub zakazu publikacji unieważnia próbę.\012\012Całe zadanie realizujesz autonomicznie. Nie oczekuj kolejnych poleceń z nowymi wymaganiami. Po zadeklarowaniu zakończenia lub upływie 60 minut zapis próby zostaje zamrożony; późniejsza ocena nie otwiera rundy poprawek. Przerwa lub ponowne połączenie nie resetują limitu. W podsumowaniu podaj sposób lokalnego uruchomienia i wynik samoweryfikacji.\012\012Ocena ma maksymalnie 100 punktów: działanie produkcyjne 10, strony i nawigacja 10, treść i kursy 10, media 15, źródła danych i odporność 10, technologie 10, konfiguracja Workers 5, prezentacja i SEO 10, samoweryfikacja 20. Szczegółowy jawny podział znajduje się w dołączonym `assessment.md` i jest częścią tego zadania. Nie oceniamy kolejności implementacji. Brak końcowego buildu nie kasuje niezależnie udokumentowanych osiągnięć. Nie ma dodatkowej uznaniowej kary punktowej. Wynik oczekujący na niezbędną ocenę ręczną nie zostanie opublikowany jako zakończony.\012\012\012---\012\012# V2 assessment — initial revision, 100 points\012\012This file is candidate-visible and accompanies `prompt.md`. The detailed evaluator procedure is separate.\012\012Each subcheck below is binary unless stated otherwise; partial credit is the sum of independently proven subchecks. Publish these checks with the candidate prompt so there are no hidden requirements. No arbitrary penalty row: deduct only from the affected published check, never twice for the same check. Procedural reading violations invalidate the run and exclude it from ranking rather than inventing a numeric penalty.\012\012| Category | Max | Subchecks |\012| --- | ---: | --- |\012| Production operation | 10 | Production build 5; local Workers preview serves required routes 5 (proportional to routes passing, rounded to 2 decimals). |\012| Pages and navigation | 10 | All seven dedicated pages 7 (1 each); global links 1; show hub links 1; working mobile navigation 1. |\012| Brand and courses | 10 | Accurate brand/about 2; both founders 2 (1 each); three courses with real links 3 (1 each); prominent homepage 10xDevs hero/CTA 3. |\012| Media | 15 | Each of the three sources earns 2 for authentic recent selection, 2 for playback or evidenced provider refusal with fallback, 1 for individual source links. |\012| Data modules and resilience | 10 | Server-side retrieval 4; structured data outside presentation 3; observed controlled-failure recovery 3. |\012| Dependency compliance | 10 | Astro major 3; React major 3; Tailwind major 3; lockfile with reproducible install 1. |\012| Workers readiness | 5 | Compatible configured adapter 3; coherent deployment instructions/configuration 2. No public deployment; no account or credential required. |\012| Presentation and SEO | 10 | Human-confirmed consistent UI 2; human-confirmed desktop/mobile usability 3 (1.5 each); keyboard focus/labels/alternatives 2; all page-specific SEO outcomes 3 (proportional to fully compliant routes). |\012| Candidate verification | 20 | Captured build/version results 4; route/Workers results 4; genuine research evidence 4; desktop/mobile and playback observations 4; controlled source-failure experiment 4. Each group earns 2 for concrete reproducible procedure/artifact and 2 for captured outcomes with honest limitations; merely listing intentions earns 0. |\012\012A failed final build zeros its build check and makes unavailable runtime outcomes zero with an explicit reason. Independently established source architecture, dependency installation and prior candidate evidence remain scoreable. Build failure is not an all-zero shortcut. External evaluator infrastructure failures leave affected checks pending, not zero. Any pending required check excludes the result from final published datasets; drafts remain inspectable by the operator.\012\012\012## Evidence and partial credit\012\012The nine categories map in order to prompt requirements P01/P05/P06, P01, P02, P03, P04, P05, P06, P07, and P08. All evidence must identify what was checked. For each binary subcheck award its full listed weight only when proven, otherwise zero; the two route-proportional subchecks use the count of passing routes divided by seven. Do not award arbitrary partial points outside these rules. Round each category to two decimals, then sum category scores. Maximum total is 100.\012\012For each media source, authentic recent selection requires all displayed items to have verified identity and meet the stated time rule. Playback points require implemented playback for available selected items; provider refusal needs evidence and a preserved item link. Failure to verify due solely to evaluator network conditions is pending. Missing or fake content is zero for the relevant subcheck.\012\012Workers adapter points require the installed compatible official adapter, its activation in Astro, and coherent generated or explicit Workers configuration. The other two points require README commands and binding/environment instructions that agree with actual build output and local preview. No remote deployment or credential is needed or permitted. Local runtime behavior is scored in Production operation, so configuration and runtime are separate observations.\012\012Human review covers consistent UI and usability at both stated widths. Pending human review is not an assumed pass or numeric zero; it keeps the evaluation in draft. When a candidate build fails and the UI cannot be served, those untestable runtime checks are zero with the failure evidence and do not require a fictional human acceptance. The evaluator must still inspect independent source/dependency and candidate-verification evidence.\012\012Reading other attempts/evaluator-only material, publishing remote resources, coaching, or work after the deadline makes a run invalid for the leaderboard. Record the exact violation and evidence; do not infer a violation from coding style. An unverified allegation remains pending investigation.\012\012\012---\012\012# Zapis wersji zależności (operator)\012\012Zamrożone w chwili startu próby (2026-09-08T07:29:49Z, rejestr npm). Użyj tych głównych wersji; prerelease są wykluczone. Wybór patch/minor w obrębie zapisanej wersji głównej należy do Ciebie.\012\012| Pakiet | Najnowsza stabilna wersja | Wersja główna | Opublikowano |\012| --- | --- | --- | --- |\012| `astro` | 7.3.1 | 7 | 2026-09-03T13:29:45.970Z |\012| `react` | 19.2.8 | 19 | 2026-07-21T15:41:28.716Z |\012| `tailwindcss` | 4.3.3 | 4 | 2026-07-16T12:03:35.267Z |\012\012\012---\012\012Pracuj wyłącznie w bieżącym katalogu roboczym. Nie czytaj ani nie modyfikuj niczego poza nim. Nie publikuj strony w internecie. Pliki `prompt.md`, `assessment.md` i `BASELINE.md` w tym katalogu zawierają powyższą treść.
+pid=96279
+[0m
+A stray `pkill -f "wrangler dev"` from another process on this machine killed my preview server. Restarting mine (not touching others).
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0msleep 8; { for p in / /o-nas /o-nas/ /podcast /podcast/ /podcast/opanuj-ai /podcast/opanuj-ai/ /podcast/przeprogramowani /podcast/przeprogramowani/ /youtube /youtube/ /kursy /kursy/; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "$p -> $out"; done; asset=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795/_astro/Layout.D2Ec0XqZ.css"); echo "/_astro/Layout.css -> $asset"; } 2>&1 | tee ../evidence/routes-check.log
+/ -> 200
+/o-nas -> 307
+/o-nas/ -> 200
+/podcast -> 307
+/podcast/ -> 200
+/podcast/opanuj-ai -> 307
+/podcast/opanuj-ai/ -> 200
+/podcast/przeprogramowani -> 307
+/podcast/przeprogramowani/ -> 200
+/youtube -> 307
+/youtube/ -> 200
+/kursy -> 307
+/kursy/ -> 200
+/_astro/Layout.css -> 200
+[0m
+[0m← [0mWrite site/wrangler.jsonc
+Wrote file successfully.
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+Routes redirect 307 without trailing slash. I'll add a root `wrangler.jsonc` with `drop-trailing-slash` so listed addresses return 200 directly.
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mEdit site/wrangler.jsonc
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/wrangler.jsonc
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/wrangler.jsonc
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/wrangler.jsonc
+@@ -2,10 +2,9 @@
+ "$schema": "node_modules/wrangler/config-schema.json",
+ "name": "przeprogramowani-pl-site",
+ "compatibility_date": "2026-09-07",
+ "assets": {
+-  "html_handling": "drop-trailing-slash",
+-  "not_found_handling": "404-page"
++  "html_handling": "drop-trailing-slash"
+ },
+ "observability": {
+   "enabled": true
+ }
+
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mpkill -f "wrangler.json --port 8795" 2>/dev/null; pkill -f "port 8795" 2>/dev/null; sleep 1; npm run build 2>&1 | tail -4; echo "build-exit=${pipestatus[1]}"; grep -o '"html_handling":"[^"]*"' dist/client/wrangler.json
+09:48:31 [build] ✓ Completed in 922ms.
+09:48:31 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:48:31 [build] 7 page(s) built in 993ms
+09:48:31 [build] Complete!
+build-exit=0
+"html_handling":"drop-trailing-slash"
+[0m
+[0m$ [0mnohup npx wrangler dev --config dist/client/wrangler.json --port 8795 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "pid=$!"; sleep 8; for p in / /o-nas /o-nas/ /podcast /podcast/ /podcast/opanuj-ai /podcast/opanuj-ai/ /podcast/przeprogramowani /podcast/przeprogramowani/ /youtube /youtube/ /kursy /kursy/ /_astro/Layout.D2Ec0XqZ.css; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "$p -> $out"; done | tee ../evidence/routes-check.log
+pid=515
+/ -> 200
+/o-nas -> 200
+/o-nas/ -> 307
+/podcast -> 200
+/podcast/ -> 307
+/podcast/opanuj-ai -> 200
+/podcast/opanuj-ai/ -> 307
+/podcast/przeprogramowani -> 200
+/podcast/przeprogramowani/ -> 307
+/youtube -> 200
+/youtube/ -> 307
+/kursy -> 200
+/kursy/ -> 307
+/_astro/Layout.D2Ec0XqZ.css -> 200
+[0m
+[0m$ [0mfor p in /o-nas/ /podcast/ /youtube/ /kursy/ /podcast/opanuj-ai/ /podcast/przeprogramowani/; do out=$(curl -sL -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "$p -L -> $out"; done >> ../evidence/routes-check.log; tail -6 ../evidence/routes-check.log; { for p in / /o-nas /podcast /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy; do html=$(curl -s "http://127.0.0.1:8795$p"); h1=$(printf '%s' "$html" | grep -o '<h1' | wc -l | tr -d ' '); title=$(printf '%s' "$html" | grep -o '<title>[^<]*</title>' | head -1); desc=$(printf '%s' "$html" | grep -o 'name="description" content="[^"]*"' | head -1 | cut -c1-60); canon=$(printf '%s' "$html" | grep -o 'rel="canonical" href="[^"]*"' | head -1); og=$(printf '%s' "$html" | grep -c 'property="og:'); lang=$(printf '%s' "$html" | grep -o '<html lang="[^"]*"'); echo "$p | h1=$h1 | og_tags=$og | $lang | $title | $canon | ${desc}..."; done; } 2>&1 | tee ../evidence/seo-check.log
+/o-nas/ -L -> 200
+/podcast/ -L -> 200
+/youtube/ -L -> 200
+/kursy/ -L -> 200
+/podcast/opanuj-ai/ -L -> 200
+/podcast/przeprogramowani/ -L -> 200
+/ | h1=1 | og_tags=1 | <html lang="pl" | <title>Przeprogramowani — szersze spojrzenie na programowanie</title> | rel="canonical" href="http://localhost:8788/" | name="description" content="Przeprogramowani to edukacja tec...
+/o-nas | h1=1 | og_tags=1 | <html lang="pl" | <title>O nas — Przeprogramowani</title> | rel="canonical" href="http://localhost:8788/o-nas" | name="description" content="Poznaj Przeprogramowanych: dział...
+/podcast | h1=1 | og_tags=1 | <html lang="pl" | <title>Podcasty — Przeprogramowani</title> | rel="canonical" href="http://localhost:8788/podcast" | name="description" content="Katalog podcastów Przeprogramowa...
+/podcast/opanuj-ai | h1=1 | og_tags=1 | <html lang="pl" | <title>Podcast Opanuj.AI — najnowsze odcinki</title> | rel="canonical" href="http://localhost:8788/podcast/opanuj-ai" | name="description" content="Podcast Opanuj.AI Przemka Smyrdk...
+/podcast/przeprogramowani | h1=1 | og_tags=1 | <html lang="pl" | <title>Podcast Przeprogramowani — najnowsze odcinki</title> | rel="canonical" href="http://localhost:8788/podcast/przeprogramowani" | name="description" content="Podcast Przeprogramowani: rozmow...
+/youtube | h1=1 | og_tags=1 | <html lang="pl" | <title>YouTube — najnowsze filmy Przeprogramowani</title> | rel="canonical" href="http://localhost:8788/youtube" | name="description" content="Najnowsze filmy z oficjalnego ka...
+/kursy | h1=1 | og_tags=1 | <html lang="pl" | <title>Kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript</title> | rel="canonical" href="http://localhost:8788/kursy" | name="description" content="Kursy Przeprogramowanych: 10xDev...
+[0m
+[0m$ [0m{ echo "== OG tag counts per route =="; for p in / /o-nas /podcast /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy; do html=$(curl -s "http://127.0.0.1:8795$p"); echo "$p og:title=$(printf '%s' "$html" | grep -o 'property="og:title"' | wc -l | tr -d ' ') og:description=$(printf '%s' "$html" | grep -o 'property="og:description"' | wc -l | tr -d ' ') og:url=$(printf '%s' "$html" | grep -o 'property="og:url"' | wc -l | tr -d ' ')"; done; echo "== nav/content checks =="; home=$(curl -s http://127.0.0.1:8795/); echo "home hero CTA -> 10xdevs.pl: $(printf '%s' "$home" | grep -o 'href="https://10xdevs.pl"' | wc -l | tr -d ' ')"; for n in /o-nas /podcast /youtube /kursy; do echo "home nav link $n: $(printf '%s' "$home" | grep -o "href=\"$n\"" | wc -l | tr -d ' ')"; done; hub=$(curl -s http://127.0.0.1:8795/podcast); echo "hub -> opanuj-ai: $(printf '%s' "$hub" | grep -o 'href="/podcast/opanuj-ai"' | wc -l | tr -d ' '), hub -> przeprogramowani: $(printf '%s' "$hub" | grep -o 'href="/podcast/przeprogramowani"' | wc -l | tr -d ' ')"; oa=$(curl -s http://127.0.0.1:8795/podcast/opanuj-ai); echo "opanuj-ai audio players: $(printf '%s' "$oa" | grep -o '<audio' | wc -l | tr -d ' '), episode links (podcasters.spotify.com): $(printf '%s' "$oa" | grep -o 'href="https://podcasters.spotify.com/pod/show/opanujai/episodes/[^"]*"' | sort -u | wc -l | tr -d ' ')"; pp=$(curl -s http://127.0.0.1:8795/podcast/przeprogramowani); echo "przeprogramowani-podcast audio players: $(printf '%s' "$pp" | grep -o '<audio' | wc -l | tr -d ' '), episode links: $(printf '%s' "$pp" | grep -o 'href="https://podcasters.spotify.com/pod/show/przeprogramowani/episodes/[^"]*"' | sort -u | wc -l | tr -d ' ')"; yt=$(curl -s http://127.0.0.1:8795/youtube); echo "youtube iframes: $(printf '%s' "$yt" | grep -o '<iframe' | wc -l | tr -d ' '), watch links: $(printf '%s' "$yt" | grep -o 'href="https://www.youtube.com/watch?v=[^"]*"' | sort -u | wc -l | tr -d ' ')"; kursy=$(curl -s http://127.0.0.1:8795/kursy); for u in https://10xdevs.pl https://opanujfrontend.pl https://opanujtypescript.pl; do echo "kursy link $u: $(printf '%s' "$kursy" | grep -o "href=\"$u\"" | wc -l | tr -d ' ')"; done; echo "kursy placeholder hrefs '#': $(printf '%s' "$kursy$home$oa$yt" | grep -o 'href="#"' | wc -l | tr -d ' ')"; } 2>&1 | tee ../evidence/content-check.log
+== OG tag counts per route ==
+/ og:title=1 og:description=1 og:url=1
+/o-nas og:title=1 og:description=1 og:url=1
+/podcast og:title=1 og:description=1 og:url=1
+/podcast/opanuj-ai og:title=1 og:description=1 og:url=1
+/podcast/przeprogramowani og:title=1 og:description=1 og:url=1
+/youtube og:title=1 og:description=1 og:url=1
+/kursy og:title=1 og:description=1 og:url=1
+== nav/content checks ==
+home hero CTA -> 10xdevs.pl: 2
+home nav link /o-nas: 3
+home nav link /podcast: 3
+home nav link /youtube: 3
+home nav link /kursy: 4
+hub -> opanuj-ai: 1, hub -> przeprogramowani: 1
+opanuj-ai audio players: 3, episode links (podcasters.spotify.com): 3
+przeprogramowani-podcast audio players: 3, episode links: 3
+youtube iframes: 6, watch links: 6
+kursy link https://10xdevs.pl: 2
+kursy link https://opanujfrontend.pl: 1
+kursy link https://opanujtypescript.pl: 1
+kursy placeholder hrefs '#': 0
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+All checks pass. Now the controlled-failure test, then clean rebuild.
+[0m$ [0m{ echo "== Controlled source failure test: FORCE_SOURCE_FAILURE=youtube npm run build =="; date -u; FORCE_SOURCE_FAILURE=youtube npm run build 2>&1 | grep -E "\[sources\]|error|Error|Complete|page\(s\)" ; echo "build-exit=$?"; } > ../evidence/failure-test-build.log 2>&1; tail -8 ../evidence/failure-test-build.log
+== Controlled source failure test: FORCE_SOURCE_FAILURE=youtube npm run build ==
+Tue Sep  8 07:50:16 UTC 2026
+09:50:18 [build] ✓ Completed in 81ms.
+09:50:19 ✓ Completed in 658ms.
+09:50:19 [build] ✓ Completed in 969ms.
+09:50:19 [build] 7 page(s) built in 1.06s
+09:50:19 [build] Complete!
+build-exit=0
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0m{ echo "== Failure-test HTML checks =="; grep -o "Źródło było niedostępne podczas budowania" dist/client/youtube/index.html | head -1; grep -o "Kontrolowana awaria źródła[^)]*)" dist/client/youtube/index.html | head -1; grep -o "nieaktualne[^.]*" dist/client/youtube/index.html | head -1; grep -o "Dane pobrane na żywo" dist/client/youtube/index.html dist/client/podcast/opanuj-ai/index.html dist/client/podcast/przeprogramowani/index.html; echo "youtube items still rendered: $(grep -o 'watch?v=' dist/client/youtube/index.html | wc -l | tr -d ' ')"; } 2>&1 | tee ../evidence/failure-test-html.log
+== Failure-test HTML checks ==
+dist/client/youtube/index.html:Dane pobrane na żywo
+dist/client/podcast/opanuj-ai/index.html:Dane pobrane na żywo
+dist/client/podcast/przeprogramowani/index.html:Dane pobrane na żywo
+youtube items still rendered: 12
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mEdit site/src/lib/sources.ts
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+@@ -184,11 +184,31 @@
+   const picked = (dated.length > 0 ? dated : sorted).slice(0, maxFallback);
+   return { items: picked, withinWindow: false };
+ }
+ 
+-function shouldForceFailure(id: SourceId): boolean {
++function forcedFailureSetting(): string {
+   // Controlled-failure switch used for resilience testing (P04/P08).
+-  const value = (process.env.FORCE_SOURCE_FAILURE ?? '').toLowerCase();
++  // Read from import.meta.env (statically injected by Vite/Astro at build time,
++  // works also when prerendering runs in workerd) with a process.env fallback.
++  try {
++    const value = (import.meta as unknown as { env?: Record<string, unknown> }).env
++      ?.FORCE_SOURCE_FAILURE;
++    if (value) return String(value).toLowerCase();
++  } catch {
++    /* import.meta.env unavailable */
++  }
++  try {
++    if (typeof process !== 'undefined' && process.env?.FORCE_SOURCE_FAILURE) {
++      return String(process.env.FORCE_SOURCE_FAILURE).toLowerCase();
++    }
++  } catch {
++    /* process unavailable */
++  }
++  return '';
++}
++
++function shouldForceFailure(id: SourceId): boolean {
++  const value = forcedFailureSetting();
+   if (!value) return false;
+   return value === 'all' || value.split(',').includes(id);
+ }
+ 
+
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+Failure injection didn't reach the build (prerendering runs in workerd where `process.env` is empty). Fixing env access.
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mEdit site/src/lib/sources.ts
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+@@ -234,9 +234,9 @@
+ 
+ try {
+   if (shouldForceFailure(id)) {
+     throw new Error(
+-      `Kontrolowana awaria źródła (FORCE_SOURCE_FAILURE=${process.env.FORCE_SOURCE_FAILURE})`
++      `Kontrolowana awaria źródła (FORCE_SOURCE_FAILURE=${forcedFailureSetting()})`
+     );
+   }
+   const xml = await fetchFeed(def.feedUrl);
+   const parsed =
+
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mEdit site/astro.config.mjs
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/astro.config.mjs
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/astro.config.mjs
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/astro.config.mjs
+@@ -13,7 +13,11 @@
+   adapter: cloudflare(),
+   integrations: [react()],
+   vite: {
+     plugins: [tailwindcss()],
++    define: {
++      // Build-time switch for controlled source-failure testing (P04/P08).
++      __FORCE_SOURCE_FAILURE__: JSON.stringify(process.env.FORCE_SOURCE_FAILURE ?? ''),
++    },
+   },
+   trailingSlash: 'ignore',
+ });
+
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m← [0mEdit site/src/lib/sources.ts
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/src/lib/sources.ts
+@@ -184,13 +184,21 @@
+   const picked = (dated.length > 0 ? dated : sorted).slice(0, maxFallback);
+   return { items: picked, withinWindow: false };
+ }
+ 
++declare const __FORCE_SOURCE_FAILURE__: string | undefined;
++
+ function forcedFailureSetting(): string {
+   // Controlled-failure switch used for resilience testing (P04/P08).
+-  // Read from import.meta.env (statically injected by Vite/Astro at build time,
+-  // works also when prerendering runs in workerd) with a process.env fallback.
++  // Primary channel: build-time define from astro.config.mjs (works in Node and workerd).
+   try {
++    if (typeof __FORCE_SOURCE_FAILURE__ !== 'undefined' && __FORCE_SOURCE_FAILURE__) {
++      return String(__FORCE_SOURCE_FAILURE__).toLowerCase();
++    }
++  } catch {
++    /* define not present */
++  }
++  try {
+     const value = (import.meta as unknown as { env?: Record<string, unknown> }).env
+       ?.FORCE_SOURCE_FAILURE;
+     if (value) return String(value).toLowerCase();
+   } catch {
+
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0m{ echo "== Controlled failure test #2: FORCE_SOURCE_FAILURE=youtube npm run build =="; date -u; FORCE_SOURCE_FAILURE=youtube npm run build; echo "build-exit=$?"; } > ../evidence/failure-test-build.log 2>&1; grep -E "sources|build-exit|page\(s\)|Error" ../evidence/failure-test-build.log | head -6; { echo "== stale-state HTML checks =="; grep -o "Źródło było niedostępne podczas budowania" dist/client/youtube/index.html | head -1; grep -o "Kontrolowana awaria źródła[^)]*)" dist/client/youtube/index.html | head -1; grep -o "mogą być nieaktualne" dist/client/youtube/index.html | head -1; grep -o "Dane pobrane na żywo" dist/client/youtube/index.html dist/client/podcast/opanuj-ai/index.html dist/client/podcast/przeprogramowani/index.html; echo "youtube items rendered from cache: $(grep -o 'watch?v=' dist/client/youtube/index.html | wc -l | tr -d ' ')"; } 2>&1 | tee ../evidence/failure-test-html.log
+09:53:05   ├─ /youtube/index.html[sources] youtube: pobieranie nieudane (Kontrolowana awaria źródła (FORCE_SOURCE_FAILURE=youtube)) — używam pamięci podręcznej
+09:53:05 [build] 7 page(s) built in 1.14s
+build-exit=0
+== stale-state HTML checks ==
+Źródło było niedostępne podczas budowania
+Kontrolowana awaria źródła (FORCE_SOURCE_FAILURE=youtube)
+mogą być nieaktualne
+dist/client/podcast/opanuj-ai/index.html:Dane pobrane na żywo
+dist/client/podcast/przeprogramowani/index.html:Dane pobrane na żywo
+youtube items rendered from cache: 12
+[0m
+Controlled failure works. Final clean rebuild with `SITE_URL` matching the preview port:
+[0m$ [0m{ echo "== Final production build =="; date -u; SITE_URL=http://localhost:8795 npm run build; echo "build-exit=$?"; } > ../evidence/build.log 2>&1; grep -E "build-exit|page\(s\)|Complete!|sources" ../evidence/build.log | head; { echo "== Installed versions =="; node -v; npm -v; npm ls astro react react-dom tailwindcss @astrojs/react @astrojs/cloudflare @tailwindcss/vite wrangler --depth=0; npx astro --version; } > ../evidence/versions.log 2>&1; cat ../evidence/versions.log
+09:53:33 [build] 7 page(s) built in 1.39s
+09:53:33 [build] Complete!
+build-exit=0
+== Installed versions ==
+v22.14.0
+10.9.2
+przeprogramowani-pl-site@1.0.0 /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site
+├── @astrojs/cloudflare@14.3.0
+├── @astrojs/react@6.0.5
+├── @tailwindcss/vite@4.3.3
+├── astro@7.3.1
+├── react-dom@19.2.8
+├── react@19.2.8
+├── tailwindcss@4.3.3
+└── wrangler@4.129.1
+
+   astro  v7.3.1
+[0m
+[0m$ [0mls ~/Library/Caches/ms-playwright 2>/dev/null | head; npx --no-install playwright --version 2>/dev/null || echo "no-local-playwright"; ls /Applications | grep -i chrom | head -3
+b
+chromium_headless_shell-1193
+chromium_headless_shell-1208
+chromium_headless_shell-1217
+chromium_headless_shell-1223
+chromium_headless_shell-1228
+chromium-1193
+chromium-1208
+chromium-1217
+chromium-1223
+Version 1.58.2
+Google Chrome.app
+[0m
+[0m$ [0msleep 3; for p in / /o-nas /podcast /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "$p -> $out"; done >> ../evidence/routes-check.log; curl -s http://127.0.0.1:8795/youtube | grep -o 'canonical" href="[^"]*"'; curl -s http://127.0.0.1:8795/youtube | grep -o "Dane pobrane na żywo" | head -1; tail -8 ../evidence/routes-check.log
+/podcast/przeprogramowani/ -L -> 200
+/ -> 000
+/o-nas -> 000
+/podcast -> 000
+/podcast/opanuj-ai -> 000
+/podcast/przeprogramowani -> 000
+/youtube -> 000
+/kursy -> 000
+[0m
+[0m$ [0mps aux | grep "[w]rangler dev --config dist/client" | head -3; lsof -nP -iTCP:8795 -sTCP:LISTEN | head -3; tail -3 ../evidence/wrangler-dev.log
+[32mIf you think this is a bug then please create an issue at https://github.com/cloudflare/workers-sdk/issues/new/choose[0m
+🪵  Logs were written to "/Users/psmyrdek/.wrangler/logs/wrangler-2026-09-08_07-48-40_739.log"
+[0m
+[0m$ [0mgrep -B5 "bug" ../evidence/wrangler-dev.log | head -12; nohup npx wrangler dev --config dist/client/wrangler.json --port 8795 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "pid=$!"; sleep 8; for p in / /o-nas /podcast /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "FINAL $p -> $out"; done | tee -a ../evidence/routes-check.log
+Runtime stderr:
+  {"timestamp":"1788853818296","level":"error","source":"src/workerd/server/json-logger.c++:127","message":"Directory named \"images:storage\" not found: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/dist/client/.wrangler/state/v3/images","context_depth":0}
+
+
+[32mIf you think this is a bug then please create an issue at https://github.com/cloudflare/workers-sdk/issues/new/choose[0m
+pid=15193
+FINAL / -> 200
+FINAL /o-nas -> 200
+FINAL /podcast -> 200
+FINAL /podcast/opanuj-ai -> 200
+FINAL /podcast/przeprogramowani -> 200
+FINAL /youtube -> 200
+FINAL /kursy -> 200
+[0m
+[0m$ [0mnode -e "console.log(require.resolve('playwright'))" 2>/dev/null || NODE_PATH=$(npm root -g) node -e "console.log(require.resolve('playwright'))" 2>/dev/null || npm ls -g playwright 2>/dev/null | head -3
+/Users/psmyrdek/dev/10x-bench/node_modules/playwright/index.js
+[0m
+All routes 200. Now UI verification with local Playwright (screenshots, overflow, mobile nav, focus):
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite site/scripts/verify-ui.mjs
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mnode scripts/verify-ui.mjs http://127.0.0.1:8795 > ../evidence/ui-verification.json 2> ../evidence/ui-verification.err; echo "exit=$?"; python3 -c "
+import json
+r=json.load(open('../evidence/ui-verification.json'))
+for x in r:
+    if 'horizontalOverflow' in x: print(x['check'],'overflow=',x['horizontalOverflow'],'sw=',x['scrollWidth'],'cw=',x['clientWidth'])
+    else: print(x)
+" 2>&1 | head -40; head -3 ../evidence/ui-verification.err; ls ../evidence/screenshots | wc -l
+exit=1
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+  File "/opt/homebrew/Cellar/python@3.10/3.10.20/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/opt/homebrew/Cellar/python@3.10/3.10.20/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/opt/homebrew/Cellar/python@3.10/3.10.20/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/opt/homebrew/Cellar/python@3.10/3.10.20/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/scripts/verify-ui.mjs:86
+    els.map((e) => ({ src: (e as HTMLAudioElement).src.slice(0, 80), ready: e.readyState }))
+                              ^^
+ls: ../evidence/screenshots: No such file or directory
+       0
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0msed -i '' 's/(e as HTMLAudioElement)\.src/e.src/; s/(e as HTMLAnchorElement)\.href/e.href/g; s/(e as HTMLIFrameElement)\.src/e.src/; s/document.querySelector(.audio\[controls\].) as HTMLAudioElement | null/document.querySelector("audio[controls]")/' scripts/verify-ui.mjs && node --check scripts/verify-ui.mjs && echo SYNTAX_OK
+SYNTAX_OK
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mnode scripts/verify-ui.mjs http://127.0.0.1:8795 > ../evidence/ui-verification.json 2> ../evidence/ui-verification.err; echo "exit=$?"; python3 -c "
+import json
+r=json.load(open('../evidence/ui-verification.json'))
+for x in r:
+    if 'horizontalOverflow' in x: print(x['check'],'overflow=',x['horizontalOverflow'],'sw=',x['scrollWidth'],'cw=',x['clientWidth'])
+    else: print(json.dumps(x,ensure_ascii=False))
+"; ls ../evidence/screenshots | wc -l
+exit=0
+desktop-1440 / overflow= False sw= 1440 cw= 1440
+desktop-1440 /o-nas overflow= False sw= 1440 cw= 1440
+desktop-1440 /podcast overflow= False sw= 1440 cw= 1440
+desktop-1440 /podcast/opanuj-ai overflow= False sw= 1440 cw= 1440
+desktop-1440 /podcast/przeprogramowani overflow= False sw= 1440 cw= 1440
+desktop-1440 /youtube overflow= False sw= 1440 cw= 1440
+desktop-1440 /kursy overflow= False sw= 1440 cw= 1440
+mobile-390 / overflow= False sw= 390 cw= 390
+mobile-390 /o-nas overflow= False sw= 390 cw= 390
+mobile-390 /podcast overflow= False sw= 390 cw= 390
+mobile-390 /podcast/opanuj-ai overflow= False sw= 390 cw= 390
+mobile-390 /podcast/przeprogramowani overflow= False sw= 390 cw= 390
+mobile-390 /youtube overflow= False sw= 390 cw= 390
+mobile-390 /kursy overflow= False sw= 390 cw= 390
+{"check": "mobile-nav button visible", "visible": true}
+{"check": "mobile-nav opens on click", "ariaExpanded": "true", "menuLinks": 5}
+{"check": "mobile-nav closes on Escape", "ariaExpanded": "false", "menuCount": 0}
+{"check": "focus ring on focused button", "outlineWidth": "3px", "outlineStyle": "solid"}
+{"check": "mobile-nav first link href", "firstLinkHref": "/o-nas"}
+{"check": "playback /podcast/opanuj-ai", "audioPlayers": 3, "sample": {"src": "https://anchor.fm/s/e2cb03d0/podcast/play/125142269/https%3A%2F%2Fd3ctxlq1ktw2nl", "ready": 0}}
+{"check": "episode links /podcast/opanuj-ai", "uniqueEpisodeLinks": 3}
+{"check": "playback /podcast/przeprogramowani", "audioPlayers": 3, "sample": {"src": "https://anchor.fm/s/c72d808/podcast/play/108763256/https%3A%2F%2Fd3ctxlq1ktw2nl.", "ready": 0}}
+{"check": "episode links /podcast/przeprogramowani", "uniqueEpisodeLinks": 3}
+{"check": "playback /youtube", "embeddedPlayers": 6, "sample": "https://www.youtube-nocookie.com/embed/cKU4jlaUnZc"}
+{"check": "youtube watch links", "unique": 6}
+{"check": "audio play() attempt", "playResult": "playing=true currentTime=2.42 readyState=4"}
+      15
+[0m
+[0m# [0mTodos
+[✓] Research official sources (site, courses, podcasts, YouTube)
+[✓] Scaffold Astro 7 + React 19 + Tailwind 4 + Cloudflare adapter
+[✓] Data source modules (feeds, YT RSS) with cache/fallback
+[✓] All 7 pages + nav + SEO
+[✓] Build + wrangler local preview + route checks
+[✓] Controlled failure test
+[✓] UI verification (screenshots, overflow, playback)
+[•] README + consistent port rebuild + VERIFICATION.md
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m$ [0mpkill -f "port 8795"; sleep 1; npm ci --no-audit --no-fund > ../evidence/npm-ci.log 2>&1; echo "npm-ci-exit=$?" | tee -a ../evidence/npm-ci.log; tail -2 ../evidence/npm-ci.log; SITE_URL=http://localhost:8795 npm run build > ../evidence/build.log 2>&1; echo "build-exit=$?" | tee -a ../evidence/build.log; grep -E "page\(s\)|Complete" ../evidence/build.log | tail -2
+npm-ci-exit=0
+added 292 packages in 4s
+npm-ci-exit=0
+build-exit=0
+09:59:10 [build] 7 page(s) built in 1.29s
+09:59:10 [build] Complete!
+[0m
+[0m$ [0mnohup npx wrangler dev --config dist/client/wrangler.json --port 8795 --ip 127.0.0.1 > ../evidence/wrangler-dev.log 2>&1 & echo "pid=$!"; sleep 8; { echo "== FINAL route verification $(date -u) =="; for p in / /o-nas /o-nas/ /podcast /podcast/ /podcast/opanuj-ai /podcast/opanuj-ai/ /podcast/przeprogramowani /podcast/przeprogramowani/ /youtube /youtube/ /kursy /kursy/; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "$p -> $out"; done; curl -s http://127.0.0.1:8795/ | grep -o 'canonical" href="[^"]*"'; curl -s -o /dev/null -w "asset css -> %{http_code}\n" "http://127.0.0.1:8795/_astro/$(ls dist/client/_astro | grep css | head -1)"; } 2>&1 | tee -a ../evidence/routes-check.log
+pid=29916
+== FINAL route verification Tue Sep  8 07:59:29 UTC 2026 ==
+/ -> 200
+/o-nas -> 200
+/o-nas/ -> 307
+/podcast -> 200
+/podcast/ -> 307
+/podcast/opanuj-ai -> 200
+/podcast/opanuj-ai/ -> 307
+/podcast/przeprogramowani -> 200
+/podcast/przeprogramowani/ -> 307
+/youtube -> 200
+/youtube/ -> 307
+/kursy -> 200
+/kursy/ -> 307
+canonical" href="http://localhost:8795/"
+asset css -> 200
+[0m
+[0m$ [0ma=$(grep -o 'src="https://anchor.fm/s/e2cb03d0/podcast/play/[^"]*"' dist/client/podcast/opanuj-ai/index.html | head -1 | sed 's/src="//;s/"$//' | sed 's/&amp;/\&/g'); echo "audio: ${a:0:90}"; curl -sI --max-time 15 "$a" | head -3; curl -s -o /dev/null -w "yt embed page -> %{http_code}\n" --max-time 15 "https://www.youtube-nocookie.com/embed/cKU4jlaUnZc"
+audio: https://anchor.fm/s/e2cb03d0/podcast/play/125142269/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfron
+HTTP/2 302 
+server: Varnish
+retry-after: 0
+yt embed page -> 200
+[0m
+[0m← [0mEdit site/package.json
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/package.json
+@@ -5,9 +5,9 @@
+ "private": true,
+ "scripts": {
+   "dev": "astro dev",
+   "build": "astro build",
+-  "preview": "wrangler dev",
++  "preview": "wrangler dev --config dist/client/wrangler.json --port 8795",
+   "astro": "astro"
+ },
+ "dependencies": {
+   "@astrojs/cloudflare": "14.3.0",
+
+[0m
+[0m← [0mWrite README.md
+Wrote file successfully.
+[0m
+[0m✗ [0mInvalid Tool
+The arguments provided to the tool are invalid: Model tried to call unavailable tool 'unknown'. Available tools: bash, edit, glob, grep, invalid, read, skill, task, todowrite, webfetch, write.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m
+[0m← [0mWrite VERIFICATION.md
+Wrote file successfully.
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m→ [0mRead evidence/screenshots/mobile-390_home.png
+[0m
+[0m$ [0mls ../evidence/screenshots/ && ls ../evidence/
+desktop-1440_home.png
+desktop-1440_kursy.png
+desktop-1440_o-nas.png
+desktop-1440_podcast_opanuj-ai.png
+desktop-1440_podcast_przeprogramowani.png
+desktop-1440_podcast.png
+desktop-1440_youtube.png
+mobile-390_home.png
+mobile-390_kursy.png
+mobile-390_nav-open.png
+mobile-390_o-nas.png
+mobile-390_podcast_opanuj-ai.png
+mobile-390_podcast_przeprogramowani.png
+mobile-390_podcast.png
+mobile-390_youtube.png
+build.log
+content-check.log
+failure-test-build.log
+failure-test-html.log
+npm-ci.log
+npm-install.log
+routes-check.log
+screenshots
+seo-check.log
+ui-verification.err
+ui-verification.json
+versions.log
+wrangler-dev.log
+[0m
+[0m✗ [0munknown Unknown failed
+[91m[1mError: [0mTool execution aborted
+[0m→ [0mRead evidence/screenshots/desktop-1440_youtube.png
+[0m
+[0m← [0mWrite site/.gitignore
+Wrote file successfully.
+[0m
+[0m$ [0mfor p in / /o-nas /podcast /podcast/opanuj-ai /podcast/przeprogramowani /youtube /kursy; do out=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$p"); echo "LASTCHECK $p -> $out"; done | tee -a ../evidence/routes-check.log; date -u
+LASTCHECK / -> 200
+LASTCHECK /o-nas -> 200
+LASTCHECK /podcast -> 200
+LASTCHECK /podcast/opanuj-ai -> 200
+LASTCHECK /podcast/przeprogramowani -> 200
+LASTCHECK /youtube -> 200
+LASTCHECK /kursy -> 200
+Tue Sep  8 08:04:14 UTC 2026
+[0m
+[0m← [0mEdit VERIFICATION.md
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/VERIFICATION.md
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/VERIFICATION.md
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/VERIFICATION.md
+@@ -120,8 +120,11 @@
+   link „skip to content", `aria-label` na linkach „Otwórz oryginał"; strona nie użyuje obrazów
+   dekoracyjnych wymagających `alt` (jedyna grafika to ikona SVG z `aria-hidden="true"`).
+ - ⬜ Ostateczna akceptacja wizualna przez człowieka (spójność UI) — poza możliwościami próby;
+   zrzuty ekranu desktop/mobile wszystkich tras dostarczone jako podstawa do tej oceny.
++  Wizualna inspekcja zrzutów przez autora próby (08:03): `mobile-390_home.png` (hero 10xDevs,
++  menu hamburger, brak ucięć) i `desktop-1440_youtube.png` (osadzone odtwarzacze YouTube
++  renderują miniatury i przycisk odtwarzania, spójna typografia i nawigacja) — układ spójny.
+ 
+ ## 7. Workers readiness (P06)
+ 
+ - ✅ Adapter `@astrojs/cloudflare@14.3.0` zainstalowany (peer `astro ^7.2.0` spełniony przez 7.3.1)
+
+[0m
+[0m# [0mTodos
+[✓] Research official sources (site, courses, podcasts, YouTube)
+[✓] Scaffold Astro 7 + React 19 + Tailwind 4 + Cloudflare adapter
+[✓] Data source modules (feeds, YT RSS) with cache/fallback
+[✓] All 7 pages + nav + SEO
+[✓] Build + wrangler local preview + route checks
+[✓] Controlled failure test
+[✓] UI verification (screenshots, overflow, playback)
+[✓] README + consistent port rebuild + VERIFICATION.md
+[0m
+Zakończono (08:05 UTC, ~35 min z 60). Próba zamrożona.
+
+**Uruchomienie lokalne:** `cd site && npm ci && npm run build && npm run preview` → http://localhost:8795 (podgląd produkcyjny w runtime Workers przez `wrangler dev --config dist/client/wrangler.json`; serwer nadal działa).
+
+**Wynik samoweryfikacji (szczegóły w `VERIFICATION.md`, dowody w `evidence/`):**
+- Build produkcyjny exit 0, wersje dokładnie z zapisu operatora (astro 7.3.1, react 19.2.8, tailwindcss 4.3.3), `npm ci` powtarzalne; adapter `@astrojs/cloudflare@14.3.0` aktywny, wygenerowana konfiguracja Workers + README z instrukcją wdrożenia (bez publikacji).
+- Wszystkie 7 wymaganych tras zwraca HTTP 200 w lokalnym Workers (także warianty z ukośnikiem przez 307→200); zasoby `/_astro/*` 200.
+- Research z oficjalnych źródeł (przeprogramowani.pl, opanuj.ai, iTunes Search API, RSS-y, kanał YT) — `research/NOTES.md` + surowe pliki; kursy z prawdziwymi linkami (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl), sylwetki obu założycieli zgodne ze źródłem.
+- Media: Opanuj.AI i YouTube z materiałami z okna 90 dni (live), podcast Przeprogramowani bez publikacji w oknie → najnowsze odcinki z rzeczywistymi datami + informacja; odtwarzacze audio (realne `play()`: currentTime 2.42 s) i embedy YouTube (HTTP 200), indywidualne linki do każdego odcinka/filmu.
+- Odporność: kontrolowana awaria `FORCE_SOURCE_FAILURE=youtube` → build OK, strona pokazuje cache z oznaczeniem nieaktualności i linkiem do źródła, inne źródła bez zmian.
+- UI/SEO: brak poziomego przewijania na 390/1440 px na wszystkich trasach, nawigacja mobilna (klik/Escape/aria), fokus 3 px, po 1 H1 + title/description/canonical/OG na każdej stronie, `lang="pl"`; 15 zrzutów ekranu.
+- Ograniczenia (uczciwie zaraportowane): brak interaktywnej weryfikacji wideo wewnątrz iframe YouTube, ścieżka „unavailable bez cache" nie testowana end-to-end, akceptacja wizualna człowieka oczekująca, port 8788 zajęty przez obcy proces (podgląd na 8795).

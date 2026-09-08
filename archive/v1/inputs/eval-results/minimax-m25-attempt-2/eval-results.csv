@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,6min 48s,N/A,6min 48s
+Test run,12.02.2026 19:40,N/A,12.02.2026 19:40
+Local build,1,1,Build successful with Astro 5.17 static output
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200 with working navigation styles and content
+Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Bios detailed (DAZN/Cabify for Przemek SmartRecruiters for Marcin correct LinkedIn URLs) but missing course assignments (Przemek->Opanuj JavaScript Marcin->10xDevs)
+Podcast page,0.5,1,Both podcasts displayed with real episode data (all tested episode URLs resolve to real Spotify pages) but Spotify platform URL fabricated (4qHUZJpeBK8Ij9e2wTVm2o returns 404). Correct show IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy not used
+YouTube page,0.5,1,6/9 videos are real Przeprogramowani channel content but 3 video IDs hallucinated (7bH6dU2b6C4 lCpNN5-vcQQ T7J7r2r6bIk all return 404). Playlist URLs all identical/fabricated
+Kursy section,0.5,1,10xDevs prominently featured in hero and course section but only 3/6 courses shown (missing Opanuj JavaScript Opanuj AI Cursor: Programuj z AI)
+Consistent UI,1,1,UI consistent across all pages
+Responsive design,1,1,Fully responsive containers components and navigation
+SEO Tags,0.5,1,Layout has meta description and title covering all pages with tagline but no OG/Twitter meta tags and no per-page descriptions

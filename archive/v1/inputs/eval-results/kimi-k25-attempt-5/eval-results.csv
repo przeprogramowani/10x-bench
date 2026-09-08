@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,15min 36s,N/A,15min 36s
+Test run,9.02.2026 23:37,N/A,9.02.2026 23:37
+Local build,1,1,Build successful with Astro 5.17.1 - 4 pages built in 1.77s
+Manual testing,1,1,Dev server runs on port 4322 - all 4 pages accessible and return 200
+Tech stack,0.5,1,Astro 5 + React 19 + Tailwind CSS 4 present in package.json but no @astrojs/cloudflare adapter installed or configured
+O nas page,0.5,1,Page exists at /o-nas with 200 status. Team members correct (Przemek/DAZN/Cabify and Marcin/SmartRecruiters) but bios simplified - missing course assignments and full professional details
+Podcast page,0.5,1,Page exists with both Przeprogramowani and OpanujAI podcasts displayed. Missing Spotify URLs (uses opanuj.ai/podcast and self-reference instead). Episode data appears hallucinated - not from real feeds
+YouTube page,0.5,1,Page exists with unique video IDs and channel link to youtube.com/c/przeprogramowani. Video titles overlap with podcast episodes suggesting hallucinated data - cannot confirm IDs match real channel content
+Kursy section,0.5,1,Courses component with 10xDevs/Opanuj Frontend/Opanuj TypeScript. Hero features 10xDevs 3.0 prominently. Missing 3 courses from context: Opanuj JavaScript and Opanuj AI and Cursor: Programuj z AI
+Consistent UI,0,1,UI broken/inconsistent across pages per user evaluation
+Responsive design,0,1,Layout not responsive - major issues per user evaluation
+SEO Tags,0.5,1,Layout.astro has meta description and title on all pages with lang=pl. Missing Open Graph and Twitter Card tags. Descriptions are generic rather than matching context file content

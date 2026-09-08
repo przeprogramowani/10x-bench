@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,7min 52s,N/A,7min 52s
+Test run,12.02.2026 19:34,N/A,12.02.2026 19:34
+Local build,1,1,Build successful with Astro 5.17.2 and all pages prerendered. Dev server starts correctly.
+Manual testing,1,1,All pages accessible and return 200. Navigation styles and content working properly.
+Tech stack,0.5,1,Astro 5 correct (^5.17.1). React 19 correct (^19.2.4). Tailwind CSS 3 instead of required v4 (^3.4.17). Cloudflare adapter installed and configured in astro.config.mjs.
+O nas page,0.5,1,Page exists and returns 200. Both founders listed with correct names. Przemek: DAZN/Cabify mentioned but missing publications and course assignment. Marcin: SmartRecruiters mentioned but LinkedIn URL wrong (mczarkowski vs mkczarkowski) and missing course assignment. Some details simplified.
+Podcast page,0.5,1,Both Opanuj.AI and Przeprogramowany podcasts displayed. Spotify URLs wrong - uses 4e10KvmSqE2TJDdP2N6T8Y for both instead of correct show IDs (3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy). Episode data hardcoded and appears hallucinated.
+YouTube page,0.5,1,Page exists and returns 200. 6 videos with unique IDs (no rick rolls). Video data hardcoded - titles overlap with podcast episodes suggesting hallucination. 2 of 3 playlist URLs obviously fake (abc123 and xyz456 suffixes).
+Kursy section,0.5,1,Kursy section on index page with 3 of 6 courses (10xDevs Opanuj Frontend Opanuj TypeScript). 10xDevs prominently featured in Hero with correct URL. Missing Opanuj JavaScript Opanuj AI and Cursor course.
+Consistent UI,1,1,UI consistent across all pages with cohesive design language.
+Responsive design,0.5,1,Majority of the page is responsive with some minor issues.
+SEO Tags,0.5,1,Basic meta tags in Layout.astro (title and description) applied to all pages. Default description matches context tagline. lang=pl correct. No OG/Twitter social tags and no page-specific descriptions.

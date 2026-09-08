@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,11.02.2026 21:32,N/A,11.02.2026 21:32
+Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter
+Manual testing,1,1,All pages accessible with 200 status codes and working navigation/styles/content
+Tech stack,1,1,Astro 5.7.10 + React 19.1.0 + Tailwind CSS 4.1.4 + @astrojs/cloudflare 12.3.0 configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Marcin LinkedIn URL wrong (mczarkowski vs mkczarkowski). Course assignments incorrect: Przemek listed with 10xDevs/Opanuj Frontend instead of Opanuj JavaScript; Marcin listed with Opanuj TypeScript/Opanuj Frontend instead of 10xDevs. Bios simplified.
+Podcast page,0.5,1,Page exists and returns 200. Both podcasts sections present. Episodes are hardcoded mocks (not fetched from real source). Opanuj.AI section uses wrong Spotify URL (3yVvOAXSYq6sQB02w4A4wo instead of correct 3D6LmchBdoqL2sWkQjvWOy). No Opanuj.AI episodes displayed.
+YouTube page,1,1,Real data fetched from YouTube RSS feed (channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw). Channel verified as Przeprogramowani. Unique video IDs from actual channel. No mocks or placeholder IDs.
+Kursy section,1,1,Three courses displayed: 10xDevs (10xdevs.pl), Opanuj Frontend (opanujfrontend.pl), Opanuj TypeScript (opanujtypescript.pl). 10xDevs prominently featured in hero section with CTA link.
+Consistent UI,1,1,UI consistent across all pages per user evaluation
+Responsive design,1,1,Containers components and navigation responsive per user evaluation
+SEO Tags,1,1,Layout.astro includes title meta description Open Graph tags (og:title og:description og:type og:locale og:site_name og:url) Twitter Card tags and canonical URL. Applied to all pages via shared layout.

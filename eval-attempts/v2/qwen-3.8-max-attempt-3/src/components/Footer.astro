@@ -1,0 +1,44 @@
+---
+import { SITE } from '../config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-slate-800 bg-slate-950">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
+    <div>
+      <p class="text-lg font-extrabold text-white">
+        <span class="font-mono text-brand-500" aria-hidden="true">&lt;/&gt;</span> Przeprogramowani
+      </p>
+      <p class="mt-2 text-sm text-slate-400">{SITE.tagline}</p>
+      <p class="mt-2 text-sm text-slate-400">
+        Kontakt: <a class="text-brand-100 underline hover:text-white" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </p>
+    </div>
+    <nav aria-label="Mapa strony">
+      <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Strony</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a class="text-slate-300 hover:text-white hover:underline" href="/">Strona główna</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href="/o-nas">O nas</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href="/podcast">Podcasty</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href="/youtube">YouTube</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href="/kursy">Kursy</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Media społecznościowe">
+      <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Znajdź nas</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a class="text-slate-300 hover:text-white hover:underline" href={SITE.social.youtube} rel="noopener" target="_blank">YouTube ↗</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href={SITE.social.facebook} rel="noopener" target="_blank">Facebook ↗</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href={SITE.social.instagram} rel="noopener" target="_blank">Instagram ↗</a></li>
+        <li><a class="text-slate-300 hover:text-white hover:underline" href={SITE.social.newsletter} rel="noopener" target="_blank">Newsletter (Substack) ↗</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-slate-800/60 py-4">
+    <p class="mx-auto max-w-6xl px-4 text-xs text-slate-500 sm:px-6">
+      © {year} Przeprogramowani — serwis demonstracyjny zbudowany w ramach 10xBench V2.
+      Treści o mediach pobierane z publicznych feedów RSS/YouTube.
+    </p>
+  </div>
+</footer>

@@ -24,6 +24,8 @@ interface Props {
   sortedResults: AttemptResult[];
   supersededModels: Record<string, string>;
   screenshotHashes: Record<string, string>;
+  screenshotBasePath?: string;
+  benchmarkVersion?: "v1" | "v2";
 }
 
 function areSelectionsEqual(a: string[], b: string[]): boolean {
@@ -56,6 +58,8 @@ export default function ResultsDashboard({
   sortedResults,
   supersededModels,
   screenshotHashes,
+  screenshotBasePath = "/screenshots",
+  benchmarkVersion = "v1",
 }: Props) {
   const [latestOnly, setLatestOnly] = useState(true);
 
@@ -146,7 +150,7 @@ export default function ResultsDashboard({
                 key={average.modelBaseId}
                 average={average}
                 rank={index + 1}
-                screenshotHashes={screenshotHashes}
+                screenshotHashes={screenshotHashes} screenshotBasePath={screenshotBasePath}
                 compareSelected={compareSelected}
                 onCompareToggle={() => handleCompareToggle(average.modelBaseId)}
               />
@@ -159,7 +163,7 @@ export default function ResultsDashboard({
       <AccordionSection
         title="Individual Attempts"
         attempts={filteredResults}
-        screenshotHashes={screenshotHashes}
+        screenshotHashes={screenshotHashes} screenshotBasePath={screenshotBasePath}
       />
 
       {/* Detailed Comparison */}
@@ -171,8 +175,10 @@ export default function ResultsDashboard({
           Review model averages first, switch to all attempts for scoring notes,
           or compare two selected models below.
         </p>
-        <ScoreLegend />
-        <DetailedComparison attempts={filteredResults} />
+        {benchmarkVersion === "v1" ? <ScoreLegend /> : (
+          <p className="mb-5 text-sm text-slate-400">V2 categories have different maximum scores. Compare earned points with each category’s maximum; the overall total is out of 100.</p>
+        )}
+        <DetailedComparison attempts={filteredResults} benchmarkVersion={benchmarkVersion} />
 
         <div className="mt-10">
           <h2 className="text-2xl font-bold text-slate-100 mb-4">

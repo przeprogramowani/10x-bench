@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,10.02.2026 19:49,N/A,10.02.2026 19:49
+Local build,1,1,Build successful with npm run build
+Manual testing,1,1,Dev server running at http://localhost:4321/ - all pages accessible with proper navigation styles and content
+Tech stack,0,1,Missing required dependencies: React 18.3.1 (needs 19) Tailwind CSS 3.4.1 (needs 4) and no Cloudflare Adapter installed/configured
+O nas page,0.5,1,Page exists returns 200. Content simplified - Przemek description missing DAZN/Cabify experience and wrong LinkedIn URL (przemyslawsmyrdek vs psmyrdek). Marcin description missing SmartRecruiters and wrong LinkedIn URL (marcinczarkowski vs mkczarkowski)
+Podcast page,0.5,1,Page exists returns 200. Episodes are hardcoded/mocked not from data files. Only Przeprogramowani Spotify URL (3yVvOAXSYq6sQB02w4A4wo) used - missing separate Opanuj.AI Spotify URL (3D6LmchBdoqL2sWkQjvWOy)
+YouTube page,0.5,1,Page exists returns 200. Content is mocked/hardcoded without actual YouTube video IDs. Videos display titles descriptions and view counts but no real connection to Przeprogramowani channel content
+Kursy section,0.5,1,Hero component features 10xDevs course on main page. Content partially matches - shows Opanuj Frontend Opanuj TypeScript and 10xDevs but missing Opanuj JavaScript course mentioned in context
+Consistent UI,1,1,UI is consistent across all pages - same styling colors spacing and design patterns throughout
+Responsive design,0.5,1,Responsive with minor issues - majority of page adapts properly to different screen sizes with some small layout quirks
+SEO Tags,0.5,1,Basic meta tags exist in Layout.astro (title description viewport) covering all pages. Missing comprehensive SEO tags like Open Graph Twitter Cards canonical URLs and structured data

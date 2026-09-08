@@ -1,0 +1,28 @@
+{
+  "name": "przeprogramowani-pl",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "fetch-cache": "node --experimental-strip-types scripts/fetch-cache.mjs",
+    "prebuild": "node --experimental-strip-types scripts/fetch-cache.mjs",
+    "build": "astro build",
+    "preview": "wrangler dev",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "14.3.0",
+    "@astrojs/react": "6.0.5",
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.1",
+    "wrangler": "4.129.1"
+  }
+}

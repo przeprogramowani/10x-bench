@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.02.2026 16:40,N/A,9.02.2026 16:40
+Local build,1,1,Build successful with Astro 5.17.1 and all pages prerendered
+Manual testing,1,1,All pages accessible and returning 200. Navigation styles and content working properly
+Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 and Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200 but founder bios are heavily oversimplified. Missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin. No course assignments or professional details from context
+Podcast page,0.5,1,Page exists and returns 200 but only Przeprogramowani Podcast displayed. OpanujAI Podcast completely missing. Episode data appears hallucinated with fabricated titles and guests
+YouTube page,0.5,1,Page exists and returns 200 but video IDs are sequential numbers (1-6) not real YouTube IDs. All URLs point to channel page not individual videos. Video titles appear fabricated
+Kursy section,0.5,1,10xDevs featured prominently on main page hero with CTA. Only 3 of 6 courses from context displayed (missing Opanuj JavaScript and Opanuj AI and Cursor course)
+Consistent UI,1,1,UI is consistent across all pages
+Responsive design,1,1,Containers components and navigation are fully responsive
+SEO Tags,1,1,Layout.astro includes meta description and title tags on all pages with per-page content matching context. Lang attribute set to pl

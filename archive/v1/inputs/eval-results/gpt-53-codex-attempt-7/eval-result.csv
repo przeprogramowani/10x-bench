@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,8min 20s,N/A,8min 20s
+Test run,11.02.2026 21:45,N/A,11.02.2026 21:45
+Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter
+Manual testing,1,1,All pages accessible and returning 200; navigation styles and content working properly
+Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) and Cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Names and LinkedIn URLs match context. Descriptions are generic and identical for both founders - missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin. Course assignments not attributed to specific founders.
+Podcast page,0.5,1,Page exists and returns 200. Uses real RSS feed from anchor.fm for Przeprogramowani podcast with real episode data. OpanujAI podcast is completely missing - only one of two required podcasts displayed.
+YouTube page,1,1,Page exists and returns 200. Fetches from real YouTube RSS feed with proper fallback data. Unique video IDs with real Przeprogramowani channel titles. No placeholder or rick roll IDs detected.
+Kursy section,0.5,1,10xDevs prominently featured in hero section with link to 10xdevs.pl. Courses section shows Opanuj Frontend AI Edition and Opanuj TypeScript. Missing 3 courses from context: Opanuj JavaScript Opanuj AI and Cursor: Programuj z AI.
+Consistent UI,1,1,UI is consistent across all pages
+Responsive design,1,1,Containers components and navigation are responsive
+SEO Tags,1,1,Dedicated meta tags in shared MainLayout.astro including description og:title og:description og:type and twitter:card. Applied to all pages through layout. Content matches Przeprogramowani brand context.

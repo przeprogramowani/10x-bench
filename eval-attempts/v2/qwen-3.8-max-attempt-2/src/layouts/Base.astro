@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import MobileNav from '../components/MobileNav';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ścieżka strony, np. "/o-nas" — używana do canonical i og:url. */
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonical = `${site}${path}`;
+
+const nav = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcasty' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/kursy', label: 'Kursy' },
+];
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Przeprogramowani" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
+    <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+      <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="/" class="flex items-center gap-2 rounded-md font-mono text-lg font-bold tracking-tight text-white hover:text-brand-300" aria-label="Przeprogramowani — strona główna">
+          <span class="text-brand-400" aria-hidden="true">&lt;/&gt;</span>
+          Przeprogramowani
+        </a>
+        <nav aria-label="Nawigacja główna" class="hidden md:block">
+          <ul class="flex items-center gap-1">
+            {nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={path === item.href || path.startsWith(item.href + '/') ? 'page' : undefined}
+                  class:list={[
+                    'rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white',
+                    path === item.href || path.startsWith(item.href + '/')
+                      ? 'text-brand-300'
+                      : 'text-slate-300',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href="https://10xdevs.pl"
+                class="ml-2 rounded-md bg-brand-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+              >
+                Kurs 10xDevs
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <MobileNav client:load items={nav} cta={{ href: 'https://10xdevs.pl', label: 'Kurs 10xDevs' }} />
+      </div>
+    </header>
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <footer class="border-t border-slate-800 bg-slate-950">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
+        <div>
+          <p class="font-mono font-bold text-white"><span class="text-brand-400" aria-hidden="true">&lt;/&gt;</span> Przeprogramowani</p>
+          <p class="mt-2 text-sm text-slate-400">Szersze spojrzenie na programowanie — treści, kursy i narzędzia dla ambitnych programistów.</p>
+          <p class="mt-2 text-sm text-slate-400">
+            Kontakt: <a class="text-brand-300 underline hover:text-brand-200" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+          </p>
+        </div>
+        <nav aria-label="Mapa strony">
+          <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Strony</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/">Strona główna</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/o-nas">O nas</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/podcast">Podcasty</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/youtube">YouTube</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/kursy">Kursy</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Podcasty i media">
+          <p class="text-sm font-semibold uppercase tracking-wide text-slate-500">Podcasty</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/podcast/opanuj-ai">Opanuj.AI Podcast</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="/podcast/przeprogramowani">Podcast Przeprogramowani</a></li>
+          </ul>
+          <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-slate-500">Kursy</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="https://10xdevs.pl">10xDevs</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li>
+            <li><a class="text-slate-300 underline-offset-4 hover:text-white hover:underline" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        Strona prezentacyjna zbudowana w ramach próby 10xBench V2 (Astro + React + Tailwind, Cloudflare Workers). Dane mediów pobierane z oficjalnych feedów.
+      </p>
+    </footer>
+  </body>
+</html>

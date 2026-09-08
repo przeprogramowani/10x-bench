@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,6min 15s,N/A,6min 15s
+Test run,12.02.2026 19:45,N/A,12.02.2026 19:45
+Local build,1,1,Build successful with astro build - all pages prerendered (index, o-nas, podcast, youtube)
+Manual testing,1,1,All pages accessible and return 200. Navigation styles and content working properly
+Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (@tailwindcss/vite ^4.1.18) Cloudflare Adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists and returns 200. Team members correct with key details (DAZN/Cabify for Przemek SmartRecruiters for Marcin). Issues: Marcin LinkedIn URL wrong (mczarkowski instead of mkczarkowski) course assignments missing descriptions simplified
+Podcast page,0.5,1,Both podcasts displayed (Opanuj.AI and Przeprogramowani ft. Gosc) with real-looking episode data. Spotify show URL wrong (4qHUZJpeBK8Ij9e2wTVm2o) - doesn't match context (3yVvOAXSYq6sQB02w4A4wo or 3D6LmchBdoqL2sWkQjvWOy)
+YouTube page,1,1,All 6 videos verified as real Przeprogramowani channel videos via YouTube oembed API. Unique IDs correct titles no placeholders. Channel URL correct
+Kursy section,0.5,1,10xDevs 3.0 prominently featured in hero section. 4 of 6 courses shown (Opanuj Frontend AI Edition Opanuj TypeScript Opanuj AI). Missing: Opanuj JavaScript and Cursor: Programuj z AI
+Consistent UI,0,1,Styles broken or inconsistent across pages (user evaluation)
+Responsive design,0,1,Overall layout not responsive or has major issues (user evaluation)
+SEO Tags,0.5,1,Basic meta tags in Layout covering all pages (description title viewport charset lang=pl). Description matches context tagline. No OG/Twitter tags same description for all pages

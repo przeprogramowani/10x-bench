@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.06.2026 23:03,N/A,9.06.2026 23:03
+Local build,1,1,Build succeeded — Astro 5 static output; all routes (/, /o-nas, /podcast, /youtube) return 200
+Manual testing,1,1,"Dev server runs; navigation, styles and content render correctly; all routes return 200 (user-confirmed)"
+Tech stack,0,1,"Astro ^5.5.0 (required v6), Tailwind CSS 3.4.17 via @astrojs/tailwind 5.1.4 (required v4), no @astrojs/cloudflare adapter (output: 'static'); only React 19 correct"
+O nas page,1,1,"Page exists and returns 200; founders accurate — Przemek (DAZN/Cabify, OSS, conference speaker) and Marcin (SmartRecruiters, Opanuj AI Podcast creator); mission & values match context"
+Podcast page,0.5,1,"Page exists and returns 200; only the Przeprogramowani podcast shown (correct Spotify show ID 3yVvOAXSYq6sQB02w4A4wo present). OpanujAI Podcast and its show ID 3D6LmchBdoqL2sWkQjvWOy missing entirely — fails 'both podcasts' requirement"
+YouTube page,1,1,"Page exists and returns 200; videos use real, unique Przeprogramowani channel video IDs (0JOszZXqKaM, XgyH-HSzKRQ, 03y826SVjG0, S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ) — verified real via YouTube oEmbed (author: Przeprogramowani), titles match. No mocks/placeholders"
+Kursy section,1,1,"#kursy section on index + CourseCard component; 10xDevs featured in Hero (CTA 'Dołącz do 10xDevs') and as featured card. Courses match context (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript)"
+Consistent UI,1,1,UI consistent across all pages (user-confirmed)
+Responsive design,1,1,"Containers, components and navigation responsive across screen sizes (user-confirmed)"
+SEO Tags,1,1,"Layout.astro centralizes meta tags (title, description, og:title/description/type) across all pages; content matches context branding"
+Penalty,0,N/A,No penalty applied

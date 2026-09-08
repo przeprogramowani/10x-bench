@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ResultsDashboard from '../../components/ResultsDashboard';
+import resultsData from '../../../../archive/v1/results.json';
+import screenshotHashes from '../../../../archive/v1/screenshot-hashes.json';
+
+const title = '10xBench V1 Archive — One-shot Website Benchmark';
+const description = 'See how leading LLMs perform when each gets a single shot at building a real production website in Astro, React, Tailwind and Cloudflare. Compare scores, screenshots and generated code side by side.';
+
+// Sort results: 1) by model family average (best models first), 2) by attempt number (ascending)
+const modelAverageMap = new Map(
+  resultsData.modelAverages.map((avg) => [avg.modelName, avg.averagePercentage])
+);
+
+const sortedResults = [...resultsData.results].sort((a, b) => {
+  // First, sort by model family average (descending - best models first)
+  const avgA = modelAverageMap.get(a.modelName) ?? 0;
+  const avgB = modelAverageMap.get(b.modelName) ?? 0;
+
+  if (avgA !== avgB) {
+    return avgB - avgA;
+  }
+  // If same model family, sort by attempt number (ascending)
+  return a.attemptNumber - b.attemptNumber;
+});
+---
+
+<Layout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="mb-6 rounded-lg border border-amber-700 bg-amber-950/30 p-4 text-amber-100">Archived one-shot benchmark. These historical scores are preserved; they are not V2 results. <a href="/v1/benchmark" class="underline">V1 methodology</a></p>
+    <!-- Hero Section -->
+    <div class="mb-12">
+      <h1 class="text-2xl md:text-4xl font-bold text-slate-100 mb-4">10xBench V1 Archive</h1>
+      <p class="text-lg text-slate-300 mb-2">
+        See how LLMs perform at coding the Przeprogramowani.pl website in Astro + React + Tailwind + Cloudflare stack.
+      </p>
+      <p class="text-sm text-slate-400">
+        {resultsData.totalAttempts} evaluated attempts • Last updated {new Date(resultsData.generatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    </div>
+
+    <!-- Results Dashboard with "Only latest models" toggle -->
+    <ResultsDashboard
+      client:load
+      modelAverages={resultsData.modelAverages}
+      sortedResults={sortedResults}
+      supersededModels={resultsData.supersededModels ?? {}}
+      screenshotHashes={screenshotHashes}
+    />
+
+  </div>
+</Layout>

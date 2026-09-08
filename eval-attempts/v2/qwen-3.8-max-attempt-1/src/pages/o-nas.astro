@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const founders = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder, Przeprogramowani',
+    facts: [
+      'Autor programów edukacyjnych, kursów i podcastów.',
+      'Lead Engineer i Manager w DAZN i Cabify.',
+      'Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript).',
+      'Prelegent na 4Developers, ReactiveConf i InfoShare.',
+      'Kontrybutor Open Source (CursorLens, openapi-typescript).',
+    ],
+    links: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/psmyrdek/' },
+      { label: 'Twitter / X', href: 'https://twitter.com/psmyrdek' },
+    ],
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder, Przeprogramowani',
+    facts: [
+      'Lead techniczny Platformy Frontendowej w SmartRecruiters, ponad 10 lat doświadczenia.',
+      'Entuzjasta neurobiologii — tworzy materiały edukacyjne w oparciu o badania nad uczeniem się.',
+      'Twórca „Opanuj AI Podcast” — najpopularniejszego technicznego podcastu o LLM w Polsce.',
+      'Specjalista TypeScript, React i Node.js.',
+    ],
+    links: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mkczarkowski/' },
+      { label: 'Twitter / X', href: 'https://twitter.com/mkczarkowski' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="O nas — Przemek Smyrdek i Marcin Czarkowski | Przeprogramowani"
+  description="Przeprogramowani łączą świat programowania, biznesu i rozwoju. Poznaj działalność, wartości projektu oraz sylwetki założycieli: Przemka Smyrdka i Marcina Czarkowskiego."
+  path="/o-nas"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10">
+    <nav aria-label="Ścieżka nawigacji" class="text-sm text-slate-400">
+      <a class="hover:text-brand-500 hover:underline" href="/">Strona główna</a> /
+      <span aria-current="page">O nas</span>
+    </nav>
+    <h1 class="mt-4 text-3xl font-bold text-white sm:text-4xl">
+      O nas — łączymy świat programowania, biznesu i rozwoju
+    </h1>
+    <div class="mt-6 space-y-4 text-lg text-slate-200">
+      <p>
+        Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+        Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na
+        biznes, na ludzi i na siebie.
+      </p>
+      <p>
+        Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się na wielu
+        płaszczyznach: od technicznych deep-dive’ów po rozmowy o karierze i rozwoju. Od ponad
+        7 lat działamy na rynku edukacji technologicznej, a z naszych programów i treści
+        korzystali m.in. zespoły Huuuge Games, Nutridome, SmartRecruiters, Future Processing,
+        Callstack, edrone, Xfive, Euvic, Strabag i Autodesk.
+      </p>
+    </div>
+
+    <section aria-labelledby="values-heading" class="mt-10">
+      <h2 id="values-heading" class="text-2xl font-bold text-white">Czym się kierujemy</h2>
+      <ul class="mt-4 grid gap-4 sm:grid-cols-2">
+        <li class="rounded-xl border border-white/10 bg-ink-800 p-5">
+          <h3 class="font-semibold text-white">Szersze spojrzenie</h3>
+          <p class="mt-1 text-sm text-slate-300">
+            Technologia to nie tylko kod — także architektura, biznes i ludzie.
+          </p>
+        </li>
+        <li class="rounded-xl border border-white/10 bg-ink-800 p-5">
+          <h3 class="font-semibold text-white">Praktyka z produkcji</h3>
+          <p class="mt-1 text-sm text-slate-300">
+            Uczymy podejść sprawdzonych w realnych, działających projektach.
+          </p>
+        </li>
+        <li class="rounded-xl border border-white/10 bg-ink-800 p-5">
+          <h3 class="font-semibold text-white">Świadome AI</h3>
+          <p class="mt-1 text-sm text-slate-300">
+            Pokazujemy, jak świadomie korzystać z potencjału Generative AI w codziennej pracy.
+          </p>
+        </li>
+        <li class="rounded-xl border border-white/10 bg-ink-800 p-5">
+          <h3 class="font-semibold text-white">Rozwój przez całe życie</h3>
+          <p class="mt-1 text-sm text-slate-300">
+            Materiały edukacyjne oparte na badaniach nad uczeniem się i neurobiologii.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="founders-heading" class="mt-12">
+      <h2 id="founders-heading" class="text-2xl font-bold text-white">Założyciele</h2>
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        {
+          founders.map((founder) => (
+            <article class="rounded-xl border border-white/10 bg-ink-800 p-6">
+              <h3 class="text-xl font-bold text-white">{founder.name}</h3>
+              <p class="mt-1 text-sm font-semibold text-brand-500">{founder.role}</p>
+              <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-200">
+                {founder.facts.map((fact) => (
+                  <li>{fact}</li>
+                ))}
+              </ul>
+              <div class="mt-5 flex flex-wrap gap-3 text-sm">
+                {founder.links.map((link) => (
+                  <a
+                    class="inline-flex items-center rounded-lg border border-white/20 px-3 py-2 font-semibold text-slate-100 hover:bg-white/10"
+                    rel="noopener"
+                    target="_blank"
+                    href={link.href}
+                  >
+                    {link.label} ↗<span class="sr-only"> — profil {founder.name}</span>
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="mt-4 text-xs text-slate-400">
+        Źródło sylwetek: oficjalna strona <a class="underline" rel="noopener" target="_blank" href="https://przeprogramowani.pl/o-nas">przeprogramowani.pl/o-nas</a>
+        (pobrano 2026-09-08).
+      </p>
+    </section>
+
+    <p class="mt-10 text-sm text-slate-300">
+      Współpraca: <a class="text-brand-500 underline hover:text-brand-500" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+    </p>
+  </div>
+</Layout>

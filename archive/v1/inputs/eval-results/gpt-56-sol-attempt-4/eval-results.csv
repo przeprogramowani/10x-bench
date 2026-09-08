@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
+Local build,1,1,astro check + astro build succeeded (0 errors); static output to dist/ with 5 pages
+Manual testing,1,1,User-confirmed: site works correctly on click-through
+Tech stack,0.5,1,"React 19 and Tailwind CSS 4 (@tailwindcss/vite) present, but Astro is ^7.0.9 not 6, and no Cloudflare adapter (@astrojs/cloudflare) — astro.config uses output:'static' with react() only; wrangler.jsonc present but adapter not configured"
+O nas page,1,1,"200 OK; both founders with correct details — Przemek Smyrdek (DAZN/Cabify, full-stack, open source, prelegent) and Marcin Czarkowski (SmartRecruiters, TypeScript/React/Node, neuronauka); correct LinkedIn URLs; not oversimplified (course assignments not explicitly labeled but bios strong)"
+Podcast page,0.5,1,"200 OK; both shows displayed via episodes (5 Opanuj.AI, 4 Przeprogramowani ft. Gość). Correct Przeprogramowani show ID 3yVvOAXSYq6sQB02w4A4wo present but mislabeled as Opanuj.AI; Opanuj.AI correct ID 3D6LmchBdoqL2sWkQjvWOy absent; fabricated show ID 4qHUZJpeBK8Ij9e2wTVm2o used in hero CTA and ft. Gość card"
+YouTube page,1,1,"200 OK; all 6 video IDs verified real and on-channel via oEmbed (author_name Przeprogramowani): B4t6w4QsD24, 0JOszZXqKaM, XgyH-HSzKRQ, 03y826SVjG0, S-iNbyLSisE, aRkECt7derY; no placeholder/rick-roll IDs, all unique"
+Kursy section,1,1,"#kursy section on index.astro; 10xDevs featured prominently in hero with https://10xdevs.pl; course cards Opanuj Frontend AI Edition and Opanuj TypeScript (TS5/React19) match context; header CTA also links 10xDevs"
+Consistent UI,1,1,User-confirmed: coherent design across pages
+Responsive design,1,1,User-confirmed: responsive across breakpoints
+SEO Tags,1,1,"Layout.astro applies SEO to all pages: per-page title, meta description, canonical, og:type/title/description/url/image, twitter:card; lang=pl; content matches Przeprogramowani brand copy"
+Penalty,0,N/A,User-confirmed: no penalty

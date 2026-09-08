@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getOpanujAIPodcast } from '../../data/podcast-opanuj-ai';
+import { getPrzeprogramowaniPodcast } from '../../data/podcast-przeprogramowani';
+
+const opanujData = await getOpanujAIPodcast();
+const przeprogData = await getPrzeprogramowaniPodcast();
+
+const latestOpanuj = opanujData.items[0];
+const latestPrzeprog = przeprogData.items[0];
+---
+
+<Layout
+  title="Katalog Podcastów — Przeprogramowani.pl | Opanuj.AI i Przeprogramowani ft. Gość"
+  description="Katalog podcastów Przeprogramowani.pl. Opanuj.AI — comiesięczne podsumowania sztucznej inteligencji i LLM. Przeprogramowani ft. Gość — wywiady z czołowymi inżynierami IT."
+  canonicalPath="/podcast"
+>
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-6">
+        <nav aria-label="Breadcrumb" class="text-xs text-gray-400 flex items-center gap-2">
+          <a href="/" class="hover:text-blue-400">Strona główna</a>
+          <span>/</span>
+          <span class="text-gray-200">Katalog podcastów</span>
+        </nav>
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          Katalog podcastów Przeprogramowani.pl
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed">
+          Słuchaj naszych audycji technologicznych. Tworzymy dwa niezależne podcasty: skupiony na nowościach AI i LLM <strong class="text-purple-400 font-semibold">Opanuj.AI</strong> oraz serię głębokich rozmów z praktykami inżynierii oprogramowania <strong class="text-blue-400 font-semibold">Przeprogramowani ft. Gość</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Catalog Cards -->
+  <section class="py-16 lg:py-20 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- Podcast 1: Opanuj.AI -->
+        <article class="bg-gray-900/80 border border-purple-500/30 rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="space-y-6 relative">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <img
+                src="/img/podcast/opanuj-ai-cover.jpg"
+                alt="Okładka Opanuj.AI Podcast"
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-purple-500/40 shrink-0 shadow-lg"
+                loading="lazy"
+              />
+              <div class="space-y-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                  Sztuczna Inteligencja & Inżynieria LLM
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  Podcast Opanuj.AI
+                </h2>
+                <p class="text-xs text-gray-400">Prowadzący: Marcin Czarkowski & Przemek Smyrdek</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+                Opanuj.AI to comiesięczne, techniczne podsumowanie najważniejszych wydarzeń ze świata modeli językowych, narzędzi programistycznych AI i agentów. Prowadzący — dwaj doświadczeni programiści — rozkładają na czynniki pierwsze architekturę systemów AI, benchmarki i wpływ technologii na software engineering.
+              </p>
+              <ul class="text-xs text-gray-400 space-y-1.5 pt-2">
+                <li class="flex items-center gap-2">
+                  <span class="text-purple-400">✓</span> Cykliczne analizy modeli frontierowych i agentów kodujących
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-purple-400">✓</span> Wnioski z konferencji (Google I/O, OpenAI DevDay, Anthropic)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-purple-400">✓</span> Najpopularniejszy techniczny podcast o LLM w Polsce
+                </li>
+              </ul>
+            </div>
+
+            {latestOpanuj && (
+              <div class="p-4 rounded-xl bg-gray-950/70 border border-gray-800 space-y-1">
+                <span class="text-xs uppercase tracking-wider font-semibold text-purple-400">Najnowszy odcinek:</span>
+                <p class="text-sm font-bold text-white line-clamp-1">{latestOpanuj.title}</p>
+                <div class="flex items-center gap-3 text-xs text-gray-400 pt-1">
+                  <span>📅 {latestOpanuj.formattedDate}</span>
+                  {latestOpanuj.duration && <span>⏱️ {latestOpanuj.duration}</span>}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="pt-8 mt-8 border-t border-gray-800 flex flex-col sm:flex-row gap-3 relative">
+            <a
+              href="/podcast/opanuj-ai"
+              class="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow-lg shadow-purple-600/25 transition-all"
+            >
+              <span>Przejdź do podcastu Opanuj.AI</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a
+              href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold border border-gray-700 transition-colors"
+            >
+              Spotify →
+            </a>
+          </div>
+        </article>
+
+        <!-- Podcast 2: Przeprogramowani ft. Gość -->
+        <article class="bg-gray-900/80 border border-blue-500/30 rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="space-y-6 relative">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <img
+                src="/img/podcast/przeprogramowani-cover.jpg"
+                alt="Okładka Przeprogramowani ft. Gość"
+                class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-blue-500/40 shrink-0 shadow-lg"
+                loading="lazy"
+              />
+              <div class="space-y-1">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                  Inżynieria Oprogramowania & Kariera
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  Przeprogramowani ft. Gość
+                </h2>
+                <p class="text-xs text-gray-400">Prowadzący: Przemek Smyrdek & Marcin Czarkowski</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+                Pogłębione dyskusje z cenionymi ekspertami, liderami technicznymi i praktykami branży IT. Poruszamy tematy architektury systemów webowych, zarządzania długiem technologicznym, pracy lead engineera, rekrutacji i dojrzałości zawodowej programisty.
+              </p>
+              <ul class="text-xs text-gray-400 space-y-1.5 pt-2">
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-400">✓</span> Rozmowy bez barier o realnych problemach projektów komercyjnych
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-400">✓</span> Goście z międzynarodowych spółek i czołowych software house'ów
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-blue-400">✓</span> Ponad 90 zrealizowanych odcinków z wartościowymi lekcjami
+                </li>
+              </ul>
+            </div>
+
+            {latestPrzeprog && (
+              <div class="p-4 rounded-xl bg-gray-950/70 border border-gray-800 space-y-1">
+                <span class="text-xs uppercase tracking-wider font-semibold text-blue-400">Ostatni dostępny odcinek:</span>
+                <p class="text-sm font-bold text-white line-clamp-1">{latestPrzeprog.title}</p>
+                <div class="flex items-center gap-3 text-xs text-gray-400 pt-1">
+                  <span>📅 {latestPrzeprog.formattedDate}</span>
+                  {latestPrzeprog.duration && <span>⏱️ {latestPrzeprog.duration}</span>}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div class="pt-8 mt-8 border-t border-gray-800 flex flex-col sm:flex-row gap-3 relative">
+            <a
+              href="/podcast/przeprogramowani"
+              class="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/25 transition-all"
+            >
+              <span>Przejdź do podcastu Przeprogramowani</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a
+              href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold border border-gray-700 transition-colors"
+            >
+              Spotify →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>

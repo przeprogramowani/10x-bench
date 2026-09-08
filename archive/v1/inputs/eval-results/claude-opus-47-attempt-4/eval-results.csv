@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.04.2026 22:34,N/A,16.04.2026 22:34
+Local build,1,1,astro build completed successfully; 5 pages built in 719ms with no errors
+Manual testing,1,1,Dev server running on http://localhost:4322/; all pages (/, /o-nas, /podcast, /youtube) return HTTP 200 with proper navigation styles and content
+Tech stack,0,1,"Wrong major versions: Astro 4.16.18 (need 6), React 18.3.1 (need 19), Tailwind 3.4.14 (need 4); no @astrojs/cloudflare adapter (output is 'static')"
+O nas page,0.5,1,"Page exists at /o-nas (200); both founders present with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin); however bios are paraphrased/simplified, course assignments (Opanuj JavaScript / 10xDevs) missing from team data, mission and values rewritten rather than matching context copy"
+Podcast page,0.5,1,"Page exists at /podcast (200); only Opanuj.AI Podcast displayed (Spotify ID 3D6LmchBdoqL2sWkQjvWOy correct); Przeprogramowany Podcast (3yVvOAXSYq6sQB02w4A4wo) entirely missing; episode titles and 2026 dates appear hallucinated"
+YouTube page,0.5,1,"Page exists at /youtube (200); channel URL correct (youtube.com/c/przeprogramowani); however no real video IDs (uses gradient backgrounds in lieu of thumbnails), all video URLs point to channel home not specific videos, titles and dates appear fabricated"
+Kursy section,0.5,1,"CoursesSection component exists with id='kursy'; Hero prominently features 10xDevs 3.0; only 3 courses listed (10xDevs, Opanuj Frontend, Opanuj TypeScript) — missing Opanuj JavaScript, Opanuj AI, and Cursor: Programuj z AI from context"
+Consistent UI,1,1,UI confirmed consistent across all pages by user
+Responsive design,0.5,1,Majority of page is responsive with some minor issues per user testing
+SEO Tags,1,1,"BaseLayout.astro applies comprehensive meta tags to all pages: title, description, canonical, OpenGraph (type/title/description/url/image), Twitter card (summary_large_image, title, description), theme-color; content matches site copy"
+Penalty,0,N/A,No penalty applied

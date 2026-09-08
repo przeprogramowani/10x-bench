@@ -1,0 +1,21 @@
+EKSPERYMENT KONTROLOWANEJ AWARII ŹRÓDŁA DANYCH (P04)
+Data wykonania: 2026-09-08T08:01:06.795Z
+
+1. NORMALNA ŚCIEŻKA (YouTube Live):
+- Status: live
+- isStale: false
+- Liczba elementów: 9
+- Pierwszy element: 10xDevs Demo Day LIVE 🎉 Zobacz 9 najlepszych projektów! (2 września 2026)
+- URL elementu: https://www.youtube.com/watch?v=cKU4jlaUnZc
+
+2. ŚCIEŻKA KONTROLOWANEJ AWARII:
+- Flaga wymuszenia: MOCK_FAIL_YOUTUBE=true
+- Status odzyskany: stale_cache
+- isStale: true
+- Komunikat awarii: Kontrolowany błąd pobierania YouTube (test awarii źródła)
+- Liczba elementów odzyskanych z cache: 9
+- Pierwszy element z cache: 10xDevs Demo Day LIVE 🎉 Zobacz 9 najlepszych projektów! (2 września 2026)
+- Źródło zewnętrzne: https://www.youtube.com/feeds/videos.xml?channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+
+WNIOSKI:
+Awarie sieciowe i błędy odpowiedzi zewnętrznego dostawcy nie powodują błędu 500 ani przerwania działania witryny. Użytkownik widzi zweryfikowane dane z pamięci podręcznej z czytelnym oznaczeniem ich nieaktualności oraz bezpośredni odnośnik do źródła.

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { SOURCES } from '../data/sources';
+import { getSource } from '../data/index';
+import VideoCard from '../components/VideoCard.astro';
+import DataStatusNotice from '../components/DataStatusNotice.astro';
+
+const source = SOURCES.youtube;
+const result = await getSource(source.id);
+---
+
+<Base
+  path="/youtube"
+  title="YouTube — najnowsze filmy | Przeprogramowani"
+  description="Najnowsze filmy z oficjalnego kanału YouTube Przeprogramowani — frontend, programowanie z AI, TypeScript i rozwój kariery. Oglądaj osadzone filmy lub otwórz je na YouTube."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+    <nav aria-label="Ścieżka okruszków" class="text-sm text-slate-400">
+      <a class="hover:text-white hover:underline" href="/">Strona główna</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-slate-200">YouTube</span>
+    </nav>
+
+    <h1 class="mt-4 text-3xl font-extrabold text-white md:text-5xl">YouTube — kanał Przeprogramowani</h1>
+    <p class="mt-4 max-w-3xl text-lg text-slate-300">{source.description}</p>
+    <p class="mt-4">
+      <a
+        class="inline-block rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:border-brand-500 hover:text-white"
+        href={source.homepage}
+        rel="noopener"
+        target="_blank"
+      >
+        Odwiedź kanał na YouTube ↗
+      </a>
+    </p>
+
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-white">Najnowsze filmy</h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Źródło danych: oficjalny feed RSS kanału YouTube; dane pobrane po stronie serwera
+        {result.status === 'fresh' ? ' podczas budowania strony' : ''}.
+      </p>
+    </div>
+
+    <div class="mt-6">
+      <DataStatusNotice result={result} />
+    </div>
+
+    {result.items.length > 0 && (
+      <div class="grid gap-6 md:grid-cols-2">
+        {result.items.map((item) => <VideoCard item={item} />)}
+      </div>
+    )}
+  </div>
+</Base>

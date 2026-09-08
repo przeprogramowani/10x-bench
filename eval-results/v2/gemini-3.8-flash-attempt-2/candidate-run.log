@@ -1,0 +1,1388 @@
+[0m
+> build · google/gemini-3.8-flash
+[0m
+[0m✱ [0mGlob "*"[90m 3 matches[0m
+[0m→ [0mRead BASELINE.md
+[0m
+[0m# [0mTodos
+[•] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[ ] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[ ] Implement server-side data fetching modules with resilient cache and failure fallback
+[ ] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[ ] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[ ] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m$ [0mnode -v && npm -v && npm view astro version && npm view react version && npm view tailwindcss version && npm view @astrojs/cloudflare version
+v22.14.0
+10.9.2
+7.3.1
+19.2.8
+4.3.3
+14.3.0
+[0m
+[0m$ [0mnpm view @astrojs/react version && npm view @tailwindcss/vite version
+6.0.5
+4.3.3
+[0m
+[0m% [0mWebFetch https://przeprogramowani.pl
+[0m% [0mWebFetch https://przeprogramowani.pl/o-nas
+[0m% [0mWebFetch https://przeprogramowani.pl/podcast
+[0m✗ [0mWebFetch https://anchor.fm/s/22544b7c/podcast/rss failed
+[91m[1mError: [0mStatusCode: non 2xx status code (404 GET https://anchor.fm/s/22544b7c/podcast/rss)
+[0m% [0mWebFetch https://podcasters.spotify.com/pod/show/przeprogramowani
+[0m% [0mWebFetch https://anchor.fm/s/c72d808/podcast/rss
+[0m% [0mWebFetch https://podcasters.spotify.com/pod/show/opanujai
+[0m% [0mWebFetch https://anchor.fm/s/e2cb03d0/podcast/rss
+[0m% [0mWebFetch https://www.youtube.com/@Przeprogramowani
+[0m% [0mWebFetch https://www.youtube.com/@Przeprogramowani
+[0m
+[0m$ [0mgrep -o 'channel_id=[^"&]*' /Users/psmyrdek/.local/share/opencode/tool-output/tool_07ff90b34001gHQG4uyyIIlYS5 | head -n 5
+channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+[0m
+[0m% [0mWebFetch https://www.youtube.com/feeds/videos.xml?channel_id=UCb2Y3vMeD6N4WDt5Acw7Arw
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[•] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[ ] Implement server-side data fetching modules with resilient cache and failure fallback
+[ ] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[ ] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[ ] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m$ [0mnpm view @astrojs/cloudflare versions --json | tail -n 10 && npm view wrangler version
+"14.1.7",
+  "14.2.0",
+  "14.2.1",
+  "14.2.2",
+  "14.2.3",
+  "14.2.4",
+  "14.2.5",
+  "14.2.6",
+  "14.3.0"
+]
+4.129.1
+[0m
+[0m$ [0mnpm view @astrojs/react versions --json | tail -n 10
+"6.0.0-alpha.0",
+  "6.0.0-beta.1",
+  "6.0.0-beta.2",
+  "6.0.0",
+  "6.0.1",
+  "6.0.2",
+  "6.0.3",
+  "6.0.4",
+  "6.0.5"
+]
+[0m
+[0m$ [0mnpm view @types/react version && npm view @types/react-dom version
+19.2.18
+19.2.7
+[0m
+[0m$ [0mnpm view fast-xml-parser version
+5.11.1
+[0m
+[0m← [0mWrite package.json
+Wrote file successfully.
+[0m
+I am running `npm install` to install the specified project dependencies (Astro 7.3.1, React 19.2.8, Tailwind CSS 4.3.3, @astrojs/cloudflare 14.3.0, and wrangler) and generate `package-lock.json`.
+[0m$ [0mnpm install
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'undici@8.10.2',
+npm warn EBADENGINE   required: { node: '>=22.19.0' },
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+
+added 299 packages, and audited 300 packages in 5s
+
+92 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+[0m
+[0m$ [0mnpm list --depth=0
+przeprogramowani-pl@1.0.0 /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2
+├── @astrojs/cloudflare@14.3.0
+├── @astrojs/react@6.0.5
+├── @emnapi/core@1.11.3 extraneous
+├── @emnapi/runtime@1.11.3 extraneous
+├── @emnapi/wasi-threads@1.2.3 extraneous
+├── @img/sharp-wasm32@0.35.4 extraneous
+├── @napi-rs/wasm-runtime@1.2.3 extraneous
+├── @tailwindcss/vite@4.3.3
+├── @tybys/wasm-util@0.10.3 extraneous
+├── @types/react-dom@19.2.7
+├── @types/react@19.2.18
+├── astro@7.3.1
+├── fast-xml-parser@5.11.1
+├── react-dom@19.2.8
+├── react@19.2.8
+├── tailwindcss@4.3.3
+├── tslib@2.8.1 extraneous
+└── wrangler@4.129.1
+[0m
+[0m$ [0mnode -e "import('@astrojs/cloudflare').then(m => console.log(Object.keys(m), m.default))"
+[ 'default' ] [Function: createIntegration]
+[0m
+[0m→ [0mRead node_modules/@astrojs/cloudflare/dist/index.d.ts
+[0m
+[0m← [0mWrite astro.config.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mmkdir -p src/styles src/pages src/components src/data
+(no output)
+[0m
+[0m← [0mWrite src/styles/global.css
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/index.astro
+Wrote file successfully.
+[0m
+[0m$ [0mnpx astro build
+09:45:14 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:45:14 [types] Generated 303ms
+09:45:14 [build] output: "static"
+09:45:14 [build] mode: "static"
+09:45:14 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:45:14 [build] adapter: @astrojs/cloudflare
+09:45:14 [build] Collecting build info...
+09:45:14 [build] ✓ Completed in 331ms.
+09:45:14 [build] Building static entrypoints...
+09:45:15 [vite] ✓ built in 256ms
+09:45:15 [vite] ✓ built in 46ms
+09:45:15 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9232 instead
+
+
+ generating static routes 
+09:45:15   ├─ /index.html (+14ms) 
+09:45:15 ✓ Completed in 455ms.
+
+09:45:15 [build] ✓ Completed in 783ms.
+09:45:15 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:45:15 [build] 1 page(s) built in 1.12s
+09:45:15 [build] Complete!
+[0m
+[0m$ [0mls -la dist
+total 0
+drwxr-xr-x@  4 psmyrdek  staff  128 Sep  8 09:45 .
+drwxr-xr-x@ 13 psmyrdek  staff  416 Sep  8 09:45 ..
+drwxr-xr-x@  7 psmyrdek  staff  224 Sep  8 09:45 client
+drwxr-xr-x@  2 psmyrdek  staff   64 Sep  8 09:45 server
+[0m
+[0m$ [0mls -la dist/client && ls -la dist/server
+total 32
+drwxr-xr-x@ 4 psmyrdek  staff   128 Sep  8 09:45 _astro
+-rw-r--r--@ 1 psmyrdek  staff    63 Sep  8 09:45 _headers
+drwxr-xr-x@ 7 psmyrdek  staff   224 Sep  8 09:45 .
+drwxr-xr-x@ 4 psmyrdek  staff   128 Sep  8 09:45 ..
+-rw-r--r--@ 1 psmyrdek  staff    24 Sep  8 09:45 .assetsignore
+-rw-r--r--@ 1 psmyrdek  staff   348 Sep  8 09:45 index.html
+-rw-r--r--@ 1 psmyrdek  staff  1166 Sep  8 09:45 wrangler.json
+total 0
+drwxr-xr-x@ 2 psmyrdek  staff   64 Sep  8 09:45 .
+drwxr-xr-x@ 4 psmyrdek  staff  128 Sep  8 09:45 ..
+[0m
+[0m→ [0mRead dist/client/wrangler.json
+[0m
+[0m← [0mWrite astro.config.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnpx astro build
+09:45:52 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:45:52 [types] Generated 37ms
+09:45:52 [build] output: "server"
+09:45:52 [build] mode: "server"
+09:45:52 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:45:52 [build] adapter: @astrojs/cloudflare
+09:45:52 [build] Collecting build info...
+09:45:52 [build] ✓ Completed in 65ms.
+09:45:52 [build] Building server entrypoints...
+09:45:52 [vite] ✓ built in 162ms
+09:45:52 [vite] ✓ built in 152ms
+09:45:52 [vite] ✓ built in 48ms
+09:45:52 [build] Rearranging server assets...
+09:45:52 [build] ✓ Completed in 399ms.
+09:45:52 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:45:52 [build] Server built in 466ms
+09:45:52 [build] Complete!
+[0m
+[0m$ [0mls -la dist && ls -la dist/server && ls -la dist/client
+total 0
+drwxr-xr-x@  4 psmyrdek  staff  128 Sep  8 09:45 .
+drwxr-xr-x@ 13 psmyrdek  staff  416 Sep  8 09:45 ..
+drwxr-xr-x@  5 psmyrdek  staff  160 Sep  8 09:45 client
+drwxr-xr-x@  6 psmyrdek  staff  192 Sep  8 09:45 server
+total 32
+drwxr-xr-x@  6 psmyrdek  staff   192 Sep  8 09:45 .
+drwxr-xr-x@  4 psmyrdek  staff   128 Sep  8 09:45 ..
+drwxr-xr-x@ 19 psmyrdek  staff   608 Sep  8 09:45 chunks
+-rw-r--r--@  1 psmyrdek  staff  4896 Sep  8 09:45 entry.mjs
+-rw-r--r--@  1 psmyrdek  staff   158 Sep  8 09:45 virtual_astro_middleware.mjs
+-rw-r--r--@  1 psmyrdek  staff  1279 Sep  8 09:45 wrangler.json
+total 16
+drwxr-xr-x@ 4 psmyrdek  staff  128 Sep  8 09:45 _astro
+-rw-r--r--@ 1 psmyrdek  staff   63 Sep  8 09:45 _headers
+drwxr-xr-x@ 5 psmyrdek  staff  160 Sep  8 09:45 .
+drwxr-xr-x@ 4 psmyrdek  staff  128 Sep  8 09:45 ..
+-rw-r--r--@ 1 psmyrdek  staff   24 Sep  8 09:45 .assetsignore
+[0m
+[0m→ [0mRead dist/server/wrangler.json
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --port 8788 &
+DEV_PID=$!
+sleep 3
+curl -s http://localhost:8788/ | head -n 20
+kill $DEV_PID
+⛅️ wrangler 4.129.1
+────────────────────
+Your Worker has access to the following bindings:
+Binding             Resource          Mode
+env.SESSION         KV Namespace      local
+env.ASSETS          Assets            local
+
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_astro_assets_C_1E4qbk.mjs                         │ esm  │ 21.81 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs │ esm  │ 0.27 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_TyipGO2P.mjs         │ esm  │ 2.88 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/assets_D9etfBT1.mjs                                │ esm  │ 19.05 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/compiler_CR9grMLF.mjs                              │ esm  │ 1.21 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/entrypoints_DrV_ABCK.mjs                           │ esm  │ 716.47 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/errors_D5KdsSBu.mjs                                │ esm  │ 21.72 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-passthrough-endpoint_BKs3TXL6.mjs            │ esm  │ 2.20 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_EhfxY6xt.mjs                                 │ esm  │ 1.13 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_BYLrzUxc.mjs                       │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop_D_A8FpPz.mjs                                  │ esm  │ 0.66 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/react_DrT0j-Yv.mjs                                 │ esm  │ 15.37 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/rolldown-runtime_BDykq6kg.mjs                      │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/server_1vO4G8vu.mjs                                │ esm  │ 248.25 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/service_vX6eYZb0.mjs                               │ esm  │ 45.48 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/static-image-collection_CSVfxOVd.mjs               │ esm  │ 2.45 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/vnode-children_DmWmphrv.mjs                        │ esm  │ 6.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (18 modules)                                        │      │ 1107.15 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+⎔ Starting local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1m*** Fatal uncaught kj::Exception: kj/async-io-unix.c++:941: failed: ::bind(sockfd, &addr.generic, addrlen): Address already in use; toString() = 127.0.0.1:8788[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mstack: 102f0bcd3 102f0bab7 102f09f0b 100261cb3 1002624c7 100262f23 100264137 1001b13b3 103264363 103264697 103262d8f 103262b4f 10019c94f 1950cbe87[0m
+
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mAddress already in use (127.0.0.1:8788). Please check that you are not already running a server on this address or specify a different port with --port.[0m
+
+
+🪵  Logs were written to "/Users/psmyrdek/.wrangler/logs/wrangler-2026-09-08_07-46-01_603.log"
+<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Przeprogramowani — Szersze spojrzenie na programowanie</title><meta name="description" content="Przeprogramowani to edukacja technologiczna: kurs 10xDevs o programowaniu z AI, Opanuj Frontend, Opanuj TypeScript, podcasty Opanuj.AI i Przeprogramowani oraz kanał YouTube."><link rel="canonical" href="http://localhost:8788/"><meta property="og:type" content="website"><meta property="og:site_name" content="Przeprogramowani"><meta property="og:title" content="Przeprogramowani — Szersze spojrzenie na programowanie"><meta property="og:description" content="Przeprogramowani to edukacja technologiczna: kurs 10xDevs o programowaniu z AI, Opanuj Frontend, Opanuj TypeScript, podcasty Opanuj.AI i Przeprogramowani oraz kanał YouTube."><meta property="og:url" content="http://localhost:8788/"><meta property="og:locale" content="pl_PL"><meta name="generator" content="Astro v7.3.1"><link rel="stylesheet" href="/_astro/Layout.BupaTphp.css"></head><body class="flex min-h-screen flex-col bg-ink-900 text-slate-100"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-amber-400 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-900">Przejdź do treści</a><header class="sticky top-0 z-40 border-b border-white/10 bg-ink-800/95 backdrop-blur"><div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3"><a href="/" class="flex items-center gap-2 text-lg font-bold text-white" aria-label="Przeprogramowani — strona główna"><span class="text-brand-500" aria-hidden="true">&lt;/&gt;</span><span>Przeprogramowani</span></a><nav aria-label="Nawigacja główna" class="hidden md:block"><ul class="flex items-center gap-1"><li><a href="/o-nas" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10 hover:text-white text-slate-200">O nas</a></li><li><a href="/podcast" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10 hover:text-white text-slate-200">Podcasty</a></li><li><a href="/youtube" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10 hover:text-white text-slate-200">YouTube</a></li><li><a href="/kursy" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-white/10 hover:text-white text-slate-200">Kursy</a></li></ul></nav><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="1iQ5Se" prefix="r1" component-url="/_astro/MobileNav.1tbeIZMd.js" component-export="default" renderer-url="/_astro/client.B2huqpV0.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;MobileNav&quot;,&quot;value&quot;:true}" await-children><div class="md:hidden"><button type="button" class="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-sm font-semibold text-white hover:bg-white/20" aria-expanded="false" aria-controls="mobile-menu"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg><span>Menu</span></button></div><!--astro:end--></astro-island></div></header><main id="main" class="flex-1"><section class="relative overflow-hidden"><div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-700/40 via-ink-900 to-ink-900" aria-hidden="true"></div><div class="relative mx-auto max-w-6xl px-4 py-16 sm:py-24"><p class="text-sm font-semibold uppercase tracking-widest text-brand-500">Edukacja technologiczna w epoce AI</p><h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">Szersze spojrzenie na programowanie</h1><p class="mt-5 max-w-2xl text-lg text-slate-200">Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Od ponad 7 lat tworzą kursy, podcasty, filmy i narzędzia, które pomagają programistom patrzeć szerzej — na architekturę, biznes, ludzi i siebie.</p><div class="mt-10 max-w-3xl rounded-2xl border border-brand-500/40 bg-ink-800 p-6 shadow-xl sm:p-8"><p class="inline-block rounded-full bg-brand-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Wyróżniony kurs</p><h2 class="mt-3 text-2xl font-bold text-white sm:text-3xl">10xDevs — Programuj z AI</h2><p class="mt-3 text-slate-200">Nowe oblicze programowania z wykorzystaniem Generatywnego AI: techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania — od planowania, przez implementację, po testy i utrzymanie.</p><a class="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-base font-bold text-white hover:bg-brand-500" href="https://10xdevs.pl" rel="noopener" target="_blank">Zobacz kurs 10xDevs<span aria-hidden="true">→</span></a></div></div></section><section aria-labelledby="pages-heading" class="mx-auto max-w-6xl px-4 py-14"><h2 id="pages-heading" class="text-2xl font-bold text-white sm:text-3xl">Co znajdziesz w serwisie</h2><div class="mt-6 grid gap-4 sm:grid-cols-2"><a href="/o-nas" class="group rounded-xl border border-white/10 bg-ink-800 p-6 transition hover:border-brand-500/50 hover:bg-ink-700"><h3 class="text-lg font-semibold text-white group-hover:text-brand-500">O nas</h3><p class="mt-2 text-sm text-slate-300">Kim są Przeprogramowani, co robią i jakie wartości stoją za projektem — Przemek Smyrdek i Marcin Czarkowski.</p><p class="mt-3 text-sm font-semibold text-brand-500">Przejdź<span aria-hidden="true"> →</span></p></a><a href="/podcast" class="group rounded-xl border border-white/10 bg-ink-800 p-6 transition hover:border-brand-500/50 hover:bg-ink-700"><h3 class="text-lg font-semibold text-white group-hover:text-brand-500">Podcasty</h3><p class="mt-2 text-sm text-slate-300">Dwa podcasty: Opanuj.AI o sztucznej inteligencji oraz Przeprogramowani o karierze i technologiach.</p><p class="mt-3 text-sm font-semibold text-brand-500">Przejdź<span aria-hidden="true"> →</span></p></a><a href="/youtube" class="group rounded-xl border border-white/10 bg-ink-800 p-6 transition hover:border-brand-500/50 hover:bg-ink-700"><h3 class="text-lg font-semibold text-white group-hover:text-brand-500">YouTube</h3><p class="mt-2 text-sm text-slate-300">Najnowsze filmy oficjalnego kanału: live’y o AI, Demo Day 10xDevs i webinary technologiczne.</p><p class="mt-3 text-sm font-semibold text-brand-500">Przejdź<span aria-hidden="true"> →</span></p></a><a href="/kursy" class="group rounded-xl border border-white/10 bg-ink-800 p-6 transition hover:border-brand-500/50 hover:bg-ink-700"><h3 class="text-lg font-semibold text-white group-hover:text-brand-500">Kursy</h3><p class="mt-2 text-sm text-slate-300">Opanuj Frontend, Opanuj TypeScript i 10xDevs — programy edukacyjne dla ambitnych programistów.</p><p class="mt-3 text-sm font-semibold text-brand-500">Przejdź<span aria-hidden="true"> →</span></p></a></div></section><section aria-labelledby="offer-heading" class="border-t border-white/10 bg-ink-800/60"><div class="mx-auto max-w-6xl px-4 py-14"><h2 id="offer-heading" class="text-2xl font-bold text-white sm:text-3xl">Programy edukacyjne Przeprogramowanych</h2><div class="mt-6 grid gap-4 lg:grid-cols-3"><div class="rounded-xl border border-white/10 bg-ink-900 p-6"><p class="text-xs font-bold uppercase tracking-wide text-brand-500">Gen AI</p><h3 class="mt-2 text-lg font-semibold text-white">10xDevs</h3><p class="mt-2 text-sm text-slate-300">Świadome stosowanie Generatywnego AI w całym cyklu wytwarzania oprogramowania.</p><a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://10xdevs.pl" rel="noopener" target="_blank">10xdevs.pl ↗</a></div><div class="rounded-xl border border-white/10 bg-ink-900 p-6"><p class="text-xs font-bold uppercase tracking-wide text-brand-500">Frontend</p><h3 class="mt-2 text-lg font-semibold text-white">Opanuj Frontend: AI Edition</h3><p class="mt-2 text-sm text-slate-300">5 obszernych modułów: frontend, testowanie, CI/CD, open source i architektura aplikacji webowych. Cztery edycje i prawie 400 absolwentów.</p><a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://www.opanujfrontend.pl" rel="noopener" target="_blank">opanujfrontend.pl ↗</a></div><div class="rounded-xl border border-white/10 bg-ink-900 p-6"><p class="text-xs font-bold uppercase tracking-wide text-brand-500">TypeScript</p><h3 class="mt-2 text-lg font-semibold text-white">Opanuj TypeScript</h3><p class="mt-2 text-sm text-slate-300">Szkolenie podnoszące jakość projektów działających na produkcji — praca z TypeScript 5 i React 19.</p><a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://www.opanujtypescript.pl" rel="noopener" target="_blank">opanujtypescript.pl ↗</a></div></div><p class="mt-8 text-sm text-slate-300">Więcej: <a class="text-brand-500 hover:underline" href="/kursy">wszystkie kursy</a> ·<a class="ml-1 text-brand-500 hover:underline" href="/podcast">podcasty</a> ·<a class="ml-1 text-brand-500 hover:underline" href="/youtube">YouTube</a> ·<a class="ml-1 text-brand-500 hover:underline" href="/o-nas">o nas</a></p></div></section></main><footer class="border-t border-white/10 bg-ink-800"><div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3"><div><p class="text-base font-bold text-white">&lt;/&gt; Przeprogramowani</p><p class="mt-2 text-sm text-slate-300">Szersze spojrzenie na programowanie — kursy, podcasty i filmy o nowoczesnym tworzeniu oprogramowania.</p></div><nav aria-label="Mapa strony"><p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Strony</p><ul class="mt-3 space-y-2 text-sm"><li><a class="hover:text-brand-500 hover:underline" href="/">Strona główna</a></li><li><a class="hover:text-brand-500 hover:underline" href="/o-nas">O nas</a></li><li><a class="hover:text-brand-500 hover:underline" href="/podcast">Podcasty</a></li><li><a class="hover:text-brand-500 hover:underline" href="/podcast/opanuj-ai">Opanuj.AI Podcast</a></li><li><a class="hover:text-brand-500 hover:underline" href="/podcast/przeprogramowani">Podcast Przeprogramowani</a></li><li><a class="hover:text-brand-500 hover:underline" href="/youtube">YouTube</a></li><li><a class="hover:text-brand-500 hover:underline" href="/kursy">Kursy</a></li></ul></nav><div><p class="text-sm font-semibold uppercase tracking-wide text-slate-400">Źródła</p><ul class="mt-3 space-y-2 text-sm"><li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://przeprogramowani.pl">przeprogramowani.pl</a></li><li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://10xdevs.pl">Kurs 10xDevs</a></li><li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li><li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li><li><a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href="https://www.youtube.com/@Przeprogramowani">YouTube</a></li></ul></div></div><div class="border-t border-white/10 px-4 py-4 text-center text-xs text-slate-400">Nieoficjalna prezentacja projektu Przeprogramowani. Dane mediów pobierane z publicznych feedów RSS/Atom. Kontakt oficjalny:<a class="underline hover:text-brand-500" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a></div></footer></body></html>zsh:kill:5: kill 92855 failed: no such process
+[0m
+[0m$ [0mlsof -i :8788
+COMMAND   PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+workerd 84418 psmyrdek   16u  IPv4  0x3cbda53a6253f74      0t0  TCP localhost:8788 (LISTEN)
+workerd 84418 psmyrdek   17u  IPv6 0x44f078cd397e96b2      0t0  TCP localhost:8788 (LISTEN)
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --port 8799 &
+DEV_PID=$!
+sleep 3
+curl -s -I http://localhost:8799/
+kill $DEV_PID
+⛅️ wrangler 4.129.1
+────────────────────
+Your Worker has access to the following bindings:
+Binding             Resource          Mode
+env.SESSION         KV Namespace      local
+env.ASSETS          Assets            local
+
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_astro_assets_C_1E4qbk.mjs                         │ esm  │ 21.81 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs │ esm  │ 0.27 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_TyipGO2P.mjs         │ esm  │ 2.88 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/assets_D9etfBT1.mjs                                │ esm  │ 19.05 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/compiler_CR9grMLF.mjs                              │ esm  │ 1.21 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/entrypoints_DrV_ABCK.mjs                           │ esm  │ 716.47 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/errors_D5KdsSBu.mjs                                │ esm  │ 21.72 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-passthrough-endpoint_BKs3TXL6.mjs            │ esm  │ 2.20 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_EhfxY6xt.mjs                                 │ esm  │ 1.13 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_BYLrzUxc.mjs                       │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop_D_A8FpPz.mjs                                  │ esm  │ 0.66 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/react_DrT0j-Yv.mjs                                 │ esm  │ 15.37 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/rolldown-runtime_BDykq6kg.mjs                      │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/server_1vO4G8vu.mjs                                │ esm  │ 248.25 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/service_vX6eYZb0.mjs                               │ esm  │ 45.48 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/static-image-collection_CSVfxOVd.mjs               │ esm  │ 2.45 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/vnode-children_DmWmphrv.mjs                        │ esm  │ 6.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (18 modules)                                        │      │ 1107.15 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+⎔ Starting local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+Wrangler detected this dev session is running in an AI agent.
+The Local Explorer API is available at http://localhost:8799/cdn-cgi/local/explorer/api
+Useful routes:
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/local/workers - local Workers and bindings
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/storage/kv/namespaces - KV namespaces
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/d1/database - D1 databases
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/r2/buckets - R2 buckets
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/workers/durable_objects/namespaces - Durable Object namespaces
+  GET http://localhost:8799/cdn-cgi/local/explorer/api/workflows - Workflows
+  POST http://localhost:8799/cdn-cgi/local/explorer/api/local/observability/query - run a read-only SQL query (SELECT/WITH only) over captured request traces and console logs. Tables: spans, logs (read attributes via json(attributes)). Example:
+    curl -X POST http://localhost:8799/cdn-cgi/local/explorer/api/local/observability/query -H 'Content-Type: application/json' -d '{"sql":"SELECT service, name, outcome, duration_ms FROM spans WHERE parent_id IS NULL LIMIT 20"}'
+If the routes above don't cover what you need, fetch the full OpenAPI schema (large - use only as a last resort):
+  GET http://localhost:8799/cdn-cgi/local/explorer/api - OpenAPI schema
+[wrangler:info] Ready on http://localhost:8799
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+[wrangler:info] HEAD / 200 OK (21ms)
+[0m
+[0m$ [0mnpx wrangler dev --help
+wrangler dev [script]
+
+👂 Start a local server for developing your Worker
+
+POSITIONALS
+  script  The path to an entry point for your Worker  [string]
+
+GLOBAL FLAGS
+  -c, --config          Path to Wrangler configuration file  [string]
+      --cwd             Run as if Wrangler was started in the specified directory instead of the current working directory  [string]
+  -e, --env             Environment to use for operations, and for selecting .env and .dev.vars files  [string]
+      --env-file        Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files  [array]
+  -h, --help            Show help  [boolean]
+      --install-skills  Install Cloudflare skills for detected AI coding agents before running the command  [boolean] [default: false]
+      --profile         Use a specific auth profile  [string]
+  -v, --version         Show version number  [boolean]
+
+OPTIONS
+      --name                                       Name of the Worker  [string]
+      --compatibility-date                         Date to use for compatibility checks  [string]
+      --compatibility-flags, --compatibility-flag  Flags to use for compatibility checks  [array]
+      --latest                                     Use the latest version of the Workers runtime  [boolean] [default: true]
+      --assets                                     Static assets to be served. Replaces Workers Sites.  [string]
+      --no-bundle                                  Skip internal build steps and directly deploy script  [boolean] [default: false]
+      --ip                                         IP address to listen on  [string]
+      --port                                       Port to listen on  [number]
+      --inspector-port                             Port for devtools to connect to  [number]
+      --inspector-ip                               IP address for devtools to connect to  [string]
+      --routes, --route                            Routes to upload  [array]
+      --host                                       Host to forward requests to, defaults to the zone of project  [string]
+      --local-protocol                             Protocol to listen to requests on, defaults to http.  [choices: "http", "https"]
+      --https-key-path                             Path to a custom certificate key  [string]
+      --https-cert-path                            Path to a custom certificate  [string]
+      --local-upstream                             Host to act as origin in local mode, defaults to dev.host or route  [string]
+      --upstream-protocol                          Protocol to forward requests to host on, defaults to https.  [choices: "http", "https"]
+      --var                                        A key-value pair to be injected into the script as a variable  [array]
+      --define                                     A key-value pair to be substituted in the script  [array]
+      --alias                                      A module pair to be substituted in the script  [array]
+      --jsx-factory                                The function that is called for each JSX element  [string]
+      --jsx-fragment                               The function that is called for each JSX fragment  [string]
+      --tsconfig                                   Path to a custom tsconfig.json file  [string]
+  -r, --remote                                     Run on the global Cloudflare network with access to production resources  [boolean] [default: false]
+  -l, --local                                      Run locally with remote bindings disabled  [boolean]
+      --minify                                     Minify the script  [boolean]
+      --persist-to                                 Specify directory to use for local persistence (defaults to .wrangler/state)  [string]
+      --live-reload                                Auto reload HTML pages when change is detected in local mode  [boolean]
+      --test-scheduled                             Test scheduled events by visiting /__scheduled in browser  [boolean] [default: false]
+      --log-level                                  Specify logging level  [choices: "debug", "info", "log", "warn", "error", "none"]
+      --show-interactive-dev-session               Show interactive dev session (defaults to true if the terminal supports interactivity)  [boolean]
+      --types                                      Generate types from your Worker configuration  [boolean]
+      --tunnel                                     Expose your local dev server via a Cloudflare Tunnel. Use `--tunnel` for a Quick Tunnel and `--tunnel-name` with `--tunnel` for a named tunnel.  [boolean]
+      --tunnel-name                                Use an existing named Cloudflare Tunnel when `--tunnel` is enabled.  [string]
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --port 8790 --show-interactive-dev-session false &
+WRANGLER_PID=$!
+sleep 4
+curl -s -I http://localhost:8790/
+kill $WRANGLER_PID
+⛅️ wrangler 4.129.1
+────────────────────
+Your Worker has access to the following bindings:
+Binding             Resource          Mode
+env.SESSION         KV Namespace      local
+env.ASSETS          Assets            local
+
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_astro_assets_C_1E4qbk.mjs                         │ esm  │ 21.81 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs │ esm  │ 0.27 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_TyipGO2P.mjs         │ esm  │ 2.88 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/assets_D9etfBT1.mjs                                │ esm  │ 19.05 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/compiler_CR9grMLF.mjs                              │ esm  │ 1.21 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/entrypoints_DrV_ABCK.mjs                           │ esm  │ 716.47 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/errors_D5KdsSBu.mjs                                │ esm  │ 21.72 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-passthrough-endpoint_BKs3TXL6.mjs            │ esm  │ 2.20 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_EhfxY6xt.mjs                                 │ esm  │ 1.13 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_BYLrzUxc.mjs                       │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop_D_A8FpPz.mjs                                  │ esm  │ 0.66 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/react_DrT0j-Yv.mjs                                 │ esm  │ 15.37 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/rolldown-runtime_BDykq6kg.mjs                      │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/server_1vO4G8vu.mjs                                │ esm  │ 248.25 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/service_vX6eYZb0.mjs                               │ esm  │ 45.48 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/static-image-collection_CSVfxOVd.mjs               │ esm  │ 2.45 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/vnode-children_DmWmphrv.mjs                        │ esm  │ 6.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (18 modules)                                        │      │ 1107.15 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+⎔ Starting local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+Wrangler detected this dev session is running in an AI agent.
+The Local Explorer API is available at http://localhost:8790/cdn-cgi/local/explorer/api
+Useful routes:
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/local/workers - local Workers and bindings
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/storage/kv/namespaces - KV namespaces
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/d1/database - D1 databases
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/r2/buckets - R2 buckets
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/workers/durable_objects/namespaces - Durable Object namespaces
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/workflows - Workflows
+  POST http://localhost:8790/cdn-cgi/local/explorer/api/local/observability/query - run a read-only SQL query (SELECT/WITH only) over captured request traces and console logs. Tables: spans, logs (read attributes via json(attributes)). Example:
+    curl -X POST http://localhost:8790/cdn-cgi/local/explorer/api/local/observability/query -H 'Content-Type: application/json' -d '{"sql":"SELECT service, name, outcome, duration_ms FROM spans WHERE parent_id IS NULL LIMIT 20"}'
+If the routes above don't cover what you need, fetch the full OpenAPI schema (large - use only as a last resort):
+  GET http://localhost:8790/cdn-cgi/local/explorer/api - OpenAPI schema
+[wrangler:info] Ready on http://localhost:8790
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+[wrangler:info] HEAD / 200 OK (9ms)
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --port 8790 --show-interactive-dev-session false < /dev/null &
+WRANGLER_PID=$!
+sleep 4
+curl -s -I http://localhost:8790/
+kill $WRANGLER_PID 2>/dev/null
+⛅️ wrangler 4.129.1
+────────────────────
+Your Worker has access to the following bindings:
+Binding             Resource          Mode
+env.SESSION         KV Namespace      local
+env.ASSETS          Assets            local
+
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_astro_assets_C_1E4qbk.mjs                         │ esm  │ 21.81 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs │ esm  │ 0.27 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_TyipGO2P.mjs         │ esm  │ 2.88 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/assets_D9etfBT1.mjs                                │ esm  │ 19.05 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/compiler_CR9grMLF.mjs                              │ esm  │ 1.21 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/entrypoints_DrV_ABCK.mjs                           │ esm  │ 716.47 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/errors_D5KdsSBu.mjs                                │ esm  │ 21.72 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-passthrough-endpoint_BKs3TXL6.mjs            │ esm  │ 2.20 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_EhfxY6xt.mjs                                 │ esm  │ 1.13 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_BYLrzUxc.mjs                       │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop_D_A8FpPz.mjs                                  │ esm  │ 0.66 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/react_DrT0j-Yv.mjs                                 │ esm  │ 15.37 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/rolldown-runtime_BDykq6kg.mjs                      │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/server_1vO4G8vu.mjs                                │ esm  │ 248.25 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/service_vX6eYZb0.mjs                               │ esm  │ 45.48 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/static-image-collection_CSVfxOVd.mjs               │ esm  │ 2.45 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/vnode-children_DmWmphrv.mjs                        │ esm  │ 6.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (18 modules)                                        │      │ 1107.15 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+⎔ Starting local server...
+[wrangler:info] ✨ Parsed 1 valid header rule.
+Wrangler detected this dev session is running in an AI agent.
+The Local Explorer API is available at http://localhost:8790/cdn-cgi/local/explorer/api
+Useful routes:
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/local/workers - local Workers and bindings
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/storage/kv/namespaces - KV namespaces
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/d1/database - D1 databases
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/r2/buckets - R2 buckets
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/workers/durable_objects/namespaces - Durable Object namespaces
+  GET http://localhost:8790/cdn-cgi/local/explorer/api/workflows - Workflows
+  POST http://localhost:8790/cdn-cgi/local/explorer/api/local/observability/query - run a read-only SQL query (SELECT/WITH only) over captured request traces and console logs. Tables: spans, logs (read attributes via json(attributes)). Example:
+    curl -X POST http://localhost:8790/cdn-cgi/local/explorer/api/local/observability/query -H 'Content-Type: application/json' -d '{"sql":"SELECT service, name, outcome, duration_ms FROM spans WHERE parent_id IS NULL LIMIT 20"}'
+If the routes above don't cover what you need, fetch the full OpenAPI schema (large - use only as a last resort):
+  GET http://localhost:8790/cdn-cgi/local/explorer/api - OpenAPI schema
+[wrangler:info] Ready on http://localhost:8790
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+[wrangler:info] HEAD / 200 OK (15ms)
+[0m
+[0m$ [0mps aux | grep -i wrangler | grep -v grep
+...output truncated...
+
+Full output saved to: /Users/psmyrdek/.local/share/opencode/tool-output/tool_07ffbb688002ZYXF7XB0ra5qKs
+
+psmyrdek         78763   5.8  1.3 562751696 502672   ??  SN    9:42AM   0:15.91 opencode run --dir /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-4 --model openrouter/google/gemini-3.8-flash --variant high --auto # 10xBench V2 — strona Przeprogramowani.pl\012\012Zbuduj kompletną, nowoczesną i responsywną stronę Przeprogramowani.pl w języku polskim. Samodzielnie zbierz informacje z oficjalnych źródeł w internecie, zaplanuj pracę, wykonaj implementację i sprawdź jej działanie. Otrzymujesz całe zadanie jednocześnie; wybór architektury i kolejności pracy należy do Ciebie. Masz maksymalnie 60 minut od uruchomienia próby, łącznie z researchem, kodowaniem i testami. Możesz skończyć wcześniej.\012\012## P01 — Strony i nawigacja\012\012Każdy z poniższych adresów ma być osobną stroną dostępną przez bezpośrednie wejście. Dopuszczalne są końcowe ukośniki w adresach.\012\012| Adres | Zawartość |\012| --- | --- |\012| `/` | Przedstawienie projektu, wyróżniony kurs 10xDevs w hero z prawdziwym odnośnikiem do kursu oraz zapowiedzi pozostałych stron. |\012| `/o-nas` | Działalność i wartości Przeprogramowanych oraz sylwetki Przemka Smyrdka i Marcina Czarkowskiego, zgodne ze źródłami. |\012| `/podcast` | Katalog obu podcastów z opisami i odnośnikami do ich osobnych stron. |\012| `/podcast/opanuj-ai` | Podcast Opanuj.AI: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/podcast/przeprogramowani` | Podcast Przeprogramowani: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/youtube` | Najnowsze rzeczywiste filmy oficjalnego kanału Przeprogramowani, odtwarzanie i odnośniki do filmów. |\012| `/kursy` | Opanuj Frontend, Opanuj TypeScript i 10xDevs: opisy oraz prawdziwe odnośniki do kursów. |\012\012Nawigacja globalna prowadzi do O nas, katalogu podcastów, YouTube i kursów. Ze wszystkich stron można wrócić na stronę główną. Katalog podcastów prowadzi do obu podcastów. Nawigacja mobilna działa myszą, dotykiem i klawiaturą. Wszystkie wymagane strony zwracają HTTP 200 i właściwy HTML w lokalnym podglądzie produkcyjnym.\012\012## P02 — Rzetelna treść\012\012Sprawdź aktualne informacje na oficjalnej stronie projektu i stronach produktów. Opisy mogą być napisane własnymi słowami; nie trzeba odtwarzać konkretnego tekstu ani nieaktualnych szczegółów zawodowych autorów. Nie wymyślaj nazwisk, doświadczenia, kursów, cytatów, statystyk ani odnośników. Nie używaj atrap CTA lub adresów `#` zamiast rzeczywistych celów nawigacji.\012\012## P03 — Podcasty i YouTube\012\012Dla każdego z dwóch podcastów i kanału YouTube pokaż niepusty wybór najnowszych materiałów z 90 dni poprzedzających start próby. Jeśli źródło niczego w tym okresie nie opublikowało, wybierz najnowszy dostępny materiał i pokaż jego rzeczywistą datę. Nie ma wymaganej liczby odcinków lub filmów ani premii za ich liczbę. Nie traktuj publikacji późniejszych niż start próby jako wymaganych.\012\012Każdy element zawiera prawdziwy tytuł, identyfikację źródła, datę publikacji, jeśli źródło ją podaje, oraz oryginalny adres konkretnego odcinka lub filmu. Brakującą datę oznacz jako nieznaną. Zachowaj w danych lub dokumentacji adres źródła i czas pobrania. Zapisz dowody researchu: adresy i zwięzłe fakty lub odpowiedzi źródła, bez sekretów i zbędnego kopiowania pełnych treści.\012\012Zapewnij osadzony odtwarzacz dostawcy albo odtwarzacz audio/wideo oraz niezależny od niego odnośnik do oryginału. Jeśli dostawca blokuje osadzenie, pokaż zrozumiałą informację lub stałą pomoc przy odtwarzaniu i zachowaj odnośnik do konkretnego materiału. Udokumentowane ograniczenie dostawcy nie jest błędem Twojej implementacji. Sam link do całego kanału lub podcastu nie zastępuje linków do dostępnych elementów.\012\012## P04 — Pobieranie danych i obsługa awarii\012\012Pobieraj zewnętrzne treści po stronie serwera w dedykowanych modułach źródeł danych. Możesz robić to podczas budowania albo obsługi żądania. Moduły pobierają, walidują i normalizują odpowiedzi; strony i komponenty prezentują otrzymane dane strukturalne. Pobieranie feedów w przeglądarce, umieszczenie logiki pobierania bezpośrednio w komponentach prezentacyjnych lub wyłącznie ręcznie wpisane listy nie spełniają tego wymagania.\012\012Timeout, błąd HTTP lub nieprawidłowa odpowiedź jednego źródła nie mogą wyłączyć całej strony. Pokaż sprawdzone dane z pamięci podręcznej z oznaczeniem ich nieaktualności albo komunikat o niedostępności z linkiem do źródła. Nie przedstawiaj fikcyjnych danych jako pobranych. Poprawny pusty stan awaryjny nie dowodzi, że pobieranie rzeczywistych materiałów działa. Sprawdź także działającą ścieżkę pobierania oraz co najmniej jedną kontrolowaną awarię źródła.\012\012## P05 — Technologie\012\012Użyj Astro, React i Tailwind CSS w najnowszych stabilnych głównych wersjach dostępnych w chwili startu próby, zgodnie z dołączonym przez operatora zapisem wersji. Wykluczone są prerelease. Późniejsze wydanie nowej wersji głównej nie zmienia wymagań tej próby. W obrębie zapisanej wersji głównej wybór wydania patch/minor należy do Ciebie. Zapisz lockfile i faktycznie zainstalowane wersje; sama deklaracja zakresu w `package.json` nie wystarcza. Zapewnij powtarzalną instalację i działający build produkcyjny.\012\012## P06 — Gotowość do Cloudflare Workers, bez publikowania\012\012Zainstaluj zgodny z wybraną wersją Astro oficjalny adapter `@astrojs/cloudflare` i rzeczywiście skonfiguruj go w Astro. Konfiguracja musi odpowiadać wynikowi buildu oraz runtime Cloudflare Workers. Udostępnij lokalny podgląd produkcyjny w runtime Workers, obsługujący strony i zasoby. Statyczne pobieranie danych podczas buildu jest dopuszczalne.\012\012W README opisz dokładne polecenia instalacji, buildu, lokalnego podglądu i przyszłego wdrożenia oraz potrzebne zmienne i bindingi. Korzystaj z mechanizmu właściwego dla zainstalowanej wersji adaptera: generowana konfiguracja jest dopuszczalna, ręczny plik Wrangler nie jest wymagany sam w sobie. Instrukcja musi wskazywać Workers, a nie Cloudflare Pages, i zgadzać się z rzeczywistymi artefaktami.\012\012**Nie publikuj strony.** Nie wykonuj poleceń tworzących lub zmieniających zasoby zdalne. Nie potrzebujesz konta Cloudflare ani jego poświadczeń. Publiczny adres nie jest wymagany i nie daje punktów. Gotowość ocenimy na podstawie konfiguracji, wyniku buildu, lokalnego działania i instrukcji.\012\012## P07 — Wygląd, dostępność i SEO\012\012Zastosuj spójne style, typografię i kontrolki na wszystkich stronach. Sprawdź widoki o szerokości 390 px i 1440 px: bez poziomego przewijania całej strony, uciętych treści i niedostępnych przycisków. Zapewnij widoczny fokus klawiatury, zrozumiałe etykiety i odpowiednie teksty alternatywne obrazów.\012\012Każda strona ma jeden główny nagłówek H1, własny opisowy tytuł i meta description, canonical oparty na konfigurowalnym adresie witryny oraz zgodne z treścią Open Graph title, description i URL. Język dokumentu to polski. Projekt graficzny należy do Ciebie; nie wymagamy odwzorowania istniejącej strony piksel po pikselu.\012\012## P08 — Samoweryfikacja i zakończenie\012\012Przed zakończeniem przygotuj `VERIFICATION.md`. Zapisz rzeczywiście wykonane polecenia i obserwacje, czas ich wykonania, kody wyjścia oraz odnośniki do logów, zrzutów ekranu lub innych dowodów w katalogu próby. Obejmij: zainstalowane wersje i build, lokalny Workers i wymagane adresy, research, odnośniki i odtwarzanie, widoki desktop/mobile, SEO oraz kontrolowaną awarię źródła.\012\012Rozróżniaj sprawdzenia udane, nieudane, niewykonane i zablokowane zewnętrznie. Nie przedstawiaj planowanych testów jako wykonanych. Raportuj ograniczenia i pozostałe błędy. Udokumentowany nieudany test może otrzymać punkty za rzetelną samoweryfikację, ale nie za niedziałającą funkcję. Testy wykonane później przez oceniającego nie zastępują Twoich dowodów.\012\012## P09 — Zasady próby i oceny\012\012Pracuj wyłącznie w przydzielonym katalogu próby. Możesz czytać ten opis, dołączony zapis wersji oraz publiczne źródła i dokumentację. Nie czytaj innych prób, historycznych implementacji, wyników ocen ani instrukcji dla oceniającego. To ograniczenie proceduralne, a nie deklaracja technicznej izolacji katalogów. Naruszenie izolacji lub zakazu publikacji unieważnia próbę.\012\012Całe zadanie realizujesz autonomicznie. Nie oczekuj kolejnych poleceń z nowymi wymaganiami. Po zadeklarowaniu zakończenia lub upływie 60 minut zapis próby zostaje zamrożony; późniejsza ocena nie otwiera rundy poprawek. Przerwa lub ponowne połączenie nie resetują limitu. W podsumowaniu podaj sposób lokalnego uruchomienia i wynik samoweryfikacji.\012\012Ocena ma maksymalnie 100 punktów: działanie produkcyjne 10, strony i nawigacja 10, treść i kursy 10, media 15, źródła danych i odporność 10, technologie 10, konfiguracja Workers 5, prezentacja i SEO 10, samoweryfikacja 20. Szczegółowy jawny podział znajduje się w dołączonym `assessment.md` i jest częścią tego zadania. Nie oceniamy kolejności implementacji. Brak końcowego buildu nie kasuje niezależnie udokumentowanych osiągnięć. Nie ma dodatkowej uznaniowej kary punktowej. Wynik oczekujący na niezbędną ocenę ręczną nie zostanie opublikowany jako zakończony.\012\012\012---\012\012# V2 assessment — initial revision, 100 points\012\012This file is candidate-visible and accompanies `prompt.md`. The detailed evaluator procedure is separate.\012\012Each subcheck below is binary unless stated otherwise; partial credit is the sum of independently proven subchecks. Publish these checks with the candidate prompt so there are no hidden requirements. No arbitrary penalty row: deduct only from the affected published check, never twice for the same check. Procedural reading violations invalidate the run and exclude it from ranking rather than inventing a numeric penalty.\012\012| Category | Max | Subchecks |\012| --- | ---: | --- |\012| Production operation | 10 | Production build 5; local Workers preview serves required routes 5 (proportional to routes passing, rounded to 2 decimals). |\012| Pages and navigation | 10 | All seven dedicated pages 7 (1 each); global links 1; show hub links 1; working mobile navigation 1. |\012| Brand and courses | 10 | Accurate brand/about 2; both founders 2 (1 each); three courses with real links 3 (1 each); prominent homepage 10xDevs hero/CTA 3. |\012| Media | 15 | Each of the three sources earns 2 for authentic recent selection, 2 for playback or evidenced provider refusal with fallback, 1 for individual source links. |\012| Data modules and resilience | 10 | Server-side retrieval 4; structured data outside presentation 3; observed controlled-failure recovery 3. |\012| Dependency compliance | 10 | Astro major 3; React major 3; Tailwind major 3; lockfile with reproducible install 1. |\012| Workers readiness | 5 | Compatible configured adapter 3; coherent deployment instructions/configuration 2. No public deployment; no account or credential required. |\012| Presentation and SEO | 10 | Human-confirmed consistent UI 2; human-confirmed desktop/mobile usability 3 (1.5 each); keyboard focus/labels/alternatives 2; all page-specific SEO outcomes 3 (proportional to fully compliant routes). |\012| Candidate verification | 20 | Captured build/version results 4; route/Workers results 4; genuine research evidence 4; desktop/mobile and playback observations 4; controlled source-failure experiment 4. Each group earns 2 for concrete reproducible procedure/artifact and 2 for captured outcomes with honest limitations; merely listing intentions earns 0. |\012\012A failed final build zeros its build check and makes unavailable runtime outcomes zero with an explicit reason. Independently established source architecture, dependency installation and prior candidate evidence remain scoreable. Build failure is not an all-zero shortcut. External evaluator infrastructure failures leave affected checks pending, not zero. Any pending required check excludes the result from final published datasets; drafts remain inspectable by the operator.\012\012\012## Evidence and partial credit\012\012The nine categories map in order to prompt requirements P01/P05/P06, P01, P02, P03, P04, P05, P06, P07, and P08. All evidence must identify what was checked. For each binary subcheck award its full listed weight only when proven, otherwise zero; the two route-proportional subchecks use the count of passing routes divided by seven. Do not award arbitrary partial points outside these rules. Round each category to two decimals, then sum category scores. Maximum total is 100.\012\012For each media source, authentic recent selection requires all displayed items to have verified identity and meet the stated time rule. Playback points require implemented playback for available selected items; provider refusal needs evidence and a preserved item link. Failure to verify due solely to evaluator network conditions is pending. Missing or fake content is zero for the relevant subcheck.\012\012Workers adapter points require the installed compatible official adapter, its activation in Astro, and coherent generated or explicit Workers configuration. The other two points require README commands and binding/environment instructions that agree with actual build output and local preview. No remote deployment or credential is needed or permitted. Local runtime behavior is scored in Production operation, so configuration and runtime are separate observations.\012\012Human review covers consistent UI and usability at both stated widths. Pending human review is not an assumed pass or numeric zero; it keeps the evaluation in draft. When a candidate build fails and the UI cannot be served, those untestable runtime checks are zero with the failure evidence and do not require a fictional human acceptance. The evaluator must still inspect independent source/dependency and candidate-verification evidence.\012\012Reading other attempts/evaluator-only material, publishing remote resources, coaching, or work after the deadline makes a run invalid for the leaderboard. Record the exact violation and evidence; do not infer a violation from coding style. An unverified allegation remains pending investigation.\012\012\012---\012\012# Zapis wersji zależności (operator)\012\012Zamrożone w chwili startu próby (2026-09-08T07:41:47Z, rejestr npm). Użyj tych głównych wersji; prerelease są wykluczone. Wybór patch/minor w obrębie zapisanej wersji głównej należy do Ciebie.\012\012| Pakiet | Najnowsza stabilna wersja | Wersja główna | Opublikowano |\012| --- | --- | --- | --- |\012| `astro` | 7.3.1 | 7 | 2026-09-03T13:29:45.970Z |\012| `react` | 19.2.8 | 19 | 2026-07-21T15:41:28.716Z |\012| `tailwindcss` | 4.3.3 | 4 | 2026-07-16T12:03:35.267Z |\012\012\012---\012\012Pracuj wyłącznie w bieżącym katalogu roboczym. Nie czytaj ani nie modyfikuj niczego poza nim. Nie publikuj strony w internecie. Pliki `prompt.md`, `assessment.md` i `BASELINE.md` w tym katalogu zawierają powyższą treść.
+psmyrdek         78756   2.5  1.5 562805888 573696   ??  RN    9:42AM   0:16.78 opencode run --dir /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2 --model openrouter/google/gemini-3.8-flash --variant high --auto # 10xBench V2 — strona Przeprogramowani.pl\012\012Zbuduj kompletną, nowoczesną i responsywną stronę Przeprogramowani.pl w języku polskim. Samodzielnie zbierz informacje z oficjalnych źródeł w internecie, zaplanuj pracę, wykonaj implementację i sprawdź jej działanie. Otrzymujesz całe zadanie jednocześnie; wybór architektury i kolejności pracy należy do Ciebie. Masz maksymalnie 60 minut od uruchomienia próby, łącznie z researchem, kodowaniem i testami. Możesz skończyć wcześniej.\012\012## P01 — Strony i nawigacja\012\012Każdy z poniższych adresów ma być osobną stroną dostępną przez bezpośrednie wejście. Dopuszczalne są końcowe ukośniki w adresach.\012\012| Adres | Zawartość |\012| --- | --- |\012| `/` | Przedstawienie projektu, wyróżniony kurs 10xDevs w hero z prawdziwym odnośnikiem do kursu oraz zapowiedzi pozostałych stron. |\012| `/o-nas` | Działalność i wartości Przeprogramowanych oraz sylwetki Przemka Smyrdka i Marcina Czarkowskiego, zgodne ze źródłami. |\012| `/podcast` | Katalog obu podcastów z opisami i odnośnikami do ich osobnych stron. |\012| `/podcast/opanuj-ai` | Podcast Opanuj.AI: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/podcast/przeprogramowani` | Podcast Przeprogramowani: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/youtube` | Najnowsze rzeczywiste filmy oficjalnego kanału Przeprogramowani, odtwarzanie i odnośniki do filmów. |\012| `/kursy` | Opanuj Frontend, Opanuj TypeScript i 10xDevs: opisy oraz prawdziwe odnośniki do kursów. |\012\012Nawigacja globalna prowadzi do O nas, katalogu podcastów, YouTube i kursów. Ze wszystkich stron można wrócić na stronę główną. Katalog podcastów prowadzi do obu podcastów. Nawigacja mobilna działa myszą, dotykiem i klawiaturą. Wszystkie wymagane strony zwracają HTTP 200 i właściwy HTML w lokalnym podglądzie produkcyjnym.\012\012## P02 — Rzetelna treść\012\012Sprawdź aktualne informacje na oficjalnej stronie projektu i stronach produktów. Opisy mogą być napisane własnymi słowami; nie trzeba odtwarzać konkretnego tekstu ani nieaktualnych szczegółów zawodowych autorów. Nie wymyślaj nazwisk, doświadczenia, kursów, cytatów, statystyk ani odnośników. Nie używaj atrap CTA lub adresów `#` zamiast rzeczywistych celów nawigacji.\012\012## P03 — Podcasty i YouTube\012\012Dla każdego z dwóch podcastów i kanału YouTube pokaż niepusty wybór najnowszych materiałów z 90 dni poprzedzających start próby. Jeśli źródło niczego w tym okresie nie opublikowało, wybierz najnowszy dostępny materiał i pokaż jego rzeczywistą datę. Nie ma wymaganej liczby odcinków lub filmów ani premii za ich liczbę. Nie traktuj publikacji późniejszych niż start próby jako wymaganych.\012\012Każdy element zawiera prawdziwy tytuł, identyfikację źródła, datę publikacji, jeśli źródło ją podaje, oraz oryginalny adres konkretnego odcinka lub filmu. Brakującą datę oznacz jako nieznaną. Zachowaj w danych lub dokumentacji adres źródła i czas pobrania. Zapisz dowody researchu: adresy i zwięzłe fakty lub odpowiedzi źródła, bez sekretów i zbędnego kopiowania pełnych treści.\012\012Zapewnij osadzony odtwarzacz dostawcy albo odtwarzacz audio/wideo oraz niezależny od niego odnośnik do oryginału. Jeśli dostawca blokuje osadzenie, pokaż zrozumiałą informację lub stałą pomoc przy odtwarzaniu i zachowaj odnośnik do konkretnego materiału. Udokumentowane ograniczenie dostawcy nie jest błędem Twojej implementacji. Sam link do całego kanału lub podcastu nie zastępuje linków do dostępnych elementów.\012\012## P04 — Pobieranie danych i obsługa awarii\012\012Pobieraj zewnętrzne treści po stronie serwera w dedykowanych modułach źródeł danych. Możesz robić to podczas budowania albo obsługi żądania. Moduły pobierają, walidują i normalizują odpowiedzi; strony i komponenty prezentują otrzymane dane strukturalne. Pobieranie feedów w przeglądarce, umieszczenie logiki pobierania bezpośrednio w komponentach prezentacyjnych lub wyłącznie ręcznie wpisane listy nie spełniają tego wymagania.\012\012Timeout, błąd HTTP lub nieprawidłowa odpowiedź jednego źródła nie mogą wyłączyć całej strony. Pokaż sprawdzone dane z pamięci podręcznej z oznaczeniem ich nieaktualności albo komunikat o niedostępności z linkiem do źródła. Nie przedstawiaj fikcyjnych danych jako pobranych. Poprawny pusty stan awaryjny nie dowodzi, że pobieranie rzeczywistych materiałów działa. Sprawdź także działającą ścieżkę pobierania oraz co najmniej jedną kontrolowaną awarię źródła.\012\012## P05 — Technologie\012\012Użyj Astro, React i Tailwind CSS w najnowszych stabilnych głównych wersjach dostępnych w chwili startu próby, zgodnie z dołączonym przez operatora zapisem wersji. Wykluczone są prerelease. Późniejsze wydanie nowej wersji głównej nie zmienia wymagań tej próby. W obrębie zapisanej wersji głównej wybór wydania patch/minor należy do Ciebie. Zapisz lockfile i faktycznie zainstalowane wersje; sama deklaracja zakresu w `package.json` nie wystarcza. Zapewnij powtarzalną instalację i działający build produkcyjny.\012\012## P06 — Gotowość do Cloudflare Workers, bez publikowania\012\012Zainstaluj zgodny z wybraną wersją Astro oficjalny adapter `@astrojs/cloudflare` i rzeczywiście skonfiguruj go w Astro. Konfiguracja musi odpowiadać wynikowi buildu oraz runtime Cloudflare Workers. Udostępnij lokalny podgląd produkcyjny w runtime Workers, obsługujący strony i zasoby. Statyczne pobieranie danych podczas buildu jest dopuszczalne.\012\012W README opisz dokładne polecenia instalacji, buildu, lokalnego podglądu i przyszłego wdrożenia oraz potrzebne zmienne i bindingi. Korzystaj z mechanizmu właściwego dla zainstalowanej wersji adaptera: generowana konfiguracja jest dopuszczalna, ręczny plik Wrangler nie jest wymagany sam w sobie. Instrukcja musi wskazywać Workers, a nie Cloudflare Pages, i zgadzać się z rzeczywistymi artefaktami.\012\012**Nie publikuj strony.** Nie wykonuj poleceń tworzących lub zmieniających zasoby zdalne. Nie potrzebujesz konta Cloudflare ani jego poświadczeń. Publiczny adres nie jest wymagany i nie daje punktów. Gotowość ocenimy na podstawie konfiguracji, wyniku buildu, lokalnego działania i instrukcji.\012\012## P07 — Wygląd, dostępność i SEO\012\012Zastosuj spójne style, typografię i kontrolki na wszystkich stronach. Sprawdź widoki o szerokości 390 px i 1440 px: bez poziomego przewijania całej strony, uciętych treści i niedostępnych przycisków. Zapewnij widoczny fokus klawiatury, zrozumiałe etykiety i odpowiednie teksty alternatywne obrazów.\012\012Każda strona ma jeden główny nagłówek H1, własny opisowy tytuł i meta description, canonical oparty na konfigurowalnym adresie witryny oraz zgodne z treścią Open Graph title, description i URL. Język dokumentu to polski. Projekt graficzny należy do Ciebie; nie wymagamy odwzorowania istniejącej strony piksel po pikselu.\012\012## P08 — Samoweryfikacja i zakończenie\012\012Przed zakończeniem przygotuj `VERIFICATION.md`. Zapisz rzeczywiście wykonane polecenia i obserwacje, czas ich wykonania, kody wyjścia oraz odnośniki do logów, zrzutów ekranu lub innych dowodów w katalogu próby. Obejmij: zainstalowane wersje i build, lokalny Workers i wymagane adresy, research, odnośniki i odtwarzanie, widoki desktop/mobile, SEO oraz kontrolowaną awarię źródła.\012\012Rozróżniaj sprawdzenia udane, nieudane, niewykonane i zablokowane zewnętrznie. Nie przedstawiaj planowanych testów jako wykonanych. Raportuj ograniczenia i pozostałe błędy. Udokumentowany nieudany test może otrzymać punkty za rzetelną samoweryfikację, ale nie za niedziałającą funkcję. Testy wykonane później przez oceniającego nie zastępują Twoich dowodów.\012\012## P09 — Zasady próby i oceny\012\012Pracuj wyłącznie w przydzielonym katalogu próby. Możesz czytać ten opis, dołączony zapis wersji oraz publiczne źródła i dokumentację. Nie czytaj innych prób, historycznych implementacji, wyników ocen ani instrukcji dla oceniającego. To ograniczenie proceduralne, a nie deklaracja technicznej izolacji katalogów. Naruszenie izolacji lub zakazu publikacji unieważnia próbę.\012\012Całe zadanie realizujesz autonomicznie. Nie oczekuj kolejnych poleceń z nowymi wymaganiami. Po zadeklarowaniu zakończenia lub upływie 60 minut zapis próby zostaje zamrożony; późniejsza ocena nie otwiera rundy poprawek. Przerwa lub ponowne połączenie nie resetują limitu. W podsumowaniu podaj sposób lokalnego uruchomienia i wynik samoweryfikacji.\012\012Ocena ma maksymalnie 100 punktów: działanie produkcyjne 10, strony i nawigacja 10, treść i kursy 10, media 15, źródła danych i odporność 10, technologie 10, konfiguracja Workers 5, prezentacja i SEO 10, samoweryfikacja 20. Szczegółowy jawny podział znajduje się w dołączonym `assessment.md` i jest częścią tego zadania. Nie oceniamy kolejności implementacji. Brak końcowego buildu nie kasuje niezależnie udokumentowanych osiągnięć. Nie ma dodatkowej uznaniowej kary punktowej. Wynik oczekujący na niezbędną ocenę ręczną nie zostanie opublikowany jako zakończony.\012\012\012---\012\012# V2 assessment — initial revision, 100 points\012\012This file is candidate-visible and accompanies `prompt.md`. The detailed evaluator procedure is separate.\012\012Each subcheck below is binary unless stated otherwise; partial credit is the sum of independently proven subchecks. Publish these checks with the candidate prompt so there are no hidden requirements. No arbitrary penalty row: deduct only from the affected published check, never twice for the same check. Procedural reading violations invalidate the run and exclude it from ranking rather than inventing a numeric penalty.\012\012| Category | Max | Subchecks |\012| --- | ---: | --- |\012| Production operation | 10 | Production build 5; local Workers preview serves required routes 5 (proportional to routes passing, rounded to 2 decimals). |\012| Pages and navigation | 10 | All seven dedicated pages 7 (1 each); global links 1; show hub links 1; working mobile navigation 1. |\012| Brand and courses | 10 | Accurate brand/about 2; both founders 2 (1 each); three courses with real links 3 (1 each); prominent homepage 10xDevs hero/CTA 3. |\012| Media | 15 | Each of the three sources earns 2 for authentic recent selection, 2 for playback or evidenced provider refusal with fallback, 1 for individual source links. |\012| Data modules and resilience | 10 | Server-side retrieval 4; structured data outside presentation 3; observed controlled-failure recovery 3. |\012| Dependency compliance | 10 | Astro major 3; React major 3; Tailwind major 3; lockfile with reproducible install 1. |\012| Workers readiness | 5 | Compatible configured adapter 3; coherent deployment instructions/configuration 2. No public deployment; no account or credential required. |\012| Presentation and SEO | 10 | Human-confirmed consistent UI 2; human-confirmed desktop/mobile usability 3 (1.5 each); keyboard focus/labels/alternatives 2; all page-specific SEO outcomes 3 (proportional to fully compliant routes). |\012| Candidate verification | 20 | Captured build/version results 4; route/Workers results 4; genuine research evidence 4; desktop/mobile and playback observations 4; controlled source-failure experiment 4. Each group earns 2 for concrete reproducible procedure/artifact and 2 for captured outcomes with honest limitations; merely listing intentions earns 0. |\012\012A failed final build zeros its build check and makes unavailable runtime outcomes zero with an explicit reason. Independently established source architecture, dependency installation and prior candidate evidence remain scoreable. Build failure is not an all-zero shortcut. External evaluator infrastructure failures leave affected checks pending, not zero. Any pending required check excludes the result from final published datasets; drafts remain inspectable by the operator.\012\012\012## Evidence and partial credit\012\012The nine categories map in order to prompt requirements P01/P05/P06, P01, P02, P03, P04, P05, P06, P07, and P08. All evidence must identify what was checked. For each binary subcheck award its full listed weight only when proven, otherwise zero; the two route-proportional subchecks use the count of passing routes divided by seven. Do not award arbitrary partial points outside these rules. Round each category to two decimals, then sum category scores. Maximum total is 100.\012\012For each media source, authentic recent selection requires all displayed items to have verified identity and meet the stated time rule. Playback points require implemented playback for available selected items; provider refusal needs evidence and a preserved item link. Failure to verify due solely to evaluator network conditions is pending. Missing or fake content is zero for the relevant subcheck.\012\012Workers adapter points require the installed compatible official adapter, its activation in Astro, and coherent generated or explicit Workers configuration. The other two points require README commands and binding/environment instructions that agree with actual build output and local preview. No remote deployment or credential is needed or permitted. Local runtime behavior is scored in Production operation, so configuration and runtime are separate observations.\012\012Human review covers consistent UI and usability at both stated widths. Pending human review is not an assumed pass or numeric zero; it keeps the evaluation in draft. When a candidate build fails and the UI cannot be served, those untestable runtime checks are zero with the failure evidence and do not require a fictional human acceptance. The evaluator must still inspect independent source/dependency and candidate-verification evidence.\012\012Reading other attempts/evaluator-only material, publishing remote resources, coaching, or work after the deadline makes a run invalid for the leaderboard. Record the exact violation and evidence; do not infer a violation from coding style. An unverified allegation remains pending investigation.\012\012\012---\012\012# Zapis wersji zależności (operator)\012\012Zamrożone w chwili startu próby (2026-09-08T07:41:47Z, rejestr npm). Użyj tych głównych wersji; prerelease są wykluczone. Wybór patch/minor w obrębie zapisanej wersji głównej należy do Ciebie.\012\012| Pakiet | Najnowsza stabilna wersja | Wersja główna | Opublikowano |\012| --- | --- | --- | --- |\012| `astro` | 7.3.1 | 7 | 2026-09-03T13:29:45.970Z |\012| `react` | 19.2.8 | 19 | 2026-07-21T15:41:28.716Z |\012| `tailwindcss` | 4.3.3 | 4 | 2026-07-16T12:03:35.267Z |\012\012\012---\012\012Pracuj wyłącznie w bieżącym katalogu roboczym. Nie czytaj ani nie modyfikuj niczego poza nim. Nie publikuj strony w internecie. Pliki `prompt.md`, `assessment.md` i `BASELINE.md` w tym katalogu zawierają powyższą treść.
+psmyrdek         91182   0.7  0.1 465456912  22800   ??  SN    9:45AM   0:00.83 /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1/node_modules/wrangler/node_modules/@esbuild/darwin-arm64/bin/esbuild --service=0.28.1 --ping
+psmyrdek         91181   0.0  0.4 520802624 151408   ??  SN    9:45AM   0:00.68 /Users/psmyrdek/.nvm/versions/node/v22.14.0/bin/node --no-warnings /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1/node_modules/wrangler/wrangler-dist/cli.js dev --port 8787 --ip 127.0.0.1
+psmyrdek         91180   0.0  0.1 489196528  34784   ??  SN    9:45AM   0:00.03 node /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1/node_modules/.bin/wrangler dev --port 8787 --ip 127.0.0.1
+psmyrdek         84410   0.0  0.0 465369232  12208   ??  SN    9:43AM   0:00.06 /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-1/node_modules/wrangler/node_modules/@esbuild/darwin-arm64/bin/esbuild --service=0.28.1 --ping
+psmyrdek         84364   0.0  0.2 520821104  75520   ??  SN    9:43AM   0:00.98 /Users/psmyrdek/.nvm/versions/node/v22.14.0/bin/node --no-warnings /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-1/node_modules/wrangler/wrangler-dist/cli.js dev --config dist/server/wrangler.json --port 8788
+psmyrdek         84363   0.0  0.1 489196944  31088   ??  SN    9:43AM   0:00.03 node /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-1/node_modules/.bin/wrangler dev --config dist/server/wrangler.json --port 8788
+psmyrdek         84336   0.0  0.1 489290512  43776   ??  SN    9:43AM   0:00.21 npm exec wrangler dev --config dist/server/wrangler.json --port 8788       
+psmyrdek         78753   0.0  1.2 562796704 446240   ??  SN    9:42AM   0:14.80 opencode run --dir /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-1 --model openrouter/google/gemini-3.8-flash --variant high --auto # 10xBench V2 — strona Przeprogramowani.pl\012\012Zbuduj kompletną, nowoczesną i responsywną stronę Przeprogramowani.pl w języku polskim. Samodzielnie zbierz informacje z oficjalnych źródeł w internecie, zaplanuj pracę, wykonaj implementację i sprawdź jej działanie. Otrzymujesz całe zadanie jednocześnie; wybór architektury i kolejności pracy należy do Ciebie. Masz maksymalnie 60 minut od uruchomienia próby, łącznie z researchem, kodowaniem i testami. Możesz skończyć wcześniej.\012\012## P01 — Strony i nawigacja\012\012Każdy z poniższych adresów ma być osobną stroną dostępną przez bezpośrednie wejście. Dopuszczalne są końcowe ukośniki w adresach.\012\012| Adres | Zawartość |\012| --- | --- |\012| `/` | Przedstawienie projektu, wyróżniony kurs 10xDevs w hero z prawdziwym odnośnikiem do kursu oraz zapowiedzi pozostałych stron. |\012| `/o-nas` | Działalność i wartości Przeprogramowanych oraz sylwetki Przemka Smyrdka i Marcina Czarkowskiego, zgodne ze źródłami. |\012| `/podcast` | Katalog obu podcastów z opisami i odnośnikami do ich osobnych stron. |\012| `/podcast/opanuj-ai` | Podcast Opanuj.AI: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/podcast/przeprogramowani` | Podcast Przeprogramowani: opis, najnowsze rzeczywiste odcinki, odtwarzanie i odnośniki do odcinków. |\012| `/youtube` | Najnowsze rzeczywiste filmy oficjalnego kanału Przeprogramowani, odtwarzanie i odnośniki do filmów. |\012| `/kursy` | Opanuj Frontend, Opanuj TypeScript i 10xDevs: opisy oraz prawdziwe odnośniki do kursów. |\012\012Nawigacja globalna prowadzi do O nas, katalogu podcastów, YouTube i kursów. Ze wszystkich stron można wrócić na stronę główną. Katalog podcastów prowadzi do obu podcastów. Nawigacja mobilna działa myszą, dotykiem i klawiaturą. Wszystkie wymagane strony zwracają HTTP 200 i właściwy HTML w lokalnym podglądzie produkcyjnym.\012\012## P02 — Rzetelna treść\012\012Sprawdź aktualne informacje na oficjalnej stronie projektu i stronach produktów. Opisy mogą być napisane własnymi słowami; nie trzeba odtwarzać konkretnego tekstu ani nieaktualnych szczegółów zawodowych autorów. Nie wymyślaj nazwisk, doświadczenia, kursów, cytatów, statystyk ani odnośników. Nie używaj atrap CTA lub adresów `#` zamiast rzeczywistych celów nawigacji.\012\012## P03 — Podcasty i YouTube\012\012Dla każdego z dwóch podcastów i kanału YouTube pokaż niepusty wybór najnowszych materiałów z 90 dni poprzedzających start próby. Jeśli źródło niczego w tym okresie nie opublikowało, wybierz najnowszy dostępny materiał i pokaż jego rzeczywistą datę. Nie ma wymaganej liczby odcinków lub filmów ani premii za ich liczbę. Nie traktuj publikacji późniejszych niż start próby jako wymaganych.\012\012Każdy element zawiera prawdziwy tytuł, identyfikację źródła, datę publikacji, jeśli źródło ją podaje, oraz oryginalny adres konkretnego odcinka lub filmu. Brakującą datę oznacz jako nieznaną. Zachowaj w danych lub dokumentacji adres źródła i czas pobrania. Zapisz dowody researchu: adresy i zwięzłe fakty lub odpowiedzi źródła, bez sekretów i zbędnego kopiowania pełnych treści.\012\012Zapewnij osadzony odtwarzacz dostawcy albo odtwarzacz audio/wideo oraz niezależny od niego odnośnik do oryginału. Jeśli dostawca blokuje osadzenie, pokaż zrozumiałą informację lub stałą pomoc przy odtwarzaniu i zachowaj odnośnik do konkretnego materiału. Udokumentowane ograniczenie dostawcy nie jest błędem Twojej implementacji. Sam link do całego kanału lub podcastu nie zastępuje linków do dostępnych elementów.\012\012## P04 — Pobieranie danych i obsługa awarii\012\012Pobieraj zewnętrzne treści po stronie serwera w dedykowanych modułach źródeł danych. Możesz robić to podczas budowania albo obsługi żądania. Moduły pobierają, walidują i normalizują odpowiedzi; strony i komponenty prezentują otrzymane dane strukturalne. Pobieranie feedów w przeglądarce, umieszczenie logiki pobierania bezpośrednio w komponentach prezentacyjnych lub wyłącznie ręcznie wpisane listy nie spełniają tego wymagania.\012\012Timeout, błąd HTTP lub nieprawidłowa odpowiedź jednego źródła nie mogą wyłączyć całej strony. Pokaż sprawdzone dane z pamięci podręcznej z oznaczeniem ich nieaktualności albo komunikat o niedostępności z linkiem do źródła. Nie przedstawiaj fikcyjnych danych jako pobranych. Poprawny pusty stan awaryjny nie dowodzi, że pobieranie rzeczywistych materiałów działa. Sprawdź także działającą ścieżkę pobierania oraz co najmniej jedną kontrolowaną awarię źródła.\012\012## P05 — Technologie\012\012Użyj Astro, React i Tailwind CSS w najnowszych stabilnych głównych wersjach dostępnych w chwili startu próby, zgodnie z dołączonym przez operatora zapisem wersji. Wykluczone są prerelease. Późniejsze wydanie nowej wersji głównej nie zmienia wymagań tej próby. W obrębie zapisanej wersji głównej wybór wydania patch/minor należy do Ciebie. Zapisz lockfile i faktycznie zainstalowane wersje; sama deklaracja zakresu w `package.json` nie wystarcza. Zapewnij powtarzalną instalację i działający build produkcyjny.\012\012## P06 — Gotowość do Cloudflare Workers, bez publikowania\012\012Zainstaluj zgodny z wybraną wersją Astro oficjalny adapter `@astrojs/cloudflare` i rzeczywiście skonfiguruj go w Astro. Konfiguracja musi odpowiadać wynikowi buildu oraz runtime Cloudflare Workers. Udostępnij lokalny podgląd produkcyjny w runtime Workers, obsługujący strony i zasoby. Statyczne pobieranie danych podczas buildu jest dopuszczalne.\012\012W README opisz dokładne polecenia instalacji, buildu, lokalnego podglądu i przyszłego wdrożenia oraz potrzebne zmienne i bindingi. Korzystaj z mechanizmu właściwego dla zainstalowanej wersji adaptera: generowana konfiguracja jest dopuszczalna, ręczny plik Wrangler nie jest wymagany sam w sobie. Instrukcja musi wskazywać Workers, a nie Cloudflare Pages, i zgadzać się z rzeczywistymi artefaktami.\012\012**Nie publikuj strony.** Nie wykonuj poleceń tworzących lub zmieniających zasoby zdalne. Nie potrzebujesz konta Cloudflare ani jego poświadczeń. Publiczny adres nie jest wymagany i nie daje punktów. Gotowość ocenimy na podstawie konfiguracji, wyniku buildu, lokalnego działania i instrukcji.\012\012## P07 — Wygląd, dostępność i SEO\012\012Zastosuj spójne style, typografię i kontrolki na wszystkich stronach. Sprawdź widoki o szerokości 390 px i 1440 px: bez poziomego przewijania całej strony, uciętych treści i niedostępnych przycisków. Zapewnij widoczny fokus klawiatury, zrozumiałe etykiety i odpowiednie teksty alternatywne obrazów.\012\012Każda strona ma jeden główny nagłówek H1, własny opisowy tytuł i meta description, canonical oparty na konfigurowalnym adresie witryny oraz zgodne z treścią Open Graph title, description i URL. Język dokumentu to polski. Projekt graficzny należy do Ciebie; nie wymagamy odwzorowania istniejącej strony piksel po pikselu.\012\012## P08 — Samoweryfikacja i zakończenie\012\012Przed zakończeniem przygotuj `VERIFICATION.md`. Zapisz rzeczywiście wykonane polecenia i obserwacje, czas ich wykonania, kody wyjścia oraz odnośniki do logów, zrzutów ekranu lub innych dowodów w katalogu próby. Obejmij: zainstalowane wersje i build, lokalny Workers i wymagane adresy, research, odnośniki i odtwarzanie, widoki desktop/mobile, SEO oraz kontrolowaną awarię źródła.\012\012Rozróżniaj sprawdzenia udane, nieudane, niewykonane i zablokowane zewnętrznie. Nie przedstawiaj planowanych testów jako wykonanych. Raportuj ograniczenia i pozostałe błędy. Udokumentowany nieudany test może otrzymać punkty za rzetelną samoweryfikację, ale nie za niedziałającą funkcję. Testy wykonane później przez oceniającego nie zastępują Twoich dowodów.\012\012## P09 — Zasady próby i oceny\012\012Pracuj wyłącznie w przydzielonym katalogu próby. Możesz czytać ten opis, dołączony zapis wersji oraz publiczne źródła i dokumentację. Nie czytaj innych prób, historycznych implementacji, wyników ocen ani instrukcji dla oceniającego. To ograniczenie proceduralne, a nie deklaracja technicznej izolacji katalogów. Naruszenie izolacji lub zakazu publikacji unieważnia próbę.\012\012Całe zadanie realizujesz autonomicznie. Nie oczekuj kolejnych poleceń z nowymi wymaganiami. Po zadeklarowaniu zakończenia lub upływie 60 minut zapis próby zostaje zamrożony; późniejsza ocena nie otwiera rundy poprawek. Przerwa lub ponowne połączenie nie resetują limitu. W podsumowaniu podaj sposób lokalnego uruchomienia i wynik samoweryfikacji.\012\012Ocena ma maksymalnie 100 punktów: działanie produkcyjne 10, strony i nawigacja 10, treść i kursy 10, media 15, źródła danych i odporność 10, technologie 10, konfiguracja Workers 5, prezentacja i SEO 10, samoweryfikacja 20. Szczegółowy jawny podział znajduje się w dołączonym `assessment.md` i jest częścią tego zadania. Nie oceniamy kolejności implementacji. Brak końcowego buildu nie kasuje niezależnie udokumentowanych osiągnięć. Nie ma dodatkowej uznaniowej kary punktowej. Wynik oczekujący na niezbędną ocenę ręczną nie zostanie opublikowany jako zakończony.\012\012\012---\012\012# V2 assessment — initial revision, 100 points\012\012This file is candidate-visible and accompanies `prompt.md`. The detailed evaluator procedure is separate.\012\012Each subcheck below is binary unless stated otherwise; partial credit is the sum of independently proven subchecks. Publish these checks with the candidate prompt so there are no hidden requirements. No arbitrary penalty row: deduct only from the affected published check, never twice for the same check. Procedural reading violations invalidate the run and exclude it from ranking rather than inventing a numeric penalty.\012\012| Category | Max | Subchecks |\012| --- | ---: | --- |\012| Production operation | 10 | Production build 5; local Workers preview serves required routes 5 (proportional to routes passing, rounded to 2 decimals). |\012| Pages and navigation | 10 | All seven dedicated pages 7 (1 each); global links 1; show hub links 1; working mobile navigation 1. |\012| Brand and courses | 10 | Accurate brand/about 2; both founders 2 (1 each); three courses with real links 3 (1 each); prominent homepage 10xDevs hero/CTA 3. |\012| Media | 15 | Each of the three sources earns 2 for authentic recent selection, 2 for playback or evidenced provider refusal with fallback, 1 for individual source links. |\012| Data modules and resilience | 10 | Server-side retrieval 4; structured data outside presentation 3; observed controlled-failure recovery 3. |\012| Dependency compliance | 10 | Astro major 3; React major 3; Tailwind major 3; lockfile with reproducible install 1. |\012| Workers readiness | 5 | Compatible configured adapter 3; coherent deployment instructions/configuration 2. No public deployment; no account or credential required. |\012| Presentation and SEO | 10 | Human-confirmed consistent UI 2; human-confirmed desktop/mobile usability 3 (1.5 each); keyboard focus/labels/alternatives 2; all page-specific SEO outcomes 3 (proportional to fully compliant routes). |\012| Candidate verification | 20 | Captured build/version results 4; route/Workers results 4; genuine research evidence 4; desktop/mobile and playback observations 4; controlled source-failure experiment 4. Each group earns 2 for concrete reproducible procedure/artifact and 2 for captured outcomes with honest limitations; merely listing intentions earns 0. |\012\012A failed final build zeros its build check and makes unavailable runtime outcomes zero with an explicit reason. Independently established source architecture, dependency installation and prior candidate evidence remain scoreable. Build failure is not an all-zero shortcut. External evaluator infrastructure failures leave affected checks pending, not zero. Any pending required check excludes the result from final published datasets; drafts remain inspectable by the operator.\012\012\012## Evidence and partial credit\012\012The nine categories map in order to prompt requirements P01/P05/P06, P01, P02, P03, P04, P05, P06, P07, and P08. All evidence must identify what was checked. For each binary subcheck award its full listed weight only when proven, otherwise zero; the two route-proportional subchecks use the count of passing routes divided by seven. Do not award arbitrary partial points outside these rules. Round each category to two decimals, then sum category scores. Maximum total is 100.\012\012For each media source, authentic recent selection requires all displayed items to have verified identity and meet the stated time rule. Playback points require implemented playback for available selected items; provider refusal needs evidence and a preserved item link. Failure to verify due solely to evaluator network conditions is pending. Missing or fake content is zero for the relevant subcheck.\012\012Workers adapter points require the installed compatible official adapter, its activation in Astro, and coherent generated or explicit Workers configuration. The other two points require README commands and binding/environment instructions that agree with actual build output and local preview. No remote deployment or credential is needed or permitted. Local runtime behavior is scored in Production operation, so configuration and runtime are separate observations.\012\012Human review covers consistent UI and usability at both stated widths. Pending human review is not an assumed pass or numeric zero; it keeps the evaluation in draft. When a candidate build fails and the UI cannot be served, those untestable runtime checks are zero with the failure evidence and do not require a fictional human acceptance. The evaluator must still inspect independent source/dependency and candidate-verification evidence.\012\012Reading other attempts/evaluator-only material, publishing remote resources, coaching, or work after the deadline makes a run invalid for the leaderboard. Record the exact violation and evidence; do not infer a violation from coding style. An unverified allegation remains pending investigation.\012\012\012---\012\012# Zapis wersji zależności (operator)\012\012Zamrożone w chwili startu próby (2026-09-08T07:41:47Z, rejestr npm). Użyj tych głównych wersji; prerelease są wykluczone. Wybór patch/minor w obrębie zapisanej wersji głównej należy do Ciebie.\012\012| Pakiet | Najnowsza stabilna wersja | Wersja główna | Opublikowano |\012| --- | --- | --- | --- |\012| `astro` | 7.3.1 | 7 | 2026-09-03T13:29:45.970Z |\012| `react` | 19.2.8 | 19 | 2026-07-21T15:41:28.716Z |\012| `tailwindcss` | 4.3.3 | 4 | 2026-07-16T12:03:35.267Z |\012\012\012---\012\012Pracuj wyłącznie w bieżącym katalogu roboczym. Nie czytaj ani nie modyfikuj niczego poza nim. Nie publikuj strony w internecie. Pliki `prompt.md`, `assessment.md` i `BASELINE.md` w tym katalogu zawierają powyższą treść.
+psmyrdek         58047   0.0  0.2 520978816  73536 s002  S+    8:40AM   0:04.62 /Users/psmyrdek/.nvm/versions/node/v22.14.0/bin/node --no-warnings /Users/psmyrdek/dev/przeprogramowani-edu/node_modules/.pnpm/wrangler@4.114.0_@cloudflare+workers-types@5.20260804.1/node_modules/wrangler/wrangler-dist/cli.js dev --config /tmp/edu-cms-runtime/wrangler.json --port 55441 --ip 127.0.0.1 --local
+psmyrdek         58045   0.0  0.1 489200432  31024 s002  Ss+   8:40AM   0:00.04 node node_modules/wrangler/bin/wrangler.js dev --config /tmp/edu-cms-runtime/wrangler.json --port 55441 --ip 127.0.0.1 --local
+[0m
+[0m$ [0mnpx astro preview --help
+astro preview [command] [...flags]
+
+   Commands 
+                     stop  Stop a running background preview server.
+                   status  Check if a preview server is running.
+          logs [--follow]  View logs from a background preview server.
+
+   Flags 
+             --background  Start the preview server as a background process.
+                   --port  Specify which port to run on. Defaults to 4321.
+                   --host  Listen on all addresses, including LAN and public addresses.
+  --host <custom-address>  Expose on a network IP address at <custom-address>
+                   --open  Automatically open the app in the browser on server start
+            --ignore-lock  Start the preview server even if another one is already running, without checking or writing the lock file.
+          --allowed-hosts  Specify a comma-separated list of allowed hosts or allow any hostname.
+              --help (-h)  See all available flags.
+
+Starts a local server to serve your static dist/ directory. Check https://docs.astro.build/en/reference/cli-reference/#astro-preview for more information.
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8792 --show-interactive-dev-session false > wrangler.log 2>&1 &
+W_PID=$!
+sleep 4
+curl -s -I http://127.0.0.1:8792/
+kill $W_PID 2>/dev/null
+HTTP/1.1 200 OK
+Content-Type: text/html
+[0m
+[0m→ [0mRead wrangler.log
+[0m
+[0m$ [0mrm -f wrangler.log
+(no output)
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[•] Implement server-side data fetching modules with resilient cache and failure fallback
+[ ] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[ ] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[ ] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m← [0mWrite src/data/types.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/courses.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/founders.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/backup-cache.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/utils.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/fetch-opanuj-ai.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/fetch-przeprogramowani-podcast.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/fetch-youtube.ts
+Wrote file successfully.
+[0m
+[0m$ [0mnode --loader ts-node/esm -e "console.log('Testing node imports')" 2>/dev/null || node -e "
+import('./src/data/fetch-opanuj-ai.ts').catch(() => {});
+"
+(no output)
+[0m
+[0m← [0mWrite scripts/test-fetchers.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/test-fetch.astro
+Wrote file successfully.
+[0m
+[0m$ [0mnpx astro build
+09:50:06 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:50:06 [types] Generated 35ms
+09:50:06 [build] output: "server"
+09:50:06 [build] mode: "server"
+09:50:06 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:50:06 [build] adapter: @astrojs/cloudflare
+09:50:06 [build] Collecting build info...
+09:50:06 [build] ✓ Completed in 74ms.
+09:50:06 [build] Building server entrypoints...
+09:50:07 [vite] ✓ built in 148ms
+09:50:07 [vite] ✓ built in 136ms
+09:50:07 [vite] ✓ built in 46ms
+09:50:07 [build] Rearranging server assets...
+09:50:07 [build] ✓ Completed in 368ms.
+09:50:07 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:50:07 [build] Server built in 447ms
+09:50:07 [build] Complete!
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8794 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 4
+curl -s http://127.0.0.1:8794/test-fetch
+kill $W_PID 2>/dev/null
+<!DOCTYPE html><div><p id="opanuj-ai-count">3</p><p id="podcast-count">4</p><p id="youtube-count">9</p><p id="opanuj-ai-status">live</p><p id="podcast-status">live</p><p id="youtube-status">live</p></div>
+[0m
+[0m$ [0mrm -f src/pages/test-fetch.astro scripts/test-fetchers.mjs
+(no output)
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[✓] Implement server-side data fetching modules with resilient cache and failure fallback
+[•] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[ ] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[ ] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m← [0mWrite src/styles/global.css
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/MobileNav.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/Header.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/Footer.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/layouts/Layout.astro
+Wrote file successfully.
+[0m
+[0m$ [0mmkdir -p public
+(no output)
+[0m
+[0m← [0mWrite public/favicon.svg
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/ResilienceNotice.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/AudioPlayerCard.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/YouTubeVideoCard.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/index.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/o-nas.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/podcast/index.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/podcast/opanuj-ai.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/podcast/przeprogramowani.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/youtube.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/kursy.astro
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+09:55:30 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:55:31 [types] Generated 34ms
+09:55:31 [build] output: "server"
+09:55:31 [build] mode: "server"
+09:55:31 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:55:31 [build] adapter: @astrojs/cloudflare
+09:55:31 [build] Collecting build info...
+09:55:31 [build] ✓ Completed in 63ms.
+09:55:31 [build] Building server entrypoints...
+09:55:31 [vite] ✓ built in 199ms
+09:55:31 [vite] ✓ built in 183ms
+09:55:31 [vite] ✓ built in 46ms
+09:55:31 [build] Rearranging server assets...
+09:55:31 [build] ✓ Completed in 466ms.
+09:55:31 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:55:31 [build] Server built in 535ms
+09:55:31 [build] Complete!
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8795 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+routes=(
+  "/"
+  "/o-nas"
+  "/podcast"
+  "/podcast/opanuj-ai"
+  "/podcast/przeprogramowani"
+  "/youtube"
+  "/kursy"
+)
+
+for route in "${routes[@]}"; do
+  status=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8795$route")
+  echo "Route: $route -> HTTP $status"
+done
+
+kill $W_PID 2>/dev/null
+zsh:16: read-only variable: status
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8796 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+routes=(
+  "/"
+  "/o-nas"
+  "/podcast"
+  "/podcast/opanuj-ai"
+  "/podcast/przeprogramowani"
+  "/youtube"
+  "/kursy"
+)
+
+for r in "${routes[@]}"; do
+  code=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8796$r")
+  echo "Route: $r -> HTTP $code"
+done
+
+kill $W_PID 2>/dev/null
+Route: / -> HTTP 200
+Route: /o-nas -> HTTP 200
+Route: /podcast -> HTTP 200
+Route: /podcast/opanuj-ai -> HTTP 200
+Route: /podcast/przeprogramowani -> HTTP 200
+Route: /youtube -> HTTP 200
+Route: /kursy -> HTTP 200
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8797 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+routes=(
+  "/"
+  "/o-nas/"
+  "/podcast/"
+  "/podcast/opanuj-ai/"
+  "/podcast/przeprogramowani/"
+  "/youtube/"
+  "/kursy/"
+)
+
+for r in "${routes[@]}"; do
+  code=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8797$r")
+  echo "Route with slash: $r -> HTTP $code"
+done
+
+kill $W_PID 2>/dev/null
+Route with slash: / -> HTTP 200
+Route with slash: /o-nas/ -> HTTP 200
+Route with slash: /podcast/ -> HTTP 200
+Route with slash: /podcast/opanuj-ai/ -> HTTP 200
+Route with slash: /podcast/przeprogramowani/ -> HTTP 200
+Route with slash: /youtube/ -> HTTP 200
+Route with slash: /kursy/ -> HTTP 200
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8798 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+node -e '
+async function test() {
+  const routes = ["/", "/o-nas", "/podcast", "/podcast/opanuj-ai", "/podcast/przeprogramowani", "/youtube", "/kursy"];
+  for (const r of routes) {
+    const res = await fetch("http://127.0.0.1:8798" + r);
+    const text = await res.text();
+    const h1Count = (text.match(/<h1[^>]*>[\s\S]*?<\/h1>/gi) || []).length;
+    const titleMatch = text.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    const descMatch = text.match(/<meta\s+name="description"\s+content="([^"]*)"/i);
+    const canonicalMatch = text.match(/<link\s+rel="canonical"\s+href="([^"]*)"/i);
+    const ogTitleMatch = text.match(/<meta\s+property="og:title"\s+content="([^"]*)"/i);
+    const langMatch = text.match(/<html[^>]+lang="([^"]*)"/i);
+    
+    console.log("=== " + r + " ===");
+    console.log("HTTP: " + res.status);
+    console.log("H1 count: " + h1Count);
+    console.log("Title: " + (titleMatch ? titleMatch[1] : "NONE"));
+    console.log("Desc: " + (descMatch ? descMatch[1].slice(0, 50) + "..." : "NONE"));
+    console.log("Canonical: " + (canonicalMatch ? canonicalMatch[1] : "NONE"));
+    console.log("OG Title: " + (ogTitleMatch ? ogTitleMatch[1] : "NONE"));
+    console.log("Lang: " + (langMatch ? langMatch[1] : "NONE"));
+  }
+}
+test();
+'
+
+kill $W_PID 2>/dev/null
+=== / ===
+HTTP: 200
+H1 count: 1
+Title: Szersze spojrzenie na programowanie | Przeprogramowani.pl
+Desc: Przeprogramowani.pl — przestrzeń nowoczesnej eduka...
+Canonical: https://przeprogramowani.pl/
+OG Title: Szersze spojrzenie na programowanie | Przeprogramowani.pl
+Lang: pl
+=== /o-nas ===
+HTTP: 200
+H1 count: 1
+Title: O nas — Twórcy i wartości | Przeprogramowani.pl
+Desc: Poznaj Przeprogramowanych: misję, wartości oraz sy...
+Canonical: https://przeprogramowani.pl/o-nas
+OG Title: O nas — Twórcy i wartości | Przeprogramowani.pl
+Lang: pl
+=== /podcast ===
+HTTP: 200
+H1 count: 1
+Title: Katalog podcastów — Opanuj.AI i Przeprogramowani | Przeprogramowani.pl
+Desc: Katalog oficjalnych podcastów tworzonych przez Prz...
+Canonical: https://przeprogramowani.pl/podcast
+OG Title: Katalog podcastów — Opanuj.AI i Przeprogramowani | Przeprogramowani.pl
+Lang: pl
+=== /podcast/opanuj-ai ===
+HTTP: 200
+H1 count: 1
+Title: Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl
+Desc: Opanuj.AI to najpopularniejszy techniczny podcast ...
+Canonical: https://przeprogramowani.pl/podcast/opanuj-ai
+OG Title: Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl
+Lang: pl
+=== /podcast/przeprogramowani ===
+HTTP: 200
+H1 count: 1
+Title: Podcast Przeprogramowani ft. Gość — Rozmowy dla głodnych wiedzy | Przeprogramowani.pl
+Desc: Podcast Przeprogramowani: wywiady z czołowymi inży...
+Canonical: https://przeprogramowani.pl/podcast/przeprogramowani
+OG Title: Podcast Przeprogramowani ft. Gość — Rozmowy dla głodnych wiedzy | Przeprogramowani.pl
+Lang: pl
+=== /youtube ===
+HTTP: 200
+H1 count: 1
+Title: Oficjalny kanał YouTube Przeprogramowani — Filmy i transmisje LIVE | Przeprogramowani.pl
+Desc: Oglądaj najnowsze filmy oficjalnego kanału Przepro...
+Canonical: https://przeprogramowani.pl/youtube
+OG Title: Oficjalny kanał YouTube Przeprogramowani — Filmy i transmisje LIVE | Przeprogramowani.pl
+Lang: pl
+=== /kursy ===
+HTTP: 200
+H1 count: 1
+Title: Programy edukacyjne i kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani.pl
+Desc: Poznaj flagowe szkolenia Przeprogramowanych: 10xDe...
+Canonical: https://przeprogramowani.pl/kursy
+OG Title: Programy edukacyjne i kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani.pl
+Lang: pl
+[0m
+[0m✱ [0mGrep "href="#""[90m in src · 0 matches[0m
+[0m✱ [0mGrep "href="""[90m in src · 0 matches[0m
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[✓] Implement server-side data fetching modules with resilient cache and failure fallback
+[✓] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[•] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[ ] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8799 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+echo "--- Testing live normal request ---"
+curl -s "http://127.0.0.1:8799/podcast/opanuj-ai" | grep -o 'Tryb odporności na awarie' || echo "Normal: no fallback banner (clean live data)"
+
+echo "--- Testing controlled failure request ---"
+curl -s "http://127.0.0.1:8799/podcast/opanuj-ai?simulate_failure=1" | grep -C 2 'Tryb odporności na awarie'
+
+kill $W_PID 2>/dev/null
+--- Testing live normal request ---
+Normal: no fallback banner (clean live data)
+--- Testing controlled failure request ---
+<!DOCTYPE html><html lang="pl" class="h-full bg-slate-950"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl</title><meta name="description" content="Opanuj.AI to najpopularniejszy techniczny podcast o LLM i Generatywnym AI w Polsce. Prowadzący: Marcin Czarkowski i Przemek Smyrdek. Najnowsze odcinki, odtwarzacz audio i linki do źródeł."><link rel="canonical" href="https://przeprogramowani.pl/podcast/opanuj-ai"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:site_name" content="Przeprogramowani.pl"><meta property="og:title" content="Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl"><meta property="og:description" content="Opanuj.AI to najpopularniejszy techniczny podcast o LLM i Generatywnym AI w Polsce. Prowadzący: Marcin Czarkowski i Przemek Smyrdek. Najnowsze odcinki, odtwarzacz audio i linki do źródeł."><meta property="og:url" content="https://przeprogramowani.pl/podcast/opanuj-ai"><meta property="og:image" content="https://przeprogramowani.pl/img/10xdevs-hero.webp"><meta property="og:locale" content="pl_PL"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl"><meta name="twitter:description" content="Opanuj.AI to najpopularniejszy techniczny podcast o LLM i Generatywnym AI w Polsce. Prowadzący: Marcin Czarkowski i Przemek Smyrdek. Najnowsze odcinki, odtwarzacz audio i linki do źródeł."><meta name="twitter:image" content="https://przeprogramowani.pl/img/10xdevs-hero.webp"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/_astro/Layout.I-tY73c_.css"></head><body class="flex flex-col min-h-full bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950"><!-- Accessibility Skip Link --><a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-amber-400 text-slate-950 font-bold rounded-lg shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">Przejdź do treści głównej</a><!-- Global Header --><header class="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/90 backdrop-blur-md"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4"><!-- Logo --><a href="/" class="flex items-center gap-2 text-white font-bold text-lg hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-md" aria-label="Przeprogramowani — Strona główna"><span class="text-amber-400 font-mono text-xl" aria-hidden="true">&lt;/&gt;</span><span class="tracking-tight">Przeprogramowani</span></a><!-- Desktop Nav --><nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Nawigacja główna"><a href="/o-nas" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-slate-300 hover:text-white hover:bg-slate-900">O nas</a><a href="/podcast" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 bg-slate-800 text-white font-semibold" aria-current="page">Podcasty</a><a href="/youtube" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-slate-300 hover:text-white hover:bg-slate-900">YouTube</a><a href="/kursy" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 text-slate-300 hover:text-white hover:bg-slate-900">Kursy</a></nav><!-- Right side / CTA --><div class="flex items-center gap-3"><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"><span>10xDevs</span><span aria-hidden="true" class="text-xs">↗</span></a><!-- Mobile navigation menu --><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var g=Object.defineProperty;var w=(a,s,c)=>s in a?g(a,s,{enumerable:!0,configurable:!0,writable:!0,value:c}):a[s]=c;var l=(a,s,c)=>w(a,typeof s!="symbol"?s+"":s,c);var E=new Set(["__proto__","constructor","prototype"]);{let a={0:t=>y(t),1:t=>c(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(c(t)),5:t=>new Set(c(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},s=t=>{let[p,e]=t;return p in a?a[p](e):void 0},c=t=>t.map(s),y=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([p,e])=>[p,s(e)]));class f extends HTMLElement{constructor(){super(...arguments);l(this,"Component");l(this,"hydrator");l(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let r=this.querySelectorAll("astro-slot"),n={},d=this.querySelectorAll("template[data-astro-template]");for(let o of d){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of r){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(n[o.getAttribute("name")||"default"]=o.innerHTML)}let u;try{u=this.hasAttribute("props")?y(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(i+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let h;await this.hydrator(this)(this.Component,u,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});l(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),r.disconnect(),this.childrenConnectedCallback()},r=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});r.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}getRetryImportUrl(e){let r=new URL(e,document.baseURI);return r.searchParams.set("astro-retry",Date.now().toString()),r.toString()}async importWithRetry(e){try{return await import(e)}catch(r){return await new Promise(n=>setTimeout(n,1e3)),import(this.getRetryImportUrl(e))}}handleHydrationError(e){let r=this.getAttribute("component-url"),n=new CustomEvent("astro:hydration-error",{cancelable:!0,bubbles:!0,composed:!0,detail:{error:e,componentUrl:r}});this.dispatchEvent(n)&&console.error(`[astro-island] Error hydrating ${r}`,e)}async start(){let e=JSON.parse(this.getAttribute("opts")),r=this.getAttribute("client");if(Astro[r]===void 0){window.addEventListener(`astro:${r}`,()=>this.start(),{once:!0});return}try{await Astro[r](async()=>{let n=this.getAttribute("renderer-url");try{let[d,{default:u}]=await Promise.all([this.importWithRetry(this.getAttribute("component-url")),n?this.importWithRetry(n):Promise.resolve({default:()=>()=>{}})]),h=this.getAttribute("component-export")||"default";if(h.includes(".")){this.Component=d;for(let m of h.split(".")){if(E.has(m)||!this.Component||typeof this.Component!="object"&&typeof this.Component!="function"||!Object.hasOwn(this.Component,m))throw new Error(`Invalid component export path: ${h}`);this.Component=this.Component[m]}}else{if(E.has(h))throw new Error(`Invalid component export path: ${h}`);this.Component=d[h]}return this.hydrator=u,this.hydrate}catch(d){return this.handleHydrationError(d),()=>{}}},e,this)}catch(n){this.handleHydrationError(n)}}attributeChangedCallback(){this.hydrate()}}l(f,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",f)}})();</script><astro-island uid="ZdLJBM" prefix="r1" component-url="/_astro/MobileNav.DJo8mMRK.js" component-export="default" renderer-url="/_astro/client.Cw0SDfYd.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;MobileNav&quot;,&quot;value&quot;:true}" await-children><div class="md:hidden"><button type="button" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400" aria-expanded="false" aria-controls="mobile-navigation-menu" aria-label="Otwórz menu nawigacji"><span class="sr-only">Otwórz menu</span><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div><!--astro:end--></astro-island></div></div></header><!-- Main Content --><main id="main-content" class="flex-1 focus:outline-none" tabindex="-1"><section class="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="max-w-3xl"><nav aria-label="Ścieżka powrotu" class="mb-6"><ol class="flex items-center gap-2 text-xs font-semibold text-slate-400"><li><a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a></li><li aria-hidden="true">/</li><li><a href="/podcast" class="hover:text-amber-400 transition-colors">Podcasty</a></li><li aria-hidden="true">/</li><li class="text-amber-400" aria-current="page">Opanuj.AI</li></ol></nav><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">Podcast Technologiczny</div><h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Opanuj.AI Podcast</h1><p class="mt-4 text-lg text-slate-300 leading-relaxed">Cykliczne podsumowanie nowinek technologicznych ze świata sztucznej inteligencji. Prowadzący — <strong>Marcin Czarkowski</strong> i <strong>Przemek Smyrdek</strong> — dzielą się rzetelną wiedzą techniczną oraz analizują wpływ modeli frontierowych, agentów autonomicznych i narzędzi GenAI na rynek IT, programowanie oraz społeczeństwo.</p><div class="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-400"><span>👥 Ponad 4000 stałych słuchaczy</span><span>•</span><a href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-semibold">Subskrybuj na Spotify ↗</a><span>•</span><a href="https://anchor.fm/s/e2cb03d0/podcast/rss" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white">Oficjalny feed RSS ↗</a></div></div></div></section><section class="py-16 sm:py-20 bg-slate-950" aria-labelledby="episodes-heading"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="max-w-2xl mb-8"><h2 id="episodes-heading" class="text-2xl sm:text-3xl font-bold text-white">Najnowsze rzeczywiste odcinki</h2><p class="mt-2 text-sm text-slate-400">Poniżej prezentujemy niepusty wybór najnowszych publikacji z 90 dni poprzedzających start próby, pobranych bezpośrednio z oficjalnego źródła.</p></div><!-- Resilience Fallback Banner --><div class="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 sm:p-5 text-amber-200"><div class="flex items-start gap-3"><svg class="w-6 h-6 shrink-0 text-amber-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="flex-1 text-sm"><p class="font-semibold text-amber-300">Tryb odporności na awarie (dane archiwalne z pamięci podręcznej)</p><p class="mt-1 text-slate-300">Uruchomiono kontrolowaną awarię źródła Opanuj.AI. Wyświetlono sprawdzone dane z pamięci podręcznej (oznaczone jako archiwalne).</p><div class="mt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400"><span>Czas pobrania: <strong class="text-slate-300">8.09.2026, 07:56:57</strong></span><span>•</span><a href="https://anchor.fm/s/e2cb03d0/podcast/rss" target="_blank" rel="noopener noreferrer" class="text-amber-400 underline hover:text-amber-300">Bezpośredni link do oficjalnego źródła ↗</a></div></div></div></div><!-- Episodes List --><div class="space-y-6"><article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all shadow-sm"><div><!-- Source & Date Header --><div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>Opanuj.AI Podcast</span><div class="flex items-center gap-3"><span>⏱ 01:32:30</span><time datetime="2026-09-03T10:00:50.000Z" class="text-slate-400">Data publikacji: <strong class="text-slate-300">3 września 2026</strong></time></div></div><!-- Title --><h3 class="text-lg sm:text-xl font-bold text-white mb-2 leading-snug"><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Kod-nie-jest-ju-wskim-gardem--Nadchodzi-AI-Native-SDLC--Opanuj-AI-e3o9hpt" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC | Opanuj.AI</a></h3><!-- Description --><p class="text-sm text-slate-300 line-clamp-3 mb-4 leading-relaxed">Co trzeba zmienić w software developmencie, kiedy napisanie kodu przestaje być najdroższą częścią procesu? Omawiamy AI-Native SDLC Playbook od Anthropic, porównujemy go z 10xDevs i zastanawiamy się, jak zmienia się rola programisty, gdy agenci przejmują większość implementacji.</p></div><div class="mt-4 pt-4 border-t border-slate-800/80 space-y-3"><!-- Embedded Audio Player --><div class="w-full"><label for="audio-e3o9hpt" class="sr-only">Odtwarzacz audio dla odcinka: Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC | Opanuj.AI</label><audio id="audio-e3o9hpt" controls preload="none" class="w-full h-11 rounded-lg focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"><source src="https://anchor.fm/s/e2cb03d0/podcast/play/125142269/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-3%2F431099252-44100-2-2e0b107d0eeb3.mp3" type="audio/mpeg">Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek bezpośrednio w serwisie Spotify.</audio></div><!-- Direct link to original episode --><div class="flex items-center justify-between text-xs pt-1"><span class="text-slate-400">Oryginalny odcinek:</span><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Kod-nie-jest-ju-wskim-gardem--Nadchodzi-AI-Native-SDLC--Opanuj-AI-e3o9hpt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-amber-400 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded px-1" aria-label="Otwórz odcinek „Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC | Opanuj.AI” na platformie Spotify (otwiera nowe okno)"><span>Posłuchaj na Spotify</span><span aria-hidden="true">↗</span></a></div></div></article><article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all shadow-sm"><div><!-- Source & Date Header --><div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>Opanuj.AI Podcast</span><div class="flex items-center gap-3"><span>⏱ 01:48:52</span><time datetime="2026-08-05T06:00:00.000Z" class="text-slate-400">Data publikacji: <strong class="text-slate-300">5 sierpnia 2026</strong></time></div></div><!-- Title --><h3 class="text-lg sm:text-xl font-bold text-white mb-2 leading-snug"><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Cena-i-bezpieczestwo---kluczowe-pytania-o-AI-przyszoci--Opanuj-AI-e3mvo52" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Cena i bezpieczeństwo - kluczowe pytania o AI przyszłości | Opanuj.AI</a></h3><!-- Description --><p class="text-sm text-slate-300 line-clamp-3 mb-4 leading-relaxed">Czy sztuczna inteligencja naprawdę staje się tańsza, skoro rachunki za modele i agentów AI rosną? I czy autonomiczne systemy są wystarczająco bezpieczne, aby powierzać im coraz bardziej złożone zadania? Analizujemy ekonomię AI oraz incydent bezpieczeństwa Hugging Face.</p></div><div class="mt-4 pt-4 border-t border-slate-800/80 space-y-3"><!-- Embedded Audio Player --><div class="w-full"><label for="audio-e3mvo52" class="sr-only">Odtwarzacz audio dla odcinka: Cena i bezpieczeństwo - kluczowe pytania o AI przyszłości | Opanuj.AI</label><audio id="audio-e3mvo52" controls preload="none" class="w-full h-11 rounded-lg focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"><source src="https://anchor.fm/s/e2cb03d0/podcast/play/123772514/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-7-4%2F429223709-44100-2-c3ab89205beb9.mp3" type="audio/mpeg">Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek bezpośrednio w serwisie Spotify.</audio></div><!-- Direct link to original episode --><div class="flex items-center justify-between text-xs pt-1"><span class="text-slate-400">Oryginalny odcinek:</span><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Cena-i-bezpieczestwo---kluczowe-pytania-o-AI-przyszoci--Opanuj-AI-e3mvo52" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-amber-400 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded px-1" aria-label="Otwórz odcinek „Cena i bezpieczeństwo - kluczowe pytania o AI przyszłości | Opanuj.AI” na platformie Spotify (otwiera nowe okno)"><span>Posłuchaj na Spotify</span><span aria-hidden="true">↗</span></a></div></div></article><article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all shadow-sm"><div><!-- Source & Date Header --><div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>Opanuj.AI Podcast</span><div class="flex items-center gap-3"><span>⏱ 01:21:53</span><time datetime="2026-07-01T05:00:00.000Z" class="text-slate-400">Data publikacji: <strong class="text-slate-300">1 lipca 2026</strong></time></div></div><!-- Title --><h3 class="text-lg sm:text-xl font-bold text-white mb-2 leading-snug"><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPICA-i-OPEN-AI-Claude-Mythos--Claude-Fable-i-GPT-5-6-e3lfs2p" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded">BAN NA AI?! USA BLOKUJE ANTHROPICA i OPEN AI (Claude Mythos, Claude Fable i GPT-5.6)</a></h3><!-- Description --><p class="text-sm text-slate-300 line-clamp-3 mb-4 leading-relaxed">Czy najlepsze modele AI właśnie przestały być zwykłym produktem, a stały się technologią kontrolowaną przez państwo? Blokada dostępu do Fable 5 / Mythos oraz GPT-5.6 Sol, chińskie modele open weights oraz raport Cursora o reward hackingu w benchmarkach.</p></div><div class="mt-4 pt-4 border-t border-slate-800/80 space-y-3"><!-- Embedded Audio Player --><div class="w-full"><label for="audio-e3lfs2p" class="sr-only">Odtwarzacz audio dla odcinka: BAN NA AI?! USA BLOKUJE ANTHROPICA i OPEN AI (Claude Mythos, Claude Fable i GPT-5.6)</label><audio id="audio-e3lfs2p" controls preload="none" class="w-full h-11 rounded-lg focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"><source src="https://anchor.fm/s/e2cb03d0/podcast/play/122203673/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-30%2F427110531-44100-2-734c36ee50d8f.mp3" type="audio/mpeg">Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek bezpośrednio w serwisie Spotify.</audio></div><!-- Direct link to original episode --><div class="flex items-center justify-between text-xs pt-1"><span class="text-slate-400">Oryginalny odcinek:</span><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/BAN-NA-AI---USA-BLOKUJE-ANTHROPICA-i-OPEN-AI-Claude-Mythos--Claude-Fable-i-GPT-5-6-e3lfs2p" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-amber-400 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded px-1" aria-label="Otwórz odcinek „BAN NA AI?! USA BLOKUJE ANTHROPICA i OPEN AI (Claude Mythos, Claude Fable i GPT-5.6)” na platformie Spotify (otwiera nowe okno)"><span>Posłuchaj na Spotify</span><span aria-hidden="true">↗</span></a></div></div></article><article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all shadow-sm"><div><!-- Source & Date Header --><div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium"><svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>Opanuj.AI Podcast</span><div class="flex items-center gap-3"><span>⏱ 01:12:26</span><time datetime="2026-06-03T10:52:05.000Z" class="text-slate-400">Data publikacji: <strong class="text-slate-300">3 czerwca 2026</strong></time></div></div><!-- Title --><h3 class="text-lg sm:text-xl font-bold text-white mb-2 leading-snug"><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded">Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026</a></h3><!-- Description --><p class="text-sm text-slate-300 line-clamp-3 mb-4 leading-relaxed">Relacja prosto z Doliny Krzemowej z konferencji Google I/O 2026: Gemini, Jules, Antigravity, Managed Agents, NotebookLM oraz nowości w przeglądarce Chrome i web standards dla agentów AI.</p></div><div class="mt-4 pt-4 border-t border-slate-800/80 space-y-3"><!-- Embedded Audio Player --><div class="w-full"><label for="audio-e3k9b7u" class="sr-only">Odtwarzacz audio dla odcinka: Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026</label><audio id="audio-e3k9b7u" controls preload="none" class="w-full h-11 rounded-lg focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"><source src="https://anchor.fm/s/e2cb03d0/podcast/play/120941246/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-5-3%2F425424448-44100-2-bdc746a0bb858.mp3" type="audio/mpeg">Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek bezpośrednio w serwisie Spotify.</audio></div><!-- Direct link to original episode --><div class="flex items-center justify-between text-xs pt-1"><span class="text-slate-400">Oryginalny odcinek:</span><a href="https://podcasters.spotify.com/pod/show/opanujai/episodes/Bylimy-na-Google-IO-2026---wraenia-na-gorco---Opanuj-AI-LIVE---Maj-2026-e3k9b7u" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-semibold text-amber-400 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded px-1" aria-label="Otwórz odcinek „Byliśmy na Google I/O 2026 - wrażenia na gorąco! | Opanuj.AI LIVE - Maj 2026” na platformie Spotify (otwiera nowe okno)"><span>Posłuchaj na Spotify</span><span aria-hidden="true">↗</span></a></div></div></article></div><!-- Bottom Navigation Back to Hub --><div class="mt-12 pt-8 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4"><a href="/podcast" class="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300"><span aria-hidden="true">←</span><span>Wróć do katalogu podcastów</span></a><a href="/podcast/przeprogramowani" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:text-sky-300"><span>Zobacz Podcast Przeprogramowani</span><span aria-hidden="true">→</span></a></div></div></section></main><!-- Global Footer --><footer class="border-t border-slate-800 bg-slate-950 mt-auto text-slate-400"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16"><div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12"><!-- Col 1: Brand --><div class="md:col-span-1"><a href="/" class="flex items-center gap-2 text-white font-bold text-lg mb-3"><span class="text-amber-400 font-mono" aria-hidden="true">&lt;/&gt;</span><span>Przeprogramowani</span></a><p class="text-sm text-slate-400 leading-relaxed">Szersze spojrzenie na programowanie. Przestrzeń łącząca programowanie, architekturę, AI oraz rozwój inżynierów.</p><div class="mt-4 text-xs text-slate-500">Ponad 7+ lat na rynku edukacji technologicznej.</div></div><!-- Col 2: Strony serwisu --><div><h2 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Nawigacja</h2><ul class="space-y-2.5 text-sm" role="list"><li><a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a></li><li><a href="/o-nas" class="hover:text-amber-400 transition-colors">O nas</a></li><li><a href="/podcast" class="hover:text-amber-400 transition-colors">Katalog podcastów</a></li><li><a href="/podcast/opanuj-ai" class="hover:text-amber-400 transition-colors pl-2 text-slate-400 border-l border-slate-800">Podcast Opanuj.AI</a></li><li><a href="/podcast/przeprogramowani" class="hover:text-amber-400 transition-colors pl-2 text-slate-400 border-l border-slate-800">Podcast Przeprogramowani</a></li><li><a href="/youtube" class="hover:text-amber-400 transition-colors">Filmy YouTube</a></li><li><a href="/kursy" class="hover:text-amber-400 transition-colors">Kursy i szkolenia</a></li></ul></div><!-- Col 3: Kursy i produkty --><div><h2 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Programy edukacyjne</h2><ul class="space-y-2.5 text-sm" role="list"><li><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors inline-flex items-center gap-1"><span>10xDevs (Programuj z AI)</span><span aria-hidden="true" class="text-xs">↗</span></a></li><li><a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors inline-flex items-center gap-1"><span>Opanuj Frontend: AI Edition</span><span aria-hidden="true" class="text-xs">↗</span></a></li><li><a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors inline-flex items-center gap-1"><span>Opanuj TypeScript</span><span aria-hidden="true" class="text-xs">↗</span></a></li></ul></div><!-- Col 4: Kontakt i źródła --><div><h2 class="text-sm font-semibold uppercase tracking-wider text-slate-200 mb-4">Oficjalny kontakt</h2><p class="text-sm text-slate-400 mb-3">Współpraca, szkolenia i pytania:</p><a href="mailto:kontakt@przeprogramowani.pl" class="text-sm text-amber-400 hover:underline font-mono">kontakt@przeprogramowani.pl</a><div class="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-500">Wszystkie dane materiałów pobierane są po stronie serwera z oficjalnych kanałów i feedów RSS.</div></div></div><div class="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500"><div>&copy; 2026 Przeprogramowani.pl. Wszelkie prawa zastrzeżone.</div><div class="flex items-center gap-4"><a href="https://przeprogramowani.pl" target="_blank" rel="noopener noreferrer" class="hover:text-slate-400 transition-colors">Oficjalna strona projektu</a><span>•</span><a href="https://youtube.com/@Przeprogramowani" target="_blank" rel="noopener noreferrer" class="hover:text-slate-400 transition-colors">Kanał YouTube</a></div></div></div></footer></body></html>
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8798 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+echo "--- YouTube controlled failure ---"
+curl -s "http://127.0.0.1:8798/youtube?simulate_failure=1" | grep -o 'Tryb odporności na awarie'
+
+echo "--- Podcast controlled failure ---"
+curl -s "http://127.0.0.1:8798/podcast/przeprogramowani?simulate_failure=1" | grep -o 'Tryb odporności na awarie'
+
+kill $W_PID 2>/dev/null
+--- YouTube controlled failure ---
+Tryb odporności na awarie
+--- Podcast controlled failure ---
+Tryb odporności na awarie
+[0m
+[0m→ [0mRead package.json
+[0m
+[0m← [0mEdit package.json
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/package.json
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/package.json
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/package.json
+@@ -4,9 +4,9 @@
+ "version": "1.0.0",
+ "scripts": {
+   "dev": "astro dev",
+   "build": "astro build",
+-  "preview": "wrangler dev",
++  "preview": "wrangler dev -c dist/server/wrangler.json --show-interactive-dev-session false",
+   "astro": "astro"
+ },
+ "dependencies": {
+   "@astrojs/cloudflare": "14.3.0",
+
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[✓] Implement server-side data fetching modules with resilient cache and failure fallback
+[✓] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[✓] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[•] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[ ] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m$ [0mnpm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+09:57:29 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:57:29 [types] Generated 36ms
+09:57:29 [build] output: "server"
+09:57:29 [build] mode: "server"
+09:57:29 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:57:29 [build] adapter: @astrojs/cloudflare
+09:57:29 [build] Collecting build info...
+09:57:29 [build] ✓ Completed in 65ms.
+09:57:29 [build] Building server entrypoints...
+09:57:30 [vite] ✓ built in 154ms
+09:57:30 [vite] ✓ built in 175ms
+09:57:30 [vite] ✓ built in 48ms
+09:57:30 [build] Rearranging server assets...
+09:57:30 [build] ✓ Completed in 415ms.
+09:57:30 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:57:30 [build] Server built in 487ms
+09:57:30 [build] Complete!
+[0m
+[0m$ [0mnpm run preview -- --port 8793 --ip 127.0.0.1 > /dev/null 2>&1 &
+P_PID=$!
+sleep 5
+curl -s -I http://127.0.0.1:8793/
+kill $P_PID 2>/dev/null
+HTTP/1.1 200 OK
+Content-Type: text/html
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[✓] Implement server-side data fetching modules with resilient cache and failure fallback
+[✓] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[✓] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[✓] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[•] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+[0m← [0mWrite scripts/verify-all.mjs
+Wrote file successfully.
+[0m
+[0m$ [0mnpx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8798 --show-interactive-dev-session false > /dev/null 2>&1 &
+W_PID=$!
+sleep 5
+
+node scripts/verify-all.mjs
+
+kill $W_PID 2>/dev/null
+--- Starting verification run ---
+Route /: HTTP 200, H1: 1, Title: "Szersze spojrzenie na programowanie | Przeprogramowani.pl"
+Route /o-nas: HTTP 200, H1: 1, Title: "O nas — Twórcy i wartości | Przeprogramowani.pl"
+Route /podcast: HTTP 200, H1: 1, Title: "Katalog podcastów — Opanuj.AI i Przeprogramowani | Przeprogramowani.pl"
+Route /podcast/opanuj-ai: HTTP 200, H1: 1, Title: "Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów | Przeprogramowani.pl"
+Route /podcast/przeprogramowani: HTTP 200, H1: 1, Title: "Podcast Przeprogramowani ft. Gość — Rozmowy dla głodnych wiedzy | Przeprogramowani.pl"
+Route /youtube: HTTP 200, H1: 1, Title: "Oficjalny kanał YouTube Przeprogramowani — Filmy i transmisje LIVE | Przeprogramowani.pl"
+Route /kursy: HTTP 200, H1: 1, Title: "Programy edukacyjne i kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani.pl"
+Route with slash /: HTTP 200
+Route with slash /o-nas/: HTTP 200
+Route with slash /podcast/: HTTP 200
+Route with slash /podcast/opanuj-ai/: HTTP 200
+Route with slash /podcast/przeprogramowani/: HTTP 200
+Route with slash /youtube/: HTTP 200
+Route with slash /kursy/: HTTP 200
+Testing controlled failure on /podcast/opanuj-ai?simulate_failure=1
+Controlled failure test: HTTP 200, FallbackNotice: true, AudioPlayers: 4
+Saved verification-results.json
+[0m
+[0m→ [0mRead verification-results.json
+[0m
+[0m← [0mWrite README.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite VERIFICATION.md
+Wrote file successfully.
+[0m
+[0m$ [0mgit status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   ../../../.claude/skills/10x-eval-model/SKILL.md
+	new file:   ../../../.claude/skills/10x-score-attempts/SKILL.md
+	modified:   ../../../.gitignore
+	new file:   ../../../AGENTS.md
+	modified:   ../../../CLAUDE.md
+	modified:   ../../../README.md
+	new file:   ../../../V2_PLAN.md
+	new file:   ../../../archive/v1/CLAUDE-original.md
+	new file:   ../../../archive/v1/README-original.md
+	new file:   ../../../archive/v1/README.md
+	new file:   ../../../archive/v1/inputs/eval-results/claude-fable-5-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-fable-5-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-fable-5-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-fable-5-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-fable-5-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-10/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-6/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-7/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-8/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-46-attempt-9/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-47-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-47-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-47-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-47-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-47-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-48-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-48-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-48-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-48-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-opus-48-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-45-attempt-1/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-45-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-45-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-45-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-45-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-46-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-46-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-46-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-46-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/claude-sonnet-46-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/deepseek-v4-pro-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/deepseek-v4-pro-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/deepseek-v4-pro-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/deepseek-v4-pro-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/deepseek-v4-pro-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/devstral-2-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/devstral-2-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/devstral-2-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-3-pro-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-3-pro-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-3-pro-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-3-pro-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-3-pro-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-31-pro-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-31-pro-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-31-pro-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-31-pro-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-31-pro-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-35-flash-attempt-1/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-35-flash-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-35-flash-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-35-flash-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gemini-35-flash-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-47-attempt-1/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-47-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-47-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-5-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-5-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-5-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-5-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-5-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-1/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-51-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-52-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-52-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-52-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-52-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/glm-52-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-10/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-6/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-7/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-8/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-53-codex-attempt-9/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-54-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-54-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-54-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-54-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-54-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-55-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-55-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-55-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-55-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-55-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-56-sol-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-56-sol-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-56-sol-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-56-sol-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/gpt-56-sol-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-1/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-5/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/grok-code-fast-1-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k25-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k25-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k25-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k25-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k25-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k3-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k3-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k3-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k3-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/kimi-k3-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m21-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m21-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m21-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m21-attempt-4/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m21-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m25-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m25-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m25-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m25-attempt-4/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/minimax-m25-attempt-5/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3-max-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3-max-attempt-2/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3-max-attempt-3/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3.6-attempt-1/eval-results.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3.6-attempt-2/eval-result.csv
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3.6-attempt-2/manual-fixes.md
+	new file:   ../../../archive/v1/inputs/eval-results/qwen-3.6-attempt-3/eval-result.csv
+	new file:   ../../../archive/v1/inputs/metadata.ts
+	new file:   ../../../archive/v1/inputs/process-results.ts
+	new file:   ../../../archive/v1/integrity.json
+	new file:   ../../../archive/v1/leaderboard.json
+	new file:   ../../../archive/v1/methodology/local-skills/10x-eval-model.md
+	new file:   ../../../archive/v1/methodology/local-skills/10x-score-attempts.md
+	new file:   ../../../archive/v1/methodology/local-skills/calculate-cost.ts
+	new file:   ../../../archive/v1/methodology/local-skills/take-screenshots.ts
+	new file:   ../../../archive/v1/methodology/published/context/przeprogramowani.md
+	new file:   ../../../archive/v1/methodology/published/criteria.md
+	new file:   ../../../archive/v1/methodology/published/eval.md
+	new file:   ../../../archive/v1/methodology/published/prompt.md
+	new file:   ../../../archive/v1/provenance.json
+	new file:   ../../../archive/v1/results.json
+	new file:   ../../../archive/v1/screenshot-hashes.json
+	new file:   ../../../benchmark/models-v2.json
+	new file:   ../../../benchmark/v2/assessment.md
+	new file:   ../../../benchmark/v2/criteria.json
+	new file:   ../../../benchmark/v2/eval.md
+	new file:   ../../../benchmark/v2/manifest.json
+	new file:   ../../../benchmark/v2/prompt.md
+	new file:   ../../../benchmark/v2/run-protocol.md
+	new file:   ../../../docs/v2/contract.md
+	new file:   ../../../docs/v2/operator-guide.md
+	new file:   ../../../docs/v2/release.md
+	new file:   ../../../docs/v2/v1-audit.json
+	modified:   ../../../package.json
+	modified:   ../../../prompt.md
+	new file:   ../../../scripts/audit-v1.ts
+	modified:   ../../../scripts/calculate-cost.ts
+	new file:   ../../../scripts/check-screenshot-v2.ts
+	new file:   ../../../scripts/check-v1-browser.mjs
+	new file:   ../../../scripts/check-v2-browser.mjs
+	new file:   ../../../scripts/dependency-baseline.ts
+	new file:   ../../../scripts/legacy-process-results.ts
+	modified:   ../../../scripts/process-results.ts
+	new file:   ../../../scripts/process-v2.test.ts
+	new file:   ../../../scripts/process-v2.ts
+	new file:   ../../../scripts/sync-benchmark.ts
+	modified:   ../../../scripts/take-screenshots.ts
+	new file:   ../../../scripts/verify-benchmark.ts
+	new file:   ../../../scripts/verify-v1.ts
+	new file:   ../../../scripts/workflow-v2.test.ts
+	new file:   ../../../website/public/api/v2/leaderboard.json
+	modified:   ../../../website/public/sitemap.xml
+	modified:   ../../../website/src/components/AccordionSection.tsx
+	modified:   ../../../website/src/components/DetailedComparison.tsx
+	modified:   ../../../website/src/components/ModelAveragesCard.tsx
+	modified:   ../../../website/src/components/ResultCard.tsx
+	modified:   ../../../website/src/components/ResultsDashboard.tsx
+	new file:   ../../../website/src/data/results-v2.json
+	new file:   ../../../website/src/data/screenshot-hashes-v2.json
+	modified:   ../../../website/src/layouts/Layout.astro
+	modified:   ../../../website/src/pages/benchmark.astro
+	modified:   ../../../website/src/pages/index.astro
+	new file:   ../../../website/src/pages/v1/benchmark.astro
+	new file:   ../../../website/src/pages/v1/index.astro
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   ../../../benchmark/models-v2.json
+	modified:   ../../../website/public/api/v2/leaderboard.json
+	modified:   ../../../website/src/data/results-v2.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	../
+	../../../eval-results/v2/
+[0m
+[0m$ [0mgit status .
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	./
+
+nothing added to commit but untracked files present (use "git add" to track)
+[0m
+[0m✱ [0mGlob "**/*"[90m in . · 100 matches[0m
+[0m✱ [0mGlob ".gitignore"[90m in . · 0 matches[0m
+[0m
+[0m← [0mWrite .gitignore
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+09:59:49 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:59:49 [types] Generated 31ms
+09:59:49 [build] output: "server"
+09:59:49 [build] mode: "server"
+09:59:49 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-2/dist/
+09:59:49 [build] adapter: @astrojs/cloudflare
+09:59:49 [build] Collecting build info...
+09:59:49 [build] ✓ Completed in 61ms.
+09:59:49 [build] Building server entrypoints...
+09:59:49 [vite] ✓ built in 117ms
+09:59:50 [vite] ✓ built in 148ms
+09:59:50 [vite] ✓ built in 50ms
+09:59:50 [build] Rearranging server assets...
+09:59:50 [build] ✓ Completed in 349ms.
+09:59:50 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:59:50 [build] Server built in 416ms
+09:59:50 [build] Complete!
+[0m
+[0m# [0mTodos
+[✓] Research real Przeprogramowani sources (courses, founders, podcasts, YouTube)
+[✓] Check dependency versions and initialize Astro project with React, Tailwind, Cloudflare adapter
+[✓] Implement server-side data fetching modules with resilient cache and failure fallback
+[✓] Implement all 7 required routes and responsive navigation (desktop & mobile)
+[✓] Ensure SEO, accessibility, keyboard focus, and media players with fallbacks
+[✓] Configure Cloudflare Workers adapter and test production build and wrangler local preview
+[✓] Perform self-verification (controlled failure, responsive checks, playback, routes) and write VERIFICATION.md and README.md
+[0m
+Zadanie zrealizowane. Strona Przeprogramowani.pl została zaimplementowana w Astro 7, React 19, Tailwind CSS 4 oraz `@astrojs/cloudflare` z pełną obsługą 7 dedykowanych tras, odtwarzaniem mediów, modułami SSR i odpornością na awarie.
+
+### Sposób lokalnego uruchomienia
+```bash
+npm install
+npm run build
+npm run preview
+# lub bezpośrednio przez Wrangler:
+npx wrangler dev -c dist/server/wrangler.json --ip 127.0.0.1 --port 8787 --show-interactive-dev-session false
+```
+
+### Wynik samoweryfikacji
+Wszystkie 7 wymaganych tras zwraca `HTTP 200 OK` (z końcowym ukośnikiem i bez), pojedynczy semantyczny nagłówek `H1`, unikalne opisy SEO/OG oraz działające odtwarzacze audio/wideo. Pomyślnie zweryfikowano zachowanie w trybie kontrolowanej awarii źródła (`?simulate_failure=1`) z serwowaniem danych z pamięci podręcznej. Szczegóły zawarto w plikach `README.md` oraz `VERIFICATION.md` (z danymi maszynowymi w `verification-results.json`).

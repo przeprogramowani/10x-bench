@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses } from '../data/courses';
+---
+
+<Layout
+  title="Programy Edukacyjne i Kursy — Przeprogramowani.pl | 10xDevs, Frontend, TypeScript"
+  description="Poznaj oficjalne programy edukacyjne Przeprogramowani.pl: 10xDevs (Programuj z AI), Opanuj Frontend oraz Opanuj TypeScript. Sprawdzone materiały dla ambitnych programistów."
+  canonicalPath="/kursy"
+>
+  <!-- Hero Section -->
+  <section class="py-14 lg:py-20 bg-gradient-to-b from-blue-950/30 via-gray-950 to-gray-950 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl space-y-6">
+        <nav aria-label="Breadcrumb" class="text-xs text-gray-400 flex items-center gap-2">
+          <a href="/" class="hover:text-blue-400">Strona główna</a>
+          <span>/</span>
+          <span class="text-blue-300 font-medium">Kursy</span>
+        </nav>
+
+        <div class="space-y-2">
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            Nowoczesna Edukacja Technologiczna
+          </span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Programy edukacyjne i kursy Przeprogramowani.pl
+          </h1>
+          <p class="text-sm sm:text-base text-gray-300">
+            Autorskie programy szkoleniowe przygotowane przez Przemka Smyrdka i Marcina Czarkowskiego
+          </p>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
+          Nasze szkolenia to intensywne programy zaprojektowane tak, aby wyjść daleko poza powierzchowną wiedzę. Uczymy inżynierii produkcji, zaawansowanych wzorców architektonicznych oraz świadomego wykorzystania Generative AI w codziennej pracy programisty.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Detailed List -->
+  <section class="py-16 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {courses.map((course, idx) => (
+        <article class={`rounded-3xl p-6 sm:p-10 border transition-all ${
+          course.id === '10xdevs'
+            ? 'bg-gradient-to-br from-blue-950/40 via-gray-900 to-gray-900 border-blue-500/50 shadow-2xl shadow-blue-500/10'
+            : 'bg-gray-900/70 border-gray-800 shadow-xl'
+        }`}>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-8 space-y-5">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white">
+                  {course.badge}
+                </span>
+                <span class="text-xs text-gray-400 font-mono">
+                  Prowadzący: {course.instructors.join(' & ')}
+                </span>
+              </div>
+
+              <div>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+                  {course.title}
+                </h2>
+                <p class="text-lg font-medium text-blue-400 mt-1">
+                  {course.tagline}
+                </p>
+              </div>
+
+              <p class="text-sm sm:text-base text-gray-300 leading-relaxed">
+                {course.description}
+              </p>
+
+              <div class="space-y-2 pt-2">
+                <h3 class="text-xs uppercase tracking-wider font-bold text-gray-400">Co wyróżnia ten program:</h3>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
+                  {course.highlights.map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-blue-400 font-bold shrink-0">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="p-4 rounded-xl bg-gray-950/60 border border-gray-800/80 text-xs sm:text-sm text-gray-400">
+                <strong class="text-gray-200">Dla kogo:</strong> {course.audience}
+              </div>
+            </div>
+
+            <!-- Course CTA Box -->
+            <div class="lg:col-span-4 bg-gray-950/80 border border-gray-800 rounded-2xl p-6 space-y-6 flex flex-col justify-between h-full">
+              <div class="space-y-4">
+                <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Oficjalna platforma kursu</span>
+                <p class="text-lg font-bold text-white font-mono break-all">
+                  {course.url.replace(/^https?:\/\//, '')}
+                </p>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                  Zapisy, program modułów, terminy najbliższych edycji oraz szczegółowy harmonogram znajdziesz bezpośrednio na dedykowanej stronie szkolenia.
+                </p>
+              </div>
+
+              <div class="space-y-3 pt-4 border-t border-gray-800">
+                <a
+                  href={course.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/30 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+                >
+                  <span>Przejdź do kursu {course.title}</span>
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <p class="text-[11px] text-gray-400 text-center">
+                  Bezpośredni, bezpieczny link do platformy szkolenia
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <!-- Navigation Footer -->
+      <div class="pt-8 border-t border-gray-800 flex flex-wrap items-center justify-between gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-white"
+        >
+          ← Wróć na stronę główną
+        </a>
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300"
+        >
+          Posłuchaj naszych podcastów →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

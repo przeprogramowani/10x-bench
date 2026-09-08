@@ -4,11 +4,15 @@
   "description": "Benchmark for various LLMs vibe coding Przeprogramowani.pl website",
   "type": "module",
   "scripts": {
-    "process-results": "tsx scripts/process-results.ts",
+    "process-results": "npm run verify:v1 && npm run verify:benchmark && tsx scripts/process-results.ts",
     "calculate-cost": "tsx scripts/calculate-cost.ts",
     "dev": "npm run process-results && cd website && npm run dev",
     "build": "npm run process-results && cd website && npm run build",
-    "screenshots": "tsx scripts/take-screenshots.ts"
+    "screenshots": "tsx scripts/take-screenshots.ts",
+    "verify:v1": "node --import tsx scripts/verify-v1.ts",
+    "verify:benchmark": "node --import tsx scripts/verify-benchmark.ts",
+    "sync:benchmark": "node --import tsx scripts/sync-benchmark.ts",
+    "test:v2": "node --import tsx --test scripts/process-v2.test.ts scripts/workflow-v2.test.ts"
   },
   "keywords": [
     "benchmark",

@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,17.02.2026 21:49,N/A,17.02.2026 21:49
+Local build,1,1,Build successful — 4 pages generated (index, o-nas, podcast, youtube)
+Manual testing,1,1,All pages accessible with working navigation styles and content; all routes return 200
+Tech stack,0,1,Astro 5 and React 19 present but Tailwind CSS is v3.4.15 (not 4.x) and @astrojs/cloudflare adapter missing entirely
+O nas page,0.5,1,Dedicated page with team bios — DAZN/Cabify for Przemek and SmartRecruiters for Marcin mentioned but LinkedIn URLs are '#' placeholders and course assignments (Opanuj JavaScript / 10xDevs) not listed on page
+Podcast page,0.5,1,Both Opanuj AI Podcast and Przeprogramowani ft. Gosc displayed but Spotify URLs are '#' placeholders (context IDs 3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy not used) and episode data appears hallucinated
+YouTube page,0.5,1,Dedicated page with correct channel URL (youtube.com/c/przeprogramowani) but video data uses numeric IDs (1-8) instead of real YouTube video IDs — titles/views/dates are fabricated
+Kursy section,0.5,1,10xDevs prominently featured in hero with CTA; 3 courses shown (10xDevs / Opanuj Frontend / Opanuj TypeScript) but missing 3 from context (Opanuj JavaScript / Opanuj AI / Cursor: Programuj z AI)
+Consistent UI,1,1,UI consistent across all pages — unified dark theme with slate/green palette and shared layout
+Responsive design,1,1,Fully responsive containers components and navigation across all breakpoints
+SEO Tags,1,1,Meta tags in Layout.astro covering all pages — includes title description og:type og:url og:title og:description og:locale twitter:card canonical and robots tags with per-page customization
+Penalty,0,N/A,No penalty applied

@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchOpanujAi } from '../../data/fetch-opanuj-ai';
+import { fetchPrzeprogramowaniPodcast } from '../../data/fetch-przeprogramowani-podcast';
+import AudioPlayerCard from '../../components/AudioPlayerCard.astro';
+import ResilienceNotice from '../../components/ResilienceNotice.astro';
+
+const opanujAi = await fetchOpanujAi();
+const podcast = await fetchPrzeprogramowaniPodcast();
+
+const latestOpanujAi = opanujAi.items[0];
+const latestPodcast = podcast.items[0];
+---
+
+<Layout
+  title="Katalog podcastów — Opanuj.AI i Przeprogramowani"
+  description="Katalog oficjalnych podcastów tworzonych przez Przeprogramowanych. Opanuj.AI o nowościach i modelach sztucznej inteligencji oraz Przeprogramowani ft. Gość o architekturze, inżynierii i rozwoju."
+>
+  <!-- Hero Section -->
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav aria-label="Ścieżka powrotu" class="mb-6">
+          <ol class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <li>
+              <a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li class="text-amber-400" aria-current="page">Podcasty</li>
+          </ol>
+        </nav>
+
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-400">Audio i Rozmowy</p>
+        <h1 class="mt-3 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Katalog podcastów Przeprogramowanych
+        </h1>
+        <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+          Tworzymy dwa autorskie podcasty technologiczne dla społeczności developerów. Wybierz audycję i słuchaj najnowszych odcinków bezpośrednio w przeglądarce lub na swojej ulubionej platformie streamingowej.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcast Catalog Cards -->
+  <section class="py-16 sm:py-20 bg-slate-950 border-b border-slate-800" aria-labelledby="catalog-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="catalog-heading" class="sr-only">Dostępne podcasty</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <!-- Podcast 1: Opanuj.AI -->
+        <article class="flex flex-col justify-between rounded-2xl border-2 border-slate-800 bg-slate-900/80 p-6 sm:p-8 hover:border-amber-500/50 transition-all shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
+                Gen AI & LLM
+              </span>
+              <span class="text-xs text-slate-400">Ponad 4 000 słuchaczy</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-amber-400 transition-colors mb-3">
+              Opanuj.AI Podcast
+            </h3>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+              Comiesięczne podsumowanie najważniejszych wydarzeń ze świata sztucznej inteligencji. Marcin Czarkowski i Przemek Smyrdek analizują frontierowe modele (Claude, GPT, Gemini), agentów autonomicznych, bezpieczeństwo, ekonomię AI oraz wpływ na proces wytwarzania oprogramowania.
+            </p>
+
+            <div class="space-y-2 mb-6 text-xs sm:text-sm text-slate-400">
+              <p>• Prowadzący: <strong>Marcin Czarkowski & Przemek Smyrdek</strong></p>
+              <p>• Tematyka: <strong>Generatywne AI, Agenci, SDLC, Narzędzia dev-tools</strong></p>
+              <p>• Dostępne odcinki: <strong>{opanujAi.items.length} najnowszych publikacji</strong></p>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <a
+              href="/podcast/opanuj-ai"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-amber-500 text-slate-950 hover:bg-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+            >
+              <span>Przejdź do Opanuj.AI</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+            >
+              Kanał na Spotify ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Podcast 2: Przeprogramowani -->
+        <article class="flex flex-col justify-between rounded-2xl border-2 border-slate-800 bg-slate-900/80 p-6 sm:p-8 hover:border-sky-500/50 transition-all shadow-xl group">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <span class="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-bold uppercase tracking-wider">
+                Inżynieria & Kariera
+              </span>
+              <span class="text-xs text-slate-400">Ponad 3 800 słuchaczy</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-sky-400 transition-colors mb-3">
+              Podcast Przeprogramowani
+            </h3>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+              Szersze spojrzenie na programowanie — rozmowy dla głodnych wiedzy. Wywiady z ekspertami z branży IT, analizy architektury frontendu, inżynieria jakości, dojrzałość zawodowa programistów oraz praktyczne porady dotyczące rozwoju kariery technologicznej.
+            </p>
+
+            <div class="space-y-2 mb-6 text-xs sm:text-sm text-slate-400">
+              <p>• Prowadzący: <strong>Przemek Smyrdek & Marcin Czarkowski ft. Goście</strong></p>
+              <p>• Tematyka: <strong>Architektura frontendu, kariera w IT, TypeScript, jakość</strong></p>
+              <p>• Dostępne odcinki: <strong>{podcast.items.length} najnowszych publikacji</strong></p>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            <a
+              href="/podcast/przeprogramowani"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-sky-500 text-slate-950 hover:bg-sky-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+            >
+              <span>Przejdź do Przeprogramowani</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+            >
+              Kanał na Spotify ↗
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Recent Episodes Section -->
+  <section class="py-16 sm:py-20 bg-slate-900/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-400">Przegląd odcinków</p>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-white">
+          Najświeższe nagrania z obu serii
+        </h2>
+        <p class="mt-2 text-sm text-slate-400">
+          Posłuchaj wybranych materiałów bezpośrednio poniżej lub odwiedź dedykowane strony każdego podcastu.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {latestOpanujAi && (
+          <div>
+            <div class="mb-3 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">
+                Opanuj.AI — najnowszy odcinek
+              </span>
+              <a href="/podcast/opanuj-ai" class="text-xs text-slate-400 hover:text-white">
+                Zobacz wszystkie →
+              </a>
+            </div>
+            <AudioPlayerCard item={latestOpanujAi} />
+          </div>
+        )}
+
+        {latestPodcast && (
+          <div>
+            <div class="mb-3 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">
+                Przeprogramowani ft. Gość — najnowszy odcinek
+              </span>
+              <a href="/podcast/przeprogramowani" class="text-xs text-slate-400 hover:text-white">
+                Zobacz wszystkie →
+              </a>
+            </div>
+            <AudioPlayerCard item={latestPodcast} />
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Layout>

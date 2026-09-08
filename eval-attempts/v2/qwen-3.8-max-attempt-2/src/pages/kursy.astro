@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { COURSES } from '../data/sources';
+---
+
+<Base
+  title="Kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani"
+  description="Programy edukacyjne Przeprogramowanych: 10xDevs o programowaniu z generatywnym AI, Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Opisy i oficjalne strony kursów."
+  path="/kursy"
+>
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <nav aria-label="Ścieżka okruszków" class="text-sm text-slate-500">
+      <a href="/" class="hover:text-slate-300">Strona główna</a> <span aria-hidden="true">/</span> <span class="text-slate-300">Kursy</span>
+    </nav>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-white">Kursy</h1>
+    <p class="mt-3 max-w-3xl text-lg text-slate-300">
+      Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie
+      z potencjału generatywnego AI. Każdy kurs ma własną, oficjalną stronę ze
+      szczegółami programu i zapisami.
+    </p>
+
+    <div class="mt-10 space-y-6">
+      {COURSES.map((c) => (
+        <article class:list={['rounded-2xl border p-6 sm:p-8', c.featured ? 'border-brand-500/50 bg-gradient-to-br from-brand-950 to-slate-900' : 'border-slate-800 bg-slate-900/60']}>
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div class="max-w-2xl">
+              <p class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-300">
+                {c.tagline}{c.featured ? ' • wyróżniony kurs' : ''}
+              </p>
+              <h2 class="mt-2 text-2xl font-bold text-white">{c.name}</h2>
+              <p class="mt-3 text-slate-300">{c.description}</p>
+            </div>
+            <a
+              href={c.url}
+              class:list={[
+                'inline-block rounded-lg px-5 py-3 text-sm font-semibold transition-colors',
+                c.featured ? 'bg-brand-600 text-white hover:bg-brand-500' : 'border border-slate-700 text-slate-200 hover:border-brand-400 hover:text-white',
+              ]}
+            >
+              Przejdź do strony kursu →
+            </a>
+          </div>
+          <p class="mt-4 text-xs text-slate-500">Oficjalny adres: <span class="font-mono">{c.url.replace('https://', '')}</span></p>
+        </article>
+      ))}
+    </div>
+  </div>
+</Base>

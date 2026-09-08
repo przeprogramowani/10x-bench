@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,19.04.2026 17:39,N/A,19.04.2026 17:39
+Local build,1,1,Build successful - 4 pages built in 1.04s with static output
+Manual testing,1,1,All pages accessible (/, /o-nas/, /podcast/, /youtube/) returning 200 with working navigation and styles
+Tech stack,0.5,1,Astro 6.1.8 + React 19.2.5 + Tailwind CSS 4.2.2 present; Cloudflare Adapter (@astrojs/cloudflare) not installed or configured
+O nas page,0.5,1,Page exists and returns 200. Both founders listed with key details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin, correct LinkedIn URLs). Missing: publications (Magazyn Programista, Increment by Stripe), specific course attributions (Opanuj JavaScript for Przemek, 10xDevs not attributed to Marcin in bio), PHP missing from Marcin skills
+Podcast page,0.5,1,Both Przeprogramowani and OpanujAI podcasts displayed with episodes. Spotify URLs use wrong show IDs (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy). Episode data appears hallucinated with sensationalized titles
+YouTube page,1,1,6 videos with unique IDs (no placeholder/rick roll IDs). Titles match Przeprogramowani channel focus (Claude Code, 10xDevs, AI Product Heroes). Channel URL correctly references przeprogramowani
+Kursy section,0.5,1,10xDevs prominently featured in hero with CTA to 10xdevs.pl. Dedicated CourseCard component. Only 3/6 courses displayed (10xDevs, Opanuj Frontend, Opanuj TypeScript). Missing: Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI
+Consistent UI,1,1,UI consistent across all pages - coherent design language and styling
+Responsive design,0.5,1,Majority of the page is responsive with some minor issues
+SEO Tags,1,1,Meta tags (title + description) in Layout.astro applied to all pages. Default description matches tagline. Brand name in all titles. Page-specific descriptions provided
+Penalty,0,N/A,No penalty applied

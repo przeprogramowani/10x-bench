@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courses } from '../data/courses';
+---
+
+<Layout
+  title="Programy edukacyjne i kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript"
+  description="Poznaj flagowe szkolenia Przeprogramowanych: 10xDevs (programowanie z Generatywnym AI), Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Sprawdzone metodyki, praktyka produkcyjna i zaawansowana inżynieria."
+>
+  <!-- Hero Section -->
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav aria-label="Ścieżka powrotu" class="mb-6">
+          <ol class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <li>
+              <a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li class="text-amber-400" aria-current="page">Kursy</li>
+          </ol>
+        </nav>
+
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-400">Edukacja i Rozwój</p>
+        <h1 class="mt-3 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Programy edukacyjne Przeprogramowanych
+        </h1>
+        <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+          Tworzymy programy edukacyjne skupione na praktyce inżynierskiej, architekturze systemów i nowoczesnym warsztacie pracy programisty. Bez zbędnej teorii — zorientowane na realia rynkowe i wyzwania systemów produkcyjnych.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="py-16 sm:py-20 bg-slate-950 border-b border-slate-800" aria-labelledby="courses-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 id="courses-heading" class="sr-only">Lista dostępnych programów edukacyjnych</h2>
+
+      <div class="space-y-12">
+        {courses.map((course, idx) => (
+          <article
+            id={course.id}
+            class={`rounded-3xl border p-6 sm:p-10 transition-all shadow-xl relative overflow-hidden ${
+              course.isFeatured
+                ? 'border-2 border-amber-500/50 bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 shadow-amber-500/5'
+                : 'border-slate-800 bg-slate-900/60 hover:border-slate-700'
+            }`}
+          >
+            {course.isFeatured && (
+              <div class="absolute top-0 right-0 -mt-8 -mr-8 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+            )}
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+              <div class="lg:col-span-2">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-800 text-amber-300 border border-slate-700">
+                    {course.tag}
+                  </span>
+                  {course.isFeatured && (
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-slate-950">
+                      Wyróżniony program
+                    </span>
+                  )}
+                </div>
+
+                <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight">
+                  {course.title}
+                </h3>
+                <p class="text-base sm:text-lg font-semibold text-amber-400 mb-4">
+                  {course.subtitle}
+                </p>
+
+                <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+                  {course.description}
+                </p>
+
+                <div class="space-y-2.5 pt-4 border-t border-slate-800">
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                    Co wyróżnia ten program:
+                  </h4>
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2" role="list">
+                    {course.details.map((detail) => (
+                      <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-300">
+                        <span class="text-amber-400 font-bold shrink-0">✓</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- CTA sidebar -->
+              <div class="flex flex-col justify-between h-full rounded-2xl bg-slate-950/70 border border-slate-800 p-6 lg:p-7 w-full">
+                <div>
+                  <span class="text-xs text-slate-400 font-mono">Oficjalny adres programu:</span>
+                  <p class="text-sm font-mono text-white mt-1 break-all">
+                    {course.url.replace('https://', '')}
+                  </p>
+
+                  <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+                    <p>• Dedykowany program szkoleniowy</p>
+                    <p>• Bezpośredni kontakt z prowadzącymi</p>
+                    <p>• Zamknięta społeczność inżynierów</p>
+                  </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-800">
+                  <a
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl font-bold text-sm text-center transition-all shadow-md focus-visible:outline-none focus-visible:ring-2 ${
+                      course.isFeatured
+                        ? 'bg-amber-500 text-slate-950 hover:bg-amber-400 focus-visible:ring-amber-300'
+                        : 'bg-slate-800 text-white hover:bg-slate-700 hover:text-amber-300 focus-visible:ring-amber-400'
+                    }`}
+                    aria-label={`Przejdź do oficjalnej strony programu ${course.title} (otwiera w nowej karcie)`}
+                  >
+                    <span>Przejdź do strony kursu</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ / Info Section -->
+  <section class="py-16 sm:py-20 bg-slate-900/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-400">Pytania i wsparcie</p>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-white">
+          Szkolenia dla zespołów i firm
+        </h2>
+        <p class="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+          Prowadzimy także dedykowane warsztaty komercyjne oraz zamknięte edycje szkoleń dla firm poszukujących usystematyzowanego procesu wdrażania narzędzi AI i nowoczesnych praktyk frontendowych.
+        </p>
+        <div class="mt-6">
+          <a
+            href="mailto:kontakt@przeprogramowani.pl"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-white transition-colors"
+          >
+            <span>Skontaktuj się z nami w sprawie szkoleń dla firm</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -23,6 +23,7 @@ export interface AttemptResult {
 
 interface Props {
   attempts: AttemptResult[];
+  benchmarkVersion?: "v1" | "v2";
 }
 
 const DATA_QUALITY_CRITERIA = [
@@ -37,7 +38,7 @@ function hasMaxScore(attempt: AttemptResult, criterionName: string): boolean {
   return c ? c.score === c.max : false;
 }
 
-export default function DetailedComparison({attempts}: Props) {
+export default function DetailedComparison({attempts, benchmarkVersion = "v1"}: Props) {
   const [viewMode, setViewMode] = useState<"models" | "attempts">("models");
   const [filters, setFilters] = useState<FilterState>({
     localBuild: false,
@@ -53,6 +54,7 @@ export default function DetailedComparison({attempts}: Props) {
   const filteredAttempts = useMemo(
     () =>
       attempts.filter((attempt) => {
+        if (benchmarkVersion === "v2") return true;
         if (filters.localBuild && !hasMaxScore(attempt, "Local build"))
           return false;
         if (filters.manualTesting && !hasMaxScore(attempt, "Manual testing"))
@@ -66,17 +68,17 @@ export default function DetailedComparison({attempts}: Props) {
           return false;
         return true;
       }),
-    [attempts, filters],
+    [attempts, filters, benchmarkVersion],
   );
 
   return (
     <div>
-      <TableFilters
+      {benchmarkVersion === "v1" && <TableFilters
         filters={filters}
         onToggle={handleToggle}
         totalCount={attempts.length}
         filteredCount={filteredAttempts.length}
-      />
+      />}
       <div className='mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
         <div className='text-sm text-slate-400'>
           {viewMode === "models"

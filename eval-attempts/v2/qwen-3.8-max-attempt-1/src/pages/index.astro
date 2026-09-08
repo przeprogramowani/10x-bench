@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pages = [
+  {
+    href: '/o-nas',
+    title: 'O nas',
+    text: 'Kim są Przeprogramowani, co robią i jakie wartości stoją za projektem — Przemek Smyrdek i Marcin Czarkowski.',
+  },
+  {
+    href: '/podcast',
+    title: 'Podcasty',
+    text: 'Dwa podcasty: Opanuj.AI o sztucznej inteligencji oraz Przeprogramowani o karierze i technologiach.',
+  },
+  {
+    href: '/youtube',
+    title: 'YouTube',
+    text: 'Najnowsze filmy oficjalnego kanału: live’y o AI, Demo Day 10xDevs i webinary technologiczne.',
+  },
+  {
+    href: '/kursy',
+    title: 'Kursy',
+    text: 'Opanuj Frontend, Opanuj TypeScript i 10xDevs — programy edukacyjne dla ambitnych programistów.',
+  },
+];
+---
+
+<Layout
+  title="Przeprogramowani — Szersze spojrzenie na programowanie"
+  description="Przeprogramowani to edukacja technologiczna: kurs 10xDevs o programowaniu z AI, Opanuj Frontend, Opanuj TypeScript, podcasty Opanuj.AI i Przeprogramowani oraz kanał YouTube."
+  path="/"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-700/40 via-ink-900 to-ink-900" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-4 py-16 sm:py-24">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-500">
+        Edukacja technologiczna w epoce AI
+      </p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+        Szersze spojrzenie na programowanie
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-slate-200">
+        Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+        Od ponad 7 lat tworzą kursy, podcasty, filmy i narzędzia, które pomagają programistom
+        patrzeć szerzej — na architekturę, biznes, ludzi i siebie.
+      </p>
+
+      <div class="mt-10 max-w-3xl rounded-2xl border border-brand-500/40 bg-ink-800 p-6 shadow-xl sm:p-8">
+        <p class="inline-block rounded-full bg-brand-600 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+          Wyróżniony kurs
+        </p>
+        <h2 class="mt-3 text-2xl font-bold text-white sm:text-3xl">10xDevs — Programuj z AI</h2>
+        <p class="mt-3 text-slate-200">
+          Nowe oblicze programowania z wykorzystaniem Generatywnego AI: techniki i narzędzia
+          pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania — od
+          planowania, przez implementację, po testy i utrzymanie.
+        </p>
+        <a
+          class="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-3 text-base font-bold text-white hover:bg-brand-500"
+          href="https://10xdevs.pl"
+          rel="noopener"
+          target="_blank"
+        >
+          Zobacz kurs 10xDevs<span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="pages-heading" class="mx-auto max-w-6xl px-4 py-14">
+    <h2 id="pages-heading" class="text-2xl font-bold text-white sm:text-3xl">Co znajdziesz w serwisie</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {
+        pages.map((page) => (
+          <a
+            href={page.href}
+            class="group rounded-xl border border-white/10 bg-ink-800 p-6 transition hover:border-brand-500/50 hover:bg-ink-700"
+          >
+            <h3 class="text-lg font-semibold text-white group-hover:text-brand-500">{page.title}</h3>
+            <p class="mt-2 text-sm text-slate-300">{page.text}</p>
+            <p class="mt-3 text-sm font-semibold text-brand-500">
+              Przejdź<span aria-hidden="true"> →</span>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="offer-heading" class="border-t border-white/10 bg-ink-800/60">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 id="offer-heading" class="text-2xl font-bold text-white sm:text-3xl">
+        Programy edukacyjne Przeprogramowanych
+      </h2>
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        <div class="rounded-xl border border-white/10 bg-ink-900 p-6">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-500">Gen AI</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">10xDevs</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Świadome stosowanie Generatywnego AI w całym cyklu wytwarzania oprogramowania.
+          </p>
+          <a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://10xdevs.pl" rel="noopener" target="_blank">10xdevs.pl ↗</a>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-ink-900 p-6">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-500">Frontend</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">Opanuj Frontend: AI Edition</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            5 obszernych modułów: frontend, testowanie, CI/CD, open source i architektura
+            aplikacji webowych. Cztery edycje i prawie 400 absolwentów.
+          </p>
+          <a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://www.opanujfrontend.pl" rel="noopener" target="_blank">opanujfrontend.pl ↗</a>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-ink-900 p-6">
+          <p class="text-xs font-bold uppercase tracking-wide text-brand-500">TypeScript</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">Opanuj TypeScript</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Szkolenie podnoszące jakość projektów działających na produkcji — praca z
+            TypeScript 5 i React 19.
+          </p>
+          <a class="mt-4 inline-block text-sm font-semibold text-brand-500 hover:underline" href="https://www.opanujtypescript.pl" rel="noopener" target="_blank">opanujtypescript.pl ↗</a>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-slate-300">
+        Więcej: <a class="text-brand-500 hover:underline" href="/kursy">wszystkie kursy</a> ·
+        <a class="ml-1 text-brand-500 hover:underline" href="/podcast">podcasty</a> ·
+        <a class="ml-1 text-brand-500 hover:underline" href="/youtube">YouTube</a> ·
+        <a class="ml-1 text-brand-500 hover:underline" href="/o-nas">o nas</a>
+      </p>
+    </div>
+  </section>
+</Layout>

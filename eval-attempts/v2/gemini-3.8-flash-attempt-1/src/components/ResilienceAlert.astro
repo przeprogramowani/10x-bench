@@ -1,0 +1,44 @@
+---
+import type { FeedResult } from '../data/types';
+
+interface Props {
+  feed: FeedResult;
+}
+
+const { feed } = Astro.props;
+---
+
+{
+  feed.isFallback && (
+    <div
+      role="alert"
+      class="mb-8 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-200 backdrop-blur-sm"
+    >
+      <div class="flex items-start gap-3">
+        <span class="text-xl" aria-hidden="true">⚠️</span>
+        <div class="flex-1 text-sm">
+          <p class="font-bold text-amber-300">
+            Informacja o dostępności źródła ({feed.sourceName})
+          </p>
+          <p class="mt-1 text-amber-200/90 leading-relaxed">
+            {feed.errorMessage || 'Zewnętrzne źródło danych było chwilowo niedostępne. Wyświetlamy ostatnie sprawdzone dane archiwalne z lokalnej pamięci podręcznej.'}
+          </p>
+          <div class="mt-3 flex items-center gap-4">
+            <a
+              href={feed.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md bg-amber-400 text-slate-950 hover:bg-amber-300 transition-colors focus-visible:ring-2 focus-visible:ring-amber-400"
+            >
+              <span>Przejdź do oficjalnego źródła</span>
+              <span>↗</span>
+            </a>
+            <span class="text-xs text-amber-300/70">
+              Czas ostatniej aktualizacji: {new Date(feed.fetchedAt).toLocaleString('pl-PL')}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

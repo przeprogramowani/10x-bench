@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FounderCard from '../components/FounderCard.astro';
+import { FOUNDERS, BRAND_INFO } from '../data/founders';
+---
+
+<Layout
+  title="O nas — Przeprogramowani | Działalność, wartości i twórcy"
+  description="Poznaj misję Przeprogramowanych oraz sylwetki twórców: Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju osobistego."
+  canonicalPath="/o-nas"
+>
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 border border-amber-500/30 text-amber-400 mb-4">
+        <span>O projekcie i zespole</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Łączymy świat programowania, biznesu i rozwoju osobistego
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        {BRAND_INFO.description} Wierzymy, że najlepsi inżynierowie to ci, którzy nie zamykają się wyłącznie w składni języka, ale rozumieją architekturę, kontekst biznesowy, komunikację i stale poszerzają swoje horyzonty.
+      </p>
+    </div>
+
+    {/* Section: Founders */}
+    <section class="mb-24" aria-labelledby="founders-heading">
+      <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-800">
+        <div>
+          <h2 id="founders-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Sylwetki twórców
+          </h2>
+          <p class="text-sm text-gray-400 mt-1">
+            Doświadczeni inżynierowie, liderzy techniczni i autorzy programów edukacyjnych
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {FOUNDERS.map((founder) => (
+          <FounderCard founder={founder} />
+        ))}
+      </div>
+    </section>
+
+    {/* Section: Values and Activities */}
+    <section class="mb-24" aria-labelledby="values-heading">
+      <div class="mb-12">
+        <h2 id="values-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
+          Wartości i filozofia Przeprogramowanych
+        </h2>
+        <p class="text-base text-gray-400 max-w-2xl">
+          Edukacja inżynierska w dobie sztucznej inteligencji wymaga odejścia od płytkich tutoriali na rzecz głębokiego zrozumienia fundamentów i świadomego stosowania narzędzi nowej generacji.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-[#0f172a]/70 border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xl mb-4">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Szersze spojrzenie</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Kod jest środkiem do celu. Uczymy inżynierów rozumienia celów biznesowych, product designu oraz psychologii pracy w nowoczesnym zespole technologicznym.
+          </p>
+        </div>
+
+        <div class="bg-[#0f172a]/70 border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xl mb-4">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Świadome Generative AI</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Nie promujemy bezrefleksyjnego kopiowania promptów. Pokazujemy, jak integrować agentów AI, modele LLM i benchmarki w stabilne procedury produkcyjne (SDLC).
+          </p>
+        </div>
+
+        <div class="bg-[#0f172a]/70 border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xl mb-4">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Praktyka na produkcji</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Wszystkie treści i kursy tworzymy w oparciu o realne doświadczenie architektoniczne ze startupów, scale-upów i międzynarodowych organizacji technologicznych.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Section: History & Numbers */}
+    <section class="bg-gradient-to-r from-[#0c1424] to-[#11192e] rounded-3xl p-8 sm:p-12 border border-gray-800 text-center sm:text-left">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="text-4xl sm:text-5xl font-black text-amber-400 font-mono">7 lat</div>
+          <div class="text-xs uppercase tracking-wider text-gray-400 mt-2 font-medium">Na rynku edukacji IT (od 2017)</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-black text-white font-mono">3</div>
+          <div class="text-xs uppercase tracking-wider text-gray-400 mt-2 font-medium">Flagowe programy szkoleniowe</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-black text-cyan-400 font-mono">2</div>
+          <div class="text-xs uppercase tracking-wider text-gray-400 mt-2 font-medium">Autorskie podcasty technologiczne</div>
+        </div>
+        <div>
+          <div class="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">100%</div>
+          <div class="text-xs uppercase tracking-wider text-gray-400 mt-2 font-medium">Praktycznej wiedzy inżynierskiej</div>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-300">
+          Chcesz porozmawiać o współpracy, wystąpieniu lub szkoleniu firmowym?
+        </p>
+        <a
+          href={`mailto:${BRAND_INFO.contactEmail}`}
+          class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold text-sm transition-colors"
+        >
+          {BRAND_INFO.contactEmail}
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

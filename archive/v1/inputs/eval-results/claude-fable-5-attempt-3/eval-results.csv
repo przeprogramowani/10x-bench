@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.06.2026 23:03,N/A,9.06.2026 23:03
+Local build,1,1,Build succeeded — 5 pages built (404, index, o-nas, podcast, youtube); all routes return 200
+Manual testing,1,1,"Dev server runs; navigation, styles and content render correctly; all routes return 200 (user-confirmed)"
+Tech stack,0,1,"Astro 5.18.2 (required v6), Tailwind CSS 3.4.19 via @astrojs/tailwind v6 (required v4), no @astrojs/cloudflare adapter (wrangler.jsonc present but no adapter configured, output: 'static'); only React 19 correct"
+O nas page,1,1,"Page exists and returns 200; founders accurate — Przemek (DAZN/Cabify, full-stack, OSS, speaker) and Marcin (SmartRecruiters tech lead, Opanuj.AI Podcast, neuroscience-based learning); mission & values match. Minor: some partner companies invented"
+Podcast page,0.5,1,"Page exists and returns 200; BOTH podcasts present (Opanuj.AI + Przeprogramowani ft. Gość, tabbed UI) — but all Spotify links use a single WRONG show ID (4qHUZJpeBK8Ij9e2wTVm2o); both correct IDs (3yVvOAXSYq6sQB02w4A4wo, 3D6LmchBdoqL2sWkQjvWOy) absent and episode data appears fabricated"
+YouTube page,1,1,"Page exists and returns 200; real, unique Przeprogramowani channel video IDs (0JOszZXqKaM, XgyH-HSzKRQ, 03y826SVjG0, S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ) — verified real via YouTube oEmbed (author: Przeprogramowani), titles match. No mocks/placeholders"
+Kursy section,1,1,"#kursy section on index + CourseCard component; 10xDevs featured in Hero (pill '10xDevs 3.0', CTA 'Dołącz do 10xDevs') and courses grid. Courses match context (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript); some metrics invented"
+Consistent UI,1,1,UI consistent across all pages (user-confirmed)
+Responsive design,1,1,"Containers, components and navigation responsive across screen sizes (user-confirmed)"
+SEO Tags,1,1,"Layout.astro centralizes meta tags (title, per-page description, canonical, full Open Graph, twitter:card, locale pl_PL) across all pages; content matches context"
+Penalty,0,N/A,No penalty applied

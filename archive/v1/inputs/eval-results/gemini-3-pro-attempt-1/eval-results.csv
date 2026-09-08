@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,9.02.2026 17:45,N/A,9.02.2026 17:45
+Local build,1,1,Build successful with Astro 5.17.1 - no errors
+Manual testing,1,1,All pages accessible (/ /about /podcast /youtube) returning 200 - navigation styles and content working
+Tech stack,0.5,1,Astro 5 and React 19 present but Tailwind CSS is v3 (not v4) and @astrojs/cloudflare adapter missing from dependencies and astro.config.mjs
+O nas page,0.5,1,Page exists at /about returning 200 but bios are oversimplified - Przemek missing DAZN Cabify Open Source contributions publications conferences - Marcin missing SmartRecruiters neuronauka OpanujAI podcast authorship - no LinkedIn links
+Podcast page,0.5,1,Page exists at /podcast returning 200 but only one podcast shown (OpanujAI Podcast missing) - no Spotify URLs present - episode data appears hallucinated with fabricated titles and dates - hardcoded mock data
+YouTube page,0.5,1,Page exists at /youtube returning 200 but no real YouTube video IDs - uses stock Unsplash images - video titles appear hallucinated - no actual Przeprogramowani channel content - mock data
+Kursy section,0.5,1,Courses section exists and 10xDevs featured in Hero but only 3 of 6 courses listed - missing Opanuj JavaScript Opanuj AI and Cursor Programuj z AI - 10xDevs URL points to generic przeprogramowani.pl
+Consistent UI,1,1,UI is consistent across all pages
+Responsive design,0.5,1,Mostly responsive but container is not stretched end to end
+SEO Tags,0.5,1,Layout has title and meta description applied to all pages via layout but description is generic and does not match context file tagline/mission - no Open Graph tags - no dedicated SEO component

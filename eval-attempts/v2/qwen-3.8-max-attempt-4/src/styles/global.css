@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-500: oklch(0.62 0.17 255);
+  --color-brand-600: oklch(0.55 0.19 258);
+  --color-brand-700: oklch(0.47 0.18 260);
+  --color-ink-950: oklch(0.16 0.02 260);
+  --color-ink-900: oklch(0.2 0.025 260);
+  --color-ink-800: oklch(0.26 0.03 260);
+  --color-ink-700: oklch(0.33 0.03 260);
+  --color-ink-300: oklch(0.75 0.02 260);
+  --color-ink-100: oklch(0.92 0.01 260);
+  --color-accent-400: oklch(0.82 0.14 190);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+astro-island {
+  display: block;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-ink-100);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-400);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.prose-pl p {
+  line-height: 1.7;
+  color: var(--color-ink-300);
+}

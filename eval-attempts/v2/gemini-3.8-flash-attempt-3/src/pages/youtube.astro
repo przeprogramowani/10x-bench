@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StatusBanner from '../components/StatusBanner.astro';
+import { VideoPlayer } from '../components/VideoPlayer';
+import { getYouTubeVideos } from '../data/youtube';
+
+const ytData = await getYouTubeVideos();
+const videos = ytData.items;
+---
+
+<Layout
+  title="Kanał YouTube — Przeprogramowani.pl | Najnowsze filmy, live'y i materiały wideo"
+  description="Oficjalny kanał YouTube Przeprogramowani. Oglądaj najnowsze filmy z ostatnich 90 dni o Generative AI, architekturze systemów, 10xDevs i inżynierii promptów z odtwarzaczem."
+  canonicalPath="/youtube"
+>
+  <!-- Hero Section -->
+  <section class="py-14 lg:py-20 bg-gradient-to-b from-red-950/25 via-gray-950 to-gray-950 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl space-y-6">
+        <nav aria-label="Breadcrumb" class="text-xs text-gray-400 flex items-center gap-2">
+          <a href="/" class="hover:text-blue-400">Strona główna</a>
+          <span>/</span>
+          <span class="text-red-300 font-medium">YouTube</span>
+        </nav>
+
+        <div class="space-y-2">
+          <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/10 text-red-400 border border-red-500/20">
+            Oficjalny kanał YouTube
+          </span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            Filmy i materiały wideo Przeprogramowanych
+          </h1>
+          <p class="text-sm sm:text-base text-gray-300">
+            Ponad 30 tysięcy subskrybentów • Livestreamy, analizy technologiczne, warsztaty AI i demo day
+          </p>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
+          Na naszym kanale YouTube dzielimy się wiedzą o nowoczesnym programowaniu, architekturze frontendu i backendu, testowaniu modeli sztucznej inteligencji oraz workflow agentów AI. Każde wideo to dawka wiedzy prosto od praktyków.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a
+            href="https://www.youtube.com/@Przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-lg shadow-lg shadow-red-600/20 transition-all"
+          >
+            <span>Subskrybuj kanał YouTube</span>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a
+            href={ytData.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 text-xs font-semibold rounded-lg transition-colors"
+          >
+            <span>Kanał Atom/RSS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Feed & Player Grid -->
+  <section class="py-16 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <StatusBanner
+        status={ytData.status}
+        sourceUrl={ytData.sourceUrl}
+        sourceName={ytData.sourceName}
+        fetchedAt={ytData.fetchedAt}
+        errorMessage={ytData.errorMessage}
+        isFallback={ytData.isFallback}
+      />
+
+      <div class="mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Najnowsze filmy z 90 dni poprzedzających start próby
+        </h2>
+        <p class="text-sm text-gray-400 mt-1">
+          Wszystkie materiały zawierają rzeczywisty tytuł, datę publikacji, osadzony odtwarzacz oraz bezpośredni odnośnik do wideo na YouTube.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        {videos.map((video) => (
+          <article class="bg-gray-900/80 border border-gray-800 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-xl hover:border-gray-700 transition-all">
+            <div class="space-y-4">
+              <!-- Embedded Video Player -->
+              <VideoPlayer
+                client:load
+                videoId={video.id}
+                title={video.title}
+                originalUrl={video.url}
+              />
+
+              <div class="space-y-2 pt-1">
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                  <span class="font-mono">📅 {video.formattedDate}</span>
+                  <span class="px-2 py-0.5 rounded bg-red-950/40 text-red-400 border border-red-900/40 text-[10px] font-semibold">
+                    YouTube
+                  </span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug">
+                  <a
+                    href={video.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-red-400 transition-colors"
+                  >
+                    {video.title}
+                  </a>
+                </h3>
+                {video.description && (
+                  <p class="text-xs sm:text-sm text-gray-300 leading-relaxed line-clamp-3">
+                    {video.description}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div class="pt-5 mt-5 border-t border-gray-800/80 flex items-center justify-between">
+              <span class="text-xs text-gray-500 font-mono">ID: {video.id}</span>
+              <a
+                href={video.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
+              >
+                <span>Obejrzyj na kanale YouTube</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Navigation Footer -->
+      <div class="pt-12 mt-12 border-t border-gray-800/80 flex flex-wrap items-center justify-between gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-white"
+        >
+          ← Wróć na stronę główną
+        </a>
+        <a
+          href="/kursy"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300"
+        >
+          Sprawdź nasze kursy programowania →
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

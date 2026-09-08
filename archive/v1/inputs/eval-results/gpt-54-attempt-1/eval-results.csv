@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,9min 45s,N/A,9min 45s
+Test run,16.04.2026 21:16,N/A,16.04.2026 21:16
+Local build,1,1,Build succeeded with @astrojs/cloudflare adapter; static prerender of all 4 routes completed in ~2.5s
+Manual testing,1,1,Dev server runs at http://localhost:4321; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation styles and content
+Tech stack,1,1,"Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs"
+O nas page,1,1,"Dedicated page returns 200; both founders present with key details: Przemek (DAZN, Cabify, .NET/Java/Node/Angular/TS, 4Developers/ReactiveConf/InfoShare prelegent, Open Source contributor); Marcin (SmartRecruiters Lead Frontend, 10+ yrs, Opanuj.AI Podcast author, learning research). Bios faithful to context though course assignments not inlined per founder."
+Podcast page,0.5,1,"Page returns 200 and both podcasts (Opanuj.AI Podcast and Przeprogramowani ft. Gość) are displayed with realistic-looking episode lists. However, the show Spotify URL is wrong (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy from context). Episode URLs use podcasters.spotify.com/pod/show/... format that does not match real Spotify show IDs."
+YouTube page,1,1,"Page returns 200; 6 unique video entries with distinct YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg). No rick-roll/placeholder IDs detected. Titles and descriptions align with channel topics (AI agents, Claude Code, benchmarks, MVP/product builders)."
+Kursy section,0.5,1,"Dedicated #kursy section on index.astro with 3 courses (Opanuj Frontend: AI Edition, Opanuj TypeScript, 10xDevs); 10xDevs prominently featured in hero spotlight with description and bullets. Partial match to context which lists 6 courses (missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI)."
+Consistent UI,1,1,User confirmed UI is consistent across all pages
+Responsive design,0.5,1,Majority of the page is responsive with some minor issues
+SEO Tags,1,1,"MainLayout.astro provides title, description, viewport, charset meta tags; layout used by all 4 pages so meta tags cover the full site. Title/description content matches Przeprogramowani branding (no OpenGraph/Twitter tags but core meta requirements met)."
+Penalty,0,N/A,No penalty applied

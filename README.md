@@ -1,136 +1,57 @@
-# 10x Benchmark
+# 10xBench V2
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A comprehensive benchmark comparing how different large language models tackle "vibe coding" — creating a fully functional website for [Przeprogramowani.pl](https://przeprogramowani.pl) in a single attempt, without iterative refinement.
+10xBench V2 compares autonomous completion of a precise Przeprogramowani.pl website specification. Each candidate receives the complete task, researches real content, implements the site and verifies it within **60 minutes**. The initial assessment assigns **80 points to outcomes and 20 to candidate self-verification**. Cloudflare Workers configuration is required; the candidate does **not** publish the site.
 
-## Overview
+V2 starts with no attempts. The V1 model roster is not rerun, regraded or imported as V2. A future paid campaign is a separate action.
 
-This repository evaluates the practical capabilities of various state-of-the-art LLMs by having each model create a website implementation based on the same prompt and content specifications. The results provide insights into each model's ability to understand requirements, generate code, and produce production-ready web solutions.
+## Pages and APIs
 
-## Key Concept: "Vibe Coding"
+| Path | Content |
+| --- | --- |
+| `/` | V2 results, initially an explicit empty state |
+| `/benchmark` | Complete V2 task and public scoring breakdown |
+| `/v1` | Frozen V1 ranking: 122 attempts, 25 model families |
+| `/v1/benchmark` | Preserved V1 public methodology, with historical discrepancies disclosed |
+| `/kit` | Existing Kit page |
+| `/api/leaderboard.json` | Original V1 schema and exact frozen dataset |
+| `/api/v2/leaderboard.json` | Separate V2 leaderboard; only finalized evaluations |
 
-Vibe coding represents a one-shot approach to web development where an LLM must:
-- Understand the complete project requirements from a single prompt
-- Extract and properly format content specifications
-- Generate a functional, well-structured website
-- Produce clean, maintainable code without iterative debugging
-
-## Project Structure
-
-### Core Directories & Files
-
-| Path | Purpose |
-|------|---------|
-| `./website/` | Astro-based results dashboard (displays all benchmark results) |
-| `./scripts/process-results.ts` | TypeScript script that processes CSV results and generates dashboard data |
-| `./eval-attempts/` | Model implementations (one-shot attempts) |
-| `./eval-results/` | Processed evaluation result files |
-
-### Model Attempt Directories
-
-Each model's implementation is stored in a dedicated directory under `./eval-attempts/`.
-
-Each `eval-results/{model-name}-attempt-{number}` directory contains `eval-results.csv` with criterion-by-criterion evaluation scores. Multiple attempt directories per model indicate iterative benchmark runs.
-
-
-## How It Works
-
-1. **Prompt**: Each model receives the same input prompt (see [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval))
-2. **Content**: Reference content and specifications are maintained in [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval)
-3. **Implementation**: Models generate website code in their respective attempt directories under `./eval-attempts/`
-4. **Evaluation**: All implementations are assessed using the criteria and tooling from [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval)
-5. **Results Processing**: The `scripts/process-results.ts` script parses evaluation CSV files and generates data for the dashboard
-6. **Results Dashboard**: An Astro-based static website (in `./website/`) displays comparative results with interactive tables and summaries
-
-## Evaluation Criteria
-
-The benchmark evaluates implementations across multiple dimensions:
-
-- **Technical Stack**: Framework choices, code organization, and architecture
-- **Page Structure**: Proper implementation of all required pages and routes
-- **Content Accuracy**: Correct use of provided copy and content
-- **SEO & Metadata**: Proper handling of titles, descriptions, and semantic HTML
-- **Responsive Design**: Mobile-friendliness and responsive layout implementation
-- **Code Quality**: Readability, maintainability, and best practices
-- **Functionality**: Working features and user interactions
-
-For detailed criteria, see `./benchmark/criteria.md`
-
-## Results Dashboard
-
-Benchmark results are displayed in an interactive Astro-based static website:
-
-- **`./website/`** — Results dashboard with:
-  - Overview page showing all attempts sorted by performance
-  - Interactive results table with sticky headers and frozen first column
-  - Model family averages
-  - Benchmark details page displaying the prompt and evaluation criteria
-  - Data automatically processed from CSV evaluation files via `scripts/process-results.ts`
-
-## Getting Started
-
-### View Results Dashboard
+## Development and verification
 
 ```bash
-# Install dependencies
 npm install
-
-# Build and start development server (processes results and runs Astro)
 npm run dev
-
-# Open http://localhost:3000 in your browser
-```
-
-### Explore Benchmark Materials
-
-Benchmark prompt, evaluation criteria and reference content are maintained in the companion repo: [10x-bench-eval](https://github.com/przeprogramowani/10x-bench-eval).
-
-To explore model implementations: `ls -la ./eval-attempts/`
-
-### Build for Production
-
-```bash
 npm run build
+npm run verify:v1
+npm run verify:benchmark
+node --import tsx --test scripts/process-v2.test.ts scripts/workflow-v2.test.ts
+npm --prefix website run lint
 ```
 
-This processes all evaluation results and generates a static production-ready site in `./website/dist/`
+Use the local URL printed by Astro. Build output is `website/dist/`. Normal processing verifies both immutable bundles, restores V1 snapshot bytes and validates structured V2 results before publishing local generated data. It never reads historical implementation code or mixes unversioned CSVs into V2.
 
-## Data Processing Pipeline
+The dashboard retains **Astro 5, React 19 and Tailwind 3**. Candidate websites follow the independent latest-stable-major-at-start policy in the V2 specification; do not upgrade dashboard Tailwind to satisfy a candidate requirement.
 
-The benchmark uses an automated data pipeline to convert raw evaluation results into the interactive dashboard:
+## Canonical materials and workflows
 
-1. **Input**: Each attempt directory contains `eval-result.csv` with criterion scores
-2. **Processing**: `scripts/process-results.ts` parses CSV files and calculates:
-   - Total score for each attempt (excluding "Task completion time")
-   - Percentage score relative to maximum possible score
-   - Model family averages across all attempts
-3. **Output**: Generates `website/src/data/results.json`
-4. **Display**: Astro website statically renders the dashboard using the JSON data
+The authoritative bundle lives in the companion repository at `10x-bench-eval/benchmark/v2/`. `npm run sync:benchmark` vendors exact copies with a SHA-256 content revision. `npm run verify:benchmark` validates the local bundle offline; `npm run sync:benchmark -- --check` additionally compares the sibling checkout. The launch skill and public methodology use this same revision. `prompt.md` is only a pointer; candidate inputs are the complete `prompt.md` and `assessment.md` from the bundle plus the frozen dependency baseline.
 
-The script supports two CSV formats:
-- **New format**: `Criterion,Score,Max,Notes`
-- **Legacy format**: `Criterion,Score,Notes` (assumes Max=1)
+The tracked workflows are `.claude/skills/10x-eval-model/SKILL.md` and `.claude/skills/10x-score-attempts/SKILL.md`. They retain the model/attempt naming workflow, with explicit version and reading boundaries. See [the operator guide](docs/v2/operator-guide.md) for preparation, evidence, finalization, costs and screenshots, and [release handoff](docs/v2/release.md) for coordinated publication.
 
-## Purpose
+| Files | Responsibility |
+| --- | --- |
+| `benchmark/v2/` | Vendored immutable spec, public assessment, rubric and operator/evaluator protocol |
+| `benchmark/models-v2.json` | V2-only model setup metadata; initially empty |
+| `eval-attempts/v2/{model-id}-attempt-{N}/` | Candidate implementation and candidate verification artifacts |
+| `eval-results/v2/{model-id}-attempt-{N}/` | Operator `attempt.json`, evaluator `evaluation.json`, registry evidence and human feedback |
+| `archive/v1/` | Frozen scores/API, inputs, metadata, original methodology and provenance |
+| `website/public/screenshots/v2/` | V2 screenshots and filmstrips; V1 URLs stay unchanged |
+| `scripts/process-v2.ts` | Validation, exclusion of unfinished records and V2 aggregation |
 
-This benchmark serves as a practical evaluation tool for:
-- Understanding LLM capabilities in web development
-- Assessing code generation quality across different models
-- Identifying strengths and weaknesses in one-shot implementation scenarios
-- Informing technology choices for AI-assisted development workflows
-
-## Related Repositories
-
-| Repository | Purpose |
-|------------|---------|
-| **10x-bench** (this repo) | Model implementations, results dashboard, data processing, and the `/10x-score-attempts` skill |
-| [**10x-bench-eval**](../10x-bench-eval/) | Evaluation criteria, scoring methodology, benchmark prompt, reference content |
-
----
-
-**Note**: Each attempt represents a completely independent, one-shot effort with no iterative refinement or human intervention during implementation.
+Historical CSVs and implementation folders remain in place. Archive integrity checks use frozen copies and original screenshot URLs. Do not modify their scores or regenerate archive hashes to conceal a mismatch. Original V1 README and guidance are retained in `archive/v1/`.
 
 ## Contributors ✨
 

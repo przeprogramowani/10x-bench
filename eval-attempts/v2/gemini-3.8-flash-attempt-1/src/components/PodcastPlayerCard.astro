@@ -1,0 +1,83 @@
+---
+import type { MediaItem } from '../data/types';
+
+interface Props {
+  item: MediaItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="flex flex-col bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 shadow-lg">
+  <div class="p-6 flex-1 flex flex-col justify-between">
+    <div>
+      <!-- Header meta: Source & Date & Duration -->
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-amber-400 font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400" aria-hidden="true"></span>
+          {item.sourceName}
+        </span>
+        <div class="flex items-center gap-3">
+          {item.duration && (
+            <span class="font-mono text-slate-400 bg-slate-800/60 px-2 py-0.5 rounded">
+              ⏱ {item.duration}
+            </span>
+          )}
+          <time datetime={item.publishedAt} class="text-slate-400">
+            📅 {item.publishedDateFormatted}
+          </time>
+        </div>
+      </div>
+
+      <!-- Episode Title -->
+      <h3 class="text-lg sm:text-xl font-bold text-white mb-3 hover:text-amber-400 transition-colors">
+        <a href={item.url} target="_blank" rel="noopener noreferrer" class="focus-visible:ring-1 focus-visible:ring-amber-400 focus-visible:rounded">
+          {item.title}
+        </a>
+      </h3>
+
+      <!-- Description -->
+      <p class="text-sm text-slate-300 line-clamp-3 mb-6 leading-relaxed">
+        {item.description}
+      </p>
+    </div>
+
+    <!-- Audio Player section -->
+    <div class="space-y-4 pt-4 border-t border-slate-800/80">
+      {item.audioUrl ? (
+        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+          <label for={`audio-${item.id}`} class="block text-xs font-semibold text-slate-400 mb-2">
+            Odtwórz odcinek:
+          </label>
+          <audio
+            id={`audio-${item.id}`}
+            controls
+            preload="none"
+            class="w-full h-10 accent-amber-400 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:rounded"
+            src={item.audioUrl}
+          >
+            Twoja przeglądarka nie obsługuje odtwarzacza audio. Użyj bezpośredniego linku do odcinka.
+          </audio>
+        </div>
+      ) : (
+        <div class="p-3 rounded-xl bg-slate-950/40 border border-slate-800/60 text-xs text-slate-400">
+          Bezpośredni plik audio nie jest dostępny dla tego materiału. Możesz posłuchać odcinka na oficjalnej platformie dostawcy.
+        </div>
+      )}
+
+      <!-- Independent External Link to Original Episode -->
+      <div class="flex items-center justify-between pt-1">
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:rounded"
+        >
+          <span>Otwórz odcinek w serwisie źródłowym</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <span class="text-[11px] text-slate-500">Oryginał</span>
+      </div>
+    </div>
+  </div>
+</article>

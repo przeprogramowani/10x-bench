@@ -1,0 +1,84 @@
+---
+import type { Course } from '../data/types';
+
+interface Props {
+  course: Course;
+  featured?: boolean;
+}
+
+const { course, featured = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-3xl border transition-all duration-200 flex flex-col justify-between overflow-hidden',
+    featured
+      ? 'bg-gradient-to-b from-[#172033] to-[#0d1424] border-amber-500/50 shadow-2xl shadow-amber-500/10 ring-1 ring-amber-500/20'
+      : 'bg-[#0f172a]/90 border-gray-800 hover:border-gray-700 shadow-xl'
+  ]}
+>
+  <div class="p-6 sm:p-8">
+    <div class="flex items-center justify-between gap-3 mb-4">
+      <span
+        class:list={[
+          'px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase',
+          featured
+            ? 'bg-amber-400 text-gray-950 shadow-sm'
+            : 'bg-gray-800 text-gray-300 border border-gray-700'
+        ]}
+      >
+        {course.badge}
+      </span>
+      <span class="text-xs font-medium text-gray-400">
+        {course.tag}
+      </span>
+    </div>
+
+    <h3 class="text-2xl font-extrabold text-white mb-1 tracking-tight">
+      {course.title}
+    </h3>
+    <p class="text-sm font-semibold text-amber-400/90 mb-4">
+      {course.subtitle}
+    </p>
+
+    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+      {course.description}
+    </p>
+
+    <div class="space-y-2.5 pt-4 border-t border-gray-800">
+      <div class="text-xs font-semibold uppercase tracking-wider text-gray-400">
+        Kluczowe zagadnienia:
+      </div>
+      <ul class="space-y-2">
+        {course.highlights.map((highlight) => (
+          <li class="flex items-start gap-2.5 text-xs text-gray-300">
+            <svg class="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="p-6 sm:p-8 pt-0">
+    <a
+      href={course.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[
+        'w-full py-3.5 px-6 rounded-xl font-bold text-sm inline-flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5',
+        featured
+          ? 'bg-amber-500 hover:bg-amber-400 text-gray-950 shadow-lg shadow-amber-500/20'
+          : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+      ]}
+      aria-label={`Przejdź do oficjalnej strony kursu ${course.title}`}
+    >
+      <span>Sprawdź szczegóły kursu</span>
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</div>

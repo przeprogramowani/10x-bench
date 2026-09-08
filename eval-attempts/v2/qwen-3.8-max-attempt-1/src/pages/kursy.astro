@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const courses = [
+  {
+    name: '10xDevs — Programuj z AI',
+    tag: 'Generatywne AI',
+    href: 'https://10xdevs.pl',
+    text: 'Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania — od planowania i implementacji po testy, code review i utrzymanie. Flagowy program Przeprogramowanych (edycja 10xDevs 4.0, wrzesień 2026) z hackathonami i Demo Day projektów uczestników.',
+    cta: 'Przejdź do kursu 10xDevs',
+  },
+  {
+    name: 'Opanuj Frontend: AI Edition',
+    tag: 'Frontend',
+    href: 'https://www.opanujfrontend.pl',
+    text: 'Kompleksowy program dla nowoczesnych frontend developerów: 5 obszernych modułów obejmujących frontend, testowanie, CI/CD, open source i architekturę aplikacji webowych. Cztery edycje i prawie 400 absolwentów.',
+    cta: 'Przejdź do kursu Opanuj Frontend',
+  },
+  {
+    name: 'Opanuj TypeScript',
+    tag: 'TypeScript',
+    href: 'https://www.opanujtypescript.pl',
+    text: 'Szkolenie, które podniesie jakość Twoich projektów działających na produkcji i ułatwi ich rozwój. Praca z najnowszymi wersjami TypeScript 5 i React 19.',
+    cta: 'Przejdź do kursu Opanuj TypeScript',
+  },
+];
+
+const related = [
+  { name: 'Opanuj AI', href: 'https://opanuj.ai', text: 'Warsztaty, podcast, blog i darmowe ebooki o sztucznej inteligencji.' },
+  { name: '10xRules.ai', href: 'https://10xrules.ai', text: 'Platforma reguł AI i biblioteka promptów dla zespołów developerskich.' },
+];
+---
+
+<Layout
+  title="Kursy — 10xDevs, Opanuj Frontend, Opanuj TypeScript | Przeprogramowani"
+  description="Programy edukacyjne Przeprogramowanych: 10xDevs o programowaniu z Generatywnym AI, Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Opisy i oficjalne strony kursów."
+  path="/kursy"
+>
+  <div class="mx-auto max-w-4xl px-4 py-10">
+    <nav aria-label="Ścieżka nawigacji" class="text-sm text-slate-400">
+      <a class="hover:text-brand-500 hover:underline" href="/">Strona główna</a> /
+      <span aria-current="page">Kursy</span>
+    </nav>
+    <h1 class="mt-4 text-3xl font-bold text-white sm:text-4xl">Kursy Przeprogramowanych</h1>
+    <p class="mt-4 text-lg text-slate-200">
+      Topowe programy edukacyjne dla ambitnych programistów i świadomego korzystania z potencjału
+      Generative AI. Każdy kurs prowadzi do oficjalnej strony produktu.
+    </p>
+
+    <div class="mt-8 grid gap-4">
+      {
+        courses.map((course) => (
+          <article class="rounded-xl border border-white/10 bg-ink-800 p-6">
+            <p class="text-xs font-bold uppercase tracking-wide text-brand-500">{course.tag}</p>
+            <h2 class="mt-2 text-xl font-bold text-white sm:text-2xl">{course.name}</h2>
+            <p class="mt-3 text-slate-200">{course.text}</p>
+            <a
+              class="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 font-semibold text-white hover:bg-brand-500"
+              rel="noopener"
+              target="_blank"
+              href={course.href}
+            >
+              {course.cta}<span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <section aria-labelledby="related-heading" class="mt-10">
+      <h2 id="related-heading" class="text-xl font-bold text-white">Powiązane produkty i treści</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+        {
+          related.map((item) => (
+            <div class="rounded-xl border border-white/10 bg-ink-800/60 p-5">
+              <h3 class="font-semibold text-white">{item.name}</h3>
+              <p class="mt-2 text-sm text-slate-300">{item.text}</p>
+              <a
+                class="mt-3 inline-block text-sm font-semibold text-brand-500 hover:underline"
+                rel="noopener"
+                target="_blank"
+                href={item.href}
+              >
+                {item.href.replace('https://', '')} ↗
+              </a>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-xs text-slate-400">
+        Źródło opisów: oficjalna strona <a class="underline" rel="noopener" target="_blank" href="https://przeprogramowani.pl">przeprogramowani.pl</a>
+        (pobrano 2026-09-08).
+      </p>
+    </section>
+  </div>
+</Layout>

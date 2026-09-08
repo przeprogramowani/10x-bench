@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { COURSES, PODCASTS } from '../lib/content';
+
+const featured = COURSES.find((course) => course.featured) ?? COURSES[0];
+---
+
+<Layout
+  title="Przeprogramowani — szersze spojrzenie na programowanie"
+  description="Przeprogramowani to edukacja technologiczna w epoce AI: kurs 10xDevs, szkolenia Opanuj Frontend i Opanuj TypeScript, podcasty Opanuj.AI i Przeprogramowani oraz kanał YouTube."
+  path="/"
+>
+  <section class="relative mt-8 overflow-hidden rounded-3xl border border-brand-700/50 bg-gradient-to-br from-brand-900 via-slate-900 to-slate-950 px-6 py-14 sm:px-12 sm:py-20">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent-400">
+      Nowość — wrzesień 2026
+    </p>
+    <h1 class="mt-3 max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-5xl">
+      {featured.name} — {featured.tagline}
+    </h1>
+    <p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+      {featured.description}
+    </p>
+    <div class="mt-8 flex flex-wrap gap-4">
+      <a
+        href={featured.url}
+        rel="noopener"
+        class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-500"
+      >
+        Zobacz kurs {featured.name} →
+      </a>
+      <a
+        href="/kursy"
+        class="inline-flex items-center justify-center rounded-xl border border-slate-600 px-6 py-3 text-base font-semibold text-slate-200 transition-colors hover:border-slate-400 hover:text-white"
+      >
+        Wszystkie kursy
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-14" aria-labelledby="o-projekcie">
+    <h2 id="o-projekcie" class="text-2xl font-bold text-white sm:text-3xl">
+      Czym są Przeprogramowani?
+    </h2>
+    <p class="mt-4 max-w-3xl leading-relaxed text-slate-300">
+      Przeprogramowani to projekt Przemka Smyrdka i Marcina Czarkowskiego — od ponad
+      siedmiu lat promują szersze spojrzenie na programowanie. Tworzą kursy,
+      podcasty, kanał YouTube i materiały o świadomym wykorzystaniu Generative AI
+      w codziennej pracy programisty. Realizują projekty szkoleniowe dla firm
+      produktowych, software house'ów i globalnych korporacji.
+    </p>
+    <a href="/o-nas" class="mt-3 inline-block font-medium text-accent-400 hover:underline">
+      Poznaj nas bliżej →
+    </a>
+  </section>
+
+  <section class="mt-14" aria-labelledby="co-znajdziesz">
+    <h2 id="co-znajdziesz" class="text-2xl font-bold text-white sm:text-3xl">
+      Co znajdziesz w tej witrynie
+    </h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        PODCASTS.map((podcast) => (
+          <a
+            href={podcast.path}
+            class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition-colors hover:border-brand-600"
+          >
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-500">Podcast</p>
+            <h3 class="mt-1 text-lg font-semibold text-white group-hover:text-accent-400">{podcast.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">{podcast.description}</p>
+            <p class="mt-3 text-sm font-medium text-accent-400">Przejdź do odcinków →</p>
+          </a>
+        ))
+      }
+      <a href="/youtube" class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition-colors hover:border-brand-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand-500">Wideo</p>
+        <h3 class="mt-1 text-lg font-semibold text-white group-hover:text-accent-400">YouTube</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+          Najnowsze filmy z oficjalnego kanału Przeprogramowani — live'y, demo day
+          10xDevs i materiały o narzędziach AI.
+        </p>
+        <p class="mt-3 text-sm font-medium text-accent-400">Oglądaj filmy →</p>
+      </a>
+      <a href="/kursy" class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition-colors hover:border-brand-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand-500">Edukacja</p>
+        <h3 class="mt-1 text-lg font-semibold text-white group-hover:text-accent-400">Kursy</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+          Opanuj Frontend, Opanuj TypeScript i 10xDevs — programy szkoleniowe dla
+          ambitnych programistów.
+        </p>
+        <p class="mt-3 text-sm font-medium text-accent-400">Zobacz kursy →</p>
+      </a>
+      <a href="/podcast" class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-5 transition-colors hover:border-brand-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-brand-500">Audio</p>
+        <h3 class="mt-1 text-lg font-semibold text-white group-hover:text-accent-400">Katalog podcastów</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+          Oba podcasty Przeprogramowanych w jednym miejscu: Opanuj.AI i Przeprogramowani.
+        </p>
+        <p class="mt-3 text-sm font-medium text-accent-400">Przeglądaj katalog →</p>
+      </a>
+    </div>
+  </section>
+</Layout>

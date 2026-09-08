@@ -1,0 +1,24 @@
+
+> przeprogramowani-pl@1.0.0 seed-cache
+> node --experimental-strip-types scripts/seed-cache.ts
+
+(node:18268) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/src/data/sources' imported from /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/src/data/loader.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:860:10)
+    at defaultResolve (node:internal/modules/esm/resolve:984:11)
+    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:685:12)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:634:25)
+    at ModuleLoader.resolve (node:internal/modules/esm/loader:617:38)
+    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:273:38)
+    at ModuleJob._link (node:internal/modules/esm/module_job:135:49) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-2/src/data/sources'
+}
+
+Node.js v22.14.0

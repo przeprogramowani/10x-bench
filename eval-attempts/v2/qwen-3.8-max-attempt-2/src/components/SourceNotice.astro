@@ -1,0 +1,42 @@
+---
+import type { SourceResult } from '../data/types';
+import { formatDateTime } from '../utils/format';
+
+interface Props {
+  result: SourceResult;
+}
+
+const { result } = Astro.props;
+---
+
+{result.status === 'stale' && (
+  <p role="status" class="mb-6 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+    <strong class="font-semibold">Nieaktualne dane z pamięci podręcznej.</strong>{' '}
+    Źródło było niedostępne podczas ostatniego pobierania ({result.error}). Poniższa lista
+    pochodzi z cache zapisanego {formatDateTime(result.fetchedAt)}.{' '}
+    <a class="underline hover:text-amber-100" href={result.sourceUrl} target="_blank" rel="noopener noreferrer">
+      Sprawdź bezpośrednio w źródle<span class="sr-only"> (otwiera się w nowej karcie)</span>
+    </a>.
+  </p>
+)}
+{result.status === 'unavailable' && (
+  <p role="alert" class="mb-6 rounded-lg border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+    <strong class="font-semibold">Materiały są obecnie niedostępne.</strong>{' '}
+    Nie udało się pobrać danych ze źródła ({result.error}) i brak zapisanej kopii.{' '}
+    <a class="underline hover:text-rose-100" href={result.sourceUrl} target="_blank" rel="noopener noreferrer">
+      Otwórz źródło bezpośrednio<span class="sr-only"> (otwiera się w nowej karcie)</span>
+    </a>.
+  </p>
+)}
+{result.status === 'fresh' && (
+  <p class="mb-6 text-xs text-slate-500">
+    Dane pobrane server-side {formatDateTime(result.fetchedAt)} z feedu źródła:{' '}
+    <a class="underline hover:text-slate-300 break-all" href={result.feedUrl} target="_blank" rel="noopener noreferrer">{result.feedUrl}</a>
+  </p>
+)}
+{result.outsideRecentWindow && result.items.length > 0 && (
+  <p class="mb-6 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-300">
+    Źródło nie opublikowało nowych materiałów w ostatnich 90 dniach — poniżej najnowszy dostępny
+    materiał wraz z rzeczywistą datą publikacji.
+  </p>
+)}

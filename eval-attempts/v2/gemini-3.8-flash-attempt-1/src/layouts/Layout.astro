@@ -1,0 +1,73 @@
+---
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath?: string;
+  ogType?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  currentPath = Astro.url.pathname,
+  ogType = 'website',
+  ogImage = 'https://przeprogramowani.pl/img/10xdevs-hero.webp',
+} = Astro.props;
+
+// Configurable site URL
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://przeprogramowani.pl';
+const canonicalUrl = `${siteUrl}${currentPath.startsWith('/') ? currentPath : `/${currentPath}`}`;
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Przeprogramowani.pl" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#0b0f19] text-slate-100 antialiased selection:bg-amber-400 selection:text-slate-900">
+    <!-- Accessible Skip to Content Link -->
+    <a href="#main-content" class="skip-link">
+      Przejdź do treści głównej
+    </a>
+
+    <!-- Global Navigation -->
+    <Navbar client:load currentPath={currentPath} />
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+  </body>
+</html>

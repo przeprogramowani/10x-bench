@@ -1,0 +1,43 @@
+---
+interface Props {
+  status: 'live' | 'cached' | 'error';
+  isFallback: boolean;
+  message?: string;
+  sourceUrl: string;
+  fetchedAt?: string;
+}
+
+const { status, isFallback, message, sourceUrl, fetchedAt } = Astro.props;
+---
+
+{isFallback && (
+  <div class="mb-8 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 sm:p-5 text-amber-200">
+    <div class="flex items-start gap-3">
+      <svg class="w-6 h-6 shrink-0 text-amber-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+      <div class="flex-1 text-sm">
+        <p class="font-semibold text-amber-300">
+          Tryb odporności na awarie (dane archiwalne z pamięci podręcznej)
+        </p>
+        <p class="mt-1 text-slate-300">
+          {message || 'Nie udało się pobrać bieżących danych w czasie rzeczywistym. Witryna prezentuje zweryfikowane dane archiwalne.'}
+        </p>
+        <div class="mt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
+          <span>
+            Czas pobrania: <strong class="text-slate-300">{fetchedAt ? new Date(fetchedAt).toLocaleString('pl-PL') : 'nieznany'}</strong>
+          </span>
+          <span>•</span>
+          <a
+            href={sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-amber-400 underline hover:text-amber-300"
+          >
+            Bezpośredni link do oficjalnego źródła ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+)}

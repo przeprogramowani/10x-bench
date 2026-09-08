@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,14min 28s,N/A,14min 28s
+Test run,16.04.2026 21:15,N/A,16.04.2026 21:15
+Local build,1,1,Build succeeded with @astrojs/cloudflare adapter; static prerender of all 4 routes (/, /o-nas, /podcast, /youtube) completed in ~3.16s
+Manual testing,1,1,"Dev server runs at http://localhost:4322; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation, styles, and content"
+Tech stack,1,1,"Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured as adapter in astro.config.mjs"
+O nas page,1,1,"Dedicated page returns 200; both founders present with key context details: Przemek (DAZN/Cabify, .NET/Java/Node/Angular/TS stack, 4Developers/ReactiveConf/InfoShare prelegent); Marcin (SmartRecruiters Lead Frontend, TypeScript/React/Node.js, neurobiology, Opanuj AI Podcast author). Bios faithful to context though Open Source contributions and per-founder course assignments not inlined. Partner list partially matches (Huuuge Games, Nutridome, SmartRecruiters, Future Processing, Callstack, edrone) with some additions not in context (Xfive, Euvic, Strabag, Autodesk)."
+Podcast page,0.5,1,"Page returns 200; both podcasts (Opanuj.AI Podcast and Przeprogramowani ft. Gość) displayed with realistic-looking episode lists. Przeprogramowani Spotify show URL correct (3yVvOAXSYq6sQB02w4A4wo) but Opanuj.AI main show URL (3D6LmchBdoqL2sWkQjvWOy) missing. Platform links are generic (podcasts.apple.com/, anchor.fm/) rather than show-specific. Individual episode URLs use podcasters.spotify.com/pod/show/... format and likely fabricated (one episode title references 'Opus-4-6-i-GPT-5-3-Codex')."
+YouTube page,1,1,"Page returns 200; 6 unique video entries with distinct YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg). No rick-roll/placeholder IDs detected. Titles and descriptions align with channel topics (AI agents, Claude Code, benchmarks, 10xDevs, Product Builders Day, context engineering)."
+Kursy section,0.5,1,"Dedicated #kursy section on index.astro with 3 courses (10xDevs, Opanuj Frontend: AI Edition, Opanuj TypeScript) with correct URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl); 10xDevs prominently featured in hero spotlight with description and bullets. Partial match to context which lists 6 courses (missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI)."
+Consistent UI,1,1,User confirmed UI is consistent across all pages
+Responsive design,1,1,User confirmed containers components and navigation are fully responsive across screen sizes
+SEO Tags,1,1,"Layout.astro provides title, description, viewport, charset, favicon, theme-color, og:title, og:description, og:type, og:locale, twitter:card meta tags; layout used by all 4 pages so tags cover full site. Title/description content matches Przeprogramowani branding."
+Penalty,0,N/A,No penalty applied

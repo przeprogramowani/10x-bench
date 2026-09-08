@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import { COURSES } from '../lib/config.ts';
+
+const tenX = COURSES.find((c) => c.slug === '10xdevs')!;
+
+const sections = [
+  {
+    href: '/o-nas',
+    title: 'O nas',
+    text: 'Poznaj działalność, wartości Przeprogramowanych oraz Przemka Smyrdka i Marcina Czarkowskiego.',
+  },
+  {
+    href: '/podcast',
+    title: 'Podcasty',
+    text: 'Dwa podcasty: Opanuj.AI o modelach językowych oraz Przeprogramowani o karierze i technologii.',
+  },
+  {
+    href: '/youtube',
+    title: 'YouTube',
+    text: 'Najnowsze filmy z oficjalnego kanału Przeprogramowani — do obejrzenia bezpośrednio na stronie.',
+  },
+  {
+    href: '/kursy',
+    title: 'Kursy',
+    text: 'Opanuj Frontend, Opanuj TypeScript i 10xDevs — sprawdź programy edukacyjne Przeprogramowanych.',
+  },
+];
+---
+
+<Base
+  title="Przeprogramowani — szersze spojrzenie na programowanie"
+  description="Przeprogramowani to kursy, podcasty i materiały dla programistów: 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast Opanuj.AI, podcast Przeprogramowani i kanał YouTube."
+  path="/"
+>
+  <section class="relative overflow-hidden rounded-3xl border border-ink-800 bg-gradient-to-br from-ink-900 via-ink-950 to-brand-700/30 px-6 py-14 sm:px-12">
+    <p class="text-sm font-semibold uppercase tracking-widest text-accent-400">Projekt edukacyjny</p>
+    <h1 class="mt-3 max-w-3xl text-4xl leading-tight sm:text-5xl">
+      Przeprogramowani — szersze spojrzenie na programowanie
+    </h1>
+    <p class="mt-5 max-w-2xl text-lg text-ink-300">
+      Łączymy świat programowania, biznesu i rozwoju. Tworzymy kursy, podcasty, filmy i artykuły,
+      które pomagają programistom rozwijać się na wielu płaszczyznach — od technicznych
+      deep-dive'ów po rozmowy o karierze.
+    </p>
+
+    <div class="mt-10 rounded-2xl border border-brand-500/40 bg-ink-950/70 p-6 sm:p-8">
+      <p class="text-xs font-semibold uppercase tracking-widest text-accent-400">Wyróżniony kurs</p>
+      <h2 class="mt-2 text-2xl sm:text-3xl">10xDevs — {tenX.tagline}</h2>
+      <p class="mt-3 max-w-2xl text-ink-300">{tenX.description}</p>
+      <a
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-500"
+        href={tenX.url}
+        rel="noopener noreferrer"
+      >
+        Zobacz kurs 10xDevs
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-14" aria-labelledby="explore-heading">
+    <h2 id="explore-heading" class="text-2xl sm:text-3xl">Co znajdziesz na tej stronie</h2>
+    <div class="mt-6 grid gap-5 sm:grid-cols-2">
+      {sections.map((section) => (
+        <a
+          href={section.href}
+          class="group rounded-2xl border border-ink-800 bg-ink-900 p-6 transition-colors hover:border-brand-500/60 hover:bg-ink-800"
+        >
+          <h3 class="text-xl text-white group-hover:text-accent-400">{section.title}</h3>
+          <p class="mt-2 text-sm text-ink-300">{section.text}</p>
+          <p class="mt-4 text-sm font-medium text-accent-400">Przejdź <span aria-hidden="true">&rarr;</span></p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-14" aria-labelledby="courses-heading">
+    <h2 id="courses-heading" class="text-2xl sm:text-3xl">Kursy Przeprogramowanych</h2>
+    <div class="mt-6 grid gap-5 md:grid-cols-3">
+      {COURSES.map((course) => (
+        <article class="flex flex-col rounded-2xl border border-ink-800 bg-ink-900 p-6">
+          <h3 class="text-xl text-white">{course.name}</h3>
+          <p class="mt-1 text-sm text-accent-400">{course.tagline}</p>
+          <p class="mt-3 flex-1 text-sm text-ink-300">{course.description}</p>
+          <a
+            class="mt-5 inline-flex w-fit items-center gap-2 rounded-lg border border-brand-500/60 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-600/20"
+            href={course.url}
+            rel="noopener noreferrer"
+          >
+            Strona kursu <span aria-hidden="true">&rarr;</span>
+          </a>
+        </article>
+      ))}
+    </div>
+    <p class="mt-6 text-sm">
+      <a class="text-accent-400 underline-offset-4 hover:underline" href="/kursy">Zobacz wszystkie kursy i ich opisy</a>
+    </p>
+  </section>
+</Base>

@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { COURSES } from '../data/courses';
+import { FOUNDERS, ABOUT_MISSION } from '../data/about';
+import { fetchOpanujAiFeed } from '../data/opanuj-ai';
+import { fetchYouTubeFeed } from '../data/youtube';
+
+const featuredCourse = COURSES.find((c) => c.id === '10xdevs') || COURSES[0];
+const oaiFeed = await fetchOpanujAiFeed();
+const ytFeed = await fetchYouTubeFeed();
+
+const latestPodcastEpisode = oaiFeed.items[0];
+const latestVideo = ytFeed.items[0];
+---
+
+<Layout
+  title="Przeprogramowani.pl — Szersze spojrzenie na programowanie"
+  description="Nowoczesna edukacja technologiczna dla ambitnych inżynierów. Kurs 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast Opanuj.AI oraz praktyczne materiały wideo."
+  currentPath="/"
+>
+  <!-- Hero Section with Prominent 10xDevs Feature -->
+  <section class="relative py-12 md:py-20 lg:py-24 border-b border-slate-800/80 -mt-4">
+    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold tracking-wide">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>Wyróżniony program: 10xDevs 4.0</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight">
+        Szersze spojrzenie na <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">programowanie</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
+        Łączymy świat nowoczesnej inżynierii, biznesu i narzędzi Generative AI. Tworzymy programy edukacyjne, podcasty i filmy dla programistów, którzy chcą być liderami zmian.
+      </p>
+
+      <!-- Prominent 10xDevs Hero Card -->
+      <div class="mt-8 p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-amber-500/40 shadow-2xl text-left max-w-3xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+              Flagowy kurs inżynierski
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white mt-2">
+              {featuredCourse.title}
+            </h2>
+          </div>
+          <span class="text-xs text-slate-400 font-mono">
+            {featuredCourse.badge}
+          </span>
+        </div>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+          {featuredCourse.description}
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs text-slate-300">
+          {featuredCourse.highlights.map((item) => (
+            <div class="flex items-center gap-2">
+              <span class="text-amber-400 font-bold">✓</span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <a
+            href={featuredCourse.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-amber-400"
+          >
+            <span>Dołącz do 10xDevs na 10xdevs.pl</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="/kursy"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-colors"
+          >
+            <span>Zobacz wszystkie kursy</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teasers for other pages (P01: zapowiedzi pozostałych stron) -->
+  <section class="py-16 space-y-16">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-white tracking-tight">
+        Odkryj cały ekosystem Przeprogramowanych
+      </h2>
+      <p class="mt-2 text-slate-400 text-sm sm:text-base">
+        Sprawdź wiedzę, którą dzielimy się w programach edukacyjnych, podcastach, YouTube oraz poznaj naszą misję.
+      </p>
+    </div>
+
+    <!-- Grid of 4 Core Teasers -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Teaser 1: O nas -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider bg-amber-400/10 px-2.5 py-1 rounded">
+              Twórcy i Wartości
+            </span>
+            <span class="text-xs text-slate-500">7+ lat na rynku</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">
+            Poznaj Przeprogramowanych
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Za projektem stoją Przemek Smyrdek i Marcin Czarkowski — inżynierowie z wieloletnim doświadczeniem w firmach z Doliny Krzemowej i Europy. Poznaj nasze wartości i doświadczenie.
+          </p>
+          <div class="flex items-center gap-4 py-2">
+            {FOUNDERS.map((f) => (
+              <div class="flex items-center gap-2 text-xs text-slate-300">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span>{f.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="pt-6 border-t border-slate-800/80">
+          <a
+            href="/o-nas"
+            class="inline-flex items-center gap-2 text-sm font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4 focus-visible:ring-1 focus-visible:ring-amber-400"
+          >
+            <span>Czytaj o naszej misji i sylwetkach twórców</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Teaser 2: Podcasty (Opanuj.AI & Przeprogramowani) -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider bg-amber-400/10 px-2.5 py-1 rounded">
+              Podcasty technologiczne
+            </span>
+            <span class="text-xs text-slate-500">Ponad 4000 słuchaczy</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">
+            Dwa specjalistyczne formaty audio
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Prowadzimy dwa podcasty: flagowy <strong>Opanuj.AI Podcast</strong> o praktycznym zastosowaniu sztucznej inteligencji oraz klasyczny <strong>Podcast Przeprogramowani</strong> z rozmowami o architekturze i karierze.
+          </p>
+          {latestPodcastEpisode && (
+            <div class="p-3 rounded-lg bg-slate-950/70 border border-slate-800 text-xs text-slate-300 mb-2">
+              <span class="text-amber-400 font-semibold">Najnowszy odcinek:</span> {latestPodcastEpisode.title}
+            </div>
+          )}
+        </div>
+        <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+          <a
+            href="/podcast"
+            class="inline-flex items-center gap-2 text-sm font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4 focus-visible:ring-1 focus-visible:ring-amber-400"
+          >
+            <span>Przejdź do katalogu podcastów</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <div class="flex items-center gap-3 text-xs text-slate-400">
+            <a href="/podcast/opanuj-ai" class="hover:text-white">Opanuj.AI</a>
+            <span>•</span>
+            <a href="/podcast/przeprogramowani" class="hover:text-white">Przeprogramowani</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teaser 3: YouTube -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-red-400 uppercase tracking-wider bg-red-400/10 px-2.5 py-1 rounded">
+              YouTube Channel
+            </span>
+            <span class="text-xs text-slate-500">Wideo & LIVE</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">
+            Praktyczne materiały na YouTube
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Prezentacje narzędzi, transmisje live, analizy architektoniczne, demo nowych agentów programistycznych i recenzje technologii.
+          </p>
+          {latestVideo && (
+            <div class="p-3 rounded-lg bg-slate-950/70 border border-slate-800 text-xs text-slate-300 mb-2">
+              <span class="text-red-400 font-semibold">Ostatni film:</span> {latestVideo.title}
+            </div>
+          )}
+        </div>
+        <div class="pt-6 border-t border-slate-800/80">
+          <a
+            href="/youtube"
+            class="inline-flex items-center gap-2 text-sm font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4 focus-visible:ring-1 focus-visible:ring-amber-400"
+          >
+            <span>Zobacz najnowsze filmy z odtwarzaniem</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Teaser 4: Kursy -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider bg-amber-400/10 px-2.5 py-1 rounded">
+              Katalog programów
+            </span>
+            <span class="text-xs text-slate-500">3 pełne szkolenia</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-2">
+            Autorskie kursy Przeprogramowanych
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Trzy kompleksowe programy edukacyjne: <strong>10xDevs 4.0</strong> (praca z AI), <strong>Opanuj Frontend: AI Edition</strong> oraz <strong>Opanuj TypeScript</strong>. Sprawdź opisy i odnośniki.
+          </p>
+          <div class="space-y-1 text-xs text-slate-300">
+            <p>• 10xDevs 4.0 — Programowanie z AI</p>
+            <p>• Opanuj Frontend: AI Edition — 5 modułów architektury</p>
+            <p>• Opanuj TypeScript — Zaawansowane typowanie w praktyce</p>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-slate-800/80">
+          <a
+            href="/kursy"
+            class="inline-flex items-center gap-2 text-sm font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4 focus-visible:ring-1 focus-visible:ring-amber-400"
+          >
+            <span>Przejdź do katalogu kursów</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

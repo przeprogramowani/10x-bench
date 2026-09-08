@@ -1,0 +1,65 @@
+---
+import type { SourceResult } from '../lib/sources';
+import { formatDate } from '../lib/sources';
+
+interface Props {
+  source: SourceResult;
+}
+
+const { source } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-xl border px-4 py-3 text-sm',
+    source.status === 'stale'
+      ? 'border-amber-600/50 bg-amber-950/40 text-amber-200'
+      : source.status === 'unavailable'
+        ? 'border-red-600/50 bg-red-950/40 text-red-200'
+        : 'border-slate-800 bg-slate-900 text-slate-400',
+  ]}
+  role="status"
+>
+  {
+    source.status === 'live' && (
+      <p>
+        Dane pobrane na żywo ze źródła{' '}
+        <a class="underline hover:text-white" href={source.feedUrl} rel="noopener">
+          {source.feedUrl}
+        </a>{' '}
+        podczas budowania strony ({formatDate(source.fetchedAt)}).
+      </p>
+    )
+  }
+  {
+    source.status === 'stale' && (
+      <p>
+        <strong>Źródło było niedostępne podczas budowania</strong> ({source.error}).
+        Wyświetlamy zweryfikowane dane z pamięci podręcznej — mogą być nieaktualne
+        (stan z {formatDate(source.fetchedAt)}). Najnowsze materiały znajdziesz{' '}
+        <a class="underline hover:text-white" href={source.sourceHomeUrl} rel="noopener">
+          bezpośrednio w źródle
+        </a>.
+      </p>
+    )
+  }
+  {
+    source.status === 'unavailable' && (
+      <p>
+        <strong>Źródło jest niedostępne</strong> ({source.error}) i brak zapisanej
+        kopii zapasowej. Najnowsze materiały są dostępne{' '}
+        <a class="underline hover:text-white" href={source.sourceHomeUrl} rel="noopener">
+          bezpośrednio w źródle
+        </a>.
+      </p>
+    )
+  }
+  {
+    source.status !== 'unavailable' && !source.withinWindow && (
+      <p class="mt-1">
+        Uwaga: źródło nie opublikowało nowych materiałów w ciągu ostatnich 90 dni —
+        poniżej najnowsze dostępne pozycje z ich rzeczywistymi datami.
+      </p>
+    )
+  }
+</div>

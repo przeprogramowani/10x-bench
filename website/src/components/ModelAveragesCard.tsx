@@ -18,6 +18,7 @@ interface Props {
   average: ModelFamilyAverage;
   rank: number;
   screenshotHashes?: Record<string, string>;
+  screenshotBasePath?: string;
   compareSelected?: boolean;
   compareDisabled?: boolean;
   onCompareToggle?: () => void;
@@ -27,6 +28,7 @@ export default function ModelAveragesCard({
   average,
   rank,
   screenshotHashes,
+  screenshotBasePath = "/screenshots",
   compareSelected = false,
   compareDisabled = false,
   onCompareToggle,
@@ -35,7 +37,7 @@ export default function ModelAveragesCard({
   const [expanded, setExpanded] = useState(false);
   const filmstripFilename = `${average.modelBaseId}_filmstrip.png`;
   const filmstripHash = screenshotHashes?.[filmstripFilename];
-  const filmstripPath = `/screenshots/${filmstripFilename}${filmstripHash ? `?v=${filmstripHash}` : ""}`;
+  const filmstripPath = `${screenshotBasePath}/${filmstripFilename}${filmstripHash ? `?v=${filmstripHash}` : ""}`;
 
   const getBadgeColor = (percentage: number) => {
     if (percentage >= 90) return "bg-green-900 text-green-200";

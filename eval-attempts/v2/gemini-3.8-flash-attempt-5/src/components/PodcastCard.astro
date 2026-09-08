@@ -1,0 +1,123 @@
+---
+import type { MediaItem } from '../types';
+
+interface Props {
+  item: MediaItem;
+  podcastName: string;
+}
+
+const { item, podcastName } = Astro.props;
+---
+
+<article class="bg-slate-850 border border-slate-800 hover:border-slate-700/80 rounded-2xl p-5 sm:p-6 transition-all shadow-md hover:shadow-xl flex flex-col justify-between">
+  <div>
+    {/* Header & Meta */}
+    <div class="flex items-start justify-between gap-4 mb-4">
+      <div class="flex items-center gap-3">
+        {item.thumbnail ? (
+          <img
+            src={item.thumbnail}
+            alt={`Okładka odcinka: ${item.title}`}
+            loading="lazy"
+            class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-700/60 shadow-sm shrink-0"
+          />
+        ) : (
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold shrink-0">
+            🎙️
+          </div>
+        )}
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            {podcastName}
+          </span>
+          <div class="flex items-center gap-2 mt-1">
+            <time datetime={item.publishedAt} class="text-xs text-slate-400 font-medium">
+              📅 {item.displayDate}
+            </time>
+            {item.duration && (
+              <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">
+                ⏱️ {item.duration}
+              </span>
+            )}
+            {item.isRecent90Days && (
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-medium">
+                &lt; 90 dni
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Title */}
+    <h3 class="text-lg sm:text-xl font-bold text-white mb-3 hover:text-emerald-300 transition-colors leading-snug">
+      <a
+        href={item.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+      >
+        {item.title}
+      </a>
+    </h3>
+
+    {/* Description */}
+    {item.description && (
+      <p class="text-sm text-slate-300 leading-relaxed mb-6 line-clamp-3">
+        {item.description}
+      </p>
+    )}
+  </div>
+
+  {/* Audio Player and Action Buttons */}
+  <div class="pt-4 border-t border-slate-800/80 space-y-3">
+    {item.mediaUrl ? (
+      <div class="space-y-1.5">
+        <label for={`audio-${item.id}`} class="text-xs font-medium text-slate-400 flex items-center justify-between">
+          <span>Odtwarzacz audio (MP3):</span>
+          <span class="text-[11px] text-slate-500">Bezpośredni stream</span>
+        </label>
+        <audio
+          id={`audio-${item.id}`}
+          controls
+          preload="none"
+          class="w-full h-10 rounded-lg accent-emerald-500 bg-slate-900 border border-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+        >
+          <source src={item.mediaUrl} type="audio/mpeg" />
+          Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek korzystając z odnośnika poniżej.
+        </audio>
+      </div>
+    ) : (
+      <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800 text-xs text-slate-400">
+        Odtwarzanie audio bezpośrednie niedostępne w kanale RSS. Skorzystaj z odnośnika do oficjalnego odtwarzacza Spotify.
+      </div>
+    )}
+
+    <div class="flex items-center justify-between gap-3 pt-2">
+      <a
+        href={item.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-750 text-slate-200 hover:text-white border border-slate-700/80 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+        aria-label={`Oryginalny odcinek: ${item.title} (otwiera się w serwisie Spotify)`}
+      >
+        <span>Oryginalny odcinek w Spotify</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+
+      {item.mediaUrl && (
+        <a
+          href={item.mediaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs text-slate-400 hover:text-emerald-400 underline underline-offset-2 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-400 rounded"
+          download
+        >
+          Pobierz MP3
+        </a>
+      )}
+    </div>
+  </div>
+</article>

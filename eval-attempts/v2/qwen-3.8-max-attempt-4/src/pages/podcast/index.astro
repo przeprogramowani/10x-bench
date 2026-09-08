@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const shows = [
+  {
+    href: '/podcast/opanuj-ai',
+    name: 'Opanuj.AI Podcast',
+    external: 'https://podcasters.spotify.com/pod/show/opanujai',
+    externalLabel: 'Profil podcastu na Spotify for Podcasters',
+    text: 'Techniczny podcast Marcina Czarkowskiego o dużych modelach językowych i narzędziach AI dla programistów: nowości ze świata AI, praktyczne workflowy, dyskusje o modelach, agentach i przyszłości inżynierii oprogramowania. Publikowany regularnie — jedne z najświeższych technicznych treści o LLM po polsku.',
+  },
+  {
+    href: '/podcast/przeprogramowani',
+    name: 'Podcast Przeprogramowani',
+    external: 'https://podcasters.spotify.com/pod/show/przeprogramowani',
+    externalLabel: 'Profil podcastu na Spotify for Podcasters',
+    text: 'Podcast Przemka Smyrdka i Marcina Czarkowskiego o programowaniu i karierze w IT. Rozmowy z gośćmi o architekturze frontendu, TypeScripcie, dojrzewaniu zawodowym, nauce języków i no-code/low-code — szersze spojrzenie na pracę programisty.',
+  },
+];
+---
+
+<Base
+  title="Podcasty — Opanuj.AI i Przeprogramowani"
+  description="Katalog podcastów Przeprogramowanych: Opanuj.AI o modelach językowych oraz Podcast Przeprogramowani o programowaniu i karierze. Najnowsze odcinki z odtwarzaczem."
+  path="/podcast"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span> <span>Podcasty</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Podcasty Przeprogramowanych</h1>
+  <p class="mt-4 max-w-3xl text-lg text-ink-300">
+    Dwa podcasty, dwie perspektywy: najnowsze trendy w AI dla programistów (Opanuj.AI)
+    oraz rozmowy o technologii i karierze (Podcast Przeprogramowani). Wejdź na stronę
+    podcastu, aby zobaczyć najnowsze odcinki i odsłuchać je bezpośrednio tutaj.
+  </p>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2">
+    {shows.map((show) => (
+      <article class="flex flex-col rounded-2xl border border-ink-800 bg-ink-900 p-6">
+        <h2 class="text-2xl text-white">{show.name}</h2>
+        <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-300">{show.text}</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+            href={show.href}
+          >
+            Strona podcastu z odcinkami <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+            href={show.external}
+            rel="noopener noreferrer"
+            aria-label={show.externalLabel}
+          >
+            Źródło zewnętrzne
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</Base>

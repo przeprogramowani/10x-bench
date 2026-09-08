@@ -1,0 +1,71 @@
+---
+import { BRAND_INFO } from '../data/founders';
+---
+
+<footer class="bg-[#060910] border-t border-gray-800/80 text-gray-400 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      {/* Brand Column */}
+      <div class="lg:col-span-2 space-y-4">
+        <a href="/" class="flex items-center gap-3 text-white font-bold text-xl tracking-tight focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg p-1 w-fit">
+          <div class="w-9 h-9 rounded-xl bg-amber-500 text-gray-950 font-black flex items-center justify-center text-base shadow-md">
+            &lt;/&gt;
+          </div>
+          <span class="text-white text-lg">Przeprogramowani</span>
+        </a>
+        <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+          {BRAND_INFO.description}
+        </p>
+        <div class="pt-2 text-xs text-gray-500">
+          Oficjalny kontakt: <a href={`mailto:${BRAND_INFO.contactEmail}`} class="text-amber-400 hover:underline">{BRAND_INFO.contactEmail}</a>
+        </div>
+      </div>
+
+      {/* Pages Navigation */}
+      <div>
+        <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-4">Główne strony</h3>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a></li>
+          <li><a href="/o-nas" class="hover:text-amber-400 transition-colors">O nas i wartości</a></li>
+          <li><a href="/podcast" class="hover:text-amber-400 transition-colors">Katalog podcastów</a></li>
+          <li><a href="/youtube" class="hover:text-amber-400 transition-colors">Kanał YouTube</a></li>
+          <li><a href="/kursy" class="hover:text-amber-400 transition-colors">Programy edukacyjne</a></li>
+        </ul>
+      </div>
+
+      {/* Podcast Hub Links */}
+      <div>
+        <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-4">Podcasty</h3>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/podcast" class="hover:text-amber-400 transition-colors">Katalog podcastów</a></li>
+          <li><a href="/podcast/opanuj-ai" class="hover:text-cyan-400 transition-colors">Podcast Opanuj.AI</a></li>
+          <li><a href="/podcast/przeprogramowani" class="hover:text-amber-400 transition-colors">Przeprogramowani ft. Gość</a></li>
+          <li><a href="https://podcasters.spotify.com/pod/show/opanujai" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Opanuj.AI na Spotify ↗</a></li>
+          <li><a href="https://podcasters.spotify.com/pod/show/przeprogramowani" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Przeprogramowani na Spotify ↗</a></li>
+        </ul>
+      </div>
+
+      {/* Courses & Social */}
+      <div>
+        <h3 class="text-xs font-semibold text-gray-200 uppercase tracking-wider mb-4">Kursy i społeczność</h3>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-medium">10xDevs 4.0 ↗</a></li>
+          <li><a href="https://opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">Opanuj Frontend ↗</a></li>
+          <li><a href="https://opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">Opanuj TypeScript ↗</a></li>
+          <li><a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">Newsletter Substack ↗</a></li>
+          <li><a href="https://www.youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors">YouTube ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <div>
+        © 2017–2026 Przeprogramowani.pl. Wszelkie prawa zastrzeżone.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="/" class="hover:text-amber-400 transition-colors">Wróć na górę</a>
+        <a href="/o-nas" class="hover:text-amber-400 transition-colors">O projekcie</a>
+      </div>
+    </div>
+  </div>
+</footer>

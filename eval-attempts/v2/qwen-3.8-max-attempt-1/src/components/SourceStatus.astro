@@ -1,0 +1,58 @@
+---
+import type { SourceResult } from '../lib/sources';
+
+interface Props {
+  result: Pick<SourceResult, 'status' | 'fetchedAt' | 'sourceName' | 'sourceUrl' | 'error'>;
+}
+
+const { result } = Astro.props;
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleString('pl-PL', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'UTC',
+  });
+}
+---
+
+<div
+  class:list={[
+    'rounded-lg border px-4 py-3 text-sm',
+    result.status === 'live' && 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200',
+    result.status === 'stale' && 'border-amber-500/40 bg-amber-500/10 text-amber-200',
+    result.status === 'unavailable' && 'border-rose-500/40 bg-rose-500/10 text-rose-200',
+  ]}
+  role="status"
+>
+  {
+    result.status === 'live' && (
+      <p>
+        Dane pobrane na żywo ze źródła {result.sourceName} ({formatDate(result.fetchedAt)} UTC).
+      </p>
+    )
+  }
+  {
+    result.status === 'stale' && (
+      <p>
+        <strong>Źródło jest chwilowo niedostępne</strong> ({result.error}). Wyświetlamy dane z
+        pamięci podręcznej z {formatDate(result.fetchedAt)} UTC — mogą być nieaktualne. Sprawdź
+        źródło:{' '}
+        <a class="break-all underline hover:text-white" rel="noopener" target="_blank" href={result.sourceUrl}>
+          {result.sourceUrl}
+        </a>
+      </p>
+    )
+  }
+  {
+    result.status === 'unavailable' && (
+      <p>
+        <strong>Nie udało się pobrać danych ze źródła</strong> ({result.error}) i brak kopii
+        zapasowej. Przejdź bezpośrednio do źródła:{' '}
+        <a class="underline hover:text-white" rel="noopener" target="_blank" href={result.sourceUrl}>
+          {result.sourceUrl}
+        </a>
+      </p>
+    )
+  }
+</div>

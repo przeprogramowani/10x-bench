@@ -1,0 +1,93 @@
+---
+import type { MediaItem } from '../types';
+
+interface Props {
+  item: MediaItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="bg-slate-850 border border-slate-800 hover:border-slate-700/80 rounded-2xl overflow-hidden transition-all shadow-md hover:shadow-xl flex flex-col justify-between">
+  <div>
+    {/* Embedded Video Player */}
+    <div class="relative w-full aspect-video bg-black">
+      {item.embedUrl ? (
+        <iframe
+          src={item.embedUrl}
+          title={item.title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          class="w-full h-full border-0"
+        />
+      ) : item.thumbnail ? (
+        <img
+          src={item.thumbnail}
+          alt={`Miniatura filmu: ${item.title}`}
+          loading="lazy"
+          class="w-full h-full object-cover"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center text-slate-500">
+          Brak podglądu wideo
+        </div>
+      )}
+    </div>
+
+    {/* Content */}
+    <div class="p-5 sm:p-6">
+      <div class="flex items-center gap-2 mb-2.5">
+        <span class="text-xs font-semibold uppercase tracking-wider text-red-400">
+          YouTube Przeprogramowani
+        </span>
+        <span class="text-slate-600">•</span>
+        <time datetime={item.publishedAt} class="text-xs text-slate-400 font-medium">
+          {item.displayDate}
+        </time>
+        {item.isRecent90Days && (
+          <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-medium ml-auto">
+            &lt; 90 dni
+          </span>
+        )}
+      </div>
+
+      <h3 class="text-lg font-bold text-white mb-2.5 hover:text-emerald-300 transition-colors leading-snug">
+        <a
+          href={item.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+        >
+          {item.title}
+        </a>
+      </h3>
+
+      {item.description && (
+        <p class="text-sm text-slate-300 leading-relaxed line-clamp-2">
+          {item.description}
+        </p>
+      )}
+    </div>
+  </div>
+
+  {/* Actions */}
+  <div class="px-5 sm:px-6 pb-5 pt-2 flex items-center justify-between border-t border-slate-800/80">
+    <a
+      href={item.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold bg-red-600 hover:bg-red-500 text-white shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+      aria-label={`Obejrzyj na oficjalnym kanale YouTube: ${item.title}`}
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+      <span>Obejrzyj na YouTube</span>
+    </a>
+
+    <span class="text-xs text-slate-500">
+      ID: <code class="font-mono text-slate-400">{item.id}</code>
+    </span>
+  </div>
+</article>

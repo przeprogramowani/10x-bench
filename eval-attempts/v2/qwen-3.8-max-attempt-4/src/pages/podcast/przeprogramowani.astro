@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import MediaList from '../../components/MediaList.astro';
+import { getWorkerEnv } from '../../lib/worker-env';
+import { getSourceResult, selectRecent } from '../../lib/sources';
+
+const env = await getWorkerEnv();
+const raw = await getSourceResult('przeprogramowani', env);
+const result = { ...raw, items: selectRecent(raw.items, 5) };
+---
+
+<Base
+  title="Podcast Przeprogramowani — najnowsze odcinki o programowaniu i karierze"
+  description="Podcast Przeprogramowani: rozmowy Przemka Smyrdka i Marcina Czarkowskiego o frontendzie, TypeScripcie, karierze i rozwoju programistów. Najnowsze odcinki z odtwarzaczem."
+  path="/podcast/przeprogramowani"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span>
+    <a class="hover:text-white" href="/podcast">Podcasty</a> <span aria-hidden="true">/</span>
+    <span>Przeprogramowani</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Podcast Przeprogramowani</h1>
+  <div class="prose-pl mt-4 max-w-3xl space-y-4">
+    <p>
+      Podcast Przemka Smyrdka i Marcina Czarkowskiego — rozmowy z gośćmi o programowaniu,
+      architekturze aplikacji, TypeScripcie, karierze i rozwoju zawodowym. Szersze spojrzenie
+      na pracę w IT: od technicznych deep-dive'ów po tematy miękkie, takie jak dojrzewanie
+      zawodowe czy angielski w pracy programisty.
+    </p>
+    <p>
+      Poniżej znajdziesz odcinki pobrane z oficjalnego feedu podcastu — odsłuchaj je
+      w osadzonym odtwarzaczu albo otwórz w serwisie źródłowym.
+    </p>
+  </div>
+
+  <p class="mt-6 flex flex-wrap gap-3">
+    <a
+      class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+      href={result.sourceUrl}
+      rel="noopener noreferrer"
+    >
+      Wszystkie odcinki na Spotify for Podcasters <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a
+      class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+      href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+      rel="noopener noreferrer"
+    >
+      Podcast w Apple Podcasts <span aria-hidden="true">&rarr;</span>
+    </a>
+  </p>
+
+  <div class="mt-10">
+    <h2 class="text-2xl">Najnowsze odcinki</h2>
+    <div class="mt-5">
+      <MediaList
+        result={result}
+        kind="audio"
+        emptyHint="Brak dostępnych odcinków — źródło jest chwilowo niedostępne. Sprawdź profil podcastu bezpośrednio w serwisie źródłowym."
+      />
+    </div>
+  </div>
+</Base>

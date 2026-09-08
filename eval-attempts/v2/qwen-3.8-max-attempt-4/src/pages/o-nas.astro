@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { FOUNDERS } from '../lib/config.ts';
+
+const values = [
+  {
+    title: 'Szersze spojrzenie',
+    text: 'Najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i siebie. Treści Przeprogramowanych łączą technikę z rozwojem osobistym.',
+  },
+  {
+    title: 'Edukacja oparta na praktyce',
+    text: 'Kursy i materiały powstają na bazie realnych doświadczeń inżynierskich z produkcyjnych projektów, a nie wyłącznie teorii.',
+  },
+  {
+    title: 'Uczenie się w oparciu o badania',
+    text: 'Programy edukacyjne są tworzone z wykorzystaniem wiedzy o tym, jak ludzie skutecznie się uczą — m.in. dzięki zainteresowaniom neurobiologicznym Marcina.',
+  },
+  {
+    title: 'Społeczność i dzielenie się wiedzą',
+    text: 'Podcasty, kanał YouTube, newsletter i konferencje — Przeprogramowani od lat dzielą się wiedzą z polską społecznością developerską.',
+  },
+];
+---
+
+<Base
+  title="O nas — Przeprogramowani: Przemek Smyrdek i Marcin Czarkowski"
+  description="Przeprogramowani łączą świat programowania, biznesu i rozwoju. Poznaj wartości projektu oraz założycieli: Przemka Smyrdka i Marcina Czarkowskiego."
+  path="/o-nas"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span> <span>O nas</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Łączymy świat programowania, biznesu i rozwoju</h1>
+  <div class="prose-pl mt-5 max-w-3xl space-y-4">
+    <p>
+      Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+      Projekt tworzy treści, kursy i narzędzia pomagające programistom rozwijać się na wielu
+      płaszczyznach — od technicznych deep-dive'ów po rozmowy o karierze, biznesie i uczeniu się.
+    </p>
+    <p>
+      Od ponad siedmiu lat Przeprogramowani budują jedną z najbardziej rozpoznawalnych marek
+      edukacji technologicznej w Polsce: kursy (m.in. Opanuj Frontend, Opanuj TypeScript i 10xDevs),
+      dwa podcasty, kanał YouTube, blog i newsletter. Z wiedzy i materiałów projektu korzystali
+      programiści pracujący m.in. w Huuuge Games, SmartRecruiters, Callstack, edrone i Xfive.
+    </p>
+  </div>
+
+  <section class="mt-12" aria-labelledby="values-heading">
+    <h2 id="values-heading" class="text-2xl sm:text-3xl">Wartości i działalność</h2>
+    <div class="mt-6 grid gap-5 sm:grid-cols-2">
+      {values.map((value) => (
+        <article class="rounded-2xl border border-ink-800 bg-ink-900 p-6">
+          <h3 class="text-lg text-white">{value.title}</h3>
+          <p class="mt-2 text-sm text-ink-300">{value.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="founders-heading">
+    <h2 id="founders-heading" class="text-2xl sm:text-3xl">Założyciele</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {FOUNDERS.map((person) => (
+        <article class="rounded-2xl border border-ink-800 bg-ink-900 p-6">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-600/30 font-display text-xl font-bold text-accent-400" aria-hidden="true">
+            {person.name.split(' ').map((n) => n[0]).join('')}
+          </div>
+          <h3 class="mt-4 text-xl text-white">{person.name}</h3>
+          <p class="text-sm font-medium text-accent-400">{person.role}</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink-300">{person.bio}</p>
+          <p class="mt-4 flex flex-wrap gap-4 text-sm">
+            <a class="font-medium text-white underline-offset-4 hover:text-accent-400 hover:underline" href={person.linkedin} rel="noopener noreferrer">LinkedIn</a>
+            <a class="font-medium text-white underline-offset-4 hover:text-accent-400 hover:underline" href={person.twitter} rel="noopener noreferrer">X (Twitter)</a>
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-12 rounded-2xl border border-ink-800 bg-ink-900 p-6">
+    <h2 class="text-xl">Chcesz nawiązać współpracę?</h2>
+    <p class="mt-2 text-sm text-ink-300">
+      Kontakt do zespołu Przeprogramowanych:
+      <a class="font-medium text-accent-400 underline-offset-4 hover:underline" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>.
+      Oficjalna strona projektu:
+      <a class="font-medium text-accent-400 underline-offset-4 hover:underline" href="https://przeprogramowani.pl" rel="noopener noreferrer">przeprogramowani.pl</a>.
+    </p>
+  </section>
+</Base>

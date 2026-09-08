@@ -1,0 +1,464 @@
+{
+  "benchmarkVersion": "v2",
+  "schemaVersion": 1,
+  "maxScore": 100,
+  "routeCount": 7,
+  "categories": [
+    {
+      "id": "operation",
+      "name": "Production operation",
+      "promptSections": [
+        "P01",
+        "P05",
+        "P06"
+      ],
+      "max": 10,
+      "checks": [
+        {
+          "id": "build",
+          "name": "Production build",
+          "max": 5,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "runtime",
+          "name": "Required routes in Workers preview",
+          "max": 5,
+          "kind": "routes",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "pages",
+      "name": "Pages and navigation",
+      "promptSections": [
+        "P01"
+      ],
+      "max": 10,
+      "checks": [
+        {
+          "id": "page-0",
+          "name": "/",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-1",
+          "name": "/o-nas",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-2",
+          "name": "/podcast",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-3",
+          "name": "/podcast/opanuj-ai",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-4",
+          "name": "/podcast/przeprogramowani",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-5",
+          "name": "/youtube",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "page-6",
+          "name": "/kursy",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "global-nav",
+          "name": "Global navigation",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "show-nav",
+          "name": "Podcast hub links",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "mobile-nav",
+          "name": "Mobile navigation",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "name": "Brand and courses",
+      "promptSections": [
+        "P02"
+      ],
+      "max": 10,
+      "checks": [
+        {
+          "id": "brand",
+          "name": "Brand and about",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "przemek",
+          "name": "Przemek biography",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "marcin",
+          "name": "Marcin biography",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "course-frontend",
+          "name": "frontend",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "course-typescript",
+          "name": "typescript",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "course-10xdevs",
+          "name": "10xdevs",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "hero",
+          "name": "10xDevs hero and CTA",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "name": "Media",
+      "promptSections": [
+        "P03"
+      ],
+      "max": 15,
+      "checks": [
+        {
+          "id": "opanuj-ai-authentic",
+          "name": "opanuj-ai: authentic",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "opanuj-ai-playback",
+          "name": "opanuj-ai: playback",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "opanuj-ai-links",
+          "name": "opanuj-ai: links",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "przeprogramowani-authentic",
+          "name": "przeprogramowani: authentic",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "przeprogramowani-playback",
+          "name": "przeprogramowani: playback",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "przeprogramowani-links",
+          "name": "przeprogramowani: links",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "youtube-authentic",
+          "name": "youtube: authentic",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "youtube-playback",
+          "name": "youtube: playback",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "youtube-links",
+          "name": "youtube: links",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "name": "Data modules and resilience",
+      "promptSections": [
+        "P04"
+      ],
+      "max": 10,
+      "checks": [
+        {
+          "id": "server-fetch",
+          "name": "Server-side fetching",
+          "max": 4,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "structured-data",
+          "name": "Structured presentation boundary",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "recovery",
+          "name": "Controlled failure recovery",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "dependencies",
+      "name": "Dependency compliance",
+      "promptSections": [
+        "P05"
+      ],
+      "max": 10,
+      "checks": [
+        {
+          "id": "dep-astro",
+          "name": "astro",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "dep-react",
+          "name": "react",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "dep-tailwindcss",
+          "name": "tailwindcss",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "lockfile",
+          "name": "Reproducible install",
+          "max": 1,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "workers",
+      "name": "Workers readiness",
+      "promptSections": [
+        "P06"
+      ],
+      "max": 5,
+      "checks": [
+        {
+          "id": "adapter",
+          "name": "Compatible configured adapter",
+          "max": 3,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "instructions",
+          "name": "Coherent Workers instructions",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "presentation",
+      "name": "Presentation and SEO",
+      "promptSections": [
+        "P07"
+      ],
+      "max": 10.0,
+      "checks": [
+        {
+          "id": "ui",
+          "name": "Consistent UI",
+          "max": 2,
+          "kind": "manual",
+          "origin": "human"
+        },
+        {
+          "id": "desktop",
+          "name": "Desktop usability",
+          "max": 1.5,
+          "kind": "manual",
+          "origin": "human"
+        },
+        {
+          "id": "mobile",
+          "name": "Mobile usability",
+          "max": 1.5,
+          "kind": "manual",
+          "origin": "human"
+        },
+        {
+          "id": "accessibility",
+          "name": "Keyboard labels and alternatives",
+          "max": 2,
+          "kind": "binary",
+          "origin": "evaluator"
+        },
+        {
+          "id": "seo",
+          "name": "Page-specific SEO",
+          "max": 3,
+          "kind": "routes",
+          "origin": "evaluator"
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "name": "Candidate verification",
+      "promptSections": [
+        "P08"
+      ],
+      "max": 20,
+      "checks": [
+        {
+          "id": "verify-build-versions-procedure",
+          "name": "build-versions: procedure",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-build-versions-outcome",
+          "name": "build-versions: outcome",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-routes-workers-procedure",
+          "name": "routes-workers: procedure",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-routes-workers-outcome",
+          "name": "routes-workers: outcome",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-research-procedure",
+          "name": "research: procedure",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-research-outcome",
+          "name": "research: outcome",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-visual-playback-procedure",
+          "name": "visual-playback: procedure",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-visual-playback-outcome",
+          "name": "visual-playback: outcome",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-failure-procedure",
+          "name": "failure: procedure",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        },
+        {
+          "id": "verify-failure-outcome",
+          "name": "failure: outcome",
+          "max": 2,
+          "kind": "binary",
+          "origin": "candidate"
+        }
+      ]
+    }
+  ]
+}

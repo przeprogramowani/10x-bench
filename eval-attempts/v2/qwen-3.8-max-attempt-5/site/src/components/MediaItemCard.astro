@@ -1,0 +1,87 @@
+---
+import type { MediaItem } from '../lib/sources';
+import { formatDate } from '../lib/sources';
+
+interface Props {
+  item: MediaItem;
+  kind: 'podcast' | 'youtube';
+  sourceLabel: string;
+}
+
+const { item, kind, sourceLabel } = Astro.props;
+---
+
+<article class="flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-5">
+  <header>
+    <h3 class="text-base font-semibold leading-snug text-white sm:text-lg">
+      <a class="hover:text-accent-400" href={item.url} rel="noopener" target="_blank">
+        {item.title}
+      </a>
+    </h3>
+    <p class="mt-1 text-xs text-slate-400">
+      Źródło: {sourceLabel} ·
+      <time datetime={item.publishedAt ?? undefined}>
+        {item.publishedAt ? formatDate(item.publishedAt) : 'data publikacji nieznana'}
+      </time>
+    </p>
+  </header>
+
+  {
+    kind === 'youtube' && item.videoId && (
+      <div class="aspect-video w-full overflow-hidden rounded-xl bg-black">
+        <iframe
+          class="h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${item.videoId}`}
+          title={`Odtwarzacz YouTube: ${item.title}`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        />
+      </div>
+    )
+  }
+
+  {
+    kind === 'youtube' && !item.videoId && (
+      <p class="rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-sm text-slate-300">
+        Osadzenie odtwarzacza nie jest możliwe dla tej pozycji — obejrzysz ją
+        bezpośrednio na YouTube.
+      </p>
+    )
+  }
+
+  {
+    kind === 'podcast' && item.audioUrl && (
+      <audio class="w-full" controls preload="none" src={item.audioUrl}>
+        Twoja przeglądarka nie obsługuje odtwarzacza audio. Pobierz nagranie z{' '}
+        <a class="underline" href={item.audioUrl}>
+          tego adresu
+        </a>.
+      </audio>
+    )
+  }
+
+  {
+    kind === 'podcast' && !item.audioUrl && (
+      <p class="rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-sm text-slate-300">
+        Źródło nie udostępnia pliku audio do osadzenia — odcinek odsłuchasz
+        u dostawcy podcastu.
+      </p>
+    )
+  }
+
+  {item.summary && <p class="text-sm leading-relaxed text-slate-300">{item.summary}</p>}
+
+  <footer>
+    <a
+      class="inline-flex items-center gap-1 text-sm font-medium text-accent-400 hover:text-accent-500 hover:underline"
+      href={item.url}
+      rel="noopener"
+      target="_blank"
+      aria-label={`Otwórz oryginał: ${item.title} (nowa karta)`}
+    >
+      Otwórz oryginał <span aria-hidden="true">↗</span>
+    </a>
+  </footer>
+</article>

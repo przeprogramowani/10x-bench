@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,5min 30s,N/A,5min 30s
+Test run,21.05.2026 06:52,N/A,21.05.2026 06:52
+Local build,1,1,Build successful — astro build completed with 4 pages generated
+Manual testing,1,1,Dev server running on port 4323; all pages (/, /o-nas/, /podcast/, /youtube/) return 200 and load correctly
+Tech stack,0,1,Astro 4.16 (not 5), React 18 (not 19), Tailwind CSS 3 (not 4), no Cloudflare Adapter installed or configured
+O nas page,0.5,1,Dedicated /o-nas/ page found, HTTP 200; founder bios for Przemek Smyrdek and Marcin Czarkowski present but missing some details (publications, course attributions, contributors section)
+Podcast page,0.5,1,Dedicated /podcast/ page found, HTTP 200; both Opanuj.AI and Przeprogramowani ft. Gość displayed, but episodes are hardcoded static data — not fetched from real RSS/Spotify API
+YouTube page,0.5,1,Dedicated /youtube/ page found, HTTP 200; real YouTube video IDs used for thumbnails/embeds, but video data (titles, descriptions, views) is hardcoded static — no YouTube API integration
+Kursy section,0.5,1,Courses section present (id="courses") with Opanuj Frontend, Opanuj TypeScript, Opanuj AI; 10xDevs prominently featured in Hero section; missing some courses from context (Opanuj JavaScript, Cursor)
+Consistent UI,1,1,Dark slate theme consistent across all pages — same color scheme, typography, and component styles throughout
+Responsive design,1,1,Fully responsive — containers, components and navigation adapt correctly across mobile and desktop viewports
+SEO Tags,1,1,Layout.astro includes title, meta description, og:type, og:title, og:description, og:site_name; applied to all pages; content matches brand context
+Penalty,0,N/A,No penalty applied

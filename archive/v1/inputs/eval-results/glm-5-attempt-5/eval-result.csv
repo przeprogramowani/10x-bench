@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.02.2026 09:05,N/A,16.02.2026 09:05
+Local build,1,1,Build successful - static output with 4 pages generated in 879ms
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200 - navigation styles and content working
+Tech stack,0.5,1,Astro 5 React 19 Tailwind CSS 4 present in package.json but no @astrojs/cloudflare adapter installed or configured
+O nas page,0.5,1,Founders with key details (DAZN/Cabify SmartRecruiters) and correct LinkedIn links but missing course assignments and some professional details (Open Source contributions publications)
+Podcast page,0.5,1,Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts displayed with episodes but Spotify show link (4qHUZJpeBK8Ij9e2wTVm2o) does not match context file IDs
+YouTube page,1,1,6 unique video IDs with brand-relevant titles and real YouTube thumbnail URLs - no placeholder or Rick Roll IDs detected - channel URL matches context
+Kursy section,0.5,1,10xDevs featured prominently on hero with CTA to 10xdevs.pl but only 3 of 6 courses from context listed (missing Opanuj JavaScript Opanuj AI Cursor)
+Consistent UI,1,1,UI consistent across all pages per user evaluation
+Responsive design,1,1,Fully responsive layout per user evaluation
+SEO Tags,1,1,Meta tags in Layout.astro with page-specific titles and descriptions - default uses brand tagline - lang=pl set correctly
+Penalty,1,N/A,Manual intervention required - incorrect paths during code generation

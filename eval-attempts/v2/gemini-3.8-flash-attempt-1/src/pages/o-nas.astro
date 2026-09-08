@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FOUNDERS, ABOUT_MISSION } from '../data/about';
+import FounderCard from '../components/FounderCard.astro';
+---
+
+<Layout
+  title="O nas — Przeprogramowani.pl | Twórcy i Misja"
+  description="Poznaj Przeprogramowanych: działalność, wartości oraz sylwetki założycieli — Przemka Smyrdka i Marcina Czarkowskiego. Łączymy inżynierię oprogramowania, biznes i AI."
+  currentPath="/o-nas"
+>
+  <div class="space-y-16">
+    <!-- Header Section -->
+    <header class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+        <span>Misja & Ludzie</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+        O nas — Misja i twórcy Przeprogramowani.pl
+      </h1>
+      <p class="text-lg text-slate-300 leading-relaxed">
+        {ABOUT_MISSION.headline}. {ABOUT_MISSION.description}
+      </p>
+    </header>
+
+    <!-- Founders Grid (Przemek Smyrdek & Marcin Czarkowski) -->
+    <section aria-labelledby="founders-heading" class="space-y-8">
+      <div class="text-center">
+        <h2 id="founders-heading" class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Poznaj założycieli
+        </h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Inżynierowie, autorzy programów edukacyjnych i podcastów z wieloletnią praktyką na produkcji
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {FOUNDERS.map((founder) => (
+          <FounderCard founder={founder} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Values & Philosophy -->
+    <section aria-labelledby="values-heading" class="space-y-8 py-8 border-t border-slate-800/80">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 id="values-heading" class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Nasze wartości i podejście
+        </h2>
+        <p class="text-sm text-slate-400 mt-2">
+          Co definiuje szersze spojrzenie na programowanie?
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {ABOUT_MISSION.values.map((v) => (
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+            <h3 class="text-lg font-bold text-white">
+              {v.title}
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              {v.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Stats & Trust -->
+    <section aria-labelledby="stats-heading" class="p-6 sm:p-12 rounded-3xl bg-slate-900/80 border border-slate-800">
+      <h2 id="stats-heading" class="text-xl sm:text-2xl font-bold text-white text-center mb-8">
+        Liczby, które stoją za naszą działalnością
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+        {ABOUT_MISSION.stats.map((stat) => (
+          <div class="space-y-1">
+            <div class="text-3xl sm:text-4xl font-black text-amber-400 font-mono">
+              {stat.value}
+            </div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>

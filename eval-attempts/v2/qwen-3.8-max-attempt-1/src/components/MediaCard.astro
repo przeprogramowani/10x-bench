@@ -1,0 +1,71 @@
+---
+import type { MediaItem } from '../lib/sources';
+
+interface Props {
+  item: MediaItem;
+  kind: 'audio' | 'video';
+}
+
+const { item, kind } = Astro.props;
+
+function formatDate(iso: string | null): string {
+  if (!iso) return 'data nieznana';
+  return new Date(iso).toLocaleDateString('pl-PL', { dateStyle: 'long', timeZone: 'UTC' });
+}
+---
+
+<article class="flex flex-col gap-3 rounded-xl border border-white/10 bg-ink-800 p-5">
+  <div class="flex-1">
+    <h3 class="text-lg font-semibold text-white">
+      <a class="hover:text-brand-500 hover:underline" rel="noopener" target="_blank" href={item.url}>
+        {item.title}
+      </a>
+    </h3>
+    <p class="mt-1 text-sm text-slate-300">
+      Źródło: {item.sourceName} · Publikacja:
+      <time datetime={item.publishedAt ?? undefined}>{formatDate(item.publishedAt)}</time>
+    </p>
+  </div>
+  {
+    kind === 'audio' &&
+      item.audioUrl && (
+        <audio controls preload="none" class="w-full" aria-label={`Odtwarzacz odcinka: ${item.title}`}>
+          <source src={item.audioUrl} type="audio/mpeg" />
+          Twoja przeglądarka nie obsługuje odtwarzacza audio.
+        </audio>
+      )
+  }
+  {
+    kind === 'video' &&
+      item.videoId && (
+        <div class="aspect-video w-full overflow-hidden rounded-lg bg-black">
+          <iframe
+            class="h-full w-full"
+            src={`https://www.youtube-nocookie.com/embed/${item.videoId}`}
+            title={item.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      )
+  }
+  <div class="flex flex-wrap gap-3 text-sm">
+    <a
+      class="inline-flex items-center gap-1 rounded-lg bg-brand-600 px-3 py-2 font-semibold text-white hover:bg-brand-500"
+      rel="noopener"
+      target="_blank"
+      href={item.url}
+    >
+      Otwórz oryginał<span class="sr-only">: {item.title}</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+    {
+      kind === 'audio' && !item.audioUrl && (
+        <span class="inline-flex items-center rounded-lg border border-white/20 px-3 py-2 text-slate-300">
+          Brak pliku audio w feedzie — użyj odnośnika do oryginału.
+        </span>
+      )
+    }
+  </div>
+</article>

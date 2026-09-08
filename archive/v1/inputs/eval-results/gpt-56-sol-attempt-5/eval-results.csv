@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.07.2026 14:00,N/A,16.07.2026 14:00
+Local build,1,1,astro check + astro build succeeded (0 errors); static output; 5 pages built
+Manual testing,1,1,User-confirmed: site works correctly on click-through
+Tech stack,0.5,1,"React 19.2.7 and Tailwind 4.3.2 present; Astro is 7.0.9 (not 6); NO @astrojs/cloudflare adapter — config uses output:static (wrangler present but adapter not installed/configured)"
+O nas page,0.5,1,"200 OK; correct names, DAZN/Cabify for Przemek, SmartRecruiters + Opanuj.AI for Marcin, correct LinkedIn URLs; but bios are condensed/paraphrased and per-person course assignments (Opanuj JavaScript / 10xDevs) are omitted"
+Podcast page,1,1,"200 OK; both podcasts displayed (Opanuj.AI Podcast x3 + Przeprogramowani ft. Gość x1); Przeprogramowani Spotify show ID 3yVvOAXSYq6sQB02w4A4wo matches context; episode URLs are real podcasters.spotify.com links (return 200); OpanujAI show ID not directly linked but episodes point to correct opanujai show"
+YouTube page,1,1,"200 OK; all 6 video IDs verified via oEmbed as real, unique, on Przeprogramowani channel (author @Przeprogramowani); titles match source data; no placeholder/rickroll IDs"
+Kursy section,1,1,"10xDevs featured prominently in hero (link to 10xdevs.pl); dedicated #kursy section with Opanuj Frontend AI Edition and Opanuj TypeScript matching context (5 modules, TS5+React19); correct course domains"
+Consistent UI,1,1,User-confirmed: coherent design across pages
+Responsive design,1,1,User-confirmed: responsive across breakpoints
+SEO Tags,1,1,"BaseLayout provides title, description, canonical, OG (title/description/type/url/locale) and twitter:card, lang=pl; applied to all pages with per-page title/description; content matches brand copy"
+Penalty,0,N/A,User-confirmed: no penalty

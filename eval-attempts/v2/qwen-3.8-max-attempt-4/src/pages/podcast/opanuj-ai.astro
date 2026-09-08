@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import MediaList from '../../components/MediaList.astro';
+import { getWorkerEnv } from '../../lib/worker-env';
+import { getSourceResult, selectRecent } from '../../lib/sources';
+
+const env = await getWorkerEnv();
+const raw = await getSourceResult('opanujai', env);
+const result = { ...raw, items: selectRecent(raw.items, 5) };
+---
+
+<Base
+  title="Opanuj.AI Podcast — najnowsze odcinki o AI dla programistów"
+  description="Opanuj.AI Podcast Marcina Czarkowskiego: najnowsze odcinki o dużych modelach językowych, agentach AI i narzędziach dla programistów. Odtwarzaj odcinki i przechodź do źródła."
+  path="/podcast/opanuj-ai"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span>
+    <a class="hover:text-white" href="/podcast">Podcasty</a> <span aria-hidden="true">/</span>
+    <span>Opanuj.AI</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Opanuj.AI Podcast</h1>
+  <div class="prose-pl mt-4 max-w-3xl space-y-4">
+    <p>
+      Techniczny podcast o dużych modelach językowych, prowadzony przez Marcina Czarkowskiego
+      (co-foundera Przeprogramowanych). Każdy odcinek to przegląd i analiza nowości ze świata AI
+      istotnych dla inżynierów oprogramowania: modele i benchmarki, agenci kodujący, narzędzia
+      takie jak Cursor czy Claude, pytania o koszt, bezpieczeństwo i przyszłość zawodu.
+    </p>
+    <p>
+      Poniżej znajdziesz najnowsze odcinki pobrane z oficjalnego feedu podcastu — możesz je
+      odsłuchać w osadzonym odtwarzaczu albo otworzyć w serwisie źródłowym.
+    </p>
+  </div>
+
+  <p class="mt-6 flex flex-wrap gap-3">
+    <a
+      class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+      href={result.sourceUrl}
+      rel="noopener noreferrer"
+    >
+      Wszystkie odcinki na Spotify for Podcasters <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a
+      class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+      href="https://opanuj.ai"
+      rel="noopener noreferrer"
+    >
+      Strona opanuj.ai <span aria-hidden="true">&rarr;</span>
+    </a>
+  </p>
+
+  <div class="mt-10">
+    <h2 class="text-2xl">Najnowsze odcinki</h2>
+    <div class="mt-5">
+      <MediaList
+        result={result}
+        kind="audio"
+        emptyHint="Brak dostępnych odcinków — źródło jest chwilowo niedostępne. Sprawdź profil podcastu bezpośrednio w serwisie źródłowym."
+      />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { COURSES } from '../data/courses';
+import CourseCard from '../components/CourseCard.astro';
+---
+
+<Layout
+  title="Kursy i programy edukacyjne — Przeprogramowani.pl | 10xDevs, Frontend, TypeScript"
+  description="Poznaj flagowe szkolenia Przeprogramowanych: 10xDevs 4.0 (programowanie z Generatywnym AI), Opanuj Frontend: AI Edition oraz Opanuj TypeScript. Zdobądź wiedzę na poziomie inżynierskim."
+  currentPath="/kursy"
+>
+  <div class="space-y-12">
+    <!-- Header Section -->
+    <header class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+        <span>Edukacja Inżynierska</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+        Programy edukacyjne i kursy dla programistów
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Praktyczne szkolenia techniczne tworzone przez inżynierów dla inżynierów. Od głębokiego zrozumienia TypeScriptu i architektury frontendu, po kompleksowe wdrożenie agentów sztucznej inteligencji w całym cyklu SDLC.
+      </p>
+    </header>
+
+    <!-- Courses Grid -->
+    <section aria-labelledby="courses-list-heading" class="space-y-8">
+      <h2 id="courses-list-heading" class="sr-only">Lista dostępnych kursów</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {COURSES.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Methodology & Quality Promise -->
+    <section aria-labelledby="quality-heading" class="p-8 sm:p-12 rounded-3xl bg-slate-900/60 border border-slate-800 text-center max-w-4xl mx-auto space-y-4">
+      <h2 id="quality-heading" class="text-2xl font-bold text-white">
+        Dlaczego warto uczyć się z Przeprogramowanymi?
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left pt-4">
+        <div class="space-y-2">
+          <div class="text-amber-400 font-bold text-lg">01. Praktyka produkcyjna</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Wszystkie materiały tworzymy w oparciu o wyzwania, z którymi mierzymy się na co dzień w systemach o dużej skali.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <div class="text-amber-400 font-bold text-lg">02. Bezpośredni kontakt</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Uczestnicy naszych programów zyskują wsparcie na dedykowanej platformie społecznościowej i sesjach Q&A na żywo.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <div class="text-amber-400 font-bold text-lg">03. Zawsze aktualna wiedza</div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Aktualizujemy programy do najnowszych wydań (Astro 7, React 19, TypeScript 5, nowości LLM) i uczymy stabilnych wzorców.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

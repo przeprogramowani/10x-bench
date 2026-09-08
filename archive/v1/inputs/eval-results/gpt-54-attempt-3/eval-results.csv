@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,10min 52s,N/A,10min 52s
+Test run,16.04.2026 21:25,N/A,16.04.2026 21:25
+Local build,1,1,Build succeeded with @astrojs/cloudflare adapter; server output mode; no errors
+Manual testing,1,1,Dev server started on :4322; all 4 pages (/, /o-nas, /podcast, /youtube) returned 200 and rendered correctly
+Tech stack,1,1,Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured in astro.config.mjs
+O nas page,1,1,/o-nas returns 200; both founders present (Przemek Smyrdek with DAZN/Cabify and Open Source/conferences mentioned; Marcin Czarkowski with SmartRecruiters and Opanuj AI Podcast); correct LinkedIn URLs; bios slightly paraphrased but capture key context details
+Podcast page,1,1,/podcast returns 200; both Opanuj.AI Podcast and Przeprogramowani ft. Gosc displayed with real episodes fetched live from przeprogramowani.pl/podcast (with realistic fallbacks); Spotify URLs use podcasters.spotify.com episode-level links (valid real URLs differing from open.spotify.com show URLs in context but pointing to real episodes)
+YouTube page,1,1,/youtube returns 200; 6 unique videos with valid YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg); titles match real Przeprogramowani channel content (Claude Code, AI agents, 10xDevs, Product Builders Day); no rick rolls or placeholder IDs; data fetched live from przeprogramowani.pl with realistic fallbacks
+Kursy section,1,1,Dedicated courses section on homepage with three programs (10xDevs 3.0, Opanuj Frontend: AI Edition, Opanuj TypeScript); 10xDevs prominently featured as Hero on main page with dedicated panel and CTA; correct course URLs (10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl)
+Consistent UI,1,1,UI is consistent across all pages (shared header, footer, typography, color scheme)
+Responsive design,1,1,Containers, components, and navigation are fully responsive across screen sizes
+SEO Tags,1,1,Layout.astro provides comprehensive meta tags (description, og:type/title/description/url/site_name, twitter:card/title/description, canonical) applied to all pages; each page passes custom title/description through Layout props; content matches brand context
+Penalty,0,N/A,No penalty applied

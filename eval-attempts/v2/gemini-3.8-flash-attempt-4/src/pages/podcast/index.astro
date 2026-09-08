@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchOpanujAiEpisodes } from '../../data/sources/opanuj-ai';
+import { fetchPrzeprogramowaniEpisodes } from '../../data/sources/przeprogramowani-podcast';
+
+const [aiResult, przResult] = await Promise.all([
+  fetchOpanujAiEpisodes(),
+  fetchPrzeprogramowaniEpisodes(),
+]);
+
+const aiEpisodes = aiResult.data.slice(0, 3);
+const przEpisodes = przResult.data.slice(0, 3);
+---
+
+<Layout
+  title="Katalog podcastów — Przeprogramowani | Opanuj.AI oraz Przeprogramowani ft. Gość"
+  description="Katalog autorskich podcastów technologicznych Przeprogramowanych. Opanuj.AI — comiesięczne nowinki o modelach LLM i AI oraz Przeprogramowani ft. Gość — rozmowy z liderami inżynierii IT."
+  canonicalPath="/podcast"
+>
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Page Header */}
+    <div class="max-w-3xl mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-4">
+        <span>Audycje i rozmowy</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+        Katalog podcastów Przeprogramowanych
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed">
+        Słuchaj naszych audycji technologicznych. Tworzymy dwa niezależne formaty: <strong class="text-white">Opanuj.AI Podcast</strong> skupiony na rewolucji Generative AI oraz <strong class="text-white">Przeprogramowani ft. Gość</strong> poświęcony architekturze oprogramowania, inżynierii i rozwojowi kariery programisty.
+      </p>
+    </div>
+
+    {/* The Two Podcasts Hub Grid */}
+    <div class="grid lg:grid-cols-2 gap-10 mb-20">
+      {/* 1. Opanuj.AI Podcast Hub Card */}
+      <div class="bg-gradient-to-br from-[#0c1829] to-[#080d17] border border-cyan-900/60 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-6">
+            <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-cyan-950 border border-cyan-700/60 text-cyan-300 uppercase tracking-wider">
+              Format comiesięczny
+            </span>
+            <span class="text-xs text-cyan-400 font-semibold">Ponad 4000 słuchaczy</span>
+          </div>
+
+          <h2 class="text-3xl font-extrabold text-white tracking-tight mb-3">
+            Opanuj.AI Podcast
+          </h2>
+
+          <p class="text-sm text-cyan-300/90 font-medium mb-4">
+            Prowadzą: Marcin Czarkowski i Przemek Smyrdek
+          </p>
+
+          <p class="text-sm text-gray-300 leading-relaxed mb-6">
+            Najpopularniejszy podcast techniczny o sztucznej inteligencji i modelach językowych w Polsce. Cykliczne podsumowanie nowinek ze świata frontierowych modeli LLM, autonomicznych agentów oraz ich wpływu na inżynierię oprogramowania i biznes.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              Ostatnie tematy w Opanuj.AI:
+            </div>
+            {aiEpisodes.map((ep) => (
+              <div class="p-3 bg-gray-900/70 border border-gray-800 rounded-xl text-xs">
+                <span class="text-cyan-400 font-semibold block line-clamp-1">{ep.title}</span>
+                <span class="text-gray-400 text-[11px] mt-0.5 block">{ep.formattedDate}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-cyan-950/80 flex flex-col sm:flex-row items-center gap-4">
+          <a
+            href="/podcast/opanuj-ai"
+            class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold text-sm text-center shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Otwórz stronę podcastu Opanuj.AI</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a
+            href="https://podcasters.spotify.com/pod/show/opanujai"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-semibold text-center border border-gray-700"
+          >
+            Spotify ↗
+          </a>
+        </div>
+      </div>
+
+      {/* 2. Przeprogramowani Podcast Hub Card */}
+      <div class="bg-gradient-to-br from-[#1a1424] to-[#0c0d16] border border-amber-900/50 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-6">
+            <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-amber-950 border border-amber-700/60 text-amber-300 uppercase tracking-wider">
+              Wywiady i dyskusje
+            </span>
+            <span class="text-xs text-amber-400 font-semibold">Ponad 3800 słuchaczy</span>
+          </div>
+
+          <h2 class="text-3xl font-extrabold text-white tracking-tight mb-3">
+            Przeprogramowani ft. Gość
+          </h2>
+
+          <p class="text-sm text-amber-300/90 font-medium mb-4">
+            Szersze spojrzenie na programowanie
+          </p>
+
+          <p class="text-sm text-gray-300 leading-relaxed mb-6">
+            Rozmowy dla głodnych wiedzy. Dyskutujemy z ekspertami i praktykami z wiodących firm o architekturze enterprise, dojrzałości zawodowej, wzorcach projektowych, frontendzie i kulisach pracy programisty.
+          </p>
+
+          <div class="space-y-3 mb-8">
+            <div class="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              Wybrane odcinki z gośćmi:
+            </div>
+            {przEpisodes.map((ep) => (
+              <div class="p-3 bg-gray-900/70 border border-gray-800 rounded-xl text-xs">
+                <span class="text-amber-400 font-semibold block line-clamp-1">{ep.title}</span>
+                <span class="text-gray-400 text-[11px] mt-0.5 block">{ep.formattedDate}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-amber-950/80 flex flex-col sm:flex-row items-center gap-4">
+          <a
+            href="/podcast/przeprogramowani"
+            class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold text-sm text-center shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Otwórz stronę podcastu Przeprogramowani</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <a
+            href="https://podcasters.spotify.com/pod/show/przeprogramowani"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-semibold text-center border border-gray-700"
+          >
+            Spotify ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Platform Links Banner */}
+    <div class="bg-[#0b101c] rounded-2xl border border-gray-800 p-8 text-center max-w-4xl mx-auto">
+      <h3 class="text-lg font-bold text-white mb-2">Słuchaj na swojej ulubionej platformie</h3>
+      <p class="text-sm text-gray-400 mb-6">Audycje Przeprogramowanych znajdziesz w większości aplikacji podcastowych.</p>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+        <a
+          href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 transition-colors"
+        >
+          Spotify (Opanuj.AI) ↗
+        </a>
+        <a
+          href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 transition-colors"
+        >
+          Spotify (Przeprogramowani) ↗
+        </a>
+        <a
+          href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 transition-colors"
+        >
+          Apple Podcasts ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

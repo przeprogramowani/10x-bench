@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.tsx';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogType?: string;
+}
+
+const { title, description, path, ogType = 'website' } = Astro.props;
+const canonical = new URL(path, Astro.site ?? Astro.url.origin).href;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="Przeprogramowani" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Przejdź do treści
+    </a>
+    <SiteHeader currentPath={currentPath} client:load />
+    <main id="main-content" class="mx-auto w-full max-w-6xl px-4 py-10">
+      <slot />
+    </main>
+    <footer class="border-t border-ink-800 bg-ink-900">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-display text-lg font-extrabold text-white">
+            <span class="text-accent-400" aria-hidden="true">&lt;/&gt;</span> Przeprogramowani
+          </p>
+          <p class="mt-2 text-sm text-ink-300">
+            Szersze spojrzenie na programowanie — kursy, podcasty, YouTube i społeczność.
+          </p>
+        </div>
+        <nav aria-label="Nawigacja stopki — strony">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Strony</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-ink-300 hover:text-white" href="/">Strona główna</a></li>
+            <li><a class="text-ink-300 hover:text-white" href="/o-nas">O nas</a></li>
+            <li><a class="text-ink-300 hover:text-white" href="/podcast">Podcasty</a></li>
+            <li><a class="text-ink-300 hover:text-white" href="/youtube">YouTube</a></li>
+            <li><a class="text-ink-300 hover:text-white" href="/kursy">Kursy</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Nawigacja stopki — podcasty">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Podcasty</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-ink-300 hover:text-white" href="/podcast/opanuj-ai">Opanuj.AI</a></li>
+            <li><a class="text-ink-300 hover:text-white" href="/podcast/przeprogramowani">Przeprogramowani</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-white">Źródła</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="text-ink-300 hover:text-white" rel="noopener noreferrer" href="https://przeprogramowani.pl">przeprogramowani.pl</a></li>
+            <li><a class="text-ink-300 hover:text-white" rel="noopener noreferrer" href="https://www.youtube.com/@przeprogramowani">YouTube</a></li>
+            <li><a class="text-ink-300 hover:text-white" rel="noopener noreferrer" href="https://podcasters.spotify.com/pod/show/opanujai">Opanuj.AI (Spotify)</a></li>
+            <li><a class="text-ink-300 hover:text-white" rel="noopener noreferrer" href="https://podcasters.spotify.com/pod/show/przeprogramowani">Przeprogramowani (Spotify)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-ink-800 px-4 py-4">
+        <p class="mx-auto max-w-6xl text-xs text-ink-300">
+          Nieoficjalna witryna prezentacyjna zbudowana w ramach 10xBench V2. Treści i materiały
+          pochodzą z publicznych źródeł Przeprogramowanych.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

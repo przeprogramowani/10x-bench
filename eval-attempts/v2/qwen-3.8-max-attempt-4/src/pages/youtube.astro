@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import MediaList from '../components/MediaList.astro';
+import { getWorkerEnv } from '../lib/worker-env';
+import { getSourceResult, selectRecent } from '../lib/sources';
+
+const env = await getWorkerEnv();
+const raw = await getSourceResult('youtube', env);
+const result = { ...raw, items: selectRecent(raw.items, 6) };
+---
+
+<Base
+  title="YouTube — najnowsze filmy kanału Przeprogramowani"
+  description="Najnowsze filmy oficjalnego kanału YouTube Przeprogramowani: AI-Native development, 10xDevs, live'y i materiały dla programistów. Oglądaj w osadzonym odtwarzaczu."
+  path="/youtube"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span> <span>YouTube</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Kanał YouTube Przeprogramowani</h1>
+  <div class="prose-pl mt-4 max-w-3xl space-y-4">
+    <p>
+      Oficjalny kanał Przeprogramowanych na YouTubie: nagrania z projektów AI-Native (10xDevs,
+      hackathony, demo day), live coding z agentami AI, workflowy inżynierskie i materiały
+      edukacyjne dla programistów.
+    </p>
+    <p>
+      Poniżej znajdziesz najnowsze filmy pobrane z oficjalnego feedu kanału — obejrzyj je
+      w osadzonym odtwarzaczu albo otwórz na YouTubie.
+    </p>
+  </div>
+
+  <p class="mt-6">
+    <a
+      class="inline-flex items-center gap-2 rounded-lg border border-ink-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-ink-800"
+      href="https://www.youtube.com/@przeprogramowani/videos"
+      rel="noopener noreferrer"
+    >
+      Wszystkie filmy na kanale <span aria-hidden="true">&rarr;</span>
+    </a>
+  </p>
+
+  <div class="mt-10">
+    <h2 class="text-2xl">Najnowsze filmy</h2>
+    <div class="mt-5">
+      <MediaList
+        result={result}
+        kind="video"
+        emptyHint="Brak dostępnych filmów — źródło jest chwilowo niedostępne. Sprawdź kanał bezpośrednio na YouTubie."
+      />
+    </div>
+  </div>
+</Base>

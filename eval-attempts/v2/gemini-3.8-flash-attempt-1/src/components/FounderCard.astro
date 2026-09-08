@@ -1,0 +1,65 @@
+---
+import type { FounderProfile } from '../data/types';
+
+interface Props {
+  founder: FounderProfile;
+}
+
+const { founder } = Astro.props;
+---
+
+<div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl">
+  <div>
+    <!-- Profile header -->
+    <div class="flex items-center gap-4 mb-6">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-slate-800 border-2 border-amber-400/50 flex-shrink-0">
+        <img
+          src={founder.avatarUrl}
+          alt={`Zdjęcie profilowe: ${founder.name}`}
+          class="w-full h-full object-cover"
+          loading="lazy"
+          onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23334155%22/><text x=%2250%%22 y=%2255%%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2228%22 font-family=%22sans-serif%22>PROFIL</text></svg>';"
+        />
+      </div>
+      <div>
+        <h3 class="text-xl sm:text-2xl font-bold text-white">
+          {founder.name}
+        </h3>
+        <p class="text-sm font-medium text-amber-400">
+          {founder.role}
+        </p>
+      </div>
+    </div>
+
+    <!-- Bio text -->
+    <p class="text-sm text-slate-300 leading-relaxed mb-6">
+      {founder.bio}
+    </p>
+
+    <!-- Highlights -->
+    <div class="space-y-2 mb-6">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+        Doświadczenie i osiągnięcia:
+      </p>
+      {founder.highlights.map((item) => (
+        <div class="flex items-start gap-2 text-xs text-slate-300">
+          <span class="text-amber-400 font-bold">•</span>
+          <span>{item}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- LinkedIn button -->
+  <div class="pt-4 border-t border-slate-800">
+    <a
+      href={founder.linkedinUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold border border-slate-700 transition-colors focus-visible:ring-2 focus-visible:ring-amber-400"
+    >
+      <span>Profil na LinkedIn</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</div>

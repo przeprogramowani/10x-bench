@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SOURCES } from '../../data/sources';
+import { getSource } from '../../data/index';
+import EpisodeCard from '../../components/EpisodeCard.astro';
+import DataStatusNotice from '../../components/DataStatusNotice.astro';
+
+const source = SOURCES['opanuj-ai'];
+const result = await getSource(source.id);
+---
+
+<Base
+  path="/podcast/opanuj-ai"
+  title="Opanuj.AI Podcast — odcinki | Przeprogramowani"
+  description="Opanuj.AI Podcast — cykliczne podsumowanie nowinek ze świata AI prowadzone przez Marcina Czarkowskiego i Przemka Smyrdka. Najnowsze odcinki z odtwarzaczem i linkami do źródła."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16">
+    <nav aria-label="Ścieżka okruszków" class="text-sm text-slate-400">
+      <a class="hover:text-white hover:underline" href="/">Strona główna</a>
+      <span aria-hidden="true"> / </span>
+      <a class="hover:text-white hover:underline" href="/podcast">Podcasty</a>
+      <span aria-hidden="true"> / </span>
+      <span class="text-slate-200">Opanuj.AI</span>
+    </nav>
+
+    <h1 class="mt-4 text-3xl font-extrabold text-white md:text-5xl">{source.name}</h1>
+    <p class="mt-4 max-w-3xl text-lg text-slate-300">{source.description}</p>
+    <p class="mt-4 text-sm text-slate-400">
+      Prowadzący: Marcin Czarkowski i Przemek Smyrdek ·{' '}
+      <a class="text-brand-100 underline hover:text-white" href={source.homepage} rel="noopener" target="_blank">
+        profil podcastu u dostawcy ↗
+      </a>{' '}
+      ·{' '}
+      <a class="text-brand-100 underline hover:text-white" href={source.url} rel="noopener" target="_blank">
+        kanał RSS ↗
+      </a>
+    </p>
+
+    <div class="mt-10">
+      <h2 class="text-2xl font-bold text-white">Najnowsze odcinki</h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Źródło danych: feed RSS podcastu; dane pobrane po stronie serwera
+        {result.status === 'fresh' ? ' podczas budowania strony' : ''}.
+      </p>
+    </div>
+
+    <div class="mt-6">
+      <DataStatusNotice result={result} />
+    </div>
+
+    {result.items.length > 0 && (
+      <div class="grid gap-6 md:grid-cols-2">
+        {result.items.map((item) => <EpisodeCard item={item} />)}
+      </div>
+    )}
+  </div>
+</Base>

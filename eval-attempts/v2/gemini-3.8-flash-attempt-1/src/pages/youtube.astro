@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { fetchYouTubeFeed } from '../data/youtube';
+import VideoPlayerCard from '../components/VideoPlayerCard.astro';
+import ResilienceAlert from '../components/ResilienceAlert.astro';
+
+const feed = await fetchYouTubeFeed();
+---
+
+<Layout
+  title="Kanał YouTube — Filmy i materiały wideo | Przeprogramowani.pl"
+  description="Oglądaj najnowsze materiały wideo i transmisje live z oficjalnego kanału Przeprogramowani. Architektura AI, benchmarki, demo narzędzi programistycznych i relacje."
+  currentPath="/youtube"
+>
+  <div class="space-y-12">
+    <!-- Header Section -->
+    <header class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-800/40 text-red-300 text-xs font-semibold uppercase tracking-wider">
+        <span>Oficjalne Wideo & Live</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+        Oficjalny kanał YouTube Przeprogramowani
+      </h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+        Praktyczne demonstracje kodu, analizy narzędzi AI (Claude Code, Cursor, GitHub Copilot), transmisje live z gośćmi, prezentacje projektów Demo Day oraz dyskusje o rozwoju inżyniera.
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+        <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg">
+          🎬 Regularne publikacje techniczne
+        </span>
+        <a
+          href="https://www.youtube.com/@przeprogramowani"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-red-600/90 hover:bg-red-500 text-white font-semibold px-4 py-1.5 rounded-lg transition-colors"
+        >
+          Subskrybuj kanał na YouTube ↗
+        </a>
+      </div>
+    </header>
+
+    <!-- Resilience Alert -->
+    <ResilienceAlert feed={feed} />
+
+    <!-- Videos Grid -->
+    <section aria-labelledby="videos-heading" class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <h2 id="videos-heading" class="text-2xl font-bold text-white">
+            Filmy z ostatnich 90 dni ({feed.items.length})
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">
+            Pobrane w czasie rzeczywistym z feedu Atom oficjalnego kanału YouTube
+          </p>
+        </div>
+        <div class="text-xs text-slate-500">
+          Status źródła: <span class={feed.status === 'live' ? 'text-emerald-400 font-semibold' : 'text-amber-400 font-semibold'}>
+            {feed.status === 'live' ? '● Połączono z YouTube Atom na żywo' : '○ Pamięć podręczna'}
+          </span>
+        </div>
+      </div>
+
+      {feed.items.length === 0 ? (
+        <div class="p-8 rounded-2xl bg-slate-900 text-center text-slate-400">
+          <p>Brak dostępnych filmów w tej chwili.</p>
+          <a href={feed.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-amber-400 underline mt-2 inline-block">
+            Odwiedź kanał YouTube
+          </a>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {feed.items.map((item) => (
+            <VideoPlayerCard item={item} />
+          ))}
+        </div>
+      )}
+    </section>
+  </div>
+</Layout>

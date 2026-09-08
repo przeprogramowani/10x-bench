@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dfe9ff;
+  --color-brand-200: #c5d6ff;
+  --color-brand-300: #a1baff;
+  --color-brand-400: #7a94fc;
+  --color-brand-500: #5f6ff6;
+  --color-brand-600: #4b4ceb;
+  --color-brand-700: #3f3cd4;
+  --color-brand-800: #3533ab;
+  --color-brand-900: #313087;
+  --color-brand-950: #1e1d4d;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 font-sans antialiased;
+}
+
+/* Widoczny fokus klawiatury na wszystkich kontrolkach (P07) */
+:focus-visible {
+  outline: 3px solid var(--color-brand-300);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white;
+}

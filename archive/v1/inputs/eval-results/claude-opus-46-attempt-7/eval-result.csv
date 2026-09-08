@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,11.02.2026 21:34,N/A,11.02.2026 21:34
+Local build,1,1,Build successful (Astro 5 static output 4 pages built in 789ms)
+Manual testing,1,1,Dev server running all 4 pages accessible and returning 200 with working navigation styles and content
+Tech stack,0,1,Tailwind CSS v3.4.17 instead of required v4 and no Cloudflare Adapter installed or configured
+O nas page,0.5,1,Page exists returns 200 team members named correctly with DAZN/Cabify/SmartRecruiters mentioned but bios simplified missing key details and Marcin LinkedIn handle wrong (marcinczarkowski vs mkczarkowski)
+Podcast page,0.5,1,Both podcasts displayed but Spotify URLs wrong (4qFnFETxOBbcoMHuFNBXwh vs context 3yVvOAXSYq6sQB02w4A4wo and fabricated opanuj-ai-podcast vs 3D6LmchBdoqL2sWkQjvWOy) and episode data hallucinated
+YouTube page,0.5,1,Page exists returns 200 but all video URLs point to channel page with no actual video IDs and video titles are fabricated/hallucinated
+Kursy section,0.5,1,Dedicated component with 10xDevs prominently featured in Hero but only 3 of 6 courses present (missing Opanuj JavaScript Opanuj AI Cursor)
+Consistent UI,1,1,UI consistent across all pages per manual testing
+Responsive design,1,1,Containers components and navigation fully responsive per manual testing
+SEO Tags,0.5,1,Meta tags in Layout.astro covering all pages (title description viewport charset lang=pl) but O-nas uses generic default description no OG tags or Twitter cards

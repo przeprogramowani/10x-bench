@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,12min 7s,N/A,12min 7s
+Test run,9.02.2026 19:05,N/A,9.02.2026 19:05
+Local build,1,1,Build successful - astro build completed without errors (4 pages generated)
+Manual testing,0,1,All pages return HTTP 500 due to React runtime error (module is not defined in react/index.js)
+Tech stack,0,1,Astro 5 and React 19 present but Tailwind CSS 3.4 instead of required v4 and no @astrojs/cloudflare adapter installed or configured
+O nas page,0,1,Page exists (about.astro) but returns HTTP 500. Source content partially matches - Przemek missing DAZN/Cabify details and course assignments not listed
+Podcast page,0,1,Page exists (podcast.astro) but returns HTTP 500. Only OpanujAI podcast shown - Przeprogramowany Podcast missing. Spotify URL wrong (5PzK0kz8lHJV5X4F0Z3Wb0 instead of 3D6LmchBdoqL2sWkQjvWOy). Episode data is fabricated/hallucinated
+YouTube page,0,1,Page exists (youtube.astro) but returns HTTP 500. Video IDs appear to be real Przeprogramowani videos (unique IDs not rick-rolls) but page is not accessible
+Kursy section,0,1,Kursy section exists in index.astro with 10xDevs featured prominently in Hero but page returns HTTP 500. Only 3 of 6 courses listed
+Consistent UI,0,1,Cannot evaluate - all pages return HTTP 500 errors
+Responsive design,0,1,Cannot evaluate - all pages return HTTP 500 errors
+SEO Tags,0.5,1,Basic SEO in Layout.astro with dynamic title and meta description matching context tagline. No OG tags or dedicated SEO component

@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.04.2026 22:31,N/A,16.04.2026 22:31
+Local build,1,1,Build succeeded — Astro 5 static output, 5 pages built in 789ms
+Manual testing,1,1,Dev server runs on port 4400; all routes (/, /o-nas, /podcast, /youtube) return 200
+Tech stack,0,1,"Astro 5 (required v6), Tailwind 3.4 (required v4), no @astrojs/cloudflare adapter installed; output is 'static'. Wrangler is in devDeps but Cloudflare Astro adapter not configured"
+O nas page,0.5,1,"Page exists and returns 200; team bios are heavily simplified — Przemek bio missing DAZN/Cabify and 'Opanuj JavaScript' course, Marcin bio missing SmartRecruiters and '10xDevs' course; partner list differs from context (Huuuge Games + SmartRecruiters present, but missing DAZN/Cabify/NoFluffJobs/Bitnoise/edrone/etc.)"
+Podcast page,0.5,1,"Page exists and returns 200; episodes split between 'Opanuj.AI' and 'Przeprogramowani ft. Gość' shows. CRITICAL: every episode points to the same Spotify URL 3yVvOAXSYq6sQB02w4A4wo (Przeprogramowani show) — Opanuj.AI URL 3D6LmchBdoqL2sWkQjvWOy is missing. Episodes appear hallucinated (future dates 2026-04-12, 2026-03-28, fake titles like 'GPT-5.2 to GEMINI KILLER', 'TEGO AI NIE POTRAFI — ARC-AGI-3')"
+YouTube page,0.5,1,"Page exists and returns 200; videos use fake IDs (pp-001, pp-002, ..., pp-006) — not real YouTube IDs. Video titles/descriptions are fabricated/generic. No links to real videos; cards are visual-only with hallucinated metadata"
+Kursy section,0.5,1,"Section #kursy exists on index, 10xDevs is featured (featured: true) and highlighted in Hero. Only 3/6 courses present (10xDevs, Opanuj Frontend, Opanuj TypeScript) — missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI from context"
+Consistent UI,1,1,UI consistent across all pages
+Responsive design,1,1,Containers, components, and navigation are responsive
+SEO Tags,1,1,"Layout.astro centralizes meta tags (title, description, canonical, og:type/title/description/url/site_name/locale, twitter:card/title/description); all pages use Layout; site description and tagline match context ('Szersze spojrzenie na programowanie')"
+Penalty,0,N/A,No penalty applied

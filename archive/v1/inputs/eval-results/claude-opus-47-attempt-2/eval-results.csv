@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,16.04.2026 22:29,N/A,16.04.2026 22:29
+Local build,1,1,Build succeeded with @astrojs/cloudflare adapter; 6 routes prerendered without errors
+Tech stack,0.5,1,"Astro 5.1 (required 6) and Tailwind 3.4 (required 4) — wrong major versions; React 19 OK; Cloudflare adapter installed and configured in astro.config.mjs"
+O nas page,0.5,1,"Page exists and returns 200; team listed; Przemek bio mentions DAZN/Cabify and Marcin mentions SmartRecruiters/Opanuj.AI; BUT course assignments wrong — Przemek listed as ""Autor 10xDevs"" (context: Opanuj JavaScript) and Marcin's 10xDevs assignment missing"
+Podcast page,0.5,1,"Page returns 200 and references both shows in copy; BUT all episode URLs use the same Spotify show ID 3yVvOAXSYq6sQB02w4A4wo (Przeprogramowani) — the Opanuj.AI ID 3D6LmchBdoqL2sWkQjvWOy is missing entirely; episode titles/dates appear hallucinated (e.g. ARC-AGI-3, GPT-5.2, dates in 2026)"
+YouTube page,0.5,1,"Page returns 200 and renders 6 videos; BUT video IDs are fake slugs (yt-claude-code-workflow, yt-mcp-internals, etc.) not 11-char YouTube IDs; all URLs point to channel root https://www.youtube.com/c/przeprogramowani not actual videos; titles fabricated"
+Kursy section,0.5,1,"Dedicated CoursesGrid component exists; 10xDevs prominently featured in Hero on index.astro; BUT only 3 of 6 context courses present (10xDevs, Opanuj Frontend, Opanuj TypeScript) — missing Opanuj JavaScript, Opanuj AI, Cursor: Programuj z AI; 10xDevs subtitle ""AI-Native Software Engineering"" differs from context phrasing"
+Manual testing,1,1,User confirmed dev server running and all pages accessible with working navigation/styles/content; all 4 routes returned HTTP 200
+Consistent UI,1,1,User confirmed UI is consistent across all pages
+Responsive design,1,1,User confirmed containers, components and navigation are fully responsive
+SEO Tags,1,1,"Layout.astro defines title, description, canonical, og:type/title/description/url/image/locale, twitter card meta; Layout wraps every page so SEO tags propagate; values come from per-page props with sensible defaults from src/data/site.ts"
+Penalty,0,N/A,No penalty applied

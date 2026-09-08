@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.tsx';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Ścieżka kanoniczna, np. "/o-nas". Dla strony głównej "/". */
+  path: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const { title, description, path, ogTitle, ogDescription } = Astro.props;
+const siteUrl = String(SITE.url).replace(/\/$/, '');
+const canonical = new URL(path === '/' ? '/' : `${path}/`, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a class="skip-link" href="#main-content">Przejdź do treści</a>
+    <Header client:load currentPath={path} />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

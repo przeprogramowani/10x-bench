@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import { COURSES } from '../lib/config.ts';
+
+const details: Record<string, { points: string[] }> = {
+  '10xdevs': {
+    points: [
+      'AI-Native Software Engineering — praca inżynierska z modelami językowymi na co dzień',
+      'Agenci kodujący i workflowy przyspieszające rozwój oprogramowania (m.in. 10xWorkflow)',
+      'Praktyka na realnych projektach, w tym wydarzenia typu demo day i hackathony',
+    ],
+  },
+  'opanuj-frontend': {
+    points: [
+      'Nowoczesny frontend: HTML, CSS, JavaScript i TypeScript',
+      'React oraz ekosystem narzędzi frontend developera',
+      'AI Edition — wiedza o wykorzystaniu narzędzi AI w codziennej pracy',
+    ],
+  },
+  'opanuj-typescript': {
+    points: [
+      'Najnowsza wersja TypeScript 5 w praktyce',
+      'Współpraca TypeScripta z Reactem 19',
+      'Typowanie od podstaw po zaawansowane wzorce produkcyjne',
+    ],
+  },
+};
+---
+
+<Base
+  title="Kursy — Opanuj Frontend, Opanuj TypeScript i 10xDevs"
+  description="Kursy Przeprogramowanych: 10xDevs (programuj z AI), Opanuj Frontend: AI Edition oraz Opanuj TypeScript (TypeScript 5 i React 19). Opisy i odnośniki do stron kursów."
+  path="/kursy"
+>
+  <nav aria-label="Ścieżka nawigacji" class="text-sm text-ink-300">
+    <a class="hover:text-white" href="/">Strona główna</a> <span aria-hidden="true">/</span> <span>Kursy</span>
+  </nav>
+
+  <h1 class="mt-4 text-4xl leading-tight">Kursy Przeprogramowanych</h1>
+  <p class="mt-4 max-w-3xl text-lg text-ink-300">
+    Trzy programy edukacyjne: od nowoczesnego frontendu, przez TypeScripta, po inżynierię
+    oprogramowania natywną dla AI. Każdy odnośnik prowadzi do oficjalnej strony kursu.
+  </p>
+
+  <div class="mt-10 grid gap-6">
+    {COURSES.map((course) => (
+      <article class="rounded-2xl border border-ink-800 bg-ink-900 p-6 sm:p-8" aria-labelledby={`course-${course.slug}`}>
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 id={`course-${course.slug}`} class="text-2xl text-white">{course.name}</h2>
+            <p class="mt-1 text-sm font-medium text-accent-400">{course.tagline}</p>
+          </div>
+          <a
+            class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
+            href={course.url}
+            rel="noopener noreferrer"
+          >
+            Przejdź do kursu <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-ink-300">{course.description}</p>
+        <ul class="mt-4 grid gap-2 text-sm text-ink-300 sm:grid-cols-2">
+          {details[course.slug].points.map((point) => (
+            <li class="flex gap-2">
+              <span class="text-accent-400" aria-hidden="true">✓</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+
+  <p class="mt-8 text-sm text-ink-300">
+    Opisy opracowano na podstawie oficjalnych stron produktowych:
+    <a class="text-accent-400 underline-offset-4 hover:underline" href="https://10xdevs.pl" rel="noopener noreferrer">10xdevs.pl</a>,
+    <a class="text-accent-400 underline-offset-4 hover:underline" href="https://www.opanujfrontend.pl" rel="noopener noreferrer">opanujfrontend.pl</a>,
+    <a class="text-accent-400 underline-offset-4 hover:underline" href="https://www.opanujtypescript.pl" rel="noopener noreferrer">opanujtypescript.pl</a>.
+  </p>
+</Base>

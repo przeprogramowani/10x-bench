@@ -1,0 +1,126 @@
+---
+import { MobileNav } from './MobileNav';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const navItems = [
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/kursy', label: 'Kursy' },
+  {
+    href: '/podcast',
+    label: 'Podcasty',
+    subItems: [
+      { href: '/podcast/opanuj-ai', label: 'Opanuj.AI' },
+      { href: '/podcast/przeprogramowani', label: 'Przeprogramowani' },
+    ],
+  },
+  { href: '/youtube', label: 'YouTube' },
+];
+---
+
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:font-semibold focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+>
+  Przejdź do treści głównej
+</a>
+
+<header class="sticky top-0 z-40 w-full border-b border-gray-800 bg-gray-950/90 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a
+      href="/"
+      aria-label="Przeprogramowani.pl - strona główna"
+      class="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg p-1"
+    >
+      <span class="text-blue-500 font-mono text-xl font-bold group-hover:text-blue-400 transition-colors">&lt;/&gt;</span>
+      <span class="text-white text-lg font-bold tracking-tight group-hover:text-blue-200 transition-colors">
+        Przeprogramowani<span class="text-blue-500">.pl</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Nawigacja główna">
+      {navItems.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        if (item.subItems) {
+          return (
+            <div class="relative group">
+              <a
+                href={item.href}
+                class={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 ${
+                  isActive
+                    ? 'text-blue-400 bg-blue-500/10 font-semibold'
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                }`}
+                aria-haspopup="true"
+              >
+                {item.label}
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <div class="absolute left-0 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-150 z-50">
+                <div class="w-56 bg-gray-900 border border-gray-800 rounded-xl shadow-xl p-2">
+                  <a
+                    href="/podcast"
+                    class="block px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 uppercase tracking-wider hover:bg-gray-800 hover:text-white transition-colors"
+                  >
+                    Katalog Podcastów
+                  </a>
+                  <div class="h-px bg-gray-800 my-1"></div>
+                  {item.subItems.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class={`block px-3 py-2 rounded-lg text-sm transition-colors ${
+                        currentPath === sub.href
+                          ? 'text-blue-400 bg-blue-500/10 font-medium'
+                          : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                      }`}
+                    >
+                      {sub.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        }
+        return (
+          <a
+            href={item.href}
+            class={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              isActive
+                ? 'text-blue-400 bg-blue-500/10 font-semibold'
+                : 'text-gray-300 hover:text-white hover:bg-gray-800'
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Header Right Action -->
+    <div class="hidden md:flex items-center gap-3">
+      <a
+        href="https://10xdevs.pl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+        <span>10xDevs</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Mobile Navigation Toggle -->
+    <MobileNav client:load currentPath={currentPath} />
+  </div>
+</header>

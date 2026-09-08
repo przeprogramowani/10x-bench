@@ -1,0 +1,13 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,12.02.2026 20:00,N/A,12.02.2026 20:00
+Local build,1,1,Build successful (astro build completed in 880ms). All 4 pages generated and dev server returns 200 on all routes.
+Manual testing,1,1,Dev server running at localhost:4321. All pages accessible with 200 status. Navigation styles and content working properly.
+Tech stack,0,1,Astro 5 present (^5.0.0-beta.1) and React 19 present (^19.0.0-beta) but Tailwind CSS 4 missing (has tailwindcss ^3.4.0 i.e. v3) and no Cloudflare Adapter installed or configured in astro.config.mjs.
+O nas page,0.5,1,Dedicated /onas page returns 200. Przemek mentions DAZN and Cabify. Marcin mentions SmartRecruiters. LinkedIn URLs correct. But bios simplified - missing course assignments (Przemek: Opanuj JavaScript and Marcin: 10xDevs) and missing Open Source contributions and publications for Przemek.
+Podcast page,0.5,1,Both Przeprogramowani and OpanujAI podcasts displayed with 3 episodes each. Episode data has specific guest names (Ducin Trawinski Sitko) and unique episode URLs. However main Spotify show URLs from context not linked and episode data cannot be verified against context file which only contains show-level URLs.
+YouTube page,1,1,6 videos with unique YouTube IDs all verified (thumbnails resolve to 200). No rick roll or placeholder IDs. Titles match Przeprogramowani channel content (10xDevs Claude Code AI programming). Channel link matches context.
+Kursy section,0.5,1,Hero component displays 3 courses (Opanuj Frontend AI Edition Opanuj TypeScript 10xDevs) with correct URLs. 10xDevs prominently featured on main page in Hero and Co nowego section. But only 3 of 6 courses from context shown - missing Opanuj JavaScript Opanuj AI and Cursor Programuj z AI.
+Consistent UI,1,1,UI is consistent across all pages with uniform header footer and styling. No broken or inconsistent styles observed.
+Responsive design,1,1,Containers components and navigation are responsive across different screen sizes. Grid layouts adapt properly.
+SEO Tags,1,1,Meta tags in MainLayout.astro applied to all pages via layout. Title and description set per page matching context (tagline and mission). HTML lang=pl set correctly.

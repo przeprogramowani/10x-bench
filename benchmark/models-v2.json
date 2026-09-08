@@ -1,0 +1,48 @@
+{
+  "qwen-3.8-max": {
+    "name": "Qwen3.8 Max",
+    "environment": "OpenCode",
+    "harness": {
+      "tool": "opencode",
+      "version": "1.18.23",
+      "model": "openrouter/qwen/qwen3.8-max-0902",
+      "provider": "openrouter",
+      "reasoningEffort": "high",
+      "goalModeAvailable": false,
+      "invocation": "opencode run --model openrouter/qwen/qwen3.8-max-0902 --variant high --auto --dir <attemptDirectory>"
+    },
+    "pricing": {
+      "input": 2.0,
+      "output": 6.0,
+      "cacheRead": 0.25,
+      "cacheWrite": 2.5,
+      "currency": "USD",
+      "unit": "per million tokens",
+      "source": "https://openrouter.ai/api/v1/models",
+      "verifiedAt": "2026-09-08"
+    }
+  },
+  "gemini-3.8-flash": {
+    "name": "Gemini 3.8 Flash",
+    "environment": "OpenCode",
+    "harness": {
+      "tool": "opencode",
+      "version": "1.18.23",
+      "model": "openrouter/google/gemini-3.8-flash",
+      "provider": "openrouter",
+      "reasoningEffort": "high",
+      "goalModeAvailable": false,
+      "invocation": "opencode run --model openrouter/google/gemini-3.8-flash --variant high --auto --dir <attemptDirectory>"
+    },
+    "pricing": {
+      "input": 0.75,
+      "output": 3.75,
+      "cacheRead": 0.075,
+      "cacheWrite": 0.041667,
+      "currency": "USD",
+      "unit": "per million tokens",
+      "source": "https://openrouter.ai/api/v1/models",
+      "verifiedAt": "2026-09-08"
+    }
+  }
+}

@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StatusBanner from '../../components/StatusBanner.astro';
+import { AudioPlayer } from '../../components/AudioPlayer';
+import { getPrzeprogramowaniPodcast } from '../../data/podcast-przeprogramowani';
+
+const podcastData = await getPrzeprogramowaniPodcast();
+const episodes = podcastData.items;
+---
+
+<Layout
+  title="Podcast Przeprogramowani ft. Gość — Przeprogramowani.pl | Odcinki i odtwarzacz"
+  description="Podcast Przeprogramowani ft. Gość prowadzony przez Przemka Smyrdka i Marcina Czarkowskiego. Rozmowy z czołowymi inżynierami, architektura oprogramowania i kariera w IT."
+  canonicalPath="/podcast/przeprogramowani"
+>
+  <!-- Hero Section -->
+  <section class="py-14 lg:py-20 bg-gradient-to-b from-blue-950/30 via-gray-950 to-gray-950 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl space-y-6">
+        <nav aria-label="Breadcrumb" class="text-xs text-gray-400 flex flex-wrap items-center gap-2">
+          <a href="/" class="hover:text-blue-400">Strona główna</a>
+          <span>/</span>
+          <a href="/podcast" class="hover:text-blue-400">Katalog podcastów</a>
+          <span>/</span>
+          <span class="text-blue-300 font-medium">Przeprogramowani ft. Gość</span>
+        </nav>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <img
+            src="/img/podcast/przeprogramowani-cover.jpg"
+            alt="Okładka Przeprogramowani ft. Gość"
+            class="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover border-2 border-blue-500/40 shadow-2xl shrink-0"
+            loading="lazy"
+          />
+          <div class="space-y-2">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              Podcast Inżynierski & Wywiady
+            </span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+              Przeprogramowani ft. Gość
+            </h1>
+            <p class="text-sm sm:text-base text-gray-300">
+              Gospodarze: <strong class="text-white">Przemek Smyrdek</strong> & <strong class="text-white">Marcin Czarkowski</strong>
+            </p>
+          </div>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed max-w-3xl">
+          Seria pogłębionych wywiadów i dyskusji z inspirującymi gośćmi ze świata nowoczesnego IT. Rozmawiamy o architekturze oprogramowania, praktykach engineering managementu, wyzwaniach frontendu i backendu, kulturze organizacyjnej oraz rozwoju kariery programisty.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a
+            href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs font-semibold rounded-lg transition-colors"
+          >
+            <span>Słuchaj na Spotify</span>
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </a>
+          <a
+            href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-lg border border-gray-700 transition-colors"
+          >
+            <span>Apple Podcasts</span>
+          </a>
+          <a
+            href={podcastData.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-orange-950/60 hover:bg-orange-900/60 text-orange-200 border border-orange-800/60 text-xs font-semibold rounded-lg transition-colors"
+          >
+            <span>Kanał RSS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes List & Audio Players -->
+  <section class="py-16 bg-gray-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <StatusBanner
+        status={podcastData.status}
+        sourceUrl={podcastData.sourceUrl}
+        sourceName={podcastData.sourceName}
+        fetchedAt={podcastData.fetchedAt}
+        errorMessage={podcastData.errorMessage}
+        isFallback={podcastData.isFallback}
+      />
+
+      <div class="mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Najnowsze dostępne odcinki Przeprogramowani ft. Gość
+        </h2>
+        <p class="text-sm text-gray-400 mt-1">
+          Zgodnie z zasadą P03: ponieważ w 90 dniach poprzedzających start próby nie było nowych publikacji w tym kanale, prezentujemy najnowsze dostępne materiały z ich rzeczywistymi datami publikacji.
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        {episodes.map((ep) => (
+          <article class="p-6 sm:p-8 rounded-2xl bg-gray-900/70 border border-gray-800 hover:border-blue-500/30 transition-all space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div class="space-y-2 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                  <span class="px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 font-semibold border border-blue-500/20">
+                    {ep.sourceName}
+                  </span>
+                  <span class="text-gray-400 font-mono">📅 {ep.formattedDate}</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <a
+                    href={ep.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-blue-300 transition-colors"
+                  >
+                    {ep.title}
+                  </a>
+                </h3>
+                {ep.description && (
+                  <p class="text-sm text-gray-300 leading-relaxed pt-1">
+                    {ep.description}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <!-- Embedded Audio Player & Original Link -->
+            <AudioPlayer
+              client:load
+              title={ep.title}
+              audioUrl={ep.audioUrl}
+              originalUrl={ep.url}
+              duration={ep.duration}
+              sourceName="Przeprogramowani ft. Gość"
+            />
+          </article>
+        ))}
+      </div>
+
+      <!-- Hub & Home Links -->
+      <div class="pt-12 mt-12 border-t border-gray-800/80 flex flex-wrap items-center justify-between gap-4">
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300"
+        >
+          ← Wróć do katalogu obu podcastów
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-gray-400 hover:text-white"
+        >
+          Strona główna Przeprogramowani.pl ↑
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,14 @@
+Criterion,Score,Max,Notes
+Task completion time,N/A,N/A,N/A
+Test run,19.04.2026 17:34,N/A,19.04.2026 17:34
+Local build,1,1,Build successful with Astro 6 + Cloudflare adapter
+Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200; navigation styles and content working
+Tech stack,1,1,Astro 6.1.8 React 19.2.5 Tailwind CSS 4.2.2 and @astrojs/cloudflare adapter configured in astro.config.mjs
+O nas page,0.5,1,Page exists (200). Founder bios include key details (DAZN/Cabify for Przemek SmartRecruiters for Marcin) but course assignments per founder missing (Przemek=Opanuj JavaScript Marcin=10xDevs)
+Podcast page,0.5,1,Page exists (200). Przeprogramowani Podcast displayed with correct Spotify URL (3yVvOAXSYq6sQB02w4A4wo) but OpanujAI Podcast completely missing (should have ID 3D6LmchBdoqL2sWkQjvWOy)
+YouTube page,1,1,Page exists (200). All 6 video IDs verified as real Przeprogramowani channel videos via YouTube oEmbed API
+Kursy section,0.5,1,10xDevs featured prominently in Hero component. Only 3/6 courses from context shown (10xDevs Opanuj Frontend Opanuj TypeScript). Missing: Opanuj JavaScript (850+ graduates) Opanuj AI and Cursor
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,Meta tags (title description) in Layout.astro connected to all pages with per-page values matching context content. lang=pl set correctly
+Penalty,0,N/A,No penalty applied

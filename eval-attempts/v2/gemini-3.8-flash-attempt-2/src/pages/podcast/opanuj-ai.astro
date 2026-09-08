@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchOpanujAi } from '../../data/fetch-opanuj-ai';
+import AudioPlayerCard from '../../components/AudioPlayerCard.astro';
+import ResilienceNotice from '../../components/ResilienceNotice.astro';
+
+// Check if controlled failure simulation is requested via query param (e.g. ?simulate_failure=1)
+const simulateFailureParam = Astro.url.searchParams.get('simulate_failure') === 'true' || Astro.url.searchParams.get('simulate_failure') === '1';
+
+const data = await fetchOpanujAi({ forceError: simulateFailureParam });
+---
+
+<Layout
+  title="Podcast Opanuj.AI — Sztuczna inteligencja dla inżynierów"
+  description="Opanuj.AI to najpopularniejszy techniczny podcast o LLM i Generatywnym AI w Polsce. Prowadzący: Marcin Czarkowski i Przemek Smyrdek. Najnowsze odcinki, odtwarzacz audio i linki do źródeł."
+>
+  <!-- Hero Section -->
+  <section class="border-b border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <nav aria-label="Ścieżka powrotu" class="mb-6">
+          <ol class="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <li>
+              <a href="/" class="hover:text-amber-400 transition-colors">Strona główna</a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <a href="/podcast" class="hover:text-amber-400 transition-colors">Podcasty</a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li class="text-amber-400" aria-current="page">Opanuj.AI</li>
+          </ol>
+        </nav>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Podcast Technologiczny
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Opanuj.AI Podcast
+        </h1>
+
+        <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+          Cykliczne podsumowanie nowinek technologicznych ze świata sztucznej inteligencji. Prowadzący — <strong>Marcin Czarkowski</strong> i <strong>Przemek Smyrdek</strong> — dzielą się rzetelną wiedzą techniczną oraz analizują wpływ modeli frontierowych, agentów autonomicznych i narzędzi GenAI na rynek IT, programowanie oraz społeczeństwo.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-400">
+          <span>👥 Ponad 4000 stałych słuchaczy</span>
+          <span>•</span>
+          <a
+            href="https://open.spotify.com/show/3D6LmchBdoqL2sWkQjvWOy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-amber-400 hover:underline font-semibold"
+          >
+            Subskrybuj na Spotify ↗
+          </a>
+          <span>•</span>
+          <a
+            href="https://anchor.fm/s/e2cb03d0/podcast/rss"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-300 hover:text-white"
+          >
+            Oficjalny feed RSS ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episodes Section -->
+  <section class="py-16 sm:py-20 bg-slate-950" aria-labelledby="episodes-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-8">
+        <h2 id="episodes-heading" class="text-2xl sm:text-3xl font-bold text-white">
+          Najnowsze rzeczywiste odcinki
+        </h2>
+        <p class="mt-2 text-sm text-slate-400">
+          Poniżej prezentujemy niepusty wybór najnowszych publikacji z 90 dni poprzedzających start próby, pobranych bezpośrednio z oficjalnego źródła.
+        </p>
+      </div>
+
+      <!-- Resilience Fallback Banner -->
+      <ResilienceNotice
+        status={data.status}
+        isFallback={data.isFallback}
+        message={data.message}
+        sourceUrl={data.sourceUrl}
+        fetchedAt={data.fetchedAt}
+      />
+
+      <!-- Episodes List -->
+      <div class="space-y-6">
+        {data.items.map((item) => (
+          <AudioPlayerCard item={item} />
+        ))}
+      </div>
+
+      <!-- Bottom Navigation Back to Hub -->
+      <div class="mt-12 pt-8 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300"
+        >
+          <span aria-hidden="true">←</span>
+          <span>Wróć do katalogu podcastów</span>
+        </a>
+        <a
+          href="/podcast/przeprogramowani"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:text-sky-300"
+        >
+          <span>Zobacz Podcast Przeprogramowani</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

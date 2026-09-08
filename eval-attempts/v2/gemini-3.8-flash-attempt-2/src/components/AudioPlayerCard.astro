@@ -1,0 +1,95 @@
+---
+import type { MediaItem } from '../data/types';
+
+interface Props {
+  item: MediaItem;
+}
+
+const { item } = Astro.props;
+---
+
+<article class="flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 hover:border-slate-700 transition-all shadow-sm">
+  <div>
+    <!-- Source & Date Header -->
+    <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-3">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 font-medium">
+        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
+        </svg>
+        {item.sourceName}
+      </span>
+      <div class="flex items-center gap-3">
+        {item.duration && <span>⏱ {item.duration}</span>}
+        <time datetime={item.publishedAt !== 'nieznana' ? item.publishedAt : undefined} class="text-slate-400">
+          Data publikacji: <strong class="text-slate-300">{item.publishedDateDisplay}</strong>
+        </time>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 leading-snug">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
+      >
+        {item.title}
+      </a>
+    </h3>
+
+    <!-- Description -->
+    {item.description && (
+      <p class="text-sm text-slate-300 line-clamp-3 mb-4 leading-relaxed">
+        {item.description}
+      </p>
+    )}
+  </div>
+
+  <div class="mt-4 pt-4 border-t border-slate-800/80 space-y-3">
+    <!-- Embedded Audio Player -->
+    {item.audioUrl ? (
+      <div class="w-full">
+        <label for={`audio-${item.id}`} class="sr-only">
+          Odtwarzacz audio dla odcinka: {item.title}
+        </label>
+        <audio
+          id={`audio-${item.id}`}
+          controls
+          preload="none"
+          class="w-full h-11 rounded-lg focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none"
+        >
+          <source src={item.audioUrl} type="audio/mpeg" />
+          Twoja przeglądarka nie obsługuje elementu audio. Możesz odsłuchać odcinek bezpośrednio w serwisie Spotify.
+        </audio>
+      </div>
+    ) : (
+      <div class="p-3 rounded-lg bg-slate-800/50 text-xs text-slate-400 flex items-center justify-between">
+        <span>Dostawca wymaga odtworzenia na zewnętrznej platformie.</span>
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-amber-400 font-semibold hover:underline"
+        >
+          Otwórz na Spotify ↗
+        </a>
+      </div>
+    )}
+
+    <!-- Direct link to original episode -->
+    <div class="flex items-center justify-between text-xs pt-1">
+      <span class="text-slate-400">Oryginalny odcinek:</span>
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1 font-semibold text-amber-400 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded px-1"
+        aria-label={`Otwórz odcinek „${item.title}” na platformie Spotify (otwiera nowe okno)`}
+      >
+        <span>Posłuchaj na Spotify</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</article>

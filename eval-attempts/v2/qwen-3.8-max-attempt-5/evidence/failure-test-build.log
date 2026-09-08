@@ -1,0 +1,38 @@
+== Controlled failure test #2: FORCE_SOURCE_FAILURE=youtube npm run build ==
+Tue Sep  8 07:53:03 UTC 2026
+
+> przeprogramowani-pl-site@1.0.0 build
+> astro build
+
+09:53:04 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+09:53:04 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:53:04 [types] Generated 37ms
+09:53:04 [build] output: "static"
+09:53:04 [build] mode: "static"
+09:53:04 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/qwen-3.8-max-attempt-5/site/dist/
+09:53:04 [build] adapter: @astrojs/cloudflare
+09:53:04 [build] Collecting build info...
+09:53:04 [build] ✓ Completed in 73ms.
+09:53:04 [build] Building static entrypoints...
+09:53:04 [vite] ✓ built in 194ms
+09:53:04 [vite] ✓ built in 46ms
+09:53:04 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9233 instead
+
+
+ generating static routes 
+09:53:05   ├─ /kursy/index.html (+21ms) 
+09:53:05   ├─ /o-nas/index.html (+6ms) 
+09:53:05   ├─ /podcast/opanuj-ai/index.html (+207ms) 
+09:53:05   ├─ /podcast/przeprogramowani/index.html (+87ms) 
+09:53:05   ├─ /podcast/index.html (+6ms) 
+09:53:05   ├─ /youtube/index.html[sources] youtube: pobieranie nieudane (Kontrolowana awaria źródła (FORCE_SOURCE_FAILURE=youtube)) — używam pamięci podręcznej
+ (+8ms) 
+09:53:05   ├─ /index.html (+5ms) 
+09:53:05 ✓ Completed in 783ms.
+
+09:53:05 [build] ✓ Completed in 1.06s.
+09:53:05 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+09:53:05 [build] 7 page(s) built in 1.14s
+09:53:05 [build] Complete!
+build-exit=0

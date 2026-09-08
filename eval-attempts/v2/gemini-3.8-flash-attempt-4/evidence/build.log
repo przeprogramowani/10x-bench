@@ -1,0 +1,49 @@
+=== ASTRO CHECK ===
+10:02:13 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+10:02:13 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+10:02:13 [types] Generated 76ms
+10:02:13 [check] Getting diagnostics for Astro files in /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-4...
+[96mscripts/generate-all-evidence.mjs[0m:[93m14[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'pkg' is declared but its value is never read.
+
+[7m14[0m const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+[7m  [0m [93m      ~~~[0m
+
+Result (31 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+
+
+=== ASTRO BUILD ===
+
+> przeprogramowani-v2@1.0.0 build
+> astro build
+
+10:02:16 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+10:02:16 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+10:02:16 [types] Generated 28ms
+10:02:16 [build] output: "static"
+10:02:16 [build] mode: "static"
+10:02:16 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/v2/gemini-3.8-flash-attempt-4/dist/
+10:02:16 [build] adapter: @astrojs/cloudflare
+10:02:16 [build] Collecting build info...
+10:02:16 [build] ✓ Completed in 62ms.
+10:02:16 [build] Building static entrypoints...
+10:02:17 [vite] ✓ built in 201ms
+10:02:17 [vite] ✓ built in 48ms
+10:02:17 [build] Rearranging server assets...
+
+ generating static routes 
+10:02:17   ├─ /kursy/index.html (+18ms) 
+10:02:17   ├─ /o-nas/index.html (+9ms) 
+10:02:17   ├─ /podcast/opanuj-ai/index.html (+213ms) 
+10:02:17   ├─ /podcast/przeprogramowani/index.html (+92ms) 
+10:02:17   ├─ /podcast/index.html (+235ms) 
+10:02:18   ├─ /youtube/index.html (+88ms) 
+10:02:18   ├─ /index.html (+65ms) 
+10:02:18 ✓ Completed in 1.08s.
+
+10:02:18 [build] ✓ Completed in 1.36s.
+10:02:18 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+10:02:18 [build] 7 page(s) built in 1.42s
+10:02:18 [build] Complete!

@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { fetchOpanujAiFeed } from '../../data/opanuj-ai';
+import { fetchPrzeprogramowaniPodcastFeed } from '../../data/przeprogramowani-podcast';
+import ResilienceAlert from '../../components/ResilienceAlert.astro';
+
+const oaiFeed = await fetchOpanujAiFeed();
+const ppFeed = await fetchPrzeprogramowaniPodcastFeed();
+---
+
+<Layout
+  title="Podcasty technologiczne — Przeprogramowani.pl | Opanuj.AI & Przeprogramowani"
+  description="Katalog oficjalnych podcastów Przeprogramowanych. Odkryj Opanuj.AI Podcast (generatywne AI i modele LLM) oraz Podcast Przeprogramowani (inżynieria, kariera i architektura)."
+  currentPath="/podcast"
+>
+  <div class="space-y-12">
+    <!-- Header -->
+    <header class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+        <span>Katalog formatów audio</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+        Podcasty Przeprogramowanych — Opanuj.AI i Rozmowy z gośćmi
+      </h1>
+      <p class="text-lg text-slate-300 leading-relaxed">
+        Słuchaj naszych dwóch podcastów o nowoczesnym programowaniu, sztucznej inteligencji, architekturze systemów oraz rozwoju kariery w IT. Wybierz format i przejdź do dedykowanej strony z odcinkami.
+      </p>
+    </header>
+
+    <!-- Resilience Alerts if any source is degraded -->
+    {oaiFeed.isFallback && <ResilienceAlert feed={oaiFeed} />}
+    {ppFeed.isFallback && <ResilienceAlert feed={ppFeed} />}
+
+    <!-- The Two Shows Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Show 1: Opanuj.AI Podcast -->
+      <section aria-labelledby="oai-heading" class="flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-slate-900/80 border-2 border-amber-500/30 hover:border-amber-400/60 transition-all shadow-xl">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+              Generative AI & LLM
+            </span>
+            <span class="text-xs text-slate-400 font-medium">Ponad 4000 słuchaczy</span>
+          </div>
+
+          <h2 id="oai-heading" class="text-2xl sm:text-3xl font-black text-white mb-3">
+            Opanuj.AI Podcast
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+            Comiesięczne podsumowanie najważniejszych wydarzeń ze świata AI. Prowadzący Marcin Czarkowski i Przemek Smyrdek analizują nowe modele, agentów programistycznych, benchmarki i architekturę AI w praktyce inżynierskiej.
+          </p>
+
+          <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 mb-6 space-y-2">
+            <p class="text-xs font-bold text-amber-400 uppercase tracking-wider">
+              Najnowszy dostępny odcinek:
+            </p>
+            {oaiFeed.items[0] ? (
+              <div>
+                <p class="text-sm font-semibold text-white">
+                  {oaiFeed.items[0].title}
+                </p>
+                <div class="flex items-center gap-3 text-xs text-slate-400 mt-1">
+                  <span>📅 {oaiFeed.items[0].publishedDateFormatted}</span>
+                  {oaiFeed.items[0].duration && <span>⏱ {oaiFeed.items[0].duration}</span>}
+                </div>
+              </div>
+            ) : (
+              <p class="text-xs text-slate-400">Trwa ładowanie odcinków...</p>
+            )}
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-slate-800">
+          <a
+            href="/podcast/opanuj-ai"
+            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-lg transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-amber-400"
+          >
+            <span>Przejdź do podcastu Opanuj.AI (odcinki i odtwarzacz)</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Show 2: Podcast Przeprogramowani -->
+      <section aria-labelledby="pp-heading" class="flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all shadow-xl">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-300 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+              Inżynieria & Kariera
+            </span>
+            <span class="text-xs text-slate-400 font-medium">Ponad 3800 słuchaczy</span>
+          </div>
+
+          <h2 id="pp-heading" class="text-2xl sm:text-3xl font-black text-white mb-3">
+            Podcast Przeprogramowani
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
+            Rozmowy dla głodnych wiedzy. Wywiady z uznanymi ekspertami, case study ze spółek technologicznych, dyskusje o architekturze oprogramowania, czystym kodzie oraz dojrzałości zawodowej inżyniera.
+          </p>
+
+          <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800 mb-6 space-y-2">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              Najnowszy dostępny odcinek:
+            </p>
+            {ppFeed.items[0] ? (
+              <div>
+                <p class="text-sm font-semibold text-white">
+                  {ppFeed.items[0].title}
+                </p>
+                <div class="flex items-center gap-3 text-xs text-slate-400 mt-1">
+                  <span>📅 {ppFeed.items[0].publishedDateFormatted}</span>
+                  {ppFeed.items[0].duration && <span>⏱ {ppFeed.items[0].duration}</span>}
+                </div>
+              </div>
+            ) : (
+              <p class="text-xs text-slate-400">Trwa ładowanie odcinków...</p>
+            )}
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-slate-800">
+          <a
+            href="/podcast/przeprogramowani"
+            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-slate-400"
+          >
+            <span>Przejdź do Podcastu Przeprogramowani (odcinki i odtwarzacz)</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
