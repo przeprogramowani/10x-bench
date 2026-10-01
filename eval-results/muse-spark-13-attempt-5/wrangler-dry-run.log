@@ -1,0 +1,29 @@
+$ npm ci --no-audit --no-fund
+up to date in 131ms
+[exit 0]$ npm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+10:55:43 PM [vite] (ssr) Error when evaluating SSR module /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-U4Mdmj/site/astro.config.mjs: Cannot find module 'astro/config' imported from '/private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-U4Mdmj/site/astro.config.mjs'
+      at fetchModule (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:46842:19)
+      at RunnableDevEnvironment.fetchModule (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:47933:12)
+      at fetchModule (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:47887:21)
+      at handleInvoke (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:39002:28)
+      at EventEmitter.listenerForInvokeHandler (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:39075:25)
+      at EventEmitter.emit (node:events:518:28)
+      at Object.send (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:25190:40)
+      at Object.invoke (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/module-runner.js:621:34)
+      at Object.invoke (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/module-runner.js:682:34)
+      at SSRCompatModuleRunner.getModuleInformation (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/module-runner.js:1205:94)
+[astro] Unable to load your Astro config
+
+Cannot find module 'astro/config' imported from '/private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-U4Mdmj/site/astro.config.mjs'
+  Location:
+    /Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:46842:19
+  Stack trace:
+    at fetchModule (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:46842:19)
+    at fetchModule (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:47887:21)
+    at EventEmitter.listenerForInvokeHandler (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:39075:25)
+    at Object.send (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:25190:40)
+    at Object.invoke (file:///Users/psmyrdek/dev/10x-bench/node_modules/vite/dist/node/module-runner.js:682:34)
+[exit 1]

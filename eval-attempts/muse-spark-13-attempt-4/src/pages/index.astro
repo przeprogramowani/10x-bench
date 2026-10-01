@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NewsletterForm from '../components/NewsletterForm';
+import VideoGrid from '../components/VideoGrid';
+import { courses, episodes } from '../data/content';
+---
+<Layout title="Przeprogramowani.pl — Szersze spojrzenie na programowanie" description="Kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript. Podcast Opanuj.AI i YouTube dla ambitnych programistów.">
+  <!-- HERO with 10xDevs -->
+  <section class="relative overflow-hidden">
+    <div class="grid-bg absolute inset-0"></div>
+    <div class="absolute -top-32 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-violet-600/25 blur-[120px]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:pt-20">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-bold text-amber-300">
+            <span class="h-2 w-2 animate-pulse rounded-full bg-amber-400"></span>
+            10xDevs 4.0 · nowa edycja · start 14.09 · 8100+ absolwentów
+          </div>
+          <h1 class="mt-6 text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+            Nadeszła era<br />
+            <span class="text-gradient">AI-Native Engineering</span>
+          </h1>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            Przeprogramowani to miejsce, gdzie programowanie spotyka się z rozwojem.
+            Uczymy świadomej pracy z AI w całym cyklu wytwarzania oprogramowania —
+            od pomysłu, przez plan i implementację, po testy i wdrożenie na Cloudflare.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="https://10xdevs.pl" target="_blank" class="rounded-2xl bg-amber-400 px-8 py-4 text-center text-sm font-black text-black shadow-[0_10px_40px_rgba(255,208,40,.35)] transition hover:bg-amber-300">
+              Poznaj 10xDevs 4.0 →
+            </a>
+            <a href="#kursy" class="rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-center text-sm font-bold backdrop-blur transition hover:bg-white/10">
+              Zobacz wszystkie kursy
+            </a>
+          </div>
+          <dl class="mt-10 grid grid-cols-3 gap-4">
+            <div class="glass rounded-2xl p-4 text-center"><dt class="text-2xl font-black text-amber-300">7 lat</dt><dd class="mt-1 text-xs text-slate-400">na rynku edukacji</dd></div>
+            <div class="glass rounded-2xl p-4 text-center"><dt class="text-2xl font-black">15k+</dt><dd class="mt-1 text-xs text-slate-400">społeczność devów</dd></div>
+            <div class="glass rounded-2xl p-4 text-center"><dt class="text-2xl font-black">4000+</dt><dd class="mt-1 text-xs text-slate-400">słuchaczy podcastu</dd></div>
+          </dl>
+        </div>
+        <div class="relative">
+          <div class="glass overflow-hidden rounded-[2rem] p-2">
+            <div class="rounded-[1.6rem] bg-gradient-to-br from-[#1a1a2e] to-[#0b0b15] p-6 sm:p-8">
+              <p class="font-mono text-xs text-emerald-400">$ 10x-workflow --from-idea --to-prod</p>
+              <div class="mt-4 space-y-3 font-mono text-[13px]">
+                <div class="rounded-xl bg-black/50 p-3"><span class="text-violet-400">➜ research</span> <span class="text-slate-300">mapowanie legacy + context stack ✓</span></div>
+                <div class="rounded-xl bg-black/50 p-3"><span class="text-amber-400">➜ plan</span> <span class="text-slate-300">roadmapa MVP + evale + quality gates ✓</span></div>
+                <div class="rounded-xl bg-black/50 p-3"><span class="text-sky-400">➜ implement</span> <span class="text-slate-300">subagenci + solo review + CI/CD ✓</span></div>
+                <div class="rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-3"><span class="text-emerald-300">✓ deployed to Cloudflare in 5 min</span></div>
+              </div>
+              <div class="mt-6 flex items-center gap-3">
+                <div class="flex -space-x-3">
+                  <div class="grid h-10 w-10 place-items-center rounded-full border-2 border-[#1a1a2e] bg-gradient-to-br from-violet-500 to-purple-700 text-xs font-black">PS</div>
+                  <div class="grid h-10 w-10 place-items-center rounded-full border-2 border-[#1a1a2e] bg-gradient-to-br from-amber-400 to-orange-600 text-xs font-black text-black">MC</div>
+                  <div class="grid h-10 w-10 place-items-center rounded-full border-2 border-[#1a1a2e] bg-white text-xs font-black text-black">8k+</div>
+                </div>
+                <p class="text-xs text-slate-400">Przemek Smyrdek & Marcin Czarkowski<br />+ tysiące absolwentów</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -left-5 hidden rounded-2xl border border-white/10 bg-[#14141f] px-5 py-3 shadow-2xl sm:block">
+            <p class="text-xs font-bold">⭐ 5/5 — „To nie kurs, to przełom”</p>
+            <p class="text-[11px] text-slate-400">Mariusz R., absolwent 10xDevs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zaufali nam -->
+  <section class="border-y border-white/5 bg-white/[0.02]">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+      <p class="text-center text-xs font-bold uppercase tracking-[0.2em] text-slate-500">Zaufali nam — szkolenia dla zespołów m.in.</p>
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-bold text-slate-400">
+        <span>Huuuge Games</span><span>Nutridome</span><span>SmartRecruiters</span><span>Future Processing</span><span>Callstack</span><span>edrone</span><span>Autodesk</span><span>Xfive</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- KURSY -->
+  <section id="kursy" class="mx-auto max-w-7xl scroll-mt-28 px-4 py-16 sm:px-6">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">Edukacja technologiczna w epoce AI</p>
+    <h2 class="mt-3 max-w-2xl text-3xl font-black tracking-tight sm:text-5xl">Wybierz swoją ścieżkę rozwoju</h2>
+    <p class="mt-4 max-w-2xl text-slate-400">Topowe programy dla ambitnych programistów — od frontendu, przez TypeScript, po pełny workflow AI-Native.</p>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {courses.map((c) => (
+        <article class="glass flex flex-col overflow-hidden rounded-[1.8rem] transition hover:-translate-y-1.5 hover:border-amber-400/40">
+          <div class={`h-2 bg-gradient-to-r ${c.accent}`}></div>
+          <div class="flex flex-1 flex-col p-7">
+            <span class="w-fit rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-bold text-slate-300">{c.badge}</span>
+            <h3 class="mt-4 text-2xl font-black">{c.title}</h3>
+            <p class={`bg-gradient-to-r ${c.accent} bg-clip-text text-sm font-bold text-transparent`}>{c.subtitle}</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">{c.description}</p>
+            <ul class="mt-5 space-y-2 text-[13px] text-slate-300">
+              {c.bullets.map((b) => (<li class="flex gap-2"><span class="text-emerald-400">✓</span><span>{b}</span></li>))}
+            </ul>
+            <div class="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-5">
+              {c.stats.map((s) => (<div class="text-center"><p class="text-lg font-black">{s.value}</p><p class="text-[11px] text-slate-500">{s.label}</p></div>))}
+            </div>
+            <a href={c.href} target="_blank" class="mt-6 rounded-2xl bg-white px-6 py-3.5 text-center text-sm font-black text-black transition hover:bg-amber-300">{c.cta}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- PODCAST preview -->
+  <section class="border-y border-white/5 bg-white/[0.02]">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-violet-300">🎙 Podcasty</p>
+          <h2 class="mt-3 text-3xl font-black sm:text-4xl">Słuchaj w drodze do pracy</h2>
+          <p class="mt-2 text-slate-400">Opanuj.AI — najpopularniejszy techniczny podcast o LLM w Polsce + rozmowy z gośćmi.</p>
+        </div>
+        <a href="/podcast" class="rounded-full border border-white/20 px-6 py-3 text-sm font-bold hover:bg-white/10">Wszystkie odcinki →</a>
+      </div>
+      <div class="mt-8 grid gap-5 md:grid-cols-3">
+        {episodes.slice(0, 3).map((e) => (
+          <article class="glass rounded-3xl p-5">
+            <div class="flex gap-3">
+              <img src={e.image} alt="" class="h-14 w-14 rounded-xl object-cover" loading="lazy" />
+              <p class="text-[11px] font-bold uppercase tracking-widest text-amber-300">{e.show}<br /><span class="text-slate-500">{e.duration}</span></p>
+            </div>
+            <h3 class="mt-3 line-clamp-2 text-[15px] font-bold leading-snug">{e.title}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE preview -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-red-400">▶ YouTube</p>
+        <h2 class="mt-3 text-3xl font-black sm:text-4xl">Ostatnie filmy</h2>
+      </div>
+      <a href="/youtube" class="rounded-full border border-white/20 px-6 py-3 text-sm font-bold hover:bg-white/10">Wszystkie filmy →</a>
+    </div>
+    <div class="mt-8"><VideoGrid limit={3} client:visible /></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
+    <div class="grid gap-8 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-violet-900/40 via-[#14141f] to-amber-500/10 p-8 sm:p-12 lg:grid-cols-2">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">✉ Newsletter</p>
+        <h2 class="mt-3 text-3xl font-black sm:text-4xl">Przeprogramowany Newsletter</h2>
+        <p class="mt-3 text-slate-300">Co piątek format <strong>3-2-1</strong>: 3 rekomendacje techniczne, 2 rozwojowe i 1 bonus-niespodzianka.</p>
+      </div>
+      <NewsletterForm client:visible />
+    </div>
+  </section>
+</Layout>

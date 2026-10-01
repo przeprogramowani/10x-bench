@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastExplorer from '../components/PodcastExplorer.tsx';
+import VideoExplorer from '../components/VideoExplorer.tsx';
+import NewsletterForm from '../components/NewsletterForm.tsx';
+import { courses, stats } from '../data/site';
+---
+<Layout title="Przeprogramowani.pl — Szersze spojrzenie na programowanie" description="Kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript. Podcast, YouTube i newsletter dla programistów.">
+  <!-- HERO: 10xDevs -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-indigo-900/40 via-transparent to-transparent"></div>
+    <div class="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:pt-20">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-3 py-1 text-xs font-bold text-indigo-200">
+            🔥 Bestseller „Przeprogramowanych” • 8100+ absolwentów
+          </p>
+          <h1 class="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Nadeszła era <span class="text-gradient">AI-Native</span> Software Engineering
+          </h1>
+          <p class="mt-4 max-w-xl text-base text-slate-300 sm:text-lg">
+            <strong class="text-white">10xDevs 4.0</strong> — praktyczny program pracy z agentami AI.
+            10xWorkflow, Context Engineering i AI Cost Efficiency. Od MVP, przez legacy, po pracę zespołową.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="https://10xdevs.pl" class="rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-6 py-3 text-sm font-bold text-white shadow-xl shadow-indigo-500/30 transition hover:scale-[1.02]">🚀 Zobacz 10xDevs 4.0</a>
+            <a href="/kursy" class="rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10">Poznaj wszystkie kursy</a>
+          </div>
+          <dl class="mt-8 grid max-w-md grid-cols-2 gap-3 sm:grid-cols-4 lg:max-w-none">
+            {stats.map((s) => (
+              <div class="glass rounded-xl p-3 text-center">
+                <dt class="text-lg font-extrabold text-white">{s.value}</dt>
+                <dd class="text-[11px] leading-tight text-slate-400">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div class="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
+          <div class="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-cyan-500/20 blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-indigo-600/30 blur-3xl"></div>
+          <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Start: 14.09 • 5+1 tygodni</p>
+          <h2 class="mt-2 text-2xl font-extrabold text-white">Kończysz z narzędziami do codziennej pracy:</h2>
+          <ul class="mt-4 space-y-3 text-sm text-slate-200">
+            <li class="flex gap-2"><span>✅</span> 10xWorkflow (10x-cli): pomysł → plan → implementacja → testy → wdrożenie</li>
+            <li class="flex gap-2"><span>✅</span> AI Code & Cost Efficiency System bez utraty jakości</li>
+            <li class="flex gap-2"><span>✅</span> Modernizacja legacy i DDD migration playbooki</li>
+            <li class="flex gap-2"><span>✅</span> Certyfikat 10xBuilder / Architect / Champion</li>
+          </ul>
+          <div class="mt-6 rounded-2xl bg-black/40 p-4 font-mono text-xs leading-relaxed text-emerald-300">
+            $ 10x-cli plan --prd docs/prd.md<br />
+            <span class="text-slate-400">✓ roadmapa MVP • ✓ subagenci • ✓ evals passed</span><br />
+            $ 10x-cli implement --milestone m1 <span class="animate-pulse">▊</span>
+          </div>
+          <p class="mt-4 text-xs text-slate-400">„Zadanie na 8h robię teraz w 2h. Zwróciło się po pierwszym tygodniu." — Kacper B., absolwent</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kursy -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Edukacja technologiczna w epoce AI</p>
+        <h2 class="mt-1 text-3xl font-extrabold text-white">Wybierz swoją ścieżkę</h2>
+      </div>
+      <a href="/kursy" class="text-sm font-bold text-cyan-300 hover:underline">Wszystkie kursy →</a>
+    </div>
+    <div class="mt-6 grid gap-5 lg:grid-cols-3">
+      {courses.map((c) => (
+        <article class={`flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b ${c.gradient} p-[1px]`}>
+          <div class="flex h-full flex-col rounded-3xl bg-[#0b1122]/95 p-6">
+            <p class="text-xs font-bold text-cyan-300">{c.badge}</p>
+            <h3 class="mt-1 text-2xl font-extrabold text-white"><span class="mr-1">{c.icon}</span>{c.name}</h3>
+            <p class="text-sm font-semibold text-slate-300">{c.tagline}</p>
+            <p class="mt-3 text-sm leading-relaxed text-slate-400">{c.desc}</p>
+            <ul class="mt-4 space-y-1.5 text-[13px] text-slate-300">
+              {c.features.slice(0,4).map((f) => <li class="flex gap-2"><span class="text-emerald-300">✓</span>{f}</li>)}
+            </ul>
+            <p class="mt-3 text-xs text-slate-500">{c.meta}</p>
+            <a href={c.href} class="mt-5 rounded-xl bg-white/10 px-4 py-2.5 text-center text-sm font-bold text-white transition hover:bg-white/20">{c.cta} →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Podcast preview -->
+  <section class="mx-auto mt-16 max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-indigo-300">🎙 Podcasty</p>
+        <h2 class="mt-1 text-3xl font-extrabold text-white">Ostatnie odcinki</h2>
+      </div>
+      <a href="/podcast" class="text-sm font-bold text-cyan-300 hover:underline">Wszystkie odcinki →</a>
+    </div>
+    <div class="mt-6"><PodcastExplorer limit={3} client:load /></div>
+  </section>
+
+  <!-- YouTube preview -->
+  <section class="mx-auto mt-16 max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-red-300">▶ YouTube</p>
+        <h2 class="mt-1 text-3xl font-extrabold text-white">Ostatnie filmy</h2>
+      </div>
+      <a href="/youtube" class="text-sm font-bold text-cyan-300 hover:underline">Wszystkie filmy →</a>
+    </div>
+    <div class="mt-6"><VideoExplorer limit={3} client:load /></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="mx-auto mt-16 max-w-7xl px-4 sm:px-6">
+    <div class="glass grid gap-6 rounded-3xl p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Newsletter</p>
+        <h2 class="mt-1 text-3xl font-extrabold text-white">Przeprogramowany Newsletter</h2>
+        <p class="mt-2 text-sm text-slate-300">Co piątek format <strong>3-2-1</strong>: 3 rekomendacje techniczne, 2 rozwojowe, 1 bonus-niespodzianka. Plus nowości i oferty specjalne.</p>
+      </div>
+      <div><NewsletterForm client:load /></div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { team, brands } from '../data/content';
+---
+<Layout title="O nas — Przeprogramowani.pl" description="Poznaj Przemka Smyrdka i Marcina Czarkowskiego. 7 lat edukacji technologicznej, 8100+ absolwentów.">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-300">O nas</p>
+    <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold font-display">Łączymy programowanie, biznes i rozwój</h1>
+    <p class="mt-4 max-w-2xl text-slate-300">Przeprogramowani to miejsce, w którym najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i siebie. Tworzymy treści, kursy i narzędzia: od technicznych deep-dive'ów po rozmowy o karierze.</p>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      {team.map(m => (
+        <article class="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
+          <div class="flex items-center gap-4">
+            <span class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 font-display text-xl font-extrabold text-black">{m.initials}</span>
+            <div><h2 class="text-xl font-bold">{m.name}</h2><p class="text-sm text-yellow-300">{m.role}</p></div>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-slate-300">{m.bio}</p>
+          <a href={m.linkedin} target="_blank" rel="noopener" class="mt-4 inline-block text-sm font-semibold text-slate-200 hover:text-yellow-300">LinkedIn →</a>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 grid gap-5 rounded-3xl border border-white/10 bg-ink-900 p-8 sm:grid-cols-3 text-center">
+      <div><div class="text-4xl font-extrabold text-yellow-300">7 lat</div><p class="text-sm text-slate-400">na rynku edukacji technologicznej</p></div>
+      <div><div class="text-4xl font-extrabold text-yellow-300">8100+</div><p class="text-sm text-slate-400">absolwentów programów</p></div>
+      <div><div class="text-4xl font-extrabold text-yellow-300">15k+</div><p class="text-sm text-slate-400">programistów w społeczności</p></div>
+    </div>
+
+    <h2 class="mt-12 text-2xl font-bold">Zaufali nam</h2>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {brands.map(b => <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">{b}</span>)}
+    </div>
+
+    <div class="mt-10 rounded-3xl border border-yellow-400/30 bg-yellow-400/5 p-8 text-center">
+      <h2 class="text-2xl font-bold">Chcesz nawiązać współpracę?</h2>
+      <a href="mailto:kontakt@przeprogramowani.pl" class="mt-4 inline-block rounded-xl bg-yellow-400 px-6 py-3 font-bold text-black hover:bg-yellow-300">kontakt@przeprogramowani.pl</a>
+    </div>
+  </div>
+</Layout>

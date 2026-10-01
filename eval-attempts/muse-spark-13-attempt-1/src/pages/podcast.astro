@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PodcastExplorer } from '../components/react/interactive';
+---
+<Layout title="Podcast — Przeprogramowani.pl" description="Opanuj.AI Podcast i Przeprogramowani ft. Gość. Ostatnie odcinki o AI, frontendzie i karierze.">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+    <p class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-300">Podcasty</p>
+    <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold font-display">Słuchaj o technologii, AI i programowaniu</h1>
+    <p class="mt-4 max-w-2xl text-slate-300">Dwa formaty: <strong>Opanuj.AI Podcast</strong> (4000+ słuchaczy, comiesięczne podsumowania AI) i <strong>Przeprogramowani ft. Gość</strong> (3800+ słuchaczy, rozmowy dla głodnych wiedzy).</p>
+    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+      <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noopener" class="rounded-xl bg-green-500 px-5 py-2.5 font-bold text-black">Spotify →</a>
+      <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noopener" class="rounded-xl border border-white/20 px-5 py-2.5 font-semibold hover:bg-white/10">Apple Podcasts</a>
+      <a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noopener" class="rounded-xl border border-white/20 px-5 py-2.5 font-semibold hover:bg-white/10">RSS</a>
+    </div>
+    <div class="mt-10"><PodcastExplorer client:load /></div>
+  </div>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoExplorer from '../components/VideoExplorer.tsx';
+---
+<Layout title="YouTube — Przeprogramowani.pl" description="Ostatnie filmy: AI-Native, 10xWorkflow, Demo Day, benchmarki AI i live'y z ekspertami.">
+  <section class="mx-auto max-w-7xl px-4 pt-12 sm:px-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-red-300">▶ YouTube</p>
+    <h1 class="mt-1 text-4xl font-extrabold text-white sm:text-5xl">Filmy i live'y dla nowoczesnych devów</h1>
+    <p class="mt-3 max-w-2xl text-slate-300">AI w dużych firmach, hackathony AI-Native, 10xWorkflow, benchmarki modeli i rozmowy z ekspertami. <a class="font-bold text-red-300 underline" href="https://youtube.com/c/przeprogramowani/videos">Subskrybuj kanał →</a></p>
+  </section>
+  <section class="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
+    <VideoExplorer client:load />
+  </section>
+</Layout>

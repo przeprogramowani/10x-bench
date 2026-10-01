@@ -1,0 +1,147 @@
+export const courses = [
+  {
+    slug: '10xdevs',
+    badge: 'Bestseller • 8100+ absolwentów',
+    name: '10xDevs',
+    tagline: 'Era AI-Native Software Engineering',
+    desc: 'Praktyczny program pracy z agentami AI: 10xWorkflow, Context Engineering, AI Code & Cost Efficiency. Od MVP po legacy i pracę zespołową. 5+1 tygodni, projekt końcowy, certyfikat 10xBuilder / Architect / Champion.',
+    features: ['10xWorkflow (research → plan → implement)', 'Context Engineering & Agent Skills', 'AI MVP + deployment (Docker + Cloudflare)', 'Legacy & DDD modernizacja', 'AI-Native Teamwork + Agent SDK'],
+    meta: 'Start: 14.09 • 5+1 tyg • ~40h • Live Q&A wtorki 19:00',
+    cta: 'Dołącz do listy oczekujących',
+    href: 'https://10xdevs.pl',
+    gradient: 'from-violet-600 via-indigo-600 to-cyan-500',
+    icon: '🚀',
+  },
+  {
+    slug: 'opanuj-frontend',
+    badge: 'IV edycja • 383 absolwentów',
+    name: 'Opanuj Frontend: AI Edition',
+    tagline: 'Zostań kompletnym frontend developerem',
+    desc: 'Intensywne 10-tygodniowe szkolenie: wzorce i dobre praktyki, inżynieria jakości (Vitest, Playwright), CI/CD z GitHub Actions, design systemy, monorepo, mikrofrontendy i architektura. 25 obszernych lekcji + 5 lekcji AI.',
+    features: ['25 lekcji video + artykuły + ćwiczenia', 'Testy: Vitest, Playwright, a11y, Zod + OpenAPI', 'CI/CD: GitHub Actions, AWS, Vercel', 'Design systemy, monorepo, inner source', '5 spotkań LIVE + code review mentorów'],
+    meta: '10 tygodni • React / Vue / Angular / Svelte • Certyfikat',
+    cta: 'Zobacz program',
+    href: 'https://www.opanujfrontend.pl',
+    gradient: 'from-cyan-500 via-sky-600 to-blue-700',
+    icon: '⚡️',
+  },
+  {
+    slug: 'opanuj-typescript',
+    badge: 'Nowość • Frontend Pro',
+    name: 'Opanuj TypeScript',
+    tagline: 'Buduj niezawodne aplikacje z TS + React 19',
+    desc: 'Praktyczny kurs typów generycznych, inferencji, typów warunkowych i mapowanych. Typowanie komponentów, hooków, Redux Toolkit, SWR / React Query, Zod, tRPC i Astro 5. Ponad 40 ćwiczeń z produkcji.',
+    features: ['Core Pro: generyki, infer, mapped & template types', 'React Pro: propsy, hooki, stan, kontrakty API', 'SWR, React Query, Zod, tRPC, Astro 5', '40+ ćwiczeń + wzorce i antywzorce', 'Bonus AI Edition: generowanie kodu i testów'],
+    meta: 'TypeScript 5 • React 19 • 121+ uczestników',
+    cta: 'Kup teraz',
+    href: 'https://www.opanujtypescript.pl',
+    gradient: 'from-blue-600 via-indigo-600 to-violet-600',
+    icon: '💎',
+  },
+];
+
+export const podcastEpisodes = [
+  {
+    show: 'Opanuj.AI',
+    title: 'Plan mode to przeszłość – planowanie wręcz przeciwnie',
+    desc: 'Kiedy Dolina Krzemowa ogłasza koniec plan mode, my tłumaczymy, dlaczego planowanie nigdy nie było tak ważne. Plus nowy cookie banner epoki AI.',
+    duration: '01:14:11',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: '2026',
+  },
+  {
+    show: 'Opanuj.AI',
+    title: 'Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC',
+    desc: 'AI-Native SDLC Playbook od Anthropic vs 10xDevs. Co zmienić, gdy kod przestaje być najdroższą częścią procesu?',
+    duration: '01:32:30',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: '2026',
+  },
+  {
+    show: 'Opanuj.AI',
+    title: 'Cena i bezpieczeństwo – kluczowe pytania o AI przyszłości',
+    desc: 'Czy AI naprawdę tanieje, skoro rachunki za agentów rosną? I czy autonomiczne systemy są gotowe na złożone zadania?',
+    duration: '01:48:52',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: '2026',
+  },
+  {
+    show: 'Opanuj.AI',
+    title: 'BAN NA AI?! USA blokuje Anthropic i OpenAI',
+    desc: 'Claude Mythos, Claude Fable i GPT-5.6. Czy najlepsze modele stały się technologią kontrolowaną przez państwo?',
+    duration: '01:21:53',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: '2026',
+  },
+  {
+    show: 'Opanuj.AI',
+    title: 'Byliśmy na Google I/O 2026 – wrażenia na gorąco LIVE',
+    desc: 'Relacja z konferencji w nowym formacie Opanuj.AI LIVE. Co naprawdę dowiozło Google?',
+    duration: '01:12:26',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: 'Maj 2026',
+  },
+  {
+    show: 'Opanuj.AI',
+    title: 'GPT-5.5 vs Opus 4.7 – kto rządzi na scenie AI?',
+    desc: 'Wysyp premier: GPT-5.5, Opus 4.7, DeepSeek V4, Cursor 3.0, Meta Muse Spark. Rozkładamy wyścig na czynniki pierwsze.',
+    duration: '00:47:22',
+    href: 'https://podcasters.spotify.com/pod/show/opanujai',
+    date: 'Kwiecień 2026',
+  },
+  {
+    show: 'Przeprogramowani ft. Gość',
+    title: 'Architektura frontendu: co naprawdę ma znaczenie? – Tomasz Ducin',
+    desc: 'Architektura wykracza poza narzędzia – o decyzjach, które kształtują charakterystykę systemu.',
+    duration: '01:16:44',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani',
+    date: '2025',
+  },
+  {
+    show: 'Przeprogramowani ft. Gość',
+    title: 'Programista vs Angielski – Wiktoria Sitko',
+    desc: 'Bariery językowe programistów, dlaczego klasyczne metody zawodzą i jak uczyć się angielskiego w IT.',
+    duration: '00:33:45',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani',
+    date: '2025',
+  },
+  {
+    show: 'Przeprogramowani ft. Gość',
+    title: 'O dojrzewaniu zawodowym programisty – Wojciech Trawiński',
+    desc: 'Droga od entuzjasty do profesjonalisty. Dlaczego mit „ciężka praca = sukces” nie działa?',
+    duration: '00:45:56',
+    href: 'https://podcasters.spotify.com/pod/show/przeprogramowani',
+    date: '2025',
+  },
+];
+
+export const youtubeVideos = [
+  { id: 'rRM4pXF_4yw', title: 'Programowanie kiedyś vs dziś #chatgpt #ai #webdev' },
+  { id: '8cHXeQN2tQw', title: 'AI w dużych firmach VS social media | 10xDevs Demo Day' },
+  { id: '1agLBxJskps', title: 'Hackathon AI-Native – tak było na BRAVE UNAITED' },
+  { id: 'rR2sbf0KkRU', title: '10xWorkflow i Core Skill Chain – budujemy nowy feature' },
+  { id: 'MDZA6vww74g', title: 'Najlepszy benchmark AI pochodzi od Ciebie – 10x-bench-kit' },
+  { id: 'bdO9bBvg8Zg', title: 'Projektowanie stabilnych bibliotek z agentem AI – LIVE' },
+];
+
+export const team = [
+  {
+    name: 'Przemek Smyrdek',
+    role: 'Co-founder',
+    bio: 'Lead Engineer i Manager w DAZN i Cabify. Full-stack (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent 4Developers, ReactiveConf, InfoShare. Kontrybutor Open Source (CursorLens, openapi-typescript).',
+    initials: 'PS',
+  },
+  {
+    name: 'Marcin Czarkowski',
+    role: 'Co-founder',
+    bio: 'Lead techniczny Platformy Frontendowej w SmartRecruiters, 10+ lat doświadczenia. Twórca Opanuj AI Podcast – najpopularniejszego technicznego podcastu o LLM w Polsce. Spec: TypeScript, React, Node.js.',
+    initials: 'MC',
+  },
+];
+
+export const stats = [
+  { value: '8100+', label: 'absolwentów programów' },
+  { value: '7 lat', label: 'na rynku edukacji tech' },
+  { value: '15k', label: 'programistów w społeczności' },
+  { value: '4000+', label: 'słuchaczy podcastu Opanuj.AI' },
+];

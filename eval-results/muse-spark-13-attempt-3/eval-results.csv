@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,2min 51s,N/A,2min 51s
+Test run,1.10.2026 22:55,N/A,1.10.2026 22:55
+API cost,$0.0097,N/A,$0.0097 (in 62960 / out 13738 / cache 290493 / 1 session)
+Local build,1,1,npm ci + astro build OK (Astro 5.18; @astrojs/cloudflare SSR); 4 pages served 200
+Manual testing,1,1,"All pages load (/ /o-nas /podcast /youtube 200); navigation, styles and content work"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; @astrojs/cloudflare adapter configured; on-demand rendering used; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"/o-nas returns 200 and src/pages/o-nas.astro covers both founders with their key employers (Przemek: DAZN/Cabify, tech stack, 4Developers/ReactiveConf/InfoShare; Marcin: SmartRecruiters, 10+ years, Opanuj AI Podcast) and the correct LinkedIn URLs. The bios are cut down, though: neither founder's course is given (Przemek's 'Opanuj JavaScript' and Marcin's '10xDevs' are both missing), and Przemek's Programista/Increment by Stripe publications and named OSS projects (CursorLens, openapi-typescript) are left out."
+Podcast page,0.5,1,"/podcast returns 200 and lists real episodes of both shows (scraped from przeprogramowani.pl/podcast, e.g. 'Plan mode to przeszłość' and the Wiktoria Sitko and Tomasz Ducin episodes). The Spotify show link is open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o (in podcast.astro and the Layout.astro footer), which matches neither 3yVvOAXSYq6sQB02w4A4wo nor 3D6LmchBdoqL2sWkQjvWOy. Every episode href in src/data/content.ts is a generic podcasters.spotify.com/pod/show/... page, not a link to the episode."
+YouTube page,1,1,"/youtube returns 200 and src/data/content.ts holds 6 unique IDs (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg). All 6 return oEmbed 200 with author 'Przeprogramowani' and titles that match the site's labels. There are no placeholder or Rick Roll IDs, and the channel link youtube.com/c/przeprogramowani is correct."
+Kursy section,1,1,"src/components/Courses.tsx (#kursy on the index page) features 10xDevs, Opanuj Frontend: AI Edition (5 modules; ~400 graduates) and Opanuj TypeScript (TS 5 + React 19), linking to 10xdevs.pl, opanujfrontend.pl and opanujtypescript.pl. Hero.tsx prominently features 10xDevs 4.0 with CTAs to 10xdevs.pl. Opanuj JavaScript and Cursor are absent and Opanuj AI is only in the footer."
+Consistent UI,1,1,Consistent layout and styling across pages
+Responsive design,1,1,Works on mobile and desktop
+SEO Tags,1,1,"src/layouts/Layout.astro sets title, meta description, og:title, og:description and og:type for all pages, and each page overrides them with its own copy (all 4 render HTTP 200). The default title uses the tagline 'Szersze spojrzenie na programowanie' and the descriptions are consistent with the context. There is no og:image, og:url, canonical or twitter card tag."
+Penalty,0,N/A,No penalty applied

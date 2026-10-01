@@ -37,6 +37,10 @@ import { fileURLToPath } from "url";
  * CSV (wrangler-dry-run.json + .log); --deploy-check=failed re-runs cached
  * failures and --deploy-check=force re-runs everything.
  *
+ * Build Failure Rule (eval.md): an attempt whose CSV scores "Local build" 0
+ * gets 0 on both criteria. The static grade is kept in the notes for
+ * reference, and no deploy check is run for it.
+ *
  * Usage:
  *   tsx scripts/regrade-v2.ts                  # dry run, prints a report
  *   tsx scripts/regrade-v2.ts --json           # dry run, JSON report
@@ -453,6 +457,7 @@ interface Regrade {
   latest: Record<StackPackage, number>;
   installed: Record<StackPackage, number | "latest" | null>;
   oldTech: string;
+  buildFailed: boolean;
   tech: { score: number; notes: string };
   cloudflare: CloudflareResult;
   csvFiles: string[];
@@ -522,6 +527,8 @@ async function main() {
     cloudflare.notes = `v2: ${cloudflare.notes}`;
 
     const oldTech = primaryCsv.match(/^"?Tech stack"?,([^,]+),/m)?.[1] ?? "?";
+    const buildFailed = /^"?Local build"?,0,/m.test(primaryCsv);
+    if (buildFailed) cloudflare.workersCandidate = false;
     regrades.push({
       attempt,
       runDay: day,
@@ -529,6 +536,7 @@ async function main() {
       latest,
       installed,
       oldTech,
+      buildFailed,
       tech,
       cloudflare,
       csvFiles,
@@ -560,6 +568,15 @@ async function main() {
     });
   }
 
+  for (const r of regrades.filter((r) => r.buildFailed)) {
+    const zero = (c: { score: number; notes: string }) => {
+      c.notes = `Build failed - 0 per Build Failure Rule (static grade ${c.score * CRITERION_WEIGHT}: ${c.notes})`;
+      c.score = 0;
+    };
+    zero(r.tech);
+    zero(r.cloudflare);
+  }
+
   if (write) {
     for (const r of regrades) {
       const weighted = (score: number) => String(score * CRITERION_WEIGHT);
@@ -582,7 +599,7 @@ async function main() {
   }
   for (const r of regrades) {
     console.log(
-      `${r.attempt.padEnd(30)} ${r.runDay}  tech ${r.oldTech} -> ${r.tech.score}  cf ${r.cloudflare.score}  | ${STACK_PACKAGES.map(
+      `${r.attempt.padEnd(30)} ${r.runDay}  tech ${r.oldTech} -> ${r.tech.score}  cf ${r.cloudflare.score}${r.buildFailed ? "  (build failed)" : ""}  | ${STACK_PACKAGES.map(
         (p) => `${p}=${r.installed[p]}/${r.latest[p]}`,
       ).join(" ")}`,
     );

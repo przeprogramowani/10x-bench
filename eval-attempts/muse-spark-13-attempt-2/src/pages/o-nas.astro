@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import NewsletterForm from "../components/NewsletterForm";
+import Footer from "../components/Footer";
+---
+
+<Layout
+  title="O nas — Przeprogramowani.pl | Przemek Smyrdek i Marcin Czarkowski"
+  description="Poznaj Przeprogramowanych: Przemek Smyrdek i Marcin Czarkowski. 7 lat edukacji technologicznej, kursy, podcasty i programy AI. Łączymy programowanie, biznes i rozwój."
+>
+  <Navbar current="/o-nas" client:load />
+  <main id="main-content" className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <nav aria-label="Okruszki" className="text-sm text-slate-500">
+      <a href="/" className="hover:text-slate-300">Strona główna</a> / O nas
+    </nav>
+    <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl">
+      Łączymy świat programowania, <span className="gradient-text">biznesu i rozwoju</span>
+    </h1>
+    <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-400">
+      Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+      Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes,
+      na ludzi i na siebie. Tworzymy treści, kursy i narzędzia, które pomagają rozwijać się na
+      wielu płaszczyznach: od technicznych deep-dive'ów po rozmowy o karierze.
+    </p>
+
+    <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <article className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 text-3xl font-black text-slate-950">
+          PS
+        </div>
+        <h2 className="mt-5 text-2xl font-extrabold text-white">Przemek Smyrdek</h2>
+        <p className="text-sm font-semibold uppercase tracking-wider text-emerald-300">Co-founder, Przeprogramowani</p>
+        <p className="mt-4 leading-relaxed text-slate-400">
+          Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify.
+          Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na
+          4Developers, ReactiveConf i InfoShare. Kontrybutor Open Source (m.in. CursorLens,
+          openapi-typescript).
+        </p>
+        <a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noreferrer" className="mt-5 inline-block font-bold text-emerald-300 hover:text-emerald-200">
+          LinkedIn Przemka ↗
+        </a>
+      </article>
+
+      <article className="rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="grid h-20 w-20 place-items-center rounded-2xl bg-gradient-to-br from-violet-400 to-fuchsia-500 text-3xl font-black text-slate-950">
+          MC
+        </div>
+        <h2 className="mt-5 text-2xl font-extrabold text-white">Marcin Czarkowski</h2>
+        <p className="text-sm font-semibold uppercase tracking-wider text-violet-300">Co-founder, Przeprogramowani</p>
+        <p className="mt-4 leading-relaxed text-slate-400">
+          Lead techniczny Platformy Frontendowej w SmartRecruiters z ponad 10-letnim doświadczeniem.
+          Entuzjasta neurobiologii, tworzący materiały edukacyjne w oparciu o badania nad uczeniem się.
+          Twórca „Opanuj AI Podcast” — najpopularniejszego technicznego podcastu o LLM w Polsce.
+          Specjalista TypeScript, React, Node.js.
+        </p>
+        <a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noreferrer" className="mt-5 inline-block font-bold text-emerald-300 hover:text-emerald-200">
+          LinkedIn Marcina ↗
+        </a>
+      </article>
+    </div>
+
+    <div className="mt-10 grid gap-4 sm:grid-cols-3">
+      {[
+        ["7 lat", "na rynku edukacji technologicznej"],
+        ["~400", "absolwentów Opanuj Frontend (4 edycje)"],
+        ["8000+", "słuchaczy podcastów Opanuj.AI i Przeprogramowani"],
+      ].map(([v, l]) => (
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center">
+          <p className="text-3xl font-black text-white">{v}</p>
+          <p className="mt-1 text-sm text-slate-400">{l}</p>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-10 grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-800 p-8 sm:p-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <h2 className="text-2xl font-black text-white">Co robimy?</h2>
+        <ul className="mt-4 space-y-3 text-slate-300">
+          <li>🎓 <strong className="text-white">Kursy:</strong> 10xDevs, Opanuj Frontend, Opanuj TypeScript, Opanuj AI</li>
+          <li>🎙️ <strong className="text-white">Podcasty:</strong> Opanuj.AI + Przeprogramowani ft. Gość</li>
+          <li>📺 <strong className="text-white">YouTube:</strong> AI, architektura, workflow, Demo Days</li>
+          <li>🛠️ <strong className="text-white">Narzędzia:</strong> 10xRules.ai, 10x-bench-kit, newsletter 3-2-1</li>
+        </ul>
+      </div>
+      <div>
+        <h2 className="text-2xl font-black text-white">Bądź na bieżąco</h2>
+        <p className="mt-2 text-sm text-slate-400">Newsletter w każdy piątek — 3-2-1, konkrety bez spamu.</p>
+        <div className="mt-4"><NewsletterForm client:visible /></div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

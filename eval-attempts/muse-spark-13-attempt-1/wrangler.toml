@@ -1,0 +1,13 @@
+name = "przeprogramowani-pl"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SITE_NAME = "Przeprogramowani.pl"
+
+[build]
+command = "npm run build"
+
+[[routes]]
+pattern = "/*"
+zone_name = "example.com"

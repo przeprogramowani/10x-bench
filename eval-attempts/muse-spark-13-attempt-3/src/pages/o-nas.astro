@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { partners } from '../data/content.ts';
+---
+<Layout current="/o-nas" title="O nas — Przeprogramowani" description="Kim są Przemek Smyrdek i Marcin Czarkowski. Misja Przeprogramowani.pl.">
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">O nas</p>
+    <h1 class="font-display mt-2 max-w-3xl text-4xl font-extrabold sm:text-5xl">Łączymy świat programowania, biznesu i rozwoju</h1>
+    <p class="mt-4 max-w-2xl text-lg text-white/70">
+      Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+      Wierzymy, że najlepsi programiści patrzą szerzej — na architekturę, biznes, ludzi i siebie.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="glass card-hover rounded-3xl p-6">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 text-2xl font-bold">PS</div>
+        <h2 class="font-display mt-4 text-xl font-bold">Przemek Smyrdek</h2>
+        <p class="text-sm text-cyan-300">Co-founder, Przeprogramowani</p>
+        <p class="mt-3 text-sm leading-relaxed text-white/65">
+          Autor programów edukacyjnych, kursów i podcastów. Lead Engineer i Manager w DAZN i Cabify.
+          Full-stack developer (.NET/C#, Java, Node.js, Angular, TypeScript). Prelegent na 4Developers,
+          ReactiveConf i InfoShare. Kontrybutor Open Source.
+        </p>
+        <a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noreferrer" class="mt-4 inline-block text-sm font-semibold text-violet-300 hover:text-white">LinkedIn →</a>
+      </article>
+      <article class="glass card-hover rounded-3xl p-6">
+        <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-2xl font-bold">MC</div>
+        <h2 class="font-display mt-4 text-xl font-bold">Marcin Czarkowski</h2>
+        <p class="text-sm text-cyan-300">Co-founder, Przeprogramowani</p>
+        <p class="mt-3 text-sm leading-relaxed text-white/65">
+          Lead techniczny Platformy Frontendowej w SmartRecruiters, 10+ lat doświadczenia.
+          Entuzjasta neurobiologii, twórca „Opanuj AI Podcast” — popularnego technicznego podcastu o LLM w Polsce.
+          Specjalista TypeScript, React, Node.js.
+        </p>
+        <a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noreferrer" class="mt-4 inline-block text-sm font-semibold text-violet-300 hover:text-white">LinkedIn →</a>
+      </article>
+    </div>
+    <div class="glass mt-8 rounded-3xl p-6 sm:p-8">
+      <h2 class="font-display text-2xl font-bold">Co robimy?</h2>
+      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        {[
+          ['🎓 Kursy', '10xDevs, Opanuj Frontend, Opanuj TypeScript, Opanuj AI — praktyka, mentoring, społeczność.'],
+          ['🎙️ Podcasty', 'Opanuj.AI (4000+ słuchaczy) i Przeprogramowani ft. Gość (3800+) — technologia i kariera.'],
+          ['📺 YouTube', 'Demo Day, live’y, AI-Native workflow — setki godzin darmowej wiedzy.'],
+        ].map(([t, d]) => (
+          <div class="rounded-2xl border border-white/10 bg-ink/40 p-4">
+            <p class="font-semibold">{t}</p>
+            <p class="mt-1 text-sm text-white/60">{d}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-white/60">Zaufali nam: {partners.join(' • ')}</p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const nav = [
+  { href: '/', label: 'Start' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/kursy', label: 'Kursy' },
+];
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡️</text></svg>" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <div class="fixed inset-0 -z-10 bg-[#070b16]"></div>
+    <div class="fixed inset-0 -z-10 grid-bg"></div>
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#070b16]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <a href="/" class="flex items-center gap-2 font-extrabold tracking-tight text-white">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-lg">&lt;/&gt;</span>
+          <span>Przeprogramowani<span class="text-cyan-300">.pl</span></span>
+        </a>
+        <nav class="hidden items-center gap-1 md:flex">
+          {nav.map((n) => (
+            <a href={n.href} class="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">{n.label}</a>
+          ))}
+          <a href="https://10xdevs.pl" class="ml-2 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 transition hover:opacity-90">10xDevs 🚀</a>
+        </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-lg bg-white/10 px-3 py-2 text-sm font-semibold text-white">☰ Menu</summary>
+          <div class="absolute right-0 mt-2 w-48 overflow-hidden rounded-xl border border-white/10 bg-[#0d1428] p-2 shadow-2xl">
+            {nav.map((n) => (
+              <a href={n.href} class="block rounded-lg px-3 py-2 text-sm text-slate-200 hover:bg-white/10">{n.label}</a>
+            ))}
+            <a href="https://10xdevs.pl" class="mt-1 block rounded-lg bg-gradient-to-r from-indigo-500 to-cyan-500 px-3 py-2 text-sm font-bold text-white">10xDevs 🚀</a>
+          </div>
+        </details>
+      </div>
+      <div class="border-t border-white/5 bg-gradient-to-r from-indigo-600/20 via-cyan-500/10 to-fuchsia-500/20">
+        <p class="mx-auto max-w-7xl px-4 py-1.5 text-center text-xs text-slate-300 sm:px-6">
+          Nowość! <strong class="text-white">10xDevs 4.0</strong> — programuj z AI • <a class="font-bold text-cyan-300 underline" href="https://10xdevs.pl">Zobacz teraz →</a>
+        </p>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="mt-20 border-t border-white/10 bg-black/40">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+        <div>
+          <p class="font-extrabold text-white">&lt;/&gt; Przeprogramowani.pl</p>
+          <p class="mt-2 text-sm text-slate-400">Szersze spojrzenie na programowanie. Edukacja technologiczna w epoce AI.</p>
+          <p class="mt-3 text-sm text-slate-400">kontakt@przeprogramowani.pl</p>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">Kursy</p>
+          <ul class="mt-2 space-y-1 text-sm text-slate-400">
+            <li><a class="hover:text-white" href="https://10xdevs.pl">10xDevs</a></li>
+            <li><a class="hover:text-white" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li>
+            <li><a class="hover:text-white" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li>
+            <li><a class="hover:text-white" href="https://opanuj.ai">Opanuj AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">Treści</p>
+          <ul class="mt-2 space-y-1 text-sm text-slate-400">
+            <li><a class="hover:text-white" href="/podcast">Podcast</a></li>
+            <li><a class="hover:text-white" href="/youtube">YouTube</a></li>
+            <li><a class="hover:text-white" href="https://przeprogramowani.substack.com">Newsletter</a></li>
+            <li><a class="hover:text-white" href="/o-nas">O nas</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-white">Social</p>
+          <ul class="mt-2 space-y-1 text-sm text-slate-400">
+            <li><a class="hover:text-white" href="https://youtube.com/c/przeprogramowani">YouTube</a></li>
+            <li><a class="hover:text-white" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Spotify</a></li>
+            <li><a class="hover:text-white" href="https://facebook.com/przeprogramowani">Facebook</a></li>
+            <li><a class="hover:text-white" href="https://instagram.com/przeprogramowani">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="border-t border-white/5 py-4 text-center text-xs text-slate-500">© 2026 Przeprogramowani.pl — fanowski redesign koncepcyjny. Treści kursów należą do ich autorów.</p>
+    </footer>
+  </body>
+</html>

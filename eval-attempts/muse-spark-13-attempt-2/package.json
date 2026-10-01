@@ -1,0 +1,29 @@
+{
+  "name": "przeprogramowani-pl",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Przeprogramowani.pl — nowoczesna strona edukacji technologicznej (Astro + React + Tailwind, Cloudflare-ready)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "preview:cloudflare": "wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.3",
+    "@astrojs/react": "^7.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "astro": "^7.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.146.0"
+  }
+}

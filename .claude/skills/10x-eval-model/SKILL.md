@@ -181,9 +181,9 @@ Pass the contents of `prompt.md` verbatim as a single argument, using an argumen
 tail -f "eval-attempts/{model-id}-attempt-{N}.jsonl"
 ```
 
-**Completion and failures:** Do not treat exit code 0 as proof of task completion; a failed session can still exit 0. Inspect the JSON events, stderr, and expected artifacts. An empty directory alone does not establish the cause. After each run, check how that attempt's session ended in `opencode.db`: in 2.x the last `session_message` row of type `idle` has `outcome` (`failed` means it did not finish), and the last `assistant` row has `finish`/`error` (e.g. `"length"` for the per-response output cap, or `provider.rate-limit` for an upstream 429). Preserve the logs and record failed session IDs so their cost can be separated before any re-run.
+**Completion and failures:** Exit codes are unreliable in both directions: a failed session can still exit 0, and OpenCode 2.0.21 exited 1 for every run of a campaign whose sessions all ended `succeeded` with empty stderr. Never judge a run by its exit code alone. Inspect the JSON events, stderr, and expected artifacts. An empty directory alone does not establish the cause. After each run, check how that attempt's session ended in `opencode.db`: in 2.x the last `session_message` row of type `idle` has `outcome` (`failed` means it did not finish), and the last `assistant` row has `finish`/`error` (e.g. `"length"` for the per-response output cap, or `provider.rate-limit` for an upstream 429). Preserve the logs and record failed session IDs so their cost can be separated before any re-run.
 
-Use a 600000ms (10 min) timeout for each run. All 5 attempts launch as background subagents in a single turn for maximum parallelism.
+Use a 3600000ms (60 min) timeout for each run (never below 30 min: a 10 min limit cut off every DeepSeek V4.1 Flash attempt mid-build). All 5 attempts launch as background subagents in a single turn for maximum parallelism.
 
 **Token cost:** After the runs finish, record token spend and USD cost with `npm run calculate-cost -- --write {model-id}` (see Step 7). This reads OpenCode's SQLite DB (`opencode.db`) and writes an `API cost` row into each attempt's `eval-results.csv`.
 

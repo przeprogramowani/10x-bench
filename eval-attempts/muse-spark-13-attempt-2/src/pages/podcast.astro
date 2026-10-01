@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import PodcastList from "../components/PodcastList";
+import Footer from "../components/Footer";
+---
+
+<Layout
+  title="Podcast — Przeprogramowani.pl | Opanuj.AI i Przeprogramowani ft. Gość"
+  description="Słuchaj podcastów Przeprogramowanych: Opanuj.AI (4000+ słuchaczy, AI i LLM) oraz Przeprogramowani ft. Gość (3800+, rozmowy dla głodnych wiedzy). Spotify, Apple, RSS."
+>
+  <Navbar current="/podcast" client:load />
+  <main id="main-content" className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <nav aria-label="Okruszki" className="text-sm text-slate-500">
+      <a href="/" className="hover:text-slate-300">Strona główna</a> / Podcast
+    </nav>
+    <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
+      Podcasty <span className="gradient-text">o technologii, AI i programowaniu</span>
+    </h1>
+    <p className="mt-4 max-w-3xl text-lg text-slate-400">
+      Dwa formaty: <strong className="text-white">Opanuj.AI Podcast</strong> (ponad 4000 słuchaczy,
+      comiesięczne podsumowania świata AI) oraz{" "}
+      <strong className="text-white">Przeprogramowani ft. Gość</strong> (ponad 3800 słuchaczy,
+      rozmowy dla głodnych wiedzy).
+    </p>
+
+    <div className="mt-6 flex flex-wrap gap-3">
+      <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">🍎 Apple Podcasts</a>
+      <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">🟢 Spotify</a>
+      <a href="https://anchor.fm/s/22544b7c/podcast/rss" target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10">📡 RSS</a>
+    </div>
+
+    <div className="mt-10">
+      <PodcastList client:load />
+    </div>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Przeprogramowani.pl — szersze spojrzenie na programowanie. Kursy, podcasty i YouTube dla ambitnych programistów.' } = Astro.props;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1226'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23facc15' font-family='monospace' font-weight='bold'>&lt;/&gt;</text></svg>" />
+  </head>
+  <body class="bg-ink-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+    <nav class="sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="/" class="flex items-center gap-2 font-display font-800 text-lg">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-400 font-mono text-sm font-bold text-black">&lt;/&gt;</span>
+            <span class="font-bold tracking-tight">Przeprogramowani</span>
+          </a>
+          <div class="hidden md:flex items-center gap-1 text-sm">
+            <a href="/" class="rounded-lg px-3 py-2 hover:bg-white/10">Start</a>
+            <a href="/o-nas" class="rounded-lg px-3 py-2 hover:bg-white/10">O nas</a>
+            <a href="/podcast" class="rounded-lg px-3 py-2 hover:bg-white/10">Podcast</a>
+            <a href="/youtube" class="rounded-lg px-3 py-2 hover:bg-white/10">YouTube</a>
+            <a href="/#kursy" class="rounded-lg px-3 py-2 hover:bg-white/10">Kursy</a>
+            <a href="https://10xdevs.pl" target="_blank" rel="noopener" class="ml-2 rounded-xl bg-brand-400 px-4 py-2 font-semibold text-black hover:bg-brand-300">10xDevs →</a>
+          </div>
+          <button id="menu-btn" class="md:hidden rounded-lg p-2 hover:bg-white/10" aria-label="Menu">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden pb-4 flex flex-col gap-1 text-sm">
+          <a href="/" class="rounded-lg px-3 py-2 hover:bg-white/10">Start</a>
+          <a href="/o-nas" class="rounded-lg px-3 py-2 hover:bg-white/10">O nas</a>
+          <a href="/podcast" class="rounded-lg px-3 py-2 hover:bg-white/10">Podcast</a>
+          <a href="/youtube" class="rounded-lg px-3 py-2 hover:bg-white/10">YouTube</a>
+          <a href="/#kursy" class="rounded-lg px-3 py-2 hover:bg-white/10">Kursy</a>
+        </div>
+      </div>
+    </nav>
+    <main id="main-content" class="flex-1"><slot /></main>
+    <footer class="border-t border-white/10 bg-ink-900">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 font-bold"><span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-400 font-mono text-xs text-black">&lt;/&gt;</span> Przeprogramowani.pl</div>
+          <p class="mt-3 max-w-md text-sm text-slate-400">Szersze spojrzenie na programowanie. Łączymy technologię, biznes i rozwój. 7 lat na rynku edukacji technologicznej.</p>
+          <p class="mt-4 text-sm"><a class="text-brand-300 hover:underline" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a></p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-400">Mapa strony</h4>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="hover:text-brand-300" href="/o-nas">O nas</a></li>
+            <li><a class="hover:text-brand-300" href="/podcast">Podcast</a></li>
+            <li><a class="hover:text-brand-300" href="/youtube">YouTube</a></li>
+            <li><a class="hover:text-brand-300" href="/#kursy">Kursy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-400">Projekty</h4>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a class="hover:text-brand-300" href="https://10xdevs.pl">10xDevs</a></li>
+            <li><a class="hover:text-brand-300" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li>
+            <li><a class="hover:text-brand-300" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li>
+            <li><a class="hover:text-brand-300" href="https://opanuj.ai">Opanuj AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-5 text-center text-xs text-slate-500">© 2026 Przeprogramowani.pl — materiał edukacyjny (redesign koncepcyjny). Źródła: przeprogramowani.pl, 10xdevs.pl, opanujfrontend.pl, opanujtypescript.pl</div>
+    </footer>
+    <script>
+      document.getElementById('menu-btn')?.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
+<style>
+  .font-display { font-family: 'Sora', Inter, sans-serif; }
+</style>

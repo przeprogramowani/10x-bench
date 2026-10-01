@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Courses from "../components/Courses";
+import Footer from "../components/Footer";
+import { courses } from "../data/courses";
+---
+
+<Layout
+  title="Kursy — Przeprogramowani.pl | 10xDevs, Opanuj Frontend, Opanuj TypeScript, Opanuj AI"
+  description="Programy edukacyjne Przeprogramowanych: 10xDevs 4.0 (Gen AI, AI-Native SDLC), Opanuj Frontend AI Edition (5 modułów, 400 absolwentów), Opanuj TypeScript (TS5 + React 19), Opanuj AI."
+>
+  <Navbar current="/kursy" client:load />
+  <main id="main-content" className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <nav aria-label="Okruszki" className="text-sm text-slate-500">
+      <a href="/" className="hover:text-slate-300">Strona główna</a> / Kursy
+    </nav>
+    <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
+      Kursy, które <span className="gradient-text">realnie zmieniają karierę</span>
+    </h1>
+    <p className="mt-4 max-w-3xl text-lg text-slate-400">
+      Od nowoczesnego frontendu i TypeScript po programowanie z AI w całym cyklu wytwarzania
+      oprogramowania. Wybierz ścieżkę dla siebie.
+    </p>
+
+    <div className="mt-10">
+      <Courses client:load />
+    </div>
+
+    <section className="mt-12 overflow-hidden rounded-3xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/15 to-cyan-500/10 p-8 sm:p-10">
+      <p className="text-sm font-bold uppercase tracking-widest text-emerald-300">Nie wiesz, od czego zacząć?</p>
+      <h2 className="mt-2 max-w-2xl text-2xl font-black text-white sm:text-3xl">
+        Zacznij od darmowego newslettera 3-2-1, potem wybierz program.
+      </h2>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noreferrer" className="rounded-2xl bg-emerald-400 px-6 py-3 text-center font-bold text-slate-950 hover:bg-emerald-300">
+          Newsletter za darmo →
+        </a>
+        <a href={courses[0].url} target="_blank" rel="noreferrer" className="rounded-2xl border border-white/20 bg-white/5 px-6 py-3 text-center font-bold text-white hover:bg-white/10">
+          Sprawdź 10xDevs 4.0
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

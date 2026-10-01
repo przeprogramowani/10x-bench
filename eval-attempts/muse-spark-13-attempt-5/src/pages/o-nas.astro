@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { team } from '../data/site';
+---
+<Layout title="O nas — Przeprogramowani.pl" description="Przemek Smyrdek i Marcin Czarkowski. 7 lat edukacji technologicznej, 8100+ absolwentów.">
+  <section class="mx-auto max-w-7xl px-4 pb-4 pt-12 sm:px-6">
+    <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">O nas</p>
+    <h1 class="mt-1 max-w-3xl text-4xl font-extrabold text-white sm:text-5xl">Łączymy świat programowania, <span class="text-gradient">biznesu i rozwoju</span></h1>
+    <p class="mt-4 max-w-2xl text-slate-300">Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie.</p>
+  </section>
+  <section class="mx-auto grid max-w-7xl gap-5 px-4 pt-8 sm:px-6 md:grid-cols-2">
+    {team.map((t) => (
+      <article class="glass rounded-3xl p-6 sm:p-8">
+        <div class="flex items-center gap-4">
+          <span class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-xl font-extrabold text-white">{t.initials}</span>
+          <div>
+            <h2 class="text-xl font-extrabold text-white">{t.name}</h2>
+            <p class="text-sm font-semibold text-cyan-300">{t.role}, Przeprogramowani</p>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-slate-300">{t.bio}</p>
+      </article>
+    ))}
+  </section>
+  <section class="mx-auto max-w-7xl px-4 pt-10 sm:px-6">
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="glass rounded-2xl p-6"><p class="text-3xl font-extrabold text-white">7 lat</p><p class="text-sm text-slate-400">na rynku edukacji technologicznej</p></div>
+      <div class="glass rounded-2xl p-6"><p class="text-3xl font-extrabold text-white">8100+</p><p class="text-sm text-slate-400">absolwentów programów 10xDevs, Opanuj Frontend i Opanuj JS</p></div>
+      <div class="glass rounded-2xl p-6"><p class="text-3xl font-extrabold text-white">15k</p><p class="text-sm text-slate-400">programistów w społeczności i newsletterze</p></div>
+    </div>
+    <div class="glass mt-6 rounded-3xl p-6 sm:p-8">
+      <h2 class="text-xl font-extrabold text-white">Zaufali nam</h2>
+      <p class="mt-2 text-sm text-slate-400">Huuuge Games • Nutridome • SmartRecruiters • Future Processing • Callstack • edrone • Xfive • Euvic • Strabag • Autodesk</p>
+      <p class="mt-4 text-sm text-slate-300">Chcesz nawiązać współpracę? <a class="font-bold text-cyan-300" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a></p>
+    </div>
+  </section>
+</Layout>

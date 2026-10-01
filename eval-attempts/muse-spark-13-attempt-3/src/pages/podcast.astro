@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PodcastList from '../components/PodcastList.tsx';
+import { episodesOpanujAI, episodesGosc } from '../data/content.ts';
+---
+<Layout current="/podcast" title="Podcast — Przeprogramowani" description="Opanuj.AI Podcast i Przeprogramowani ft. Gość — ostatnie odcinki o AI i programowaniu.">
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">Podcasty</p>
+    <h1 class="font-display mt-2 text-4xl font-extrabold sm:text-5xl">Słuchaj o technologii, AI i programowaniu</h1>
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="chip">Opanuj.AI — 4000+ słuchaczy</span>
+      <span class="chip">ft. Gość — 3800+ słuchaczy</span>
+      <a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noreferrer" class="chip hover:border-white/40">Spotify →</a>
+      <a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250" target="_blank" rel="noreferrer" class="chip hover:border-white/40">Apple Podcasts →</a>
+    </div>
+    <div class="mt-8">
+      <PodcastList ai={episodesOpanujAI} gosc={episodesGosc} client:load />
+    </div>
+  </section>
+</Layout>

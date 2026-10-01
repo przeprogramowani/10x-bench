@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import YouTubeGrid from "../components/YouTubeGrid";
+import Footer from "../components/Footer";
+---
+
+<Layout
+  title="YouTube — Przeprogramowani.pl | Ostatnie filmy o AI i programowaniu"
+  description="Oglądaj kanał Przeprogramowani na YouTube: AI-Native, 10xWorkflow, Demo Day 10xDevs, benchmarki AI i rozmowy LIVE o architekturze."
+>
+  <Navbar current="/youtube" client:load />
+  <main id="main-content" className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <nav aria-label="Okruszki" className="text-sm text-slate-500">
+      <a href="/" className="hover:text-slate-300">Strona główna</a> / YouTube
+    </nav>
+    <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl">
+          Filmy <span className="gradient-text">i rozwój nowoczesnego programisty</span>
+        </h1>
+        <p className="mt-4 max-w-3xl text-lg text-slate-400">
+          Kliknij miniaturę, aby odtworzyć bez przechodzenia na YouTube. Pełna biblioteka na kanale.
+        </p>
+      </div>
+      <a
+        href="https://youtube.com/c/przeprogramowani/videos"
+        target="_blank"
+        rel="noreferrer"
+        className="shrink-0 rounded-2xl bg-red-500 px-6 py-3 text-center font-bold text-white transition hover:bg-red-400"
+      >
+        ▶ Subskrybuj kanał
+      </a>
+    </div>
+    <div className="mt-10">
+      <YouTubeGrid client:load />
+    </div>
+  </main>
+  <Footer />
+</Layout>

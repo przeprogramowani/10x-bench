@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,3min 2s,N/A,3min 2s
+Test run,1.10.2026 22:55,N/A,1.10.2026 22:55
+API cost,$0.0114,N/A,$0.0114 (in 65356 / out 13561 / cache 939348 / 1 session)
+Local build,1,1,npm ci + astro build OK (Astro 4.16; @astrojs/cloudflare SSR); 4 pages served 200
+Manual testing,1,1,"All pages load (/ /o-nas /podcast /youtube 200); navigation, styles and content work"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 4 (latest 7); react 18 (latest 19); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; @astrojs/cloudflare adapter configured; on-demand rendering used; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"/o-nas returns 200 and shows both founders from src/data/content.ts (team) with correct LinkedIn URLs; DAZN/Cabify for Przemek and SmartRecruiters for Marcin are present. However the course assignments are missing (no 'Opanuj JavaScript' for Przemek; no '10xDevs' for Marcin), and the bios are cut-down paraphrases that drop details such as the Programista / Increment by Stripe publications."
+Podcast page,0.5,1,"/podcast returns 200 and the PodcastExplorer (content.ts podcastEpisodes) lists both shows, but the only Spotify link is open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o, which matches neither 3yVvOAXSYq6sQB02w4A4wo (Przeprogramowani) nor 3D6LmchBdoqL2sWkQjvWOy (Opanuj.AI). The 9 episodes have no per-episode URLs and all link to generic podcasters.spotify.com/pod/show/... pages; they carry vague dates ('2026', '2025'); several titles cite unverifiable models ('Claude Mythos', 'GPT-5.6'), so the episodes cannot be verified as real."
+YouTube page,1,1,"/youtube returns 200; all 6 video IDs in content.ts (rRM4pXF_4yw, 8cHXeQN2tQw, 1agLBxJskps, rR2sbf0KkRU, MDZA6vww74g, bdO9bBvg8Zg) return oEmbed 200 with author 'Przeprogramowani' and titles that match. There are no duplicates or placeholder IDs, and the channel link points to youtube.com/c/przeprogramowani."
+Kursy section,1,1,"The #kursy section in src/pages/index.astro (courses in content.ts) shows 10xDevs as the featured course, with the Hero10x hero's main CTA going to https://10xdevs.pl. Opanuj Frontend: AI Edition (5 modules; ~400 graduates; opanujfrontend.pl) and Opanuj TypeScript (TS 5 + React 19; opanujtypescript.pl) match the context. Opanuj JavaScript and Cursor courses are not listed."
+Consistent UI,1,1,Consistent layout and styling across pages
+Responsive design,1,1,Works on mobile and desktop
+SEO Tags,1,1,"Layout.astro sets <title> and meta description per page, and all 4 pages pass their own values, confirmed in the rendered HTML (e.g. 'O nas — Przeprogramowani.pl'); the content matches the context ('szersze spojrzenie na programowanie'; founders' names). There are no Open Graph, Twitter or canonical tags, and '8100+ absolwentów' in the /o-nas description does not appear in the context."
+Penalty,0,N/A,No penalty applied

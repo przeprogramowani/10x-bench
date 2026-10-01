@@ -1,0 +1,106 @@
+$ npm ci --no-audit --no-fundnpm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'undici@8.11.2',
+npm warn EBADENGINE   required: { node: '>=22.19.0' },
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+
+added 255 packages in 3s
+[exit 0]$ npm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+22:55:40 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+22:55:40 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+22:55:41 [types] Generated 192ms
+22:55:41 [build] output: "server"
+22:55:41 [build] mode: "server"
+22:55:41 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wg8TyU/site/dist/
+22:55:41 [build] adapter: @astrojs/cloudflare
+22:55:41 [build] Collecting build info...
+22:55:41 [build] ✓ Completed in 210ms.
+22:55:41 [build] Building server entrypoints...
+22:55:41 [vite] ✓ built in 89ms
+22:55:41 [vite] ✓ built in 268ms
+22:55:41 [vite] ✓ built in 44ms
+22:55:41 [build] Rearranging server assets...
+22:55:41 [build] ✓ Completed in 433ms.
+22:55:41 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+22:55:41 [build] Server built in 644ms
+22:55:41 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wg8TyU/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/server/wrangler.json"
+ - Original user's configuration: "wrangler.json"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/Courses_BlP3I9wn.mjs                               │ esm  │ 5.72 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/Footer_BZkBiw3u.mjs                                │ esm  │ 13.30 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/NewsletterForm_NlZqxYuJ.mjs                        │ esm  │ 2.69 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/PodcastList_BeP1gHsB.mjs                           │ esm  │ 8.58 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/YouTubeGrid_FARTdLJf.mjs                           │ esm  │ 4.13 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs │ esm  │ 0.27 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_TyipGO2P.mjs         │ esm  │ 2.88 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/assets_D3LO8VqF.mjs                                │ esm  │ 59.48 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/compiler_1ZXgLicL.mjs                              │ esm  │ 1.22 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/console_B3O9JdEG.mjs                               │ esm  │ 4.57 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/entrypoints_CMTUcsHu.mjs                           │ esm  │ 758.08 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-binding-transform_Bbel75BY.mjs               │ esm  │ 23.71 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-service-workerd_Brydmqoj.mjs                 │ esm  │ 0.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-transform-endpoint_B5hPnqm1.mjs              │ esm  │ 1.28 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_ByVJw5lV.mjs                                 │ esm  │ 17.85 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/kursy_B0lH7WVF.mjs                                 │ esm  │ 3.62 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_BYLrzUxc.mjs                       │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/o-nas_CfHt7ypS.mjs                                 │ esm  │ 6.25 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/podcast_D4ob4Up-.mjs                               │ esm  │ 3.58 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/react_BpCRmogb.mjs                                 │ esm  │ 16.17 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/rolldown-runtime_BDykq6kg.mjs                      │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/server_B4bvRJio.mjs                                │ esm  │ 258.01 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/shorthash_CihFnKY-.mjs                             │ esm  │ 23.78 KiB   │
+├─────────────────────────��─────────────────────────────────┼──────┼─────────────┤
+│ chunks/static-image-collection_DsBg-fmc.mjs               │ esm  │ 2.41 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/vnode-children_D0K765mE.mjs                        │ esm  │ 6.43 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/youtube_CPKm7pWS.mjs                               │ esm  │ 2.96 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.15 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (27 modules)                                        │      │ 1229.13 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+✨ Read 15 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wg8TyU/site/dist/client
+Total Upload: 1252.13 KiB / gzip: 286.21 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+env.ASSETS          Assets            
+
+--dry-run: exiting now.
+[exit 0]

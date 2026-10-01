@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Courses from "../components/Courses";
+import PodcastList from "../components/PodcastList";
+import YouTubeGrid from "../components/YouTubeGrid";
+import NewsletterForm from "../components/NewsletterForm";
+import Footer from "../components/Footer";
+---
+
+<Layout
+  title="Przeprogramowani.pl — Szersze spojrzenie na programowanie | 10xDevs, Frontend, TypeScript"
+  description="Edukacja technologiczna w epoce AI: 10xDevs 4.0, Opanuj Frontend, Opanuj TypeScript, podcasty Opanuj.AI i YouTube. 7 lat na rynku, prawie 400 absolwentów."
+>
+  <Navbar current="/" client:load />
+  <main id="main-content">
+    <Hero client:load />
+
+    <section id="kursy" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-16 sm:px-6">
+      <p className="text-sm font-bold uppercase tracking-widest text-emerald-400">Programy edukacyjne</p>
+      <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <h2 className="max-w-xl text-3xl font-black tracking-tight text-white sm:text-4xl">
+          Edukacja technologiczna w epoce AI
+        </h2>
+        <a href="/kursy" className="shrink-0 text-sm font-bold text-emerald-300 hover:text-emerald-200">
+          Wszystkie kursy →
+        </a>
+      </div>
+      <p className="mt-3 max-w-2xl text-slate-400">
+        Topowe programy dla ambitnych programistów — od frontendu i TypeScript po świadome
+        korzystanie z Generative AI w całym cyklu wytwarzania oprogramowania.
+      </p>
+      <div className="mt-8">
+        <Courses client:visible />
+      </div>
+    </section>
+
+    <section className="border-y border-white/10 bg-white/[0.02]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-amber-300">Nasz produkt</p>
+            <h2 className="mt-2 text-3xl font-black text-white">10xRules.ai — reguły AI dla Twojego zespołu</h2>
+            <p className="mt-3 leading-relaxed text-slate-400">
+              Buduj osobiste reguły AI i zarządzaj promptami zespołowymi na jednej platformie.
+              Visual Rule Builder, 140+ frameworków i bibliotek, Smart Import ze stacku oraz
+              zespołowa Prompt Library z workflow draft/publish i RBAC.
+            </p>
+            <a
+              href="https://10xrules.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-block rounded-2xl bg-white px-6 py-3 font-bold text-slate-950 transition hover:bg-emerald-300"
+            >
+              Wypróbuj 10xRules.ai →
+            </a>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              ["🎨", "Visual Rule Builder", "Twórz reguły AI bez pisania kodu"],
+              ["📚", "140+ frameworków", "Frontend, backend, DevOps, testy"],
+              ["📦", "Smart Import", "Wykryj stack z package.json"],
+              ["👥", "Prompt Library", "Centralne repozytorium zespołu"],
+            ].map(([icon, t, d]) => (
+              <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-5">
+                <p className="text-2xl">{icon}</p>
+                <p className="mt-2 font-bold text-white">{t}</p>
+                <p className="mt-1 text-sm text-slate-400">{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-widest text-rose-300">YouTube</p>
+          <h2 className="mt-2 text-3xl font-black text-white">Ostatnie filmy</h2>
+        </div>
+        <a href="/youtube" className="text-sm font-bold text-emerald-300 hover:text-emerald-200">
+          Wszystkie filmy →
+        </a>
+      </div>
+      <div className="mt-8">
+        <YouTubeGrid limit={3} client:visible />
+      </div>
+    </section>
+
+    <section className="border-y border-white/10 bg-white/[0.02]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-violet-300">Podcast</p>
+            <h2 className="mt-2 text-3xl font-black text-white">Ostatnie odcinki</h2>
+            <p className="mt-2 text-slate-400">Opanuj.AI Podcast (4000+ słuchaczy) i Przeprogramowani ft. Gość (3800+).</p>
+          </div>
+          <a href="/podcast" className="text-sm font-bold text-emerald-300 hover:text-emerald-200">
+            Wszystkie odcinki →
+          </a>
+        </div>
+        <div className="mt-8">
+          <PodcastList limit={3} client:visible />
+        </div>
+      </div>
+    </section>
+
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div className="grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-800 p-8 sm:p-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-widest text-emerald-400">Newsletter</p>
+          <h2 className="mt-2 text-3xl font-black text-white">Przeprogramowany Newsletter</h2>
+          <p className="mt-3 leading-relaxed text-slate-400">
+            Co tydzień w piątek porcja wartościowych treści w formacie 3-2-1: 3 rekomendacje
+            techniczne, 2 rozwojowe i 1 bonus-niespodzianka. Bez spamu, same konkrety.
+          </p>
+        </div>
+        <NewsletterForm client:visible />
+      </div>
+
+      <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.02] p-8 text-center">
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-500">Zaufali nam · 7 lat na rynku</p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-slate-400">
+          <span>Huuuge Games</span><span>Nutridome</span><span>SmartRecruiters</span>
+          <span>Future Processing</span><span>Callstack</span><span>edrone</span>
+          <span>Xfive</span><span>Euvic</span><span>Strabag</span><span>Autodesk</span>
+        </div>
+        <p className="mt-4 text-sm text-slate-500">
+          Chcesz nawiązać współpracę?{" "}
+          <a href="mailto:kontakt@przeprogramowani.pl" className="font-semibold text-emerald-300">
+            kontakt@przeprogramowani.pl
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

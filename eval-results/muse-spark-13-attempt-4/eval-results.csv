@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,3min 44s,N/A,3min 44s
+Test run,1.10.2026 22:55,N/A,1.10.2026 22:55
+API cost,$0.0121,N/A,$0.0121 (in 68846 / out 16601 / cache 816882 / 1 session)
+Local build,1,1,npm ci + astro build OK (Astro 5.18; @astrojs/cloudflare SSR); 4 pages served 200
+Manual testing,1,1,"All pages load (/ /o-nas /podcast /youtube 200); navigation, styles and content work"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; on-demand rendering used; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"/o-nas (src/pages/o-nas.astro) returns 200 and has detailed bios for both founders: Przemek with DAZN/Cabify, his stack, CursorLens/openapi-typescript, Programista/Increment and 4Developers/ReactiveConf/InfoShare; Marcin with SmartRecruiters, neuroscience, Opanuj AI Podcast and legacy/tests; both LinkedIn URLs are correct. The course assignments are missing, though: Przemek is never linked to Opanuj JavaScript and Marcin is never linked to 10xDevs; the page also adds figures not in the context (15k community, 4000+ listeners, partners such as Xfive/Euvic/Strabag/Autodesk)."
+Podcast page,0.5,1,"/podcast returns 200 and shows both shows with plausible real episodes (6 Opanuj.AI and 3 ft. Gość, e.g. 'Programista vs. Angielski — Wiktoria Sitko'), hardcoded in src/data/content.ts. Neither context Spotify ID (3yVvOAXSYq6sQB02w4A4wo or 3D6LmchBdoqL2sWkQjvWOy) appears anywhere: the Spotify button and footer use the wrong show ID 4qHUZJpeBK8Ij9e2wTVm2o; and every episode links to generic podcasters.spotify.com/pod/show/... URLs, not the episodes."
+YouTube page,1,1,/youtube returns 200; all 6 IDs in src/data/content.ts (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg) return oEmbed 200 with author 'Przeprogramowani' and titles matching the site. There are no duplicates or placeholder IDs; the channel link youtube.com/c/przeprogramowani is correct.
+Kursy section,1,1,"The index hero features 10xDevs 4.0 (CTA to https://10xdevs.pl). The #kursy section renders the courses array from src/data/content.ts with 10xDevs, Opanuj Frontend: AI Edition (opanujfrontend.pl; ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19), all matching the context; one minor inconsistency is the '4 edycje' badge."
+Consistent UI,1,1,Consistent layout and styling across pages
+Responsive design,1,1,Works on mobile and desktop
+SEO Tags,1,1,"src/layouts/Layout.astro sets a per-page <title> and meta description on all 4 pages; the content matches the context (the home title uses the tagline 'Szersze spojrzenie na programowanie'; o-nas names both founders). The SEO is minimal: there are no OG, Twitter or canonical tags, which the rubric does not strictly require."
+Penalty,0,N/A,No penalty applied

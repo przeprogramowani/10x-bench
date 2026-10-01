@@ -1,0 +1,94 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+import '../styles/global.css';
+const { title, description } = Astro.props;
+const nav = [
+  { href: '/', label: 'Start' },
+  { href: '/o-nas', label: 'O nas' },
+  { href: '/podcast', label: 'Podcast' },
+  { href: '/youtube', label: 'YouTube' },
+  { href: '/#kursy', label: 'Kursy' },
+];
+---
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-[#07070f] text-slate-100 antialiased">
+    <div class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#07070f]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <a href="/" class="flex items-center gap-2 font-mono text-lg font-bold tracking-tight">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 font-black text-black">&lt;/&gt;</span>
+          <span>Przeprogramowani<span class="text-amber-400">.pl</span></span>
+        </a>
+        <nav class="hidden items-center gap-1 md:flex">
+          {nav.map((n) => (
+            <a href={n.href} class="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/10 hover:text-white">{n.label}</a>
+          ))}
+          <a href="https://10xdevs.pl" target="_blank" rel="noreferrer" class="ml-2 rounded-full bg-amber-400 px-5 py-2 text-sm font-bold text-black transition hover:bg-amber-300">10xDevs →</a>
+        </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-xl border border-white/15 px-4 py-2 text-sm font-semibold">Menu</summary>
+          <div class="absolute right-0 mt-2 w-52 overflow-hidden rounded-2xl border border-white/10 bg-[#14141f] p-2 shadow-2xl">
+            {nav.map((n) => (
+              <a href={n.href} class="block rounded-xl px-4 py-2.5 text-sm hover:bg-white/10">{n.label}</a>
+            ))}
+            <a href="https://10xdevs.pl" class="mt-1 block rounded-xl bg-amber-400 px-4 py-2.5 text-sm font-bold text-black">10xDevs →</a>
+          </div>
+        </details>
+      </div>
+      <div class="border-t border-white/5 bg-gradient-to-r from-violet-600/20 via-transparent to-amber-400/20">
+        <p class="mx-auto max-w-7xl px-4 py-1.5 text-center text-xs sm:px-6 sm:text-[13px]">
+          Nowość! <strong>10xDevs 4.0</strong> — programuj z AI w erze AI-Native · <a class="font-bold text-amber-300 underline" href="https://10xdevs.pl">Zobacz teraz →</a>
+        </p>
+      </div>
+    </div>
+    <main class="pt-[104px]">
+      <slot />
+    </main>
+    <footer class="mt-20 border-t border-white/10 bg-[#0b0b15]">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <p class="font-mono text-xl font-bold">&lt;/&gt; Przeprogramowani<span class="text-amber-400">.pl</span></p>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-slate-400">Szersze spojrzenie na programowanie. Kursy, podcasty i społeczność dla ambitnych developerów. Działamy od 2019 roku — 7 lat na rynku edukacji technologicznej.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs">
+            <a class="rounded-full border border-white/15 px-3 py-1.5 hover:bg-white/10" href="https://youtube.com/c/przeprogramowani">YouTube</a>
+            <a class="rounded-full border border-white/15 px-3 py-1.5 hover:bg-white/10" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Spotify</a>
+            <a class="rounded-full border border-white/15 px-3 py-1.5 hover:bg-white/10" href="https://przeprogramowani.substack.com">Newsletter</a>
+            <a class="rounded-full border border-white/15 px-3 py-1.5 hover:bg-white/10" href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-slate-500">Mapa strony</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li><a class="hover:text-amber-300" href="/">Strona główna</a></li>
+            <li><a class="hover:text-amber-300" href="/o-nas">O nas</a></li>
+            <li><a class="hover:text-amber-300" href="/podcast">Podcast</a></li>
+            <li><a class="hover:text-amber-300" href="/youtube">YouTube</a></li>
+            <li><a class="hover:text-amber-300" href="/#kursy">Kursy</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-slate-500">Programy</p>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300">
+            <li><a class="hover:text-amber-300" href="https://10xdevs.pl">10xDevs — programuj z AI</a></li>
+            <li><a class="hover:text-amber-300" href="https://www.opanujfrontend.pl">Opanuj Frontend</a></li>
+            <li><a class="hover:text-amber-300" href="https://www.opanujtypescript.pl">Opanuj TypeScript</a></li>
+            <li><a class="hover:text-amber-300" href="https://opanuj.ai">Opanuj AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/5 py-5 text-center text-xs text-slate-500">© 2026 Przeprogramowani.pl — materiał demonstracyjny. Treści kursów należą do ich autorów.</div>
+    </footer>
+  </body>
+</html>

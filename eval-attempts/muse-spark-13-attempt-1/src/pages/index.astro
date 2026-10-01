@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero10x, PodcastExplorer, VideoFilter } from '../components/react/interactive';
+import { courses, podcastEpisodes, videos, brands } from '../data/content';
+---
+<Layout title="Przeprogramowani.pl — szersze spojrzenie na programowanie">
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <Hero10x client:load />
+      <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-slate-500">
+        <span>Zaufali nam:</span>
+        {brands.slice(0,6).map(b => <span class="rounded-full border border-white/10 px-3 py-1">{b}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- KURSY -->
+  <section id="kursy" class="border-t border-white/10 bg-ink-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-300">Edukacja technologiczna w epoce AI</p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold font-display">Topowe programy dla ambitnych programistów</h2>
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {courses.map(c => (
+          <article class={`flex flex-col rounded-3xl border p-6 ${c.featured ? 'border-yellow-400/50 bg-gradient-to-b from-yellow-400/10 to-transparent lg:scale-[1.02]' : 'border-white/10 bg-white/[0.03]'}`}>
+            <span class={`w-fit rounded-full bg-gradient-to-r ${c.gradient} px-3 py-1 text-[11px] font-bold text-black`}>{c.tag}</span>
+            <p class="mt-3 text-xs text-slate-400">{c.badge}</p>
+            <h3 class="mt-1 text-2xl font-extrabold">{c.title}</h3>
+            <p class="text-sm font-semibold text-slate-300">{c.subtitle}</p>
+            <p class="mt-3 flex-1 text-sm text-slate-400">{c.description}</p>
+            <ul class="mt-4 space-y-1.5 text-sm">
+              {c.points.map(p => <li class="flex gap-2"><span class="text-yellow-300">✓</span> {p}</li>)}
+            </ul>
+            <a href={c.href} target="_blank" rel="noopener" class={`mt-6 rounded-xl px-5 py-3 text-center font-bold ${c.featured ? 'bg-yellow-400 text-black hover:bg-yellow-300' : 'border border-white/20 hover:bg-white/10'}`}>{c.cta} →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCAST teaser -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-300">Podcast</p>
+        <h2 class="mt-2 text-3xl font-extrabold font-display">Ostatnie odcinki</h2>
+      </div>
+      <a href="/podcast" class="rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold hover:bg-white/10">Wszystkie odcinki →</a>
+    </div>
+    <div class="mt-8"><PodcastExplorer client:visible /></div>
+  </section>
+
+  <!-- YOUTUBE teaser -->
+  <section class="border-t border-white/10 bg-ink-900/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-red-400">YouTube • @przeprogramowani</p>
+          <h2 class="mt-2 text-3xl font-extrabold font-display">Ostatnie filmy</h2>
+        </div>
+        <a href="/youtube" class="rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold hover:bg-white/10">Wszystkie filmy →</a>
+      </div>
+      <div class="mt-8"><VideoFilter client:visible items={videos} /></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800 to-ink-900 p-8 lg:grid-cols-2 lg:p-12">
+      <div>
+        <h2 class="text-3xl font-extrabold font-display">Przeprogramowany Newsletter</h2>
+        <p class="mt-3 text-slate-300">Co piątek format 3-2-1: 3 rekomendacje techniczne, 2 rozwojowe, 1 bonus. Bez spamu.</p>
+        <ul class="mt-4 space-y-2 text-sm text-slate-400">
+          <li>✓ 7 lat treści, 15k+ programistów w społeczności</li>
+          <li>✓ Podcasty, blog, kalendarz wydarzeń</li>
+          <li>✓ Oferty specjalne na kursy</li>
+        </ul>
+      </div>
+      <form class="flex flex-col justify-center gap-3" onsubmit="event.preventDefault(); this.querySelector('p').classList.remove('hidden')">
+        <div class="flex gap-2">
+          <input required type="email" placeholder="twój@email.pl" class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm outline-none focus:border-yellow-400" />
+          <button class="whitespace-nowrap rounded-xl bg-yellow-400 px-5 py-3 font-bold text-black hover:bg-yellow-300">Zapisuję się</button>
+        </div>
+        <p class="hidden rounded-xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300">Zapisano! Potwierdź e-mail (Substack).</p>
+        <a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener" class="text-xs text-slate-500 hover:text-yellow-300">→ przeprogramowani.substack.com</a>
+      </form>
+    </div>
+  </section>
+</Layout>

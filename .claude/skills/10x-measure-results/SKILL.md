@@ -23,7 +23,7 @@ For each attempt (project root is the attempt dir, or its single nested dir that
 ```bash
 (cd <root> && { [ -f package-lock.json ] && npm ci --no-audit --no-fund || npm install --no-audit --no-fund; } && npm run build)
 ```
-Keep install/build logs in the session scratchpad. **Build failure rule** (eval.md): if the install, the build or the dev server fails, that attempt scores 0 on every criterion; skip the judge and the manual form for it and note why.
+Keep install/build logs in the session scratchpad. **Build failure rule** (eval.md): if the install, the build or the dev server fails, that attempt scores 0 on every criterion; skip the judge and the manual form for it and note why. Grade the project as delivered: a candidate can build successfully in its own session from packages it installed and then leave a `package.json` without them, so the clean install here is what counts. Don't repair it. Tell the user which attempts failed, since a 0/10 attempt pulls the model average down noticeably.
 
 ## Step 2: Start dev servers in parallel
 
@@ -79,9 +79,12 @@ Walk the user through the attempts in order. For each attempt:
 ## Step 5: Run metadata
 
 - **Test run**: the current local time, `D.MM.YYYY HH:MM`.
-- **Task completion time** (`Xmin Ys`): for OpenCode attempts, take it from the DB (sessions are in `session_v2` on OpenCode 2.x, `session` on 1.x; sub-agent sessions have `parent_id` and fall inside their parent's time):
+- **Task completion time** (`Xmin Ys`): for OpenCode attempts, take it from the DB (sub-agent sessions have `parent_id` and fall inside their parent's time). OpenCode 2.x keeps sessions in `session_v2` and their events in `session_message`. Joining `session_v2` to the 1.x `message` table returns no rows for 2.x runs:
   ```bash
-  sqlite3 ~/.local/share/opencode/opencode.db "select s.id, s.parent_id, s.version, datetime(min(m.time_created)/1000,'unixepoch','localtime'), (max(coalesce(json_extract(m.data,'$.time.completed'),m.time_created))-min(m.time_created))/1000 from session_v2 s join message m on m.session_id=s.id where s.directory like '%/<model-id>-attempt-%' group by s.id order by s.directory"
+  # OpenCode 2.x
+  sqlite3 ~/.local/share/opencode/opencode.db "select s.id, s.parent_id, s.version, datetime(min(m.time_created)/1000,'unixepoch','localtime'), (max(m.time_created)-min(m.time_created))/1000 from session_v2 s join session_message m on m.session_id=s.id where s.directory like '%/<model-id>-attempt-%' group by s.id order by s.directory"
+  # OpenCode 1.x
+  sqlite3 ~/.local/share/opencode/opencode.db "select s.id, s.parent_id, s.version, datetime(min(m.time_created)/1000,'unixepoch','localtime'), (max(coalesce(json_extract(m.data,'$.time.completed'),m.time_created))-min(m.time_created))/1000 from session s join message m on m.session_id=s.id where s.directory like '%/<model-id>-attempt-%' group by s.id order by s.directory"
   ```
   - **Codex Desktop**: sessions are in `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl`. Find each attempt by `session_meta.payload.cwd`; time = first to last event timestamp; the last `token_count` event's `total_token_usage` gives input / cached input / output (incl. reasoning) tokens. Write an `API cost` row as uncached input x input price + cached input x cached price + output x output price (the model's official list price) and state the formula in the notes.
   - For other harnesses, ask the user (or use `N/A`).
@@ -112,7 +115,7 @@ Write it with a CSV writer so notes with commas or quotes are quoted correctly.
 ## Step 7: Tech stack, Cloudflare deploy, cost, dashboard
 
 ```bash
-npx tsx scripts/regrade-v2.ts --deploy-check --write   # fills Tech stack + Cloudflare deploy (installs, builds and runs wrangler deploy --dry-run in a temp copy; cached per attempt)
+npx tsx scripts/regrade-v2.ts --deploy-check --write   # fills Tech stack + Cloudflare deploy (installs, builds and runs wrangler deploy --dry-run in a temp copy; cached per attempt; attempts with Local build 0 get 0 on both per the Build Failure Rule)
 npm run calculate-cost -- --write <model-id>           # OpenCode attempts only: adds the API cost row
 npm run process-results                                # regenerates results.json and /api/leaderboard.json
 ```

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { @apply bg-ink text-slate-100 antialiased; }
+.font-display { font-family: Sora, Inter, system-ui, sans-serif; }
+.glass { @apply bg-white/5 border border-white/10 backdrop-blur-xl; }
+.btn-primary { @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-6 py-3 font-semibold text-white shadow-lg shadow-violet-600/30 transition hover:scale-[1.02] hover:shadow-violet-500/40; }
+.btn-ghost { @apply inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/5; }
+.chip { @apply inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80; }
+.card-hover { @apply transition duration-300 hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-2xl hover:shadow-violet-600/20; }
+.hero-grid {
+  background-image: radial-gradient(circle at 20% 20%, rgba(139,92,246,.25), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(34,211,238,.18), transparent 40%),
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+}
+.marquee { animation: marquee 28s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
