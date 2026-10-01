@@ -95,7 +95,22 @@ To explore model implementations: `ls -la ./eval-attempts/`
 npm run build
 ```
 
-This processes all evaluation results and generates a static production-ready site in `./website/dist/`
+This processes all evaluation results, checks screenshots and generates a static production-ready site in `./website/dist/`
+
+### Publishing a newly scored model
+
+After writing the new `eval-results/{model-id}-attempt-{N}/eval-results.csv` files, and before committing or deploying:
+
+```bash
+npm run process-results     # regenerate results.json and /api/leaderboard.json
+npm run screenshots         # screenshot each new attempt and rebuild the model filmstrips
+npm run check-screenshots   # verify every scored attempt has its screenshot and filmstrip
+npm run build
+```
+
+`npm run screenshots` only captures attempts that don't have a screenshot yet. Astro 7+ attempts keep their dev servers running in the background afterwards, so stop them with `npx astro dev stop` in each attempt directory.
+
+`npm run build` runs `check-screenshots` too and fails if any scored attempt is missing `website/public/screenshots/{attempt}.png`, its `{model-id}_filmstrip.png`, or their entries in `website/src/data/screenshot-hashes.json`. This keeps models off the published leaderboard until their screenshots exist. If it fails, run `npm run screenshots` and commit the new images together with the results.
 
 ## Data Processing Pipeline
 
