@@ -3,7 +3,8 @@ Task completion time,7min 1s,N/A,7min 1s
 Test run,12.02.2026 19:42,N/A,12.02.2026 19:42
 Local build,1,1,Build successful with Astro 5.17.2 static output and Cloudflare adapter
 Manual testing,1,1,All pages accessible and return 200. Navigation styles and content working properly
-Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) Cloudflare adapter configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-12; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; main=dist/_worker.js/index.js; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,Page exists and returns 200 but missing founder bios - no mention of Przemek Smyrdek or Marcin Czarkowski by name. No DAZN/Cabify/SmartRecruiters details or LinkedIn links. Generic content instead of context-matching bios
 Podcast page,0.5,1,Page exists and returns 200 but only Opanuj.AI Podcast mentioned - Przeprogramowany Podcast missing entirely. No Spotify URLs. Episode data uses YouTube thumbnails (ytimg.com) and appears hallucinated
 YouTube page,0.5,1,Page exists and returns 200 but 3 of 9 video IDs are obvious placeholders (abc123 def456 ghi789). Video titles views and dates appear hallucinated. Channel link correct

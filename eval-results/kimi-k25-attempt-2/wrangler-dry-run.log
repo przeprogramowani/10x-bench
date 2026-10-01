@@ -1,0 +1,141 @@
+$ npm ci --no-audit --no-fund
+added 449 packages in 3s
+[exit 0]$ npm run build
+> kimi-k25-attempt-2@0.0.1 build
+> astro build
+
+20:47:09 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:47:09 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+20:47:09 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+20:47:09 [content] Syncing content
+20:47:09 [content] Synced content
+20:47:09 [types] Generated 71ms
+20:47:09 [build] output: "static"
+20:47:09 [build] mode: "server"
+20:47:09 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-VfMBnx/site/dist/
+20:47:09 [build] adapter: @astrojs/cloudflare
+20:47:09 [build] Collecting build info...
+20:47:09 [build] ✓ Completed in 95ms.
+20:47:09 [build] Building server entrypoints...
+20:47:10 [vite] ✓ built in 762ms
+20:47:10 [build] ✓ Completed in 775ms.
+
+ building client (vite) 
+20:47:10 [vite] transforming...
+20:47:10 [vite] ✓ 29 modules transformed.
+Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+20:47:10 [vite] rendering chunks...
+20:47:10 [vite] computing gzip size...
+20:47:10 [vite] dist/_astro/Header.DGtv_C9Y.js    3.31 kB │ gzip:  1.34 kB
+20:47:10 [vite] dist/_astro/index.DiEladB3.js     7.85 kB │ gzip:  3.05 kB
+20:47:10 [vite] dist/_astro/client.Dc9Vh3na.js  186.62 kB │ gzip: 58.54 kB
+20:47:10 [vite] ✓ built in 237ms
+
+ prerendering static routes 
+20:47:10 ▶ src/pages/o-nas.astro
+20:47:10   └─ /o-nas/index.html (+11ms) 
+20:47:10 ▶ src/pages/podcast.astro
+20:47:10   └─ /podcast/index.html (+2ms) 
+20:47:10 ▶ src/pages/youtube.astro
+20:47:10   └─ /youtube/index.html (+2ms) 
+20:47:10 ▶ src/pages/index.astro
+20:47:10   └─ /index.html (+3ms) 
+20:47:10 ✓ Completed in 30ms.
+
+20:47:10 [build] Rearranging server assets...
+20:47:10 [build] Server built in 1.14s
+20:47:10 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-VfMBnx/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+[custom build] Running: npm run build
+[custom build] 
+[custom build] > kimi-k25-attempt-2@0.0.1 build
+[custom build] > astro build
+[custom build] 
+[custom build] 
+[custom build] 20:47:12 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+[custom build] 20:47:12 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+[custom build] 
+[custom build] 20:47:12 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+[custom build] 
+[custom build] 20:47:12 [content] Syncing content
+[custom build] 
+[custom build] 20:47:12 [content] Synced content
+[custom build] 
+[custom build] 20:47:12 [types] Generated 18ms
+[custom build] 
+[custom build] 20:47:12 [build] output: "static"
+[custom build] 20:47:12 [build] mode: "server"
+[custom build] 20:47:12 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-VfMBnx/site/dist/
+[custom build] 
+[custom build] 20:47:12 [build] adapter: @astrojs/cloudflare
+[custom build] 20:47:12 [build] Collecting build info...
+[custom build] 
+[custom build] 20:47:12 [build] ✓ Completed in 46ms.
+[custom build] 
+[custom build] 20:47:12 [build] Building server entrypoints...
+[custom build] 
+[custom build] Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+[custom build]   npx update-browserslist-db@latest
+[custom build]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[custom build] 
+[custom build] 20:47:13 [vite] ✓ built in 731ms
+[custom build] 
+[custom build] 20:47:13 [build] ✓ Completed in 743ms.
+[custom build] 
+[custom build]  building client (vite) 
+[custom build] 
+[custom build] 20:47:13 [vite] transforming...
+[custom build] 
+[custom build] 20:47:13 [vite] ✓ 29 modules transformed.
+[custom build] 
+[custom build] 20:47:13 [vite] rendering chunks...
+[custom build] 
+[custom build] 20:47:13 [vite] computing gzip size...
+[custom build] 
+[custom build] 20:47:13 [vite] dist/_astro/Header.DGtv_C9Y.js    3.31 kB │ gzip:  1.34 kB
+[custom build] 
+[custom build] 20:47:13 [vite] dist/_astro/index.DiEladB3.js     7.85 kB │ gzip:  3.05 kB
+[custom build] 20:47:13 [vite] dist/_astro/client.Dc9Vh3na.js  186.62 kB │ gzip: 58.54 kB
+[custom build] 20:47:13 [vite] ✓ built in 227ms
+[custom build] 
+[custom build] 
+[custom build]  prerendering static routes 
+[custom build] 
+[custom build] 20:47:13 ▶ src/pages/o-nas.astro
+[custom build] 
+[custom build] 20:47:13   └─ /o-nas/index.html
+[custom build]  (+11ms) 
+[custom build] 
+[custom build] 20:47:13 ▶ src/pages/podcast.astro
+[custom build] 
+[custom build] 20:47:13   └─ /podcast/index.html
+[custom build]  (+2ms) 
+[custom build] 
+[custom build] 20:47:13 ▶ src/pages/youtube.astro
+[custom build] 
+[custom build] 20:47:13   └─ /youtube/index.html
+[custom build]  (+2ms) 
+[custom build] 
+[custom build] 20:47:13 ▶ src/pages/index.astro
+[custom build] 
+[custom build] 20:47:13   └─ /index.html
+[custom build]  (+3ms) 
+[custom build] 
+[custom build] 20:47:13 ✓ Completed in 29ms.
+[custom build] 
+[custom build] 
+[custom build] 20:47:13 [build] Rearranging server assets...
+[custom build] 
+[custom build] 20:47:13 [build] Server built in 1.06s
+[custom build] 
+[custom build] 20:47:13 [build] Complete!
+[custom build] 
+(Note: doing a dry run, not uploading or deleting anything.)
+Total Upload: 996.49 KiB / gzip: 198.68 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

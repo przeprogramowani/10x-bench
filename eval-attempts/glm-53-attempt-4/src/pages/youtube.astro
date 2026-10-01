@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import VideoCard from "../components/VideoCard";
+import SectionHeading from "../components/SectionHeading.astro";
+import { IconArrowRight, IconVideo, IconYoutube } from "../components/Icons";
+import { SUBSCRIBE_URL, VIDEOS } from "../data/videos";
+
+const highlights = [
+  {
+    icon: IconVideo,
+    title: "Zwiastuny i programy kursów",
+    description: "Zobacz, co znajdziesz w 10xDevs, Opanuj Frontend i Opanuj TypeScript.",
+  },
+  {
+    icon: IconYoutube,
+    title: "LIVE Q&A z ekspertami",
+    description: "Sesje na żywo z Adrianem Połubińskim, Pawłem Gnatem i wieloma innymi.",
+  },
+  {
+    icon: IconVideo,
+    title: "Workflow pracy z AI",
+    description: "10xWorkflow, Core Skill Chain i praktyczne warsztaty z agentami AI.",
+  },
+  {
+    icon: IconYoutube,
+    title: "Relacje z eventów",
+    description: "BRAVE UNAITED, Google I/O i najważniejsze wydarzenia branżowe.",
+  },
+];
+---
+
+<BaseLayout
+  title="YouTube — Przeprogramowani"
+  description="Filmy i podcasty — rozwój nowoczesnego programisty. Zwiastuny kursów, LIVE Q&A, workflow pracy z AI i relacje z eventów. Subskrybuj kanał Przeprogramowanych."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/40 to-zinc-950" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-red-600/15 blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">YouTube</p>
+        <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+          Filmy i podcasty — rozwój <span class="text-gradient">nowoczesnego programisty</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+          Zwiastuny kursów, LIVE Q&A, relacje z eventów i praktyczne workflow
+          pracy z AI.
+        </p>
+        <a
+          href={SUBSCRIBE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-red-600/25 transition hover:bg-red-500"
+        >
+          <IconYoutube size={18} />
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILMY -->
+  <section class="pb-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Najnowsze"
+        title="Ostatnie filmy"
+        align="left"
+      />
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {VIDEOS.map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CO ZNAJDZIESZ NA KANALE -->
+  <section class="border-t border-white/5 bg-zinc-950/60 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Na kanale"
+        title="Co znajdziesz na kanale?"
+      />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {highlights.map((highlight) => (
+          <article class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-red-400/20 bg-red-400/10 text-red-300">
+              <highlight.icon size={20} />
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">{highlight.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">
+              {highlight.description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 px-6 py-14 text-center sm:px-12">
+        <div class="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-red-600/20 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-violet-600/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Dołącz do widzów Przeprogramowanych
+          </h2>
+          <p class="mt-4 text-zinc-400">
+            Regularne materiały o nowoczesnym programowaniu, AI i rozwoju
+            kariery — prosto na twój feed.
+          </p>
+          <a
+            href={SUBSCRIBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-8 inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-red-600/25 transition hover:bg-red-500"
+          >
+            <IconYoutube size={18} />
+            Subskrybuj
+            <IconArrowRight size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

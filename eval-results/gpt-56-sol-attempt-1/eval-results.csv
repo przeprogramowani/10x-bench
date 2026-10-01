@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
 Local build,1,1,astro check && astro build succeeded; 4 pages built with Cloudflare adapter; output in dist/client
 Manual testing,1,1,User-confirmed: site works correctly on click-through
-Tech stack,1,1,"React 19, Tailwind CSS 4 (@tailwindcss/vite), @astrojs/cloudflare adapter configured in astro.config.mjs. Note: Astro is v7 (^7.0.9), newer than the v6 baseline; all required deps present and Cloudflare configured"
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-07-16; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; main=@astrojs/cloudflare/entrypoints/server; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,1,1,"200 OK. Przemek Smyrdek (DAZN/Cabify, full-stack .NET/Java/Node/Angular/TS) and Marcin Czarkowski (SmartRecruiters, 10+ yrs, TS/React/Node, Opanuj.AI Podcast); correct LinkedIn URLs. Bios accurate, not oversimplified"
 Podcast page,1,1,"200 OK. Both podcasts shown with correct Spotify show IDs (Opanuj.AI 3D6LmchBdoqL2sWkQjvWOy, Przeprogramowani 3yVvOAXSYq6sQB02w4A4wo). Episode list present; some episode links fall back to show-level/anchor URLs but data is not mocked"
 YouTube page,1,1,"200 OK. All 6 video IDs verified via oEmbed as real, unique, and on-channel (author_name=Przeprogramowani); titles match. No placeholder/rickroll IDs"

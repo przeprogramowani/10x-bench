@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.07.2026 14:30,N/A,16.07.2026 14:30
 Local build,1,1,astro build succeeded; 5 static pages generated in dist
 Manual testing,1,1,User-confirmed: site works end-to-end; nav, links, and interactions all functional
-Tech stack,0,1,"Astro 5.18 (not 6), Tailwind 3.4 via @astrojs/tailwind (not 4), React 19 OK. No Cloudflare adapter — output: static; wrangler.jsonc present but no @astrojs/cloudflare in astro.config.mjs"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-07-16; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,"Page 200; Przemek (DAZN/Cabify) and Marcin (SmartRecruiters, Opanuj AI Podcast) present. Bios condensed and course assignments (Opanuj JavaScript / 10xDevs) omitted"
 Podcast page,0.5,1,"Page 200 but only ONE podcast (Przeprogramowani) shown — OpanujAI podcast missing. Spotify URL is placeholder slug open.spotify.com/show/przeprogramowani (should be 3yVvOAXSYq6sQB02w4A4wo). Episodes appear mocked"
 YouTube page,1,1,"Page 200; all 9 video IDs unique, verified via oEmbed as real and author_name Przeprogramowani. Titles match channel content"

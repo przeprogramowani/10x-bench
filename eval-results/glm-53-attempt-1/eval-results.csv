@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,4min 41s,N/A,4min 41s
+Test run,1.10.2026 21:39,N/A,1.10.2026 21:39
+API cost,$0.8020,N/A,$0.8020 (in 60371 / out 24170 / cache 3740288 / 1 session)
+Local build,1,1,npm ci + npm run build succeeded; 4 static pages built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; no adapter; fully static output; pages_build_output_dir=dist; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"/o-nas returns 200 and src/data/site.ts FOUNDERS has both founders with the right LinkedIn URLs, DAZN/Cabify for Przemek and SmartRecruiters for Marcin; but the course assignments are missing (no 'Opanuj JavaScript' for Przemek or '10xDevs' for Marcin in the bios or the rendered page) and the bios are condensed (Programista/Increment publications dropped; contributors not listed)."
+Podcast page,0.5,1,"/podcast returns 200 and shows real episodes from both shows (the latest titles match the Spotify oEmbed of 3D6LmchBdoqL2sWkQjvWOy and 3yVvOAXSYq6sQB02w4A4wo; links go to podcasters.spotify.com/pod/show/opanujai and /przeprogramowani); but neither context show ID appears anywhere, and the only Spotify link is open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o (site.ts:181), a wrong ID that returns 404 with an empty oEmbed."
+YouTube page,1,1,"/youtube returns 200; all 6 video IDs in site.ts VIDEOS (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg) are unique, return oEmbed 200 with author 'Przeprogramowani' and titles matching the site; no placeholder IDs; channel link youtube.com/c/przeprogramowani is correct."
+Kursy section,1,1,"COURSES in site.ts is rendered via CourseCard in the index.astro hero, with 10xDevs featured ('Nowość! 10xDevs 4.0' badge; 10xdevs.pl); Opanuj Frontend: AI Edition (5 modules; ~400 graduates; opanujfrontend.pl) and Opanuj TypeScript (TS 5 + React 19; opanujtypescript.pl) match the context; Opanuj JavaScript/Opanuj AI/Cursor courses are not listed."
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"BaseLayout.astro covers all pages with title, meta description, canonical, og:title/description/url/site_name/locale and twitter tags; each page has its own title and description ('O nas — Przeprogramowani' etc.) consistent with the context (tagline; mission; founders; podcasts); the only gap is that no og:image is set."
+Penalty,0,N/A,No penalty applied

@@ -16,7 +16,9 @@ import {
  * OpenCode >= 1.14 stores all session/message data in a SQLite database at
  *   ~/.local/share/opencode/opencode.db
  * (older versions used loose JSON files under storage/message/, which the DB
- * is a superset of). The `session` table records, per session:
+ * is a superset of). OpenCode 2.x uses the same DB file but records sessions
+ * in `session_v2` (v1 rows are migrated into it). The session table records,
+ * per session:
  *   - directory          : the cwd the run executed in
  *   - tokens_input/output/reasoning/cache_read/cache_write
  *   - cost               : OpenCode's own computed USD cost (cache-aware)
@@ -70,13 +72,21 @@ function collectUsage(
 
   const db = new DatabaseSync(dbPath, { readOnly: true });
   try {
+    // OpenCode 2.x migrates every v1 `session` row into `session_v2` and only
+    // writes new sessions there, so prefer it when present.
+    const hasSessionV2 = db
+      .prepare(
+        `SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'session_v2'`,
+      )
+      .get();
+    const sessionTable = hasSessionV2 ? "session_v2" : "session";
     const rows = db
       .prepare(
         `SELECT directory, cost,
                 tokens_input AS input, tokens_output AS output,
                 tokens_reasoning AS reasoning,
                 tokens_cache_read AS cacheRead, tokens_cache_write AS cacheWrite
-         FROM session
+         FROM ${sessionTable}
          WHERE directory LIKE '%/eval-attempts/%'`,
       )
       .all() as Array<Record<string, number | string>>;

@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title,
+  description = SITE.description,
+  path = '/',
+} = Astro.props;
+
+const pageTitle = `${title} — ${SITE.name}`;
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${SITE.url}${path === '/' ? '' : path}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${SITE.url}${path === '/' ? '' : path}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="relative min-h-screen overflow-x-hidden">
+    <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+      <div class="absolute inset-0 bg-grid opacity-60"></div>
+      <div class="orb left-1/2 top-[-10rem] h-[28rem] w-[42rem] -translate-x-1/2 bg-violet-600/[0.14]"></div>
+      <div class="orb bottom-[-12rem] right-[-10rem] h-[26rem] w-[26rem] bg-cyan-500/[0.08]"></div>
+    </div>
+
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-violet-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+    >
+      Przejdź do treści
+    </a>
+
+    <Header client:load path={path} />
+
+    <main id="main-content" class="relative">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

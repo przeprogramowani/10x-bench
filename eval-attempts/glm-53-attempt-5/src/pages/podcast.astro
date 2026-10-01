@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PodcastTabs from '../components/PodcastTabs';
+import { podcastShows, podcastPlatforms } from '../data/podcast';
+
+const platformStyles: Record<string, string> = {
+  'Spotify': 'border-[#1DB954]/40 hover:border-[#1DB954]/70 hover:text-[#1DB954]',
+  'Apple Podcasts': 'border-zinc-600 hover:border-zinc-400 hover:text-white',
+  'Google Podcasts': 'border-sky-500/40 hover:border-sky-500/70 hover:text-sky-400',
+  'RSS': 'border-brand-500/40 hover:border-brand-500/70 hover:text-brand-400',
+};
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Podcasty Przeprogramowanych — Opanuj.AI Podcast oraz Przeprogramowani ft. Gość. Słuchaj o technologii, AI i programowaniu."
+>
+  <section class="relative overflow-hidden pt-16">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 blur-3xl"
+      aria-hidden="true"
+      style="height: 450px; background: radial-gradient(55% 50% at 50% 0%, rgba(139,92,246,0.13) 0%, transparent 70%);"
+    >
+    </div>
+
+    <div class="container-site relative py-20">
+      <SectionHeading
+        align="center"
+        eyebrow="🎧 Podcasty"
+        title="Słuchaj nas na swojej ulubionej platformie"
+        text="Podcasty o technologii, AI i programowaniu — comiesięczne podsumowania świata AI oraz rozmowy dla głodnych wiedzy."
+      />
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+        {
+          podcastPlatforms.map((p) => (
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`inline-flex items-center gap-2 rounded-full border bg-zinc-900/60 px-5 py-2.5 text-sm font-semibold text-zinc-300 backdrop-blur transition ${platformStyles[p.name] ?? ''}`}
+            >
+              {p.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="container-site pb-24">
+    <PodcastTabs client:load shows={podcastShows} />
+
+    <div
+      class="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 px-6 py-6 sm:flex-row"
+    >
+      <p class="text-sm text-zinc-400">
+        Nie przegap nowych odcinków — <strong class="font-semibold text-white">subskrybuj</strong> na
+        Spotify, Apple Podcasts lub w swoim ulubionym czytniku RSS.
+      </p>
+      <a
+        href={podcastPlatforms[0].url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary shrink-0"
+      >
+        Subskrybuj na Spotify
+        <span aria-hidden>→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

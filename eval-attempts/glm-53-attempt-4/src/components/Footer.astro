@@ -1,0 +1,127 @@
+---
+import { SITE, SOCIALS } from "../data/site";
+import {
+  IconFacebook,
+  IconInstagram,
+  IconMail,
+  IconYoutube,
+} from "./Icons";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-2.5" aria-label="Przeprogramowani — strona główna">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 font-mono text-xs font-bold text-white">
+            {"</>"}
+          </span>
+          <span class="text-base font-semibold tracking-tight text-white">Przeprogramowani</span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-zinc-400">
+          {SITE.tagline}. Treści, kursy i narzędzia dla programistów w epoce AI.
+        </p>
+        <div class="mt-5 flex items-center gap-2">
+          <a
+            href={SOCIALS.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition hover:border-white/20 hover:text-white"
+            aria-label="YouTube"
+          >
+            <IconYoutube size={17} />
+          </a>
+          <a
+            href={SOCIALS.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition hover:border-white/20 hover:text-white"
+            aria-label="Facebook"
+          >
+            <IconFacebook size={17} />
+          </a>
+          <a
+            href={SOCIALS.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition hover:border-white/20 hover:text-white"
+            aria-label="Instagram"
+          >
+            <IconInstagram size={17} />
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition hover:border-white/20 hover:text-white"
+            aria-label="Napisz do nas"
+          >
+            <IconMail size={17} />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">Strona</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li><a href="/o-nas" class="text-zinc-400 transition hover:text-white">O nas</a></li>
+          <li><a href="/podcast" class="text-zinc-400 transition hover:text-white">Podcast</a></li>
+          <li><a href="/youtube" class="text-zinc-400 transition hover:text-white">YouTube</a></li>
+          <li>
+            <a href={SOCIALS.newsletter} target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">
+              Newsletter
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">Kursy</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li>
+            <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">
+              10xDevs 4.0
+            </a>
+          </li>
+          <li>
+            <a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">
+              Opanuj Frontend: AI Edition
+            </a>
+          </li>
+          <li>
+            <a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">
+              Opanuj TypeScript
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">Kontakt</h3>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          <li>
+            <a href={`mailto:${SITE.email}`} class="text-zinc-400 transition hover:text-white">
+              {SITE.email}
+            </a>
+          </li>
+          <li>
+            <a href="https://10xrules.ai" target="_blank" rel="noopener noreferrer" class="text-zinc-400 transition hover:text-white">
+              10xRules.ai
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/5">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 sm:flex-row sm:px-6">
+      <p class="text-xs text-zinc-500">
+        © {year} Przeprogramowani.pl — {SITE.tagline}
+      </p>
+      <p class="font-mono text-xs text-zinc-600">
+        Astro · React · Tailwind
+      </p>
+    </div>
+  </div>
+</footer>

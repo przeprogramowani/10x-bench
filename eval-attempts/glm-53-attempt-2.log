@@ -1,0 +1,586 @@
+[0m
+> build · z-ai/glm-5.3
+[0m
+[0m$ [0mls -la
+total 0
+drwxr-xr-x@   2 psmyrdek  staff    64 Oct  1 19:39 .
+drwxr-xr-x@ 162 psmyrdek  staff  5184 Oct  1 19:41 ..
+[0m
+Zaczynam od zebrania informacji o Przeprogramowani.pl z sieci, a potem zbuduję stronę.
+[0m% [0mWebFetch https://przeprogramowani.pl
+[0m% [0mWebFetch https://przeprogramowani.pl/o-nas
+Mam stronę główną. Teraz pobieram informacje o O nas, Podcaście i YouTube.
+[0m% [0mWebFetch https://przeprogramowani.pl/podcast
+Mam O nas i Podcast. Teraz pobieram dane YouTube i RSS podcastów.
+[0m% [0mWebFetch https://www.youtube.com/c/przeprogramowani/videos
+[0m✗ [0mWebFetch https://anchor.fm/s/22544b7c/podcast/rss failed
+[91m[1mError: [0mStatusCode: non 2xx status code (404 GET https://anchor.fm/s/22544b7c/podcast/rss)
+YouTube i RSS wymagają innego podejścia. Spróbuję pobrać RSS Spotify i HTML kanału YouTube.
+[0m% [0mWebFetch https://www.youtube.com/@przeprogramowani/videos
+[0m% [0mWebFetch https://podcasters.spotify.com/pod/show/przeprogramowani/rss
+[0m• [0mExtract YouTube video data[90m Explore Agent[0m
+Mam dane podcastów. Teraz extracted dane YouTube z zapisanego HTML i sprawdzam środowisko.
+[0m
+[0m$ [0mnode --version && npm --version && which pnpm bun 2>/dev/null; echo "---"; npm ls -g --depth=0 2>/dev/null | head -20
+v22.14.0
+10.9.2
+/Users/psmyrdek/Library/pnpm/pnpm
+/Users/psmyrdek/.bun/bin/bun
+---
+/Users/psmyrdek/.nvm/versions/node/v22.14.0/lib
+├── @openai/codex@0.154.0
+├── @przeprogramowani/10x-cli@1.20.0
+├── corepack@0.31.0
+├── npm@10.9.2
+└── promptfoo@0.121.15
+[0m
+[0m✓ [0mExtract YouTube video data[90m Explore Agent[0m
+[0m
+[0m# [0mTodos
+[✓] Research: gather data from przeprogramowani.pl (done: main, o-nas, podcast, YouTube, RSS)
+[•] Check brand colors of przeprogramowani.pl
+[ ] Scaffold Astro + React + Tailwind project (configs, package.json, install)
+[ ] Create data modules (courses, podcasts, videos, about, brands)
+[ ] Build shared layout + components (Header, Footer, cards, CTA)
+[ ] Build pages: Home (hero z kursami), O nas, Podcast, YouTube
+[ ] Cloudflare deploy config (wrangler.toml, _headers, README)
+[ ] Build, verify output, fix issues
+[0m
+Mam wszystkie dane. Sprawdzam jeszcze branding (kolory) strony Przeprogramowani i planuję projekt.
+[0m% [0mWebFetch https://przeprogramowani.pl
+[0m
+[0m← [0mWrite package.json
+Wrote file successfully.
+[0m
+Mam pełny obraz brandu (Sora/Inter/JetBrains Mono, ciemny motyw, mintowy akcent). Zaczynam budować projekt — najpierw szkielet i instalacja zależności.
+[0m$ [0mnohup npm install --no-audit --no-fund > /tmp/npm-install.log 2>&1 &
+echo "npm install started (PID $!)"
+npm install started (PID 45910)
+[0m
+[0m← [0mWrite astro.config.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite tailwind.config.mjs
+Wrote file successfully.
+[0m
+Instalacja w tle. Teraz pliki konfiguracyjne.
+[0m← [0mWrite postcss.config.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite tsconfig.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite .gitignore
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/favicon.svg
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/robots.txt
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/sitemap.xml
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/_headers
+Wrote file successfully.
+[0m
+Teraz pliki publiczne (favicon, robots, sitemap, _headers dlaCloudflare).
+[0m← [0mWrite src/styles/global.css
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/site.ts
+Wrote file successfully.
+[0m
+Global CSS i modułydanych.
+[0m← [0mWrite src/data/courses.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/podcasts.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/videos.ts
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/data/about.ts
+Wrote file successfully.
+[0m
+Moduły danych gotowe. Sprawdzam instalację i piszę komponenty React.
+[0m$ [0mtail -5 /tmp/npm-install.log 2>/dev/null; ls node_modules 2>/dev/null | wc -l
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+npm warn deprecated tsconfck@3.1.6: unmaintained
+
+added 465 packages in 7s
+     362
+[0m
+[0m← [0mWrite src/components/icons.tsx
+Wrote file successfully.
+[0m
+Zależności zainstalowane. Piszę komponenty.
+[0m← [0mWrite src/components/Header.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/Footer.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/SectionHeading.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/CourseCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/EpisodeCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/PodcastShowSection.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/VideoCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/VideoGrid.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/BrandMarquee.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/NewsletterCta.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/FounderCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/PlatformLinks.tsx
+Wrote file successfully.
+[0m
+Teraz Hero (z sekcją kursów) i layoutbazowy.
+[0m← [0mWrite src/components/Hero.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/layouts/Base.astro
+Wrote file successfully.
+[0m
+Strony — najpierw strona główna.
+[0m← [0mWrite src/pages/index.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/o-nas.astro
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/pages/o-nas.astro
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/pages/o-nas.astro
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/pages/o-nas.astro
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/pages/o-nas.astro
+@@ -1,7 +1,6 @@
+ ---
+ import Base from '../layouts/Base.astro';
+-import SectionHeading from '../components/SectionHeading';
+ import FounderCard from '../components/FounderCard';
+ import BrandMarquee from '../components/BrandMarquee';
+ import NewsletterCta from '../components/NewsletterCta';
+ import { ArrowRightIcon } from '../components/icons';
+
+[0m
+[0m← [0mWrite src/pages/podcast.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/youtube.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite wrangler.toml
+Wrote file successfully.
+[0m
+[0m← [0mWrite README.md
+Wrote file successfully.
+[0m
+Konfiguracja Cloudflare i README, potem build.
+Wszystkie pliki gotowe. Buduję projekt.
+[0m$ [0mnpm run build 2>&1
+> przeprogramowani-site@1.0.0 build
+> astro build
+
+19:45:09 [content] Syncing content
+19:45:09 [content] Synced content
+19:45:09 [types] Generated 243ms
+19:45:09 [build] output: "static"
+19:45:09 [build] mode: "static"
+19:45:09 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/dist/
+19:45:09 [build] Collecting build info...
+19:45:09 [build] ✓ Completed in 249ms.
+19:45:09 [build] Building static entrypoints...
+19:45:09 [vite] ✓ built in 370ms
+19:45:09 [build] ✓ Completed in 384ms.
+
+ building client (vite) 
+19:45:09 [vite] transforming...
+19:45:09 [vite] ✓ 30 modules transformed.
+19:45:09 [vite] rendering chunks...
+19:45:09 [vite] computing gzip size...
+19:45:09 [vite] dist/_astro/Header.BAtM1WRM.js    4.96 kB │ gzip:  1.73 kB
+19:45:09 [vite] dist/_astro/index.-iFofLld.js     8.20 kB │ gzip:  3.17 kB
+19:45:09 [vite] dist/_astro/client.LGetASx6.js  215.57 kB │ gzip: 67.09 kB
+19:45:09 [vite] ✓ built in 327ms
+
+ generating static routes 
+19:45:09 ▶ src/pages/index.astro
+19:45:09   └─ /index.html (+14ms) 
+19:45:09 ▶ src/pages/o-nas.astro
+19:45:09   └─ /o-nas/index.html (+2ms) 
+19:45:09 ▶ src/pages/podcast.astro
+19:45:09   └─ /podcast/index.html (+3ms) 
+19:45:09 ▶ src/pages/youtube.astro
+19:45:09   └─ /youtube/index.html (+2ms) 
+19:45:09 ✓ Completed in 35ms.
+
+19:45:09 [build] 4 page(s) built in 1.00s
+19:45:09 [build] Complete!
+[0m
+Build przeszedł. Sprawdzam typy i weryfikuję wygenerowanestrony.
+[0m$ [0mnpm run typecheck 2>&1 | tail -20
+> przeprogramowani-site@1.0.0 typecheck
+> astro check
+
+19:45:14 [content] Syncing content
+19:45:14 [content] Synced content
+19:45:14 [types] Generated 20ms
+19:45:14 [check] Getting diagnostics for Astro files in /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2...
+Result (25 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+[0m
+[0m$ [0mfind dist -type f | sort && echo "---" && ls -la dist
+dist/_astro/client.LGetASx6.js
+dist/_astro/Header.BAtM1WRM.js
+dist/_astro/index.-iFofLld.js
+dist/_astro/index.CcFuHy1Q.css
+dist/_headers
+dist/favicon.svg
+dist/index.html
+dist/o-nas/index.html
+dist/podcast/index.html
+dist/robots.txt
+dist/sitemap.xml
+dist/youtube/index.html
+---
+total 144
+drwxr-xr-x@  6 psmyrdek  staff    192 Oct  1 19:45 _astro
+-rw-r--r--@  1 psmyrdek  staff    215 Oct  1 19:45 _headers
+drwxr-xr-x@ 11 psmyrdek  staff    352 Oct  1 19:45 .
+drwxr-xr-x@ 16 psmyrdek  staff    512 Oct  1 19:45 ..
+-rw-r--r--@  1 psmyrdek  staff    479 Oct  1 19:45 favicon.svg
+-rw-r--r--@  1 psmyrdek  staff  57237 Oct  1 19:45 index.html
+drwxr-xr-x@  3 psmyrdek  staff     96 Oct  1 19:45 o-nas
+drwxr-xr-x@  3 psmyrdek  staff     96 Oct  1 19:45 podcast
+-rw-r--r--@  1 psmyrdek  staff     73 Oct  1 19:45 robots.txt
+-rw-r--r--@  1 psmyrdek  staff    634 Oct  1 19:45 sitemap.xml
+drwxr-xr-x@  3 psmyrdek  staff     96 Oct  1 19:45 youtube
+[0m
+[0m$ [0mnpx tsc --noEmit 2>&1 | head -20; echo "tsc exit: $?"
+tsc exit: 0
+[0m
+[0m$ [0mrg -o "Szersze spojrzenie|10xDevs 4.0|Opanuj Frontend: AI Edition|Opanuj TypeScript|Najnowsze odcinki|Ostatnie filmy|Przeprogramowany|Zaufali nam" dist/index.html | sort | uniq -c && echo "--- PODCAST ---" && rg -o "Opanuj.AI Podcast|Przeprogramowani ft. Gość|Słuchaj na swojej platformie|Apple Podcasts" dist/podcast/index.html | sort | uniq -c && echo "--- YOUTUBE ---" && rg -o "20,9 tys.|411|Subskrybuj kanał|Najnowsze filmy" dist/youtube/index.html | sort | uniq -c && echo "--- O NAS ---" && rg -o "Przemek Smyrdek|Marcin Czarkowski|Witaj na Przeprogramowanych|kontakt@przeprogramowani.pl" dist/o-nas/index.html | sort | uniq -c
+3 10xDevs 4.0
+   1 Najnowsze odcinki
+   1 Opanuj Frontend: AI Edition
+   2 Opanuj TypeScript
+   1 Ostatnie filmy
+   2 Przeprogramowany
+   5 Szersze spojrzenie
+   1 Zaufali nam
+--- PODCAST ---
+   1 Apple Podcasts
+  18 Opanuj.AI Podcast
+  18 Przeprogramowani ft. Gość
+   1 Słuchaj na swojej platformie
+--- YOUTUBE ---
+   1 20,9 tys.
+   4 411
+   1 Najnowsze filmy
+   1 Subskrybuj kanał
+--- O NAS ---
+   5 kontakt@przeprogramowani.pl
+   3 Marcin Czarkowski
+   3 Przemek Smyrdek
+   1 Witaj na Przeprogramowanych
+[0m
+Typy OK. Weryfikuję zawartość HTML wygenerowanych stron.
+Zawartość kompletna. Testuję serwer produkcyjny (preview) — statusy stron i nagłówki.
+[0m$ [0mnohup npx astro preview --port 4321 > /tmp/astro-preview.log 2>&1 &
+sleep 3
+for path in / /o-nas /podcast /youtube /sitemap.xml /robots.txt /favicon.svg; do
+  code=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:4321$path")
+  echo "$path -> $code"
+done
+curl -sI http://localhost:4321/_astro/index.CcFuHy1Q.css | head -3
+zsh:4: command not found: curl
+/ -> 
+/o-nas -> 
+/podcast -> 
+zsh:4: command not found: curl
+zsh:4: command not found: curl
+zsh:4: command not found: curl
+/youtube -> 
+/sitemap.xml -> 
+zsh:4: command not found: curl
+zsh:4: command not found: curl
+/robots.txt -> 
+zsh:4: command not found: curl
+/favicon.svg -> 
+zsh:7: command not found: curl
+zsh:7: command not found: head
+[0m
+Brak curl — używam Node do testów HTTP.
+[0m$ [0mnode -e "
+const paths = ['/', '/o-nas', '/podcast', '/youtube', '/sitemap.xml', '/robots.txt', '/favicon.svg', '/_astro/index.CcFuHy1Q.css'];
+(async () => {
+  for (const p of paths) {
+    try {
+      const res = await fetch('http://localhost:4321' + p);
+      console.log(p, '->', res.status, res.headers.get('content-length') ? res.headers.get('content-length') + 'B' : '');
+    } catch (e) { console.log(p, 'ERR', e.message); }
+  }
+})();
+"
+/ -> 200 
+/o-nas -> 200 
+/podcast -> 200 
+/youtube -> 200 
+/sitemap.xml -> 404 
+/robots.txt -> 200 79B
+/favicon.svg -> 200 827B
+/_astro/index.CcFuHy1Q.css -> 404
+[0m
+[0m$ [0mcat /tmp/astro-preview.log; echo "---"; ls dist/*.xml dist/_astro/*.css 2>&1; echo "---"; node -e "
+(async () => {
+  for (const p of ['/sitemap.xml', '/_astro/index.CcFuHy1Q.css']) {
+    const res = await fetch('http://localhost:4321' + p);
+    const text = await res.text();
+    console.log(p, '->', res.status, text.slice(0, 120).replace(/\n/g, ' | '));
+  }
+})();
+"
+Port 4321 is in use, trying another one...
+Port 4322 is in use, trying another one...
+
+ astro  v5.18.2 ready in 88 ms
+
+┃ Local    http://localhost:4323/
+┃ Network  use --host to expose
+
+---
+dist/_astro/index.CcFuHy1Q.css
+dist/sitemap.xml
+---
+/sitemap.xml -> 404 <!doctype html> | <html lang="en"> | 	<head> | 		<meta charset="UTF-8"> | 		<title>404: Not Found</title> | 		<style> | 			:root { | 	
+/_astro/index.CcFuHy1Q.css -> 404 <!doctype html> | <html lang="en"> | 	<head> | 		<meta charset="UTF-8"> | 		<title>404: Not Found</title> | 		<style> | 			:root { |
+[0m
+Serwer wystartował na porcie 4323 (4321/4322 zajęte). Testuję właściwy port.
+[0m$ [0mnode -e "
+const paths = ['/', '/o-nas', '/podcast', '/youtube', '/sitemap.xml', '/robots.txt', '/favicon.svg'];
+(async () => {
+  for (const p of paths) {
+    const res = await fetch('http://localhost:4323' + p);
+    const len = (await res.arrayBuffer()).byteLength;
+    console.log(p, '->', res.status, len + 'B');
+  }
+})();
+"
+node:internal/deps/undici/undici:13502
+      Error.captureStackTrace(err);
+            ^
+
+TypeError: fetch failed
+    at node:internal/deps/undici/undici:13502:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async [eval]:5:17 {
+  [cause]: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1139:18)
+      at afterConnectMultiple (node:net:1712:7) {
+    code: 'ECONNREFUSED',
+    [errors]: [
+      Error: connect ECONNREFUSED ::1:4323
+          at createConnectionError (node:net:1675:14)
+          at afterConnectMultiple (node:net:1705:16) {
+        errno: -61,
+        code: 'ECONNREFUSED',
+        syscall: 'connect',
+        address: '::1',
+        port: 4323
+      },
+      Error: connect ECONNREFUSED 127.0.0.1:4323
+          at createConnectionError (node:net:1675:14)
+          at afterConnectMultiple (node:net:1705:16) {
+        errno: -61,
+        code: 'ECONNREFUSED',
+        syscall: 'connect',
+        address: '127.0.0.1',
+        port: 4323
+      }
+    ]
+  }
+}
+
+Node.js v22.14.0
+[0m
+Proces tła jest ubijany między wywołaniami. Uruchamiam serwer i testy w jednym poleceniu.
+[0m$ [0mnpx astro preview --port 4390 > /tmp/astro-preview.log 2>&1 &
+SERVER_PID=$!
+sleep 3
+node -e "
+const paths = ['/', '/o-nas', '/podcast', '/youtube', '/sitemap.xml', '/robots.txt', '/favicon.svg', '/_astro/index.CcFuHy1Q.css', '/_astro/Header.BAtM1WRM.js'];
+(async () => {
+  for (const p of paths) {
+    try {
+      const res = await fetch('http://localhost:4390' + p);
+      const len = (await res.arrayBuffer()).byteLength;
+      console.log(p.padEnd(35), '->', res.status, len + 'B');
+    } catch (e) { console.log(p, 'ERR', e.message); }
+  }
+})();
+"
+kill $SERVER_PID 2>/dev/null
+/                                   -> 200 57237B
+/o-nas                              -> 200 30333B
+/podcast                            -> 200 54031B
+/youtube                            -> 200 37027B
+/sitemap.xml                        -> 200 634B
+/robots.txt                         -> 200 73B
+/favicon.svg                        -> 200 479B
+/_astro/index.CcFuHy1Q.css          -> 200 28854B
+/_astro/Header.BAtM1WRM.js          -> 200 4963B
+[0m
+Wszystkie trasy 200. Poprawiam drobiazg w Hero (statystyki potrzebują flex, żeby `order-*` zadziałało) i sprawdzam `<head>`.
+[0m← [0mEdit src/components/Hero.tsx
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/components/Hero.tsx
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/components/Hero.tsx
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2/src/components/Hero.tsx
+@@ -63,9 +63,9 @@
+ </div>
+ 
+ <dl className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
+   {STATS.map((stat) => (
+-    <div key={stat.label} className="text-center">
++    <div key={stat.label} className="flex flex-col text-center">
+       <dt className="order-2 mt-1.5 text-xs sm:text-sm text-gray-500">{stat.label}</dt>
+       <dd className="order-1 text-2xl sm:text-3xl font-bold font-heading text-white">
+         {stat.value}
+       </dd>
+
+[0m
+[0m$ [0msed -n '1,30p' dist/index.html
+...output truncated...
+
+Full output saved to: /Users/psmyrdek/.local/share/opencode/tool-output/tool_0f8928823002QkxdKZkkTw0NwV
+
+Zaufali nam — 7 lat na rynku edukacji technologicznej
+</p> <div class="marquee relative overflow-hidden py-2"><div class="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-gray-950 to-transparent z-10 pointer-events-none"></div><div class="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-gray-950 to-transparent z-10 pointer-events-none"></div><div class="animate-marquee flex w-max items-center gap-4"><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Huuuge Games</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Nutridome</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>SmartRecruiters</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Future Processing</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Callstack</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>edrone</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Xfive</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Euvic</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Strabag</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Autodesk</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Huuuge Games</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Nutridome</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>SmartRecruiters</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Future Processing</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Callstack</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>edrone</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Xfive</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Euvic</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Strabag</span><span class="shrink-0 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-medium text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-main/60"></span>Autodesk</span></div></div> </div> </section> <section class="py-16 sm:py-20 border-t border-white/5"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-gray-900 via-gray-900 to-rose-950/40 p-6 sm:p-10 lg:p-12"><div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-brand-rose/20 blur-3xl pointer-events-none" aria-hidden="true"></div><div class="absolute -bottom-32 -left-16 w-72 h-72 rounded-full bg-main/10 blur-3xl pointer-events-none" aria-hidden="true"></div><div class="relative max-w-2xl"><span class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-brand-rose"><span class="w-8 h-1 rounded-full bg-brand-rose"></span>Newsletter</span><h2 class="mt-4 text-2xl sm:text-4xl font-extrabold text-white font-heading tracking-tight">Przeprogramowany<br/>Newsletter</h2><p class="mt-4 text-base sm:text-lg text-gray-300">Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:</p><ul class="mt-6 space-y-3"><li class="flex items-center gap-3"><span class="flex items-center justify-center w-8 h-8 rounded-lg bg-main/10 border border-main/20 text-main font-bold font-heading text-sm">3</span><span class="text-gray-200">rekomendacje techniczne</span></li><li class="flex items-center gap-3"><span class="flex items-center justify-center w-8 h-8 rounded-lg bg-main/10 border border-main/20 text-main font-bold font-heading text-sm">2</span><span class="text-gray-200">rekomendacje rozwojowe</span></li><li class="flex items-center gap-3"><span class="flex items-center justify-center w-8 h-8 rounded-lg bg-main/10 border border-main/20 text-main font-bold font-heading text-sm">1</span><span class="text-gray-200">bonus niespodzianka</span></li></ul><p class="mt-4 text-sm text-gray-400">Nie przegapisz też nowości od Przeprogramowanych i ofert specjalnych.</p><div class="mt-8 flex flex-wrap items-center gap-4"><a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold bg-brand-rose text-white rounded-xl shadow-lg shadow-brand-rose/25 transition-all hover:bg-rose-500 hover:shadow-xl hover:shadow-brand-rose/30">Zapisz się za darmo<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a><span class="text-xs text-gray-500">Bez spamu — tylko konkretna wartość.</span></div></div></div> </div> </section>  </main> <footer class="border-t border-white/5 bg-gray-950"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14"><div class="grid gap-10 md:grid-cols-2 lg:grid-cols-5"><div class="lg:col-span-2"><a href="/" class="flex items-center gap-2 text-white font-bold text-lg font-heading"><span class="font-mono text-main">&lt;/&gt;</span><span>Przeprogramowani</span></a><p class="mt-4 text-sm text-gray-400 leading-relaxed max-w-sm">Kursy, podcasty i YouTube dla ambitnych programistów. Łączymy świat programowania, biznesu i rozwoju w epoce AI.</p><div class="mt-6 flex items-center gap-3"><a href="https://youtube.com/c/przeprogramowani" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"></path></svg></a><a href="https://facebook.com/przeprogramowani" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.1C22 6.5 17.5 2 12 2S2 6.5 2 12.1c0 5 3.7 9.2 8.5 9.9v-7H7.9v-2.9h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6v2h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12.1z"></path></svg></a><a href="https://instagram.com/przeprogramowani" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.5"></circle><circle cx="17.8" cy="6.2" r="0.8" fill="currentColor" stroke="none"></circle></svg></a><a href="mailto:kontakt@przeprogramowani.pl" aria-label="E-mail" class="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path stroke-linecap="round" stroke-linejoin="round" d="m3.5 7 8.5 6 8.5-6"></path></svg></a></div></div><div><h3 class="text-sm font-semibold text-white uppercase tracking-wider">Strona</h3><ul class="mt-4 space-y-3"><li><a href="/o-nas" class="text-sm text-gray-400 hover:text-white transition-colors">O nas</a></li><li><a href="/podcast" class="text-sm text-gray-400 hover:text-white transition-colors">Podcast</a></li><li><a href="/youtube" class="text-sm text-gray-400 hover:text-white transition-colors">YouTube</a></li><li><a href="https://przeprogramowani.substack.com" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors">Newsletter</a></li></ul></div><div><h3 class="text-sm font-semibold text-white uppercase tracking-wider">Kursy</h3><ul class="mt-4 space-y-3"><li><a href="https://www.opanujfrontend.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors">Opanuj Frontend</a></li><li><a href="https://www.opanujtypescript.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors">Opanuj TypeScript</a></li><li><a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors">10xDevs</a></li></ul></div><div><h3 class="text-sm font-semibold text-white uppercase tracking-wider">Kontakt</h3><ul class="mt-4 space-y-3"><li><a href="mailto:kontakt@przeprogramowani.pl" class="text-sm text-gray-400 hover:text-white transition-colors">kontakt@przeprogramowani.pl</a></li><li class="flex items-center gap-2 text-sm text-gray-400"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.4zM5.3 7.4a2 2 0 1 1 0-4.1 2 2 0 0 1 0 4.1zM7.1 20.4H3.6V9h3.5zM22.2 0H1.8C.8 0 0 .8 0 1.8v20.4c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V1.8c0-1-.8-1.8-1.8-1.8z"></path></svg><a href="https://www.linkedin.com/in/psmyrdek/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Przemek Smyrdek</a></li><li class="flex items-center gap-2 text-sm text-gray-400"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.4zM5.3 7.4a2 2 0 1 1 0-4.1 2 2 0 0 1 0 4.1zM7.1 20.4H3.6V9h3.5zM22.2 0H1.8C.8 0 0 .8 0 1.8v20.4c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V1.8c0-1-.8-1.8-1.8-1.8z"></path></svg><a href="https://www.linkedin.com/in/mkczarkowski/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Marcin Czarkowski</a></li></ul></div></div><div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"><p class="text-xs text-gray-500">© <!-- -->2026<!-- --> Przeprogramowani.pl — <!-- -->Szersze spojrzenie na programowanie</p><p class="text-xs text-gray-600">Zbudowane z <span class="text-main">Astro</span>, <span class="text-main">React</span> i<!-- --> <span class="text-main">Tailwind</span> — gotowe na Cloudflare</p></div></div></footer> </body></html>
+[0m
+[0m$ [0mrg -o '<title>[^<]+</title>|fonts.googleapis.com[^"]+|name="description" content="[^"]+"' dist/index.html dist/o-nas/index.html dist/podcast/index.html dist/youtube/index.html | sort -u
+dist/index.html:<title>Przeprogramowani — Szersze spojrzenie na programowanie</title>
+dist/index.html:fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=swap
+dist/index.html:name="description" content="Kursy, podcasty i YouTube dla ambitnych programistów. Łączymy świat programowania, biznesu i rozwoju w epoce AI."
+dist/o-nas/index.html:<title>O nas — Przeprogramowani</title>
+dist/o-nas/index.html:fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=swap
+dist/o-nas/index.html:name="description" content="Poznaj Przeprogramowanych: Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju osobistego."
+dist/podcast/index.html:<title>Podcasty — Przeprogramowani</title>
+dist/podcast/index.html:fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=swap
+dist/podcast/index.html:name="description" content="Słuchaj naszych podcastów o technologii, AI i programowaniu: Opanuj.AI Podcast oraz Przeprogramowani ft. Gość. Ponad 7800 słuchaczy."
+dist/youtube/index.html:<title>YouTube — Przeprogramowani</title>
+dist/youtube/index.html:fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Sora:wght@600;700;800&display=swap
+dist/youtube/index.html:name="description" content="Kanał YouTube Przeprogramowani: 411 filmów o programowaniu, AI i rozwoju kariery dla ponad 20 tysięcy subskrybentów."
+[0m
+HTML wygląda dobrze. Odbudowuję po poprawce Hero i robię finalną weryfikację.
+[0m$ [0mnpm run build 2>&1 | tail -12
+19:45:52 ▶ src/pages/index.astro
+19:45:52   └─ /index.html (+13ms) 
+19:45:52 ▶ src/pages/o-nas.astro
+19:45:52   └─ /o-nas/index.html (+2ms) 
+19:45:52 ▶ src/pages/podcast.astro
+19:45:52   └─ /podcast/index.html (+3ms) 
+19:45:52 ▶ src/pages/youtube.astro
+19:45:52   └─ /youtube/index.html (+2ms) 
+19:45:52 ✓ Completed in 30ms.
+
+19:45:52 [build] 4 page(s) built in 812ms
+19:45:52 [build] Complete!
+[0m
+Finalna weryfikacja: typecheck, hydracja Headera i kompletny test serwowania.
+[0m$ [0mnpm run typecheck 2>&1 | tail -4 && rg -c "astro-island" dist/index.html && rg -o 'client="load"' dist/index.html | head -2
+- 0 errors
+- 0 warnings
+- 0 hints
+
+1
+client="load"
+[0m
+[0m$ [0mnpx astro preview --port 4391 > /tmp/astro-preview2.log 2>&1 &
+SERVER_PID=$!
+sleep 3
+node -e "
+const check = (html, needles) => {
+  const missing = needles.filter(n => !html.includes(n));
+  return missing;
+};
+(async () => {
+  const tests = {
+    '/': ['Szersze spojrzenie', 'Edukacja technologiczna w epoce AI', '10xDevs 4.0', 'Opanuj Frontend: AI Edition', 'Opanuj TypeScript', 'Plan mode to przeszłość', 'Wiktoria Sitko', 'Event Storming', 'Zaufali nam', 'Przeprogramowany'],
+    '/o-nas': ['Przemek Smyrdek', 'Marcin Czarkowski', 'Witaj na Przeprogramowanych', 'SmartRecruiters', '7 lat', 'Autodesk'],
+    '/podcast': ['Opanuj.AI Podcast', 'Przeprogramowani ft. Gość', 'Spotify', 'Apple Podcasts', 'Google Podcasts', 'RSS', 'AI-Native SDLC', 'Tomasz Ducin'],
+    '/youtube': ['20,9 tys.', 'Subskrybuj kanał', 'GPT-5.6 Sol', 'Iluzja nauki', 'i.ytimg.com'],
+  };
+  let ok = true;
+  for (const [path, needles] of Object.entries(tests)) {
+    const res = await fetch('http://localhost:4391' + path);
+    const html = await res.text();
+    const missing = check(html, needles);
+    if (res.status !== 200 || missing.length) { ok = false; console.log('FAIL', path, res.status, 'missing:', missing); }
+    else console.log('PASS', path, '(' + needles.length + ' checks)');
+  }
+  process.exit(ok ? 0 : 1);
+})();
+"
+RESULT=$?
+kill $SERVER_PID 2>/dev/null
+exit $RESULT
+PASS / (10 checks)
+PASS /o-nas (6 checks)
+PASS /podcast (8 checks)
+PASS /youtube (5 checks)
+[0m
+Wszystkie testy przeszły. Sprzątam procesy i podsumowuję.
+[0m$ [0mps aux | rg "astro" | rg -v rg | rg "$(pwd | sed 's|/Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-2||')" 2>/dev/null; ps aux | rg "4390|4391|astro preview" | rg -v rg; echo "cleanup check done"
+psmyrdek         31713   0.0  0.2 830240512  71792   ??  SNs  Sat03PM   2:26.69 /Users/psmyrdek/.nvm/versions/node/v22.22.0/bin/node /Users/psmyrdek/dev/przeprogramowani-edu/node_modules/.pnpm/astro@7.1.6_@emnapi+core@2.0.0-alpha.3_@emnapi+runtime@2.0.0-alpha.3_@types+node@22.20._ac03e344c0ffdad662244a7a78108682/node_modules/astro/bin/astro.mjs dev --json
+psmyrdek         51320   0.0  0.4 520778976 134592   ??  SN    7:45PM   0:00.75 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+psmyrdek         49769   0.0  0.4 520778608 133936   ??  SN    7:45PM   0:00.73 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+psmyrdek         48928   0.0  0.4 520776576 132544   ??  SN    7:44PM   0:00.74 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+psmyrdek         51320   0.0  0.4 520778976 134592   ??  SN    7:45PM   0:00.75 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+psmyrdek         49769   0.0  0.4 520778608 133936   ??  SN    7:45PM   0:00.73 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+psmyrdek         48928   0.0  0.4 520776576 132544   ??  SN    7:44PM   0:00.74 node /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/.bin/astro preview
+cleanup check done
+[0m
+[0m# [0mTodos
+[✓] Research: gather data from przeprogramowani.pl (done: main, o-nas, podcast, YouTube, RSS)
+[✓] Check brand colors of przeprogramowani.pl
+[✓] Scaffold Astro + React + Tailwind project (configs, package.json, install)
+[✓] Create data modules (courses, podcasts, videos, about, brands)
+[✓] Build shared layout + components (Header, Footer, cards, CTA)
+[✓] Build pages: Home (hero z kursami), O nas, Podcast, YouTube
+[✓] Cloudflare deploy config (wrangler.toml, _headers, README)
+[✓] Build, verify output, fix issues
+[0m
+Pozostałe procesy należą do innych katalogów (przeprogramowani-edu, attempt-1) — moje serwery są zatrzymane. Aktualizuję listę zadań.
+Gotowe. Strona Przeprogramowani.pl zbudowana w `eval-attempts/glm-53-attempt-2/` na podstawie danych pobranych z sieci (przeprogramowani.pl, RSS Spotify, kanał YouTube).
+
+**4 strony** (wszystkie responsywne, po polsku, ciemny motyw brandu — Sora/Inter/JetBrains Mono, mintowy akcent):
+- **`/`** — hero z nagłówkiem „Szersze spojrzenie na programowanie", statystykami oraz **sekcją kursów w hero**: 10xDevs 4.0 (z badge'em „Nowość"), Opanuj Frontend: AI Edition i Opanuj TypeScript; niżej najnowsze odcinki podcastów, 6 ostatnich filmów, założyciele, marquee „Zaufali nam" i newsletter 3-2-1
+- **`/o-nas`** — misja, karty założycieli (Przemek, Marcin z bio i LinkedIn), filary działalności, marki, kontakt
+- **`/podcast`** — oba podcasty (Opanuj.AI, ft. Gość) z 6 najnowszymi odcinkami każdy (realne tytuły, czasy, linki) + platformy słuchania
+- **`/youtube`** — 12 ostatnich filmów z miniaturami, wyświetleniami i datami + statystyki kanału (20,9 tys. subów, 411 filmów)
+
+**Stack:** Astro 5 (static) + React 19 (Header z mobilnym menu — `client:load`; karty, sekcje) + Tailwind 3.4. Weryfikacja: build ✅, `astro check` 0 errors ✅, `tsc --noEmit` ✅, wszystkie trasy 200 z testami treści ✅.
+
+**Cloudflare:** w 100% statyczna (`dist/`), `wrangler.toml`, `public/_headers` (cache immutable dla `/_astro/*`), sitemap/robots, README z instrukcjami deploy (Git integration lub `npm run deploy` przez Wrangler).

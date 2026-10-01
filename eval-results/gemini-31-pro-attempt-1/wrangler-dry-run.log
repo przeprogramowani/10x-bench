@@ -1,0 +1,60 @@
+$ npm ci --no-audit --no-fund
+added 385 packages in 3s
+[exit 0]$ npm run build
+> gemini-31-pro-attempt-1@0.0.1 build
+> astro build
+
+20:46:03 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:03 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+20:46:03 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+20:46:03 [content] Syncing content
+20:46:03 [content] Synced content
+20:46:03 [types] Generated 86ms
+20:46:03 [build] output: "static"
+20:46:03 [build] mode: "server"
+20:46:03 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4M4ODk/site/dist/
+20:46:03 [build] adapter: @astrojs/cloudflare
+20:46:03 [build] Collecting build info...
+20:46:03 [build] ✓ Completed in 95ms.
+20:46:03 [build] Building server entrypoints...
+20:46:04 [vite] ✓ built in 652ms
+20:46:04 [build] ✓ Completed in 667ms.
+
+ building client (vite) 
+20:46:04 [vite] transforming...
+20:46:04 [vite] ✓ 39 modules transformed.
+20:46:04 [vite] rendering chunks...
+20:46:04 [vite] computing gzip size...
+20:46:04 [vite] dist/_astro/jsx-runtime.D_zvdyIk.js    0.73 kB │ gzip:  0.46 kB
+20:46:04 [vite] dist/_astro/Courses.BeCj3OCV.js        1.64 kB │ gzip:  0.78 kB
+20:46:04 [vite] dist/_astro/content.CSKbfzZe.js        1.73 kB │ gzip:  0.89 kB
+20:46:04 [vite] dist/_astro/About.mlakkECM.js          1.76 kB │ gzip:  0.84 kB
+20:46:04 [vite] dist/_astro/Hero.Drs3ipnH.js           2.06 kB │ gzip:  0.97 kB
+20:46:04 [vite] dist/_astro/YouTube.A8x7CxEQ.js        2.07 kB │ gzip:  0.94 kB
+20:46:04 [vite] dist/_astro/Podcast.CoDa7Q-x.js        2.08 kB │ gzip:  0.89 kB
+20:46:04 [vite] dist/_astro/Navigation.DetBG_YJ.js     2.59 kB │ gzip:  1.01 kB
+20:46:04 [vite] dist/_astro/index.DiEladB3.js          7.85 kB │ gzip:  3.05 kB
+20:46:04 [vite] dist/_astro/client.Dc9Vh3na.js       186.62 kB │ gzip: 58.54 kB
+20:46:04 [vite] ✓ built in 251ms
+
+ prerendering static routes 
+20:46:04 ▶ src/pages/index.astro
+20:46:04   └─ /index.html (+14ms) 
+20:46:04 ✓ Completed in 49ms.
+
+20:46:04 [build] Rearranging server assets...
+20:46:04 [build] Server built in 1.07s
+20:46:04 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4M4ODk/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+
+Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+✨ Read 35 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4M4ODk/site/dist
+Total Upload: 1008.20 KiB / gzip: 201.36 KiB
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+
+--dry-run: exiting now.
+[exit 0]

@@ -1,0 +1,43 @@
+$ npm ci --no-audit --no-fund
+added 370 packages in 3s
+[exit 0]$ npm run build
+> build
+> astro check && astro build
+
+20:47:08 [types] Generated 80ms
+20:47:08 [check] Getting diagnostics for Astro files in /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-t0sqlk/site...
+Result (15 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+20:47:10 [types] Generated 17ms
+20:47:10 [build] output: "static"
+20:47:10 [build] mode: "static"
+20:47:10 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-t0sqlk/site/dist/
+20:47:10 [build] Collecting build info...
+20:47:10 [build] ✓ Completed in 26ms.
+20:47:10 [build] Building static entrypoints...
+20:47:10 [vite] ✓ built in 93ms
+20:47:10 [vite] ✓ built in 88ms
+20:47:10 [build] Rearranging server assets...
+
+ generating static routes 
+20:47:10   ├─ /404.html (+52ms) 
+20:47:10   ├─ /o-nas/index.html (+5ms) 
+20:47:10   ├─ /podcast/index.html (+4ms) 
+20:47:10   ├─ /youtube/index.html (+4ms) 
+20:47:10   ├─ /index.html (+5ms) 
+20:47:10 ✓ Completed in 97ms.
+
+20:47:10 [build] ✓ Completed in 296ms.
+20:47:10 [build] 5 page(s) built in 322ms
+20:47:10 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-t0sqlk/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 15 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-t0sqlk/site/dist
+Total Upload: 0.37 KiB / gzip: 0.26 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

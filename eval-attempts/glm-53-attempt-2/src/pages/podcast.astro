@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import PodcastShowSection from '../components/PodcastShowSection';
+import PlatformLinks from '../components/PlatformLinks';
+import NewsletterCta from '../components/NewsletterCta';
+import { PODCAST_SHOWS } from '../data/podcasts';
+import { SITE } from '../data/site';
+---
+
+<Base
+  title={`Podcasty — ${SITE.name}`}
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu: Opanuj.AI Podcast oraz Przeprogramowani ft. Gość. Ponad 7800 słuchaczy."
+>
+  <section class="relative overflow-hidden bg-grid">
+    <div
+      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[20rem] rounded-full bg-main/10 blur-[110px] pointer-events-none"
+      aria-hidden="true"
+    ></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-main">
+          <span class="w-8 h-1 rounded-full bg-main"></span>
+          Podcasty
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold font-heading tracking-tight text-white leading-tight">
+          Słuchaj podcastów o technologii, <span class="text-gradient">AI i programowaniu</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
+          Ponad 7800 słuchaczy łącznie. Opanuj.AI Podcast to comiesięczne podsumowanie najważniejszych
+          wydarzeń ze świata AI, a Przeprogramowani ft. Gość to rozmowy dla głodnych wiedzy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-16 sm:pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <PlatformLinks />
+      {PODCAST_SHOWS.map((show) => <PodcastShowSection show={show} />)}
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NewsletterCta />
+    </div>
+  </section>
+</Base>

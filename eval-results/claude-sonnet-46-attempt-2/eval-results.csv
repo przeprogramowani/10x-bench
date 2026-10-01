@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,17.02.2026 21:44,N/A,17.02.2026 21:44
 Local build,1,1,Build successful (astro build completed in 1.02s, 4 pages built)
 Manual testing,1,1,Dev server running on port 4322, all pages accessible and returning 200, navigation/styles/content working
-Tech stack,0,1,Tailwind CSS 3.4 installed instead of required Tailwind CSS 4; Cloudflare adapter installed in package.json and imported in astro.config.mjs but not configured as adapter (output: static with no adapter setting)
+Tech stack,0.25,0.5,v2: latest stable majors at run date 2026-02-17; astro 5 (latest); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,Page exists at /o-nas (200). Team members correct (Przemek Smyrdek, Marcin Czarkowski). DAZN/Cabify and SmartRecruiters mentioned. However bios are simplified - Marcin's role listed as Lead Technical Architect instead of Lead techniczny Platformy Frontendowej. Missing key details: tech stacks, Open Source contributions, publications, conference speaking, course assignments
 Podcast page,0.5,1,Page exists at /podcast (200). Both Przeprogramowani and Opanuj.AI podcasts displayed. Critical: Opanuj.AI episodes use wrong Spotify URL (3yVvOAXSYq6sQB02w4A4wo - Przeprogramowani URL) instead of correct 3D6LmchBdoqL2sWkQjvWOy. Episode data appears hallucinated (titles/guests/dates not verifiable)
 YouTube page,0.5,1,Page exists at /youtube (200). Videos have no YouTube video IDs - all links go to channel URL. Placeholder thumbnails. On index.astro YouTube section uses dQw4w9WgXcQ (Rick Roll) for thumbnails. Content is effectively mocked

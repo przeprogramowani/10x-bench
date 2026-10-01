@@ -1,0 +1,51 @@
+---
+import { SOCIALS } from "../data/site";
+import { IconArrowRight } from "./Icons";
+---
+
+<section class="py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 px-6 py-14 sm:px-12 sm:py-16">
+      <div class="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-violet-600/20 blur-3xl" aria-hidden="true"></div>
+      <div class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-fuchsia-600/20 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-2xl text-center">
+        <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">Newsletter</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Przeprogramowany Newsletter
+        </h2>
+        <p class="mt-4 text-zinc-400">
+          Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1:
+        </p>
+
+        <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+          <li class="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p class="text-2xl font-extrabold text-gradient">3</p>
+            <p class="mt-1 text-sm text-zinc-300">rekomendacje techniczne</p>
+          </li>
+          <li class="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p class="text-2xl font-extrabold text-gradient">2</p>
+            <p class="mt-1 text-sm text-zinc-300">rekomendacje rozwojowe</p>
+          </li>
+          <li class="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
+            <p class="text-2xl font-extrabold text-gradient">1</p>
+            <p class="mt-1 text-sm text-zinc-300">bonus niespodzianka</p>
+          </li>
+        </ul>
+
+        <a
+          href={SOCIALS.newsletter}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-600/25 transition hover:opacity-90"
+        >
+          Zapisz się za darmo
+          <IconArrowRight size={16} />
+        </a>
+        <p class="mt-3 text-xs text-zinc-500">
+          Nie przegapisz też nowości od Przeprogramowanych i ofert specjalnych.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

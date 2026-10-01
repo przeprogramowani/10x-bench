@@ -1,0 +1,58 @@
+$ npm ci --no-audit --no-fundnpm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 395 packages in 3s
+[exit 0]$ npm run build
+> gpt-53-codex-attempt-3@0.0.1 build
+> astro build
+
+20:46:28 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:28 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+20:46:28 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+20:46:28 [content] Syncing content
+20:46:28 [content] Synced content
+20:46:28 [types] Generated 92ms
+20:46:28 [build] output: "static"
+20:46:28 [build] mode: "server"
+20:46:28 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-7bOZ9h/site/dist/
+20:46:28 [build] adapter: @astrojs/cloudflare
+20:46:28 [build] Collecting build info...
+20:46:28 [build] ✓ Completed in 104ms.
+20:46:28 [build] Building server entrypoints...
+20:46:29 [vite] ✓ built in 874ms
+20:46:29 [build] ✓ Completed in 892ms.
+
+ building client (vite) 
+20:46:29 [vite] transforming...
+20:46:29 [vite] ✓ 28 modules transformed.
+20:46:29 [vite] rendering chunks...
+20:46:29 [vite] computing gzip size...
+20:46:29 [vite] dist/_astro/VideoGallery.D0hWaASm.js    3.72 kB │ gzip:  1.46 kB
+20:46:29 [vite] dist/_astro/index.DiEladB3.js           7.85 kB │ gzip:  3.05 kB
+20:46:29 [vite] dist/_astro/client.Dc9Vh3na.js        186.62 kB │ gzip: 58.54 kB
+20:46:29 [vite] ✓ built in 249ms
+
+ prerendering static routes 
+20:46:29 ▶ src/pages/o-nas.astro
+20:46:29   └─ /o-nas/index.html (+402ms) 
+20:46:29 ▶ src/pages/podcast.astro
+20:46:29   └─ /podcast/index.html (+1ms) 
+20:46:29 ▶ src/pages/youtube.astro
+20:46:29   └─ /youtube/index.html (+6ms) 
+20:46:29 ▶ src/pages/index.astro
+20:46:29   └─ /index.html (+1ms) 
+20:46:29 ✓ Completed in 432ms.
+
+20:46:29 [build] Rearranging server assets...
+20:46:29 [build] Server built in 1.69s
+20:46:29 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-7bOZ9h/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 37 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-7bOZ9h/site/dist
+Total Upload: 1025.34 KiB / gzip: 204.23 KiB
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+
+--dry-run: exiting now.
+[exit 0]

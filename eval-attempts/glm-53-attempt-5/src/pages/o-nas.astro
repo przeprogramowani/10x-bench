@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StatsBar from '../components/StatsBar.astro';
+import { founders, values, activities } from '../data/about';
+import { stats, brands, site } from '../data/site';
+import BrandMarquee from '../components/BrandMarquee';
+---
+
+<BaseLayout
+  title="O nas"
+  description="Poznaj Przeprogramowanych — łączymy świat programowania, biznesu i rozwoju. Przemek Smyrdek i Marcin Czarkowski."
+>
+  <section class="relative overflow-hidden pt-16">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 blur-3xl"
+      aria-hidden="true"
+      style="height: 450px; background: radial-gradient(55% 50% at 50% 0%, rgba(249,115,22,0.13) 0%, transparent 70%);"
+    >
+    </div>
+
+    <div class="container-site relative py-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-brand-400">
+          O nas
+        </span>
+        <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Łączymy świat programowania, biznesu i rozwoju
+        </h1>
+        <p class="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
+          Witaj na Przeprogramowanych! To miejsce, w którym programowanie spotyka się z rozwojem
+          osobistym. Tworzymy treści, kursy i narzędzia, które pomagają programistom rozwijać się
+          na wielu płaszczyznach — od technicznych deep-dive'ów po rozmowy o karierze.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Założyciele -->
+  <section class="container-site pb-20">
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        founders.map((founder) => (
+          <article class="group flex flex-col gap-6 rounded-3xl border border-zinc-800 bg-zinc-900/60 p-7 transition hover:border-zinc-600 sm:flex-row sm:p-8">
+            <div class="shrink-0">
+              <img
+                src={founder.photo}
+                alt={`Zdjęcie profilowe — ${founder.name}`}
+                width={128}
+                height={128}
+                loading="lazy"
+                class="h-32 w-32 rounded-2xl object-cover ring-2 ring-zinc-800 transition group-hover:ring-brand-500/50"
+              />
+            </div>
+            <div>
+              <h2 class="font-display text-2xl font-bold tracking-tight text-white">
+                {founder.name}
+              </h2>
+              <p class="mt-1 text-sm font-semibold text-brand-400">{founder.role}</p>
+              <div class="mt-4 space-y-3">
+                {founder.bio.map((p) => (
+                  <p class="text-sm leading-relaxed text-zinc-400">{p}</p>
+                ))}
+              </div>
+              <a
+                href={founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-300 transition hover:text-white"
+              >
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Wartości -->
+  <section class="border-y border-zinc-800/80 bg-zinc-900/30 py-20">
+    <div class="container-site">
+      <SectionHeading
+        align="center"
+        eyebrow="W czym wierzymy"
+        title="Zyskaj szersze spojrzenie na programowanie"
+        text="Najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes, na ludzi i na siebie."
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          values.map((value) => (
+            <div class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition hover:border-zinc-600">
+              <span class="text-3xl" aria-hidden="true">{value.icon}</span>
+              <h3 class="mt-4 font-display text-lg font-bold text-white">{value.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-400">{value.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Co robimy -->
+  <section class="container-site py-20">
+    <SectionHeading
+      eyebrow="Co robimy"
+      title="Edukacja technologiczna w epoce AI"
+      text="Od technicznych deep-dive'ów po rozmowy o karierze i rozwoju — na wielu płaszczyznach."
+    />
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        activities.map((a) => (
+          <div class="group flex flex-col justify-between rounded-2xl border border-zinc-800 bg-zinc-900/60 p-7 transition hover:border-zinc-600">
+            <div>
+              <h3 class="font-display text-xl font-bold text-white">{a.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-zinc-400">{a.text}</p>
+            </div>
+            <a
+              href={a.href}
+              {...(a.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              class="mt-5 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-brand-400 transition hover:text-brand-300"
+            >
+              {a.linkLabel}
+              <span class="transition-transform group-hover:translate-x-1" aria-hidden>→</span>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16">
+      <StatsBar stats={stats} />
+    </div>
+  </section>
+
+  <!-- Zaufali nam + kontakt -->
+  <section class="border-t border-zinc-800/80 bg-zinc-900/30 py-16">
+    <div class="container-site">
+      <p class="text-center text-sm font-semibold uppercase tracking-widest text-zinc-500">
+        Zaufali nam
+      </p>
+      <div class="mt-8">
+        <BrandMarquee client:load brands={brands} />
+      </div>
+
+      <div class="mx-auto mt-14 max-w-xl text-center">
+        <h2 class="font-display text-2xl font-bold text-white">Chcesz nawiązać współpracę?</h2>
+        <p class="mt-3 text-sm text-zinc-400">
+          Prowadzimy szkolenia i warsztaty dla firm oraz tworzymy treści we współpracy z partnerami.
+        </p>
+        <a href={`mailto:${site.email}`} class="btn-primary mt-6">
+          {site.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

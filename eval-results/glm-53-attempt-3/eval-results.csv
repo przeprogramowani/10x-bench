@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,5min 5s,N/A,5min 5s (interactive OpenCode 1.18.34 session; two earlier opencode run sessions hit the output-length limit with no files)
+Test run,1.10.2026 21:39,N/A,1.10.2026 21:39
+API cost,$0.5108,N/A,"$0.5108 (in 131859 / out 28402 / cache 2011904 / 1 session: ses_f075fe700ffew9zizQYlGc0yRN; excludes 2 failed opencode run sessions cut off at the output-length limit: $0.1441 + $0.1364)"
+Local build,1,1,npm ci + npm run build succeeded; 5 static pages built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
+O nas page,0.5,1,/o-nas returns HTTP 200 and shows both founders; Przemek's card mentions DAZN/Cabify and Marcin's mentions SmartRecruiters and the Opanuj AI Podcast. The founder bios in src/data/content.ts leave out their course assignments (Opanuj JavaScript for Przemek; 10xDevs for Marcin) and are cut down from the context file (no Magazyn Programista/Increment publications; no line about refactoring legacy code and writing tests).
+Podcast page,0.5,1,/podcast returns HTTP 200 and lists 6 real-looking episodes for each of Opanuj.AI and Przeprogramowani ft. Gość; the sampled episode URLs resolve with 200 on creators.spotify.com. Neither context show ID (3yVvOAXSYq6sQB02w4A4wo; 3D6LmchBdoqL2sWkQjvWOy) appears anywhere; the only Spotify link (podcastPlatforms) points to an unknown show 4qHUZJpeBK8Ij9e2wTVm2o that Spotify oEmbed does not return; the RSS link anchor.fm/s/22544b7c returns Not Found.
+YouTube page,1,1,/youtube returns HTTP 200 and shows 6 unique video IDs (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg); YouTube oEmbed returns 200 for all of them with author Przeprogramowani and titles that match. There are no placeholder or rickroll IDs and the channel link is youtube.com/c/przeprogramowani.
+Kursy section,1,1,"The index.astro hero features 10xDevs (heroCourse; links to 10xdevs.pl); the courses section has Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules; ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19), which matches the context."
+Consistent UI,0.5,1,Podcast episodes lack thumbnails per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"BaseLayout.astro wraps every page and sets a per-page title, meta description, og:title/description/site_name/locale, twitter:card and Organization JSON-LD; the rendered HTML confirms distinct values on /, /o-nas, /podcast and /youtube, and the copy matches the context (tagline; mission). Minor gaps: no canonical, og:url or og:image even though twitter:card is summary_large_image."
+Penalty,0,N/A,No penalty applied

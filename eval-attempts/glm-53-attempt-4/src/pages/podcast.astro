@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PodcastTabs from "../components/PodcastTabs";
+import SectionHeading from "../components/SectionHeading.astro";
+import Newsletter from "../components/Newsletter.astro";
+import { IconExternalLink } from "../components/Icons";
+import { PODCAST_PLATFORMS } from "../data/podcast";
+---
+
+<BaseLayout
+  title="Podcasty — Przeprogramowani"
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu. Opanuj.AI Podcast i Przeprogramowani ft. Gość — ponad 7800 słuchaczy."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/40 to-zinc-950" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-violet-600/20 blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">Podcasty</p>
+        <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+          Słuchaj nas o technologii, <span class="text-gradient">AI</span> i programowaniu
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+          Dwa pokazy, ponad 7800 słuchaczy. Comiesięczne podsumowania świata AI
+          oraz rozmowy z najciekawszymi osobami z branży IT.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ODCINKI -->
+  <section class="pb-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <PodcastTabs client:visible />
+    </div>
+  </section>
+
+  <!-- PLATFORMY -->
+  <section class="border-t border-white/5 bg-zinc-950/60 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Platformy"
+        title="Jesteśmy na twojej ulubionej platformie"
+      />
+      <div class="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+        {PODCAST_PLATFORMS.map((platform) => (
+          <a
+            href={platform.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm font-medium text-zinc-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06]"
+          >
+            {platform.name}
+            <IconExternalLink size={16} className="text-zinc-500 transition-colors group-hover:text-fuchsia-400" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

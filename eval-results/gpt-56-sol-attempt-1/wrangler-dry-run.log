@@ -1,0 +1,59 @@
+$ npm ci --no-audit --no-fund
+added 380 packages in 4s
+[exit 0]$ npm run build
+> przeprogramowani-web@1.0.0 build
+> astro check && astro build
+
+20:46:56 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+20:46:56 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:56 [types] Generated 230ms
+20:46:56 [check] Getting diagnostics for Astro files in /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4HF9jn/site...
+Result (17 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+20:46:59 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+20:46:59 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:59 [types] Generated 23ms
+20:46:59 [build] output: "static"
+20:46:59 [build] mode: "static"
+20:46:59 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4HF9jn/site/dist/
+20:46:59 [build] adapter: @astrojs/cloudflare
+20:46:59 [build] Collecting build info...
+20:46:59 [build] ✓ Completed in 40ms.
+20:46:59 [build] Building static entrypoints...
+20:46:59 [vite] ✓ built in 216ms
+20:46:59 [vite] ✓ built in 89ms
+20:46:59 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9230 instead
+
+
+ generating static routes 
+✨ Parsed 3 valid header rules.
+20:47:00   ├─ /o-nas/index.html (+17ms) 
+20:47:00   ├─ /podcast/index.html (+7ms) 
+20:47:00   ├─ /youtube/index.html (+10ms) 
+20:47:00   ├─ /index.html (+9ms) 
+20:47:00 ✓ Completed in 280ms.
+
+20:47:00 [build] ✓ Completed in 611ms.
+20:47:00 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
+20:47:00 [build] 4 page(s) built in 656ms
+20:47:00 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4HF9jn/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/client/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+✨ Read 32 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-4HF9jn/site/dist/client
+Total Upload: 0.37 KiB / gzip: 0.26 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+
+--dry-run: exiting now.
+[exit 0]

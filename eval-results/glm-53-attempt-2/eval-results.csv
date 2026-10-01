@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,5min 1s,N/A,5min 1s
+Test run,1.10.2026 21:39,N/A,1.10.2026 21:39
+API cost,$0.9782,N/A,$0.9782 (in 106322 / out 34213 / cache 4234432 / 2 sessions)
+Local build,1,1,npm ci + npm run build succeeded; 4 static pages built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"src/pages/o-nas.astro returns 200 and src/data/about.ts names both founders with the key details (Przemek: DAZN/Cabify; Marcin: SmartRecruiters) and correct LinkedIn URLs. The course assignments are missing: neither 'Opanuj JavaScript' for Przemek nor '10xDevs' for Marcin appears, and the bios paraphrase the context and drop Magazyn Programista/Increment and the legacy/tests line."
+Podcast page,0.5,1,"/podcast returns 200 and shows both shows (Opanuj.AI and Przeprogramowani ft. Gość) with 6 episodes each; all 12 podcasters.spotify.com episode URLs resolve with 200 (a fake one returns 404), so the episodes look real. Neither context Spotify ID (3yVvOAXSYq6sQB02w4A4wo; 3D6LmchBdoqL2sWkQjvWOy) appears anywhere, and the Spotify platform link in src/data/podcasts.ts uses the wrong ID 4qHUZJpeBK8Ij9e2wTVm2o, which returns 404."
+YouTube page,1,1,"/youtube returns 200 and the channel URL youtube.com/c/przeprogramowani matches the context. All 12 IDs in src/data/videos.ts are unique, have no placeholders and pass oEmbed with 200 and author 'Przeprogramowani'; the only title mismatch is uM0gFo_coEY, which the site shows as an English version of the real Polish title."
+Kursy section,1,1,"The Hero.tsx #kursy section, built from src/data/courses.ts, features 10xDevs first and highlighted (https://10xdevs.pl) on the home page. It also lists Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules; ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19), consistent with the context."
+Consistent UI,0.5,1,Minor small component artifacts per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"src/layouts/Base.astro wraps all 4 pages and outputs a per-page title and description plus og:title/description/image/type/locale/site_name and twitter card tags, confirmed in the rendered HTML. The content matches the context (tagline 'Szersze spojrzenie na programowanie'; mission wording); there are only minor gaps (no canonical; no og:url)."
+Penalty,0,N/A,No penalty applied

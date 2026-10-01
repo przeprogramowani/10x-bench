@@ -3,7 +3,8 @@ Task completion time,9min 36s,N/A,9min 36s
 Test run,9.02.2026 16:40,N/A,9.02.2026 16:40
 Local build,1,1,Build successful with Astro 5 static output
 Manual testing,1,1,All pages accessible and return 200; navigation styles and content work properly
-Tech stack,0.5,1,Astro 5 + React 19 + Tailwind CSS 4 installed; @astrojs/cloudflare in package.json but NOT configured in astro.config.mjs (output: static with no adapter import)
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-09; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0,0.5,"v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; main=dist/_worker.js/index.js; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run failed (wrangler 4.146.0): [ERROR] The entry-point file at ""dist/_worker.js/index.js"" was not found."
 O nas page,0.5,1,Page exists and returns 200; team member names correct; bios significantly simplified - missing key details (Przemek: conference speaker roles 4Developers/ReactiveConf/InfoShare publications course assignment; Marcin: neuroscience passion PHP experience most popular LLM podcast claim course assignment); no contributors section; no LinkedIn URLs
 Podcast page,0.5,1,Both Przeprogramowani ft. Gosc and Opanuj.AI podcasts displayed; episode data appears fabricated/hallucinated (no real episode IDs dates or Spotify episode URLs); Opanuj.AI Spotify URL (3D6LmchBdoqL2sWkQjvWOy) missing - only Przeprogramowani Spotify link present
 YouTube page,0.5,1,Page exists and returns 200; channel URL correct; all video data is mocked with no real YouTube video IDs; titles and descriptions appear hallucinated/fabricated

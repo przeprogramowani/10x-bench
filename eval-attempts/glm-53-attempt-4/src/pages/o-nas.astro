@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Stats from "../components/Stats.astro";
+import BrandsMarquee from "../components/BrandsMarquee.astro";
+import Newsletter from "../components/Newsletter.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import {
+  IconGraduationCap,
+  IconLinkedin,
+  IconMail,
+  IconMic,
+  IconSparkles,
+} from "../components/Icons";
+import { FOUNDERS, SITE } from "../data/site";
+
+const activities = [
+  {
+    icon: IconMail,
+    title: "Newsletter „Przeprogramowany”",
+    description:
+      "Co tydzień w piątek porcja wartościowych treści w formacie 3-2-1: trzy rekomendacje techniczne, dwie rozwojowe i bonus niespodzianka.",
+  },
+  {
+    icon: IconMic,
+    title: "Podcasty",
+    description:
+      "Opanuj.AI Podcast — comiesięczne podsumowanie świata AI — oraz Przeprogramowani ft. Gość, rozmowy z najciekawszymi osobami z branży IT.",
+  },
+  {
+    icon: IconGraduationCap,
+    title: "Kursy i szkolenia",
+    description:
+      "10xDevs, Opanuj Frontend: AI Edition i Opanuj TypeScript — topowe programy edukacyjne dla ambitnych programistów.",
+  },
+  {
+    icon: IconSparkles,
+    title: "Narzędzia",
+    description:
+      "10xRules.ai — platforma do budowania osobistych reguł AI i zarządzania promptami zespołowymi.",
+  },
+];
+---
+
+<BaseLayout
+  title="O nas — Przeprogramowani"
+  description="Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Poznaj Przemka Smyrdka i Marcina Czarkowskiego — twórców kursów, podcastów i społeczności ambitnych programistów."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/40 to-zinc-950" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-violet-600/20 blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">O nas</p>
+        <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl">
+          Łączymy świat programowania, biznesu i rozwoju
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z
+          rozwojem osobistym.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISJA -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid items-start gap-10 lg:grid-cols-2">
+        <SectionHeading
+          eyebrow="Witaj na Przeprogramowanych!"
+          title="Programowanie spotyka się z rozwojem osobistym"
+          align="left"
+        />
+        <div class="space-y-5 text-base leading-relaxed text-zinc-400">
+          <p>
+            Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na
+            architekturę, na biznes, na ludzi i na siebie.
+          </p>
+          <p>
+            Tworzymy treści, kursy i narzędzia, które pomagają programistom
+            rozwijać się na wielu płaszczyznach. Od technicznych deep-dive’ów
+            po rozmowy o karierze i rozwoju.
+          </p>
+          <p class="border-l-2 border-fuchsia-500 pl-4 text-lg font-medium text-zinc-200">
+            Zyskaj szersze spojrzenie na programowanie.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAŁOŻYCIELE -->
+  <section class="border-t border-white/5 bg-zinc-950/60 py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Założyciele"
+        title="Poznaj Przeprogramowanych"
+        subtitle="Duety, który od 2019 roku tworzy treści i programy edukacyjne dla polskich programistów."
+      />
+      <div class="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+        {FOUNDERS.map((founder) => (
+          <article class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]">
+            <div class="flex items-center gap-4">
+              <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-lg font-bold text-white">
+                {founder.initials}
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-white">{founder.name}</h3>
+                <p class="text-sm text-zinc-400">{founder.role}</p>
+              </div>
+            </div>
+            <p class="mt-5 text-sm leading-relaxed text-zinc-400">{founder.bio}</p>
+            <a
+              href={founder.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto inline-flex w-fit items-center gap-2 pt-6 text-sm font-semibold text-fuchsia-400 transition-colors hover:text-fuchsia-300"
+            >
+              <IconLinkedin size={16} />
+              LinkedIn
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CZYM SIĘ ZAJMUJEMY -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Co robimy"
+        title="Treści, kursy i narzędzia"
+        subtitle="Wszystko, co pomaga programistom rozwijać się na wielu płaszczyznach."
+      />
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {activities.map((activity) => (
+          <article class="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl border border-fuchsia-400/20 bg-fuchsia-400/10 text-fuchsia-300">
+              <activity.icon size={20} />
+            </span>
+            <h3 class="mt-5 text-base font-bold text-white">{activity.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-400">
+              {activity.description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STATYSTYKI + MARKI -->
+  <Stats />
+  <section class="py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="mb-8 text-center font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+        Zaufali nam
+      </p>
+      <BrandsMarquee />
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="border-t border-white/5 bg-zinc-950/60 py-16">
+    <div class="mx-auto max-w-2xl px-4 text-center sm:px-6">
+      <h2 class="text-2xl font-bold text-white sm:text-3xl">
+        Chcesz nawiązać współpracę?
+      </h2>
+      <p class="mt-3 text-zinc-400">
+        7 lat na rynku edukacji technologicznej. Szkolenia, warsztaty i
+        partnerstwa dla zespołów i firm.
+      </p>
+      <a
+        href={`mailto:${SITE.email}`}
+        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-600/25 transition hover:opacity-90"
+      >
+        <IconMail size={16} />
+        {SITE.email}
+      </a>
+    </div>
+  </section>
+
+  <Newsletter />
+</BaseLayout>

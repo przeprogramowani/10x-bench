@@ -1,0 +1,130 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Strona',
+    links: [
+      { label: 'O nas', href: '/o-nas' },
+      { label: 'Podcast', href: '/podcast' },
+      { label: 'YouTube', href: '/youtube' },
+    ],
+  },
+  {
+    title: 'Kursy',
+    links: [
+      { label: '10xDevs', href: 'https://10xdevs.pl' },
+      { label: 'Opanuj Frontend', href: 'https://www.opanujfrontend.pl' },
+      { label: 'Opanuj TypeScript', href: 'https://www.opanujtypescript.pl' },
+    ],
+  },
+  {
+    title: 'Znajdź nas',
+    links: [
+      { label: 'Newsletter', href: site.newsletter },
+      { label: 'YouTube', href: site.youtube },
+      { label: 'Facebook', href: site.facebook },
+      { label: 'Instagram', href: site.instagram },
+    ],
+  },
+];
+
+const socials = [
+  {
+    label: 'YouTube',
+    href: site.youtube,
+    icon: 'M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z',
+  },
+  {
+    label: 'Facebook',
+    href: site.facebook,
+    icon: 'M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z',
+  },
+  {
+    label: 'Instagram',
+    href: site.instagram,
+    icon: 'M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.36-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z',
+  },
+];
+---
+
+<footer class="border-t border-zinc-800/80 bg-zinc-950">
+  <div class="container-site py-14">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <div>
+        <a href="/" class="flex items-center gap-2">
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 font-mono text-lg font-bold text-brand-400 ring-1 ring-brand-500/30"
+            set:html={'&lt;/&gt;'}
+          >
+          </span>
+          <span class="font-display text-lg font-bold tracking-tight text-white">
+            Przeprogramowani
+          </span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
+          {site.tagline}. Edukacja technologiczna w epoce AI — treści, podcasty i kursy dla
+          ambitnych programistów.
+        </p>
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-4 inline-block text-sm font-medium text-zinc-400 transition hover:text-brand-400"
+        >
+          {site.email}
+        </a>
+      </div>
+
+      {
+        columns.map((col) => (
+          <nav aria-label={col.title}>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              {col.title}
+            </h3>
+            <ul class="mt-4 space-y-2.5">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-zinc-500 transition hover:text-white"
+                    {...(link.href.startsWith('http')
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-zinc-800/80 pt-8 sm:flex-row"
+    >
+      <p class="text-xs text-zinc-600">
+        © {year} Przeprogramowani.pl — {site.tagline}
+      </p>
+      <div class="flex items-center gap-3">
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-800 text-zinc-500 transition hover:border-brand-500/50 hover:text-brand-400"
+            >
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d={s.icon} />
+              </svg>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

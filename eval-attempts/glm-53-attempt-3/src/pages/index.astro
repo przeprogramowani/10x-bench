@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard';
+import EpisodeCard from '../components/EpisodeCard';
+import VideoCard from '../components/VideoCard';
+import NewsletterForm from '../components/NewsletterForm';
+import { brands, courses, heroCourse, podcastShows, site, stats, videos } from '../data/content';
+import { ArrowRightIcon, CheckIcon, HeadphonesIcon, YouTubeIcon } from '../components/Icons';
+
+const opanujAi = podcastShows[0];
+const latestEpisodes = opanujAi.episodes.slice(0, 3);
+const latestVideos = videos.slice(0, 3);
+const marqueeBrands = [...brands, ...brands];
+---
+
+<BaseLayout title="Szersze spojrzenie na programowanie">
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="hero-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-brand-600/20 blur-[140px]" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28">
+      <div class="grid items-center gap-14 lg:grid-cols-2">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-3.5 py-1.5 text-xs font-semibold text-accent-400">
+            <span class="relative flex size-2">
+              <span class="absolute inline-flex size-full animate-ping rounded-full bg-accent-400 opacity-60"></span>
+              <span class="relative inline-flex size-2 rounded-full bg-accent-400"></span>
+            </span>
+            Nowość — Wrzesień 2026
+          </span>
+
+          <h1 class="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Szersze spojrzenie
+            <br />
+            na <span class="gradient-text">programowanie</span>
+          </h1>
+
+          <p class="mt-6 max-w-lg text-lg leading-relaxed text-mist">
+            {site.name} to miejsce, w którym programowanie spotyka się z rozwojem osobistym. Kursy, podcasty
+            i materiały dla ambitnych programistów — od technicznych deep-dive’ów po rozmowy o karierze.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={heroCourse.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 via-accent-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-xl shadow-brand-600/30 transition-transform hover:scale-[1.02]"
+            >
+              {heroCourse.title}
+              <ArrowRightIcon className="size-4" />
+            </a>
+            <a
+              href="/podcast"
+              class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/10"
+            >
+              <HeadphonesIcon className="size-4 text-brand-300" />
+              Słuchaj podcastów
+            </a>
+          </div>
+
+          <dl class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {
+              stats.map((stat) => (
+                <div>
+                  <dt class="sr-only">{stat.label}</dt>
+                  <dd class="text-2xl font-bold text-white sm:text-3xl">{stat.value}</dd>
+                  <dd class="mt-1 text-xs leading-snug text-mist">{stat.label}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <!-- 10xDevs w hero -->
+        <a
+          href={heroCourse.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative block overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/15 via-accent-500/10 to-cyan-500/10 p-8 shadow-2xl shadow-brand-900/30 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40 sm:p-10"
+        >
+          <div class="absolute -right-20 -top-20 size-64 rounded-full bg-accent-500/20 blur-[90px]" aria-hidden="true"></div>
+          <p class="relative text-xs font-semibold uppercase tracking-widest text-brand-300">{heroCourse.tag}</p>
+          <h2 class="relative mt-3 text-3xl font-bold tracking-tight text-white">
+            10xDevs <span class="gradient-text">4.0</span>
+          </h2>
+          <p class="relative mt-4 text-sm leading-relaxed text-fog/80">{heroCourse.description}</p>
+          <ul class="relative mt-6 space-y-2.5">
+            {
+              heroCourse.highlight?.map((item) => (
+                <li class="flex items-center gap-2.5 text-sm text-fog">
+                  <CheckIcon className="size-4 shrink-0 text-cyan-glow" />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <span class="relative mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-300 transition-colors group-hover:text-brand-200">
+            Zobacz program kursu
+            <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KURSY -->
+  <section class="border-t border-white/5 bg-ink-soft py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Edukacja technologiczna w epoce AI"
+        title={`Topowe <span class="gradient-text">programy edukacyjne</span> dla ambitnych programistów`}
+        description="Świadome korzystanie z potencjału Generative AI i solidne fundamenty inżynierii oprogramowania. Wybierz swoją ścieżkę."
+      />
+      <div class="grid gap-6 md:grid-cols-2">
+        {courses.map((course) => <CourseCard client:visible course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- PODCAST -->
+  <section class="py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="Podcasty"
+        title={`Ostatnie <span class="gradient-text">odcinki</span>`}
+        description="Opanuj.AI Podcast i Przeprogramowani ft. Gość — rozmowy o technologii, AI i programowaniu, których nie chcesz przegapić."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          latestEpisodes.map((episode) => (
+            <EpisodeCard client:visible episode={episode} gradient={opanujAi.gradient} showName={opanujAi.name} />
+          ))
+        }
+      </div>
+      <div class="mt-10 text-center">
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/10"
+        >
+          Zobacz wszystkie odcinki
+          <ArrowRightIcon className="size-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="border-y border-white/5 bg-ink-soft py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <SectionHeading
+        eyebrow="YouTube"
+        title={`Najnowsze <span class="gradient-text">filmy</span>`}
+        description="Materiały o nowoczesnym developmentie, pracy z AI i rozwój nowoczesnego programisty — prosto z naszego kanału."
+      />
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((video) => <VideoCard client:visible video={video} />)}
+      </div>
+      <div class="mt-10 text-center">
+        <a
+          href={site.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-red-600/25 transition-transform hover:scale-[1.02]"
+        >
+          <YouTubeIcon className="size-4" />
+          Subskrybuj kanał
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAUFALI NAM -->
+  <section class="py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-center text-sm font-semibold uppercase tracking-widest text-mist">Zaufali nam</p>
+      <p class="mt-2 text-center text-2xl font-bold text-white">7 lat na rynku edukacji technologicznej</p>
+    </div>
+    <div class="relative mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      <div class="flex w-max animate-marquee items-center gap-4">
+        {
+          marqueeBrands.map((brand, index) => (
+            <span
+              class="flex items-center whitespace-nowrap rounded-xl border border-white/10 bg-ink-card px-6 py-3 text-sm font-semibold text-mist"
+              aria-hidden={index >= brands.length ? 'true' : undefined}
+            >
+              {brand}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="border-t border-white/5 bg-ink-soft py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/15 via-accent-500/10 to-cyan-500/10 px-6 py-14 sm:px-12">
+        <div class="absolute -left-24 -top-24 size-72 rounded-full bg-brand-600/20 blur-[100px]" aria-hidden="true"></div>
+        <div class="relative mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Przeprogramowany <span class="gradient-text">Newsletter</span>
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-mist">
+            Co tydzień w piątek otrzymaj porcję wartościowych treści w formacie 3-2-1: 3 rekomendacje techniczne,
+            2 rekomendacje rozwojowe i 1 bonus-niespodzianka. Nie przegapisz też nowości i ofert specjalnych.
+          </p>
+          <div class="mt-8 flex justify-center">
+            <NewsletterForm client:visible />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

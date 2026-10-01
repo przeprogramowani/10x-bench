@@ -1,0 +1,74 @@
+$ npm ci --no-audit --no-fund
+added 343 packages in 3s
+[exit 0]$ npm run build
+> gpt-54-attempt-3@0.0.1 build
+> astro build
+
+20:46:47 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:47 [WARN] [vite] Default inspector port 9229 not available, using 9230 instead
+
+20:46:49 [types] Generated 1.30s
+20:46:49 [build] output: "server"
+20:46:49 [build] mode: "server"
+20:46:49 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-zvhhlB/site/dist/
+20:46:49 [build] adapter: @astrojs/cloudflare
+20:46:49 [build] Collecting build info...
+20:46:49 [build] ✓ Completed in 1.31s.
+20:46:49 [build] Building server entrypoints...
+20:46:49 [vite] ✓ built in 694ms
+20:46:50 [vite] ✓ built in 725ms
+20:46:50 [vite] ✓ built in 250ms
+20:46:50 [build] Rearranging server assets...
+20:46:50 [build] ✓ Completed in 1.70s.
+20:46:50 [build] Server built in 3.01s
+20:46:50 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-zvhhlB/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/server/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/Layout_r7wot5Cv.mjs                                │ esm  │ 12.24 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_CFl7y3Qj.mjs │ esm  │ 0.22 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_Csu6PJY6.mjs         │ esm  │ 2.92 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/astro-component_CZ0O5Yj4.mjs                       │ esm  │ 1.19 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/content_Dex57gpl.mjs                               │ esm  │ 9.07 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-passthrough-endpoint_D9ZKbHxe.mjs            │ esm  │ 69.19 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_C_HuBTFN.mjs                                 │ esm  │ 13.74 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_DsBX4kaI.mjs                       │ esm  │ 0.10 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop_B_xH4HiY.mjs                                  │ esm  │ 0.69 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/o-nas_iDy-copA.mjs                                 │ esm  │ 4.53 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/podcast_B3nyr1Ea.mjs                               │ esm  │ 4.33 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/worker-entry_D1xI-yO1.mjs                          │ esm  │ 939.06 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/youtube_D4ZzewGM.mjs                               │ esm  │ 3.31 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.12 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (14 modules)                                        │      │ 1060.70 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+✨ Read 8 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-zvhhlB/site/dist/client
+Total Upload: 1060.87 KiB / gzip: 229.41 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.ASSETS          Assets            
+
+--dry-run: exiting now.
+[exit 0]

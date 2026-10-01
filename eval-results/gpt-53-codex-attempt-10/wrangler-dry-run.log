@@ -1,0 +1,109 @@
+$ npm ci --no-audit --no-fund
+added 458 packages in 3s
+[exit 0]$ npm run build
+> gpt-53-codex-attempt-10@0.0.1 build
+> astro build
+
+20:48:48 [content] Syncing content
+20:48:48 [content] Synced content
+20:48:48 [types] Generated 68ms
+20:48:48 [build] output: "server"
+20:48:48 [build] mode: "server"
+20:48:48 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-sXsSGp/site/dist/
+20:48:48 [build] adapter: @astrojs/cloudflare
+20:48:48 [build] Collecting build info...
+20:48:48 [build] ✓ Completed in 79ms.
+20:48:48 [build] Building server entrypoints...
+20:48:49 [vite] ✓ built in 625ms
+20:48:49 [build] ✓ Completed in 638ms.
+
+ building client (vite) 
+20:48:49 [vite] transforming...
+20:48:49 [vite] ✓ 28 modules transformed.
+20:48:49 [vite] rendering chunks...
+20:48:49 [vite] computing gzip size...
+20:48:49 [vite] dist/_astro/MobileMenu.dBmbEiFE.js    1.62 kB │ gzip:  0.92 kB
+20:48:49 [vite] dist/_astro/index.DiEladB3.js         7.85 kB │ gzip:  3.05 kB
+20:48:49 [vite] dist/_astro/client.Dc9Vh3na.js      186.62 kB │ gzip: 58.54 kB
+20:48:49 [vite] ✓ built in 212ms
+
+ prerendering static routes 
+20:48:49 ✓ Completed in 11ms.
+
+20:48:49 [build] Rearranging server assets...
+20:48:49 [build] Server built in 947ms
+20:48:49 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-sXsSGp/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+▲ [WARNING] The package "node:events" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/utility.js
+
+
+▲ [WARNING] The package "node:util" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/constructor.js
+
+
+▲ [WARNING] The package "node:path" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/output.js
+
+
+▲ [WARNING] The package "node:child_process" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/libvips.js
+
+
+▲ [WARNING] The package "node:stream" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/constructor.js
+
+
+▲ [WARNING] The package "node:os" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/utility.js
+
+
+▲ [WARNING] The package "node:crypto" wasn't found on the file system but is built into node.
+
+  Your Worker may throw errors at runtime unless you enable the "nodejs_compat" compatibility flag. Refer to https://developers.cloudflare.com/workers/runtime-apis/nodejs/ for more details. Imported from:
+   - node_modules/sharp/lib/libvips.js
+
+
+
+✘ [ERROR] Build failed with 2 errors:
+
+  ✘ [ERROR] Could not resolve "child_process"
+  
+      node_modules/detect-libc/lib/detect-libc.js:6:29:
+        6 │ const childProcess = require('child_process');
+          ╵                              ~~~~~~~~~~~~~~~
+  
+    The package "child_process" wasn't found on the file system but is built into node.
+    - Add the "nodejs_compat" compatibility flag to your project.
+    
+  
+  
+  ✘ [ERROR] Could not resolve "fs"
+  
+      node_modules/detect-libc/lib/filesystem.js:6:19:
+        6 │ const fs = require('fs');
+          ╵                    ~~~~
+  
+    The package "fs" wasn't found on the file system but is built into node.
+    - Add the "nodejs_compat" compatibility flag to your project.
+    
+  
+  
+
+
+🪵  Logs were written to "/Users/psmyrdek/.wrangler/logs/wrangler-2026-10-01_18-48-49_983.log"
+[exit 1]

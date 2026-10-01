@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.04.2026 22:40,N/A,16.04.2026 22:40
 Local build,1,1,Build completed successfully with Astro 5.18.1; 5 static pages generated
 Manual testing,1,1,Dev server on http://localhost:4321/ started; all pages (/, /o-nas, /podcast, /youtube, /kursy) returned HTTP 200; navigation/styles/content working
-Tech stack,0,1,"Missing required deps: Astro 5.1 instead of Astro 6, Tailwind CSS 3.4 instead of Tailwind 4, no @astrojs/cloudflare adapter (uses wrangler devDep for Pages deploy only)"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-04-16; astro 5 (latest 6); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=dist; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,"Page exists and returns 200; mentions Przemek/DAZN/Cabify and Marcin/SmartRecruiters correctly; Opanuj AI Podcast referenced; however bios are simplified — missing course assignments (Opanuj JavaScript for Przemek, 10xDevs for Marcin), open source contributions (CursorLens, openapi-typescript), publications (Programista, Increment), and specific conference names (4Developers, ReactiveConf, InfoShare); contributors list not included"
 Podcast page,0.5,1,"Page exists and returns 200; only Przeprogramowani podcast displayed — OpanujAI Podcast completely missing despite being required; all 8 episodes share the same Spotify show URL (3yVvOAXSYq6sQB02w4A4wo is correct) rather than unique episode URLs, indicating fabricated/hallucinated episode data (titles, dates, guests)"
 YouTube page,0.5,1,"Page exists and returns 200; video data is fabricated — all 8 videos use the channel URL (https://www.youtube.com/@Przeprogramowani) instead of unique video IDs; titles and descriptions appear hallucinated rather than matching actual Przeprogramowani channel content"

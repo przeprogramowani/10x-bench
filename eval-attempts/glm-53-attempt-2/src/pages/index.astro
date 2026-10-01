@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero';
+import SectionHeading from '../components/SectionHeading';
+import EpisodeCard from '../components/EpisodeCard';
+import VideoGrid from '../components/VideoGrid';
+import FounderCard from '../components/FounderCard';
+import BrandMarquee from '../components/BrandMarquee';
+import NewsletterCta from '../components/NewsletterCta';
+import { PODCAST_SHOWS } from '../data/podcasts';
+import { VIDEOS } from '../data/videos';
+import { FOUNDERS } from '../data/about';
+import { SITE } from '../data/site';
+
+const [opanujAi, ftGosc] = PODCAST_SHOWS;
+const latestEpisodes = [
+  ...opanujAi.episodes.slice(0, 2).map((episode) => ({ episode, show: opanujAi })),
+  ...ftGosc.episodes.slice(0, 2).map((episode) => ({ episode, show: ftGosc })),
+];
+const homeVideos = VIDEOS.slice(0, 6);
+---
+
+<Base title={`${SITE.name} — ${SITE.tagline}`}>
+  <Hero />
+
+  <section class="py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Podcasty"
+        title="Najnowsze odcinki"
+        description="Dwa albumy: Opanuj.AI Podcast o świecie sztucznej inteligencji oraz Przeprogramowani ft. Gość — rozmowy z ekspertami branży."
+        action={{ label: 'Wszystkie odcinki', href: '/podcast' }}
+      />
+      <div class="grid gap-4 lg:grid-cols-2">
+        {latestEpisodes.map(({ episode, show }) => (
+          <EpisodeCard
+            episode={episode}
+            showName={show.name}
+            accentClasses={show.accent}
+            artwork={show.artwork}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="YouTube"
+        title="Ostatnie filmy"
+        description="Nowości ze świata IT, programowanie z AI i rozmowy o karierze — co tydzień na kanalu Przeprogramowani."
+        action={{ label: 'Cały kanał', href: '/youtube' }}
+      />
+      <VideoGrid videos={homeVideos} />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="O nas"
+        title="Łączymy świat programowania, biznesu i rozwoju"
+        description="Od 2017 roku tworzymy treści, kursy i narzędzia dla programistów, którzy chcą patrzeć szerzej — na architekturę, na biznes, na ludzi i na siebie."
+        action={{ label: 'Więcej o nas', href: '/o-nas' }}
+      />
+      <div class="grid gap-6 md:grid-cols-2 max-w-4xl">
+        {FOUNDERS.map((founder) => (
+          <FounderCard founder={founder} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-medium tracking-widest uppercase text-gray-500 text-center mb-10">
+        Zaufali nam — {SITE.yearsActive} lat na rynku edukacji technologicznej
+      </p>
+      <BrandMarquee />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NewsletterCta />
+    </div>
+  </section>
+</Base>

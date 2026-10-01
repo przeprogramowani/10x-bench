@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
 Local build,1,1,astro check + astro build succeed with 0 errors; static output; 5 pages built
 Manual testing,1,1,User-confirmed: site works correctly on click-through
-Tech stack,0.5,1,React 19.2.7 and Tailwind 4.3.2 (@tailwindcss/vite) present; Astro resolved to 7.0.9 (not 6); no @astrojs/cloudflare adapter in package.json or astro.config.mjs (uses wrangler static assets instead)
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-07-16; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,1,1,200 OK; both founders correct (Przemek: DAZN/Cabify; Marcin: SmartRecruiters/Opanuj.AI Podcast); correct LinkedIn URLs; bios condensed but retain key details; per-founder course assignments not listed
 Podcast page,0.5,1,200 OK; both series shown (Przeprogramowani ft. Gosc + Opanuj.AI Podcast); episode data plausible; BUT Spotify show link uses ID 4qHUZJpeBK8Ij9e2wTVm2o which matches neither required show (Przeprogramowani 3yVvOAXSYq6sQB02w4A4wo nor Opanuj.AI 3D6LmchBdoqL2sWkQjvWOy)
 YouTube page,1,1,200 OK; 6 unique video IDs all verified real and on the Przeprogramowani channel via oEmbed; no placeholders/rick-rolls/repeats

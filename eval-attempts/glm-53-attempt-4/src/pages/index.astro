@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CourseCard from "../components/CourseCard";
+import EpisodeCard from "../components/EpisodeCard";
+import VideoCard from "../components/VideoCard";
+import Stats from "../components/Stats.astro";
+import BrandsMarquee from "../components/BrandsMarquee.astro";
+import Newsletter from "../components/Newsletter.astro";
+import { IconArrowRight, IconPlay, IconSparkles } from "../components/Icons";
+import { COURSES } from "../data/courses";
+import { SHOWS } from "../data/podcast";
+import { VIDEOS } from "../data/videos";
+---
+
+<BaseLayout
+  title="Przeprogramowani — Szersze spojrzenie na programowanie"
+  description="Łączymy świat programowania, biznesu i rozwoju. Kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcasty o AI i programowaniu, newsletter i społeczność ambitnych programistów."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-950/40 to-zinc-950" aria-hidden="true"></div>
+    <div class="absolute -top-32 left-1/2 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-violet-600/20 blur-3xl" aria-hidden="true"></div>
+    <div class="absolute -right-40 top-40 h-80 w-80 rounded-full bg-fuchsia-600/10 blur-3xl" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
+      <div class="mx-auto max-w-3xl text-center">
+        <a
+          href="https://10xdevs.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex animate-fade-up items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs font-medium text-violet-300 transition hover:border-violet-400/50 hover:bg-violet-500/20"
+        >
+          <IconSparkles size={14} />
+          Nowość — 10xDevs 4.0 · Programuj z AI
+          <IconArrowRight size={14} />
+        </a>
+
+        <h1
+          class="mt-6 animate-fade-up text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl"
+          style="animation-delay: 100ms"
+        >
+          Szersze spojrzenie
+          <br class="hidden sm:block" />
+          na <span class="text-gradient">programowanie</span>
+        </h1>
+
+        <p
+          class="mx-auto mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-zinc-400 sm:text-lg"
+          style="animation-delay: 200ms"
+        >
+          Łączymy świat programowania, biznesu i rozwoju. Tworzymy treści, kursy
+          i narzędzia, które pomagają programistom rozwijać się na wielu
+          płaszczyznach — od technicznych deep-dive’ów po świadomą pracę z AI.
+        </p>
+
+        <div
+          class="mt-8 flex animate-fade-up flex-col items-center justify-center gap-3 sm:flex-row"
+          style="animation-delay: 300ms"
+        >
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-600/25 transition hover:opacity-90"
+          >
+            Poznaj 10xDevs
+            <IconArrowRight size={16} />
+          </a>
+          <a
+            href="/podcast"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-zinc-200 transition hover:border-white/25 hover:bg-white/[0.06]"
+          >
+            <IconPlay size={16} className="text-fuchsia-400" />
+            Posłuchaj podcastu
+          </a>
+        </div>
+      </div>
+
+      <!-- Kursy w hero -->
+      <div class="mt-16 animate-fade-up sm:mt-20" style="animation-delay: 400ms">
+        <p class="mb-8 text-center font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+          Edukacja technologiczna w epoce AI
+        </p>
+        <div class="grid gap-5 md:grid-cols-3">
+          {COURSES.map((course) => <CourseCard course={course} />)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATYSTYKI -->
+  <Stats />
+
+  <!-- PODCAST -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+          <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">Podcasty</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Ostatnie odcinki
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-zinc-400">
+            Słuchaj naszych podcastów o technologii, AI i programowaniu —
+            ponad 7800 słuchaczy na obu pokazach.
+          </p>
+        </div>
+        <a
+          href="/podcast"
+          class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-200 transition hover:border-white/20 hover:bg-white/[0.06]"
+        >
+          Wszystkie odcinki
+          <IconArrowRight size={16} />
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {SHOWS[0].episodes.slice(0, 3).map((episode, index) => (
+          <EpisodeCard episode={episode} index={index} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="border-t border-white/5 bg-zinc-950/60 py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+          <p class="font-mono text-sm uppercase tracking-widest text-fuchsia-400">YouTube</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Najnowsze filmy
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-zinc-400">
+            Zwiastuny kursów, LIVE Q&A, relacje z eventów i praktyczne
+            workflow pracy z AI.
+          </p>
+        </div>
+        <a
+          href="/youtube"
+          class="inline-flex shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-200 transition hover:border-white/20 hover:bg-white/[0.06]"
+        >
+          Cały kanał
+          <IconArrowRight size={16} />
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {VIDEOS.slice(0, 3).map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ZAUFALI NAM -->
+  <section class="border-t border-white/5 py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="mb-8 text-center font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+        Zaufali nam
+      </p>
+      <BrandsMarquee />
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <Newsletter />
+</BaseLayout>

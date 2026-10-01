@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import FounderCard from '../components/FounderCard';
+import BrandMarquee from '../components/BrandMarquee';
+import NewsletterCta from '../components/NewsletterCta';
+import { ArrowRightIcon } from '../components/icons';
+import { FOUNDERS, MISSION, PILLARS } from '../data/about';
+import { SITE } from '../data/site';
+---
+
+<Base
+  title={`O nas — ${SITE.name}`}
+  description="Poznaj Przeprogramowanych: Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju osobistego."
+>
+  <section class="relative overflow-hidden bg-grid">
+    <div
+      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[20rem] rounded-full bg-main/10 blur-[110px] pointer-events-none"
+      aria-hidden="true"
+    ></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-main">
+          <span class="w-8 h-1 rounded-full bg-main"></span>
+          O nas
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold font-heading tracking-tight text-white leading-tight">
+          Łączymy świat programowania, biznesu i <span class="text-gradient">rozwoju</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
+          {MISSION.lead} {MISSION.cta}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 md:grid-cols-2">
+        {FOUNDERS.map((founder) => <FounderCard founder={founder} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16 items-start">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight">
+            {MISSION.heading}
+          </h2>
+          <p class="mt-5 text-base sm:text-lg text-gray-300 leading-relaxed">{MISSION.body}</p>
+          <a
+            href="/podcast"
+            class="group mt-8 inline-flex items-center gap-2 px-6 py-3 text-base font-semibold bg-main text-gray-950 rounded-xl shadow-lg shadow-main/20 transition-all hover:bg-main-hover"
+          >
+            Posłuchaj naszych podcastów
+            <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {
+            PILLARS.map((pillar) => (
+              <div class="rounded-2xl border border-white/5 bg-gray-900/40 p-5 transition-colors hover:border-white/15">
+                <div class="text-3xl">{pillar.icon}</div>
+                <h3 class="mt-3 text-base font-semibold text-white">{pillar.title}</h3>
+                <p class="mt-1.5 text-sm text-gray-400 leading-relaxed">{pillar.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+        <div>
+          <p class="text-sm font-medium tracking-widest uppercase text-gray-500">Zaufali nam</p>
+          <p class="mt-2 text-2xl sm:text-3xl font-heading font-bold text-white">
+            {SITE.yearsActive} lat <span class="text-gray-400 text-xl font-normal">na rynku edukacji technologicznej</span>
+          </p>
+        </div>
+        <div class="border-t border-white/10 pt-4">
+          <p class="text-sm text-gray-500">Chcesz nawiązać współpracę?</p>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="inline-flex items-center gap-2 mt-2 text-white hover:text-main transition-colors font-medium"
+          >
+            {SITE.email}
+            <ArrowRightIcon className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+      <BrandMarquee />
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NewsletterCta />
+    </div>
+  </section>
+</Base>

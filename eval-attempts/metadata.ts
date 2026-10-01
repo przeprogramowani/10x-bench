@@ -23,9 +23,11 @@ export type ModelId =
   | "grok-code-fast-1"
   | "gemini-31-pro"
   | "gemini-35-flash"
+  | "gemini-38-flash"
   | "glm-5"
   | "glm-51"
   | "glm-52"
+  | "glm-53"
   // | "minimax-m27"
   // | "qwen-36-plus"
   | "kimi-k26"
@@ -34,6 +36,7 @@ export type ModelId =
   | "gpt-54"
   | "gpt-55"
   | "gpt-56-sol"
+  | "gpt-61-sol"
   | "claude-fable-5"
   | "deepseek-v4-pro";
 
@@ -55,9 +58,11 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "grok-code-fast-1": "Grok Code Fast 1",
   "gemini-31-pro": "Gemini 3.1 Pro",
   "gemini-35-flash": "Gemini 3.5 Flash",
+  "gemini-38-flash": "Gemini 3.8 Flash",
   "glm-5": "GLM-5",
   "glm-51": "GLM-5.1",
   "glm-52": "GLM-5.2",
+  "glm-53": "GLM-5.3",
   "kimi-k26": "Kimi K2.6",
   "kimi-k3": "Kimi K3",
   // "minimax-m27": "Minimax M2.7",
@@ -66,6 +71,7 @@ export const AGENT_NAMES: Record<ModelId, string> = {
   "gpt-54": "GPT-5.4",
   "gpt-55": "GPT-5.5",
   "gpt-56-sol": "GPT-5.6 Sol",
+  "gpt-61-sol": "GPT-6.1 Sol",
   "claude-fable-5": "Claude Fable 5",
   "deepseek-v4-pro": "DeepSeek V4 Pro",
 };
@@ -87,9 +93,11 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "grok-code-fast-1": AGENT_ENVIRONMENT.OpenCode,
   "gemini-31-pro": AGENT_ENVIRONMENT.Cursor,
   "gemini-35-flash": AGENT_ENVIRONMENT.OpenCode,
+  "gemini-38-flash": AGENT_ENVIRONMENT.OpenCode,
   "glm-5": AGENT_ENVIRONMENT.OpenCode,
   "glm-51": AGENT_ENVIRONMENT.OpenCode,
   "glm-52": AGENT_ENVIRONMENT.OpenCode,
+  "glm-53": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k26": AGENT_ENVIRONMENT.OpenCode,
   "kimi-k3": AGENT_ENVIRONMENT.OpenCode,
   // "minimax-m27": AGENT_ENVIRONMENT.OpenCode,
@@ -98,6 +106,7 @@ export const AGENT_ENV: Record<ModelId, AGENT_ENVIRONMENT> = {
   "gpt-54": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-55": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "gpt-56-sol": AGENT_ENVIRONMENT.CodexDesktopHigh,
+  "gpt-61-sol": AGENT_ENVIRONMENT.CodexDesktopHigh,
   "claude-fable-5": AGENT_ENVIRONMENT.ClaudeDesktop,
   "deepseek-v4-pro": AGENT_ENVIRONMENT.OpenCode,
 };
@@ -112,8 +121,10 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "minimax-m21": "minimax-m25",
   "glm-5": "glm-51",
   "glm-51": "glm-52",
+  "glm-52": "glm-53",
   "kimi-k25": "kimi-k26",
   "kimi-k26": "kimi-k3",
+  // "gpt-56-sol": "gpt-61-sol", // enable once gpt-61-sol attempts are scored
   // "minimax-m25": "minimax-m27",
   // "qwen-3-max": "qwen-36-plus",
   // "gpt-54": "gpt-55",
@@ -148,9 +159,11 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "grok-code-fast-1": { input: 0.2, output: 1.5 },
   "gemini-31-pro": { input: 2.0, output: 12.0 },
   "gemini-35-flash": { input: 1.5, output: 9.0 },
+  "gemini-38-flash": { input: 0.75, output: 3.75 },
   "glm-5": { input: 0.3, output: 2.55 },
   "glm-51": { input: 1.4, output: 4.4 },
   "glm-52": { input: 1.4, output: 4.4 },
+  "glm-53": { input: 0.24, output: 3.39 },
   "kimi-k26": { input: 0.6, output: 2.8 },
   "kimi-k3": { input: 3.0, output: 15.0 },
   // "minimax-m27": {input: 0.3, output: 1.2},
@@ -159,6 +172,7 @@ export const MODEL_PRICING: Record<ModelId, ModelPricing> = {
   "gpt-54": { input: 1.75, output: 14.0 },
   "gpt-55": { input: 5.0, output: 30.0 },
   "gpt-56-sol": { input: 5.0, output: 30.0 },
+  "gpt-61-sol": { input: 2.0, output: 10.0 },
   "claude-fable-5": { input: 10.0, output: 50.0 },
   "deepseek-v4-pro": { input: 0.435, output: 0.87 },
 };

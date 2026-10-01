@@ -3,7 +3,8 @@ Task completion time,5min 52s,N/A,5min 52s
 Test run,12.02.2026 19:39,N/A,12.02.2026 19:39
 Local build,1,1,Build successful with Astro 5.17.2 and Cloudflare adapter
 Manual testing,1,1,All pages accessible and returning 200. Navigation styles and content working properly
-Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) and Cloudflare adapter configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-12; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; main=dist/_worker.js/index.js; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,Page exists and returns 200 but bios are significantly simplified. Missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin. No LinkedIn links or course assignments. Adam Gospodarczyk incorrectly listed as co-founder
 Podcast page,0.5,1,Page exists and returns 200 but only shows Opanuj.AI Podcast - missing Przeprogramowani podcast. No Spotify URLs. Episode data appears hallucinated with non-existent model versions
 YouTube page,1,1,All 6 video IDs verified as real Przeprogramowani channel videos with matching titles. Channel link correct. No placeholder or Rick Roll IDs

@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,4min 16s,N/A,4min 16s
+Test run,1.10.2026 21:39,N/A,1.10.2026 21:39
+API cost,$0.6863,N/A,$0.6863 (in 58433 / out 25213 / cache 3151552 / 1 session)
+Local build,1,1,npm ci + npm run build succeeded; 5 static pages built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
+O nas page,0.5,1,"/o-nas returns 200, and src/data/about.ts covers both founders with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin) plus the LinkedIn URLs; the bios are condensed paraphrases with no course assignments (no 'Opanuj JavaScript' for Przemek, 10xDevs not tied to Marcin) and no Magazyn Programista/Increment publications."
+Podcast page,0.5,1,"/podcast returns 200 and shows real episodes from both shows (e.g. opanujai e3o9hpt and przeprogramowani e2kj935 resolve on creators.spotify.com; Wiktoria Sitko matches the real latest ft. Gość episode); the only Spotify show URL is the wrong ID 4qHUZJpeBK8Ij9e2wTVm2o (Spotify oEmbed returns 500), neither context ID (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy) appears in src, and the RSS link anchor.fm/s/22544b7c returns 404."
+YouTube page,1,1,/youtube returns 200; all 6 IDs in src/data/youtube.ts (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg) return 200 from oEmbed with author Przeprogramowani and titles matching the data; no duplicates or placeholder IDs; channel URL youtube.com/c/przeprogramowani matches the context.
+Kursy section,1,1,The #kursy block sits inside the hero section of src/pages/index.astro and renders src/data/courses.ts; 10xDevs is featured (featured:true) and links to https://10xdevs.pl; Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules; ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19) are present and match the context.
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"src/layouts/BaseLayout.astro covers all pages with per-page title, description, og:title, og:description, og:type and og:locale=pl_PL, confirmed in the rendered HTML of /, /o-nas, /podcast and /youtube; the content uses the context tagline 'Szersze spojrzenie na programowanie' and the founders' names; minor gaps are no canonical, og:url, og:image or twitter tags, and the linked /sitemap-index.xml returns 404."
+Penalty,0,N/A,No penalty applied

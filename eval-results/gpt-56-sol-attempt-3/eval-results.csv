@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.07.2026 13:59,N/A,16.07.2026 13:59
 Local build,1,1,astro check && astro build succeeded; static output in dist/ (index + o-nas + podcast + youtube + 404)
 Manual testing,1,1,User-confirmed: site works correctly on click-through
-Tech stack,0.5,1,React 19.2.7 and Tailwind CSS 4.3.2 present; but Astro is 7.0.9 (not 6) and no Cloudflare adapter (@astrojs/cloudflare) installed/configured in astro.config.mjs (only react + @tailwindcss/vite). wrangler is a devDep but no adapter
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-07-16; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,200 OK; both founders present with LinkedIn; Przemek DAZN/Cabify mentioned; but Marcin bio omits SmartRecruiters and course assignments (Opanuj JavaScript / 10xDevs) are missing — bios simplified
 Podcast page,0.5,1,200 OK; episodes are hallucinated/mock data (generic titles/durations no real episode URLs); all links point to single Przeprogramowani show 3yVvOAXSYq6sQB02w4A4wo; Opanuj.AI show ID 3D6LmchBdoqL2sWkQjvWOy is MISSING (both podcasts referenced only by tag)
 YouTube page,1,1,200 OK; 6 unique video IDs all verified real on Przeprogramowani channel via oEmbed (B4t6w4QsD24 0JOszZXqKaM XgyH-HSzKRQ 03y826SVjG0 S-iNbyLSisE x8j4rO-T8bg); titles match channel

@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import VideoCard from '../components/VideoCard';
+import BrandMarquee from '../components/BrandMarquee';
+import { videos, youtubeChannel } from '../data/youtube';
+import { brands } from '../data/site';
+---
+
+<BaseLayout
+  title="YouTube"
+  description="Kanał YouTube Przeprogramowanych — materiały o frontendzie, AI, TypeScriptie i karierze programisty."
+>
+  <section class="relative overflow-hidden pt-16">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 blur-3xl"
+      aria-hidden="true"
+      style="height: 450px; background: radial-gradient(55% 50% at 50% 0%, rgba(239,68,68,0.12) 0%, transparent 70%);"
+    >
+    </div>
+
+    <div class="container-site relative py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-xs font-semibold text-red-300"
+        >
+          ▶ YouTube
+        </span>
+        <h1 class="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Rozwój nowoczesnego programisty
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-zinc-400">
+          Materiały o frontendzie, TypeScript, AI-Native development i karierze — mała próbka
+          tego, co szykujemy dla uczestników naszych programów.
+        </p>
+        <div class="mt-8">
+          <a
+            href={youtubeChannel.subscribeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Subskrybuj kanał
+            <span aria-hidden>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-site pb-16">
+    <SectionHeading eyebrow="Ostatnie filmy" title="Najnowsze na kanale" />
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => <VideoCard client:load video={video} />)}
+    </div>
+  </section>
+
+  <section class="border-t border-zinc-800/80 bg-zinc-900/30 py-14">
+    <div class="container-site">
+      <p class="text-center text-sm font-semibold uppercase tracking-widest text-zinc-500">
+        Uczą się z nami zespoły z
+      </p>
+      <div class="mt-8">
+        <BrandMarquee client:load brands={brands} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

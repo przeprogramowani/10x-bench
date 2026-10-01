@@ -3,7 +3,8 @@ Task completion time,12min 32s,N/A,12min 32s
 Test run,21.05.2026,N/A,21.05.2026
 Local build,1,1,Build succeeded with 0 errors/warnings; 4 static routes generated in 1.26s
 Manual testing,1,1,Dev server runs at http://localhost:4321; all pages (/, /o-nas, /podcast, /youtube) return 200 with working navigation styles and content
-Tech stack,0,1,"Astro 6.3.6 and React 19.0.0 present, but Tailwind CSS 3.4.19 (needs v4) and no @astrojs/cloudflare adapter in package.json or astro.config.mjs"
+Tech stack,0.25,0.5,v2: latest stable majors at run date 2026-05-21; astro 6 (latest); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,"Dedicated page returns 200; both founders present (Przemek Smyrdek, Marcin Czarkowski) with key details (DAZN/Cabify for Przemek, SmartRecruiters for Marcin). Bios simplified — missing Open Source contributions, conference speaking, publications for Przemek; missing neuro science interest and 10-year career detail for Marcin."
 Podcast page,0.5,1,"Page returns 200; only Przeprogramowani podcast episodes shown (3 episodes with real Apple Podcasts URLs using correct show ID 1471770526). OpanujAI Podcast completely absent from the page."
 YouTube page,1,1,"Page returns 200; 6 unique video entries with distinct YouTube IDs (03y826SVjG0, S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0). No rick-roll/placeholder IDs. Titles match Przeprogramowani channel content (Claude Code, AI agents, 10xDevs)."

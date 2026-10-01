@@ -3,7 +3,8 @@ Task completion time,8min 36s,N/A,8min 36s
 Test run,11.02.2026 21:48,N/A,11.02.2026 21:48
 Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter. Static output with prerendered pages.
 Manual testing,1,1,All pages accessible (/ /o-nas /podcast /youtube) returning 200. Navigation styles and content working properly.
-Tech stack,1,1,Astro 5.17.1 React 19.2.4 Tailwind CSS 4.1.18 and @astrojs/cloudflare 12.6.12 configured in astro.config.mjs.
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-11; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; main=dist/_worker.js/index.js; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,Page exists and returns 200. Team members Przemek Smyrdek and Marcin Czarkowski present with DAZN/Cabify and SmartRecruiters mentions. However bios are simplified - missing Open Source contributions (CursorLens openapi-typescript) conference speaking (4Developers ReactiveConf InfoShare) publications (Magazyn Programista Increment by Stripe) and neuroscience detail for Marcin. Contributors section (Adam Gospodarczyk Wiktor Jamro Olaf Sulich Jakub Paczkowski Krzysztof Bohaczyk) completely missing.
 Podcast page,1,1,Both podcasts displayed. Correct Spotify URLs verified: Przeprogramowani (3yVvOAXSYq6sQB02w4A4wo) and OpanujAI (3D6LmchBdoqL2sWkQjvWOy). Live data fetched from Spotify podcasters platform showing 6 episodes per podcast with real titles dates and descriptions.
 YouTube page,1,1,Page returns 200. Uses real Przeprogramowani YouTube channel feed (UCb2Y3vMeD6N4WDt5Acw7Arw). 9 video IDs verified as real channel content including Skills vs AgentsMD Demo Day 10xDevs and other authentic titles. No rick rolls or placeholder IDs.

@@ -3,7 +3,8 @@ Task completion time,12min 58s,N/A,12min 58s
 Test run,16.04.2026 21:27,N/A,16.04.2026 21:27
 Local build,1,1,Build completed successfully with Astro 6.1.7 and Cloudflare adapter
 Manual testing,1,1,Dev server running at http://localhost:4321 - all pages (/, /o-nas, /podcast, /youtube) return 200
-Tech stack,1,1,Astro ^6.1.7 React ^19.2.5 Tailwind ^4.2.2 @astrojs/cloudflare ^13.1.10 configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-04-16; astro 6 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; on-demand rendering used; assets.directory=./dist; main=@astrojs/cloudflare/entrypoints/server; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,1,1,Both founders present with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin); conferences and open source mentioned
 Podcast page,1,1,Live-scraped from przeprogramowani.pl/podcast - both Opanuj.AI and Przeprogramowani ft. Gość series with real episodes and valid podcasters.spotify.com URLs
 YouTube page,1,1,Live-fetched via YouTube RSS feed (channel UCb2Y3vMeD6N4WDt5Acw7Arw) - unique video IDs with real Przeprogramowani titles (Claude Code LIVE DEMO etc.)

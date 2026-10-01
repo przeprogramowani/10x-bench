@@ -1,0 +1,80 @@
+$ npm ci --no-audit --no-fund
+added 353 packages in 3s
+[exit 0]$ npm run build
+> gpt-54-attempt-5@0.0.1 build
+> astro build
+
+20:46:52 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+20:46:52 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:52 [WARN] [vite] Default inspector port 9229 not available, using 9230 instead
+
+20:46:54 [types] Generated 1.41s
+20:46:54 [build] output: "server"
+20:46:54 [build] mode: "server"
+20:46:54 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-oIV6ur/site/dist/
+20:46:54 [build] adapter: @astrojs/cloudflare
+20:46:54 [build] Collecting build info...
+20:46:54 [build] ✓ Completed in 1.43s.
+20:46:54 [build] Building server entrypoints...
+20:46:54 [vite] ✓ built in 656ms
+20:46:55 [vite] ✓ built in 1.02s
+20:46:56 [vite] ✓ built in 217ms
+20:46:56 [build] Rearranging server assets...
+20:46:56 [build] ✓ Completed in 1.93s.
+20:46:56 [build] Server built in 3.36s
+20:46:56 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-oIV6ur/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/server/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/FounderCard_SmGwfLuo.mjs                           │ esm  │ 1.42 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/PodcastCard_Dow9unDg.mjs                           │ esm  │ 1.47 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/VideoCard_BWquCJ64.mjs                             │ esm  │ 2.03 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_CFl7y3Qj.mjs │ esm  │ 0.22 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_Csu6PJY6.mjs         │ esm  │ 2.92 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/astro-component_BGHjbbEL.mjs                       │ esm  │ 1.19 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-service-workerd_CGeCNMVA.mjs                 │ esm  │ 0.37 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-transform-endpoint_DozrkFVv.mjs              │ esm  │ 69.84 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_CZXpZaoy.mjs                                 │ esm  │ 11.64 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_DsBX4kaI.mjs                       │ esm  │ 0.10 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/o-nas_DvcpdCWN.mjs                                 │ esm  │ 5.26 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/podcast_Y279566e.mjs                               │ esm  │ 3.31 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/site-data_CIny0U_F.mjs                             │ esm  │ 431.07 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/worker-entry_Bvcs646S.mjs                          │ esm  │ 939.94 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/youtube_B4GrZrDX.mjs                               │ esm  │ 3.54 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.12 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (16 modules)                                        │      │ 1474.42 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+✨ Read 8 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-oIV6ur/site/dist/client
+Total Upload: 1474.59 KiB / gzip: 327.14 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+env.ASSETS          Assets            
+
+--dry-run: exiting now.
+[exit 0]

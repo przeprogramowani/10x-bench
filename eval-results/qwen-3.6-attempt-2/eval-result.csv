@@ -3,7 +3,8 @@ Task completion time,20m,N/A,N/A
 Test run,26.04.2026 09:55,N/A,26.04.2026 09:55
 Local build,1,1,Build successful - npm install and npm run build completed without errors
 Manual testing,1,1,"All pages accessible with 200 status codes. Navigation working properly. Styles and content rendering correctly. Dev server running on localhost:4321. NOTE: Manual fix applied after build to include global CSS import in BaseLayout.astro to ensure styles apply correctly across all subpages."
-Tech stack,0.5,1,Astro 4.16 (requires 5), React 18.3 (requires 19), Tailwind 3.4 (requires 4). Cloudflare Adapter installed but NOT configured in astro.config.mjs
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-04-26; astro 4 (latest 6); react 18 (latest 19); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: no Wrangler config; no adapter; fully static output; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,Page exists and loads. Content mostly matches context file. Typo: 'Cababy' instead of 'Cabify'. Team member descriptions are somewhat simplified but cover main experience areas (DAZN/Cabify for Przemek, SmartRecruiters for Marcin)
 Podcast page,0.5,1,Both podcasts displayed (Opanuj.AI and Przeprogramowani). Episodes loaded from content collection (not mocks). Spotify links are generic (spotify.com) not specific show URLs (should be 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy). Episode titles appear to be hallucinated
 YouTube page,0.5,1,Page exists and loads. ALL videos use Rick Roll ID (dQw4w9WgXcQ) instead of actual Przeprogramowani channel videos. Major red flag: same ID used for every video indicates hallucination/placeholder data

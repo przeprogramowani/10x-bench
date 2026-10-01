@@ -3,7 +3,8 @@ Task completion time,6min 8s,N/A,6min 8s
 Test run,10.02.2026 09:55,N/A,10.02.2026 09:55
 Local build,1,1,Build successful - all pages prerendered (index, o-nas, podcast, youtube)
 Manual testing,1,1,Dev server running and all pages accessible with working navigation styles and content
-Tech stack,0.5,1,Astro 5 and React 19 present and Cloudflare adapter configured but Tailwind CSS v3.4.1 instead of required v4
+Tech stack,0.25,0.5,v2: latest stable majors at run date 2026-02-10; astro 5 (latest); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; @astrojs/cloudflare adapter configured; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,Page exists (200) but bios hallucinated - Przemek listed as Ex-Huuuge Games (should be DAZN/Cabify) and Marcin as Ex-Future Processing (should be SmartRecruiters). Missing course assignments and detailed professional backgrounds.
 Podcast page,0.5,1,Only Przeprogramowany Podcast displayed - OpanujAI Podcast missing entirely. Spotify URL correct (3yVvOAXSYq6sQB02w4A4wo) but episode data is hallucinated with fake titles/dates. All YouTube links point to Rick Roll (dQw4w9WgXcQ).
 YouTube page,0.5,1,Page exists (200) with correct channel link. Mix of some potentially real video IDs (KAJTsQbqBow uwi39C2O8NI b-gOI128G2s) and fake ones (dQw4w9WgXcQ Rick Roll and xyz789abc placeholder). View counts and dates hallucinated.

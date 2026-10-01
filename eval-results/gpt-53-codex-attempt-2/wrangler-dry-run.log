@@ -1,0 +1,47 @@
+$ npm ci --no-audit --no-fund
+added 467 packages in 4s
+[exit 0]$ npm run build
+> gpt-53-codex-attempt-2@0.0.1 build
+> astro build
+
+20:46:28 [WARN] [adapter] Cloudflare does not support sharp at runtime. However, you can configure `imageService: "compile"` to optimize images with sharp on prerendered pages during build time.
+20:46:28 [content] Syncing content
+20:46:28 [content] Synced content
+20:46:28 [types] Generated 92ms
+20:46:28 [build] output: "server"
+20:46:28 [build] mode: "server"
+20:46:28 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-iwbc4c/site/dist/
+20:46:28 [build] adapter: @astrojs/cloudflare
+20:46:28 [build] Collecting build info...
+20:46:28 [build] ✓ Completed in 106ms.
+20:46:28 [build] Building server entrypoints...
+20:46:29 [vite] ✓ built in 776ms
+20:46:29 [build] ✓ Completed in 793ms.
+
+ building client (vite) 
+20:46:29 [vite] transforming...
+20:46:29 [vite] ✓ 28 modules transformed.
+20:46:29 [vite] rendering chunks...
+20:46:29 [vite] computing gzip size...
+20:46:29 [vite] dist/_astro/MediaGrid.DrkKFbBH.js    3.30 kB │ gzip:  1.55 kB
+20:46:29 [vite] dist/_astro/index.DiEladB3.js        7.85 kB │ gzip:  3.05 kB
+20:46:29 [vite] dist/_astro/client.Dc9Vh3na.js     186.62 kB │ gzip: 58.54 kB
+20:46:29 [vite] ✓ built in 253ms
+
+ prerendering static routes 
+20:46:29 ✓ Completed in 11ms.
+
+20:46:29 [build] Rearranging server assets...
+20:46:29 [build] Server built in 1.17s
+20:46:29 [build] Complete!
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-iwbc4c/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 37 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-iwbc4c/site/dist
+Total Upload: 1457.01 KiB / gzip: 295.79 KiB
+Your Worker has access to the following bindings:
+Binding            Resource      
+env.ASSETS         Assets        
+
+--dry-run: exiting now.
+[exit 0]

@@ -1,0 +1,66 @@
+$ npm ci --no-audit --no-fund
+added 343 packages in 3s
+[exit 0]$ npm run build
+> gpt-54-attempt-1@0.0.1 build
+> astro build
+
+20:46:42 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+20:46:42 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+20:46:42 [WARN] [vite] Default inspector port 9229 not available, using 9230 instead
+
+20:46:43 [types] Generated 1.23s
+20:46:43 [build] output: "static"
+20:46:43 [build] mode: "server"
+20:46:43 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-brC0zx/site/dist/
+20:46:43 [build] adapter: @astrojs/cloudflare
+20:46:43 [build] Collecting build info...
+20:46:43 [build] ✓ Completed in 1.24s.
+20:46:43 [build] Building server entrypoints...
+20:46:44 [vite] ✓ built in 855ms
+20:46:45 [vite] ✓ built in 341ms
+20:46:45 [vite] ✓ built in 246ms
+
+ prerendering static routes 
+20:46:45   ├─ /o-nas/index.html (+14ms) 
+20:46:45   ├─ /podcast/index.html (+8ms) 
+20:46:45   ├─ /youtube/index.html (+7ms) 
+20:46:45   ├─ /index.html (+9ms) 
+20:46:45 ✓ Completed in 308ms.
+
+20:46:45 [build] Rearranging server assets...
+20:46:45 [build] ✓ Completed in 1.79s.
+20:46:45 [build] Server built in 3.03s
+20:46:45 [build] Complete!
+Default inspector port 9229 not available, using 9231 instead
+
+[exit 0]$ npx --yes wrangler@4.146.0 deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-brC0zx/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/server/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬──────────┐
+│ Name                                                      │ Type │ Size     │
+├───────────────────────────────────────────────────────────┼──────┼──────────┤
+│ chunks/_virtual_astro_server-island-manifest_CFl7y3Qj.mjs │ esm  │ 0.22 KiB │
+├───────────────────────────────────────────────────────────┼──────┼──────────┤
+│ chunks/_virtual_astro_session-driver_Csu6PJY6.mjs         │ esm  │ 2.92 KiB │
+├───────────────────────────────────────────────────────────┼──────┼──────────┤
+│ chunks/noop-entrypoint_DsBX4kaI.mjs                       │ esm  │ 0.10 KiB │
+├───────────────────────────────────────────────────────────┼──────┼──────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.12 KiB │
+├───────────────────────────────────────────────────────────┼──────┼──────────┤
+│ Total (4 modules)                                         │      │ 3.35 KiB │
+└───────────────────────────────────────────────────────────┴──────┴──────────┘
+✨ Read 15 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-brC0zx/site/dist/client
+Total Upload: 420.09 KiB / gzip: 102.90 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+env.ASSETS          Assets            
+
+--dry-run: exiting now.
+[exit 0]

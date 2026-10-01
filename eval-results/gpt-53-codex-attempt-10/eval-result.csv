@@ -3,7 +3,8 @@ Task completion time,8min 19s,N/A,8min 19s
 Test run,11.02.2026 21:50,N/A,11.02.2026 21:50
 Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter
 Manual testing,1,1,All pages accessible and returning 200 (except /kursy 404). Navigation styles and content working properly
-Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) Cloudflare adapter configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-11; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0,0.5,v2: wrangler.toml; @astrojs/cloudflare adapter configured; on-demand rendering used; assets.directory=dist; main=dist/_worker.js/index.js; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run failed (wrangler 4.146.0): [ERROR] Build failed with 2 errors:
 O nas page,0.5,1,Page exists (200) with team names and LinkedIn links but bios missing DAZN/Cabify/SmartRecruiters details. No contributors section (Adam Gospodarczyk Wiktor Jamro etc.)
 Podcast page,0.5,1,Only Przeprogramowani podcast displayed via RSS feed. OpanujAI podcast completely missing. Episode data appears real with valid Spotify URLs
 YouTube page,1,1,Real RSS feed from Przeprogramowani channel (UCb2Y3vMeD6N4WDt5Acw7Arw). Unique video IDs no placeholders or rick rolls. Real titles and descriptions

@@ -1,0 +1,81 @@
+---
+import Header from "../components/Header";
+import Footer from "../components/Footer.astro";
+import { SITE, SOCIALS } from "../data/site";
+import "../styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  founders: [
+    {
+      "@type": "Person",
+      name: "Przemek Smyrdek",
+      url: "https://www.linkedin.com/in/psmyrdek/",
+    },
+    {
+      "@type": "Person",
+      name: "Marcin Czarkowski",
+      url: "https://www.linkedin.com/in/mkczarkowski/",
+    },
+  ],
+  sameAs: [SOCIALS.youtube, SOCIALS.facebook, SOCIALS.instagram],
+};
+---
+
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#09090b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="min-h-screen bg-zinc-950 font-sans text-zinc-100 antialiased">
+    <a
+      href="#tresc"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-violet-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+    >
+      Przejdź do treści
+    </a>
+    <Header currentPath={Astro.url.pathname} client:load />
+    <main id="tresc" class="pt-16">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

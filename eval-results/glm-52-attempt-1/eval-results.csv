@@ -4,7 +4,8 @@ Test run,26.06.2026 23:05,N/A,26.06.2026 23:05
 API cost,$0.2897,N/A,$0.2897 (in 67673 / out 17773 / cache 931423 / 1 session)
 Local build,1,1,Build successful (Astro 5.18.2 + @astrojs/cloudflare adapter)
 Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
-Tech stack,0.5,1,Astro 5.18.2 (criterion requires Astro 6); React 19.2.7 + Tailwind 4.3.1 + @astrojs/cloudflare 12.6.13 configured in astro.config.mjs; not exact match due to Astro major version
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-06-26; astro 5 (latest 7); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0,0.5,v2: wrangler.toml; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run failed (wrangler 4.146.0): [ERROR] Uploading a Pages _worker.js directory as an asset.
 O nas page,0.5,1,Page exists (200); both founders present with DAZN/Cabify and SmartRecruiters but per-founder course assignments (Przemek=Opanuj JavaScript; Marcin=10xDevs) missing from bios
 Podcast page,0.5,1,Page exists (200); both podcasts displayed but Spotify show ID is wrong (4qHUZJpeBK8Ij9e2wTVm2o); correct IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy absent; episodes use podcasters.spotify.com slugs
 YouTube page,1,1,9 unique real Przeprogramowani/Opanuj.AI video IDs all verified HTTP 200 via oEmbed with matching titles; no duplicates or placeholder/rick-roll IDs

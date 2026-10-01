@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard';
+import { site, videos } from '../data/content';
+import { ArrowRightIcon, YouTubeIcon } from '../components/Icons';
+---
+
+<BaseLayout
+  title="YouTube"
+  description="Najnowsze filmy Przeprogramowanych — materiały o nowoczesnym developmentie, pracy z AI i rozwoju programisty."
+>
+  <!-- Nagłówek strony -->
+  <section class="relative overflow-hidden">
+    <div class="hero-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-24">
+      <span class="inline-flex size-14 items-center justify-center rounded-2xl bg-red-600/15 text-red-500 ring-1 ring-red-500/20">
+        <YouTubeIcon className="size-7" />
+      </span>
+      <h1 class="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        Przeprogramowani na <span class="gradient-text">YouTube</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-mist">
+        LIVE’y, relacje z eventów, workflow pracy z agentami AI i rozmowy o nowoczesnym programowaniu —
+        rozwój nowoczesnego programisty, tydzień po tygodniu.
+      </p>
+      <a
+        href={`${site.youtube}?sub_confirmation=1`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-base font-semibold text-white shadow-xl shadow-red-600/25 transition-transform hover:scale-[1.02]"
+      >
+        <YouTubeIcon className="size-5" />
+        Subskrybuj kanał
+      </a>
+    </div>
+  </section>
+
+  <!-- Filmy -->
+  <section class="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => <VideoCard client:visible video={video} />)}
+    </div>
+
+    <div class="mt-14 rounded-3xl border border-white/10 bg-gradient-to-br from-brand-600/15 via-accent-500/10 to-cyan-500/10 px-6 py-12 text-center sm:px-12">
+      <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        Wszystkie filmy znajdziesz <span class="gradient-text">na kanale</span>
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl text-base leading-relaxed text-mist">
+        Ponad dekada materiałów o frontendzie, TypeScript i pracy z AI. Włącz, oglądaj i rozwijaj się z nami.
+      </p>
+      <a
+        href={site.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-xl bg-red-600 px-6 py-3.5 text-base font-semibold text-white shadow-xl shadow-red-600/25 transition-transform hover:scale-[1.02]"
+      >
+        Przejdź na YouTube
+        <ArrowRightIcon className="size-4" />
+      </a>
+    </div>
+  </section>
+</BaseLayout>

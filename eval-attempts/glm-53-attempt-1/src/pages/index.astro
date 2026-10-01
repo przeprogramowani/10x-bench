@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CourseCard from '../components/CourseCard';
+import VideoCard from '../components/VideoCard';
+import PodcastEpisodeCard from '../components/PodcastEpisodeCard';
+import SectionHeading from '../components/SectionHeading';
+import NewsletterCta from '../components/NewsletterCta';
+import BrandMarquee from '../components/BrandMarquee';
+import StatsBand from '../components/StatsBand';
+import { COURSES, VIDEOS, PODCAST_SHOWS } from '../data/site';
+
+const featuredCourses = [...COURSES].sort(
+  (a, b) => Number(b.featured ?? false) - Number(a.featured ?? false)
+);
+const latestVideos = VIDEOS.slice(0, 3);
+const latestEpisodes = PODCAST_SHOWS[0].episodes.slice(0, 3);
+---
+
+<BaseLayout
+  title="Szersze spojrzenie na programowanie"
+  description="Przeprogramowani.pl — kursy, podcasty i filmy dla ambitnych programistów. Opanuj Frontend, Opanuj TypeScript i 10xDevs: programuj z AI."
+  path="/"
+>
+  <!-- Hero -->
+  <section class="container-site pb-16 pt-16 sm:pb-20 sm:pt-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="badge animate-fade-up">
+        <span class="relative flex h-2 w-2" aria-hidden="true">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-violet-400"></span>
+        </span>
+        Nowość! 10xDevs 4.0 — Programuj z AI
+      </span>
+
+      <h1
+        class="mt-6 animate-fade-up font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+      >
+        Szersze spojrzenie na <span class="gradient-text">programowanie</span>
+      </h1>
+
+      <p
+        class="mx-auto mt-6 max-w-2xl animate-fade-up text-base leading-relaxed text-slate-400 sm:text-lg"
+      >
+        Edukacja technologiczna w epoce AI. Topowe programy edukacyjne dla
+        ambitnych programistów i świadome korzystanie z potencjału Generative AI.
+      </p>
+    </div>
+
+    <!-- Kursy w hero -->
+    <div class="mt-14 grid gap-5 md:grid-cols-3">
+      {featuredCourses.map((course) => <CourseCard course={course} />)}
+    </div>
+  </section>
+
+  <!-- Statystyki -->
+  <section class="container-site pb-16 sm:pb-20" aria-label="Przeprogramowani w liczbach">
+    <StatsBand />
+  </section>
+
+  <!-- Filmy i podcasty -->
+  <section class="container-site py-16 sm:py-20" aria-label="Filmy i podcasty">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-8">
+      <div>
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Ostatnie odcinki"
+          description="O technologii, AI i programowaniu — słuchaj na Spotify, Apple Podcasts i innych platformach."
+        />
+        <div class="mt-8 flex flex-col gap-3">
+          {latestEpisodes.map((episode, index) => (
+            <PodcastEpisodeCard episode={episode} index={index} />
+          ))}
+        </div>
+        <a
+          href="/podcast"
+          class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-300 transition hover:text-violet-200"
+        >
+          Wszystkie podcasty
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div>
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Ostatnie filmy"
+          description="Rozwój nowoczesnego programisty — praktyczne materiały o AI, frontendzie i warsztacie pracy developera."
+        />
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          {latestVideos.map((video) => (
+            <VideoCard client:visible video={video} />
+          ))}
+          <a
+            href="/youtube"
+            class="card card-hover flex min-h-[120px] flex-col items-center justify-center gap-3 p-6 text-center"
+          >
+            <span
+              class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300"
+              aria-hidden="true"
+            >
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </span>
+            <span class="text-sm font-semibold text-white">Zobacz wszystkie filmy</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zaufali nam -->
+  <section class="py-12 sm:py-16" aria-label="Zaufali nam">
+    <p class="container-site mb-8 text-center text-sm font-semibold uppercase tracking-widest text-slate-500">
+      Zaufali nam — 7 lat na rynku edukacji technologicznej
+    </p>
+    <BrandMarquee />
+  </section>
+
+  <NewsletterCta />
+</BaseLayout>

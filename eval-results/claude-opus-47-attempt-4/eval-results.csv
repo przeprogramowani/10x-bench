@@ -3,7 +3,8 @@ Task completion time,N/A,N/A,N/A
 Test run,16.04.2026 22:34,N/A,16.04.2026 22:34
 Local build,1,1,astro build completed successfully; 5 pages built in 719ms with no errors
 Manual testing,1,1,Dev server running on http://localhost:4322/; all pages (/, /o-nas, /podcast, /youtube) return HTTP 200 with proper navigation styles and content
-Tech stack,0,1,"Wrong major versions: Astro 4.16.18 (need 6), React 18.3.1 (need 19), Tailwind 3.4.14 (need 4); no @astrojs/cloudflare adapter (output is 'static')"
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-04-16; astro 4 (latest 6); react 18 (latest 19); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
 O nas page,0.5,1,"Page exists at /o-nas (200); both founders present with DAZN/Cabify (Przemek) and SmartRecruiters (Marcin); however bios are paraphrased/simplified, course assignments (Opanuj JavaScript / 10xDevs) missing from team data, mission and values rewritten rather than matching context copy"
 Podcast page,0.5,1,"Page exists at /podcast (200); only Opanuj.AI Podcast displayed (Spotify ID 3D6LmchBdoqL2sWkQjvWOy correct); Przeprogramowany Podcast (3yVvOAXSYq6sQB02w4A4wo) entirely missing; episode titles and 2026 dates appear hallucinated"
 YouTube page,0.5,1,"Page exists at /youtube (200); channel URL correct (youtube.com/c/przeprogramowani); however no real video IDs (uses gradient backgrounds in lieu of thumbnails), all video URLs point to channel home not specific videos, titles and dates appear fabricated"

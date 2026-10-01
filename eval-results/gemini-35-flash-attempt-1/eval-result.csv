@@ -3,7 +3,8 @@ Task completion time,7min 41s,N/A,7min 41s
 Test run,20.05.2026 21:21,N/A,20.05.2026 21:21
 Local build,1,1,Build successful with Cloudflare adapter; all 6 routes prerendered including /o-nas /podcast /youtube /opanuj-frontend /opanuj-typescript /
 Manual testing,1,1,All pages accessible with 200 status; navigation styles and content working correctly
-Tech stack,0.5,1,Astro 6.3.6 installed instead of required 5.x; React 19.2.6 Tailwind CSS 4.3.0 and @astrojs/cloudflare all correct and configured
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-05-20; astro 6 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist; main=@astrojs/cloudflare/entrypoints/server; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,1,1,Dedicated page found; Przemek Smyrdek (DAZN Cabify) and Marcin Czarkowski (SmartRecruiters) bios match context
 Podcast page,0.5,1,Both Opanuj.AI and Przeprogramowani ft. Gosc podcasts shown with real episode data; Spotify show URL uses wrong ID (4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo)
 YouTube page,1,1,6 unique real YouTube video IDs with Przeprogramowani-themed titles; no placeholder or rick roll IDs found

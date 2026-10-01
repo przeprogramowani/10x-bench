@@ -3,7 +3,8 @@ Task completion time,8min 20s,N/A,8min 20s
 Test run,11.02.2026 21:45,N/A,11.02.2026 21:45
 Local build,1,1,Build successful with Astro 5.17.1 and Cloudflare adapter
 Manual testing,1,1,All pages accessible and returning 200; navigation styles and content working properly
-Tech stack,1,1,Astro 5 (^5.17.1) React 19 (^19.2.4) Tailwind CSS 4 (^4.1.18) and Cloudflare adapter configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-02-11; astro 5 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; on-demand rendering used; assets.directory=./dist; main=dist/_worker.js/index.js; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,0.5,1,Page exists and returns 200. Names and LinkedIn URLs match context. Descriptions are generic and identical for both founders - missing DAZN/Cabify for Przemek and SmartRecruiters for Marcin. Course assignments not attributed to specific founders.
 Podcast page,0.5,1,Page exists and returns 200. Uses real RSS feed from anchor.fm for Przeprogramowani podcast with real episode data. OpanujAI podcast is completely missing - only one of two required podcasts displayed.
 YouTube page,1,1,Page exists and returns 200. Fetches from real YouTube RSS feed with proper fallback data. Unique video IDs with real Przeprogramowani channel titles. No placeholder or rick roll IDs detected.

@@ -1,0 +1,495 @@
+[0m
+> build · z-ai/glm-5.3
+[0m
+[0m# [0mTodos
+[•] Zebrać informacje o Przeprogramowani.pl (strona, podcast, YouTube, kursy)
+[ ] Zainicjować projekt Astro + React + Tailwind
+[ ] Zbudować strony: Home (hero z kursami), O nas, Podcast, YouTube
+[ ] Skonfigurować wdrożenie na Cloudflare
+[ ] Zbudować i zweryfikować projekt
+[0m
+Zaczynam od zebrania informacji o Przeprogramowani.pl z sieci.
+[0m% [0mWebFetch https://przeprogramowani.pl/o-nas
+[0m% [0mWebFetch https://przeprogramowani.pl
+[0m% [0mWebFetch https://przeprogramowani.pl/podcast
+[0m% [0mWebFetch https://www.youtube.com/@przeprogramowani/videos
+Mam dane o stronie i podcaście. Teraz pobieram informacje o kursach.
+[0m% [0mWebFetch https://www.opanujfrontend.pl
+[0m% [0mWebFetch https://www.opanujtypescript.pl
+[0m% [0mWebFetch https://10xdevs.pl
+[0m→ [0mRead .
+Mam wszystkie potrzebne informacje. Sprawdzam katalog roboczy i środowisko.
+[0m
+[0m$ [0mnode --version && npm --version
+v22.14.0
+10.9.2
+[0m
+[0m# [0mTodos
+[✓] Zebrać informacje o Przeprogramowani.pl (strona, podcast, YouTube, kursy)
+[•] Zainicjować projekt Astro + React + Tailwind
+[ ] Zbudować strony: Home (hero z kursami), O nas, Podcast, YouTube
+[ ] Skonfigurować wdrożenie na Cloudflare
+[ ] Zbudować i zweryfikować projekt
+[0m
+Katalog jest pusty. Inicjuję projekt Astro + React + Tailwind.
+[0m← [0mWrite package.json
+Wrote file successfully.
+[0m
+[0m$ [0mnpm install 2>&1 | tail -5
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[0m
+[0m$ [0mnpm ls astro react tailwindcss @astrojs/react @astrojs/tailwind --depth=0 2>&1
+przeprogramowani-pl@1.0.0 /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1
+├── @astrojs/react@4.4.2
+├── @astrojs/tailwind@6.0.2
+├── astro@5.18.2
+├── react@19.3.0
+└── tailwindcss@3.4.19
+[0m
+[0m← [0mWrite astro.config.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite tailwind.config.mjs
+Wrote file successfully.
+[0m
+[0m← [0mWrite tsconfig.json
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/styles/global.css
+Wrote file successfully.
+[0m
+Zależności zainstalowane. Teraz tworzę konfigurację projektu i pliki bazowe.
+[0m← [0mWrite src/data/site.ts
+Wrote file successfully.
+[0m
+Teraz plik danych ze wszystkimi zebranymi informacjami o projekcie.
+[0m← [0mWrite src/components/Header.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/Footer.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/SectionHeading.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/CourseCard.tsx
+Wrote file successfully.
+[0m
+Teraz komponenty React.
+[0m← [0mWrite src/components/PodcastEpisodeCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/VideoCard.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/BrandMarquee.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/NewsletterCta.tsx
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/layouts/BaseLayout.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/components/StatsBand.tsx
+Wrote file successfully.
+[0m
+Teraz layout bazowy i komponent statystyk.
+[0m← [0mWrite src/pages/index.astro
+Wrote file successfully.
+[0m
+Teraz strony: główna, O nas, Podcast iYouTube.
+[0m← [0mWrite src/pages/o-nas.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/podcast.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite src/pages/youtube.astro
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/favicon.svg
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/_headers
+Wrote file successfully.
+[0m
+[0m← [0mWrite public/robots.txt
+Wrote file successfully.
+[0m
+[0m← [0mWrite wrangler.jsonc
+Wrote file successfully.
+[0m
+Teraz zasoby publiczne i konfiguracja Cloudflare.
+[0m← [0mWrite README.md
+Wrote file successfully.
+[0m
+[0m← [0mWrite .gitignore
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[✓] Zebrać informacje o Przeprogramowani.pl (strona, podcast, YouTube, kursy)
+[✓] Zainicjować projekt Astro + React + Tailwind
+[✓] Zbudować strony: Home (hero z kursami), O nas, Podcast, YouTube
+[✓] Skonfigurować wdrożenie na Cloudflare
+[•] Zbudować i zweryfikować projekt
+[0m
+Buduję projekt, żeby zweryfikować poprawność.
+[0m$ [0mnpm run build 2>&1 | tail -30
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+19:44:34 [content] Syncing content
+19:44:34 [content] Synced content
+19:44:34 [types] Generated 90ms
+19:44:34 [build] output: "static"
+19:44:34 [build] mode: "static"
+19:44:34 [build] directory: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/dist/
+19:44:34 [build] Collecting build info...
+19:44:34 [build] ✓ Completed in 111ms.
+19:44:34 [build] Building static entrypoints...
+19:44:34 [ERROR] [vite] ✗ Build failed in 149ms
+[CompilerError] [astro:build] The closing frontmatter fence (---) is missing an opening fence
+file: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro:19:1
+  Hint:
+    Add --- at the beginning of your file before any import statements or code
+  Location:
+    /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro:19:1
+  Stack trace:
+    at handleCompileResultErrors (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/astro/dist/core/compile/compile.js:65:11)
+    at async compileAstro (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/astro/dist/vite-plugin-astro/compile.js:13:23)
+    at async transform (file:///Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/node_modules/rollup/dist/es/shared/node-entry.js:22025:16)
+[0m
+[0m→ [0mRead src/layouts/BaseLayout.astro[90m [limit=30][0m
+Brakuje otwierającego fence `---` w BaseLayout.astro. Sprawdzam pozostałe pliki .astro.
+[0m
+[0m$ [0mfor f in src/layouts/BaseLayout.astro src/pages/index.astro src/pages/o-nas.astro src/pages/podcast.astro src/pages/youtube.astro; do echo "== $f: first line: $(head -1 "$f")"; done
+== src/layouts/BaseLayout.astro: first line: import '../styles/global.css';
+== src/pages/index.astro: first line: ---
+== src/pages/o-nas.astro: first line: ---
+== src/pages/podcast.astro: first line: ---
+== src/pages/youtube.astro: first line: ---
+[0m
+[0m← [0mEdit src/layouts/BaseLayout.astro
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
+@@ -1,4 +1,5 @@
++---
+ import '../styles/global.css';
+ import Header from '../components/Header';
+ import Footer from '../components/Footer';
+ import { SITE } from '../data/site';
+
+[0m
+[0m$ [0mnpm run build 2>&1 | tail -25
+19:44:46 [build] Building static entrypoints...
+19:44:46 [vite] ✓ built in 394ms
+19:44:46 [build] ✓ Completed in 407ms.
+
+ building client (vite) 
+19:44:46 [vite] transforming...
+19:44:47 [vite] ✓ 21 modules transformed.
+19:44:47 [vite] rendering chunks...
+19:44:47 [vite] computing gzip size...
+19:44:47 [vite] dist/_astro/client.DFmdx-Ks.js  224.00 kB │ gzip: 69.69 kB
+19:44:47 [vite] ✓ built in 309ms
+
+ generating static routes 
+19:44:47 ▶ src/pages/index.astro
+19:44:47   └─ /index.html (+12ms) 
+19:44:47 ▶ src/pages/o-nas.astro
+19:44:47   └─ /o-nas/index.html (+2ms) 
+19:44:47 ▶ src/pages/podcast.astro
+19:44:47   └─ /podcast/index.html (+3ms) 
+19:44:47 ▶ src/pages/youtube.astro
+19:44:47   └─ /youtube/index.html (+2ms) 
+19:44:47 ✓ Completed in 33ms.
+
+19:44:47 [build] 4 page(s) built in 793ms
+19:44:47 [build] Complete!
+[0m
+Build przeszedł — 4 strony wygenerowane. Weryfikuję działanie strony w trybie preview.
+[0m$ [0mnohup npm run preview > /tmp/astro-preview.log 2>&1 & sleep 3 && curl -s -o /dev/null -w "index: %{http_code}\n" http://localhost:4321/ && curl -s -o /dev/null -w "o-nas: %{http_code}\n" http://localhost:4321/o-nas/ && curl -s -o /dev/null -w "podcast: %{http_code}\n" http://localhost:4321/podcast/ && curl -s -o /dev/null -w "youtube: %{http_code}\n" http://localhost:4321/youtube/
+index: 200
+o-nas: 200
+podcast: 200
+youtube: 200
+[0m
+[0m$ [0mcurl -s http://localhost:4321/ | grep -o 'Szersze spojrzenie[^<]*' | head -2; curl -s http://localhost:4321/ | grep -c 'Opanuj Frontend'; curl -s http://localhost:4321/ | grep -c '10xDevs'; curl -s http://localhost:4321/podcast/ | grep -c 'Opanuj.AI Podcast'; curl -s http://localhost:4321/youtube/ | grep -c 'i.ytimg.com'; curl -s http://localhost:4321/o-nas/ | grep -c 'Przemek Smyrdek'
+Szersze spojrzenie na programowanie — Przeprogramowani
+Szersze spojrzenie na programowanie — Przeprogramowani">
+3
+6
+2
+1
+2
+[0m
+[0m$ [0mcurl -s -o /dev/null -w "thumb1: %{http_code}\n" "https://i.ytimg.com/vi/rRM4pXF_4yw/maxresdefault.jpg" && curl -s -o /dev/null -w "cover-podcast: %{http_code}\n" "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_nologo/37949556/37949556-1685638211267-077987255082e.jpg" && curl -s http://localhost:4321/ | grep -o '<title>[^<]*</title>' && curl -s http://localhost:4321/sitemap-index.xml -o /dev/null -w "sitemap: %{http_code}\n"
+thumb1: 200
+cover-podcast: 200
+<title>Szersze spojrzenie na programowanie — Przeprogramowani</title>
+sitemap: 404
+[0m
+Dodaję integrację sitemap (robots.txt się na nią powołuje).
+[0m$ [0mnpm install @astrojs/sitemap 2>&1 | tail -2
+Run `npm audit` for details.
+[0m
+[0m← [0mEdit astro.config.mjs
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/astro.config.mjs
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/astro.config.mjs
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/astro.config.mjs
+@@ -1,7 +1,8 @@
+ import { defineConfig } from 'astro/config';
+ import react from '@astrojs/react';
+ import tailwind from '@astrojs/tailwind';
++import sitemap from '@astrojs/sitemap';
+ 
+ // https://astro.build/config
+ export default defineConfig({
+   site: 'https://przeprogramowani.pl',
+@@ -10,6 +11,7 @@
+     react(),
+     tailwind({
+       applyBaseStyles: false,
+     }),
++    sitemap(),
+   ],
+ });
+
+[0m
+[0m$ [0mkill %1 2>/dev/null; npm run build 2>&1 | tail -12
+19:45:05   └─ /index.html (+11ms) 
+19:45:05 ▶ src/pages/o-nas.astro
+19:45:05   └─ /o-nas/index.html (+2ms) 
+19:45:05 ▶ src/pages/podcast.astro
+19:45:05   └─ /podcast/index.html (+3ms) 
+19:45:05 ▶ src/pages/youtube.astro
+19:45:05   └─ /youtube/index.html (+2ms) 
+19:45:05 ✓ Completed in 30ms.
+
+19:45:05 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+19:45:05 [build] 4 page(s) built in 787ms
+19:45:05 [build] Complete!
+[0m
+[0m$ [0mnohup npm run preview > /tmp/astro-preview.log 2>&1 & sleep 3 && for p in / /o-nas/ /podcast/ /youtube/ /sitemap-index.xml /robots.txt /favicon.svg /_headers; do curl -s -o /dev/null -w "$p -> %{http_code}\n" "http://localhost:4321$p"; done
+/ -> 200
+/o-nas/ -> 200
+/podcast/ -> 200
+/youtube/ -> 200
+/sitemap-index.xml -> 200
+/robots.txt -> 200
+/favicon.svg -> 200
+/_headers -> 200
+[0m
+[0m$ [0mcurl -s http://localhost:4321/ | grep -oE 'href="/[^"]*"' | sort -u; echo "---"; curl -s http://localhost:4321/podcast/ | grep -oE 'podcasters\.spotify\.com[^"]*' | head -3; echo "---"; ls dist dist/_astro 2>/dev/null | head -20
+href="/_astro/index.aDOHK0mq.css"
+href="/"
+href="/favicon.svg"
+href="/o-nas"
+href="/podcast"
+href="/youtube"
+---
+podcasters.spotify.com/pod/show/opanujai/episodes/Plan-mode-to-przeszo---planowanie-wrcz-przeciwnie--nowy-cookie-banner-epoki-AI--Opanuj-AI-e3pn4mj
+podcasters.spotify.com/pod/show/opanujai/episodes/Kod-nie-jest-ju-wskim-gardem--Nadchodzi-AI-Native-SDLC--Opanuj-AI-e3o9hpt
+podcasters.spotify.com/pod/show/opanujai/episodes/Cena-i-bezpieczestwo---kluczowe-pytania-o-AI-przyszoci--Opanuj-AI-e3mvo52
+---
+dist:
+_astro
+_headers
+favicon.svg
+index.html
+o-nas
+podcast
+robots.txt
+sitemap-0.xml
+sitemap-index.xml
+youtube
+
+dist/_astro:
+client.DFmdx-Ks.js
+index.aDOHK0mq.css
+[0m
+[0m$ [0mcurl -s http://localhost:4321/ | grep -c 'astro-island'; curl -s http://localhost:4321/ | grep -oE '<script[^>]*src="[^"]*"' | head -5
+0
+[0m
+[0m$ [0mgrep -rl 'client.DFmdx' dist/*.html dist/*/index.html 2>/dev/null | wc -l; grep -c 'script' dist/index.html
+0
+3
+[0m
+[0m$ [0mgrep -oE '<script[^>]*>' dist/index.html
+(no output)
+[0m
+[0m$ [0mgrep -oE 'script[^>]{0,80}' dist/index.html | head -5
+scription" content="Przeprogramowani.pl — kursy, podcasty i filmy dla ambitnych progra
+scription" content="Przeprogramowani.pl — kursy, podcasty i filmy dla ambitnych progra
+scription" content="Przeprogramowani.pl — kursy, podcasty i filmy dla ambitnych progra
+script.pl?utm_source=przeprogramowani_website" class="relative mt-6 btn-secondary w-fu
+script.pl" class="text-sm text-slate-400 transition hover:text-white"
+[0m
+[0m← [0mEdit src/layouts/BaseLayout.astro
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/layouts/BaseLayout.astro
+@@ -58,9 +58,9 @@
+ >
+   Przejdź do treści
+ </a>
+ 
+-<Header path={path} />
++<Header client:load path={path} />
+ 
+ <main id="main-content" class="relative">
+   <slot />
+ </main>
+
+[0m
+Wykryłem problem: brak dyrektyw `client:` — menu mobilne (useState) nie działałoby w przeglądarce. Dodaję hydratację dla interaktywnych komponentów.
+[0m$ [0mgrep -n 'VideoCard video=' src/pages/*.astro
+src/pages/index.astro:103:            <VideoCard video={video} />
+src/pages/youtube.astro:50:      {VIDEOS.map((video) => <VideoCard video={video} />)}
+[0m
+[0m← [0mEdit src/pages/index.astro
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/index.astro
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/index.astro
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/index.astro
+@@ -99,9 +99,9 @@
+   description="Rozwój nowoczesnego programisty — praktyczne materiały o AI, frontendzie i warsztacie pracy developera."
+ />
+ <div class="mt-8 grid gap-5 sm:grid-cols-2">
+   {latestVideos.map((video) => (
+-    <VideoCard video={video} />
++    <VideoCard client:visible video={video} />
+   ))}
+   <a
+     href="/youtube"
+     class="card card-hover flex min-h-[120px] flex-col items-center justify-center gap-3 p-6 text-center"
+
+[0m
+[0m← [0mEdit src/pages/youtube.astro
+Index: /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/youtube.astro
+===================================================================
+--- /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/youtube.astro
++++ /Users/psmyrdek/dev/10x-bench/eval-attempts/glm-53-attempt-1/src/pages/youtube.astro
+@@ -46,9 +46,9 @@
+ <h2 class="font-display text-2xl font-bold text-white sm:text-3xl">
+   Ostatnie filmy
+ </h2>
+ <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+-  {VIDEOS.map((video) => <VideoCard video={video} />)}
++  {VIDEOS.map((video) => <VideoCard client:visible video={video} />)}
+ </div>
+ <p class="mt-8 text-center text-sm text-slate-500">
+   Pełna oferta filmów, live'ów i materiałów z warsztatów — na kanale{' '}
+   <a
+
+[0m
+[0m$ [0mkill %1 2>/dev/null; npm run build 2>&1 | tail -10 && grep -c 'astro-island' dist/index.html dist/youtube/index.html
+19:45:33   └─ /o-nas/index.html (+2ms) 
+19:45:33 ▶ src/pages/podcast.astro
+19:45:33   └─ /podcast/index.html (+4ms) 
+19:45:33 ▶ src/pages/youtube.astro
+19:45:33   └─ /youtube/index.html (+3ms) 
+19:45:33 ✓ Completed in 34ms.
+
+19:45:33 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+19:45:33 [build] 4 page(s) built in 745ms
+19:45:33 [build] Complete!
+dist/index.html:2
+dist/youtube/index.html:2
+[0m
+[0m$ [0mgrep -o 'astro-island' dist/index.html | wc -l; grep -o 'astro-island' dist/youtube/index.html | wc -l; grep -o 'astro-island' dist/podcast/index.html | wc -l; grep -o 'astro-island' dist/o-nas/index.html | wc -l
+13
+      19
+       7
+       7
+[0m
+[0m$ [0mnohup npm run preview > /tmp/astro-preview.log 2>&1 & sleep 3 && for p in / /o-nas/ /podcast/ /youtube/; do curl -s -o /dev/null -w "$p -> %{http_code}\n" "http://localhost:4321$p"; done && cat dist/sitemap-0.xml | grep -oE '<loc>[^<]*</loc>'
+/ -> 200
+/o-nas/ -> 200
+/podcast/ -> 200
+/youtube/ -> 200
+<loc>https://przeprogramowani.pl/</loc>
+<loc>https://przeprogramowani.pl/o-nas/</loc>
+<loc>https://przeprogramowani.pl/podcast/</loc>
+<loc>https://przeprogramowani.pl/youtube/</loc>
+[0m
+Wszystko działa. Ostatnie kontrole jakości renderowanego HTML.
+[0m$ [0mcurl -s http://localhost:4321/ | grep -oE '(Opanuj Frontend: AI Edition|Opanuj TypeScript|10xDevs|Przeprogramowany Newsletter|Huuuge Games|Autodesk)' | sort | uniq -c; echo "---"; curl -s http://localhost:4321/ | grep -oE 'aria-label="[^"]*"' | sort -u | head -12
+12 10xDevs
+   2 Autodesk
+   2 Huuuge Games
+   1 Opanuj Frontend: AI Edition
+   5 Opanuj TypeScript
+   1 Przeprogramowany Newsletter
+---
+aria-label="Film na YouTube: AI w dużych firmach VS social media | 10xDevs Demo Day"
+aria-label="Film na YouTube: Hackathon AI-Native — tak było na BRAVE UNAITED"
+aria-label="Film na YouTube: Programowanie kiedyś vs dziś"
+aria-label="Filmy i podcasty"
+aria-label="Firmy, które nam zaufały"
+aria-label="Kursy"
+aria-label="Nawigacja główna"
+aria-label="Newsletter"
+aria-label="Odcinek: Cena i bezpieczeństwo — kluczowe pytania o AI przyszłości"
+aria-label="Odcinek: Kod nie jest już wąskim gardłem. Nadchodzi AI-Native SDLC"
+aria-label="Odcinek: Plan mode to przeszłość — planowanie wręcz przeciwnie (+ nowy cookie banner epoki AI)"
+aria-label="Otwórz menu"
+[0m
+[0m$ [0mkill %1 2>/dev/null; node -e "const fs=require('fs');const s=fs.readFileSync('wrangler.jsonc','utf8').replace(/\/\/.*$/gm,'');JSON.parse(s);console.log('wrangler.jsonc: OK')" && find . -type f -not -path './node_modules/*' -not -path './dist/*' -not -path './.astro/*' | sort
+wrangler.jsonc: OK
+./.gitignore
+./astro.config.mjs
+./package-lock.json
+./package.json
+./public/_headers
+./public/favicon.svg
+./public/robots.txt
+./README.md
+./src/components/BrandMarquee.tsx
+./src/components/CourseCard.tsx
+./src/components/Footer.tsx
+./src/components/Header.tsx
+./src/components/NewsletterCta.tsx
+./src/components/PodcastEpisodeCard.tsx
+./src/components/SectionHeading.tsx
+./src/components/StatsBand.tsx
+./src/components/VideoCard.tsx
+./src/data/site.ts
+./src/layouts/BaseLayout.astro
+./src/pages/index.astro
+./src/pages/o-nas.astro
+./src/pages/podcast.astro
+./src/pages/youtube.astro
+./src/styles/global.css
+./tailwind.config.mjs
+./tsconfig.json
+./wrangler.jsonc
+[0m
+[0m# [0mTodos
+[✓] Zebrać informacje o Przeprogramowani.pl (strona, podcast, YouTube, kursy)
+[✓] Zainicjować projekt Astro + React + Tailwind
+[✓] Zbudować strony: Home (hero z kursami), O nas, Podcast, YouTube
+[✓] Skonfigurować wdrożenie na Cloudflare
+[✓] Zbudować i zweryfikować projekt
+[0m
+Gotowe. Strona Przeprogramowani.pl zbudowana i zweryfikowana (4 strony, build przechodzi, wszystkie endpointy 200).
+
+**Co powstało:**
+- **`/`** — hero z hasłem "Szersze spojrzenie na programowanie" + sekcja kursów w hero: **10xDevs 4.0** (wyróżniony), **Opanuj Frontend: AI Edition**, **Opanuj TypeScript**, statystyki, ostatnie odcinki podcastu i filmy YouTube, marquee marek, newsletter 3-2-1
+- **`/o-nas`** — założyciele (Przemek Smyrdek, Marcin Czarkowski z LinkedIn), misja, wartości, statystyki, współpraca
+- **`/podcast`** — Opanuj.AI Podcast i Przeprogramowani ft. Gość po 6 najnowszych odcinków z linkami do Spotify + platformy (Spotify, Apple, Google, RSS)
+- **`/youtube`** — 6 najnowszych filmów z miniaturami i link do subskrypcji kanału
+
+**Stack:** Astro 5 (static) + React 19 (hydratacja: menu mobilne `client:load`, fallback miniatur `client:visible`) + Tailwind 3. Treści w `src/data/site.ts` — zebrane z przeprogramowani.pl, stron kursów i podcastów.
+
+**Cloudflare:** `wrangler.jsonc` (pages_build_output_dir: dist), `public/_headers` (nagłówki bezpieczeństwa + cache `/ _astro/*`), sitemap, robots.txt. Wdrożenie: `npm run deploy` lub connect-to-git z presetem Astro (szczegóły w README).
+
+**Uruchomienie lokalne:** `npm run dev` → http://localhost:4321

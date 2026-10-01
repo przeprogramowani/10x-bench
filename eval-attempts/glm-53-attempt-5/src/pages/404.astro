@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404" description="Strona nie istnieje.">
+  <section class="container-site flex min-h-[80vh] flex-col items-center justify-center py-24 text-center">
+    <span class="font-mono text-sm font-semibold text-brand-400">404</span>
+    <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+      Nie ma takiej strony
+    </h1>
+    <p class="mt-4 max-w-md text-base text-zinc-400">
+      Wygląda na to, że ten endpoint nie istnieje. Wróć na stronę główną i spróbuj ponownie.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="/" class="btn-primary">Strona główna</a>
+      <a href="/podcast" class="btn-ghost">Posłuchaj podcastu</a>
+    </div>
+  </section>
+</BaseLayout>

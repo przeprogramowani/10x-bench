@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PodcastShowcase from '../components/PodcastShowcase';
+import { podcastPlatforms, podcastShows } from '../data/content';
+import {
+  AppleIcon,
+  ArrowRightIcon,
+  GoogleIcon,
+  HeadphonesIcon,
+  RssIcon,
+  SpotifyIcon,
+} from '../components/Icons';
+
+const platformIcons: Record<string, (props: any) => any> = {
+  Spotify: SpotifyIcon,
+  'Apple Podcasts': AppleIcon,
+  'Google Podcasts': GoogleIcon,
+  RSS: RssIcon,
+};
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Słuchaj naszych podcastów o technologii, AI i programowaniu — Opanuj.AI Podcast i Przeprogramowani ft. Gość."
+>
+  <!-- Nagłówek strony -->
+  <section class="relative overflow-hidden">
+    <div class="hero-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-20 text-center sm:px-6 sm:pt-24">
+      <span class="inline-flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500/20 to-accent-500/20 text-brand-300 ring-1 ring-white/10">
+        <HeadphonesIcon className="size-7" />
+      </span>
+      <h1 class="mt-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+        Nasze <span class="gradient-text">podcasty</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-mist">
+        Słuchaj naszych podcastów o technologii, AI i programowaniu — na Spotify, Apple Podcasts i każdej
+        innej ulubionej platformie.
+      </p>
+    </div>
+  </section>
+
+  <!-- Odcinki -->
+  <section class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+    <PodcastShowcase client:visible shows={podcastShows} />
+  </section>
+
+  <!-- Platformy -->
+  <section class="border-t border-white/5 bg-ink-soft py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        Jesteśmy na twojej <span class="gradient-text">ulubionej platformie</span>
+      </h2>
+      <div class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
+        {
+          podcastPlatforms.map((platform) => {
+            const Icon = platformIcons[platform.label] ?? RssIcon;
+            return (
+              <a
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-ink-card px-4 py-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-400/40"
+              >
+                <Icon className="size-8 text-mist transition-colors group-hover:text-white" />
+                <span class="text-sm font-medium text-mist transition-colors group-hover:text-white">
+                  {platform.label}
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <p class="mt-12 text-center text-sm text-mist">
+        Szukasz rozmów z gośćmi o karierze, architekturze i rozwoju?
+        <a href="/o-nas" class="ml-1 inline-flex items-center gap-1 font-semibold text-brand-300 transition-colors hover:text-brand-200">
+          Poznaj twarze za mikrofonem
+          <ArrowRightIcon className="size-3.5" />
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -3,7 +3,8 @@ Task completion time,10min 52s,N/A,10min 52s
 Test run,16.04.2026 21:25,N/A,16.04.2026 21:25
 Local build,1,1,Build succeeded with @astrojs/cloudflare adapter; server output mode; no errors
 Manual testing,1,1,Dev server started on :4322; all 4 pages (/, /o-nas, /podcast, /youtube) returned 200 and rendered correctly
-Tech stack,1,1,Astro 6.1.7, React 19.2.5, Tailwind CSS 4.2.2 (via @tailwindcss/vite), @astrojs/cloudflare 13.1.10 configured in astro.config.mjs
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-04-16; astro 6 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.25,0.5,v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; on-demand rendering used; assets.directory=./dist; main=@astrojs/cloudflare/entrypoints/server; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)
 O nas page,1,1,/o-nas returns 200; both founders present (Przemek Smyrdek with DAZN/Cabify and Open Source/conferences mentioned; Marcin Czarkowski with SmartRecruiters and Opanuj AI Podcast); correct LinkedIn URLs; bios slightly paraphrased but capture key context details
 Podcast page,1,1,/podcast returns 200; both Opanuj.AI Podcast and Przeprogramowani ft. Gosc displayed with real episodes fetched live from przeprogramowani.pl/podcast (with realistic fallbacks); Spotify URLs use podcasters.spotify.com episode-level links (valid real URLs differing from open.spotify.com show URLs in context but pointing to real episodes)
 YouTube page,1,1,/youtube returns 200; 6 unique videos with valid YouTube IDs (S-iNbyLSisE, aRkECt7derY, vH1T5qB4dBQ, bcs8WS4A5Zg, Vce4cD_5XW0, hbuCLvwbMVg); titles match real Przeprogramowani channel content (Claude Code, AI agents, 10xDevs, Product Builders Day); no rick rolls or placeholder IDs; data fetched live from przeprogramowani.pl with realistic fallbacks

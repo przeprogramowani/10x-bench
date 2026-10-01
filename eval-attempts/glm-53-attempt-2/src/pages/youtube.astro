@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import VideoGrid from '../components/VideoGrid';
+import NewsletterCta from '../components/NewsletterCta';
+import { ArrowRightIcon, YouTubeIcon } from '../components/icons';
+import { CHANNEL, VIDEOS } from '../data/videos';
+import { SITE } from '../data/site';
+---
+
+<Base
+  title={`YouTube — ${SITE.name}`}
+  description="Kanał YouTube Przeprogramowani: 411 filmów o programowaniu, AI i rozwoju kariery dla ponad 20 tysięcy subskrybentów."
+>
+  <section class="relative overflow-hidden bg-grid">
+    <div
+      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[20rem] rounded-full bg-red-600/10 blur-[110px] pointer-events-none"
+      aria-hidden="true"
+    ></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-red-400">
+          <span class="w-8 h-1 rounded-full bg-red-500"></span>
+          YouTube
+        </span>
+        <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold font-heading tracking-tight text-white leading-tight">
+          Programowanie, AI i kariera — <span class="text-gradient">na kamerze</span>
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
+          {CHANNEL.description}
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href={CHANNEL.subscribeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2.5 px-7 py-3.5 text-base font-semibold bg-red-600 text-white rounded-xl shadow-lg shadow-red-600/25 transition-all hover:bg-red-500 hover:shadow-red-600/40"
+          >
+            <YouTubeIcon className="w-5 h-5" />
+            Subskrybuj kanał
+            <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </a>
+          <div class="flex items-center gap-6 text-sm text-gray-400">
+            <span>
+              <strong class="text-white font-semibold">{CHANNEL.subscribers}</strong> subskrybentów
+            </span>
+            <span>
+              <strong class="text-white font-semibold">{CHANNEL.videoCount}</strong> filmów
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-16 sm:pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight">
+          Najnowsze filmy
+        </h2>
+        <a
+          href={CHANNEL.videosUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 text-sm font-semibold text-main hover:text-white transition-colors"
+        >
+          Wszystkie filmy na YouTube
+          <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
+      <VideoGrid videos={VIDEOS} />
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <NewsletterCta />
+    </div>
+  </section>
+</Base>

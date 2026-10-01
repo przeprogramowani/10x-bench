@@ -1,0 +1,14 @@
+---
+import { STATS } from "../data/site";
+---
+
+<section class="border-y border-white/5 bg-zinc-950/60">
+  <div class="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-14 sm:px-6 md:grid-cols-4">
+    {STATS.map((stat) => (
+      <div class="text-center">
+        <p class="text-gradient text-3xl font-extrabold tracking-tight sm:text-4xl">{stat.value}</p>
+        <p class="mt-2 text-sm text-zinc-400">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+</section>

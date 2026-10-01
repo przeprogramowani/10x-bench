@@ -1,0 +1,87 @@
+$ npm ci --no-audit --no-fund
+added 344 packages in 2s
+[exit 0]$ npm run build
+> glm-51-attempt-1@0.0.1 build
+> astro build
+
+20:48:28 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+20:48:28 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+
+
+WARNING: your worker config (at `wrangler.toml`) contains the following configuration options which are ignored since they are not applicable when using Vite:
+  - `build` which is not relevant in the context of a Vite project
+
+20:48:28 [WARN] [vite] Default inspector port 9229 not available, using 9230 instead
+
+20:48:29 [vite] ✨ new dependencies optimized: @astrojs/cloudflare/entrypoints/server
+20:48:29 [vite] ✨ optimized dependencies changed. reloading
+20:48:29 [vite] [vite] program reload
+20:48:29 [types] Generated 1.19s
+20:48:29 [build] output: "server"
+20:48:29 [build] mode: "server"
+20:48:29 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-CO8W0a/site/dist/
+20:48:29 [build] adapter: @astrojs/cloudflare
+20:48:29 [build] Collecting build info...
+20:48:29 [build] ✓ Completed in 1.20s.
+20:48:29 [build] Building server entrypoints...
+
+
+WARNING: your worker config (at `wrangler.toml`) contains the following configuration options which are ignored since they are not applicable when using Vite:
+  - `build` which is not relevant in the context of a Vite project
+
+20:48:30 [vite] ✓ built in 591ms
+20:48:31 [vite] ✓ built in 619ms
+20:48:31 [vite] ✓ built in 200ms
+20:48:31 [build] Rearranging server assets...
+20:48:31 [build] ✓ Completed in 1.44s.
+20:48:31 [build] Server built in 2.65s
+20:48:31 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-CO8W0a/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/server/wrangler.json"
+ - Original user's configuration: "wrangler.toml"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+Attaching additional modules:
+┌───────────────────────────────────────────────────────────┬──────┬─────────────┐
+│ Name                                                      │ Type │ Size        │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/Footer_CGeKhN95.mjs                                │ esm  │ 16.51 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_server-island-manifest_CFl7y3Qj.mjs │ esm  │ 0.22 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/_virtual_astro_session-driver_Csu6PJY6.mjs         │ esm  │ 2.92 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/astro-component_CtHAlQb0.mjs                       │ esm  │ 1.19 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-service-workerd_N-qL--by.mjs                 │ esm  │ 0.37 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/image-transform-endpoint_BfhiIA7W.mjs              │ esm  │ 69.84 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/index_DBdIwYpy.mjs                                 │ esm  │ 27.28 KiB   │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/noop-entrypoint_DsBX4kaI.mjs                       │ esm  │ 0.10 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/o-nas_CQCdCNi-.mjs                                 │ esm  │ 5.36 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/podcast_CA66qB7K.mjs                               │ esm  │ 4.53 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/worker-entry_CcPqELwc.mjs                          │ esm  │ 958.31 KiB  │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ chunks/youtube_CLbZhYmG.mjs                               │ esm  │ 4.18 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ virtual_astro_middleware.mjs                              │ esm  │ 0.12 KiB    │
+├───────────────────────────────────────────────────────────┼──────┼─────────────┤
+│ Total (13 modules)                                        │      │ 1090.92 KiB │
+└───────────────────────────────────────────────────────────┴──────┴─────────────┘
+✨ Read 16 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-CO8W0a/site/dist/client
+Total Upload: 1091.09 KiB / gzip: 234.48 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+env.ASSETS          Assets            
+
+--dry-run: exiting now.
+[exit 0]

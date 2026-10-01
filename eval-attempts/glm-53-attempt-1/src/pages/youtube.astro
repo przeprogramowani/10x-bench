@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard';
+import NewsletterCta from '../components/NewsletterCta';
+import { VIDEOS, SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="YouTube"
+  description="Filmy Przeprogramowanych — rozwój nowoczesnego programisty. Praktyczne materiały o AI, frontendzie, TypeScriptie i warsztacie pracy developera."
+  path="/youtube"
+>
+  <!-- Hero -->
+  <section class="container-site pb-12 pt-16 sm:pt-24">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="badge">YouTube</span>
+      <h1
+        class="mt-6 animate-fade-up font-display text-4xl font-bold leading-tight text-white sm:text-5xl"
+      >
+        Filmy dla <span class="gradient-text">nowoczesnego programisty</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+        Praktyczne materiały o pracy z AI, frontendzie, TypeScriptie i warsztacie
+        developera. To mała próbka tego, co szykujemy dla uczestników naszych
+        programów.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={SITE.youtubeSubscribeUrl} class="btn-primary">
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+          </svg>
+          Subskrybuj kanał
+        </a>
+        <a href={SITE.youtubeUrl} class="btn-secondary">Odwiedź kanał</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filmy -->
+  <section class="container-site py-12 sm:py-16" aria-label="Ostatnie filmy">
+    <h2 class="font-display text-2xl font-bold text-white sm:text-3xl">
+      Ostatnie filmy
+    </h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {VIDEOS.map((video) => <VideoCard client:visible video={video} />)}
+    </div>
+    <p class="mt-8 text-center text-sm text-slate-500">
+      Pełna oferta filmów, live'ów i materiałów z warsztatów — na kanale{' '}
+      <a
+        href={SITE.youtubeUrl}
+        class="font-medium text-violet-300 transition hover:text-violet-200"
+      >
+        youtube.com/@przeprogramowani
+      </a>
+    </p>
+  </section>
+
+  <NewsletterCta />
+</BaseLayout>

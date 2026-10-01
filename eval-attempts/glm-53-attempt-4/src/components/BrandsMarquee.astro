@@ -1,0 +1,14 @@
+---
+import { BRANDS } from "../data/site";
+---
+
+<div class="mask-fade-x overflow-hidden py-2" aria-label="Firmy, które nam zaufały">
+  <div class="flex w-max animate-marquee">
+    {[...BRANDS, ...BRANDS].map((brand) => (
+      <span class="flex items-center whitespace-nowrap pr-10 font-mono text-sm uppercase tracking-[0.2em] text-zinc-600">
+        {brand}
+        <span class="ml-10 h-1 w-1 rounded-full bg-zinc-700" aria-hidden="true"></span>
+      </span>
+    ))}
+  </div>
+</div>

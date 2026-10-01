@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,5min 24s,N/A,5min 24s
+Test run,1.10.2026 21:39,N/A,1.10.2026 21:39
+API cost,$0.5735,N/A,$0.5735 (in 99421 / out 30754 / cache 1914496 / 1 session)
+Local build,1,1,npm ci + npm run build succeeded; 4 static pages built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0,0.5,v2: latest stable majors at run date 2026-10-01; astro 5 (latest 7); react 19 (latest); tailwindcss 3 (latest 4)
+Cloudflare deploy,0.25,0.5,v2: wrangler.toml; no adapter; fully static output; pages_build_output_dir=./dist; legacy Cloudflare Pages deployment path
+O nas page,0.5,1,"/o-nas returns 200 and both founder bios in src/data/site.ts include DAZN/Cabify (Przemek) and SmartRecruiters (Marcin), plus the stack, conferences, OSS and Opanuj AI Podcast details. The course assignments are missing ('Opanuj JavaScript' appears 0 times on the rendered page; 10xDevs is not tied to Marcin) and Przemek's publications (Programista; Increment) are omitted, so it only partly matches the context file."
+Podcast page,0.5,1,"/podcast returns 200 and shows both shows with real episodes; podcasters.spotify.com episode URLs return 200 and og:title confirms e.g. 'BAN NA AI?! ... by Opanuj.AI Podcast'. Neither context Spotify show ID (3yVvOAXSYq6sQB02w4A4wo; 3D6LmchBdoqL2sWkQjvWOy) appears anywhere; the only show link in src/data/podcast.ts, open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o, returns Spotify 'Page not found'."
+YouTube page,1,1,/youtube returns 200 and links to youtube.com/c/przeprogramowani. All 6 unique IDs in src/data/videos.ts (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg) pass oEmbed with author 'Przeprogramowani' and titles that match; no placeholder or Rick Roll IDs.
+Kursy section,1,1,"The index.astro hero features 10xDevs (badge, 'Poznaj 10xDevs' CTA to 10xdevs.pl, featured card), and a course grid from src/data/courses.ts includes Opanuj Frontend: AI Edition (5 modules; ~400 graduates; opanujfrontend.pl) and Opanuj TypeScript (TS 5 + React 19; opanujtypescript.pl), consistent with the context file. Minor: the '8100+ absolwentów' stat is not in the context file."
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"BaseLayout.astro covers all pages with per-page title and description, canonical, og:type/site_name/title/description/url/locale, twitter:card, Organization JSON-LD with both founders, and the sitemap integration; rendered HTML confirms unique values on /, /o-nas, /podcast and /youtube. The content matches the context file (tagline; mission). Only gap: no og:image."
+Penalty,0,N/A,No penalty applied

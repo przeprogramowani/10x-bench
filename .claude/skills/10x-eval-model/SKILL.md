@@ -78,7 +78,10 @@ After OpenCode runs complete, compute each attempt's token usage and USD cost an
 write it into the attempt's `eval-results.csv`.
 
 OpenCode (>= 1.14) stores all session data in a SQLite database at
-`~/.local/share/opencode/opencode.db`. Its `session` table records, per session,
+`~/.local/share/opencode/opencode.db` (`opencode debug paths db` prints it).
+OpenCode 2.x uses the same file but records sessions in `session_v2`, into which
+all v1 `session` rows were migrated; the script reads `session_v2` when present.
+The session table records, per session,
 the working directory the run executed in (`directory`), the token counts
 (`tokens_input/output/reasoning/cache_read/cache_write`), and OpenCode's own
 computed `cost`. Because every attempt runs with its attempt directory as cwd,
@@ -129,10 +132,12 @@ Each harness has its own way of launching a model run. The harness determines th
 
 **Environment:** `AGENT_ENVIRONMENT.OpenCode`
 
+**Version:** OpenCode 2.x (`opencode --version`; install/upgrade with `curl -fsSL https://opencode.ai/v2/install | bash`). Runs go through OpenCode's shared background service by default; the session still records the attempt directory as its cwd. Record the OpenCode version used for each campaign, and keep it fixed for all 5 attempts.
+
 **Prerequisites check:**
-Before launching runs, verify connectivity and credits by running a test command:
+Check `opencode run --help` for the installed version's flags. Use the [V2 CLI documentation](https://opencode.ai/v2/docs/cli/commands/); V1 flags and configuration can differ. Before launching runs, verify connectivity and credits by running a test command:
 ```bash
-opencode run -m openrouter/<provider>/<model> -q "Say hello in one word"
+opencode run -m openrouter/<provider>/<model> "Say hello in one word"
 ```
 
 Common OpenRouter provider prefixes by vendor:
@@ -148,10 +153,35 @@ If unsure about the provider prefix, search the web for the model on OpenRouter 
 **Launch command per attempt:**
 Each subagent should run:
 ```bash
-cd /path/to/eval-attempts/{model-id}-attempt-{N} && opencode run -m openrouter/<provider>/<model> --dangerously-skip-permissions "<prompt>"
+cd "/path/to/eval-attempts/{model-id}-attempt-{N}" &&
+opencode run \
+  --agent build \
+  --auto \
+  --thinking \
+  -m "openrouter/<provider>/<model>" \
+  --format json \
+  "<prompt>" \
+  > "../{model-id}-attempt-{N}.jsonl" \
+  2> "../{model-id}-attempt-{N}.stderr.log"
 ```
 
-The prompt must be passed as a single string argument, copied verbatim from `prompt.md`.
+- `--agent build` explicitly selects the coding agent with tools.
+- `--auto` approves permission requests automatically; explicit denials still apply.
+- `--format json` emits newline-delimited events, including `step_start`, `tool_use`, `step_finish`, `text`, and errors.
+- `--thinking` includes provider-exposed reasoning blocks, including in JSON output. It controls visibility, not reasoning effort, and cannot expose reasoning the provider does not return.
+
+**Agent loop:** `opencode run` can perform multiple model steps from one starting prompt: request tools, receive their results, edit files, run checks, and continue until it stops. These flags select the agent, permissions, and output; they do not enable the loop or guarantee a particular number of steps. Check for a configured `agents.build.steps` limit if a run stops prematurely: on the final allowed step, OpenCode removes tools and requests a text summary. See [V2 agents](https://opencode.ai/v2/docs/agents/#steps).
+
+Pass the contents of `prompt.md` verbatim as a single argument, using an argument array or proper shell quoting so backticks and `$()` in the prompt remain literal. Do not append instructions or split the benchmark into extra user turns to force more steps.
+
+**Reasoning effort:** If the campaign specifies a reasoning variant, select it with `-m "openrouter/<provider>/<model>#<variant>"`. V2 uses the `#variant` suffix. Verify that the model supports the requested variant; names such as `high` are not universal, and an unknown variant fails model resolution. Record the selected variant (or that none was explicitly selected) and keep it fixed across all 5 attempts. See [V2 model variants](https://opencode.ai/v2/docs/models/#variants).
+
+**Observe the run:** JSON output is a CLI event transcript, not a complete dump of every server event. Text and reasoning are emitted when their blocks finish; tool results and step boundaries show the sequence of work. Reasoning requires `--thinking` even with `--format json`. See the [V2 output implementation](https://github.com/anomalyco/opencode/blob/v2/packages/cli/src/run/noninteractive.ts). From the repository root, watch an attempt with:
+```bash
+tail -f "eval-attempts/{model-id}-attempt-{N}.jsonl"
+```
+
+**Completion and failures:** Do not treat exit code 0 as proof of task completion; a failed session can still exit 0. Inspect the JSON events, stderr, and expected artifacts. An empty directory alone does not establish the cause. After each run, check how that attempt's session ended in `opencode.db`: in 2.x the last `session_message` row of type `idle` has `outcome` (`failed` means it did not finish), and the last `assistant` row has `finish`/`error` (e.g. `"length"` for the per-response output cap, or `provider.rate-limit` for an upstream 429). Preserve the logs and record failed session IDs so their cost can be separated before any re-run.
 
 Use a 600000ms (10 min) timeout for each run. All 5 attempts launch as background subagents in a single turn for maximum parallelism.
 
