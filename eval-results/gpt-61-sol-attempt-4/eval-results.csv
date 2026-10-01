@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,24min 11s,N/A,24min 11s (Codex Desktop session rollout-2026-10-01T21-46-52-01a0f901-60cd-7802-8d44-a556c78faf04.jsonl; first to last event)
+Test run,1.10.2026 22:27,N/A,1.10.2026 22:27
+API cost,$0.9902,N/A,$0.9902 (in 125487 / out 42247 incl. 5988 reasoning / cache 3167232 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)
+Local build,1,1,npm ci + npm run build succeeded; 5 pages/routes built
+Manual testing,1,1,All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
+O nas page,0.5,1,"src/pages/o-nas.astro returns 200 and names both founders with key details (Przemek: DAZN/Cabify, CursorLens, openapi-typescript; Marcin: SmartRecruiters, Opanuj.AI podcast) and the correct LinkedIn URLs. The bios are shortened paraphrases and leave out both course assignments (Przemek: 'Opanuj JavaScript'; Marcin: '10xDevs'); the context's Magazyn Programista/Increment publications and named conferences are also missing."
+Podcast page,0.5,1,"/podcast/ returns 200 and src/data/episodes.json lists 12 real episodes from both shows (6 Opanuj.AI, e.g. e3pn4mj; 6 Przeprogramowani ft. Gość, e.g. e2kj935). Every episode URL returns 200 and a fake ID returns 404. The main 'Słuchaj na Spotify' link uses show ID 4qHUZJpeBK8Ij9e2wTVm2o, which returns 404 on open.spotify.com, and neither context show ID (3yVvOAXSYq6sQB02w4A4wo or 3D6LmchBdoqL2sWkQjvWOy) appears anywhere."
+YouTube page,1,1,"/youtube/ returns 200; all 9 IDs in src/data/videos.json (e.g. rRM4pXF_4yw, wpWX4yI4DgA, -wPzsA_fH54, rR2sbf0KkRU) pass oEmbed with author_name 'Przeprogramowani' and titles that match. There are no duplicates or placeholder IDs, and the channel link is youtube.com/c/przeprogramowani/videos."
+Kursy section,1,1,"src/components/Hero.astro features 10xDevs (EDYCJA 4.0; links to https://www.10xdevs.pl/). src/components/Courses.astro has Opanuj Frontend (AI Edition; opanujfrontend.pl) and Opanuj TypeScript (TS 5 + React 19; opanujtypescript.pl), both matching the context, and the footer also links Opanuj AI."
+Consistent UI,1,1,UI consistent across all pages per user testing
+Responsive design,1,1,Containers components and navigation responsive per user testing
+SEO Tags,1,1,"src/layouts/Layout.astro covers every page with a per-page title and description, canonical, og:type/locale/title/description/url/image (social-card.png), twitter:card and Organization JSON-LD (founders; kontakt@przeprogramowani.pl). The rendered titles are distinct per page (e.g. 'O nas — Przeprogramowani') and the default title uses the context tagline 'Szersze spojrzenie na programowanie'."
+Penalty,0,N/A,No penalty applied

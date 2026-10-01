@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroVisual from '../components/HeroVisual.astro';
+import Courses from '../components/Courses.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import media from '../data/media.json';
+const latest = [...media.videos, ...media.podcasts.filter(item => item.date)].sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+---
+<Layout>
+  <section class="hero container">
+    <div class="hero-copy"><span class="eyebrow hero-eyebrow"><span class="status-dot"></span> WIEDZA, KTÓRA ZMIENIA PERSPEKTYWĘ</span><h1>Szersze spojrzenie<br />na <span class="hero-highlight">programowanie<svg viewBox="0 0 590 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13C145 1 365 0 586 8"/></svg></span><span class="title-period">.</span></h1><p>Technologia to dopiero początek. Pomagamy developerom łączyć solidny warsztat, świadomą pracę z AI i rozwój, który ma znaczenie.</p><div class="hero-actions"><a href="#kursy" class="button">Znajdź swoją ścieżkę <Icon name="arrow" size={20}/></a><a href="/podcast" class="text-link"><Icon name="headphones" size={20}/> Posłuchaj podcastu</a></div><div class="hero-social-proof"><div class="avatar-stack"><img src="/images/przemek.webp" width="40" height="40" alt="Przemek Smyrdek"/><img src="/images/marcin.webp" width="40" height="40" alt="Marcin Czarkowski"/><span><Icon name="code" size={19}/></span></div><p><strong>8 100+ absolwentów 10xDevs</strong><span>Jedna społeczność. Mnóstwo możliwości.</span></p></div></div>
+    <HeroVisual />
+  </section>
+  <section class="trust-strip container" aria-label="Firmy, które nam zaufały"><span>WIEDZA DOCENIANA<br/>PRZEZ ZESPOŁY Z</span><div class="trust-logos"><span class="logo-smart">smart<span>Recruiters</span></span><span class="logo-callstack">◈ callstack</span><span class="logo-autodesk">◩ AUTODESK</span><span class="logo-future">future processing<span>_</span></span><span class="logo-edrone">edrone<span>®</span></span></div></section>
+  <section id="kursy" class="section container courses-section"><div class="section-heading"><div><span class="eyebrow"><span class="section-number">01 /</span> TWÓJ KOLEJNY KROK</span><h2>Ucz się. Buduj. <span class="muted-heading">Idź dalej.</span></h2></div><a href="/kursy" class="text-link">Wszystkie kursy <Icon name="arrow" size={19}/></a></div><p class="section-intro">Praktyczna wiedza, którą wykorzystasz już w następnym projekcie.</p><Courses /></section>
+  <section class="section media-section"><div class="container"><div class="section-heading"><div><span class="eyebrow"><span class="section-number">02 /</span> WARTO BYĆ NA BIEŻĄCO</span><h2>Nowe perspektywy<span class="lime-period">.</span></h2></div><p class="section-side-note">Rozmowy, eksperymenty i konkrety.<br/>Dzielimy się tym, co sami sprawdzamy.</p></div><MediaLibrary items={latest} client:load /></div></section>
+  <section class="about-preview container"><div class="about-preview-copy"><span class="eyebrow"><span class="section-number">03 /</span> LUDZIE ZA KODEM</span><h2>Developerzy.<br/>Edukatorzy.<br/><span class="muted-heading">Wiecznie ciekawi.</span></h2><p>Jesteśmy Marcin i Przemek. Tworzymy Przeprogramowanych, bo wierzymy, że dobry programista patrzy dalej niż na kolejną linię kodu.</p><a href="/o-nas" class="text-link">Poznaj nas bliżej <Icon name="arrow"/></a></div><div class="founder-preview"><div class="founder-preview-photo"><img src="/images/przemek.webp" alt="Przemek Smyrdek" width="360" height="400" loading="lazy"/><span>Przemek Smyrdek <Icon name="arrow" size={16}/></span></div><div class="founder-preview-photo second"><img src="/images/marcin.webp" alt="Marcin Czarkowski" width="360" height="400" loading="lazy"/><span>Marcin Czarkowski <Icon name="arrow" size={16}/></span></div></div></section>
+  <Newsletter />
+</Layout>

@@ -1,0 +1,7 @@
+---
+const { light = false } = Astro.props;
+---
+<a href="/" class:list={['brand', { 'brand-light': light }]} aria-label="Przeprogramowani — strona główna">
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m10 8-8 8 8 8m12-16 8 8-8 8M19 4l-6 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+  <span>przeprogramowani<span class="brand-dot">.</span></span>
+</a>

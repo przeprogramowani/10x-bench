@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import content from '../data/content.json';
+---
+<Layout title="Podcast — Rozmowy dla głodnych wiedzy | Przeprogramowani" description="Posłuchaj najnowszych odcinków Opanuj.AI i Przeprogramowani ft. Gość. Rozmawiamy o programowaniu, sztucznej inteligencji i rozwoju zawodowym.">
+  <section class="page-intro container"><div class="breadcrumb"><a href="/">Strona główna</a><span>/</span>Podcast</div><span class="eyebrow"><span class="little-square"></span> WŁĄCZ SZERSZĄ PERSPEKTYWĘ</span><div class="page-title-row"><div><h1>Dobre pytania.<br/><span class="muted-heading">Jeszcze lepsze rozmowy.</span></h1><p>O technologii, ludziach i tym, co dalej. Posłuchaj nas<br class="desktop-break"/> w drodze do pracy, na spacerze albo przy kolejnym deployu.</p></div><div class="page-symbol podcast-symbol" aria-hidden="true"><Icon name="headphones" size={86}/></div></div><div class="intro-links"><a class="button button-dark" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Słuchaj na Spotify <Icon name="external"/></a><span>Opanuj.AI & Przeprogramowani ft. Gość</span></div></section>
+  <section class="container library-section"><h2 class="sr-only">Ostatnie odcinki podcastów</h2><MediaLibrary items={content.podcasts} type="podcast" client:load /><p class="content-update">Ostatnie odcinki z oficjalnej strony Przeprogramowanych · Aktualizacja: {new Date(content.updatedAt).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })}</p></section>
+  <Newsletter />
+</Layout>

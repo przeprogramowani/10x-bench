@@ -124,7 +124,7 @@ export const SUPERSEDED_MODELS: Partial<Record<ModelId, ModelId>> = {
   "glm-52": "glm-53",
   "kimi-k25": "kimi-k26",
   "kimi-k26": "kimi-k3",
-  // "gpt-56-sol": "gpt-61-sol", // enable once gpt-61-sol attempts are scored
+  "gpt-56-sol": "gpt-61-sol",
   // "minimax-m25": "minimax-m27",
   // "qwen-3-max": "qwen-36-plus",
   // "gpt-54": "gpt-55",

@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/dm-sans';
+import Navigation from '../components/Navigation';
+import Icon from '../components/Icon.astro';
+interface Props { title?: string; description?: string }
+const { title = 'Szersze spojrzenie na programowanie', description = 'Rozwijaj się z Przeprogramowanymi. Praktyczne kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcasty oraz filmy dla programistów.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{title} — Przeprogramowani</title><meta name="description" content={description}/>
+    <link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="theme-color" content="#f7f7f2"/>
+    <meta property="og:title" content={`${title} — Przeprogramowani`}/><meta property="og:description" content={description}/>
+    <meta property="og:type" content="website"/><meta property="og:url" content={canonical}/>
+    <meta property="og:locale" content="pl_PL"/><meta property="og:image" content={new URL('/images/social-card.png', Astro.site)}/>
+    <script type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'Organization',name:'Przeprogramowani',url:Astro.site,email:'kontakt@przeprogramowani.pl',sameAs:['https://www.youtube.com/c/przeprogramowani','https://przeprogramowani.substack.com']})}/>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div class="announcement"><span class="announcement-dot"></span> Nowy rozdział programowania. Poznaj 10xDevs 4.0 <a href="https://10xdevs.pl/">Sprawdź program <Icon name="arrow" size={15}/></a></div>
+    <header class="site-header"><div class="container header-inner">
+      <a class="brand" href="/" aria-label="Przeprogramowani — strona główna"><span class="brand-symbol"><Icon name="code" size={29}/></span><span>przeprogramowani<span class="brand-dot">.</span></span></a>
+      <Navigation path={Astro.url.pathname} client:load/>
+    </div></header>
+    <main id="main"><slot/></main>
+    <footer class="site-footer"><div class="container">
+      <div class="footer-top"><div><a class="brand" href="/"><span class="brand-symbol"><Icon name="code" size={26}/></span><span>przeprogramowani<span class="brand-dot">.</span></span></a><p>Szersze spojrzenie na programowanie.<br/> Od pierwszej inspiracji do kolejnego kroku.</p></div>
+        <div class="footer-links"><a href="/o-nas/">O nas</a><a href="/podcast/">Podcast</a><a href="/youtube/">YouTube</a><a href="/#kursy">Nasze kursy</a></div>
+        <div class="footer-contact"><span>POROZMAWIAJMY</span><a href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl <Icon name="diagonal" size={17}/></a><a href="https://przeprogramowani.substack.com/">Przeprogramowany Newsletter <Icon name="diagonal" size={17}/></a></div>
+      </div><div class="footer-bottom"><span>© {new Date().getFullYear()} Przeprogramowani</span><span>Z pasji do technologii. Z myślą o ludziach.</span><a href="https://przeprogramowani.pl/polityka-prywatnosci">Polityka prywatności <Icon name="diagonal" size={12}/></a></div>
+    </div></footer>
+  </body>
+</html>

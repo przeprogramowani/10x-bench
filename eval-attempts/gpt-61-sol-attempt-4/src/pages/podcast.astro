@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import { Headphones, ArrowUpRight } from 'lucide-react';
+import contentMeta from '../data/content-meta.json';
+const updated = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Warsaw' }).format(new Date(`${contentMeta.updatedAt}T12:00:00Z`));
+---
+<Layout title="Podcast — Przeprogramowani" description="Najnowsze odcinki Opanuj.AI i Przeprogramowani ft. Gość. Rozmowy o AI, technologii, karierze i szerszym spojrzeniu na programowanie.">
+  <section class="page-intro container"><a class="breadcrumb" href="/">Strona główna <span>/ Podcast</span></a><span class="eyebrow"><Headphones size={15} /> DO POSŁUCHANIA. DO PRZEMYŚLENIA.</span><h1>Dobre rozmowy.<br /><span class="serif-word">Szersza perspektywa.</span></h1><p>O technologii, AI i ludziach, którzy tworzą przyszłość. Zabierz nas na spacer, do samochodu albo do swojej następnej przerwy od kodu.</p><a class="button button-dark" href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o" target="_blank" rel="noopener noreferrer">Słuchaj na Spotify <ArrowUpRight size={18} /></a></section>
+  <section class="podcast-series container"><div><img src="/images/podcast-ai.jpg" alt="Opanuj.AI Podcast" width="90" height="90" /><div><h2>Opanuj.AI</h2><p>Modele, narzędzia i praktyczne spojrzenie na AI.</p></div></div><div><img src="/images/podcast-guest.jpg" alt="Przeprogramowani ft. Gość" width="90" height="90" /><div><h2>Przeprogramowani ft. Gość</h2><p>Technologia i kariera. Z ludźmi, od których warto się uczyć.</p></div></div></section>
+  <section class="container library-section"><div class="section-heading"><div><span class="eyebrow">WŁĄCZ CIEKAWOŚĆ</span><h2>Ostatnie odcinki.</h2></div><span class="content-date">Aktualizacja: {updated}</span></div><MediaLibrary mode="episodes" client:load /></section>
+  <Newsletter />
+</Layout>

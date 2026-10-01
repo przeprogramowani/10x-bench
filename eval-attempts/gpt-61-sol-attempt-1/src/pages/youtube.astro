@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaExplorer from '../components/MediaExplorer';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+import media from '../data/media.json';
+---
+
+<Layout
+  title="YouTube"
+  description="Najnowsze filmy Przeprogramowanych: programowanie, AI, praca z agentami, frontend i rozmowy na żywo."
+>
+  <section class="container page-intro">
+    <nav class="breadcrumb" aria-label="Okruszki">
+      <a href="/">Strona główna</a>
+      <span>/</span>
+      <span>YouTube</span>
+    </nav>
+    <span class="eyebrow">ZOBACZ, JAK PRACUJEMY</span>
+    <h1>
+      Kod, pomysły i eksperymenty.
+      <br />
+      <span>Wciśnij play.</span>
+    </h1>
+    <p>
+      Praktyczne materiały, rozmowy na żywo i kulisy pracy z AI. Odkrywaj technologię razem z nami —
+      jeden film na raz.
+    </p>
+    <div class="page-intro-actions">
+      <a
+        class="button button-purple"
+        href="https://www.youtube.com/@Przeprogramowani"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Przejdź na nasz kanał <Icon name="diagonal" size={17} />
+      </a>
+      <a class="text-link" href="/podcast/">
+        Wolisz słuchać? <Icon name="headphones" size={17} />
+      </a>
+    </div>
+  </section>
+  <section class="container media-page" aria-label="Najnowsze filmy">
+    <MediaExplorer mode="video" client:load />
+    <p class="content-updated">
+      Najnowsze materiały opublikowane na{' '}
+      <a href="https://przeprogramowani.pl/">Przeprogramowani.pl</a> · Aktualizacja:{' '}
+      {new Date(media.updatedAt).toLocaleDateString('pl-PL', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })}
+    </p>
+  </section>
+  <Newsletter />
+</Layout>

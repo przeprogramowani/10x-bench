@@ -7,7 +7,8 @@
     "process-results": "tsx scripts/process-results.ts",
     "calculate-cost": "tsx scripts/calculate-cost.ts",
     "dev": "npm run process-results && cd website && npm run dev",
-    "build": "npm run process-results && cd website && npm run build",
+    "build": "npm run process-results && npm run check-screenshots && cd website && npm run build",
+    "check-screenshots": "tsx scripts/check-screenshots.ts",
     "screenshots": "tsx scripts/take-screenshots.ts"
   },
   "keywords": [

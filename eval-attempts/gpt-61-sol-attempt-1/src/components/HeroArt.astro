@@ -1,0 +1,75 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div class="hero-art" aria-label="10xDevs — praktyczne programowanie z AI">
+  <div class="art-topline">
+    <span>
+      <span class="status-dot"></span> HUMAN × AI
+    </span>
+    <span>EDYCJA 4.0 ↗</span>
+  </div>
+  <div class="art-orbit orbit-one"></div>
+  <div class="art-orbit orbit-two"></div>
+  <span class="art-cross cross-one">+</span>
+  <span class="art-cross cross-two">+</span>
+  <svg class="asterisk-art" viewBox="0 0 480 420" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="side" x1="95" y1="50" x2="360" y2="390" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#493196" />
+        <stop offset=".55" stop-color="#281657" />
+        <stop offset="1" stop-color="#815ac9" />
+      </linearGradient>
+      <linearGradient id="face" x1="105" y1="80" x2="330" y2="290" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#f0ffd1" />
+        <stop offset=".5" stop-color="#d1f599" />
+        <stop offset="1" stop-color="#a9dc68" />
+      </linearGradient>
+      <filter id="shadow">
+        <feGaussianBlur stdDeviation="16" />
+      </filter>
+    </defs>
+    <ellipse cx="250" cy="346" rx="130" ry="20" fill="#38236c" opacity=".3" filter="url(#shadow)" />
+    <path
+      d="m205 59 60 6-5 87 69-52 39 48-67 54 83 10-7 62-83-10 52 67-50 39-51-67-10 83-61-7 10-84-67 53-40-49 67-53-83-10 7-61 84 9-53-68 49-39 52 68z"
+      fill="url(#side)"
+      transform="translate(12 29)"
+    />
+    <path
+      d="m205 59 60 6-5 87 69-52 39 48-67 54 83 10-7 62-83-10 52 67-50 39-51-67-10 83-61-7 10-84-67 53-40-49 67-53-83-10 7-61 84 9-53-68 49-39 52 68z"
+      fill="url(#face)"
+      stroke="#f5ffdf"
+      stroke-width="1.5"
+    />
+    <path
+      d="m205 59 60 6-5 87m41 50 83 10m-90 52 52 67m-101-28-10 83"
+      stroke="white"
+      opacity=".4"
+    />
+  </svg>
+  <div class="art-title">
+    10x<span>Devs</span>
+    <sup>4.0</sup>
+  </div>
+  <div class="art-code">
+    <span class="code-dots">
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+    <code>
+      <span>const</span> future = <span>await</span>
+      <br />
+      &nbsp;&nbsp;you.<b>build</b>(&#123; with: <em>"AI"</em> &#125;);
+    </code>
+  </div>
+  <div class="art-sticker">
+    <Icon name="spark" size={17} /> Mniej powtarzania.
+    <br />
+    <strong>Więcej tworzenia.</strong>
+  </div>
+  <div class="art-bottomline">
+    <span>TWÓJ KOLEJNY KROK W ROZWOJU</span>
+    <Icon name="diagonal" size={22} />
+  </div>
+</div>

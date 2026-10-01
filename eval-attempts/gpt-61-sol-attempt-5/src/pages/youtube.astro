@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import content from '../data/content.json';
+---
+<Layout title="YouTube — technologia w praktyce" description="Najnowsze filmy Przeprogramowanych: programowanie z AI, frontend, warsztaty i rozmowy. Odkryj materiały na naszym kanale YouTube.">
+ <section class="page-hero container"><a href="/" class="breadcrumb">Strona główna <span>/</span> YouTube</a><span class="eyebrow"><span class="tiny-line"></span> ZOBACZ. ZROZUM. ZBUDUJ.</span><div class="page-heading-row"><div><h1>Włącz <span>ciekawość.</span></h1><p>Technologia w praktyce, szczere rozmowy i nowe perspektywy.<br/> Nasze najnowsze filmy. Twój kolejny impuls do działania.</p></div><a class="button button-dark" href="https://www.youtube.com/c/przeprogramowani/videos" target="_blank" rel="noopener noreferrer"><Icon name="youtube"/> Nasz kanał <Icon name="diagonal" size={18}/></a></div></section>
+ <section class="container library-section" aria-label="Najnowsze filmy"><MediaLibrary items={content.videos} kind="video" client:load/><p class="content-date">Materiały z naszego kanału · aktualizacja {new Date(content.updatedAt).toLocaleDateString('pl-PL')} · <a href="https://www.youtube.com/c/przeprogramowani/videos">Więcej na YouTube ↗</a></p></section>
+ <Newsletter/>
+</Layout>

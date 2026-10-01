@@ -1,0 +1,42 @@
+$ npm ci --no-audit --no-fundnpm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'undici@8.11.2',
+npm warn EBADENGINE   required: { node: '>=22.19.0' },
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+
+added 334 packages in 3s
+[exit 0]$ npm run build
+> przeprogramowani-web@1.0.0 build
+> astro build
+
+22:27:56 [types] Generated 70ms
+22:27:56 [build] output: "static"
+22:27:56 [build] mode: "static"
+22:27:56 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Ectp2K/site/dist/
+22:27:56 [build] Collecting build info...
+22:27:56 [build] ✓ Completed in 80ms.
+22:27:56 [build] Building static entrypoints...
+22:27:57 [vite] ✓ built in 242ms
+22:27:57 [vite] ✓ built in 118ms
+22:27:57 [build] Rearranging server assets...
+
+ generating static routes 
+22:27:57   ├─ /404.html (+47ms) 
+22:27:57   ├─ /o-nas/index.html (+5ms) 
+22:27:57   ├─ /podcast/index.html (+9ms) 
+22:27:57   ├─ /youtube/index.html (+4ms) 
+22:27:57   ├─ /index.html (+4ms) 
+22:27:57 ✓ Completed in 81ms.
+
+22:27:57 [build] ✓ Completed in 457ms.
+22:27:57 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+22:27:57 [build] 5 page(s) built in 542ms
+22:27:57 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Ectp2K/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 40 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Ectp2K/site/dist
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

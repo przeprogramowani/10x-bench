@@ -1,0 +1,34 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import Header from '../components/Header';
+import Icon from '../components/Icon.astro';
+interface Props { title?: string; description?: string; }
+const { title = 'Przeprogramowani — Szersze spojrzenie na programowanie', description = 'Rozwijaj się z Przeprogramowanymi. Praktyczne kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcasty oraz filmy o programowaniu i AI.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <title>{title}</title><meta name="description" content={description} />
+    <link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+    <meta property="og:type" content="website" /><meta property="og:locale" content="pl_PL" /><meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/og-image.png', Astro.site)} /><meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <Header path={Astro.url.pathname} client:load />
+    <main id="main"><slot /></main>
+    <footer class="site-footer"><div class="container">
+      <div class="footer-main"><div><a class="brand" href="/"><span class="brand-mark">&lt;/&gt;</span>przeprogramowani<span class="brand-dot">.</span></a><p>Szersze spojrzenie na programowanie.<br/>Od pierwszej inspiracji do kolejnego kroku.</p></div>
+      <div class="footer-links"><a href="/o-nas/">O nas</a><a href="/#kursy">Kursy</a><a href="/podcast/">Podcast</a><a href="/youtube/">YouTube</a></div>
+      <a class="footer-contact" href="mailto:kontakt@przeprogramowani.pl">Porozmawiajmy <Icon name="external" /><span>kontakt@przeprogramowani.pl</span></a></div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} Przeprogramowani</span><span>Z pasji do technologii. Z myślą o ludziach.</span><a href="https://przeprogramowani.pl/polityka-prywatnosci">Polityka prywatności <Icon name="external" size={14}/></a></div>
+    </div></footer>
+  </body>
+</html>

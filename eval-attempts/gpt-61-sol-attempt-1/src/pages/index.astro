@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import HeroArt from '../components/HeroArt.astro';
+import Courses from '../components/Courses.astro';
+import MediaExplorer from '../components/MediaExplorer';
+import Newsletter from '../components/Newsletter.astro';
+---
+
+<Layout title="Szersze spojrzenie na programowanie">
+  <section class="hero container">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <span class="status-dot"></span> DLA TYCH, KTÓRZY CHCĄ WIĘCEJ
+      </span>
+      <h1>
+        Szersze spojrzenie
+        <br />
+        na <span>programowanie.</span>
+      </h1>
+      <p>
+        Technologia się zmienia. Ty też możesz.
+        <br />
+        Rozwijaj swój warsztat, odkrywaj AI i buduj rzeczy,
+        <br class="desktop-break" /> które mają znaczenie. Razem z nami.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-purple" href="https://10xdevs.pl/">
+          Poznaj 10xDevs 4.0 <Icon name="arrow" size={18} />
+        </a>
+        <a class="hero-secondary" href="#kursy">
+          Odkryj nasze kursy <Icon name="diagonal" size={18} />
+        </a>
+      </div>
+      <div class="hero-proof">
+        <div class="avatar-stack">
+          <img src="/images/przemek.webp" alt="Przemek Smyrdek" width="38" height="38" />
+          <img src="/images/marcin.webp" alt="Marcin Czarkowski" width="38" height="38" />
+          <span>
+            <Icon name="code" size={16} />
+          </span>
+        </div>
+        <div>
+          <strong>8 100+ absolwentów 10xDevs</strong>
+          <span>Jedna społeczność. Wiele nowych możliwości.</span>
+        </div>
+      </div>
+    </div>
+    <HeroArt />
+  </section>
+  <section class="trust-strip container" aria-label="Firmy, które nam zaufały">
+    <span>
+      WIEDZA, KTÓREJ
+      <br />
+      ZAUFALI
+    </span>
+    <div class="trust-logos">
+      <span class="logo-smart">
+        smart<span>Recruiters</span>
+      </span>
+      <span class="logo-callstack">▰ callstack</span>
+      <span class="logo-future">
+        future<span>processing</span>
+        <i>_</i>
+      </span>
+      <span class="logo-autodesk">◩ AUTODESK</span>
+      <span class="logo-edrone">
+        edrone<span>✳</span>
+      </span>
+    </div>
+  </section>
+  <Courses />
+  <section class="section content-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">WIEDZĄ DZIELIMY SIĘ NA CO DZIEŃ</span>
+          <h2>Zostań na bieżąco.</h2>
+        </div>
+        <a class="text-link" href="/youtube/">
+          Wszystkie materiały <Icon name="diagonal" size={18} />
+        </a>
+      </div>
+      <MediaExplorer client:visible limit={3} />
+      <div class="content-bottom">
+        <span>Nowe spojrzenie na technologię. Zawsze bezpłatnie.</span>
+        <a href="/podcast/" class="text-link">
+          Wolisz słuchać? Poznaj podcast <Icon name="arrow" size={17} />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section container about-preview">
+    <div class="about-preview-images">
+      <div class="portrait portrait-przemek">
+        <img
+          src="/images/przemek.webp"
+          alt="Przemek Smyrdek"
+          width="450"
+          height="450"
+          loading="lazy"
+        />
+        <span>Przemek ↗</span>
+      </div>
+      <div class="portrait portrait-marcin">
+        <img
+          src="/images/marcin.webp"
+          alt="Marcin Czarkowski"
+          width="450"
+          height="450"
+          loading="lazy"
+        />
+        <span>Marcin ↗</span>
+      </div>
+      <span class="about-image-note">DEVELOPERZY. EDUKATORZY. PASJONACI.</span>
+    </div>
+    <div class="about-preview-copy">
+      <span class="eyebrow">CZEŚĆ, TU PRZEPROGRAMOWANI</span>
+      <h2>
+        Po drugiej stronie
+        <br />
+        kodu są <span>ludzie.</span>
+      </h2>
+      <p>
+        Jesteśmy Przemek i Marcin. Łączy nas ciekawość technologii i przekonanie, że rozwój
+        programisty sięga dalej niż kolejny framework.
+      </p>
+      <p>
+        Dlatego tworzymy kursy, nagrywamy podcasty i budujemy społeczność. Dzielimy się tym, co
+        sprawdzamy w codziennej pracy.
+      </p>
+      <a class="text-link" href="/o-nas/">
+        Poznaj nas bliżej <Icon name="diagonal" size={18} />
+      </a>
+    </div>
+  </section>
+  <Newsletter />
+</Layout>

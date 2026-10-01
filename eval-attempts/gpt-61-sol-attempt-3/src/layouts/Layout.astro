@@ -1,0 +1,43 @@
+---
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/space-grotesk';
+import '../styles/global.css';
+import Header from '../components/Header';
+import Icon from '../components/Icon.astro';
+interface Props { title?: string; description?: string; }
+const { title = 'Przeprogramowani — Szersze spojrzenie na programowanie', description = 'Rozwijaj się z Przeprogramowanymi. Praktyczne kursy 10xDevs, Opanuj Frontend i Opanuj TypeScript, podcasty i filmy o programowaniu i AI.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f2" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={new URL('/og-image.png', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <Header path={Astro.url.pathname} client:load />
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div><a href="/" class="brand"><span class="brand-symbol"><Icon name="code" size={25} /></span>Przeprogramowani<span class="brand-dot">.</span></a><p>Szersze spojrzenie na programowanie.<br />Od developerów, dla developerów.</p></div>
+        <div class="footer-links"><span class="eyebrow">ODKRYWAJ</span><a href="/o-nas">O nas</a><a href="/kursy">Nasze kursy</a><a href="/podcast">Podcast</a><a href="/youtube">YouTube</a></div>
+        <div class="footer-links"><span class="eyebrow">ROZWIJAJ SIĘ</span><a href="https://10xdevs.pl">10xDevs</a><a href="https://opanujfrontend.pl">Opanuj Frontend</a><a href="https://opanujtypescript.pl">Opanuj TypeScript</a><a href="https://przeprogramowani.substack.com">Newsletter <Icon name="arrow" size={13}/></a></div>
+        <div class="footer-contact"><span class="eyebrow">POROZMAWIAJMY</span><a href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl <Icon name="arrow" size={16}/></a><p>Masz pomysł na współpracę?<br />Chętnie go poznamy.</p></div>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Przeprogramowani</span><a href="https://przeprogramowani.pl/polityka-prywatnosci">Polityka prywatności <Icon name="arrow" size={13}/></a><span class="footer-crafted"><span class="status-dot"></span> Z ciekawości do technologii.</span></div>
+    </footer>
+  </body>
+</html>

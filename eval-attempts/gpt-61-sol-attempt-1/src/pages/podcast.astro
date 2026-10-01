@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaExplorer from '../components/MediaExplorer';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+import media from '../data/media.json';
+---
+
+<Layout
+  title="Podcast"
+  description="Słuchaj najnowszych odcinków Opanuj.AI i Przeprogramowani ft. Gość. Rozmowy o AI, programowaniu i rozwoju zawodowym."
+>
+  <section class="container page-intro">
+    <nav class="breadcrumb" aria-label="Okruszki">
+      <a href="/">Strona główna</a>
+      <span>/</span>
+      <span>Podcast</span>
+    </nav>
+    <span class="eyebrow">DOBRE ROZMOWY POSZERZAJĄ HORYZONTY</span>
+    <h1>
+      Nowa perspektywa.
+      <br />
+      <span>Na wyciągnięcie słuchawek.</span>
+    </h1>
+    <p>
+      Opanuj.AI to rozmowy o tym, co zmienia się w świecie sztucznej inteligencji. W
+      Przeprogramowani ft. Gość spotykamy ludzi, od których warto się uczyć.
+    </p>
+    <div class="page-intro-actions">
+      <a
+        class="button button-purple"
+        href={media.episodes[0].url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Posłuchaj nowego odcinka <Icon name="headphones" size={18} />
+      </a>
+      <a class="text-link" href="/youtube/">
+        Zobacz też YouTube <Icon name="diagonal" size={17} />
+      </a>
+    </div>
+  </section>
+  <section class="container media-page" aria-label="Najnowsze odcinki podcastów">
+    <MediaExplorer mode="podcast" client:load />
+    <p class="content-updated">
+      Odcinki z oficjalnego{' '}
+      <a href="https://przeprogramowani.pl/podcast">katalogu Przeprogramowanych</a> · Aktualizacja:{' '}
+      {new Date(media.updatedAt).toLocaleDateString('pl-PL', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })}
+    </p>
+  </section>
+  <Newsletter />
+</Layout>

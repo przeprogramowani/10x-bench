@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+import media from '../data/media.json';
+---
+<Layout title="Podcast — Przeprogramowani" description="Najnowsze odcinki Opanuj.AI i Przeprogramowani ft. Gość. Rozmowy o sztucznej inteligencji, technologiach i rozwoju zawodowym programisty.">
+  <section class="page-hero container media-page-hero"><a class="breadcrumb" href="/">Przeprogramowani <span>/</span></a><span class="eyebrow"><span class="status-dot"></span> PRZEPROGRAMOWANI NA SŁUCHAWKACH</span><h1>Rozmowy, które<br/><span class="highlight-text">poszerzają horyzonty.</span></h1><p>O technologii, AI i ludziach, którzy je tworzą.<br class="desktop-break"/> Włącz podcast. Daj sobie przestrzeń na nową perspektywę.</p><div class="platform-links"><a href="https://creators.spotify.com/pod/show/opanujai" class="button button-small">Słuchaj na Spotify <Icon name="arrow" size={17}/></a><a href="https://podcasts.apple.com/pl/podcast/opanuj-ai-podcast/id1690353799" class="text-link">Apple Podcasts <Icon name="arrow" size={17}/></a><a href={media.sources.podcast} class="text-link">RSS <Icon name="arrow" size={17}/></a></div><div class="page-hero-decoration sound-decoration" aria-hidden="true">{Array.from({ length: 17 }).map((_, i) => <span style={`--wave-height:${25 + Math.sin(i * 1.3) ** 2 * 75}%`}></span>)}</div></section>
+  <section class="container library-section"><div class="section-heading"><h2>Ostatnie odcinki<span class="lime-period">.</span></h2><span class="eyebrow">DOBRA WIEDZA. W TWOIM TEMPIE.</span></div><MediaLibrary items={media.podcasts} mode="podcast" client:load /><p class="content-update">Materiały z oficjalnych kanałów · aktualizacja {new Date(media.updatedAt).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })}</p></section>
+  <Newsletter />
+</Layout>

@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+import media from '../data/media.json';
+---
+<Layout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych. Praktyczne programowanie, praca z agentami AI, frontend, warsztaty i rozmowy z ekspertami.">
+  <section class="page-hero container media-page-hero"><a class="breadcrumb" href="/">Przeprogramowani <span>/</span></a><span class="eyebrow"><span class="status-dot"></span> ZOBACZ, JAK TO DZIAŁA</span><h1>Mniej teorii.<br/><span class="highlight-text">Więcej praktyki.</span></h1><p>Kodujemy, eksperymentujemy i rozmawiamy z ekspertami.<br class="desktop-break"/> Zajrzyj za kulisy pracy współczesnego developera.</p><a href="https://youtube.com/c/przeprogramowani/videos" class="button button-small">Odwiedź nasz kanał <Icon name="arrow" size={18}/></a><div class="page-hero-decoration youtube-decoration" aria-hidden="true"><Icon name="play" size={80}/><span>&lt;watch. learn. build /&gt;</span></div></section>
+  <section class="container library-section"><div class="section-heading"><h2>Ostatnie filmy<span class="lime-period">.</span></h2><span class="eyebrow">OD DEVELOPERÓW, DLA DEVELOPERÓW</span></div><MediaLibrary items={media.videos} mode="video" client:load /><p class="content-update">Materiały z oficjalnego kanału YouTube · aktualizacja {new Date(media.updatedAt).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })}</p></section>
+  <Newsletter />
+</Layout>

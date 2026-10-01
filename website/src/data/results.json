@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T19:41:30.009Z",
-  "totalAttempts": 127,
+  "generatedAt": "2026-10-01T20:31:06.109Z",
+  "totalAttempts": 132,
   "results": [
     {
       "id": "gpt-56-sol-attempt-1",
@@ -585,6 +585,212 @@
       ]
     },
     {
+      "id": "gpt-61-sol-attempt-1",
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "attemptNumber": 1,
+      "totalScore": 9.5,
+      "maxScore": 10,
+      "percentage": 95,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": 0.9311,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 18,
+          "max": 1,
+          "notes": "18min 37s (Codex Desktop session rollout-2026-10-01T21-45-44-01a0f900-59a5-7463-a682-6fcdecb4cb5b.jsonl; first to last event)"
+        },
+        {
+          "name": "Test run",
+          "score": 1.1,
+          "max": 1,
+          "notes": "1.10.2026 22:27"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.9311 (in 147487 / out 30526 incl. 3964 reasoning / cache 3308928 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "npm ci + npm run build succeeded; 5 pages/routes built"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"src/pages/o-nas.astro returns 200 and has both founders with key details (Przemek: Lead Engineer/Manager at DAZN and Cabify, 4Developers/ReactiveConf/InfoShare, CursorLens/openapi-typescript; Marcin: Frontend Platform tech lead at SmartRecruiters, neuroscience, Opanuj.AI podcast) and correct LinkedIn URLs. The course assignments are missing: Przemek's 'Opanuj JavaScript' and Marcin's '10xDevs' are never linked to them (on /o-nas, 10xDevs appears only in the global announcement bar), and the bios are condensed paraphrases with no Programista/Increment publications.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and renders 12 real episodes from src/data/media.json, scraped from przeprogramowani.pl/podcast by scripts/update-content.mjs: 6 Opanuj.AI (podcasters.spotify.com/pod/show/opanujai/...) and 6 Przeprogramowani ft. Gość (.../pod/show/przeprogramowani/...). Sampled episode URLs (e3pn4mj; e2pfjg3) resolve with 200 on creators.spotify.com. Minor gap: the show links open.spotify.com/show/3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy appear nowhere in the site, but no URL is wrong.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube returns 200 and renders 6 unique video IDs (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg). All return oEmbed 200 with author 'Przeprogramowani' and titles matching media.json. There are no duplicates or placeholder IDs, and the channel CTA links to youtube.com/@Przeprogramowani.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/components/Courses.astro (#kursy on index) has Opanuj Frontend (AI Edition; frontend/architecture/tests/CI/CD; opanujfrontend.pl), Opanuj TypeScript (React 19; opanujtypescript.pl) and 10xDevs (AI in the software cycle; 10xdevs.pl), consistent with the context. The index hero's main CTA is 'Poznaj 10xDevs 4.0' linking to https://10xdevs.pl/. Some details are not in the context file and can't be checked against it (10 tygodni; 45+ ćwiczeń; 5+1 tygodni; '8 100+ absolwentów 10xDevs').\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/layouts/Layout.astro covers all pages with title, meta description, canonical, og:title/description/type/locale(pl_PL)/url and lang=pl. Each of /, /o-nas, /podcast and /youtube renders its own title and description consistent with the context (tagline 'Szersze spojrzenie na programowanie'; founders; Opanuj.AI and ft. Gość). Minor gaps: no og:image and no twitter:card tags.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gpt-61-sol-attempt-3",
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "attemptNumber": 3,
+      "totalScore": 9.5,
+      "maxScore": 10,
+      "percentage": 95,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": 1.2343,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 24,
+          "max": 1,
+          "notes": "24min 39s (Codex Desktop session rollout-2026-10-01T21-46-39-01a0f901-2ffd-78a2-b89c-f8918e81682b.jsonl; first to last event)"
+        },
+        {
+          "name": "Test run",
+          "score": 1.1,
+          "max": 1,
+          "notes": "1.10.2026 22:27"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$1.2343 (in 171537 / out 41947 incl. 6505 reasoning / cache 4717952 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "npm ci + npm run build succeeded; 6 pages/routes built"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"The page exists (src/pages/o-nas.astro; GET /o-nas returns 200) and covers both founders: Przemek with Lead Engineer/Manager at DAZN and Cabify, .NET/Java/Node/Angular/TS, 4Developers/ReactiveConf/InfoShare and CursorLens/openapi-typescript; Marcin with SmartRecruiters Frontend Platform lead, 10+ years, neuroscience and Opanuj.AI Podcast, plus both correct LinkedIn URLs. Course assignments are missing (Przemek is not linked to 'Opanuj JavaScript' and Marcin is not linked to '10xDevs'); the Programista/Increment publications and Marcin's legacy/testing line are also left out.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"GET /podcast returns 200. The episodes are real: scripts/refresh-media.mjs pulls 12 Opanuj.AI episodes from the real anchor RSS (anchor.fm/s/e2cb03d0) and 6 'Przeprogramowani ft. Gość' episodes from przeprogramowani.pl (podcasters.spotify.com/pod/show/przeprogramowani/... e.g. Wiktoria Sitko, Tomasz Ducin), stored in src/data/media.json and shown with a filter tab per series. Weaknesses: neither context Spotify show ID (3yVvOAXSYq6sQB02w4A4wo / 3D6LmchBdoqL2sWkQjvWOy) appears; the only show-level link is creators.spotify.com/pod/show/opanujai; Przeprogramowani episodes have no dates and are not in the first 6 cards shown; the 'Rozmowy dla głodnych wiedzy' tagline is absent.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"GET /youtube returns 200. Videos come from the real channel RSS (channel_id UCb2Y3vMeD6N4WDt5Acw7Arw), and all 12 IDs in media.json (e.g. rRM4pXF_4yw, wpWX4yI4DgA, MDZA6vww74g, 9Eoa5Tj54fI) returned oEmbed 200 with author_name 'Przeprogramowani'; there are no duplicates and no placeholder IDs (dQw4w9WgXcQ/xdXblEEP0MQ). The channel link youtube.com/c/przeprogramowani/videos matches the context.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/components/Courses.astro (used on / and on /kursy, which returns 200) lists 10xDevs (10xdevs.pl), Opanuj Frontend: AI Edition (opanujfrontend.pl, 5 modules, architecture/testing/CI/CD) and Opanuj TypeScript (opanujtypescript.pl, React 19), consistent with the context. The home hero (HeroVisual.astro) features 10xDevs and links to 10xdevs.pl. Minor issues: the home-page grid leaves out the 10xDevs card (it is only on /kursy), and the figures '8 100+ absolwentów 10xDevs' and '45+ zadań · Dożywotni dostęp' are not in the context.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/layouts/Layout.astro sets meta description, og:title/description/type/locale(pl_PL)/url/image, twitter:card, canonical and lang=pl for every page. Rendered HTML confirms a unique title and description on each of /, /o-nas, /podcast, /youtube and /kursy (e.g. 'Przeprogramowani — Szersze spojrzenie na programowanie' with the tagline from the context), and public/og-image.png exists. The copy matches the context: courses 10xDevs/Opanuj Frontend/Opanuj TypeScript, both founders' names, and both podcast names Opanuj.AI and Przeprogramowani ft. Gość.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
       "id": "kimi-k3-attempt-3",
       "modelName": "Kimi K3",
       "modelBaseId": "kimi-k3",
@@ -1060,6 +1266,315 @@
           "score": 0.5,
           "max": 1,
           "notes": "Basic meta tags in Layout.astro with matching description and lang=pl but same description on all pages; no dedicated SEO component no Open Graph or Twitter cards"
+        }
+      ]
+    },
+    {
+      "id": "gpt-61-sol-attempt-2",
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "attemptNumber": 2,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": 0.9203,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 19,
+          "max": 1,
+          "notes": "19min 19s (Codex Desktop session rollout-2026-10-01T21-46-15-01a0f900-d130-7571-b61e-ab99e39fff56.jsonl; first to last event)"
+        },
+        {
+          "name": "Test run",
+          "score": 1.1,
+          "max": 1,
+          "notes": "1.10.2026 22:27"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.9203 (in 145584 / out 33413 incl. 3526 reasoning / cache 2949760 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "npm ci + npm run build succeeded; 5 pages/routes built"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/o-nas returns 200 and src/pages/o-nas.astro has both founders with the correct LinkedIn URLs; it mentions DAZN/Cabify, 4Developers/ReactiveConf/InfoShare and CursorLens/openapi-typescript for Przemek, and SmartRecruiters, 10+ years and Opanuj AI Podcast for Marcin. However, neither founder's course is shown (Przemek 'Opanuj JavaScript'; Marcin '10xDevs'; neither string appears in the rendered /o-nas HTML), and the bios are condensed paraphrases that drop the Magazyn Programista/Increment publications, Przemek's .NET/Java/Angular stack and Marcin's 'legacy/testy' line.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and lists 12 real episodes scraped from przeprogramowani.pl/podcast (6 Opanuj.AI and 6 Przeprogramowani ft. Gość), with podcasters.spotify.com episode URLs that resolve (e.g. ...e3pn4mj returns 200). However, the only Spotify show link, 'Słuchaj na Spotify', points to open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o, which is neither 3yVvOAXSYq6sQB02w4A4wo nor 3D6LmchBdoqL2sWkQjvWOy and returns 'Page not found' / oEmbed 500; neither context show ID appears anywhere.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "/youtube returns 200 and shows 6 unique videos from src/data/content.json (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg); all 6 return oEmbed 200 with author_name 'Przeprogramowani' and titles matching the data file. No duplicates and no placeholder IDs; the channel link youtube.com/c/przeprogramowani is correct."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"The hero in src/pages/index.astro features 10xDevs (the 'POZNAJ 10xDEVS 4.0' badge and the 'Odkryj 10xDevs' CTA link to 10xdevs.pl), and the #kursy section has cards for 10xDevs (10xdevs.pl), Opanuj Frontend AI Edition with 5 modules (opanujfrontend.pl) and Opanuj TypeScript with TS 5 + React 19 (opanujtypescript.pl), all matching the context. Minor gaps: Opanuj JavaScript, Opanuj AI and Cursor are omitted; '8 100+ absolwentów 10xDevs', '10 tygodni' and the Autodesk logo in the trust strip are not in the context.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/layouts/Layout.astro, shared by all pages, outputs title, description, canonical, og:title/description/type/locale/url/image, twitter:card and lang='pl'. Each page passes its own title and description (verified in rendered HTML for /, /o-nas, /podcast, /youtube), and the copy is consistent with the context ('Szersze spojrzenie na programowanie'; 'Rozmowy dla głodnych wiedzy'; the founders' names; 10xDevs/Opanuj Frontend/Opanuj TypeScript).\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gpt-61-sol-attempt-4",
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "attemptNumber": 4,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": 0.9902,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 24,
+          "max": 1,
+          "notes": "24min 11s (Codex Desktop session rollout-2026-10-01T21-46-52-01a0f901-60cd-7802-8d44-a556c78faf04.jsonl; first to last event)"
+        },
+        {
+          "name": "Test run",
+          "score": 1.1,
+          "max": 1,
+          "notes": "1.10.2026 22:27"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.9902 (in 125487 / out 42247 incl. 5988 reasoning / cache 3167232 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "npm ci + npm run build succeeded; 5 pages/routes built"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"src/pages/o-nas.astro returns 200 and names both founders with key details (Przemek: DAZN/Cabify, CursorLens, openapi-typescript; Marcin: SmartRecruiters, Opanuj.AI podcast) and the correct LinkedIn URLs. The bios are shortened paraphrases and leave out both course assignments (Przemek: 'Opanuj JavaScript'; Marcin: '10xDevs'); the context's Magazyn Programista/Increment publications and named conferences are also missing.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast/ returns 200 and src/data/episodes.json lists 12 real episodes from both shows (6 Opanuj.AI, e.g. e3pn4mj; 6 Przeprogramowani ft. Gość, e.g. e2kj935). Every episode URL returns 200 and a fake ID returns 404. The main 'Słuchaj na Spotify' link uses show ID 4qHUZJpeBK8Ij9e2wTVm2o, which returns 404 on open.spotify.com, and neither context show ID (3yVvOAXSYq6sQB02w4A4wo or 3D6LmchBdoqL2sWkQjvWOy) appears anywhere.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube/ returns 200; all 9 IDs in src/data/videos.json (e.g. rRM4pXF_4yw, wpWX4yI4DgA, -wPzsA_fH54, rR2sbf0KkRU) pass oEmbed with author_name 'Przeprogramowani' and titles that match. There are no duplicates or placeholder IDs, and the channel link is youtube.com/c/przeprogramowani/videos.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/components/Hero.astro features 10xDevs (EDYCJA 4.0; links to https://www.10xdevs.pl/). src/components/Courses.astro has Opanuj Frontend (AI Edition; opanujfrontend.pl) and Opanuj TypeScript (TS 5 + React 19; opanujtypescript.pl), both matching the context, and the footer also links Opanuj AI.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/layouts/Layout.astro covers every page with a per-page title and description, canonical, og:type/locale/title/description/url/image (social-card.png), twitter:card and Organization JSON-LD (founders; kontakt@przeprogramowani.pl). The rendered titles are distinct per page (e.g. 'O nas — Przeprogramowani') and the default title uses the context tagline 'Szersze spojrzenie na programowanie'.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "gpt-61-sol-attempt-5",
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "attemptNumber": 5,
+      "totalScore": 9,
+      "maxScore": 10,
+      "percentage": 90,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "cost": 0.9646,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 19,
+          "max": 1,
+          "notes": "19min 27s (Codex Desktop session rollout-2026-10-01T21-48-10-01a0f902-9169-7972-b901-b855564789a3.jsonl; first to last event)"
+        },
+        {
+          "name": "Test run",
+          "score": 1.1,
+          "max": 1,
+          "notes": "1.10.2026 22:27"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.9646 (in 136504 / out 32636 incl. 3927 reasoning / cache 3652352 / 1 session; Codex token usage x OpenAI list price $2.00 in / $0.10 cached / $10.00 out per 1M)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "npm ci + npm run build succeeded; 5 pages/routes built"
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "All pages (/ /o-nas /podcast /youtube) return 200; navigation styles and content work per user testing"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-01; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"The /o-nas page returns 200 (src/pages/o-nas.astro) and shows both founders with their key details: Przemek has DAZN/Cabify, 4Developers/ReactiveConf/InfoShare, CursorLens/openapi-typescript and LinkedIn psmyrdek; Marcin has SmartRecruiters Frontend Platform lead, the Opanuj.AI podcast, neuroscience and LinkedIn mkczarkowski. The course assignments are missing (no Opanuj JavaScript for Przemek; no 10xDevs for Marcin) and the bios are paraphrased and shortened (no Magazyn Programista/Increment, no .NET/Java stack, no 10+ years or PHP for Marcin).\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"The page returns 200 and shows 12 real episodes from src/data/content.json: 6 Opanuj.AI and 6 Przeprogramowani ft. Gość (e.g. 'Plan mode to przeszłość...' and 'Programista vs. Angielski... Wiktoria Sitko'); the sampled podcasters.spotify.com episode URLs return 200. However, the only Spotify show link is open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o, which Spotify oEmbed rejects (HTTP 500), and neither context show ID (3yVvOAXSYq6sQB02w4A4wo; 3D6LmchBdoqL2sWkQjvWOy) appears anywhere in src.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"The /youtube page returns 200 and lists 6 unique video IDs from src/data/content.json (rRM4pXF_4yw; 8cHXeQN2tQw; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g; bdO9bBvg8Zg). Every one returns oEmbed 200 with author_name 'Przeprogramowani' and a title matching the stored one; there are no placeholder or rick-roll IDs, and the channel link is youtube.com/c/przeprogramowani/videos.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"The index.astro hero features 10xDevs as a large card linking to https://10xdevs.pl/, and an announcement bar in the layout also promotes it. The dedicated src/components/Courses.astro (#kursy) shows Opanuj Frontend (opanujfrontend.pl; AI Edition; 5 modules, matching the context) and Opanuj TypeScript (opanujtypescript.pl; React 19). The '8 100+ absolwentów 10xDevs' stat is not in the context.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages per user testing"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "Containers components and navigation responsive per user testing"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/layouts/Layout.astro covers all pages and sets lang=pl, a per-page title and meta description, a canonical URL, og:title/description/type/url/locale, og:image (/images/social-card.png, which returns 200) and Organization JSON-LD with kontakt@przeprogramowani.pl. The rendered /, /o-nas, /podcast and /youtube each have a distinct title and description consistent with the context (the tagline 'Szersze spojrzenie na programowanie'; the founders; Opanuj.AI and Przeprogramowani ft. Gość); there are no Twitter card tags.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -12129,6 +12644,21 @@
       "totalCost": null
     },
     {
+      "modelName": "GPT-6.1 Sol",
+      "modelBaseId": "gpt-61-sol",
+      "averageScore": 9.2,
+      "averageMaxScore": 10,
+      "averagePercentage": 92,
+      "attemptCount": 5,
+      "agentEnvironment": "Codex Desktop (High Effort)",
+      "pricing": {
+        "input": 2,
+        "output": 10
+      },
+      "averageCost": 1.0081,
+      "totalCost": 5.0405
+    },
+    {
       "modelName": "Kimi K3",
       "modelBaseId": "kimi-k3",
       "averageScore": 8.95,
@@ -12515,6 +13045,7 @@
     "glm-51": "glm-52",
     "glm-52": "glm-53",
     "kimi-k25": "kimi-k26",
-    "kimi-k26": "kimi-k3"
+    "kimi-k26": "kimi-k3",
+    "gpt-56-sol": "gpt-61-sol"
   }
 }

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Courses from '../components/Courses.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import { ArrowUpRight } from 'lucide-react';
+---
+<Layout>
+  <Hero />
+  <section class="trust-strip container" aria-label="Doświadczenie zespołu i społeczności"><span>WIEDZA SPRAWDZONA<br />W PRAKTYCE</span><div class="trust-logos"><span class="logo-smart">smart<span>Recruiters</span></span><span class="logo-callstack">{`{`} callstack {`}`}</span><span class="logo-dazn">DAZN</span><span class="logo-future">future processing<span>technology. people. passion.</span></span><span class="logo-cabify">cabify</span></div></section>
+  <Courses />
+  <section class="media-section section-space"><div class="container"><div class="section-heading"><div><span class="eyebrow">WIEDZĄ WARTO SIĘ DZIELIĆ</span><h2>Więcej niż linijki kodu.</h2></div><p>Rozmowy, które otwierają głowę.<br />Materiały, które pomagają działać.</p></div><MediaLibrary client:visible /></div></section>
+  <section class="about-preview container section-space" aria-labelledby="about-preview-title"><div class="about-photos"><div class="portrait portrait-one"><img src="/images/przemek.webp" alt="Przemek Smyrdek, współtwórca Przeprogramowanych" loading="lazy" width="480" height="480" /><span>Przemek ↗</span></div><div class="portrait portrait-two"><img src="/images/marcin.webp" alt="Marcin Czarkowski, współtwórca Przeprogramowanych" loading="lazy" width="480" height="480" /><span>Marcin ↗</span></div><span class="about-sticker" aria-hidden="true">&lt;/&gt;</span></div><div class="about-preview-copy"><span class="eyebrow">CZEŚĆ, TU PRZEPROGRAMOWANI</span><h2 id="about-preview-title">Programiści.<br />Z szerszą <span class="serif-word">perspektywą.</span></h2><p>Jesteśmy Przemek i Marcin. Łączymy doświadczenie z pracy w technologii z pasją do uczenia. Pomagamy patrzeć szerzej: na kod, biznes, ludzi i własny rozwój.</p><a href="/o-nas/" class="button button-outline">Poznaj nas bliżej <ArrowUpRight size={18} /></a></div></section>
+  <Newsletter />
+</Layout>

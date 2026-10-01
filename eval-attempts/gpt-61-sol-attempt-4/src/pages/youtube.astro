@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import { Play, ArrowUpRight } from 'lucide-react';
+import contentMeta from '../data/content-meta.json';
+const updated = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Warsaw' }).format(new Date(`${contentMeta.updatedAt}T12:00:00Z`));
+---
+<Layout title="YouTube — Przeprogramowani" description="Najnowsze filmy Przeprogramowanych: programowanie z AI, frontend, praktyczne warsztaty, rozmowy i eksperymenty. Oglądaj i rozwijaj swoje umiejętności.">
+  <section class="page-intro container"><a class="breadcrumb" href="/">Strona główna <span>/ YouTube</span></a><span class="eyebrow"><Play size={15} /> POKAZUJEMY, JAK TO DZIAŁA</span><h1>Mniej zgadywania.<br /><span class="serif-word">Więcej tworzenia.</span></h1><p>Otwieramy edytor, sprawdzamy nowe narzędzia i rozmawiamy o tym, co zmienia naszą pracę. Praktyczna wiedza, którą możesz od razu wykorzystać.</p><a class="button button-dark" href="https://youtube.com/c/przeprogramowani/videos" target="_blank" rel="noopener noreferrer">Odwiedź nasz kanał <ArrowUpRight size={18} /></a><span class="intro-side-mark" aria-hidden="true">▶</span></section>
+  <section class="container library-section"><div class="section-heading"><div><span class="eyebrow">ODKRYJ COŚ NOWEGO</span><h2>Ostatnie filmy.</h2></div><span class="content-date">Aktualizacja: {updated}</span></div><MediaLibrary mode="videos" client:load /></section>
+  <Newsletter />
+</Layout>

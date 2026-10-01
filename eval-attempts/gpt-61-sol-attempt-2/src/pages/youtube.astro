@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import content from '../data/content.json';
+---
+<Layout title="YouTube — Programowanie w praktyce | Przeprogramowani" description="Najnowsze filmy Przeprogramowanych: praktyczne programowanie z AI, warsztaty, rozmowy i relacje ze świata technologii.">
+  <section class="page-intro container"><div class="breadcrumb"><a href="/">Strona główna</a><span>/</span>YouTube</div><span class="eyebrow"><span class="little-square"></span> ZOBACZ, JAK TO DZIAŁA</span><div class="page-title-row"><div><h1>Mniej zgadywania.<br/><span class="muted-heading">Więcej „aha!”.</span></h1><p>Kodujemy, eksperymentujemy i dzielimy się wnioskami.<br class="desktop-break"/> Praktyczne materiały, które pomogą Ci zrobić kolejny krok.</p></div><div class="page-symbol youtube-symbol" aria-hidden="true"><Icon name="play" size={78}/></div></div><div class="intro-links"><a class="button button-dark" href="https://youtube.com/c/przeprogramowani?sub_confirmation=1">Subskrybuj nasz kanał <Icon name="external"/></a><span>Nowe perspektywy. Praktyczne rozwiązania.</span></div></section>
+  <section class="container library-section"><h2 class="sr-only">Ostatnie filmy na YouTube</h2><MediaLibrary items={content.videos} type="video" client:load /><p class="content-update">Ostatnie filmy z oficjalnej strony Przeprogramowanych · Aktualizacja: {new Date(content.updatedAt).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })}</p></section>
+  <Newsletter />
+</Layout>

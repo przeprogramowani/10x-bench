@@ -1,0 +1,43 @@
+$ npm ci --no-audit --no-fundnpm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'undici@8.11.2',
+npm warn EBADENGINE   required: { node: '>=22.19.0' },
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 351 packages in 3s
+[exit 0]$ npm run build
+> przeprogramowani-web@1.0.0 build
+> astro build
+
+22:28:02 [types] Generated 80ms
+22:28:02 [build] output: "static"
+22:28:02 [build] mode: "static"
+22:28:02 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-cgWuxU/site/dist/
+22:28:02 [build] Collecting build info...
+22:28:02 [build] ✓ Completed in 91ms.
+22:28:02 [build] Building static entrypoints...
+22:28:03 [vite] ✓ built in 232ms
+22:28:03 [vite] ✓ built in 115ms
+22:28:03 [build] Rearranging server assets...
+
+ generating static routes 
+22:28:03   ├─ /404.html (+52ms) 
+22:28:03   ├─ /o-nas/index.html (+3ms) 
+22:28:03   ├─ /podcast/index.html (+8ms) 
+22:28:03   ├─ /youtube/index.html (+4ms) 
+22:28:03   ├─ /index.html (+2ms) 
+22:28:03 ✓ Completed in 83ms.
+
+22:28:03 [build] ✓ Completed in 445ms.
+22:28:03 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+22:28:03 [build] 5 page(s) built in 540ms
+22:28:03 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-cgWuxU/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 32 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-cgWuxU/site/dist
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

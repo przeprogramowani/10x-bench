@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import MediaLibrary from '../components/MediaLibrary';
+import Newsletter from '../components/Newsletter.astro';
+import content from '../data/content.json';
+---
+<Layout title="Podcast — rozmowy dla ciekawych" description="Posłuchaj najnowszych odcinków Opanuj.AI i Przeprogramowani ft. Gość. Rozmowy o technologii, sztucznej inteligencji i rozwoju programisty.">
+ <section class="page-hero container"><a href="/" class="breadcrumb">Strona główna <span>/</span> Podcast</a><span class="eyebrow"><span class="tiny-line"></span> WIĘCEJ NIŻ ROZMOWY O KODZIE</span><div class="page-heading-row"><div><h1>Posłuchaj.<br/> <span>Pomyśl szerzej.</span></h1><p>AI, technologia i ludzie, którzy zmieniają naszą branżę.<br/> Dobre rozmowy na spacer, do kawy i po drodze.</p></div><div class="podcast-hero-art" aria-hidden="true"><Icon name="headphones" size={70}/><div class="sound-bars">{[18,35,50,30,65,42,24,55,35,18].map(height=><i style={`height:${height}px`}/>)}</div><span>NOWE PERSPEKTYWY. NA TWOICH ZASADACH.</span></div></div><div class="platform-links"><a href="https://open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o">Spotify <Icon name="diagonal" size={15}/></a><a href="https://podcasts.apple.com/pl/podcast/przeprogramowani/id1508387250">Apple Podcasts <Icon name="diagonal" size={15}/></a><a href="https://anchor.fm/s/22544b7c/podcast/rss">RSS <Icon name="diagonal" size={15}/></a></div></section>
+ <section class="container library-section" aria-label="Najnowsze odcinki"><MediaLibrary items={content.podcasts} kind="podcast" client:load/><p class="content-date">Najnowsze odcinki obu naszych podcastów · aktualizacja {new Date(content.updatedAt).toLocaleDateString('pl-PL')}</p></section><Newsletter/>
+</Layout>

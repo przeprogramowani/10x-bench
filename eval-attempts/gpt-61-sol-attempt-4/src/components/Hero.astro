@@ -1,0 +1,24 @@
+---
+import { ArrowUpRight, ArrowRight, Check, Sparkles } from 'lucide-react';
+import Workflow from './Workflow';
+---
+<section class="hero container" aria-labelledby="hero-heading">
+  <div class="hero-copy">
+    <span class="eyebrow"><span class="tiny-spark">✳</span> SZERSZE SPOJRZENIE NA PROGRAMOWANIE</span>
+    <h1 id="hero-heading">Twój kod.<br />Nowe <span class="serif-word">możliwości.</span></h1>
+    <p class="hero-description">Technologia się zmienia. Ty możesz wyprzedzać zmiany. Rozwijaj umiejętności, twórz z AI i odkrywaj więcej z Przeprogramowanymi.</p>
+    <div class="hero-actions"><a href="https://www.10xdevs.pl/" class="button button-dark">Poznaj 10xDevs <ArrowUpRight size={18} /></a><a href="#kursy" class="button button-outline">Odkryj nasze kursy <ArrowRight size={18} /></a></div>
+    <div class="hero-community"><div class="avatar-stack"><img src="/images/przemek.webp" alt="" width="38" height="38" /><img src="/images/marcin.webp" alt="" width="38" height="38" /><span>8k+</span></div><p>Dołącz do społeczności<br /><strong>ambitnych programistów.</strong></p><span class="community-line"></span></div>
+  </div>
+  <div class="hero-feature">
+    <svg class="hero-contours" viewBox="0 0 600 580" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1">
+      {Array.from({ length: 18 }, (_, i) => <path d={`M ${290+i*15} -60 C ${130+i*22} ${85+i*5}, ${695-i*4} ${120+i*14}, ${495+i*11} ${310+i*8} S ${200+i*12} 480, ${410+i*18} 670`} />)}
+    </g></svg>
+    <div class="feature-top"><span class="feature-badge"><Sparkles size={13} /> PROGRAM POLECANY</span><span class="edition">EDYCJA 4.0</span></div>
+    <div class="feature-brand"><span>10x</span><span>Devs<span class="lime-dot">.</span></span><span class="feature-star" aria-hidden="true">✳</span></div>
+    <p class="feature-description">Programowanie w erze AI.<br />Twoje umiejętności. Nowa skala.</p>
+    <div class="feature-tags"><span><Check size={12} /> Praktyczny projekt</span><span><Check size={12} /> Społeczność</span></div>
+    <Workflow client:load />
+    <a href="https://www.10xdevs.pl/" class="feature-link">Sprawdź program 10xDevs <ArrowUpRight size={18} /></a>
+  </div>
+</section>

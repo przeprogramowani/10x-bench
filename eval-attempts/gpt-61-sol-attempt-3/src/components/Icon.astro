@@ -1,0 +1,15 @@
+---
+interface Props { name: string; size?: number; class?: string; }
+const { name, size = 20, class: className } = Astro.props;
+const paths: Record<string, string[]> = {
+  arrow: ['M7 17 17 7', 'M7 7h10v10'],
+  right: ['M4 12h16', 'm14 6 6 6-6 6'],
+  code: ['m8 6-6 6 6 6', 'm16 6 6 6-6 6', 'm14 3-4 18'],
+  headphones: ['M3 14v-3a9 9 0 0 1 18 0v3', 'M3 13h3v8H3z', 'M18 13h3v8h-3z'],
+  play: ['m9 5 12 7-12 7Z'],
+  check: ['m5 12 4 4L19 6'],
+  spark: ['m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4Z'],
+  mail: ['M3 5h18v14H3z', 'm3 5 9 7 9-7'],
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class={className} aria-hidden="true">{(paths[name] || paths.arrow).map(d => <path d={d} />)}</svg>

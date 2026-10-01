@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Courses from '../components/Courses.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Icon from '../components/Icon.astro';
+---
+<Layout title="Kursy — Przeprogramowani" description="Wybierz swój kolejny krok: 10xDevs, Opanuj Frontend: AI Edition lub Opanuj TypeScript: Frontend Pro. Praktyczne kursy dla ambitnych developerów.">
+  <section class="page-hero container"><a class="breadcrumb" href="/">Przeprogramowani <span>/</span></a><span class="eyebrow"><span class="status-dot"></span> ZAINWESTUJ W SWÓJ WARSZTAT</span><h1>Wiedza zamienia się<br/>w <span class="highlight-text">możliwości.</span></h1><p>AI, nowoczesny frontend i solidne typy.<br class="desktop-break"/> Wybierz kierunek, w którym chcesz się rozwinąć.</p></section>
+  <section class="container course-page-section"><Courses full /><div class="learning-values"><div><Icon name="code" size={25}/><h3>Praktyka od pierwszej lekcji</h3><p>Rozwiązuj zadania i buduj projekty, które utrwalają wiedzę.</p></div><div><Icon name="headphones" size={25}/><h3>Społeczność developerów</h3><p>Wymieniaj doświadczenia i ucz się razem z innymi.</p></div><div><Icon name="check" size={25}/><h3>Doświadczenie z produkcji</h3><p>Poznaj podejście autorów, którzy na co dzień tworzą oprogramowanie.</p></div></div></section>
+  <Newsletter />
+</Layout>

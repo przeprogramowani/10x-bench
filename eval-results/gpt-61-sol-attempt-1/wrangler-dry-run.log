@@ -1,0 +1,43 @@
+$ npm ci --no-audit --no-fundnpm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'undici@8.11.2',
+npm warn EBADENGINE   required: { node: '>=22.19.0' },
+npm warn EBADENGINE   current: { node: 'v22.14.0', npm: '10.9.2' }
+npm warn EBADENGINE }
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 353 packages in 3s
+[exit 0]$ npm run build
+> przeprogramowani-web@1.0.0 build
+> astro build
+
+22:27:38 [types] Generated 73ms
+22:27:38 [build] output: "static"
+22:27:38 [build] mode: "static"
+22:27:38 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-aqgmrt/site/dist/
+22:27:38 [build] Collecting build info...
+22:27:38 [build] ✓ Completed in 84ms.
+22:27:38 [build] Building static entrypoints...
+22:27:38 [vite] ✓ built in 233ms
+22:27:38 [vite] ✓ built in 114ms
+22:27:38 [build] Rearranging server assets...
+
+ generating static routes 
+22:27:38   ├─ /404.html (+52ms) 
+22:27:38   ├─ /o-nas/index.html (+3ms) 
+22:27:38   ├─ /podcast/index.html (+9ms) 
+22:27:38   ├─ /sitemap.xml (+2ms) 
+22:27:38   ├─ /youtube/index.html (+3ms) 
+22:27:38   ├─ /index.html (+2ms) 
+22:27:38 ✓ Completed in 83ms.
+
+22:27:38 [build] ✓ Completed in 446ms.
+22:27:38 [build] 5 page(s) built in 531ms
+22:27:38 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-aqgmrt/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+✨ Read 30 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-aqgmrt/site/dist
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

@@ -1,0 +1,14 @@
+---
+interface Props { name?: 'arrow' | 'external' | 'play' | 'code' | 'headphones' | 'check' | 'spark'; size?: number; }
+const { name = 'arrow', size = 20 } = Astro.props;
+const paths = {
+  arrow: 'M4 12h15m-6-6 6 6-6 6',
+  external: 'M6 18 18 6M6 6h12v12',
+  play: 'm9 5 11 7-11 7V5Z',
+  code: 'm8 5-7 7 7 7m8-14 7 7-7 7M14 3 10 21',
+  headphones: 'M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v8h4v-8H4m16 0h2v8h-4v-8h2',
+  check: 'm5 12 4 4L19 6',
+  spark: 'm12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name]} /></svg>

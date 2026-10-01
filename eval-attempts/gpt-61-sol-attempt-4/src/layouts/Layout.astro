@@ -1,0 +1,27 @@
+---
+import '@fontsource-variable/dm-sans';
+import '../styles/global.css';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import Logo from '../components/Logo.astro';
+import Navigation from '../components/Navigation';
+interface Props { title?: string; description?: string; }
+const { title = 'Przeprogramowani — Szersze spojrzenie na programowanie', description = 'Rozwijaj umiejętności z Przeprogramowanymi. 10xDevs, Opanuj Frontend, Opanuj TypeScript, podcast i YouTube. Praktyczna wiedza dla ambitnych programistów.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f9f4" /><title>{title}</title><meta name="description" content={description} />
+    <link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" /><meta property="og:locale" content="pl_PL" /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL('/social-card.png', Astro.site)} /><meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Przeprogramowani', url: Astro.site, email: 'kontakt@przeprogramowani.pl', sameAs: ['https://youtube.com/c/przeprogramowani', 'https://przeprogramowani.substack.com'], founder: [{ '@type': 'Person', name: 'Przemek Smyrdek' }, { '@type': 'Person', name: 'Marcin Czarkowski' }] })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Przejdź do treści</a>
+    <div class="announcement"><span class="announcement-dot"></span> Koduj z AI. Buduj więcej. <a href="https://www.10xdevs.pl/">Poznaj 10xDevs 4.0 <ArrowRight size={14} /></a></div>
+    <header class="site-header container"><Logo /><Navigation pathname={Astro.url.pathname} client:load /></header>
+    <main id="main"><slot /></main>
+    <footer class="footer"><div class="container"><div class="footer-top"><div><Logo light /><p>Szersze spojrzenie na programowanie.<br />Z myślą o tym, co dalej.</p><a class="footer-email" href="mailto:kontakt@przeprogramowani.pl">Porozmawiajmy <ArrowUpRight size={16} /></a></div><div class="footer-links"><div><span>ODKRYWAJ</span><a href="/o-nas/">O nas</a><a href="/podcast/">Podcast</a><a href="/youtube/">YouTube</a><a href="https://przeprogramowani.substack.com/">Newsletter ↗</a></div><div><span>ROZWIJAJ SIĘ</span><a href="https://www.10xdevs.pl/">10xDevs ↗</a><a href="https://www.opanujfrontend.pl/">Opanuj Frontend ↗</a><a href="https://www.opanujtypescript.pl/">Opanuj TypeScript ↗</a><a href="https://opanuj.ai/">Opanuj AI ↗</a></div></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} Przeprogramowani</span><span>Tworzymy z ciekawości. Dzielimy się z przekonania. <span aria-hidden="true">✳</span></span><a href="mailto:kontakt@przeprogramowani.pl">kontakt@przeprogramowani.pl <ArrowUpRight size={13} /></a></div></div></footer>
+  </body>
+</html>
