@@ -1,0 +1,149 @@
+---
+import { navLinks, site, socialLinks, youtubeChannelUrl } from "@/data/site";
+import { courses, heroCourse } from "@/data/courses";
+
+const year = new Date().getFullYear();
+
+const iconLinks = [
+  {
+    label: "Facebook",
+    href: "https://facebook.com/przeprogramowani",
+    icon: `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>`,
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/przeprogramowani",
+    icon: `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>`,
+  },
+  {
+    label: "YouTube",
+    href: youtubeChannelUrl,
+    icon: `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>`,
+  },
+  {
+    label: "E-mail",
+    href: `mailto:${site.email}`,
+    icon: `<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>`,
+  },
+];
+---
+
+<footer class="border-t border-slate-800 bg-slate-950">
+  <div class="container-page py-12 lg:py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div class="lg:col-span-1">
+        <a href="/" class="group flex items-center gap-2.5 text-lg font-bold text-white">
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-500 font-mono text-sm font-bold text-white"
+            aria-hidden="true">&lt;/&gt;</span
+          >
+          <span class="font-display">{site.name}</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+          {site.tagline}. Tworzymy podcasty, kursy i treści, które pomagają programistom
+          rozwijać się na wielu płaszczyznach.
+        </p>
+        <div class="mt-5 flex items-center gap-2">
+          {
+            iconLinks.map((link) => (
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 transition hover:border-violet-500/60 hover:text-white"
+                aria-label={link.label}
+              >
+                <Fragment set:html={link.icon} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <nav aria-label="Nawigacja w stopce">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Nawigacja</h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-slate-400 transition hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-label="Kursy w stopce">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Kursy</h3>
+        <ul class="mt-4 space-y-2.5">
+          <li>
+            <a
+              href={heroCourse.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-slate-400 transition hover:text-white"
+            >
+              10xDevs — Programuj z AI
+            </a>
+          </li>
+          {
+            courses.map((course) => (
+              <li>
+                <a
+                  href={course.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm text-slate-400 transition hover:text-white"
+                >
+                  {course.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Kontakt</h3>
+        <p class="mt-4 text-sm leading-relaxed text-slate-400">
+          Chcesz nawiązać współpracę lub masz pytanie? Napisz do nas.
+        </p>
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-violet-400 transition hover:text-violet-300"
+        >
+          {site.email}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <ul class="mt-6 space-y-2.5 text-sm text-slate-400">
+          {
+            socialLinks
+              .filter((s) => s.label.startsWith("LinkedIn"))
+              .map((s) => (
+                <li>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" class="transition hover:text-white">
+                    {s.label}
+                  </a>
+                </li>
+              ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
+      <p class="text-sm text-slate-500">
+        © {year} {site.title} — {site.tagline}
+      </p>
+      <p class="text-sm text-slate-500">
+        Zbudowano z <span class="font-semibold text-slate-400">Astro</span>, <span
+          class="font-semibold text-slate-400">React</span
+        > i <span class="font-semibold text-slate-400">Tailwind CSS</span>
+      </p>
+    </div>
+  </div>
+</footer>

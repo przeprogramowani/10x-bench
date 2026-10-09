@@ -1,0 +1,57 @@
+---
+import { navLinks, site } from "../data/site";
+import MobileNav from "./react/MobileNav";
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md"
+>
+  <div
+    class="container flex h-16 items-center justify-between gap-4 md:h-20"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight"
+      aria-label={`${site.name} — strona główna`}
+    >
+      <span
+        class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-mono text-sm font-semibold text-ink"
+        aria-hidden="true">&lt;/&gt;</span
+      >
+      <span>Przeprogramowani</span>
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Nawigacja główna">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            class:list={[
+              "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              isActive(link.href)
+                ? "text-accent-soft"
+                : "text-muted hover:text-text",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href="/kursy"
+        class="btn btn-primary btn-sm hidden sm:inline-flex"
+      >
+        Kursy
+      </a>
+      <MobileNav links={navLinks} client:load />
+    </div>
+  </div>
+</header>

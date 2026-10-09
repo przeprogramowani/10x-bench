@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import PodcastShowSection from "@/components/PodcastShowSection.astro";
+import { podcastShows } from "@/data/podcasts";
+---
+
+<BaseLayout
+  title="Podcast"
+  description="Podcasty Przeprogramowanych — Opanuj.AI Podcast (miesięczne podsumowanie świata AI) i Przeprogramowani ft. Gość (rozmowy dla głodnych wiedzy). Ostatnie odcinki na Spotify, Apple Podcasts i RSS."
+>
+  <PageHero
+    eyebrow="Podcast"
+    title="Nasze podcasty"
+    lead="Słuchaj naszych podcastów o technologii, AI i programowaniu — nowe odcinki co miesiąc."
+  />
+
+  <section class="pb-20 lg:pb-28" aria-label="Lista podcastów">
+    <div class="container-page space-y-10">
+      {podcastShows.map((show) => <PodcastShowSection show={show} />)}
+    </div>
+  </section>
+
+  <section class="border-t border-slate-800/80 py-16" aria-labelledby="platforms-title">
+    <div class="container-page text-center">
+      <h2 id="platforms-title" class="font-display text-2xl font-bold text-white">
+        Jesteśmy na Twojej ulubionej platformie
+      </h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
+        Wybierz, gdzie najwygodniej słuchać — wszystkie odcinki dostępne są na Spotify,
+        Apple Podcasts, Google Podcasts oraz przez RSS.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        {
+          podcastShows.map((show) => (
+            <>
+              <a
+                href={show.platforms.spotify}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-secondary"
+              >
+                {show.name} na Spotify
+              </a>
+              <a
+                href={show.platforms.rss}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-ghost"
+              >
+                RSS — {show.name}
+              </a>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

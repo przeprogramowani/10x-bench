@@ -1,0 +1,30 @@
+{
+  "name": "przeprogramowani-pl",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Nowoczesna strona projektu Przeprogramowani.pl — szersze spojrzenie na programowanie",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "snapshot": "node scripts/fetch-snapshot.mjs",
+    "deploy": "astro build && wrangler pages deploy dist",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.0",
+    "astro": "^5.12.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "^5.8.0",
+    "wrangler": "^4.0.0"
+  }
+}

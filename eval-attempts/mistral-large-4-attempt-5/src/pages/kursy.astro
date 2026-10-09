@@ -1,0 +1,171 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+import { courses } from "../data/courses";
+---
+
+<Layout
+  title="Kursy"
+  description="Kursy Przeprogramowanych: 10xDevs — Programuj z AI, Opanuj Frontend: AI Edition oraz Opanuj TypeScript: Frontend Pro. Praktyczna edukacja dla ambitnych programistów."
+>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Kursy Przeprogramowanych",
+        itemListElement: courses.map((course, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Course",
+            name: course.name,
+            description: course.description,
+            url: course.url,
+            timeRequired: course.stats[0]?.value,
+            provider: {
+              "@type": "Organization",
+              name: site.name,
+              url: site.url,
+            },
+          },
+        })),
+      })}
+    />
+  </Fragment>
+
+  <!-- Nagłówek -->
+  <section class="relative overflow-hidden">
+    <div class="dot-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="container relative py-16 md:py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Kursy</p>
+        <h1
+          class="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
+        >
+          Kursy i szkolenia
+        </h1>
+        <p class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
+          Topowe programy edukacyjne dla ambitnych programistów. Praktyczne
+          projekty, indywidualny code review i mentoring autorów — wiedza,
+          którą od razu wykorzystasz w pracy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista kursów -->
+  {
+    courses.map((course, index) => (
+      <section
+        class:list={[
+          "border-t border-border",
+          index % 2 === 1 ? "bg-surface/30" : "",
+        ]}
+      >
+        <div class="container py-16 md:py-24">
+          <div
+            class:list={[
+              "grid items-center gap-12 lg:gap-16",
+              index % 2 === 0
+                ? "lg:grid-cols-[1.1fr_0.9fr]"
+              : "lg:grid-cols-[0.9fr_1.1fr]",
+            ]}
+          >
+            <div class:list={[index % 2 === 1 && "lg:order-2"]}>
+              <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                {course.tag}
+              </p>
+              <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                {course.name}
+              </h2>
+              <p class="mt-4 text-base leading-relaxed text-muted">
+                {course.description}
+              </p>
+              <ul class="mt-6 space-y-3">
+                {course.highlights.map((highlight) => (
+                  <li class="flex items-start gap-3 text-sm text-muted">
+                    <svg
+                      class="mt-0.5 h-5 w-5 flex-shrink-0 text-accent"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+              <dl class="mt-8 flex flex-wrap gap-x-8 gap-y-4">
+                {course.stats.map((stat) => (
+                  <div>
+                    <dd class="font-display text-2xl font-bold text-text">
+                      {stat.value}
+                    </dd>
+                    <dt class="mt-0.5 text-xs text-muted">{stat.label}</dt>
+                  </div>
+                ))}
+              </dl>
+              {course.note && (
+                <p class="mt-4 font-mono text-xs text-accent-soft">
+                  {course.note}
+                </p>
+              )}
+              <a
+                href={course.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary mt-8"
+              >
+                Zobacz kurs: {course.shortName}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div
+              class:list={[
+                "card overflow-hidden bg-surface-2",
+                index % 2 === 1 && "lg:order-1",
+              ]}
+            >
+              <div class="terminal-bar">
+                <span class="dot bg-[#ff5f57]" aria-hidden="true" />
+                <span class="dot bg-[#febc2e]" aria-hidden="true" />
+                <span class="dot bg-[#28c840]" aria-hidden="true" />
+                <span class="ml-2">~/{course.slug} — program</span>
+              </div>
+              <div class="p-6 sm:p-8">
+                <p class="font-mono text-xs uppercase tracking-widest text-muted">
+                  Moduły programu
+                </p>
+                <ol class="mt-4 space-y-4">
+                  {course.modules.map((module, moduleIndex) => (
+                    <li class="flex items-start gap-4">
+                      <span class="font-mono text-sm font-semibold text-accent">
+                        {String(moduleIndex + 1).padStart(2, "0")}
+                      </span>
+                      <span class="text-sm leading-relaxed text-muted">
+                        {module}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+                {course.badge && (
+                  <p class="mt-6 rounded-lg border border-accent/40 bg-accent/10 px-4 py-3 font-mono text-xs uppercase tracking-widest text-accent-soft">
+                    {course.badge}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</Layout>

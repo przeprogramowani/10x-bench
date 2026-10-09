@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Courses from "../components/Courses.astro";
+---
+
+<Layout
+  title="Kursy"
+  description="Kursy Przeprogramowanych: 10xDevs, Opanuj Frontend: AI Edition i Opanuj TypeScript — praktyczne programy szkoleniowe prowadzone przez seniorów z doświadczeniem produktowym."
+  canonicalPath="/kursy"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-32 top-0 h-96 w-96 rounded-full bg-main/15 blur-3xl"></div>
+      <div class="absolute -right-32 top-24 h-96 w-96 rounded-full bg-turquoise/10 blur-3xl"></div>
+    </div>
+    <div class="container-page py-16 lg:py-24">
+      <p class="text-sm font-semibold uppercase tracking-wider text-turquoise">Kursy</p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl">
+        Kursy, które dowożą efekty
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-muted">
+        Programy szkoleniowe oparte na praktycznych projektach, indywidualnych code review i mentoringu. Prowadzą je
+        seniorzy pracujący na co dzień w międzynarodowych firmach produktowych.
+      </p>
+    </div>
+  </section>
+
+  <Courses heading="Nasze kursy" subheading="Wybierz program dopasowany do Twojego etapu rozwoju" showAll={true} />
+</Layout>

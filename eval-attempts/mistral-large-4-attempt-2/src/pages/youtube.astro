@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { getLatestVideos } from '../lib/feeds';
+import { youtubeChannels } from '../lib/site';
+
+const { main: latestVideos, opanujAi: opanujAiVideos, source } = await getLatestVideos(12);
+---
+
+<BaseLayout
+  title="YouTube — Przeprogramowani.pl"
+  description="Oficjalny kanał YouTube Przeprogramowanych: darmowe materiały o programowaniu, AI i rozwoju nowoczesnego programisty. Subskrybuj i rozwijaj się z nami."
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-500">
+        <a href="/" class="transition hover:text-white">Strona główna</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-slate-300">YouTube</span>
+      </nav>
+      <div class="mt-8">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Rozwój nowoczesnego programisty"
+          align="left"
+        />
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
+          Darmowe materiały edukacyjne, deep-dive'y techniczne, kulisy kursów i praca z AI
+          w praktyce. Najnowsze filmy z kanału Przeprogramowani poniżej.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={youtubeChannels.main.subscribeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition hover:from-red-500 hover:to-red-400"
+          >
+            Subskrybuj kanał Przeprogramowani
+            <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href={youtubeChannels.main.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+          >
+            youtube.com/c/przeprogramowani
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ostatnie filmy -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Ostatnie filmy"
+        title="Najnowsze na kanale Przeprogramowani"
+        lead="Lista aktualizowana automatycznie na podstawie oficjalnego feedu YouTube."
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {latestVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Opanuj AI -->
+  <section class="border-t border-white/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+        <SectionHeading
+          eyebrow="Opanuj AI"
+          title="Więcej o sztucznej inteligencji"
+          lead="Drugi kanał Przeprogramowanych — praktyczne spojrzenie na AI w pracy programisty."
+          align="left"
+        />
+        <a
+          href={youtubeChannels.opanujAi.subscribeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+        >
+          Subskrybuj Opanuj AI
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {opanujAiVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <p class="mt-6 text-center text-xs text-slate-600">
+        {source === 'live'
+          ? 'Dane pobrane na żywo z feedów YouTube podczas budowania strony.'
+          : 'Dane pochodzą z ostatniej zapisanej aktualizacji feedów (snapshot).'}
+      </p>
+    </div>
+  </section>
+</BaseLayout>

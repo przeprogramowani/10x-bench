@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import BrandsMarquee from '../components/BrandsMarquee.astro';
+import { founders, site, stats } from '../lib/site';
+---
+
+<BaseLayout
+  title="O nas — Przeprogramowani.pl"
+  description="Poznaj Przeprogramowanych: Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju osobistego od 2019 roku."
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-500">
+        <a href="/" class="transition hover:text-white">Strona główna</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-slate-300">O nas</span>
+      </nav>
+      <div class="mt-8">
+        <SectionHeading
+          eyebrow="O nas"
+          title="Łączymy świat programowania, biznesu i rozwoju"
+          align="left"
+        />
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
+          Przeprogramowani to miejsce, w którym programowanie spotyka się z rozwojem osobistym.
+          Wierzymy, że najlepsi programiści to ci, którzy patrzą szerzej — na architekturę, na biznes,
+          na ludzi i na siebie. Tworzymy treści, kursy i narzędzia, które pomagają programistom
+          rozwijać się na wielu płaszczyznach: od technicznych deep-dive'ów po rozmowy o karierze
+          i rozwoju. Zyskaj szersze spojrzenie na programowanie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Założyciele -->
+  <section class="py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2">
+        {founders.map((founder) => (
+          <article class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md transition hover:bg-white/[0.07]">
+            <div
+              class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-600/20 blur-3xl"
+              aria-hidden="true"
+            ></div>
+            <div class="relative flex flex-col items-start gap-6 sm:flex-row">
+              <img
+                src={founder.image}
+                alt={`Zdjęcie: ${founder.name}`}
+                loading="lazy"
+                class="h-28 w-28 shrink-0 rounded-2xl border border-white/10 object-cover"
+              />
+              <div>
+                <h2 class="font-display text-2xl font-bold text-white">{founder.name}</h2>
+                <p class="mt-1 text-sm font-medium text-brand-300">{founder.role}</p>
+                <a
+                  href={founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-3 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                    <path d="M4.98 3.5A2.49 2.49 0 1 1 0 3.5a2.49 2.49 0 0 1 4.98 0zM.4 8.5h4.6V24H.4V8.5zm7.6 0h4.4v2.1h.1c.6-1.2 2.1-2.4 4.4-2.4 4.7 0 5.5 3.1 5.5 7V24h-4.6v-7.7c0-1.8 0-4.2-2.6-4.2s-3 2-3 4V24H8V8.5z" />
+                  </svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <div class="relative mt-6 space-y-3">
+              {founder.bio.map((paragraph) => (
+                <p class="text-sm leading-relaxed text-slate-300">{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- W liczbach -->
+  <section class="border-t border-white/10 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Nasz wpływ"
+        title="Przeprogramowani w liczbach"
+        lead="Od 2019 roku tworzymy darmowe treści dla społeczności programistów i prowadzimy topowe programy edukacyjne."
+      />
+      <dl class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-md">
+            <dd class="font-display text-4xl font-bold text-gradient">{stat.value}</dd>
+            <dt class="mt-2 text-sm leading-snug text-slate-400">{stat.label}</dt>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Zaufali nam -->
+  <section class="border-t border-white/10 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-center text-sm font-semibold uppercase tracking-widest text-slate-500">
+        Zaufali nam
+      </h2>
+      <div class="mt-8">
+        <BrandsMarquee />
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="border-t border-white/10 py-20">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-white">Chcesz nawiązać współpracę?</h2>
+      <p class="mt-4 text-lg text-slate-400">
+        Prowadzimy szkolenia i warsztaty dla firm, współpracujemy przy projektach edukacyjnych
+        i chętnie dzielimy się wiedzą na konferencjach.
+      </p>
+      <a
+        href={`mailto:${site.email}`}
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-fuchsia-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:from-brand-500 hover:to-fuchsia-500"
+      >
+        {site.email}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

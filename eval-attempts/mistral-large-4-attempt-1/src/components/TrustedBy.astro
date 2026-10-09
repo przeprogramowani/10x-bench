@@ -1,0 +1,47 @@
+---
+import { brands } from "@/data/brands";
+import { site } from "@/data/site";
+---
+
+<section class="border-t border-slate-800/80 py-16 lg:py-20" aria-labelledby="trusted-title">
+  <div class="container-page">
+    <div class="mx-auto max-w-xl text-center">
+      <h2 id="trusted-title" class="font-display text-2xl font-bold text-white sm:text-3xl">
+        Zaufali nam
+      </h2>
+      <p class="mt-2 text-sm text-slate-400">7 lat na rynku edukacji technologicznej</p>
+    </div>
+    <div class="marquee mt-10">
+      <div class="marquee-track">
+        {
+          [...brands, ...brands].map((brand) => (
+            <span class="flex items-center whitespace-nowrap px-6 font-display text-lg font-semibold text-slate-500 transition hover:text-slate-300">
+              {brand}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <div class="mt-12 text-center">
+      <p class="text-sm text-slate-400">Chcesz nawiązać współpracę?</p>
+      <a
+        href={`mailto:${site.email}`}
+        class="mt-2 inline-flex items-center gap-2 font-semibold text-violet-400 transition hover:text-violet-300"
+      >
+        {site.email}
+        <svg
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+---
+import { navLinks, site } from '../lib/site';
+
+const year = new Date().getFullYear();
+
+const projectLinks = [
+  { href: 'https://10xdevs.pl', label: '10xDevs' },
+  { href: 'https://www.opanujfrontend.pl', label: 'Opanuj Frontend' },
+  { href: 'https://www.opanujtypescript.pl', label: 'Opanuj TypeScript' },
+  { href: 'https://opanuj.ai/', label: 'Opanuj AI' },
+  { href: 'https://10xrules.ai', label: '10xRules.ai' },
+];
+---
+
+<footer class="border-t border-white/10 bg-slate-950/80">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <a href="/" class="flex items-center gap-2.5">
+          <span
+            class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 font-display text-sm font-bold text-white"
+          >
+            &lt;/&gt;
+          </span>
+          <span class="font-display text-lg font-semibold text-white">
+            Przeprogramowani<span class="text-brand-400">.pl</span>
+          </span>
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
+          Szersze spojrzenie na programowanie. Łączymy świat programowania, biznesu i rozwoju osobistego —
+          przez podcasty, kursy, newsletter i społeczność.
+        </p>
+        <div class="mt-5 flex items-center gap-3">
+          <a
+            href={site.socials.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+            aria-label="Facebook"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+              <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z" />
+            </svg>
+          </a>
+          <a
+            href={site.socials.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4" aria-hidden="true">
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+              <circle cx="12" cy="12" r="3.8" />
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a
+            href={site.socials.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+            aria-label="YouTube"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+              <path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15.2V8.8L15.5 12 10 15.2z" />
+            </svg>
+          </a>
+          <a
+            href={`mailto:${site.email}`}
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+            aria-label="E-mail"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-4 w-4" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2.5" />
+              <path d="M3.5 7l8.5 6 8.5-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <nav aria-label="Nawigacja w stopce">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400">Nawigacja</h3>
+        <ul class="mt-4 space-y-2.5">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-slate-300 transition hover:text-white">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav aria-label="Projekty w stopce">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400">Projekty</h3>
+        <ul class="mt-4 space-y-2.5">
+          {projectLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-slate-300 transition hover:text-white"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
+      <p>© {year} Przeprogramowani.pl — Szersze spojrzenie na programowanie</p>
+      <p>Zbudowano z Astro, React i Tailwind · Wdrożenie: Cloudflare Pages</p>
+    </div>
+  </div>
+</footer>

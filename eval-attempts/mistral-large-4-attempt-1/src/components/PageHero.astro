@@ -1,0 +1,31 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+}
+
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="relative overflow-hidden pb-14 pt-32 lg:pt-40" aria-labelledby="page-title">
+  <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
+  <div class="orb -left-24 top-0 h-80 w-80 bg-violet-600" aria-hidden="true"></div>
+  <div
+    class="orb -bottom-16 -right-24 h-80 w-80 bg-fuchsia-700"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-page relative">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1
+        id="page-title"
+        class="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl"
+      >
+        {title}
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">{lead}</p>
+    </div>
+  </div>
+</section>

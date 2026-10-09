@@ -1,0 +1,84 @@
+---
+import "../styles/global.css";
+import SEO from "../components/SEO.astro";
+import Header from "../components/Header";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+}
+
+const { title, description, canonicalPath, ogImage, ogType, noindex } = Astro.props;
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.url,
+  logo: new URL(site.logo, site.url).toString(),
+  description: site.description,
+  email: site.email,
+  foundingDate: "2019",
+  sameAs: [
+    site.socials.youtube,
+    site.socials.facebook,
+    site.socials.instagram,
+    site.socials.podcast,
+    site.socials.newsletter,
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  inLanguage: "pl",
+  description: site.description,
+  publisher: { "@type": "Organization", name: site.name },
+};
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      ogImage={ogImage}
+      ogType={ogType}
+      noindex={noindex}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <!-- Definicje symboli SVG (ikony marek niedostępne w lucide-react >= 1.0) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="icon-youtube" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"
+        ></path>
+      </symbol>
+    </svg>
+    <Header client:load currentPath={Astro.url.pathname} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

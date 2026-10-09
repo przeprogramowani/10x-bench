@@ -1,0 +1,33 @@
+{
+  "name": "przeprogramowani-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nowoczesna strona projektu Przeprogramowani.pl — Astro + React + Tailwind, gotowa na Cloudflare Pages",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fetch-data": "node scripts/fetch-data.mjs",
+    "deploy": "npm run build && wrangler pages deploy dist/client --project-name=przeprogramowani"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.3.4",
+    "@astrojs/react": "^7.0.1",
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.8",
+    "fast-xml-parser": "^5.11.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.148.0"
+  }
+}

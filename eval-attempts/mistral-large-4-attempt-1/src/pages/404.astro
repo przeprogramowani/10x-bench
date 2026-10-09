@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/data/site";
+---
+
+<BaseLayout
+  title="404 — Nie znaleziono strony"
+  description="Strona, której szukasz, nie istnieje. Wróć na stronę główną Przeprogramowani.pl."
+>
+  <section class="relative overflow-hidden py-32 lg:py-40">
+    <div class="grid-bg absolute inset-0" aria-hidden="true"></div>
+    <div class="orb -left-24 top-10 h-80 w-80 bg-violet-600" aria-hidden="true"></div>
+    <div class="orb -bottom-10 -right-24 h-80 w-80 bg-orange-600" aria-hidden="true"></div>
+    <div class="container-page relative">
+      <div class="mx-auto max-w-lg text-center">
+        <p class="gradient-text font-display text-7xl font-bold sm:text-8xl">404</p>
+        <h1 class="mt-4 font-display text-3xl font-bold tracking-tight text-white">
+          Nie znaleziono strony
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-slate-400">
+          Strona, której szukasz, nie istnieje lub została przeniesiona. Wróć na stronę
+          główną i znajdź to, czego potrzebujesz.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="/" class="btn-primary">Wróć na stronę główną</a>
+          <a href="/o-nas" class="btn-secondary">O nas</a>
+        </div>
+        <p class="mt-8 text-sm text-slate-500">{site.title} — {site.tagline}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

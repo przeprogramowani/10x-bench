@@ -1,0 +1,75 @@
+---
+import Header from "@/components/Header";
+import Footer from "@/components/Footer.astro";
+import { site } from "@/data/site";
+import "@/styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = site.description,
+  image = "/og-image.png",
+} = Astro.props;
+
+const pageTitle = title === site.title ? title : `${title} | ${site.name}`;
+const canonicalURL = new URL(Astro.url.pathname, site.url);
+const imageURL = new URL(image, site.url);
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Przeprogramowani — Przemek Smyrdek, Marcin Czarkowski" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Przeprogramowani — Podcast"
+      href="https://anchor.fm/s/c72d808/podcast/rss"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-200 antialiased">
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
+    <Header client:load />
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

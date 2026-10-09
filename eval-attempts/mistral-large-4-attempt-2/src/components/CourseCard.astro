@@ -1,0 +1,113 @@
+---
+import type { Course } from '../lib/site';
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+
+const accents = {
+  violet: {
+    glow: 'group-hover:shadow-brand-500/20',
+    ring: 'group-hover:ring-brand-500/40',
+    text: 'text-brand-300',
+    badge: 'from-brand-500/20 to-fuchsia-500/20 text-brand-200 ring-brand-400/30',
+    button: 'from-brand-600 to-fuchsia-600 hover:from-brand-500 hover:to-fuchsia-500 shadow-brand-500/25',
+  },
+  cyan: {
+    glow: 'group-hover:shadow-cyan-500/20',
+    ring: 'group-hover:ring-cyan-500/40',
+    text: 'text-cyan-300',
+    badge: 'from-cyan-500/20 to-teal-500/20 text-cyan-200 ring-cyan-400/30',
+    button: 'from-cyan-600 to-teal-600 hover:from-cyan-500 hover:to-teal-500 shadow-cyan-500/25',
+  },
+  fuchsia: {
+    glow: 'group-hover:shadow-fuchsia-500/20',
+    ring: 'group-hover:ring-fuchsia-500/40',
+    text: 'text-fuchsia-300',
+    badge: 'from-fuchsia-500/20 to-pink-500/20 text-fuchsia-200 ring-fuchsia-400/30',
+    button: 'from-fuchsia-600 to-pink-600 hover:from-fuchsia-500 hover:to-pink-500 shadow-fuchsia-500/25',
+  },
+} as const;
+
+const accent = accents[course.accent];
+---
+
+<article
+  class:list={[
+    'group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 ring-1 ring-transparent backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07]',
+    accent.ring,
+    accent.glow,
+  ]}
+>
+  <div class="relative aspect-video overflow-hidden">
+    <img
+      src={course.image}
+      alt={`Grafika promująca kurs ${course.name}`}
+      loading="lazy"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+    {course.badge && (
+      <span
+        class:list={[
+          'absolute right-3 top-3 rounded-full bg-gradient-to-r px-3 py-1 text-xs font-semibold uppercase tracking-wider ring-1 backdrop-blur-md',
+          accent.badge,
+        ]}
+      >
+        {course.badge}
+      </span>
+    )}
+  </div>
+
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="font-display text-2xl font-bold text-white">{course.name}</h3>
+    <p class:list={['mt-1 text-sm font-medium', accent.text]}>{course.tagline}</p>
+
+    <p class="mt-4 text-sm leading-relaxed text-slate-400 line-clamp-4">
+      {course.description}
+    </p>
+
+    <ul class="mt-5 space-y-2.5">
+      {course.highlights.map((highlight) => (
+        <li class="flex items-start gap-2.5 text-sm text-slate-300">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            class:list={['mt-0.5 h-4 w-4 shrink-0', accent.text]}
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>{highlight}</span>
+        </li>
+      ))}
+    </ul>
+
+    <dl class="mt-6 grid grid-cols-3 gap-2 border-t border-white/10 pt-4">
+      {course.stats.map((stat) => (
+        <div class="text-center">
+          <dt class="sr-only">{stat.label}</dt>
+          <dd class="font-display text-lg font-bold text-white">{stat.value}</dd>
+          <dd class="text-[11px] leading-tight text-slate-500">{stat.label}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <a
+      href={course.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class:list={[
+        'mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition',
+        accent.button,
+      ]}
+    >
+      {course.cta}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

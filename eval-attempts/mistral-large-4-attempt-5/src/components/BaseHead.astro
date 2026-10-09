@@ -1,0 +1,86 @@
+---
+import { site } from "../data/site";
+
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+};
+
+const {
+  title,
+  description,
+  image = site.ogImage,
+  type = "website",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url);
+const ogImage = new URL(image, Astro.site ?? site.url);
+const pageTitle =
+  Astro.url.pathname === "/" ? title : `${title} | ${site.name}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<meta name="theme-color" content="#070b14" />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content={site.locale} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Organization JSON-LD -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    logo: new URL("/favicon.ico", Astro.site ?? site.url).toString(),
+    description: site.description,
+    email: site.email,
+    sameAs: [
+      "https://www.youtube.com/@Przeprogramowani",
+      "https://facebook.com/przeprogramowani",
+      "https://instagram.com/przeprogramowani",
+      "https://przeprogramowani.substack.com",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: site.email,
+      contactType: "customer support",
+      availableLanguage: "Polish",
+    },
+  })}
+/>
+
+<slot name="head" />

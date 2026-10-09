@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+---
+
+<Layout
+  title="404 — Strona nie znaleziona"
+  description="Strona, której szukasz, nie istnieje. Wróć na stronę główną Przeprogramowani.pl."
+  noindex={true}
+>
+  <section class="container py-24 md:py-32">
+    <div class="mx-auto max-w-xl text-center">
+      <p class="font-mono text-7xl font-bold tracking-tighter text-accent sm:text-8xl">
+        404
+      </p>
+      <h1 class="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        Strona nie znaleziona
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-muted">
+        Podany adres nie prowadzi do żadnej strony {site.name}. Sprawdź adres
+        lub wróć na stronę główną.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn btn-primary">Strona główna</a>
+        <a href="/kursy" class="btn btn-ghost">Kursy</a>
+      </div>
+    </div>
+  </section>
+</Layout>

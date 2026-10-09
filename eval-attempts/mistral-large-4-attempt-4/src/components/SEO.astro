@@ -1,0 +1,51 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  canonicalPath = "/",
+  ogImage = site.ogImage,
+  ogType = "website",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, site.url).toString();
+const ogImageUrl = new URL(ogImage, site.url).toString();
+const pageTitle = title === site.title ? title : `${title} | ${site.name}`;
+---
+
+<!-- Primary meta tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+<meta name="author" content={site.name} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+<meta name="theme-color" content="#e30f55" />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content={site.locale} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />

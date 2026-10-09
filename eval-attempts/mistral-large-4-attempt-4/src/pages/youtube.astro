@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VideoGrid from "../components/VideoGrid";
+import { site } from "../data/site";
+import videos from "../data/videos.json";
+---
+
+<Layout
+  title="YouTube"
+  description="Kanał YouTube Przeprogramowanych — livy, demo day 10xDevs i materiały edukacyjne dla programistów. Ponad 40 000 programistów zasięgu razem z kanałem Overment."
+  canonicalPath="/youtube"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -right-32 top-0 h-96 w-96 rounded-full bg-main/15 blur-3xl"></div>
+    </div>
+    <div class="container-page py-16 lg:py-24">
+      <p class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-main">
+        <svg width="16" height="16" aria-hidden="true" class="text-main"><use href="#icon-youtube"></use></svg>
+        YouTube
+      </p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl">
+        Najnowsze filmy z kanału Przeprogramowani
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-muted">
+        Livy z kursów, demo day 10xDevs i materiały edukacyjne o programowaniu, AI i rozwoju kariery. Razem z kanałem
+        Overment tworzymy treści dla ponad 40 000 programistów.
+      </p>
+      <a
+        href={site.socials.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex items-center gap-2 font-semibold text-turquoise hover:underline"
+      >
+        youtube.com/c/przeprogramowani →
+      </a>
+    </div>
+  </section>
+
+  <section class="container-page pb-16 lg:pb-24">
+    <VideoGrid client:load videos={videos} channelUrl={site.socials.youtube} />
+  </section>
+</Layout>

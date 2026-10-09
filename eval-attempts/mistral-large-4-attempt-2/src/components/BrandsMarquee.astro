@@ -1,0 +1,23 @@
+---
+import { brands } from '../lib/site';
+---
+
+<div class="relative overflow-hidden" aria-label="Firmy, które nam zaufały">
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-slate-950 to-transparent"
+  ></div>
+  <div
+    class="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-slate-950 to-transparent"
+  ></div>
+  <div class="marquee-track flex w-max items-center gap-14 py-4">
+    {[...brands, ...brands].map((brand, index) => (
+      <img
+        src={brand.logo}
+        alt={brand.name}
+        loading="lazy"
+        class="h-8 w-auto max-w-[140px] object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+        aria-hidden={index >= brands.length ? 'true' : undefined}
+      />
+    ))}
+  </div>
+</div>

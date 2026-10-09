@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CourseCard from '../components/CourseCard.astro';
+import VideoCard from '../components/VideoCard.astro';
+import BrandsMarquee from '../components/BrandsMarquee.astro';
+import PodcastTabs, { type ShowData } from '../components/PodcastTabs';
+import { getAllPodcastEpisodes, getLatestVideos, type Episode } from '../lib/feeds';
+import { courses, newsletter, podcastShows, site, stats, youtubeChannels } from '../lib/site';
+
+const { przeprogramowani, opanujAi } = await getAllPodcastEpisodes(4);
+const { main: latestVideos } = await getLatestVideos(6);
+
+const snippet = (episodes: Episode[]) =>
+  episodes.map((episode) => ({
+    ...episode,
+    description: episode.description.length > 220
+      ? `${episode.description.slice(0, 220).trimEnd()}…`
+      : episode.description,
+  }));
+
+const shows: ShowData[] = podcastShows.map((show) => ({
+  ...show,
+  episodes: snippet(show.id === 'przeprogramowani' ? przeprogramowani : opanujAi),
+}));
+---
+
+<BaseLayout>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <!-- Hero: 10xDevs -->
+  <section class="relative overflow-hidden">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute -top-32 left-1/2 h-[32rem] w-[60rem] -translate-x-1/2 rounded-full bg-brand-600/20 blur-3xl"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <a
+            href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+            class="inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-1.5 text-sm font-medium text-brand-200 ring-1 ring-brand-400/20 transition hover:bg-brand-500/20"
+          >
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-60"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-400"></span>
+            </span>
+            Nowość · 10xDevs 4.0 — kolejna edycja startuje wiosną 2027
+          </a>
+
+          <h1 class="mt-6 font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+            <span class="text-gradient">10xDevs</span>
+            <br />
+            Programuj z AI. Świadomie.
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
+            Nowe oblicze programowania z wykorzystaniem Generatywnego AI. Techniki i narzędzia
+            pozwalające świadomie stosować AI w całym cyklu wytwarzania oprogramowania — od researchu
+            i planowania, przez implementację i testy, po wdrożenie na produkcję.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+              class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-fuchsia-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:from-brand-500 hover:to-fuchsia-500 hover:shadow-brand-500/40"
+            >
+              Zobacz program 10xDevs
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://przeprogramowani.substack.com"
+              class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-6 py-3 text-base font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+            >
+              Newsletter 3-2-1
+            </a>
+          </div>
+
+          <dl class="mt-10 grid max-w-lg grid-cols-3 gap-4">
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+              <dd class="font-display text-2xl font-bold text-white">8100+</dd>
+              <dt class="mt-1 text-xs leading-tight text-slate-400">absolwentów programu</dt>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+              <dd class="font-display text-2xl font-bold text-white">5+1</dd>
+              <dt class="mt-1 text-xs leading-tight text-slate-400">tygodni nauki</dt>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+              <dd class="font-display text-2xl font-bold text-white">100%</dd>
+              <dt class="mt-1 text-xs leading-tight text-slate-400">projekt końcowy na produkcji</dt>
+            </div>
+          </dl>
+        </div>
+
+        <div class="relative">
+          <div
+            class="absolute -inset-4 rounded-3xl bg-gradient-to-r from-brand-500/30 to-fuchsia-500/30 blur-2xl"
+            aria-hidden="true"
+          ></div>
+          <img
+            src="https://przeprogramowani.pl/img/10xdevs-hero.webp"
+            alt="10xDevs 4.0 — prowadzący kursu: Przemek Smyrdek i Marcin Czarkowski"
+            class="relative w-full rounded-2xl border border-white/10 object-cover shadow-2xl"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kursy -->
+  <section id="kursy" class="relative border-t border-white/10 py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Edukacja"
+        title="Kursy i programy edukacyjne"
+        lead="Topowe programy edukacyjne dla ambitnych programistów i świadome korzystanie z potencjału Generative AI."
+      />
+      <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {courses.map((course) => <CourseCard course={course} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Podcasty -->
+  <section class="relative border-t border-white/10 py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Słuchaj naszych podcastów"
+          lead="Rozmowy o technologii, AI i programowaniu — najnowsze odcinki poniżej, wszystkie na Spotify, Apple Podcasts i RSS."
+          align="left"
+        />
+        <a
+          href="/podcast"
+          class="shrink-0 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+        >
+          Wszystkie odcinki
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="mt-12">
+        <PodcastTabs client:load shows={shows} />
+      </div>
+    </div>
+  </section>
+
+  <!-- YouTube -->
+  <section class="relative border-t border-white/10 py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+        <SectionHeading
+          eyebrow="YouTube"
+          title="Rozwój nowoczesnego programisty"
+          lead="Darmowe materiały, deep-dive'y techniczne i kulisy pracy z AI — prosto z kanału Przeprogramowani."
+          align="left"
+        />
+        <a
+          href={youtubeChannels.main.subscribeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="shrink-0 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-red-500/20 transition hover:from-red-500 hover:to-red-400"
+        >
+          Subskrybuj kanał
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {latestVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <div class="mt-8 text-center">
+        <a
+          href="/youtube"
+          class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+        >
+          Zobacz więcej filmów
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="relative border-t border-white/10 py-20 sm:py-24">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-brand-950/60 via-slate-950 to-fuchsia-950/40 p-8 sm:p-12">
+        <div class="bg-grid absolute inset-0 opacity-40" aria-hidden="true"></div>
+        <div class="relative grid gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-widest text-brand-300">Newsletter</p>
+            <h2 class="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
+              {newsletter.name}
+            </h2>
+            <p class="mt-4 leading-relaxed text-slate-300">{newsletter.description}</p>
+          </div>
+          <div class="md:justify-self-end">
+            <a
+              href={newsletter.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-fuchsia-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:from-brand-500 hover:to-fuchsia-500"
+            >
+              Zapisz się za darmo
+              <span aria-hidden="true">→</span>
+            </a>
+            <p class="mt-3 text-xs text-slate-500">Wysyłka w każdy piątek. Zero spamu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zaufali nam -->
+  <section class="relative border-t border-white/10 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm font-semibold uppercase tracking-widest text-slate-500">
+        Zaufali nam · {stats[0].value} {stats[0].label}
+      </p>
+      <div class="mt-8">
+        <BrandsMarquee />
+      </div>
+      <div class="mt-12 text-center">
+        <a
+          href={`mailto:${site.email}`}
+          class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/10"
+        >
+          Chcesz nawiązać współpracę? Napisz do nas
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

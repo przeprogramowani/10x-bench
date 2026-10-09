@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PodcastShow from "../components/PodcastShow.astro";
+import { site } from "../data/site";
+import podcasts from "../data/podcasts.json";
+---
+
+<Layout
+  title="Podcast"
+  description="Podcasty Przeprogramowanych: Przeprogramowani ft. Gość — rozmowy dla głodnych wiedzy oraz Opanuj.AI — podsumowania nowinek ze świata AI. Spotify, Apple Podcasts, RSS i Anchor."
+  canonicalPath="/podcast"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -left-32 top-0 h-96 w-96 rounded-full bg-turquoise/10 blur-3xl"></div>
+      <div class="absolute -right-32 top-24 h-96 w-96 rounded-full bg-main/15 blur-3xl"></div>
+    </div>
+    <div class="container-page py-16 lg:py-24">
+      <p class="text-sm font-semibold uppercase tracking-wider text-turquoise">Podcast</p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl">
+        Rozmowy dla głodnych wiedzy
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-muted">
+        Dwa podcasty prowadzone przez Przemka i Marcina: rozmowy z gośćmi ze świata IT oraz cykliczne podsumowania
+        nowinek technicznych ze świata AI. Dostępne na Spotify, Apple Podcasts, RSS i Anchor.fm.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page space-y-10 pb-16 lg:space-y-14 lg:pb-24">
+    {podcasts.map((podcast) => (
+      <PodcastShow
+        name={podcast.name}
+        title={podcast.title}
+        tagline={podcast.tagline}
+        description={podcast.description}
+        coverUrl={podcast.coverUrl}
+        platforms={podcast.platforms}
+        episodes={podcast.episodes}
+      />
+    ))}
+  </section>
+
+  <section class="border-t border-white/10 bg-dark/40">
+    <div class="container-page py-12 text-center">
+      <p class="text-sm text-muted">
+        Szukasz naszych materiałów wideo? Zajrzyj na{" "}
+        <a href="/youtube" class="font-semibold text-turquoise hover:underline">stronę YouTube</a> lub zapisz się do{" "}
+        <a href={site.socials.newsletter} target="_blank" rel="noopener noreferrer" class="font-semibold text-turquoise hover:underline">
+          newslettera
+        </a>
+        .
+      </p>
+    </div>
+  </section>
+</Layout>

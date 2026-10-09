@@ -1,0 +1,48 @@
+$ npm ci --no-audit --no-fund
+added 253 packages in 2s
+[exit 0]$ npm run build
+> przeprogramowani-website@1.0.0 build
+> astro build
+
+10:30:44 [@astrojs/cloudflare] Enabling compile-time image optimization. Images will be pre-optimized at build time.
+10:30:44 [types] Generated 209ms
+10:30:44 [build] output: "static"
+10:30:44 [build] mode: "static"
+10:30:44 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-KOwfD9/site/dist/
+10:30:44 [build] adapter: @astrojs/cloudflare
+10:30:44 [build] Collecting build info...
+10:30:44 [build] ✓ Completed in 238ms.
+10:30:44 [build] Building static entrypoints...
+10:30:44 [vite] ✓ built in 281ms
+10:30:44 [vite] ✓ built in 43ms
+10:30:44 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9232 instead
+
+
+ generating static routes 
+10:30:45   ├─ /404.html (+12ms) 
+10:30:45   ├─ /o-nas/index.html (+6ms) 
+10:30:45   ├─ /podcast/index.html (+4ms) 
+10:30:45   ├─ /youtube/index.html (+7ms) 
+10:30:45   ├─ /index.html (+6ms) 
+10:30:45 ✓ Completed in 494ms.
+
+10:30:45 [build] ✓ Completed in 842ms.
+10:30:45 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+10:30:45 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
+10:30:45 [build] 5 page(s) built in 1.08s
+10:30:45 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-KOwfD9/out"
+ ⛅️ wrangler 4.146.0
+────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/client/wrangler.json"
+ - Original user's configuration: "wrangler.toml"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+
+Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md
+✨ Read 35 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-KOwfD9/site/dist/client
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+No bindings found.
+--dry-run: exiting now.
+[exit 0]

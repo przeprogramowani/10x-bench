@@ -1,0 +1,42 @@
+---
+import { formatDate, type Video } from '../lib/feeds';
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+---
+
+<a
+  href={video.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:ring-1 hover:ring-brand-500/40"
+>
+  <div class="relative aspect-video overflow-hidden bg-slate-900">
+    <img
+      src={video.thumbnail}
+      alt={`Miniatura filmu: ${video.title}`}
+      loading="lazy"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/30"></div>
+    <span
+      class="absolute inset-0 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100"
+      aria-hidden="true"
+    >
+      <span class="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-fuchsia-600 text-white shadow-xl shadow-brand-500/40">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="ml-0.5 h-6 w-6">
+          <path d="M8 5.5v13l11-6.5-11-6.5z" />
+        </svg>
+      </span>
+    </span>
+  </div>
+  <div class="p-4">
+    <h3 class="line-clamp-2 text-sm font-semibold leading-snug text-white">
+      {video.title}
+    </h3>
+    <p class="mt-2 text-xs text-slate-500">{formatDate(video.published)}</p>
+  </div>
+</a>

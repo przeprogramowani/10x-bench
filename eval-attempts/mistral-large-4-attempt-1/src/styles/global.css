@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans antialiased;
+  }
+
+  ::selection {
+    background-color: #7c3aed;
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  :focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 via-fuchsia-400 to-orange-400 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-950/40 transition hover:from-violet-500 hover:to-fuchsia-500 hover:shadow-fuchsia-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 backdrop-blur transition hover:border-slate-500 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800/70 hover:text-white;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs font-medium text-slate-300;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-widest text-violet-400;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-16 rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition focus:translate-y-0;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 25%, transparent 78%);
+    mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 25%, transparent 78%);
+  }
+
+  .orb {
+    @apply pointer-events-none absolute rounded-full opacity-40 blur-3xl;
+    animation: orb-float 12s ease-in-out infinite;
+  }
+
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(24px, -32px, 0) scale(1.12); }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

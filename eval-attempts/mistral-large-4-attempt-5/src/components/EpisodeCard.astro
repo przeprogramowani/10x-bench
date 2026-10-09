@@ -1,0 +1,53 @@
+---
+import { formatDate, type Episode } from "../data/podcasts";
+
+type Props = {
+  episode: Episode;
+  showName: string;
+};
+
+const { episode, showName } = Astro.props;
+---
+
+<article
+  class="card p-5 transition-colors hover:border-accent/40 sm:p-6"
+  aria-label={`Odcinek podcastu ${showName}: ${episode.title}`}
+>
+  <p class="sr-only">Podcast: {showName}</p>
+  <div
+    class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-muted"
+  >
+    <time datetime={episode.date}>{formatDate(episode.date)}</time>
+    <span aria-hidden="true">•</span>
+    <span class="inline-flex items-center gap-1.5">
+      <svg
+        class="h-3.5 w-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+      </svg>
+      {episode.duration.replace(/^0/, "")}
+    </span>
+  </div>
+  <h3 class="mt-2 text-lg font-semibold leading-snug text-text">
+    {episode.title}
+  </h3>
+  <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">
+    {episode.description}
+  </p>
+  <a
+    href={episode.spotifyUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-spotify transition-colors hover:underline"
+  >
+    Słuchaj na Spotify
+    <span aria-hidden="true">→</span>
+  </a>
+</article>

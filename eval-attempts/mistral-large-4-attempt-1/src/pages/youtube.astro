@@ -1,0 +1,70 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import VideoGrid from "@/components/VideoGrid";
+import { youtubeChannelUrl } from "@/data/site";
+import { videos } from "@/data/videos";
+---
+
+<BaseLayout
+  title="YouTube"
+  description="Ostatnie filmy z kanału YouTube Przeprogramowanych — materiały edukacyjne, live'y, Demo Day 10xDevs i kulisy projektów. Subskrybuj kanał @przeprogramowani."
+>
+  <PageHero
+    eyebrow="YouTube"
+    title="Nasze filmy"
+    lead="Rozwój nowoczesnego programisty — materiały edukacyjne, live'y i projekty, które budujemy z AI."
+  />
+
+  <section class="pb-8" aria-label="Subskrypcja kanału">
+    <div class="container-page">
+      <div class="card relative overflow-hidden p-8 lg:p-10">
+        <div class="orb -right-20 -top-20 h-64 w-64 bg-fuchsia-600" aria-hidden="true"></div>
+        <div class="relative flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
+          <span
+            class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-orange-500 text-white"
+            aria-hidden="true"
+          >
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z" />
+            </svg>
+          </span>
+          <div class="flex-1">
+            <h2 class="font-display text-2xl font-bold text-white">Kanał @przeprogramowani</h2>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">
+              Nowe filmy o programowaniu, AI i pracy zespołowej — w tym kulisy 10xDevs,
+              live'y z Demo Day i materiały edukacyjne dla frontend developerów.
+            </p>
+          </div>
+          <a
+            href={`${youtubeChannelUrl}?sub_confirmation=1`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary shrink-0"
+          >
+            Subskrybuj kanał
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 lg:py-16" aria-labelledby="videos-title">
+    <div class="container-page">
+      <h2 id="videos-title" class="sr-only">Ostatnie filmy</h2>
+      <VideoGrid client:visible videos={videos} initialCount={6} step={4} />
+    </div>
+  </section>
+</BaseLayout>

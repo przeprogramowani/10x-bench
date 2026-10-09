@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PodcastTabs, { type ShowData } from '../components/PodcastTabs';
+import CopyButton from '../components/CopyButton';
+import { getAllPodcastEpisodes, type Episode } from '../lib/feeds';
+import { newsletter, podcastShows } from '../lib/site';
+
+const { przeprogramowani, opanujAi, source } = await getAllPodcastEpisodes(8);
+
+const snippet = (episodes: Episode[]) =>
+  episodes.map((episode) => ({
+    ...episode,
+    description: episode.description.length > 220
+      ? `${episode.description.slice(0, 220).trimEnd()}…`
+      : episode.description,
+  }));
+
+const shows: ShowData[] = podcastShows.map((show) => ({
+  ...show,
+  episodes: snippet(show.id === 'przeprogramowani' ? przeprogramowani : opanujAi),
+}));
+---
+
+<BaseLayout
+  title="Podcast — Przeprogramowani.pl"
+  description="Posłuchaj podcastów Przeprogramowanych: Opanuj.AI Podcast o sztucznej inteligencji oraz Przeprogramowani ft. Gość — rozmowy o technologii, AI i programowaniu."
+>
+  <Header slot="header" />
+  <Footer slot="footer" />
+
+  <section class="relative overflow-hidden border-b border-white/10">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-500">
+        <a href="/" class="transition hover:text-white">Strona główna</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span class="text-slate-300">Podcast</span>
+      </nav>
+      <div class="mt-8">
+        <SectionHeading
+          eyebrow="Podcast"
+          title="Słuchaj naszych podcastów o technologii, AI i programowaniu"
+          align="left"
+        />
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-300">
+          Dwa podcasty, jedna misja: dzielić się wiedzą, która realnie rozwija. Wybierz show
+          i znajdź najnowsze odcinki poniżej — albo słuchaj na swojej ulubionej platformie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Karty podcastów -->
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 md:grid-cols-2">
+        {podcastShows.map((show) => (
+          <article class="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+            <div class="flex gap-5 border-b border-white/10 p-6">
+              <img
+                src={show.image}
+                alt={`Okładka podcastu ${show.name}`}
+                loading="lazy"
+                class="h-24 w-24 shrink-0 rounded-xl object-cover"
+              />
+              <div class="min-w-0">
+                <h2 class="font-display text-xl font-bold text-white">{show.name}</h2>
+                <p class="mt-1 text-sm font-medium text-brand-300">{show.tagline}</p>
+                <p class="mt-1 text-xs text-slate-500">{show.listeners}</p>
+              </div>
+            </div>
+            <p class="flex-1 px-6 py-4 text-sm leading-relaxed text-slate-300">
+              {show.description}
+            </p>
+            <div class="flex flex-wrap items-center gap-2 px-6 pb-6">
+              {show.links.spotify && (
+                <a
+                  href={show.links.spotify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-lg bg-[#1DB954]/15 px-3 py-2 text-xs font-semibold text-[#1DB954] ring-1 ring-[#1DB954]/30 transition hover:bg-[#1DB954]/25"
+                >
+                  Spotify
+                </a>
+              )}
+              {show.links.apple && (
+                <a
+                  href={show.links.apple}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-lg bg-fuchsia-500/15 px-3 py-2 text-xs font-semibold text-fuchsia-300 ring-1 ring-fuchsia-400/30 transition hover:bg-fuchsia-500/25"
+                >
+                  Apple Podcasts
+                </a>
+              )}
+              <a
+                href={show.links.rss}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white"
+              >
+                RSS
+              </a>
+              <CopyButton client:load text={show.links.rss} label="Kopiuj RSS" />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ostatnie odcinki -->
+  <section class="border-t border-white/10 py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Ostatnie odcinki"
+        title="Najnowsze epizody"
+        lead="Przełączaj między podcastami i wybieraj odcinki. Lista aktualizowana automatycznie na podstawie oficjalnych feedów RSS."
+      />
+      <div class="mt-12">
+        <PodcastTabs client:load shows={shows} />
+      </div>
+      <p class="mt-4 text-center text-xs text-slate-600">
+        {source === 'live'
+          ? 'Dane pobrane na żywo z feedów RSS podczas budowania strony.'
+          : 'Dane pochodzą z ostatniej zapisanej aktualizacji feedów (snapshot).'}
+      </p>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="border-t border-white/10 py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl font-bold text-white sm:text-3xl">
+        Nowości o AI — prosto na Twoją skrzynkę
+      </h2>
+      <p class="mt-4 text-slate-400">
+        {newsletter.description}
+      </p>
+      <a
+        href={newsletter.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-fuchsia-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:from-brand-500 hover:to-fuchsia-500"
+      >
+        Zapisz się do newslettera
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

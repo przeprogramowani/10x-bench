@@ -1,0 +1,86 @@
+---
+import { navigation, site } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10 bg-dark/60">
+  <div class="container-page grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <a href="/" class="flex items-center gap-3">
+        <img src={site.logo} alt="Logo Przeprogramowani" class="h-10 w-10 rounded-lg" width="40" height="40" />
+        <span class="font-heading text-lg font-bold">Przeprogramowani</span>
+      </a>
+      <p class="mt-4 max-w-sm text-sm text-muted">
+        {site.tagline}. {site.mission} — kursy, podcasty, YouTube i newsletter dla ambitnych programistów.
+      </p>
+      <a href={`mailto:${site.email}`} class="mt-4 inline-block text-sm font-medium text-turquoise hover:underline">
+        {site.email}
+      </a>
+    </div>
+
+    <nav aria-label="Nawigacja w stopce">
+      <h3 class="font-heading text-sm font-semibold uppercase tracking-wider text-ink">Strony</h3>
+      <ul class="mt-4 space-y-2">
+        {navigation.map((item) => (
+          <li>
+            <a href={item.href} class="text-sm text-muted transition-colors hover:text-ink">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label="Kursy i social media w stopce">
+      <h3 class="font-heading text-sm font-semibold uppercase tracking-wider text-ink">Kursy i social media</h3>
+      <ul class="mt-4 space-y-2">
+        <li>
+          <a
+            href="https://10xdevs.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted transition-colors hover:text-ink">10xDevs</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.opanujfrontend.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted transition-colors hover:text-ink">Opanuj Frontend: AI Edition</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.opanujtypescript.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted transition-colors hover:text-ink">Opanuj TypeScript</a
+          >
+        </li>
+        <li>
+          <a
+            href={site.socials.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted transition-colors hover:text-ink">YouTube</a
+          >
+        </li>
+        <li>
+          <a
+            href={site.socials.newsletter}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-muted transition-colors hover:text-ink">Newsletter (Substack)</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted sm:flex-row">
+      <p>© {year} Przeprogramowani. Wszelkie prawa zastrzeżone.</p>
+      <p>Szersze spojrzenie na programowanie.</p>
+    </div>
+  </div>
+</footer>

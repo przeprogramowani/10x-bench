@@ -1,0 +1,52 @@
+$ npm ci --no-audit --no-fund
+added 327 packages in 2s
+[exit 0]$ npm run build
+> przeprogramowani-pl@1.0.0 build
+> astro build
+
+10:31:06 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+10:31:06 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+10:31:06 [types] Generated 188ms
+10:31:06 [build] output: "static"
+10:31:06 [build] mode: "static"
+10:31:06 [build] directory: /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wwyjtd/site/dist/
+10:31:06 [build] adapter: @astrojs/cloudflare
+10:31:06 [build] Collecting build info...
+10:31:06 [build] ✓ Completed in 216ms.
+10:31:06 [build] Building static entrypoints...
+10:31:06 [vite] ✓ built in 309ms
+10:31:07 [vite] ✓ built in 43ms
+10:31:07 [build] Rearranging server assets...
+Default inspector port 9229 not available, using 9232 instead
+
+
+ generating static routes 
+10:31:07   ├─ /404.html (+13ms) 
+10:31:07   ├─ /kursy/index.html (+5ms) 
+10:31:07   ├─ /o-nas/index.html (+4ms) 
+10:31:07   ├─ /podcast/index.html (+7ms) 
+10:31:07   ├─ /youtube/index.html (+3ms) 
+10:31:07   ├─ /index.html (+4ms) 
+10:31:07 ✓ Completed in 423ms.
+
+10:31:07 [build] ✓ Completed in 800ms.
+10:31:07 [@astrojs/cloudflare] Injected immutable Cache-Control for /_astro/* into _headers.
+10:31:07 [@astrojs/sitemap] `sitemap-index.xml` created at `dist/client`
+10:31:07 [build] 6 page(s) built in 1.02s
+10:31:07 [build] Complete!
+[exit 0]$ "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-wrangler-4.146.0/node_modules/.bin/wrangler" deploy --dry-run --outdir "/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wwyjtd/out"
+ ⛅️ wrangler 4.146.0 (update available 4.149.0)
+───────────────────────────────────────────────
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/client/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+✨ Read 29 files from the assets directory /private/var/folders/sv/rz6p_trj7xx32zdqqffqsnj40000gn/T/10xbench-deploy-Wwyjtd/site/dist/client
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+Your Worker has access to the following bindings:
+Binding             Resource          
+env.SESSION         KV Namespace      
+env.IMAGES          Images            
+
+--dry-run: exiting now.
+[exit 0]

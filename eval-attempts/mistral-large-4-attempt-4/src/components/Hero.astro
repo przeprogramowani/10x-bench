@@ -1,0 +1,91 @@
+---
+import { ArrowRight, GraduationCap, Sparkles } from "lucide-react";
+import { site } from "../data/site";
+import { courses } from "../data/courses";
+
+const featured = courses.find((c) => c.featured) ?? courses[0];
+---
+
+<section class="relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -left-32 top-0 h-96 w-96 rounded-full bg-main/20 blur-3xl"></div>
+    <div class="absolute right-0 top-32 h-96 w-96 rounded-full bg-turquoise/10 blur-3xl"></div>
+  </div>
+
+  <div class="container-page grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+    <div>
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-turquoise/30 bg-turquoise/10 px-4 py-1.5 text-sm font-medium text-turquoise"
+      >
+        <Sparkles size={16} aria-hidden="true" />
+        7+ lat na rynku edukacji technicznej
+      </p>
+
+      <h1 class="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+        Szersze spojrzenie <br />
+        <span class="text-gradient">na programowanie</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg text-muted">
+        {site.mission}. Przekazujemy wiedzę przez kursy, podcasty, YouTube i newsletter — abyś był zawsze na bieżąco
+        i zawsze mógł znaleźć nowy kierunek własnego rozwoju.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href="#kursy"
+          class="inline-flex items-center gap-2 rounded-xl bg-main px-6 py-3 text-base font-semibold text-white shadow-lg shadow-main/25 transition-colors hover:bg-main-hover"
+        >
+          <GraduationCap size={20} aria-hidden="true" />
+          Poznaj nasze kursy
+        </a>
+        <a
+          href="/podcast"
+          class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-base font-semibold text-ink transition-colors hover:border-turquoise/50 hover:text-turquoise"
+        >
+          Posłuchaj podcastu
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Flagowy kurs: 10xDevs -->
+    <div class="relative">
+      <div
+        class="card relative overflow-hidden border-main/30 shadow-2xl shadow-main/10"
+        aria-label={`Flagowy kurs: ${featured.name}`}
+      >
+        <div class="relative aspect-[4/3] overflow-hidden">
+          <img
+            src={featured.imageUrl}
+            alt={`Kurs ${featured.name}`}
+            class="h-full w-full object-cover"
+            width="800"
+            height="600"
+            loading="eager"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent"></div>
+          <span
+            class="absolute left-4 top-4 rounded-full bg-main px-3 py-1 text-xs font-bold uppercase tracking-wider text-white"
+          >
+            Flagowy kurs
+          </span>
+        </div>
+        <div class="p-6">
+          <p class="text-sm font-semibold uppercase tracking-wider text-turquoise">{featured.label}</p>
+          <h2 class="mt-1 font-heading text-3xl font-bold">{featured.name}</h2>
+          <p class="mt-2 text-sm text-muted">{featured.description}</p>
+          <a
+            href={featured.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-main px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-main-hover"
+          >
+            {featured.ctaText} — {featured.name}
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

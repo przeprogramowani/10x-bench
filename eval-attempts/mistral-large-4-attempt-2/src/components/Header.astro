@@ -1,0 +1,58 @@
+---
+import { navLinks, site } from '../lib/site';
+import MobileNav from './MobileNav';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-md"
+  transition:persist
+>
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <a href="/" class="group flex items-center gap-2.5" aria-label="Strona główna Przeprogramowani">
+      <span
+        class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-500 to-fuchsia-600 font-display text-sm font-bold text-white shadow-lg shadow-brand-500/25 transition group-hover:scale-105"
+      >
+        &lt;/&gt;
+      </span>
+      <span class="font-display text-lg font-semibold text-white">
+        Przeprogramowani<span class="text-brand-400">.pl</span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Nawigacja główna">
+      {
+        navLinks.map((link) => {
+          const path = link.href.replace(/#.*$/, '');
+          const isActive = path.length > 1 && currentPath.startsWith(path);
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'rounded-lg px-3 py-2 text-sm font-medium transition',
+                isActive
+                  ? 'text-white bg-white/10'
+                  : 'text-slate-300 hover:bg-white/5 hover:text-white',
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href="https://10xdevs.pl?utm_source=przeprogramowani_website"
+        class="hidden sm:inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-brand-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:from-brand-500 hover:to-fuchsia-500 hover:shadow-brand-500/40"
+      >
+        10xDevs
+        <span aria-hidden="true">→</span>
+      </a>
+      <MobileNav client:load links={navLinks} brand={site.name} />
+    </div>
+  </div>
+</header>

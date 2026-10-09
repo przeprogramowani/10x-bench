@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VideoCard from "../components/VideoCard.astro";
+import { videos, youtubeChannel } from "../data/videos";
+---
+
+<Layout
+  title="YouTube"
+  description="Oficjalny kanał Przeprogramowani na YouTube — webinary, rozmowy i projekty budowane z AI. Ponad 40 000 programistów w zasięgu."
+>
+  <Fragment slot="head">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Filmy Przeprogramowani na YouTube",
+        itemListElement: videos.map((video, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "VideoObject",
+            name: video.title,
+            url: video.url,
+            thumbnailUrl: video.thumbnail,
+            publisher: {
+              "@type": "Organization",
+              name: "Przeprogramowani",
+              url: "https://przeprogramowani.pl",
+            },
+          },
+        })),
+      })}
+    />
+  </Fragment>
+
+  <!-- Nagłówek -->
+  <section class="relative overflow-hidden">
+    <div class="dot-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="container relative py-16 md:py-24">
+      <div
+        class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
+      >
+        <div class="max-w-3xl">
+          <p class="eyebrow">YouTube</p>
+          <h1
+            class="mt-4 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl"
+          >
+            Nasze filmy na YouTube
+          </h1>
+          <p class="mt-6 text-base leading-relaxed text-muted sm:text-lg">
+            {youtubeChannel.description}
+          </p>
+        </div>
+        <a
+          href={youtubeChannel.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary shrink-0"
+        >
+          Subskrybuj kanał {youtubeChannel.handle}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filmy -->
+  <section class="container pb-16 md:pb-24">
+    <h2 class="sr-only">Ostatnie filmy</h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {videos.map((video) => <VideoCard video={video} />)}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-border bg-surface/30">
+    <div class="container py-16 md:py-20">
+      <div class="card bg-gradient-to-br from-surface-2 to-surface p-8 text-center sm:p-12">
+        <p class="eyebrow justify-center">Kanał {youtubeChannel.handle}</p>
+        <h2 class="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight sm:text-4xl">
+          Nowe filmy co tydzień
+        </h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+          Webinary, kulisy kursów i projekty budowane z AI — dołącz do ponad
+          40 000 programistów, którzy rozwijają się z Przeprogramowanymi.
+        </p>
+        <a
+          href={youtubeChannel.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary mt-8"
+        >
+          Otwórz kanał na YouTube
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

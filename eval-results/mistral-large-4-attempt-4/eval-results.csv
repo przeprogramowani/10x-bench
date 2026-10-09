@@ -1,0 +1,16 @@
+Criterion,Score,Max,Notes
+Task completion time,24min 19s,N/A,24min 19s
+Test run,9.10.2026 10:30,N/A,9.10.2026 10:30
+API cost,$1.0361,N/A,$1.0361 (in 992460 / out 38837 / cache 3316108 / 1 session)
+Local build,1,1,"npm ci + astro build succeeded; 6 pages built; /, /o-nas, /podcast, /youtube return 200 in dev"
+Manual testing,1,1,"All pages load; navigation, styles and content work (user-confirmed)"
+Tech stack,0.5,0.5,v2: latest stable majors at run date 2026-10-09; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)
+Cloudflare deploy,0.5,0.5,v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)
+O nas page,1,1,"/o-nas returns 200; src/data/team.ts has both founders with bios taken nearly word for word from the context (Przemek: DAZN/Cabify, CursorLens/openapi-typescript, Programista/Increment, 4Developers/ReactiveConf/InfoShare, course Opanuj JavaScript; Marcin: SmartRecruiters Frontend Platform lead, neuroscience, Opanuj AI Podcast, course 10xDevs). It also includes both LinkedIn URLs, all 5 contributors, the mission, goal and philosophy quotes and the 7 values; all of these are confirmed in the rendered HTML."
+Podcast page,1,1,"/podcast returns 200 and renders both shows with the exact Spotify IDs 3yVvOAXSYq6sQB02w4A4wo (Przeprogramowani ft. Gość) and 3D6LmchBdoqL2sWkQjvWOy (Opanuj.AI). src/data/podcasts.json holds 6 episodes per show with real podcasters.spotify.com episode slugs, durations and recent dates (e.g. Wiktoria Sitko 2025-09-25; 'Plan mode to przeszłość' 2026-10-01); this looks like data pulled from the real RSS feeds, not made up."
+YouTube page,1,1,"/youtube returns 200; all 15 IDs in src/data/videos.json (e.g. rRM4pXF_4yw, wpWX4yI4DgA, 0JOszZXqKaM) return oEmbed 200 with author 'Przeprogramowani' and titles matching the data. There are no duplicates and no placeholder IDs (dQw4w9WgXcQ/xdXblEEP0MQ); the channel link is youtube.com/c/przeprogramowani."
+Kursy section,1,1,"There is a dedicated src/components/Courses.astro on index.astro plus a /kursy page (200). Hero.astro features 10xDevs as 'Flagowy kurs' linking to https://10xdevs.pl; Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules, ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19) are present. Opanuj JavaScript (850+, 8.84/10), Opanuj AI and Cursor are also listed with details that match the context."
+Consistent UI,1,1,UI consistent across all pages (user-confirmed)
+Responsive design,1,1,"Containers, components and navigation work on mobile and desktop (user-confirmed)"
+SEO Tags,1,1,"src/components/SEO.astro is wired through Layout.astro on all pages. Each page has its own title (e.g. 'O nas | Przeprogramowani'), description, canonical, og:* (type, locale pl_PL, title, description, url, image) and twitter:* tags; all are confirmed in the rendered HTML. The copy matches the context (tagline 'Szersze spojrzenie na programowanie', mission, 40 000+ reach). Minor: og-image.svg is an SVG, which many social platforms do not render."
+Penalty,0,N/A,No penalty applied

@@ -1,0 +1,179 @@
+---
+import { ArrowRight, ExternalLink, Quote } from "lucide-react";
+import Layout from "../layouts/Layout.astro";
+import { site, stats, partners } from "../data/site";
+import { founders, contributors, values, missionStatement, goalStatement, philosophyQuote } from "../data/team";
+
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+---
+
+<Layout
+  title="O nas"
+  description="Poznaj Przeprogramowanych — Przemka Smyrdka i Marcina Czarkowskiego. Łączymy świat programowania, biznesu i rozwoju od ponad 7 lat."
+  canonicalPath="/o-nas"
+>
+  <section class="relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -right-32 top-0 h-96 w-96 rounded-full bg-main/15 blur-3xl"></div>
+    </div>
+    <div class="container-page py-16 lg:py-24">
+      <p class="text-sm font-semibold uppercase tracking-wider text-turquoise">O nas</p>
+      <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl">
+        {site.tagline}
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg text-muted">{missionStatement}</p>
+
+      <div class="mt-10 grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {stats.map((s) => (
+          <div class="card p-6 text-center">
+            <p class="font-heading text-3xl font-extrabold text-turquoise">{s.value}</p>
+            <p class="mt-1 text-sm text-muted">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page pb-16 lg:pb-24">
+    <h2 class="font-heading text-3xl font-bold">Nasza filozofia</h2>
+    <div class="card mt-8 border-l-4 border-l-main p-6 sm:p-10">
+      <Quote size={32} className="text-main" aria-hidden="true" />
+      <blockquote class="mt-4 font-heading text-xl font-medium leading-relaxed sm:text-2xl">
+        „{philosophyQuote}”
+      </blockquote>
+      <p class="mt-6 text-muted">{goalStatement}</p>
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 bg-dark/40">
+    <div class="container-page py-16 lg:py-24">
+      <h2 class="font-heading text-3xl font-bold">Poznaj nas</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Za Przeprogramowanymi stoją dwaj doświadczeni inżynierowie i autorzy kursów, podcastów oraz publikacji
+        technicznych.
+      </p>
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-2">
+        {founders.map((founder) => (
+          <article class="card flex flex-col p-6 sm:p-8">
+            <div class="flex flex-col items-start gap-6 sm:flex-row">
+              <img
+                src={founder.photoUrl}
+                alt={`Zdjęcie: ${founder.name}`}
+                class="h-28 w-28 shrink-0 rounded-2xl object-cover"
+                width="112"
+                height="112"
+              />
+              <div>
+                <h3 class="font-heading text-2xl font-bold">{founder.name}</h3>
+                <p class="mt-1 text-sm font-medium text-turquoise">{founder.role}</p>
+                <p class="mt-1 text-sm text-main">Kurs: {founder.course}</p>
+              </div>
+            </div>
+
+            <p class="mt-6 text-sm leading-relaxed text-muted">{founder.bio}</p>
+
+            <ul class="mt-6 space-y-2">
+              {founder.highlights.map((highlight) => (
+                <li class="flex items-start gap-2 text-sm">
+                  <ArrowRight size={16} className="mt-0.5 shrink-0 text-main" aria-hidden="true" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={founder.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-turquoise"
+            >
+              <ExternalLink size={18} aria-hidden="true" />
+              Profil LinkedIn: {founder.name}
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-14">
+        <h3 class="font-heading text-xl font-semibold">Współtwórcy produktów i usług</h3>
+        <ul class="mt-6 flex flex-wrap gap-4">
+          {contributors.map((person) => (
+            <li class="card flex items-center gap-3 px-4 py-3">
+              {person.photoUrl ? (
+                <img
+                  src={person.photoUrl}
+                  alt={`Zdjęcie: ${person.name}`}
+                  class="h-10 w-10 rounded-full object-cover"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
+              ) : (
+                <span
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-main/15 font-heading text-sm font-bold text-main"
+                  aria-hidden="true"
+                >
+                  {initials(person.name)}
+                </span>
+              )}
+              <span class="text-sm font-medium">{person.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page py-16 lg:py-24">
+    <h2 class="font-heading text-3xl font-bold">Nasze wartości</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {values.map((value, index) => (
+        <article class="card p-6">
+          <span class="font-mono text-sm font-bold text-main">0{index + 1}</span>
+          <h3 class="mt-2 font-heading text-lg font-bold">{value.title}</h3>
+          <p class="mt-2 text-sm text-muted">{value.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-white/10 bg-dark/40">
+    <div class="container-page py-16 lg:py-24">
+      <h2 class="font-heading text-3xl font-bold">Zaufali nam</h2>
+      <p class="mt-3 max-w-2xl text-muted">
+        Współpracujemy z firmami, które — podobnie jak my — wierzą w rozwój ludzi i dzielenie się wiedzą.
+      </p>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {partners.map((partner) => (
+          <li class="rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-muted">
+            {partner}
+          </li>
+        ))}
+        <li class="rounded-xl border border-dashed border-white/15 px-4 py-2 text-sm font-medium text-turquoise">
+          i 15+ innych
+        </li>
+      </ul>
+
+      <div class="card mt-12 flex flex-col items-start gap-4 p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h3 class="font-heading text-xl font-bold">Napisz do nas</h3>
+          <p class="mt-1 text-sm text-muted">Masz pytanie o kursy, podcasty lub współpracę? Odezwij się do zespołu.</p>
+        </div>
+        <a
+          href={`mailto:${site.email}`}
+          class="inline-flex items-center gap-2 rounded-xl bg-main px-6 py-3 font-semibold text-white transition-colors hover:bg-main-hover"
+        >
+          {site.email}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-01T20:59:38.094Z",
-  "totalAttempts": 137,
+  "generatedAt": "2026-10-09T08:31:39.915Z",
+  "totalAttempts": 142,
   "results": [
     {
       "id": "gpt-56-sol-attempt-1",
@@ -96,6 +96,109 @@
           "score": 0,
           "max": 1,
           "notes": "User-confirmed: no penalty"
+        }
+      ]
+    },
+    {
+      "id": "mistral-large-4-attempt-4",
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "attemptNumber": 4,
+      "totalScore": 10,
+      "maxScore": 10,
+      "percentage": 100,
+      "agentEnvironment": "OpenCode",
+      "cost": 1.0361,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 24,
+          "max": 1,
+          "notes": "24min 19s"
+        },
+        {
+          "name": "Test run",
+          "score": 9.1,
+          "max": 1,
+          "notes": "9.10.2026 10:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$1.0361 (in 992460 / out 38837 / cache 3316108 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm ci + astro build succeeded; 6 pages built; /, /o-nas, /podcast, /youtube return 200 in dev\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"All pages load; navigation, styles and content work (user-confirmed)\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-09; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; no adapter; fully static output; assets.directory=./dist; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/o-nas returns 200; src/data/team.ts has both founders with bios taken nearly word for word from the context (Przemek: DAZN/Cabify, CursorLens/openapi-typescript, Programista/Increment, 4Developers/ReactiveConf/InfoShare, course Opanuj JavaScript; Marcin: SmartRecruiters Frontend Platform lead, neuroscience, Opanuj AI Podcast, course 10xDevs). It also includes both LinkedIn URLs, all 5 contributors, the mission, goal and philosophy quotes and the 7 values; all of these are confirmed in the rendered HTML.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and renders both shows with the exact Spotify IDs 3yVvOAXSYq6sQB02w4A4wo (Przeprogramowani ft. Gość) and 3D6LmchBdoqL2sWkQjvWOy (Opanuj.AI). src/data/podcasts.json holds 6 episodes per show with real podcasters.spotify.com episode slugs, durations and recent dates (e.g. Wiktoria Sitko 2025-09-25; 'Plan mode to przeszłość' 2026-10-01); this looks like data pulled from the real RSS feeds, not made up.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube returns 200; all 15 IDs in src/data/videos.json (e.g. rRM4pXF_4yw, wpWX4yI4DgA, 0JOszZXqKaM) return oEmbed 200 with author 'Przeprogramowani' and titles matching the data. There are no duplicates and no placeholder IDs (dQw4w9WgXcQ/xdXblEEP0MQ); the channel link is youtube.com/c/przeprogramowani.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"There is a dedicated src/components/Courses.astro on index.astro plus a /kursy page (200). Hero.astro features 10xDevs as 'Flagowy kurs' linking to https://10xdevs.pl; Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules, ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19) are present. Opanuj JavaScript (850+, 8.84/10), Opanuj AI and Cursor are also listed with details that match the context.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages (user-confirmed)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Containers, components and navigation work on mobile and desktop (user-confirmed)\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"src/components/SEO.astro is wired through Layout.astro on all pages. Each page has its own title (e.g. 'O nas | Przeprogramowani'), description, canonical, og:* (type, locale pl_PL, title, description, url, image) and twitter:* tags; all are confirmed in the rendered HTML. The copy matches the context (tagline 'Szersze spojrzenie na programowanie', mission, 40 000+ reach). Minor: og-image.svg is an SVG, which many social platforms do not render.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -781,6 +884,109 @@
           "score": 1,
           "max": 1,
           "notes": "\"src/layouts/Layout.astro sets meta description, og:title/description/type/locale(pl_PL)/url/image, twitter:card, canonical and lang=pl for every page. Rendered HTML confirms a unique title and description on each of /, /o-nas, /podcast, /youtube and /kursy (e.g. 'Przeprogramowani — Szersze spojrzenie na programowanie' with the tagline from the context), and public/og-image.png exists. The copy matches the context: courses 10xDevs/Opanuj Frontend/Opanuj TypeScript, both founders' names, and both podcast names Opanuj.AI and Przeprogramowani ft. Gość.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
+      "id": "mistral-large-4-attempt-5",
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "attemptNumber": 5,
+      "totalScore": 9.5,
+      "maxScore": 10,
+      "percentage": 95,
+      "agentEnvironment": "OpenCode",
+      "cost": 2.6745,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 38,
+          "max": 1,
+          "notes": "38min 21s"
+        },
+        {
+          "name": "Test run",
+          "score": 9.1,
+          "max": 1,
+          "notes": "9.10.2026 10:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$2.6745 (in 3001549 / out 52240 / cache 6400848 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm ci + astro build succeeded; 6 pages built; /, /o-nas, /podcast, /youtube return 200 in dev\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"All pages load; navigation, styles and content work (user-confirmed)\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-09; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.jsonc; @astrojs/cloudflare adapter configured; fully static output; assets.directory=./dist/client; Worker entrypoint generated by @astrojs/cloudflare 14.3.4; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 1,
+          "max": 1,
+          "notes": "/o-nas returns 200; src/data/team.ts has both founders with near-verbatim bios from the context: Przemek (DAZN and Cabify; .NET/Java/Node/Angular/TS; CursorLens and openapi-typescript; Programista and Increment; 4Developers/ReactiveConf/InfoShare; course Opanuj JavaScript; LinkedIn psmyrdek) and Marcin (SmartRecruiters Frontend Platform lead; neuroscience; 10+ years TS/React/Node/PHP; Opanuj AI Podcast; course 10xDevs; LinkedIn mkczarkowski). The page also includes the 5 contributors and the mission and goal quotes; nothing is oversimplified."
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and both shows are displayed with exact Spotify show IDs 3yVvOAXSYq6sQB02w4A4wo and 3D6LmchBdoqL2sWkQjvWOy; all 12 episodes in src/data/podcasts.ts match the live Anchor RSS feeds (c72d808 and e2cb03d0) exactly, so nothing is fabricated. Deducted because every per-episode 'Słuchaj na Spotify' link is invalid: Anchor episode IDs are placed in Spotify URLs (e.g. https://open.spotify.com/episode/e38lmlo; e3pn4mj) instead of 22-char Spotify episode IDs, so all 12 episode links are broken.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube returns 200; all 6 IDs in src/data/videos.ts (rRM4pXF_4yw; wpWX4yI4DgA; kvvQ-W66VHM; 8cHXeQN2tQw; -wPzsA_fH54; uM0gFo_coEY) return oEmbed 200 with author_name 'Przeprogramowani', and the titles match. There are no duplicates or placeholder or rick-roll IDs, and the channel link points to @Przeprogramowani with the 40 000+ reach claim from the context.\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"The index.astro hero has a dedicated 10xDevs card (10xDevs — Programuj z AI; link to https://10xdevs.pl). src/data/courses.ts, rendered on / and /kursy (200), includes Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules; ~400 graduates) and Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19), both matching the context. Opanuj JavaScript, Opanuj AI and the Cursor course are not featured as course cards.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages (user-confirmed)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Containers, components and navigation work on mobile and desktop (user-confirmed)\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"A dedicated src/components/BaseHead.astro is wired through Layout.astro into every page. It renders a per-page title (e.g. 'O nas | Przeprogramowani'), a description, canonical, OG tags (type; site_name; locale pl_PL; image og-image.jpg, served with 200), Twitter card tags and Organization JSON-LD; index.astro adds WebSite and Course ItemList JSON-LD. The content matches the context (tagline 'Szersze spojrzenie na programowanie'; kontakt@przeprogramowani.pl; mission wording).\""
         },
         {
           "name": "Penalty",
@@ -2640,6 +2846,109 @@
       ]
     },
     {
+      "id": "mistral-large-4-attempt-2",
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "attemptNumber": 2,
+      "totalScore": 8.75,
+      "maxScore": 10,
+      "percentage": 87.5,
+      "agentEnvironment": "OpenCode",
+      "cost": 1.1409,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 20,
+          "max": 1,
+          "notes": "20min 45s"
+        },
+        {
+          "name": "Test run",
+          "score": 9.1,
+          "max": 1,
+          "notes": "9.10.2026 10:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$1.1409 (in 1083941 / out 38865 / cache 4128832 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm ci + astro build succeeded; 4 pages built; /, /o-nas, /podcast, /youtube return 200 in dev\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"All pages load; navigation, styles and content work (user-confirmed)\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-09; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.25,
+          "max": 0.5,
+          "notes": "v2: no Wrangler config; @astrojs/cloudflare adapter configured; fully static output; Worker entrypoint generated by @astrojs/cloudflare 14.3.4; valid Workers config but no deploy script or instructions; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/o-nas returns 200 and shows both founders with their LinkedIn URLs; Przemek's bio has DAZN/Cabify, CursorLens/openapi-typescript and the 4Developers/ReactiveConf/InfoShare talks, and Marcin's has SmartRecruiters, neuroscience and Opanuj AI Podcast (src/lib/site.ts founders). Neither bio gives the course assignments (Przemek: Opanuj JavaScript; Marcin: 10xDevs), Przemek's Programista/Increment publications are missing, and both bios are condensed paraphrases of the context.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and shows real episodes for both shows, pulled from the live anchor.fm RSS feeds (c72d808 and e2cb03d0); for example 'Programista vs. Angielski... Wiktoria Sitko' and 'Plan mode to przeszłość... | Opanuj.AI' (01 Oct 2026). The Spotify show URLs are wrong: Przeprogramowani links to open.spotify.com/show/4qHUZJpeBK8Ij9e2wTVm2o instead of 3yVvOAXSYq6sQB02w4A4wo, and Opanuj.AI links to podcasters.spotify.com/pod/show/opanujai instead of show 3D6LmchBdoqL2sWkQjvWOy.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "/youtube returns 200; all 18 video IDs on /youtube and / pass oEmbed with 200 and the author Przeprogramowani (e.g. wpWX4yI4DgA; uM0gFo_coEY; -wPzsA_fH54; rRM4pXF_4yw) or Opanuj AI (e.g. 37Q4mwEj4cw; _NSo0TPKuqc). The data comes from the channels' real RSS feeds with a src/data snapshot as fallback; no placeholder IDs (dQw4w9WgXcQ/xdXblEEP0MQ) and no duplicate videos (each ID appears twice only as thumbnail plus link); channel URL youtube.com/c/przeprogramowani matches the context."
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"The index.astro hero features 10xDevs (CTA to 10xdevs.pl), and the #kursy section (CourseCard driven by courses in src/lib/site.ts) lists 10xDevs, Opanuj Frontend: AI Edition (opanujfrontend.pl, 5 modules) and Opanuj TypeScript (opanujtypescript.pl, TS 5 + React 19). Descriptions and URLs match the context; Opanuj JavaScript is not listed, which is a minor omission.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 1,
+          "max": 1,
+          "notes": "UI consistent across all pages (user-confirmed)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Containers, components and navigation work on mobile and desktop (user-confirmed)\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"BaseLayout.astro wraps all four pages and sets a per-page title, meta description, canonical, og:title/description/url/type/site_name/locale and twitter:title/description; each page passes its own title and description, and the index title uses the context tagline 'Szersze spojrzenie na programowanie'. Minor gap: no og:image or twitter:image even though twitter:card is summary_large_image.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
       "id": "claude-opus-46-attempt-6",
       "modelName": "Claude Opus 4.6",
       "modelBaseId": "claude-opus-46",
@@ -3024,6 +3333,109 @@
           "score": 0,
           "max": 1,
           "notes": "User-confirmed: no penalty"
+        }
+      ]
+    },
+    {
+      "id": "mistral-large-4-attempt-1",
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "attemptNumber": 1,
+      "totalScore": 8.5,
+      "maxScore": 10,
+      "percentage": 85,
+      "agentEnvironment": "OpenCode",
+      "cost": 1.6505,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 37,
+          "max": 1,
+          "notes": "37min 53s"
+        },
+        {
+          "name": "Test run",
+          "score": 9.1,
+          "max": 1,
+          "notes": "9.10.2026 10:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$1.6505 (in 1414132 / out 50725 / cache 7262484 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 1,
+          "max": 1,
+          "notes": "\"npm ci + astro build succeeded; 5 pages built; /, /o-nas, /podcast, /youtube return 200 in dev\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 1,
+          "max": 1,
+          "notes": "\"All pages load; navigation, styles and content work (user-confirmed)\""
+        },
+        {
+          "name": "Tech stack",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: latest stable majors at run date 2026-10-09; astro 7 (latest); react 19 (latest); tailwindcss 4 (latest)"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0.5,
+          "max": 0.5,
+          "notes": "v2: wrangler.toml; @astrojs/cloudflare adapter configured; fully static output; Worker entrypoint generated by @astrojs/cloudflare 14.3.4; Workers deploy via wrangler deploy documented; wrangler deploy --dry-run passed (wrangler 4.146.0)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/o-nas returns 200 and both founders appear in src/data/team.ts with the key details (Przemek: DAZN/Cabify, CursorLens, openapi-typescript, conference talks; Marcin: SmartRecruiters, Opanuj AI Podcast, neuroscience). However, the course assignments are missing (Przemek's \"\"Opanuj JavaScript\"\" and Marcin's \"\"10xDevs\"\" appear nowhere in the bios), and the bios are condensed paraphrases of the context.\""
+        },
+        {
+          "name": "Podcast page",
+          "score": 0.5,
+          "max": 1,
+          "notes": "\"/podcast returns 200 and shows both shows; the Opanuj.AI Spotify ID 3D6LmchBdoqL2sWkQjvWOy is correct and the sampled episode URLs resolve to real episodes. However, the Przeprogramowani show link uses the wrong Spotify ID 4qHUZJpeBK8Ij9e2wTVm2o (Spotify returns \"\"Page not found\"\") instead of 3yVvOAXSYq6sQB02w4A4wo, both in src/data/podcasts.ts and in the rendered HTML.\""
+        },
+        {
+          "name": "YouTube page",
+          "score": 1,
+          "max": 1,
+          "notes": "\"/youtube returns 200; all 10 unique IDs in src/data/videos.ts (rRM4pXF_4yw; wpWX4yI4DgA; kvvQ-W66VHM; 8cHXeQN2tQw; -wPzsA_fH54; uM0gFo_coEY; cKU4jlaUnZc; 1agLBxJskps; rR2sbf0KkRU; MDZA6vww74g) return oEmbed 200 with author \"\"Przeprogramowani\"\" and matching titles. There are no duplicates and no placeholder IDs (dQw4w9WgXcQ or xdXblEEP0MQ).\""
+        },
+        {
+          "name": "Kursy section",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Hero.tsx features 10xDevs 4.0 (10xdevs.pl), and CoursesSection (id=\"\"kursy\"\" on index) lists Opanuj Frontend: AI Edition (opanujfrontend.pl; 5 modules; ~400 graduates), Opanuj TypeScript (opanujtypescript.pl; TS 5 + React 19) and Opanuj AI, all consistent with the context. Minor gap: Opanuj JavaScript and Cursor: Programuj z AI are not listed.\""
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0.5,
+          "max": 1,
+          "notes": "UI inconsistent in places: some components look broken or off-style (user-confirmed)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 1,
+          "max": 1,
+          "notes": "\"Containers, components and navigation work on mobile and desktop (user-confirmed)\""
+        },
+        {
+          "name": "SEO Tags",
+          "score": 1,
+          "max": 1,
+          "notes": "\"BaseLayout.astro, used by all pages, renders a per-page title, description, canonical, og:title/description/url/image/locale (pl_PL) and twitter:card tags, confirmed in the rendered HTML of /, /o-nas, /podcast and /youtube. The copy matches the context (tagline \"\"Szersze spojrzenie na programowanie\"\"; mission; podcast taglines). Minor: the linked /sitemap-index.xml returns 404 on the dev server.\""
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
         }
       ]
     },
@@ -12948,6 +13360,109 @@
       ]
     },
     {
+      "id": "mistral-large-4-attempt-3",
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "attemptNumber": 3,
+      "totalScore": 0,
+      "maxScore": 10,
+      "percentage": 0,
+      "agentEnvironment": "OpenCode",
+      "cost": 0.4674,
+      "criteria": [
+        {
+          "name": "Task completion time",
+          "score": 16,
+          "max": 1,
+          "notes": "16min 21s"
+        },
+        {
+          "name": "Test run",
+          "score": 9.1,
+          "max": 1,
+          "notes": "9.10.2026 10:30"
+        },
+        {
+          "name": "API cost",
+          "score": null,
+          "max": 1,
+          "notes": "$0.4674 (in 498962 / out 18905 / cache 778392 / 1 session)"
+        },
+        {
+          "name": "Local build",
+          "score": 0,
+          "max": 1,
+          "notes": "\"npm ci and astro build exit 0 but the project has no pages (session ended its turn after writing only src/data, src/lib and styles; no src/pages, layouts or components exist); dev server returns 404 on /, /o-nas, /podcast and /youtube - nothing can be served; Build Failure Rule\""
+        },
+        {
+          "name": "Manual testing",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Tech stack",
+          "score": 0,
+          "max": 0.5,
+          "notes": "Build failed - 0 per Build Failure Rule (static grade 0: v2: latest stable majors at run date 2026-10-09; astro 5 (latest 7); react 19 (latest); tailwindcss 4 (latest))"
+        },
+        {
+          "name": "Cloudflare deploy",
+          "score": 0,
+          "max": 0.5,
+          "notes": "Build failed - 0 per Build Failure Rule (static grade 0.25: v2: wrangler.toml; @astrojs/cloudflare adapter configured; fully static output; pages_build_output_dir=dist; legacy Cloudflare Pages deployment path)"
+        },
+        {
+          "name": "O nas page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Podcast page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "YouTube page",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Kursy section",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Consistent UI",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Responsive design",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "SEO Tags",
+          "score": 0,
+          "max": 1,
+          "notes": "Cannot evaluate - no pages delivered (all routes 404)"
+        },
+        {
+          "name": "Penalty",
+          "score": 0,
+          "max": 1,
+          "notes": "No penalty applied"
+        }
+      ]
+    },
+    {
       "id": "muse-spark-13-attempt-5",
       "modelName": "Muse Spark 1.3",
       "modelBaseId": "muse-spark-13",
@@ -13367,6 +13882,21 @@
       },
       "averageCost": null,
       "totalCost": null
+    },
+    {
+      "modelName": "Mistral Large 4",
+      "modelBaseId": "mistral-large-4",
+      "averageScore": 7.35,
+      "averageMaxScore": 10,
+      "averagePercentage": 73.5,
+      "attemptCount": 5,
+      "agentEnvironment": "OpenCode",
+      "pricing": {
+        "input": 0.68,
+        "output": 2.09
+      },
+      "averageCost": 1.39388,
+      "totalCost": 6.9694
     },
     {
       "modelName": "Claude Sonnet 4.5",
