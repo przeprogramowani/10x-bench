@@ -1,504 +1,761 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = '10x-bench-kit | Private AI Benchmark';
+const KIT_VERSION = '0.40.0';
+const REPO = 'https://github.com/przeprogramowani/10x-bench-kit';
+const CLI = 'https://github.com/przeprogramowani/10x-cli';
+
+const title = '10x-bench-kit | Private AI Agent Benchmark';
 const description =
-  'An open-source template for running reproducible AI-agent evaluations on your own repositories. Compare quality, cost and runtime using tasks from your codebase.';
+  'Open-source template for benchmarking AI coding agents on your own repository. Tasks mined from merged PRs, isolated trials, hidden tests, cost per acceptable result.';
 
-const problems = [
-  {
-    index: '01',
-    title: 'Training-data overlap',
-    body: 'Public benchmark tasks can appear in training data. A higher score may reflect a better model, familiarity with the test, or both.',
-  },
-  {
-    index: '02',
-    title: 'Generic tasks',
-    body: 'Leaderboards use their own tasks and environments. Your team works in an existing product repo with internal conventions, dependencies and CI checks.',
-  },
-  {
-    index: '03',
-    title: 'Limited reproducibility',
-    body: 'Published scores do not always include the prompts, environment, rubric and model settings required to reproduce the evaluation.',
-  },
+const harnesses = [
+  { id: 'openrouter/anthropic/claude-sonnet-5', cli: 'OpenCode', key: 'OPENROUTER_API_KEY' },
+  { id: 'claude-code:claude-sonnet-5', cli: 'Claude Code', key: 'ANTHROPIC_API_KEY' },
+  { id: 'claude-code:openrouter/anthropic/claude-sonnet-5', cli: 'Claude Code', key: 'OPENROUTER_API_KEY' },
+  { id: 'codex:gpt-5.1-codex', cli: 'Codex CLI', key: 'OPENAI_API_KEY' },
+  { id: 'codex:openrouter/openai/gpt-5.1-codex', cli: 'Codex CLI', key: 'OPENROUTER_API_KEY' },
 ];
 
-const values = [
-  {
-    title: 'A working repository from the start',
-    body: 'Run <code>10x bench-kit init</code> to create a repository with tasks, an evaluation pool, configuration and CI workflows. The generated manifest records the template version.',
-  },
-  {
-    title: 'Isolated trials',
-    body: 'Each trial runs in a disposable container with a fresh copy of your base repo at a pinned commit. Evaluation assets are mounted only after the agent finishes.',
-  },
-  {
-    title: 'Quality, cost and runtime',
-    body: 'Score quality with static checks, hidden tests, e2e tests and an LLM judge, weighted per task. Each trial records its score, cost and wall-clock time in <code>result.json</code>.',
-  },
-  {
-    title: 'Versioned comparisons',
-    body: 'Each result records the template version, task hash, judge model and rubric version. Results are compared only within the same evaluation era.',
-  },
-  {
-    title: 'Guided setup',
-    body: 'Included skills guide setup and task authoring: <code>bench-wiring</code>, <code>bench-new-task</code>, <code>bench-build</code> and <code>bench-rubric</code>.',
-  },
-  {
-    title: 'Defined update boundaries',
-    body: 'The runtime updates atomically, changes to shared skills arrive as a diff for review, and updates do not modify your tasks or evaluation pool.',
-  },
+const skills = [
+  { name: 'bench-status', role: 'check', body: 'Machine, keys, repo, models, judge. No paid calls.' },
+  { name: 'bench-create-task', role: 'define', body: 'Merged PRs become tasks. Their tests become the hidden grader.' },
+  { name: 'bench-evaluate', role: 'measure', body: 'Runs the matrix in the background behind a hard budget.' },
+  { name: 'bench-analysis', role: 'decide', body: 'Cost per acceptable result, with uncertainty. One-page verdict.' },
 ];
 
-const lifecycle = [
-  {
-    step: '01',
-    title: 'Workspace',
-    body: 'The runner creates a fresh copy of your base repo at a pinned commit, applies the task overlay and starts with empty agent state.',
-  },
-  {
-    step: '02',
-    title: 'Execution',
-    body: 'The agent runs <code>prompt.md</code> non-interactively under a fixed timeout.',
-  },
-  {
-    step: '03',
-    title: 'Metrics',
-    body: 'An adapter writes OpenCode data to <code>metrics.json</code>, while the workspace changes are saved as <code>patch.diff</code>.',
-  },
-  {
-    step: '04',
-    title: 'Evaluation',
-    body: 'The runner mounts the evaluation pool and runs static checks, tests, e2e checks and the LLM judge. Weights come from <code>task.yaml</code>.',
-  },
-  {
-    step: '05',
-    title: 'Artifact',
-    body: '<code>result.json</code> records the score, metrics and evaluation versions used for the trial.',
-  },
+const tree = [
+  ['bench.config.yaml', 'repos, models, judge, budget'],
+  ['tasks/', 'prompt.md + task.yaml per task'],
+  ['evaluation-pool/', 'hidden tests, guards, rubrics'],
+  ['attempts/', 'preserved trials'],
+  ['results/', 'evaluated results, in git'],
+  ['reports/', 'task-build evidence'],
+  ['.bench-kit/', 'runner + trial image (kit-owned)'],
 ];
 
-const requirements = [
-  {
-    title: 'GitHub Actions',
-    body: 'Trials run as a model × task × trial matrix through <code>workflow_dispatch</code>. You select the models, tasks and number of trials for each run.',
-  },
-  {
-    title: '10xCLI',
-    body: 'The 10x CLI creates and updates the kit instance with <code>bench-kit init</code> and <code>bench-kit update</code>.',
-  },
-  {
-    title: 'Model API keys',
-    body: 'Keys for the models under evaluation, plus one for the judge model that scores rubric-based criteria.',
-  },
-  {
-    title: 'A base repository',
-    body: 'The product repository your tasks run against, pinned at a commit. Private repositories require a fine-grained token with read-only access to contents.',
-  },
-  {
-    title: 'OpenCode as the runner',
-    body: 'The kit currently runs agents through OpenCode. The template pins the OpenCode version used by each evaluation era.',
-  },
-  {
-    title: 'Your evaluation inputs',
-    body: 'Before the first run, add secrets, prepare evaluation assets and calibrate the rubrics. The bench-wiring skill runs the validation checks.',
-  },
+const zones = [
+  ['.bench-kit/', 'kit', 'replaced atomically'],
+  ['skills, AGENTS.md', 'shared', 'proposed as a diff'],
+  ['tasks, pool, config, results', 'you', 'never touched'],
 ];
 
-const quickstart = [
-  {
-    step: '01',
-    title: 'Create the instance',
-    body: 'Run the installer inside your product repository so it can register that repository as the first benchmark target.',
-    code: '10x bench-kit init my-benchmark',
-  },
-  {
-    step: '02',
-    title: 'Open it in your coding agent',
-    body: 'The installer places the benchmark skills where your selected agent can use them.',
-  },
-  {
-    step: '03',
-    title: 'Use bench-wiring',
-    body: 'Ask the agent to configure model keys, the judge, repository access and the container image. The skill runs the validation checks.',
-  },
-  {
-    step: '04',
-    title: 'Add real tasks',
-    body: 'Use bench-new-task and bench-build to turn representative work into tasks with hidden evaluation assets.',
-  },
-  {
-    step: '05',
-    title: 'Run the matrix',
-    body: 'Start the bench-run workflow in GitHub Actions and select the models, tasks and number of trials.',
-  },
+const needs = ['10xCLI', 'Docker or Podman', 'Node.js', 'An AI coding tool', 'Provider API keys', 'A repo with tests'];
+
+// Hero matrix: 3 contestants × 8 tasks
+const models = ['model-a · opencode', 'model-b · claude-code', 'model-c · codex'];
+const TASKS = 8;
+const CELL = 22;
+const GAP = 8;
+const GRID_X = 168;
+const GRID_Y = 58;
+const ROW_H = CELL + 12;
+
+// Trial flow diagram
+const nodes = [
+  ['merged PR', '#412 + its tests'],
+  ['task', 'prompt.md @ pin'],
+  ['trial', 'agent in container'],
+  ['attempt', 'patch · log · cost'],
+  ['evaluate', 'tests · judge'],
+  ['result.json', 'pass · $ · time'],
 ];
+const DUR = '7s';
+const arrive = (i: number) => +(0.85 * (i / (nodes.length - 1))).toFixed(3);
+const pulse = (i: number) => {
+  const a = arrive(i);
+  if (i === 0) return { values: '1;0;0', keyTimes: '0;0.1;1' };
+  return {
+    values: '0;0;1;0;0',
+    keyTimes: `0;${(a - 0.03).toFixed(3)};${a};${Math.min(a + 0.1, 0.99).toFixed(3)};1`,
+  };
+};
+const aTask = arrive(1);
+const aAttempt = arrive(3);
+const aEval = arrive(4);
+
+// horizontal geometry
+const H = { y: 90, w: 136, h: 56, x: (i: number) => 70 + i * 164 };
+const hLane = { bottom: 196, len: 78 + (H.x(4) - H.x(0)) + 78, pillX: 330 };
+const hStop = +((78 + (hLane.pillX - H.x(0))) / hLane.len).toFixed(3);
+
+// vertical geometry
+const V = { x: 130, w: 196, h: 56, y: (i: number) => 40 + i * 96 };
+const vLane = { right: 300, len: 72 + (V.y(4) - V.y(0)) + 72, pillY: 232 };
+const vStop = +((72 + (vLane.pillY - V.y(0))) / vLane.len).toFixed(3);
+
+const hiddenKeys = (stop: number) => ({
+  keyPoints: `0;${stop};${stop};1;1`,
+  keyTimes: `0;${aTask};${aAttempt};${aEval};1`,
+  opacity: `1;1;0;0`,
+  opacityTimes: `0;${aEval};${(aEval + 0.02).toFixed(3)};1`,
+});
+const hk = hiddenKeys(hStop);
+const vk = hiddenKeys(vStop);
 ---
 
 <Layout title={title} description={description}>
-  <div class="kit-backdrop" aria-hidden="true">
-    <div class="kit-grid"></div>
-    <div class="kit-glow"></div>
-  </div>
-
-  <div class="kit-page relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <section class="grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:py-28">
+  <div class="kit mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- Hero -->
+    <section class="grid items-center gap-12 pt-4 pb-16 md:pt-10 md:pb-20 lg:grid-cols-[1fr_29rem]">
       <div>
-        <p class="kit-badge mb-7">
-          <span class="h-1.5 w-1.5 rounded-full bg-lime-300"></span>
-          Open source template
+        <p class="font-mono text-xs text-slate-500">
+          <a href={REPO} target="_blank" rel="noopener noreferrer" class="hover:text-slate-300">przeprogramowani/10x-bench-kit</a>
+          <span class="mx-2 text-slate-700">/</span>v{KIT_VERSION}
+          <span class="mx-2 text-slate-700">/</span>MIT
         </p>
-        <h1 class="max-w-3xl text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-stone-50 sm:text-5xl md:text-7xl">
-          Compare AI coding models <span class="kit-accent-text">on your codebase.</span>
+        <h1 class="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-slate-50 md:text-5xl">
+          Benchmark AI coding agents on your own repository.
         </h1>
-        <p class="mt-7 max-w-2xl text-lg leading-8 text-stone-300 md:text-xl">
-          <strong class="font-semibold text-stone-100">10x-bench-kit</strong> creates a private, reproducible benchmark
-          for your repositories, tasks and rubrics. Run the same work across models and compare quality, cost and runtime.
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">
+          Your merged PRs become tasks. Every model runs in an isolated container and is graded by hidden tests. The
+          output is <span class="text-slate-200">cost per acceptable result</span>.
         </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a
-            href="https://github.com/przeprogramowani/10x-bench-kit"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="kit-btn-primary inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 font-semibold"
-          >
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
-            </svg>
-            View on GitHub
-          </a>
-          <a href="#how-it-works" class="kit-btn-secondary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">
-            See how a trial runs
-          </a>
-        </div>
-      </div>
 
-      <div class="kit-terminal overflow-hidden rounded-xl border border-stone-700/70 text-left">
-        <div class="flex items-center justify-between border-b border-stone-700/70 bg-black/20 px-5 py-3.5">
-          <div class="flex gap-1.5" aria-hidden="true">
-            <span class="h-2.5 w-2.5 rounded-full bg-stone-600"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-stone-600"></span>
-            <span class="h-2.5 w-2.5 rounded-full bg-lime-400"></span>
+        <div class="mt-8 max-w-xl">
+          <div class="cmd flex items-center justify-between gap-4 rounded-md border border-slate-700 bg-slate-950 px-4 py-3 font-mono text-sm">
+            <span class="overflow-x-auto whitespace-nowrap">
+              <span class="select-none text-slate-600">$ </span><span class="text-slate-100">10x bench-kit init</span>
+            </span>
+            <button type="button" class="shrink-0 text-xs text-slate-500 hover:text-slate-200" data-copy="10x bench-kit init" aria-label="Copy command">copy</button>
           </div>
-          <span class="text-xs font-mono text-stone-500">acme-bench / main</span>
+          <p class="mt-3 text-sm text-slate-500">
+            Run it in your product repo. Needs <a href={CLI} target="_blank" rel="noopener noreferrer" class="link">10xCLI</a>.
+          </p>
         </div>
-        <div class="overflow-x-auto p-5 font-mono text-sm leading-7 md:p-7">
-          <p><span class="text-lime-300">$</span> <span class="text-stone-100">10x bench-kit init acme-bench</span></p>
-          <p class="mt-3 text-stone-400"><span class="text-emerald-400">✓</span> benchmark instance created</p>
-          <p class="text-stone-400"><span class="text-emerald-400">✓</span> base repository registered</p>
-          <p class="text-stone-400"><span class="text-emerald-400">✓</span> agent skills installed</p>
-          <p class="text-stone-400"><span class="text-emerald-400">✓</span> runner dependencies installed</p>
-          <p class="mt-3 text-stone-500">Next: open acme-bench in your coding agent</p>
-          <p class="text-stone-500">Ask it to use bench-wiring</p>
+
+        <div class="mt-8 flex flex-wrap gap-3 text-sm">
+          <a href={REPO} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.25 10.25 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" /></svg>
+            Source on GitHub
+          </a>
+          <a href={`${REPO}/blob/main/CHANGELOG.md`} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Changelog</a>
+          <a href="#start" class="btn btn-ghost">Quickstart</a>
         </div>
       </div>
+
+      <!-- Animated matrix run -->
+      <figure class="panel" aria-label="Animation of a benchmark run: three models across eight tasks, cells turning pass or fail while spend grows against a budget.">
+        <svg id="matrix" viewBox="0 0 440 236" class="w-full" role="img" aria-hidden="true">
+          <text x="0" y="14" class="mono t-dim">$ bench run</text>
+          <g transform="translate(440 14)">
+            <circle id="m-dot" cx="-118" cy="-4" r="3" class="live-dot" />
+            <text id="m-status" x="0" y="0" text-anchor="end" class="mono t-dim">running</text>
+          </g>
+
+          {Array.from({ length: TASKS }, (_, c) => (
+            <text x={GRID_X + c * (CELL + GAP) + CELL / 2} y={GRID_Y - 10} text-anchor="middle" class="mono t-faint">t{c + 1}</text>
+          ))}
+
+          {models.map((m, r) => (
+            <g>
+              <text x="0" y={GRID_Y + r * ROW_H + 15} class="mono t-mid">{m}</text>
+              {Array.from({ length: TASKS }, (_, c) => (
+                <rect
+                  class="cell"
+                  data-r={r}
+                  data-c={c}
+                  x={GRID_X + c * (CELL + GAP)}
+                  y={GRID_Y + r * ROW_H}
+                  width={CELL}
+                  height={CELL}
+                  rx="4"
+                />
+              ))}
+              <text x="440" y={GRID_Y + r * ROW_H + 15} text-anchor="end" class="mono t-bright" data-count={r}>0/8</text>
+            </g>
+          ))}
+
+          <line x1="0" x2="440" y1="176" y2="176" class="rule" />
+          <text x="0" y="200" class="mono t-dim">spend</text>
+          <text id="m-spend" x="440" y="200" text-anchor="end" class="mono t-bright">$0.00 / $10.00</text>
+          <rect x="0" y="212" width="440" height="4" rx="2" class="track" />
+          <rect id="m-bar" x="0" y="212" width="0" height="4" rx="2" class="bar" />
+        </svg>
+        <figcaption class="mt-4 flex flex-wrap gap-x-5 gap-y-1 font-mono text-[11px] text-slate-500">
+          <span><i class="key key-pass"></i>pass</span>
+          <span><i class="key key-fail"></i>fail</span>
+          <span><i class="key key-run"></i>running</span>
+          <span class="ml-auto">illustrative</span>
+        </figcaption>
+      </figure>
     </section>
 
-    <div class="kit-proof-grid grid grid-cols-1 border-y border-stone-800 sm:grid-cols-3">
-      <div><strong>Pinned baseline</strong><span>Same repository commit</span></div>
-      <div><strong>Hidden checks</strong><span>Mounted after execution</span></div>
-      <div><strong>Versioned output</strong><span>Comparable within an era</span></div>
-    </div>
-
-    <section class="py-20 md:py-28">
-      <p class="kit-eyebrow">Why test locally</p>
-      <h2 class="max-w-3xl text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Public benchmarks don't show which model fits your team</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-        A public leaderboard ranks models on its own tasks and environment. Your decision depends on how those models
-        perform in your repositories, under your constraints.
-      </p>
-      <div class="mt-12 grid gap-4 md:grid-cols-3">
-        {problems.map((p) => (
-          <article class="kit-card rounded-lg p-6 md:p-7">
-            <span class="font-mono text-xs text-lime-300">{p.index}</span>
-            <h3 class="mt-8 text-lg font-semibold text-stone-100">{p.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-stone-400">{p.body}</p>
-          </article>
-        ))}
-      </div>
-      <p class="mt-10 max-w-3xl border-l-2 border-lime-300 pl-5 text-lg font-medium leading-8 text-stone-200">
-        Shortlist models with public benchmarks, then test the finalists on your own tasks.
-      </p>
-    </section>
-
-    <section class="border-t border-stone-800 py-20 md:py-28">
-      <p class="kit-eyebrow">What's included</p>
-      <h2 class="max-w-3xl text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Start with the benchmark infrastructure in place</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-        We built 10x-bench-kit from the infrastructure behind <a href="/" class="text-lime-300 underline decoration-lime-300/30 hover:text-lime-200">10xBench</a>.
-        The template includes the runner, evaluation flow, versioning and CI setup. Add tasks and criteria from your own work.
-      </p>
-      <div class="mt-12 grid gap-px overflow-hidden rounded-lg border border-stone-800 bg-stone-800 md:grid-cols-2 lg:grid-cols-3">
-        {values.map((v) => (
-          <article class="bg-[#101513] p-6 md:p-7">
-            <h3 class="text-base font-semibold text-stone-100">{v.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-stone-400" set:html={v.body} />
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="how-it-works" class="scroll-mt-24 border-t border-stone-800 py-20 md:py-28">
-      <p class="kit-eyebrow">How it works</p>
-      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">What happens in each trial</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-        Each <span class="font-mono text-sm text-lime-300">model × task × trial</span> combination runs as a separate
-        matrix job. Evaluation assets are added only after the agent has finished its work.
-      </p>
-      <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        {lifecycle.map((s) => (
-          <li class="kit-step rounded-lg border border-stone-800 p-5">
-            <span class="font-mono text-xs text-lime-300">{s.step}</span>
-            <h3 class="mt-8 text-base font-semibold text-stone-100">{s.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-stone-400" set:html={s.body} />
+    <!-- Workflow -->
+    <section class="sec">
+      <h2 class="sec-title">Four skills, run from your coding agent</h2>
+      <ol class="grid gap-px overflow-hidden rounded-md border border-slate-800 bg-slate-800 sm:grid-cols-2 lg:grid-cols-4">
+        {skills.map((s, i) => (
+          <li class="bg-[#0f172a] p-5">
+            <p class="font-mono text-xs text-slate-500">{String(i + 1).padStart(2, '0')} · {s.role}</p>
+            <p class="mt-3 font-mono text-sm text-slate-100">{s.name}</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">{s.body}</p>
           </li>
         ))}
       </ol>
+      <p class="mt-4 text-sm text-slate-500">The agent drives the <code>bench</code> runner. You review the files and commit them.</p>
     </section>
 
-    <section class="border-t border-stone-800 py-20 md:py-28">
-      <p class="kit-eyebrow">Quickstart</p>
-      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Five steps to your first run</h2>
-      <ol class="mt-12 grid overflow-hidden rounded-lg border border-stone-800 bg-stone-800 lg:grid-cols-5 lg:gap-px">
-        {quickstart.map((item) => (
-          <li class="border-b border-stone-800 bg-[#101513] p-6 last:border-b-0 lg:min-h-64 lg:border-b-0">
-            <span class="font-mono text-xs text-lime-300">{item.step}</span>
-            <h3 class="mt-7 text-base font-semibold text-stone-100">{item.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-stone-400">{item.body}</p>
-            {item.code && <code class="mt-5 block overflow-x-auto whitespace-nowrap">{item.code}</code>}
-          </li>
+    <!-- Trial flow -->
+    <section class="sec" id="how-it-works">
+      <h2 class="sec-title">One trial, end to end</h2>
+      <p class="sec-lead">The agent never sees the grader. Tests from the PR are held back and mounted only after the agent stops.</p>
+
+      <!-- horizontal (md+) -->
+      <svg viewBox="0 0 960 230" class="hidden w-full md:block" role="img" aria-label="Flow: merged PR, task, trial, attempt, evaluate, result. Hidden tests travel separately from the PR to evaluation.">
+        <line x1={H.x(0)} x2={H.x(5)} y1={H.y} y2={H.y} class="flow" />
+        <path d={`M${H.x(0)},${H.y + H.h / 2} V${hLane.bottom} H${H.x(4)} V${H.y + H.h / 2}`} class="flow flow-hidden" fill="none" />
+
+        <circle r="4" class="dot">
+          <animateMotion dur={DUR} repeatCount="indefinite" path={`M${H.x(0)},${H.y} H${H.x(5)}`} keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear" />
+          <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.88;0.92;1" />
+        </circle>
+        <circle r="3.5" class="dot dot-hidden">
+          <animateMotion dur={DUR} repeatCount="indefinite" path={`M${H.x(0)},${H.y + H.h / 2} V${hLane.bottom} H${H.x(4)} V${H.y + H.h / 2}`} keyPoints={hk.keyPoints} keyTimes={hk.keyTimes} calcMode="linear" />
+          <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values={hk.opacity} keyTimes={hk.opacityTimes} />
+        </circle>
+
+        {nodes.map(([label, sub], i) => (
+          <g>
+            <rect x={H.x(i) - H.w / 2} y={H.y - H.h / 2} width={H.w} height={H.h} rx="8" class="node" />
+            <rect x={H.x(i) - H.w / 2} y={H.y - H.h / 2} width={H.w} height={H.h} rx="8" class="node-hi" opacity="0">
+              <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" {...pulse(i)} />
+            </rect>
+            <text x={H.x(i)} y={H.y - 4} text-anchor="middle" class="n-label">{label}</text>
+            <text x={H.x(i)} y={H.y + 14} text-anchor="middle" class="mono t-dim">{sub}</text>
+          </g>
         ))}
-      </ol>
+
+        <g transform={`translate(${hLane.pillX} ${hLane.bottom})`}>
+          <rect x="-96" y="-14" width="192" height="28" rx="14" class="pill" />
+          <path d="M-78,-3 v-3 a4,4 0 0 1 8,0 v3 M-80,-3 h12 v9 h-12 z" class="lock" />
+          <text x="-60" y="4" class="mono t-mid">evaluation-pool · hidden</text>
+        </g>
+        <text x={H.x(4) - 12} y={hLane.bottom - 10} text-anchor="end" class="mono t-faint">mounted after the agent stops</text>
+      </svg>
+
+      <!-- vertical (mobile) -->
+      <svg viewBox="0 0 340 556" class="mx-auto w-full max-w-sm md:hidden" role="img" aria-label="Flow: merged PR, task, trial, attempt, evaluate, result. Hidden tests travel separately from the PR to evaluation.">
+        <line x1={V.x} x2={V.x} y1={V.y(0)} y2={V.y(5)} class="flow" />
+        <path d={`M${V.x + V.w / 2},${V.y(0)} H${vLane.right} V${V.y(4)} H${V.x + V.w / 2}`} class="flow flow-hidden" fill="none" />
+
+        <circle r="4" class="dot">
+          <animateMotion dur={DUR} repeatCount="indefinite" path={`M${V.x},${V.y(0)} V${V.y(5)}`} keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear" />
+          <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.88;0.92;1" />
+        </circle>
+        <circle r="3.5" class="dot dot-hidden">
+          <animateMotion dur={DUR} repeatCount="indefinite" path={`M${V.x + V.w / 2},${V.y(0)} H${vLane.right} V${V.y(4)} H${V.x + V.w / 2}`} keyPoints={vk.keyPoints} keyTimes={vk.keyTimes} calcMode="linear" />
+          <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values={vk.opacity} keyTimes={vk.opacityTimes} />
+        </circle>
+
+        {nodes.map(([label, sub], i) => (
+          <g>
+            <rect x={V.x - V.w / 2} y={V.y(i) - V.h / 2} width={V.w} height={V.h} rx="8" class="node" />
+            <rect x={V.x - V.w / 2} y={V.y(i) - V.h / 2} width={V.w} height={V.h} rx="8" class="node-hi" opacity="0">
+              <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" {...pulse(i)} />
+            </rect>
+            <text x={V.x} y={V.y(i) - 4} text-anchor="middle" class="n-label">{label}</text>
+            <text x={V.x} y={V.y(i) + 14} text-anchor="middle" class="mono t-dim">{sub}</text>
+          </g>
+        ))}
+
+        <g transform={`translate(${vLane.right} ${vLane.pillY})`}>
+          <rect x="-14" y="-62" width="28" height="124" rx="14" class="pill" />
+          <text transform="rotate(90)" x="0" y="4" text-anchor="middle" class="mono t-mid">hidden tests</text>
+        </g>
+      </svg>
+
+      <dl class="mt-10 grid gap-x-10 gap-y-5 text-sm sm:grid-cols-3">
+        <div><dt class="text-slate-200">Isolated</dt><dd class="mt-1 text-slate-400">Fresh clone at a pinned commit, empty agent state, a timeout.</dd></div>
+        <div><dt class="text-slate-200">Preserved</dt><dd class="mt-1 text-slate-400">Paid attempts are kept. A new rubric means re-evaluating, not re-running.</dd></div>
+        <div><dt class="text-slate-200">Stamped</dt><dd class="mt-1 text-slate-400">Results carry kit, task, rubric and judge versions, and compare within one era.</dd></div>
+      </dl>
     </section>
 
-    <section class="border-t border-stone-800 py-20 md:py-28">
-      <p class="kit-eyebrow">Updates</p>
-      <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Engine separated from execution</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-        The instance separates kit-owned files, shared skills and company-owned evaluation assets.
-        <code>bench-kit update</code> handles each group differently:
+    <!-- Resolution -->
+    <section class="sec">
+      <h2 class="sec-title">More tasks, sharper verdicts</h2>
+      <p class="sec-lead">
+        With 10 tasks you can only tell apart a ~70-point gap. With 40 tasks you can tell apart a ~26-point one. Mining
+        PRs is how you get to dozens of real tasks.
       </p>
-      <div class="mt-12 overflow-hidden rounded-lg border border-stone-800 bg-[#101513]">
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-stone-800 bg-white/[0.02] text-left">
-                <th class="px-6 py-4 font-semibold text-stone-300">Zone</th>
-                <th class="px-6 py-4 font-semibold text-stone-300">Owner</th>
-                <th class="px-6 py-4 font-semibold text-stone-300">On update</th>
-              </tr>
-            </thead>
-            <tbody class="text-stone-400">
-              <tr class="border-b border-stone-800">
-                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">.bench-kit/</td>
-                <td class="px-6 py-4">the kit</td>
-                <td class="px-6 py-4">replaced atomically with the updated runner, container and workflows</td>
-              </tr>
-              <tr class="border-b border-stone-800">
-                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">.agents/skills/</td>
-                <td class="px-6 py-4">shared</td>
-                <td class="px-6 py-4">proposed as a diff for your team to review</td>
-              </tr>
+      <figure class="panel">
+        <svg id="resolution" viewBox="0 0 640 196" class="w-full" role="img" aria-label="Two models' pass-rate intervals narrow as the number of tasks grows, until they no longer overlap.">
+          <g id="r-tiles">
+            {Array.from({ length: 50 }, (_, i) => (
+              <rect x={150 + i * 9.8} y="4" width="6" height="6" rx="1.5" class="tile" />
+            ))}
+          </g>
+          <text x="0" y="11" class="mono t-dim">tasks</text>
+          <text id="r-n" x="104" y="11" text-anchor="end" class="mono t-bright">10</text>
+
+          <text x="0" y="66" class="mono t-mid">model-a</text>
+          <text x="0" y="112" class="mono t-mid">model-b</text>
+
+          <rect id="r-band" x="0" y="44" width="0" height="80" class="band" />
+
+          <g id="r-a">
+            <line y1="62" y2="62" class="ci" />
+            <line y1="55" y2="69" class="cap cap-l" />
+            <line y1="55" y2="69" class="cap cap-r" />
+            <circle cy="62" r="4.5" class="pt" />
+          </g>
+          <g id="r-b">
+            <line y1="108" y2="108" class="ci ci-b" />
+            <line y1="101" y2="115" class="cap cap-l cap-b" />
+            <line y1="101" y2="115" class="cap cap-r cap-b" />
+            <circle cy="108" r="4.5" class="pt pt-b" />
+          </g>
+
+          <line x1="150" x2="640" y1="150" y2="150" class="rule" />
+          {[0, 25, 50, 75, 100].map((t) => (
+            <g>
+              <line x1={150 + t * 4.9} x2={150 + t * 4.9} y1="150" y2="155" class="rule" />
+              <text x={150 + t * 4.9} y="170" text-anchor="middle" class="mono t-faint">{t}%</text>
+            </g>
+          ))}
+          <text x="0" y="170" class="mono t-faint">pass rate</text>
+          <text id="r-status" x="640" y="192" text-anchor="end" class="mono t-dim">overlapping · not resolved</text>
+        </svg>
+        <figcaption class="mt-3 text-right font-mono text-[11px] text-slate-500">illustrative · 30-point true gap</figcaption>
+      </figure>
+    </section>
+
+    <!-- Harnesses -->
+    <section class="sec">
+      <h2 class="sec-title">Three harnesses, one matrix</h2>
+      <p class="sec-lead">
+        OpenCode, Claude Code and Codex CLI ship pinned in the trial image. The prefix picks the CLI. When a CLI reports
+        no reliable cost, the runner prices the tokens itself.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>defaults.models</th><th>runs in</th><th>key</th></tr></thead>
+          <tbody>
+            {harnesses.map((h) => (
               <tr>
-                <td class="whitespace-nowrap px-6 py-5 font-mono text-lime-300">tasks/ · evaluation-pool/ · bench.config.yaml</td>
-                <td class="px-6 py-4">your company</td>
-                <td class="px-6 py-4">left unchanged by the updater</td>
+                <td class="font-mono text-slate-200">{h.id}</td>
+                <td>{h.cli}</td>
+                <td class="font-mono text-xs">{h.key}</td>
               </tr>
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="grid gap-12 border-t border-stone-800 py-20 md:py-28 lg:grid-cols-[0.8fr_1.2fr]">
-      <div>
-        <p class="kit-eyebrow">What you need</p>
-        <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-5xl">Before you run the kit</h2>
-        <p class="mt-5 max-w-md text-lg leading-8 text-stone-400">Prepare the repository, credentials and evaluation inputs once. The validation command checks them before the first run.</p>
+    <!-- Instance -->
+    <section class="sec">
+      <h2 class="sec-title">What you get</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <pre class="code"><code>{tree.map(([p, c]) => <span class="block"><span class="text-slate-100">{p.padEnd(19)}</span><span class="text-slate-500"># {c}</span></span>)}</code></pre>
+        <pre class="code"><code><span class="k">defaults</span>:
+  <span class="k">trials</span>: 3
+  <span class="k">models</span>:
+    - openrouter/openai/gpt-6.1-sol
+    - claude-code:claude-sonnet-5.5
+    - codex:gpt-5.1-codex
+  <span class="k">timeout_s</span>: 1800
+  <span class="k">max_cost_usd</span>: 10   <span class="text-slate-500"># hard gate</span>
+<span class="k">judge</span>:
+  <span class="k">model</span>: openrouter/anthropic/claude-opus-5.5</code></pre>
       </div>
-      <div class="grid gap-x-10 gap-y-8 md:grid-cols-2">
-        {requirements.map((r) => (
-          <div class="flex gap-4">
-            <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-lime-300/40 bg-lime-300/10 text-[10px] text-lime-300" aria-hidden="true">✓</span>
-            <div>
-              <h3 class="font-semibold text-stone-100">{r.title}</h3>
-              <p class="mt-2 text-sm leading-6 text-stone-400" set:html={r.body} />
-            </div>
-          </div>
-        ))}
+      <div class="table-wrap mt-6">
+        <table>
+          <thead><tr><th>10x bench-kit update</th><th>owner</th><th>behavior</th></tr></thead>
+          <tbody>
+            {zones.map(([z, o, b]) => (
+              <tr><td class="font-mono text-slate-200">{z}</td><td>{o}</td><td>{b}</td></tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="mb-12 flex flex-col gap-8 rounded-xl border border-stone-700 bg-[#141a17] p-8 md:mb-20 md:flex-row md:items-center md:justify-between md:p-12">
-      <div>
-        <h2 class="text-3xl font-bold tracking-tight text-stone-50 md:text-4xl">Run your first comparison</h2>
-        <p class="mt-3 max-w-xl text-base leading-7 text-stone-400">Create an instance, add one representative task and compare the models your team is considering.</p>
-      </div>
-      <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
-        <a href="https://github.com/przeprogramowani/10x-bench-kit" target="_blank" rel="noopener noreferrer" class="kit-btn-primary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">Get the kit</a>
-        <a href="https://10xdevs.pl" target="_blank" rel="noopener noreferrer" class="kit-btn-secondary inline-flex items-center justify-center rounded-md px-6 py-3 font-semibold">10xDevs &#8599;</a>
+    <!-- Quickstart -->
+    <section class="sec scroll-mt-24" id="start">
+      <h2 class="sec-title">Quickstart</h2>
+      <pre class="code whitespace-pre-wrap"><code><span class="text-slate-600">$</span> cd my-product &amp;&amp; 10x bench-kit init      <span class="text-slate-500"># creates ../my-product-bench</span>
+
+<span class="text-slate-500"># then, in your AI coding tool, inside ../my-product-bench:</span>
+<span class="text-slate-200">&gt; Use bench-status to check this instance, then bench-create-task to create our first tasks.</span>
+<span class="text-slate-200">&gt; Use bench-evaluate to compare our configured models within the budget.</span>
+<span class="text-slate-200">&gt; Use bench-analysis to show which model and tool we should use for bugfixes.</span></code></pre>
+      <p class="mt-5 flex flex-wrap gap-x-2 gap-y-2 text-sm text-slate-500">
+        <span>Requires</span>
+        {needs.map((n) => <span class="chip">{n}</span>)}
+      </p>
+    </section>
+
+    <section class="sec flex flex-col gap-6 pb-8 md:flex-row md:items-center md:justify-between">
+      <p class="text-slate-400">Built from the infrastructure behind <a href="/" class="link">10xBench</a>. MIT licensed.</p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <a href={REPO} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get the kit</a>
+        <a href={`${REPO}#readme`} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Read the docs</a>
       </div>
     </section>
   </div>
 </Layout>
 
-<style is:global>
-  html,
-  body {
-    background-color: #0b0f0e !important;
-    color: #e7e5e4 !important;
-  }
+<script>
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  main {
-    background-color: transparent !important;
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
-    position: relative;
-  }
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+        btn.textContent = 'copied';
+        setTimeout(() => (btn.textContent = 'copy'), 1500);
+      } catch {
+        /* clipboard unavailable */
+      }
+    });
+  });
 
-  nav,
-  #mobile-menu,
-  footer {
-    background-color: rgba(11, 15, 14, 0.94) !important;
-    border-color: rgba(120, 113, 108, 0.25) !important;
-    position: relative;
-    z-index: 20;
-  }
+  const whenVisible = (el: Element | null, start: () => void) => {
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        start();
+      }
+    });
+    io.observe(el);
+  };
 
-  .kit-page code {
-    background-color: rgba(190, 242, 100, 0.09);
-    color: #bef264;
-    border-radius: 0.25rem;
-    padding: 0.15em 0.4em;
-    font-size: 0.85em;
-  }
+  // Hero matrix run
+  (() => {
+    const svg = document.getElementById('matrix');
+    if (!svg) return;
+    const OUTCOMES = [
+      [1, 1, 1, 0, 1, 1, 1, 1],
+      [1, 0, 1, 1, 0, 1, 1, 0],
+      [0, 1, 0, 0, 1, 0, 1, 0],
+    ];
+    const COST = [0.38, 0.21, 0.04];
+    const BUDGET = 10;
+    const PARALLEL = 3;
+    const cells = [...svg.querySelectorAll<SVGRectElement>('.cell')];
+    const cell = (r: number, c: number) => cells.find((e) => +e.dataset.r! === r && +e.dataset.c! === c)!;
+    const counts = [...svg.querySelectorAll<SVGTextElement>('[data-count]')];
+    const spendEl = document.getElementById('m-spend')!;
+    const bar = document.getElementById('m-bar')!;
+    const status = document.getElementById('m-status')!;
+    const dot = document.getElementById('m-dot')!;
 
-  .kit-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
+    let spend = 0;
+    const passes = [0, 0, 0];
+    const render = () => {
+      spendEl.textContent = `$${spend.toFixed(2)} / $${BUDGET.toFixed(2)}`;
+      bar.setAttribute('width', String((440 * spend) / BUDGET));
+      counts.forEach((t, r) => (t.textContent = `${passes[r]}/8`));
+    };
+    const finish = (r: number, c: number) => {
+      const el = cell(r, c);
+      el.classList.remove('run');
+      el.classList.add(OUTCOMES[r][c] ? 'pass' : 'fail');
+      passes[r] += OUTCOMES[r][c];
+      spend += COST[r];
+    };
 
-  .kit-grid {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(231, 229, 228, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(231, 229, 228, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: linear-gradient(to bottom, black 0%, transparent 38%);
-  }
+    const queue: [number, number][] = [];
+    for (let c = 0; c < 8; c++) for (let r = 0; r < 3; r++) queue.push([r, c]);
 
-  .kit-glow {
-    position: absolute;
-    top: -28rem;
-    left: 50%;
-    height: 48rem;
-    width: 72rem;
-    transform: translateX(-50%);
-    border-radius: 9999px;
-    background: rgba(52, 211, 153, 0.09);
-    filter: blur(110px);
-  }
-
-  .kit-accent-text {
-    color: #bef264;
-  }
-
-  .kit-badge {
-    align-items: center;
-    background: rgba(190, 242, 100, 0.06);
-    border: 1px solid rgba(190, 242, 100, 0.22);
-    border-radius: 9999px;
-    color: #d9f99d;
-    display: inline-flex;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    gap: 0.5rem;
-    letter-spacing: 0.06em;
-    padding: 0.45rem 0.75rem;
-    text-transform: uppercase;
-  }
-
-  .kit-eyebrow {
-    color: #a3e635;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
-
-  .kit-card {
-    background: #101513;
-    border: 1px solid rgba(120, 113, 108, 0.25);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-  }
-
-  .kit-card:hover {
-    background: #131a17;
-    border-color: rgba(190, 242, 100, 0.35);
-  }
-
-  .kit-proof-grid > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 1.4rem 1.5rem;
-  }
-
-  .kit-proof-grid > div + div {
-    border-top: 1px solid rgb(41 37 36);
-  }
-
-  .kit-proof-grid strong {
-    color: #e7e5e4;
-    font-size: 0.875rem;
-  }
-
-  .kit-proof-grid span {
-    color: #78716c;
-    font-size: 0.75rem;
-  }
-
-  .kit-step {
-    background: rgba(16, 21, 19, 0.7);
-  }
-
-  .kit-terminal {
-    background: rgba(13, 18, 16, 0.94);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
-  }
-
-  .kit-btn-primary {
-    background: #bef264;
-    color: #17200e;
-    transition: background-color 0.2s ease;
-  }
-
-  .kit-btn-primary:hover {
-    background: #d9f99d;
-  }
-
-  .kit-btn-secondary {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(168, 162, 158, 0.35);
-    color: #d6d3d1;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .kit-btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(214, 211, 209, 0.55);
-  }
-
-  @media (min-width: 640px) {
-    .kit-proof-grid > div + div {
-      border-left: 1px solid rgb(41 37 36);
-      border-top: 0;
+    if (reduced) {
+      queue.forEach(([r, c]) => finish(r, c));
+      render();
+      status.textContent = 'done · 15/24 pass';
+      dot.classList.add('idle');
+      return;
     }
+
+    const reset = () => {
+      cells.forEach((e) => e.classList.remove('run', 'pass', 'fail'));
+      spend = 0;
+      passes.fill(0);
+      render();
+      status.textContent = 'running';
+      dot.classList.remove('idle');
+    };
+
+    const cycle = () => {
+      reset();
+      let next = 0;
+      let active = 0;
+      let done = 0;
+      const launch = () => {
+        while (active < PARALLEL && next < queue.length) {
+          const [r, c] = queue[next++];
+          active++;
+          cell(r, c).classList.add('run');
+          const ms = 650 + ((r * 7 + c * 13) % 5) * 170;
+          setTimeout(() => {
+            finish(r, c);
+            render();
+            active--;
+            done++;
+            if (done === queue.length) {
+              status.textContent = `done · ${passes.reduce((a, b) => a + b, 0)}/24 pass`;
+              dot.classList.add('idle');
+              setTimeout(cycle, 4200);
+            } else launch();
+          }, ms);
+        }
+      };
+      setTimeout(launch, 500);
+    };
+    render();
+    whenVisible(svg, cycle);
+  })();
+
+  // Resolution chart
+  (() => {
+    const svg = document.getElementById('resolution');
+    if (!svg) return;
+    const X = (p: number) => 150 + Math.max(0, Math.min(100, p)) * 4.9;
+    const A = 42;
+    const B = 72;
+    // half-width of the resolvable gap: ~35 at n=10, ~13 at n=40
+    const half = (n: number) => 35 * Math.pow(10 / n, Math.log(35 / 13) / Math.log(4));
+    const tiles = [...svg.querySelectorAll<SVGRectElement>('#r-tiles rect')];
+    const nEl = document.getElementById('r-n')!;
+    const status = document.getElementById('r-status')!;
+    const band = document.getElementById('r-band')!;
+
+    const setBar = (id: string, c: number, h: number) => {
+      const g = document.getElementById(id)!;
+      const ci = g.querySelector('.ci')!;
+      ci.setAttribute('x1', String(X(c - h)));
+      ci.setAttribute('x2', String(X(c + h)));
+      g.querySelector('.cap-l')!.setAttribute('x1', String(X(c - h)));
+      g.querySelector('.cap-l')!.setAttribute('x2', String(X(c - h)));
+      g.querySelector('.cap-r')!.setAttribute('x1', String(X(c + h)));
+      g.querySelector('.cap-r')!.setAttribute('x2', String(X(c + h)));
+      g.querySelector('circle')!.setAttribute('cx', String(X(c)));
+    };
+
+    const draw = (n: number) => {
+      const h = half(n);
+      setBar('r-a', A, h);
+      setBar('r-b', B, h);
+      tiles.forEach((t, i) => t.classList.toggle('on', i < Math.round(n)));
+      nEl.textContent = String(Math.round(n));
+      const lo = A + h;
+      const hi = B - h;
+      const resolved = hi > lo;
+      band.setAttribute('x', String(X(Math.min(lo, hi))));
+      band.setAttribute('width', String(Math.abs(X(hi) - X(lo))));
+      band.classList.toggle('ok', resolved);
+      status.textContent = resolved ? 'separated · resolved' : 'overlapping · not resolved';
+      status.classList.toggle('ok', resolved);
+    };
+
+    if (reduced) return draw(40);
+    draw(6);
+
+    const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const tween = (from: number, to: number, ms: number) =>
+      new Promise<void>((done) => {
+        const t0 = performance.now();
+        const step = (now: number) => {
+          const t = Math.min(1, (now - t0) / ms);
+          draw(from + (to - from) * ease(t));
+          if (t < 1) requestAnimationFrame(step);
+          else done();
+        };
+        requestAnimationFrame(step);
+      });
+    const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+    const loop = async () => {
+      for (;;) {
+        await tween(6, 10, 700);
+        await wait(1400);
+        await tween(10, 50, 4200);
+        await wait(2600);
+        await tween(50, 6, 1400);
+        await wait(600);
+      }
+    };
+    whenVisible(svg, loop);
+  })();
+</script>
+
+<style>
+  .kit :global(code) {
+    background: rgb(30 41 59 / 0.7);
+    color: rgb(226 232 240);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    font-size: 0.875em;
   }
+  .kit pre :global(code) {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .sec {
+    border-top: 1px solid rgb(30 41 59);
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .sec-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: rgb(241 245 249);
+    margin-bottom: 1.25rem;
+  }
+  .sec-lead {
+    max-width: 40rem;
+    color: rgb(148 163 184);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .panel {
+    border: 1px solid rgb(30 41 59);
+    border-radius: 10px;
+    background: rgb(2 6 23 / 0.6);
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  /* svg type */
+  svg text {
+    font-size: 11px;
+  }
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .t-faint { fill: rgb(71 85 105); font-size: 10px; }
+  .t-dim { fill: rgb(100 116 139); }
+  .t-mid { fill: rgb(148 163 184); }
+  .t-bright { fill: rgb(226 232 240); }
+  .n-label { fill: rgb(241 245 249); font-size: 13px; font-weight: 500; }
+  .rule { stroke: rgb(30 41 59); }
+
+  /* matrix */
+  .cell {
+    fill: transparent;
+    stroke: rgb(51 65 85);
+    stroke-width: 1;
+    transition: fill 0.35s ease, stroke 0.35s ease;
+  }
+  .cell.run {
+    stroke: rgb(110 231 183);
+    animation: blink 0.9s ease-in-out infinite;
+  }
+  .cell.pass { fill: rgb(52 211 153 / 0.85); stroke: rgb(52 211 153); }
+  .cell.fail { fill: rgb(244 63 94 / 0.12); stroke: rgb(244 63 94 / 0.55); }
+  .track { fill: rgb(30 41 59); }
+  .bar { fill: rgb(110 231 183); transition: width 0.4s ease; }
+  .live-dot { fill: rgb(52 211 153); animation: blink 1.4s ease-in-out infinite; }
+  .live-dot.idle { fill: rgb(71 85 105); animation: none; }
+  @keyframes blink {
+    50% { opacity: 0.35; }
+  }
+  .key { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .key-pass { background: rgb(52 211 153 / 0.85); }
+  .key-fail { background: rgb(244 63 94 / 0.12); border: 1px solid rgb(244 63 94 / 0.55); }
+  .key-run { border: 1px solid rgb(110 231 183); }
+
+  /* flow */
+  .flow {
+    stroke: rgb(51 65 85);
+    stroke-width: 1.25;
+    stroke-dasharray: 3 5;
+    animation: march 1.2s linear infinite;
+  }
+  .flow-hidden { stroke: rgb(71 85 105 / 0.7); }
+  @keyframes march {
+    to { stroke-dashoffset: -8; }
+  }
+  .node { fill: #0f172a; stroke: rgb(51 65 85); }
+  .node-hi { fill: rgb(52 211 153 / 0.06); stroke: rgb(110 231 183); }
+  .dot { fill: rgb(110 231 183); filter: drop-shadow(0 0 4px rgb(52 211 153 / 0.7)); }
+  .dot-hidden { fill: rgb(251 191 36); filter: drop-shadow(0 0 4px rgb(251 191 36 / 0.6)); }
+  .pill { fill: #0f172a; stroke: rgb(251 191 36 / 0.45); }
+  .lock { fill: none; stroke: rgb(251 191 36 / 0.8); stroke-width: 1.2; }
+
+  /* resolution */
+  .tile { fill: rgb(30 41 59); transition: fill 0.2s; }
+  .tile.on { fill: rgb(148 163 184); }
+  .ci { stroke: rgb(148 163 184); stroke-width: 2; stroke-linecap: round; }
+  .cap { stroke: rgb(148 163 184); stroke-width: 1.5; }
+  .ci-b, .cap-b { stroke: rgb(110 231 183); }
+  .pt { fill: rgb(226 232 240); }
+  .pt-b { fill: rgb(110 231 183); }
+  .band { fill: rgb(244 63 94 / 0.1); transition: fill 0.4s; }
+  .band.ok { fill: rgb(52 211 153 / 0.08); }
+  #r-status { transition: fill 0.4s; }
+  #r-status.ok { fill: rgb(110 231 183); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow, .cell.run, .live-dot { animation: none; }
+    .dot, .node-hi { display: none; }
+  }
+
+  .code {
+    background: rgb(2 6 23);
+    border: 1px solid rgb(30 41 59);
+    border-radius: 6px;
+    padding: 1rem 1.125rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: rgb(148 163 184);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code.whitespace-pre-wrap { white-space: pre-wrap; }
+  .code .k { color: rgb(110 231 183); }
+
+  .chip {
+    border: 1px solid rgb(30 41 59);
+    border-radius: 999px;
+    padding: 0.125rem 0.625rem;
+    color: rgb(203 213 225);
+    font-size: 0.8125rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgb(30 41 59);
+    border-radius: 6px;
+  }
+  table { width: 100%; font-size: 0.875rem; text-align: left; color: rgb(148 163 184); }
+  th {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(100 116 139);
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid rgb(30 41 59);
+    background: rgb(15 23 42);
+    white-space: nowrap;
+  }
+  td { padding: 0.625rem 1rem; border-bottom: 1px solid rgb(30 41 59); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 6px;
+    padding: 0.5rem 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .btn-primary { background: rgb(241 245 249); color: rgb(15 23 42); }
+  .btn-primary:hover { background: white; }
+  .btn-ghost { border: 1px solid rgb(51 65 85); color: rgb(203 213 225); }
+  .btn-ghost:hover { border-color: rgb(100 116 139); color: white; }
+  .link {
+    color: rgb(226 232 240);
+    text-decoration: underline;
+    text-decoration-color: rgb(71 85 105);
+    text-underline-offset: 3px;
+  }
+  .link:hover { text-decoration-color: rgb(203 213 225); }
 </style>
