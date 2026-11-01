@@ -18,10 +18,10 @@ const harnesses = [
 ];
 
 const skills = [
-  { name: 'bench-status', role: 'check', body: 'Machine, keys, repo, models, judge. No paid calls.' },
-  { name: 'bench-create-task', role: 'define', body: 'Merged PRs become tasks. Their tests become the hidden grader.' },
-  { name: 'bench-evaluate', role: 'measure', body: 'Runs the matrix in the background behind a hard budget.' },
-  { name: 'bench-analysis', role: 'decide', body: 'Cost per acceptable result, with uncertainty. One-page verdict.' },
+  { name: 'bench-status', role: 'check', body: 'Machine, keys, repo, models. No paid calls.' },
+  { name: 'bench-create-task', role: 'define', body: 'Merged PRs become tasks with hidden graders.' },
+  { name: 'bench-evaluate', role: 'measure', body: 'Runs the matrix under a hard budget.' },
+  { name: 'bench-analysis', role: 'decide', body: 'Cost per acceptable result. One-page verdict.' },
 ];
 
 const tree = [
@@ -60,14 +60,14 @@ const nodes = [
   ['evaluate', 'tests · judge'],
   ['result.json', 'pass · $ · time'],
 ];
-const DUR = '7s';
+const DUR = '5.5s';
 const arrive = (i: number) => +(0.85 * (i / (nodes.length - 1))).toFixed(3);
 const pulse = (i: number) => {
   const a = arrive(i);
-  if (i === 0) return { values: '1;0;0', keyTimes: '0;0.1;1' };
+  if (i === 0) return { values: '1;0;0', keyTimes: '0;0.08;1' };
   return {
     values: '0;0;1;0;0',
-    keyTimes: `0;${(a - 0.03).toFixed(3)};${a};${Math.min(a + 0.1, 0.99).toFixed(3)};1`,
+    keyTimes: `0;${(a - 0.02).toFixed(3)};${a};${Math.min(a + 0.07, 0.99).toFixed(3)};1`,
   };
 };
 const aTask = arrive(1);
@@ -97,27 +97,32 @@ const vk = hiddenKeys(vStop);
 <Layout title={title} description={description}>
   <div class="kit mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <!-- Hero -->
-    <section class="grid items-center gap-12 pt-4 pb-16 md:pt-10 md:pb-20 lg:grid-cols-[1fr_29rem]">
-      <div>
+    <section class="relative isolate grid items-center gap-12 overflow-hidden pt-4 pb-16 md:pt-10 md:pb-20 lg:grid-cols-[1fr_29rem]">
+      <div class="aurora" aria-hidden="true">
+        <span class="blob blob-a"></span>
+        <span class="blob blob-b"></span>
+      </div>
+
+      <div class="hero-stagger relative z-10">
         <p class="font-mono text-xs text-slate-500">
-          <a href={REPO} target="_blank" rel="noopener noreferrer" class="hover:text-slate-300">przeprogramowani/10x-bench-kit</a>
+          <a href={REPO} target="_blank" rel="noopener noreferrer" class="hover:text-teal-300">przeprogramowani/10x-bench-kit</a>
           <span class="mx-2 text-slate-700">/</span>v{KIT_VERSION}
           <span class="mx-2 text-slate-700">/</span>MIT
         </p>
         <h1 class="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-slate-50 md:text-5xl">
-          Benchmark AI coding agents on your own repository.
+          Benchmark AI coding agents on <span class="grad">your own repository</span>.
         </h1>
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">
-          Your merged PRs become tasks. Every model runs in an isolated container and is graded by hidden tests. The
-          output is <span class="text-slate-200">cost per acceptable result</span>.
+          Merged PRs become tasks. Hidden tests do the grading. The output is one number:
+          <span class="font-medium text-fuchsia-300">cost per acceptable result</span>.
         </p>
 
         <div class="mt-8 max-w-xl">
-          <div class="cmd flex items-center justify-between gap-4 rounded-md border border-slate-700 bg-slate-950 px-4 py-3 font-mono text-sm">
+          <div class="cmd glass-soft flex items-center justify-between gap-4 rounded-md px-4 py-3 font-mono text-sm">
             <span class="overflow-x-auto whitespace-nowrap">
-              <span class="select-none text-slate-600">$ </span><span class="text-slate-100">10x bench-kit init</span>
+              <span class="select-none text-fuchsia-400">$ </span><span class="text-teal-300">10x bench-kit init</span>
             </span>
-            <button type="button" class="shrink-0 text-xs text-slate-500 hover:text-slate-200" data-copy="10x bench-kit init" aria-label="Copy command">copy</button>
+            <button type="button" class="copy shrink-0 text-xs text-slate-500 hover:text-teal-200" data-copy="10x bench-kit init" aria-label="Copy command">copy</button>
           </div>
           <p class="mt-3 text-sm text-slate-500">
             Run it in your product repo. Needs <a href={CLI} target="_blank" rel="noopener noreferrer" class="link">10xCLI</a>.
@@ -135,8 +140,14 @@ const vk = hiddenKeys(vStop);
       </div>
 
       <!-- Animated matrix run -->
-      <figure class="panel" aria-label="Animation of a benchmark run: three models across eight tasks, cells turning pass or fail while spend grows against a budget.">
+      <figure class="panel glass hero-fig relative z-10" aria-label="Animation of a benchmark run: models pass or fail tasks while spend grows toward a budget.">
         <svg id="matrix" viewBox="0 0 440 236" class="w-full" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="m-grad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#2dd4bf" />
+              <stop offset="1" stop-color="#d946ef" />
+            </linearGradient>
+          </defs>
           <text x="0" y="14" class="mono t-dim">$ bench run</text>
           <g transform="translate(440 14)">
             <circle id="m-dot" cx="-118" cy="-4" r="3" class="live-dot" />
@@ -176,41 +187,40 @@ const vk = hiddenKeys(vStop);
           <span><i class="key key-pass"></i>pass</span>
           <span><i class="key key-fail"></i>fail</span>
           <span><i class="key key-run"></i>running</span>
-          <span class="ml-auto">illustrative</span>
         </figcaption>
       </figure>
     </section>
 
     <!-- Workflow -->
-    <section class="sec">
+    <section class="sec reveal">
       <h2 class="sec-title">Four skills, run from your coding agent</h2>
-      <ol class="grid gap-px overflow-hidden rounded-md border border-slate-800 bg-slate-800 sm:grid-cols-2 lg:grid-cols-4">
+      <ol class="grid gap-px overflow-hidden rounded-md border border-indigo-400/15 bg-indigo-400/15 sm:grid-cols-2 lg:grid-cols-4">
         {skills.map((s, i) => (
-          <li class="bg-[#0f172a] p-5">
+          <li class="bg-[#0b0e26] p-5">
             <p class="font-mono text-xs text-slate-500">{String(i + 1).padStart(2, '0')} · {s.role}</p>
-            <p class="mt-3 font-mono text-sm text-slate-100">{s.name}</p>
+            <p class="mt-3 font-mono text-sm text-teal-300">{s.name}</p>
             <p class="mt-2 text-sm leading-relaxed text-slate-400">{s.body}</p>
           </li>
         ))}
       </ol>
-      <p class="mt-4 text-sm text-slate-500">The agent drives the <code>bench</code> runner. You review the files and commit them.</p>
+      <p class="mt-4 text-sm text-slate-500">The agent drives the runner. You review and commit.</p>
     </section>
 
     <!-- Trial flow -->
-    <section class="sec" id="how-it-works">
+    <section class="sec reveal" id="how-it-works">
       <h2 class="sec-title">One trial, end to end</h2>
-      <p class="sec-lead">The agent never sees the grader. Tests from the PR are held back and mounted only after the agent stops.</p>
+      <p class="sec-lead">The agent never sees the grader — PR tests mount only after it stops.</p>
 
       <!-- horizontal (md+) -->
       <svg viewBox="0 0 960 230" class="hidden w-full md:block" role="img" aria-label="Flow: merged PR, task, trial, attempt, evaluate, result. Hidden tests travel separately from the PR to evaluation.">
         <line x1={H.x(0)} x2={H.x(5)} y1={H.y} y2={H.y} class="flow" />
         <path d={`M${H.x(0)},${H.y + H.h / 2} V${hLane.bottom} H${H.x(4)} V${H.y + H.h / 2}`} class="flow flow-hidden" fill="none" />
 
-        <circle r="4" class="dot">
+        <circle r="4.5" class="dot">
           <animateMotion dur={DUR} repeatCount="indefinite" path={`M${H.x(0)},${H.y} H${H.x(5)}`} keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear" />
           <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.88;0.92;1" />
         </circle>
-        <circle r="3.5" class="dot dot-hidden">
+        <circle r="4" class="dot dot-hidden">
           <animateMotion dur={DUR} repeatCount="indefinite" path={`M${H.x(0)},${H.y + H.h / 2} V${hLane.bottom} H${H.x(4)} V${H.y + H.h / 2}`} keyPoints={hk.keyPoints} keyTimes={hk.keyTimes} calcMode="linear" />
           <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values={hk.opacity} keyTimes={hk.opacityTimes} />
         </circle>
@@ -227,11 +237,10 @@ const vk = hiddenKeys(vStop);
         ))}
 
         <g transform={`translate(${hLane.pillX} ${hLane.bottom})`}>
-          <rect x="-96" y="-14" width="192" height="28" rx="14" class="pill" />
-          <path d="M-78,-3 v-3 a4,4 0 0 1 8,0 v3 M-80,-3 h12 v9 h-12 z" class="lock" />
-          <text x="-60" y="4" class="mono t-mid">evaluation-pool · hidden</text>
+          <rect x="-70" y="-14" width="140" height="28" rx="14" class="pill" />
+          <path d="M-52,-3 v-3 a4,4 0 0 1 8,0 v3 M-54,-3 h12 v9 h-12 z" class="lock" />
+          <text x="-34" y="4" class="mono t-mid">hidden tests</text>
         </g>
-        <text x={H.x(4) - 12} y={hLane.bottom - 10} text-anchor="end" class="mono t-faint">mounted after the agent stops</text>
       </svg>
 
       <!-- vertical (mobile) -->
@@ -239,11 +248,11 @@ const vk = hiddenKeys(vStop);
         <line x1={V.x} x2={V.x} y1={V.y(0)} y2={V.y(5)} class="flow" />
         <path d={`M${V.x + V.w / 2},${V.y(0)} H${vLane.right} V${V.y(4)} H${V.x + V.w / 2}`} class="flow flow-hidden" fill="none" />
 
-        <circle r="4" class="dot">
+        <circle r="4.5" class="dot">
           <animateMotion dur={DUR} repeatCount="indefinite" path={`M${V.x},${V.y(0)} V${V.y(5)}`} keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear" />
           <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.88;0.92;1" />
         </circle>
-        <circle r="3.5" class="dot dot-hidden">
+        <circle r="4" class="dot dot-hidden">
           <animateMotion dur={DUR} repeatCount="indefinite" path={`M${V.x + V.w / 2},${V.y(0)} H${vLane.right} V${V.y(4)} H${V.x + V.w / 2}`} keyPoints={vk.keyPoints} keyTimes={vk.keyTimes} calcMode="linear" />
           <animate attributeName="opacity" dur={DUR} repeatCount="indefinite" values={vk.opacity} keyTimes={vk.opacityTimes} />
         </circle>
@@ -266,18 +275,17 @@ const vk = hiddenKeys(vStop);
       </svg>
 
       <dl class="mt-10 grid gap-x-10 gap-y-5 text-sm sm:grid-cols-3">
-        <div><dt class="text-slate-200">Isolated</dt><dd class="mt-1 text-slate-400">Fresh clone at a pinned commit, empty agent state, a timeout.</dd></div>
-        <div><dt class="text-slate-200">Preserved</dt><dd class="mt-1 text-slate-400">Paid attempts are kept. A new rubric means re-evaluating, not re-running.</dd></div>
-        <div><dt class="text-slate-200">Stamped</dt><dd class="mt-1 text-slate-400">Results carry kit, task, rubric and judge versions, and compare within one era.</dd></div>
+        <div><dt class="text-slate-200">Isolated</dt><dd class="mt-1 text-slate-400">Fresh clone, pinned commit, empty state, a timeout.</dd></div>
+        <div><dt class="text-slate-200">Preserved</dt><dd class="mt-1 text-slate-400">Paid attempts are kept. Re-evaluate, never re-run.</dd></div>
+        <div><dt class="text-slate-200">Stamped</dt><dd class="mt-1 text-slate-400">Results carry kit, task, rubric and judge versions.</dd></div>
       </dl>
     </section>
 
     <!-- Resolution -->
-    <section class="sec">
+    <section class="sec reveal">
       <h2 class="sec-title">More tasks, sharper verdicts</h2>
       <p class="sec-lead">
-        With 10 tasks you can only tell apart a ~70-point gap. With 40 tasks you can tell apart a ~26-point one. Mining
-        PRs is how you get to dozens of real tasks.
+        10 tasks resolve a ~70-point gap. 40 tasks resolve ~26. Mine PRs to get to dozens of real tasks.
       </p>
       <figure class="panel">
         <svg id="resolution" viewBox="0 0 640 196" class="w-full" role="img" aria-label="Two models' pass-rate intervals narrow as the number of tasks grows, until they no longer overlap.">
@@ -317,16 +325,16 @@ const vk = hiddenKeys(vStop);
           <text x="0" y="170" class="mono t-faint">pass rate</text>
           <text id="r-status" x="640" y="192" text-anchor="end" class="mono t-dim">overlapping · not resolved</text>
         </svg>
-        <figcaption class="mt-3 text-right font-mono text-[11px] text-slate-500">illustrative · 30-point true gap</figcaption>
+        <figcaption class="mt-3 text-right font-mono text-[11px] text-slate-500">illustrative</figcaption>
       </figure>
     </section>
 
     <!-- Harnesses -->
-    <section class="sec">
+    <section class="sec reveal">
       <h2 class="sec-title">Three harnesses, one matrix</h2>
       <p class="sec-lead">
-        OpenCode, Claude Code and Codex CLI ship pinned in the trial image. The prefix picks the CLI. When a CLI reports
-        no reliable cost, the runner prices the tokens itself.
+        OpenCode, Claude Code and Codex CLI ship pinned in the trial image — the prefix picks the CLI. When a CLI won't
+        report cost, the runner prices the tokens.
       </p>
       <div class="table-wrap">
         <table>
@@ -345,10 +353,10 @@ const vk = hiddenKeys(vStop);
     </section>
 
     <!-- Instance -->
-    <section class="sec">
+    <section class="sec reveal">
       <h2 class="sec-title">What you get</h2>
       <div class="grid gap-6 lg:grid-cols-2">
-        <pre class="code"><code>{tree.map(([p, c]) => <span class="block"><span class="text-slate-100">{p.padEnd(19)}</span><span class="text-slate-500"># {c}</span></span>)}</code></pre>
+        <pre class="code"><code>{tree.map(([p, c]) => <span class="block"><span class="text-teal-300">{p.padEnd(19)}</span><span class="text-slate-500"># {c}</span></span>)}</code></pre>
         <pre class="code"><code><span class="k">defaults</span>:
   <span class="k">trials</span>: 3
   <span class="k">models</span>:
@@ -373,21 +381,21 @@ const vk = hiddenKeys(vStop);
     </section>
 
     <!-- Quickstart -->
-    <section class="sec scroll-mt-24" id="start">
+    <section class="sec reveal scroll-mt-24" id="start">
       <h2 class="sec-title">Quickstart</h2>
-      <pre class="code whitespace-pre-wrap"><code><span class="text-slate-600">$</span> cd my-product &amp;&amp; 10x bench-kit init      <span class="text-slate-500"># creates ../my-product-bench</span>
+      <pre class="code whitespace-pre-wrap"><code><span class="prompt">$</span> cd my-product &amp;&amp; 10x bench-kit init      <span class="text-slate-500"># creates ../my-product-bench</span>
 
 <span class="text-slate-500"># then, in your AI coding tool, inside ../my-product-bench:</span>
-<span class="text-slate-200">&gt; Use bench-status to check this instance, then bench-create-task to create our first tasks.</span>
-<span class="text-slate-200">&gt; Use bench-evaluate to compare our configured models within the budget.</span>
-<span class="text-slate-200">&gt; Use bench-analysis to show which model and tool we should use for bugfixes.</span></code></pre>
+<span class="user">&gt; Use bench-status to check this instance, then bench-create-task to create our first tasks.</span>
+<span class="user">&gt; Use bench-evaluate to compare our configured models within the budget.</span>
+<span class="user">&gt; Use bench-analysis to show which model and tool we should use for bugfixes.</span></code></pre>
       <p class="mt-5 flex flex-wrap gap-x-2 gap-y-2 text-sm text-slate-500">
         <span>Requires</span>
         {needs.map((n) => <span class="chip">{n}</span>)}
       </p>
     </section>
 
-    <section class="sec flex flex-col gap-6 pb-8 md:flex-row md:items-center md:justify-between">
+    <section class="sec reveal flex flex-col gap-6 pb-8 md:flex-row md:items-center md:justify-between">
       <p class="text-slate-400">Built from the infrastructure behind <a href="/" class="link">10xBench</a>. MIT licensed.</p>
       <div class="flex flex-wrap gap-3 text-sm">
         <a href={REPO} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get the kit</a>
@@ -405,7 +413,11 @@ const vk = hiddenKeys(vStop);
       try {
         await navigator.clipboard.writeText(btn.dataset.copy ?? '');
         btn.textContent = 'copied';
-        setTimeout(() => (btn.textContent = 'copy'), 1500);
+        btn.classList.add('ok');
+        setTimeout(() => {
+          btn.textContent = 'copy';
+          btn.classList.remove('ok');
+        }, 1500);
       } catch {
         /* clipboard unavailable */
       }
@@ -422,6 +434,27 @@ const vk = hiddenKeys(vStop);
     });
     io.observe(el);
   };
+
+  // Punchy one-shot section reveals
+  (() => {
+    const els = document.querySelectorAll('.reveal');
+    if (reduced) {
+      els.forEach((el) => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach((el) => io.observe(el));
+  })();
 
   // Hero matrix run
   (() => {
@@ -443,6 +476,12 @@ const vk = hiddenKeys(vStop);
     const status = document.getElementById('m-status')!;
     const dot = document.getElementById('m-dot')!;
 
+    const punch = (el: Element) => {
+      el.classList.remove('pop');
+      requestAnimationFrame(() => el.classList.add('pop'));
+      setTimeout(() => el.classList.remove('pop'), 400);
+    };
+
     let spend = 0;
     const passes = [0, 0, 0];
     const render = () => {
@@ -454,6 +493,8 @@ const vk = hiddenKeys(vStop);
       const el = cell(r, c);
       el.classList.remove('run');
       el.classList.add(OUTCOMES[r][c] ? 'pass' : 'fail');
+      punch(el);
+      if (OUTCOMES[r][c]) punch(counts[r]);
       passes[r] += OUTCOMES[r][c];
       spend += COST[r];
     };
@@ -470,7 +511,8 @@ const vk = hiddenKeys(vStop);
     }
 
     const reset = () => {
-      cells.forEach((e) => e.classList.remove('run', 'pass', 'fail'));
+      cells.forEach((e) => e.classList.remove('run', 'pass', 'fail', 'pop'));
+      counts.forEach((t) => t.classList.remove('pop'));
       spend = 0;
       passes.fill(0);
       render();
@@ -488,7 +530,7 @@ const vk = hiddenKeys(vStop);
           const [r, c] = queue[next++];
           active++;
           cell(r, c).classList.add('run');
-          const ms = 650 + ((r * 7 + c * 13) % 5) * 170;
+          const ms = 340 + ((r * 7 + c * 13) % 5) * 90;
           setTimeout(() => {
             finish(r, c);
             render();
@@ -497,12 +539,12 @@ const vk = hiddenKeys(vStop);
             if (done === queue.length) {
               status.textContent = `done · ${passes.reduce((a, b) => a + b, 0)}/24 pass`;
               dot.classList.add('idle');
-              setTimeout(cycle, 4200);
+              setTimeout(cycle, 2200);
             } else launch();
           }, ms);
         }
       };
-      setTimeout(launch, 500);
+      setTimeout(launch, 250);
     };
     render();
     whenVisible(svg, cycle);
@@ -534,6 +576,7 @@ const vk = hiddenKeys(vStop);
       g.querySelector('circle')!.setAttribute('cx', String(X(c)));
     };
 
+    let wasResolved = false;
     const draw = (n: number) => {
       const h = half(n);
       setBar('r-a', A, h);
@@ -548,12 +591,17 @@ const vk = hiddenKeys(vStop);
       band.classList.toggle('ok', resolved);
       status.textContent = resolved ? 'separated · resolved' : 'overlapping · not resolved';
       status.classList.toggle('ok', resolved);
+      if (resolved && !wasResolved) {
+        status.classList.remove('flash');
+        requestAnimationFrame(() => status.classList.add('flash'));
+      }
+      wasResolved = resolved;
     };
 
     if (reduced) return draw(40);
     draw(6);
 
-    const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
     const tween = (from: number, to: number, ms: number) =>
       new Promise<void>((done) => {
         const t0 = performance.now();
@@ -569,12 +617,12 @@ const vk = hiddenKeys(vStop);
 
     const loop = async () => {
       for (;;) {
-        await tween(6, 10, 700);
-        await wait(1400);
-        await tween(10, 50, 4200);
-        await wait(2600);
-        await tween(50, 6, 1400);
-        await wait(600);
+        await tween(6, 10, 500);
+        await wait(900);
+        await tween(10, 50, 3000);
+        await wait(2000);
+        await tween(50, 6, 900);
+        await wait(400);
       }
     };
     whenVisible(svg, loop);
@@ -582,9 +630,20 @@ const vk = hiddenKeys(vStop);
 </script>
 
 <style>
+  /* palette: teal + coral are the complementary pair, fuchsia is the accent */
+  .kit {
+    --teal: 45 212 191;
+    --teal-bright: 94 234 212;
+    --coral: 255 107 107;
+    --fuchsia: 217 70 239;
+    --fuchsia-bright: 232 121 249;
+    --line: 129 140 248;
+    --ink: 8 10 30;
+  }
+
   .kit :global(code) {
-    background: rgb(30 41 59 / 0.7);
-    color: rgb(226 232 240);
+    background: rgb(var(--line) / 0.12);
+    color: rgb(var(--teal-bright));
     border-radius: 3px;
     padding: 0.1em 0.35em;
     font-size: 0.875em;
@@ -596,16 +655,26 @@ const vk = hiddenKeys(vStop);
   }
 
   .sec {
-    border-top: 1px solid rgb(30 41 59);
+    border-top: 1px solid rgb(var(--line) / 0.14);
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
   }
   .sec-title {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
     font-size: 1.375rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     color: rgb(241 245 249);
     margin-bottom: 1.25rem;
+  }
+  .sec-title::before {
+    content: '';
+    width: 22px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgb(var(--teal)), rgb(var(--fuchsia)));
   }
   .sec-lead {
     max-width: 40rem;
@@ -615,10 +684,108 @@ const vk = hiddenKeys(vStop);
   }
 
   .panel {
-    border: 1px solid rgb(30 41 59);
-    border-radius: 10px;
-    background: rgb(2 6 23 / 0.6);
+    border: 1px solid rgb(var(--line) / 0.16);
+    border-radius: 12px;
+    background: rgb(var(--ink) / 0.6);
     padding: 1.25rem 1.25rem 1rem;
+  }
+
+  /* glass hero */
+  .aurora {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+  }
+  .blob-a {
+    top: -70px;
+    right: -60px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgb(var(--fuchsia) / 0.35), transparent 65%);
+    animation: drift-a 14s ease-in-out infinite alternate;
+  }
+  .blob-b {
+    top: 90px;
+    left: -40px;
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle, rgb(var(--teal) / 0.22), transparent 65%);
+    animation: drift-b 17s ease-in-out infinite alternate;
+  }
+  @keyframes drift-a {
+    to { transform: translate(-70px, 50px) scale(1.12); }
+  }
+  @keyframes drift-b {
+    to { transform: translate(60px, -40px) scale(1.18); }
+  }
+
+  .glass {
+    position: relative;
+    overflow: hidden;
+    border-color: rgb(var(--line) / 0.22);
+    background: linear-gradient(160deg, rgb(var(--line) / 0.12), rgb(var(--fuchsia) / 0.07) 45%, rgb(var(--ink) / 0.45) 75%);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow:
+      0 24px 60px -24px rgb(0 0 0 / 0.7),
+      0 0 50px -12px rgb(var(--fuchsia) / 0.28),
+      inset 0 1px 0 rgb(255 255 255 / 0.12);
+  }
+  .glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.08) 47%, rgb(var(--fuchsia-bright) / 0.09) 52%, transparent 62%);
+    background-size: 250% 100%;
+    background-position: 130% 0;
+    animation: sweep 7s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes sweep {
+    0%, 55% { background-position: 130% 0; }
+    80%, 100% { background-position: -60% 0; }
+  }
+  .glass-soft {
+    border: 1px solid rgb(var(--line) / 0.22);
+    background: rgb(var(--ink) / 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 0 30px -10px rgb(var(--teal) / 0.25);
+  }
+
+  .grad {
+    background: linear-gradient(90deg, rgb(var(--teal-bright)), rgb(var(--fuchsia-bright)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* hero entrance */
+  .hero-stagger > * { animation: rise 0.55s cubic-bezier(0.22, 1.2, 0.36, 1) both; }
+  .hero-stagger > :nth-child(2) { animation-delay: 0.08s; }
+  .hero-stagger > :nth-child(3) { animation-delay: 0.16s; }
+  .hero-stagger > :nth-child(4) { animation-delay: 0.24s; }
+  .hero-stagger > :nth-child(5) { animation-delay: 0.32s; }
+  .hero-fig { animation: rise 0.65s 0.2s cubic-bezier(0.22, 1.2, 0.36, 1) both; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+  }
+
+  /* scroll reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px) scale(0.995);
+    transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.22, 1.4, 0.36, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
   }
 
   /* svg type */
@@ -633,72 +800,87 @@ const vk = hiddenKeys(vStop);
   .t-mid { fill: rgb(148 163 184); }
   .t-bright { fill: rgb(226 232 240); }
   .n-label { fill: rgb(241 245 249); font-size: 13px; font-weight: 500; }
-  .rule { stroke: rgb(30 41 59); }
+  .rule { stroke: rgb(var(--line) / 0.15); }
 
   /* matrix */
   .cell {
     fill: transparent;
-    stroke: rgb(51 65 85);
+    stroke: rgb(var(--line) / 0.25);
     stroke-width: 1;
-    transition: fill 0.35s ease, stroke 0.35s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: fill 0.15s ease, stroke 0.15s ease;
   }
   .cell.run {
-    stroke: rgb(110 231 183);
-    animation: blink 0.9s ease-in-out infinite;
+    stroke: rgb(var(--fuchsia));
+    fill: rgb(var(--fuchsia) / 0.12);
+    animation: blink 0.55s ease-in-out infinite;
   }
-  .cell.pass { fill: rgb(52 211 153 / 0.85); stroke: rgb(52 211 153); }
-  .cell.fail { fill: rgb(244 63 94 / 0.12); stroke: rgb(244 63 94 / 0.55); }
-  .track { fill: rgb(30 41 59); }
-  .bar { fill: rgb(110 231 183); transition: width 0.4s ease; }
-  .live-dot { fill: rgb(52 211 153); animation: blink 1.4s ease-in-out infinite; }
-  .live-dot.idle { fill: rgb(71 85 105); animation: none; }
+  .cell.pass { fill: rgb(var(--teal) / 0.85); stroke: rgb(var(--teal-bright)); }
+  .cell.fail { fill: rgb(var(--coral) / 0.1); stroke: rgb(var(--coral) / 0.55); }
+  .cell.pop { animation: pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  [data-count] {
+    transform-box: fill-box;
+    transform-origin: 100% 50%;
+  }
+  [data-count].pop { animation: pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .track { fill: rgb(var(--line) / 0.14); }
+  .bar {
+    fill: url(#m-grad);
+    transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: drop-shadow(0 0 6px rgb(var(--fuchsia) / 0.45));
+  }
+  .live-dot {
+    fill: rgb(var(--fuchsia-bright));
+    filter: drop-shadow(0 0 5px rgb(var(--fuchsia) / 0.8));
+    animation: blink 1.2s ease-in-out infinite;
+  }
+  .live-dot.idle { fill: rgb(71 85 105); animation: none; filter: none; }
   @keyframes blink {
     50% { opacity: 0.35; }
   }
+  @keyframes pop {
+    from { transform: scale(0.55); }
+  }
   .key { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-  .key-pass { background: rgb(52 211 153 / 0.85); }
-  .key-fail { background: rgb(244 63 94 / 0.12); border: 1px solid rgb(244 63 94 / 0.55); }
-  .key-run { border: 1px solid rgb(110 231 183); }
+  .key-pass { background: rgb(var(--teal) / 0.85); }
+  .key-fail { background: rgb(var(--coral) / 0.1); border: 1px solid rgb(var(--coral) / 0.55); }
+  .key-run { border: 1px solid rgb(var(--fuchsia)); }
 
   /* flow */
   .flow {
-    stroke: rgb(51 65 85);
+    stroke: rgb(var(--line) / 0.4);
+    stroke-width: 1.5;
+  }
+  .flow-hidden {
+    stroke: rgb(var(--fuchsia) / 0.35);
     stroke-width: 1.25;
     stroke-dasharray: 3 5;
-    animation: march 1.2s linear infinite;
   }
-  .flow-hidden { stroke: rgb(71 85 105 / 0.7); }
-  @keyframes march {
-    to { stroke-dashoffset: -8; }
-  }
-  .node { fill: #0f172a; stroke: rgb(51 65 85); }
-  .node-hi { fill: rgb(52 211 153 / 0.06); stroke: rgb(110 231 183); }
-  .dot { fill: rgb(110 231 183); filter: drop-shadow(0 0 4px rgb(52 211 153 / 0.7)); }
-  .dot-hidden { fill: rgb(251 191 36); filter: drop-shadow(0 0 4px rgb(251 191 36 / 0.6)); }
-  .pill { fill: #0f172a; stroke: rgb(251 191 36 / 0.45); }
-  .lock { fill: none; stroke: rgb(251 191 36 / 0.8); stroke-width: 1.2; }
+  .node { fill: #0b0e26; stroke: rgb(var(--line) / 0.25); }
+  .node-hi { fill: rgb(var(--teal) / 0.12); stroke: rgb(var(--teal-bright)); }
+  .dot { fill: rgb(var(--teal-bright)); filter: drop-shadow(0 0 6px rgb(var(--teal) / 0.9)); }
+  .dot-hidden { fill: rgb(var(--fuchsia-bright)); filter: drop-shadow(0 0 6px rgb(var(--fuchsia) / 0.8)); }
+  .pill { fill: #0b0e26; stroke: rgb(var(--fuchsia) / 0.5); }
+  .lock { fill: none; stroke: rgb(var(--fuchsia-bright) / 0.85); stroke-width: 1.2; }
 
   /* resolution */
-  .tile { fill: rgb(30 41 59); transition: fill 0.2s; }
-  .tile.on { fill: rgb(148 163 184); }
+  .tile { fill: rgb(var(--line) / 0.14); transition: fill 0.15s; }
+  .tile.on { fill: rgb(var(--teal) / 0.75); }
   .ci { stroke: rgb(148 163 184); stroke-width: 2; stroke-linecap: round; }
   .cap { stroke: rgb(148 163 184); stroke-width: 1.5; }
-  .ci-b, .cap-b { stroke: rgb(110 231 183); }
+  .ci-b, .cap-b { stroke: rgb(var(--teal-bright)); }
   .pt { fill: rgb(226 232 240); }
-  .pt-b { fill: rgb(110 231 183); }
-  .band { fill: rgb(244 63 94 / 0.1); transition: fill 0.4s; }
-  .band.ok { fill: rgb(52 211 153 / 0.08); }
-  #r-status { transition: fill 0.4s; }
-  #r-status.ok { fill: rgb(110 231 183); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .flow, .cell.run, .live-dot { animation: none; }
-    .dot, .node-hi { display: none; }
-  }
+  .pt-b { fill: rgb(var(--teal-bright)); }
+  .band { fill: rgb(var(--coral) / 0.1); transition: fill 0.3s, filter 0.3s; }
+  .band.ok { fill: rgb(var(--teal) / 0.1); filter: drop-shadow(0 0 10px rgb(var(--teal) / 0.3)); }
+  #r-status { transition: fill 0.3s; transform-box: fill-box; transform-origin: 100% 50%; }
+  #r-status.ok { fill: rgb(var(--teal-bright)); }
+  #r-status.flash { animation: pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
   .code {
-    background: rgb(2 6 23);
-    border: 1px solid rgb(30 41 59);
+    background: rgb(var(--ink) / 0.85);
+    border: 1px solid rgb(var(--line) / 0.16);
     border-radius: 6px;
     padding: 1rem 1.125rem;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -709,10 +891,12 @@ const vk = hiddenKeys(vStop);
     white-space: pre;
   }
   .code.whitespace-pre-wrap { white-space: pre-wrap; }
-  .code .k { color: rgb(110 231 183); }
+  .code .k { color: rgb(var(--teal)); }
+  .code .prompt { color: rgb(var(--fuchsia-bright)); }
+  .code .user { color: rgb(var(--teal-bright)); }
 
   .chip {
-    border: 1px solid rgb(30 41 59);
+    border: 1px solid rgb(var(--line) / 0.2);
     border-radius: 999px;
     padding: 0.125rem 0.625rem;
     color: rgb(203 213 225);
@@ -721,7 +905,7 @@ const vk = hiddenKeys(vStop);
 
   .table-wrap {
     overflow-x: auto;
-    border: 1px solid rgb(30 41 59);
+    border: 1px solid rgb(var(--line) / 0.16);
     border-radius: 6px;
   }
   table { width: 100%; font-size: 0.875rem; text-align: left; color: rgb(148 163 184); }
@@ -729,14 +913,19 @@ const vk = hiddenKeys(vStop);
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.75rem;
     font-weight: 500;
-    color: rgb(100 116 139);
+    color: rgb(165 180 252);
     padding: 0.625rem 1rem;
-    border-bottom: 1px solid rgb(30 41 59);
-    background: rgb(15 23 42);
+    border-bottom: 1px solid rgb(var(--line) / 0.16);
+    background: rgb(var(--ink));
     white-space: nowrap;
   }
-  td { padding: 0.625rem 1rem; border-bottom: 1px solid rgb(30 41 59); white-space: nowrap; }
+  td { padding: 0.625rem 1rem; border-bottom: 1px solid rgb(var(--line) / 0.12); white-space: nowrap; }
+  tbody tr { transition: background-color 0.15s; }
+  tbody tr:hover { background: rgb(var(--line) / 0.07); }
   tbody tr:last-child td { border-bottom: 0; }
+
+  .copy { transition: color 0.15s; }
+  .copy.ok { color: rgb(var(--teal-bright)); }
 
   .btn {
     display: inline-flex;
@@ -745,17 +934,41 @@ const vk = hiddenKeys(vStop);
     border-radius: 6px;
     padding: 0.5rem 0.875rem;
     font-weight: 500;
-    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+    transition: transform 0.15s, box-shadow 0.2s, background-position 0.4s ease, background-color 0.15s,
+      border-color 0.15s, color 0.15s;
   }
-  .btn-primary { background: rgb(241 245 249); color: rgb(15 23 42); }
-  .btn-primary:hover { background: white; }
-  .btn-ghost { border: 1px solid rgb(51 65 85); color: rgb(203 213 225); }
-  .btn-ghost:hover { border-color: rgb(100 116 139); color: white; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0) scale(0.97); }
+  .btn-primary {
+    background-image: linear-gradient(120deg, rgb(var(--teal)) 0%, rgb(var(--teal-bright)) 30%, rgb(var(--fuchsia)) 75%);
+    background-size: 200% 100%;
+    background-position: 0% 0;
+    color: rgb(6 12 24);
+    font-weight: 600;
+    box-shadow: 0 6px 24px -8px rgb(var(--teal) / 0.55);
+  }
+  .btn-primary:hover {
+    background-position: 100% 0;
+    box-shadow: 0 10px 30px -8px rgb(var(--fuchsia) / 0.55);
+  }
+  .btn-ghost { border: 1px solid rgb(var(--line) / 0.3); color: rgb(203 213 225); }
+  .btn-ghost:hover { border-color: rgb(var(--fuchsia) / 0.7); color: white; }
   .link {
-    color: rgb(226 232 240);
+    color: rgb(var(--teal-bright));
     text-decoration: underline;
-    text-decoration-color: rgb(71 85 105);
+    text-decoration-color: rgb(var(--teal) / 0.4);
     text-underline-offset: 3px;
+    transition: color 0.15s, text-decoration-color 0.15s;
   }
-  .link:hover { text-decoration-color: rgb(203 213 225); }
+  .link:hover { color: white; text-decoration-color: rgb(var(--fuchsia)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob-a, .blob-b, .glass::after, .cell.run, .cell.pop, [data-count].pop, .live-dot, #r-status.flash {
+      animation: none;
+    }
+    .dot, .node-hi { display: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-stagger > *, .hero-fig { animation: none; }
+    .btn:hover, .btn:active { transform: none; }
+  }
 </style>
