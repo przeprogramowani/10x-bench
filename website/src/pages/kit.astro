@@ -97,18 +97,23 @@ const vk = hiddenKeys(vStop);
 <Layout title={title} description={description}>
   <div class="kit mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <!-- Hero -->
-    <section class="relative isolate grid items-center gap-12 overflow-hidden pt-4 pb-16 md:pt-10 md:pb-20 lg:grid-cols-[1fr_29rem]">
+    <section class="relative isolate grid items-center gap-12 pt-6 pb-16 md:pt-12 md:pb-20 lg:grid-cols-[1fr_29rem]">
       <div class="aurora" aria-hidden="true">
-        <span class="blob blob-a"></span>
+        <span class="hero-dots"></span>
+        <span class="disc"></span>
         <span class="blob blob-b"></span>
+        <span class="blob blob-f"></span>
+        <span class="beam"></span>
       </div>
 
       <div class="hero-stagger relative z-10">
-        <p class="font-mono text-xs text-slate-500">
-          <a href={REPO} target="_blank" rel="noopener noreferrer" class="hover:text-teal-300">przeprogramowani/10x-bench-kit</a>
-          <span class="mx-2 text-slate-700">/</span>v{KIT_VERSION}
-          <span class="mx-2 text-slate-700">/</span>MIT
-        </p>
+        <div class="badge">
+          <span class="badge-inner font-mono">
+            <a href={REPO} target="_blank" rel="noopener noreferrer" class="hover:text-teal-300">przeprogramowani/10x-bench-kit</a>
+            <span class="mx-2 text-slate-600">/</span>v{KIT_VERSION}
+            <span class="mx-2 text-slate-600">/</span>MIT
+          </span>
+        </div>
         <h1 class="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight text-slate-50 md:text-5xl">
           Benchmark AI coding agents on <span class="grad">your own repository</span>.
         </h1>
@@ -140,7 +145,11 @@ const vk = hiddenKeys(vStop);
       </div>
 
       <!-- Animated matrix run -->
-      <figure class="panel glass hero-fig relative z-10" aria-label="Animation of a benchmark run: models pass or fail tasks while spend grows toward a budget.">
+      <div class="fig-wrap relative z-10">
+        <i class="spark s1" aria-hidden="true"></i>
+        <i class="spark s2" aria-hidden="true"></i>
+        <i class="spark s3" aria-hidden="true"></i>
+        <figure class="panel glass hero-fig" aria-label="Animation of a benchmark run: models pass or fail tasks while spend grows toward a budget.">
         <svg id="matrix" viewBox="0 0 440 236" class="w-full" role="img" aria-hidden="true">
           <defs>
             <linearGradient id="m-grad" x1="0" y1="0" x2="1" y2="0">
@@ -189,6 +198,7 @@ const vk = hiddenKeys(vStop);
           <span><i class="key key-run"></i>running</span>
         </figcaption>
       </figure>
+      </div>
     </section>
 
     <!-- Workflow -->
@@ -639,6 +649,7 @@ const vk = hiddenKeys(vStop);
     --fuchsia-bright: 232 121 249;
     --line: 129 140 248;
     --ink: 8 10 30;
+    overflow-x: clip;
   }
 
   .kit :global(code) {
@@ -690,45 +701,188 @@ const vk = hiddenKeys(vStop);
     padding: 1.25rem 1.25rem 1rem;
   }
 
-  /* glass hero */
+  /* glass hero — diffraction light field.
+     The glow is never hard-clipped: the aurora bleeds past the section edges
+     and fades through its own mask; .kit only clips horizontally (invisible,
+     far from content) to guard against scrollbars. */
   .aurora {
     position: absolute;
-    inset: 0;
+    inset: -4% -8% -14%;
     pointer-events: none;
+    -webkit-mask-image: radial-gradient(115% 92% at 64% 16%, rgb(0 0 0 / 0.95) 36%, transparent 80%);
+    mask-image: radial-gradient(115% 92% at 64% 16%, rgb(0 0 0 / 0.95) 36%, transparent 80%);
+  }
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1.6px);
+    background-size: 26px 26px;
   }
   .blob {
     position: absolute;
     border-radius: 9999px;
     filter: blur(70px);
   }
-  .blob-a {
-    top: -70px;
-    right: -60px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgb(var(--fuchsia) / 0.35), transparent 65%);
-    animation: drift-a 14s ease-in-out infinite alternate;
+  /* slowly spinning diffraction disc — light split into spectral orders */
+  .disc {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    width: min(420px, 85%);
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: conic-gradient(
+      from 0deg,
+      rgb(var(--teal) / 0.55),
+      rgb(56 189 248 / 0.45),
+      rgb(129 140 248 / 0.5),
+      rgb(var(--fuchsia) / 0.55),
+      rgb(251 146 60 / 0.4),
+      rgb(244 63 94 / 0.45),
+      rgb(var(--teal) / 0.55)
+    );
+    filter: blur(80px);
+    opacity: 0.42;
+    animation: spin 36s linear infinite;
   }
   .blob-b {
-    top: 90px;
-    left: -40px;
-    width: 340px;
-    height: 340px;
-    background: radial-gradient(circle, rgb(var(--teal) / 0.22), transparent 65%);
+    top: 30%;
+    left: 0;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgb(var(--teal) / 0.2), transparent 65%);
     animation: drift-b 17s ease-in-out infinite alternate;
   }
-  @keyframes drift-a {
-    to { transform: translate(-70px, 50px) scale(1.12); }
+  .blob-f {
+    bottom: 2%;
+    right: 14%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgb(var(--fuchsia) / 0.22), transparent 66%);
+    animation: drift-f 15s ease-in-out infinite alternate;
+  }
+  /* refracted beam crossing the hero diagonally */
+  .beam {
+    position: absolute;
+    top: 14%;
+    left: -22%;
+    width: 150%;
+    height: 120px;
+    transform: rotate(-15deg);
+    background: linear-gradient(
+      90deg,
+      transparent 12%,
+      rgb(255 255 255 / 0.05) 40%,
+      rgb(var(--teal-bright) / 0.07) 52%,
+      rgb(var(--fuchsia-bright) / 0.06) 62%,
+      transparent 86%
+    );
+    filter: blur(8px);
+    animation: glide 16s ease-in-out infinite alternate;
+  }
+  @keyframes spin {
+    to { transform: rotate(1turn); }
+  }
+  @keyframes glide {
+    to { transform: rotate(-15deg) translateX(7%); }
   }
   @keyframes drift-b {
     to { transform: translate(60px, -40px) scale(1.18); }
+  }
+  @keyframes drift-f {
+    to { transform: translate(-50px, -46px) scale(1.15); }
+  }
+
+  /* glass badge with a flowing prism rim */
+  .badge {
+    position: relative;
+    display: inline-flex;
+    max-width: 100%;
+    border-radius: 999px;
+    padding: 1px;
+    background: linear-gradient(
+      115deg,
+      rgb(255 255 255 / 0.35),
+      rgb(var(--teal-bright) / 0.85) 20%,
+      rgb(165 180 252 / 0.85) 40%,
+      rgb(var(--fuchsia-bright) / 0.85) 60%,
+      rgb(251 191 36 / 0.6) 76%,
+      rgb(255 255 255 / 0.35)
+    );
+    background-size: 220% 100%;
+    animation: rimflow 8s linear infinite;
+    box-shadow: 0 0 26px -6px rgb(var(--fuchsia) / 0.45);
+  }
+  .badge-inner {
+    display: inline-block;
+    border-radius: 999px;
+    background: rgb(9 11 32 / 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.3125rem 0.875rem;
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgb(148 163 184);
+  }
+  @keyframes rimflow {
+    to { background-position: -220% 0; }
+  }
+
+  /* layered ghost glass cards behind the hero panel */
+  .fig-wrap::before,
+  .fig-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .fig-wrap::before {
+    transform: rotate(2deg) translate(10px, 14px);
+    border: 1px solid rgb(var(--line) / 0.16);
+    background: linear-gradient(160deg, rgb(var(--line) / 0.08), rgb(var(--fuchsia) / 0.05));
+    box-shadow: 0 34px 60px -34px rgb(0 0 0 / 0.65);
+  }
+  .fig-wrap::after {
+    transform: rotate(-1.5deg) translate(-7px, 8px);
+    border: 1px solid rgb(var(--teal) / 0.14);
+    background: rgb(var(--line) / 0.05);
+  }
+
+  /* twinkling sparkles */
+  .spark {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    color: rgb(255 255 255 / 0.85);
+    background:
+      linear-gradient(to bottom, transparent, currentColor) 50% 0 / 1.5px 50% no-repeat,
+      linear-gradient(to top, transparent, currentColor) 50% 100% / 1.5px 50% no-repeat,
+      linear-gradient(to right, transparent, currentColor) 0 50% / 50% 1.5px no-repeat,
+      linear-gradient(to left, transparent, currentColor) 100% 50% / 50% 1.5px no-repeat;
+    filter: drop-shadow(0 0 6px currentColor);
+    opacity: 0;
+    animation: twinkle 5.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .spark.s1 { top: -9px; right: 28px; }
+  .spark.s2 { left: -12px; top: 42%; color: rgb(var(--teal-bright)); animation-delay: 2.1s; }
+  .spark.s3 { right: 14px; bottom: -11px; color: rgb(var(--fuchsia-bright)); animation-delay: 4s; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+    50% { opacity: 0.95; transform: scale(1) rotate(24deg); }
   }
 
   .glass {
     position: relative;
     overflow: hidden;
     border-color: rgb(var(--line) / 0.22);
-    background: linear-gradient(160deg, rgb(var(--line) / 0.12), rgb(var(--fuchsia) / 0.07) 45%, rgb(var(--ink) / 0.45) 75%);
+    background:
+      repeating-linear-gradient(115deg, rgb(255 255 255 / 0.02) 0 1px, transparent 1px 9px),
+      radial-gradient(140% 90% at 85% -10%, rgb(var(--fuchsia) / 0.1), transparent 55%),
+      radial-gradient(120% 80% at 0% 110%, rgb(var(--teal) / 0.06), transparent 55%),
+      linear-gradient(160deg, rgb(var(--line) / 0.12), rgb(var(--fuchsia) / 0.06) 45%, rgb(var(--ink) / 0.45) 75%);
     backdrop-filter: blur(14px) saturate(1.4);
     -webkit-backdrop-filter: blur(14px) saturate(1.4);
     box-shadow:
@@ -736,12 +890,38 @@ const vk = hiddenKeys(vStop);
       0 0 50px -12px rgb(var(--fuchsia) / 0.28),
       inset 0 1px 0 rgb(255 255 255 / 0.12);
   }
+  /* diffraction rim: white light catching the top edge of the glass */
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.5),
+      rgb(var(--teal-bright) / 0.55) 42%,
+      rgb(var(--fuchsia-bright) / 0.5) 68%,
+      transparent
+    );
+    pointer-events: none;
+  }
+  /* spectral (diffraction-order) sweep across the glass */
   .glass::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.08) 47%, rgb(var(--fuchsia-bright) / 0.09) 52%, transparent 62%);
+    background: linear-gradient(
+      115deg,
+      transparent 38%,
+      rgb(var(--teal-bright) / 0.07) 45%,
+      rgb(255 255 255 / 0.12) 50%,
+      rgb(var(--fuchsia-bright) / 0.07) 55%,
+      transparent 62%
+    );
     background-size: 250% 100%;
     background-position: 130% 0;
     animation: sweep 7s ease-in-out infinite;
@@ -752,18 +932,39 @@ const vk = hiddenKeys(vStop);
     80%, 100% { background-position: -60% 0; }
   }
   .glass-soft {
+    position: relative;
     border: 1px solid rgb(var(--line) / 0.22);
     background: rgb(var(--ink) / 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 0 30px -10px rgb(var(--teal) / 0.25);
   }
+  .glass-soft::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 34%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.4), rgb(var(--teal-bright) / 0.5), transparent);
+  }
 
   .grad {
-    background: linear-gradient(90deg, rgb(var(--teal-bright)), rgb(var(--fuchsia-bright)));
+    background: linear-gradient(
+      90deg,
+      rgb(var(--teal-bright)),
+      rgb(var(--fuchsia-bright)),
+      rgb(165 180 252),
+      rgb(var(--teal-bright))
+    );
+    background-size: 250% 100%;
+    animation: gradflow 8s ease-in-out infinite alternate;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  @keyframes gradflow {
+    to { background-position: 100% 0; }
   }
 
   /* hero entrance */
@@ -772,9 +973,22 @@ const vk = hiddenKeys(vStop);
   .hero-stagger > :nth-child(3) { animation-delay: 0.16s; }
   .hero-stagger > :nth-child(4) { animation-delay: 0.24s; }
   .hero-stagger > :nth-child(5) { animation-delay: 0.32s; }
-  .hero-fig { animation: rise 0.65s 0.2s cubic-bezier(0.22, 1.2, 0.36, 1) both; }
+  /* the badge cascades in once, then keeps its prism-rim flow running */
+  .hero-stagger > .badge {
+    animation:
+      rise 0.55s cubic-bezier(0.22, 1.2, 0.36, 1) both,
+      rimflow 8s linear infinite;
+  }
+  .hero-fig {
+    animation:
+      rise 0.65s 0.2s cubic-bezier(0.22, 1.2, 0.36, 1) both,
+      float 9s ease-in-out 1.2s infinite alternate;
+  }
   @keyframes rise {
     from { opacity: 0; transform: translateY(16px); }
+  }
+  @keyframes float {
+    to { transform: translateY(-7px); }
   }
 
   /* scroll reveals */
@@ -963,12 +1177,14 @@ const vk = hiddenKeys(vStop);
   .link:hover { color: white; text-decoration-color: rgb(var(--fuchsia)); }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob-a, .blob-b, .glass::after, .cell.run, .cell.pop, [data-count].pop, .live-dot, #r-status.flash {
+    .disc, .beam, .blob-b, .blob-f, .badge, .grad, .spark, .glass::after,
+    .cell.run, .cell.pop, [data-count].pop, .live-dot, #r-status.flash {
       animation: none;
     }
     .dot, .node-hi { display: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
     .hero-stagger > *, .hero-fig { animation: none; }
+    .spark { opacity: 0.55; }
     .btn:hover, .btn:active { transform: none; }
   }
 </style>
